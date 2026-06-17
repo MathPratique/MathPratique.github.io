@@ -62,7 +62,7 @@ function interReduceToRREF2(): Exercise {
       t("."),
     ],
     steps: [
-      [t("L₁ ← L₁ − 2L₂ pour annuler le 2 en position (1,2).")],
+      [t("L₁ → L₁ − 2L₂ pour annuler le 2 en position (1,2).")],
     ],
     answer: [
       bold([

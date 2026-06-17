@@ -16,13 +16,13 @@ function meta(id: string, title: string, difficulty: Exercise["difficulty"]) {
 function easyOneOperation(): Exercise {
   const A = randMat(3, 3, -3, 4);
   const k = pick([-2, -1, 2, 3]);
-  // L₂ ← L₂ + k·L₁
+  // L₂ → L₂ + k·L₁
   const B = A.map((row) => row.slice());
   B[1] = B[1].map((v, j) => v + k * A[0][j]);
   return {
     ...meta("quiz-L18-easy", "Effectuer une opération élémentaire sur une matrice", "Fondamental"),
     prompt: [
-      t("Effectuer l'opération L₂ ← L₂ + "),
+      t("Effectuer l'opération L₂ → L₂ + "),
       t(`${k}`),
       t("·L₁ sur "),
       mat(asCells(A), "A ="),
@@ -56,8 +56,8 @@ function interMakeZeroBelowPivot(): Exercise {
       t(", appliquer les opérations qui annulent les coefficients sous le pivot en position (1,1)."),
     ],
     steps: [
-      [t(`L₂ ← L₂ + (${k2})·L₁ pour annuler A[2][1].`)],
-      [t(`L₃ ← L₃ + (${k3})·L₁ pour annuler A[3][1].`)],
+      [t(`L₂ → L₂ + (${k2})·L₁ pour annuler A[2][1].`)],
+      [t(`L₃ → L₃ + (${k3})·L₁ pour annuler A[3][1].`)],
     ],
     answer: [bold([t("Résultat : "), mat(asCells(B))])],
   };
@@ -65,14 +65,14 @@ function interMakeZeroBelowPivot(): Exercise {
 
 function interTwoOps(): Exercise {
   const A = randMat(2, 3, -3, 3);
-  // L₁ ← 2L₁ then L₂ ← L₂ − L₁
+  // L₁ → 2L₁ then L₂ → L₂ − L₁
   const B = A.map((row) => row.slice());
   B[0] = B[0].map((v) => 2 * v);
   B[1] = B[1].map((v, j) => v - B[0][j]);
   return {
     ...meta("quiz-L18-inter", "Enchaîner deux opérations élémentaires", "Intermédiaire"),
     prompt: [
-      t("Appliquer dans l'ordre L₁ ← 2L₁ puis L₂ ← L₂ − L₁ à "),
+      t("Appliquer dans l'ordre L₁ → 2L₁ puis L₂ → L₂ − L₁ à "),
       mat(asCells(A), "A ="),
       t("."),
     ],
@@ -106,7 +106,7 @@ function advReduceToEchelon(): Exercise {
       t("."),
     ],
     steps: [
-      [t("L₂ ← L₂ − 2L₁ et L₃ ← L₃ − L₁ : on annule la colonne 1 sous le pivot.")],
+      [t("L₂ → L₂ − 2L₁ et L₃ → L₃ − L₁ : on annule la colonne 1 sous le pivot.")],
       [t("Échanger L₂ et L₃ pour faire apparaître un pivot non nul en position (2,2).")],
     ],
     answer: [bold([t("Forme échelon : "), mat(asCells(echelon))])],
@@ -114,7 +114,7 @@ function advReduceToEchelon(): Exercise {
 }
 
 function advRescaleRow(): Exercise {
-  // L₁ ← (1/3)L₁ for a 2x3 matrix with first row divisible by 3
+  // L₁ → (1/3)L₁ for a 2x3 matrix with first row divisible by 3
   const a = randInt(1, 3);
   const b = randInt(-2, 3);
   const c = randInt(-2, 3);
@@ -126,7 +126,7 @@ function advRescaleRow(): Exercise {
   return {
     ...meta("quiz-L18-adv", "Normaliser une ligne", "Avancé"),
     prompt: [
-      t("Appliquer L₁ ← (1/3)·L₁ à "),
+      t("Appliquer L₁ → (1/3)·L₁ à "),
       mat(asCells(A), "A ="),
       t(" pour normaliser le pivot."),
     ],

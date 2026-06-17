@@ -49,12 +49,12 @@ function interSwap(): Exercise {
 function interReplaceRow(): Exercise {
   const d = pick([2, 3, 5]);
   return {
-    ...meta("quiz-L14-inter", "Effet de Lᵢ ← Lᵢ + kLⱼ", "Intermédiaire"),
+    ...meta("quiz-L14-inter", "Effet de Lᵢ → Lᵢ + kLⱼ", "Intermédiaire"),
     prompt: [
       t(`Si det(A) = ${d}, et B est obtenue en remplaçant L₂ par L₂ + 5L₁ dans A, calculer det(B).`),
     ],
     steps: [
-      [t("Propriété : Lᵢ ← Lᵢ + k·Lⱼ ne change pas le déterminant.")],
+      [t("Propriété : Lᵢ → Lᵢ + k·Lⱼ ne change pas le déterminant.")],
     ],
     answer: [bold([t(`det(B) = det(A) = ${d}.`)])],
   };
@@ -77,7 +77,7 @@ function advReduceToTriangular(): Exercise {
       t("."),
     ],
     steps: [
-      [t("Appliquer des opérations Lᵢ ← Lᵢ + kLⱼ pour faire apparaître des zéros sous la diagonale.")],
+      [t("Appliquer des opérations Lᵢ → Lᵢ + kLⱼ pour faire apparaître des zéros sous la diagonale.")],
       [t("Le déterminant ne change pas pendant ces opérations.")],
       [t("Une fois triangulaire, det = produit des éléments diagonaux.")],
     ],
