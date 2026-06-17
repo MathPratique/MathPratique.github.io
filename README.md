@@ -1,6 +1,12 @@
-# React + TypeScript + Vite
+# MathPratique 🧮
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site web d'exercices de mathématiques en ligne : [mathpratique.ca](https://mathpratique.ca)
+
+---
+
+## Stack technique
+
+React + TypeScript + Vite. Ce template fournit une configuration minimale pour exécuter React avec Vite, HMR, et quelques règles ESLint.
 
 Currently, two official plugins are available:
 
