@@ -438,6 +438,542 @@ const manualExercises: Exercise[] = [
     steps: [],
     answer: "Une infinité de solutions, avec 1 variable libre",
   },
+  // ─────────────────────────────────────────────────────────────────
+  // Leçon 18 — 3 QCM + 2 Vrai/Faux
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "L18-MCQ1",
+    topicId: "linear-algebra",
+    lessonId: "L18",
+    number: 8,
+    title: "QCM — Reconnaître une opération élémentaire",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Parmi les opérations suivantes, laquelle N'EST PAS une opération élémentaire valide sur les lignes ?",
+    options: [
+      { id: "a", content: "Échanger deux lignes : Lᵢ ↔ Lⱼ", correct: false },
+      { id: "b", content: "Multiplier une ligne par k ≠ 0 : Lᵢ → k·Lᵢ", correct: false },
+      { id: "c", content: "Ajouter un multiple d'une ligne à une autre : Lᵢ → Lᵢ + k·Lⱼ", correct: false },
+      { id: "d", content: "Multiplier deux lignes entre elles : Lᵢ → Lᵢ × Lⱼ", correct: true },
+    ],
+    explanation:
+      "Les trois opérations élémentaires sur les lignes sont : l'échange de deux lignes, la multiplication d'une ligne par un scalaire non nul, et l'addition d'un multiple d'une ligne à une autre. La multiplication de deux lignes entre elles n'est pas définie pour les matrices.",
+    steps: [],
+    answer: "Multiplier deux lignes entre elles",
+  },
+  {
+    id: "L18-MCQ2",
+    topicId: "linear-algebra",
+    lessonId: "L18",
+    number: 9,
+    title: "QCM — Appliquer une opération élémentaire",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      { type: "text", content: "Soit " },
+      { type: "matrix", data: [[1, 2], [2, 5]], label: "A =" },
+      { type: "text", content: ". Après l'opération L₂ → L₂ − 2L₁, la nouvelle ligne L₂ devient :" },
+    ],
+    options: [
+      { id: "a", content: "(0, 1)", correct: true },
+      { id: "b", content: "(0, 5)", correct: false },
+      { id: "c", content: "(4, 9)", correct: false },
+      { id: "d", content: "(2, 1)", correct: false },
+    ],
+    explanation:
+      "L₂ − 2L₁ = (2, 5) − 2·(1, 2) = (2 − 2, 5 − 4) = (0, 1). Cette opération annule le coefficient sous le pivot en (1,1).",
+    steps: [],
+    answer: "(0, 1)",
+  },
+  {
+    id: "L18-MCQ3",
+    topicId: "linear-algebra",
+    lessonId: "L18",
+    number: 10,
+    title: "QCM — Effet sur le déterminant",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Après l'application de l'opération Lᵢ → Lᵢ + k·Lⱼ (avec i ≠ j) sur une matrice carrée A, le déterminant :",
+    options: [
+      { id: "a", content: "Est multiplié par k", correct: false },
+      { id: "b", content: "Reste inchangé", correct: true },
+      { id: "c", content: "Devient nul", correct: false },
+      { id: "d", content: "Change de signe", correct: false },
+    ],
+    explanation:
+      "Propriétés des déterminants : Lᵢ → Lᵢ + k·Lⱼ ne change pas det. Par contre, échanger deux lignes change le signe, et multiplier une ligne par k multiplie det par k.",
+    steps: [],
+    answer: "Reste inchangé",
+  },
+  {
+    id: "L18-TF1",
+    topicId: "linear-algebra",
+    lessonId: "L18",
+    number: 11,
+    title: "Vrai ou Faux — Multiplier une ligne par 0",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt:
+      "L'opération L₁ → 0·L₁ (multiplier une ligne par 0) est une opération élémentaire valide.",
+    isTrue: false,
+    explanation:
+      "Faux. La multiplication d'une ligne par un scalaire est valide uniquement si le scalaire est non nul (k ≠ 0). Multiplier par 0 annule la ligne et fait perdre de l'information : ce n'est pas réversible.",
+    steps: [],
+    answer: "Faux",
+  },
+  {
+    id: "L18-TF2",
+    topicId: "linear-algebra",
+    lessonId: "L18",
+    number: 12,
+    title: "Vrai ou Faux — Déterminant et lignes-équivalence",
+    difficulty: "Avancé",
+    type: "tf",
+    prompt:
+      "Deux matrices ligne-équivalentes ont toujours le même déterminant.",
+    isTrue: false,
+    explanation:
+      "Faux. L'échange de deux lignes change le signe du déterminant, et la multiplication d'une ligne par k le multiplie par k. Donc deux matrices ligne-équivalentes peuvent avoir des déterminants différents (mais nuls ou non simultanément).",
+    steps: [],
+    answer: "Faux",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Leçon 19 — 3 QCM + 2 Vrai/Faux
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "L19-MCQ1",
+    topicId: "linear-algebra",
+    lessonId: "L19",
+    number: 8,
+    title: "QCM — Reconnaître une forme échelon réduite",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Parmi les matrices suivantes, laquelle N'EST PAS en forme échelon réduite (RREF) ?",
+    options: [
+      {
+        id: "a",
+        content: [{ type: "matrix", data: [[1, 0, 2], [0, 1, 3], [0, 0, 0]] }],
+        correct: false,
+      },
+      {
+        id: "b",
+        content: [{ type: "matrix", data: [[1, 2, 0], [0, 0, 1], [0, 0, 0]] }],
+        correct: false,
+      },
+      {
+        id: "c",
+        content: [{ type: "matrix", data: [[1, 0, 0], [0, 2, 0], [0, 0, 1]] }],
+        correct: true,
+      },
+      {
+        id: "d",
+        content: [{ type: "matrix", data: [[0, 1, 0], [0, 0, 1], [0, 0, 0]] }],
+        correct: false,
+      },
+    ],
+    explanation:
+      "La matrice (c) a un pivot égal à 2 (et non à 1) en position (2,2). Pour une RREF, tous les pivots doivent valoir exactement 1.",
+    steps: [],
+    answer: "L'option (c) — son pivot en (2,2) vaut 2 au lieu de 1.",
+  },
+  {
+    id: "L19-MCQ2",
+    topicId: "linear-algebra",
+    lessonId: "L19",
+    number: 9,
+    title: "QCM — Compter les pivots",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      { type: "text", content: "Combien la matrice " },
+      { type: "matrix", data: [[1, 0, 2, 0], [0, 1, -1, 0], [0, 0, 0, 1]] },
+      { type: "text", content: " a-t-elle de pivots ?" },
+    ],
+    options: [
+      { id: "a", content: "2", correct: false },
+      { id: "b", content: "3", correct: true },
+      { id: "c", content: "4", correct: false },
+      { id: "d", content: "1", correct: false },
+    ],
+    explanation:
+      "Les pivots (1 directeurs) sont en colonnes 1, 2 et 4. Le rang de la matrice est donc 3. La colonne 3 ne contient pas de pivot (elle correspond à une variable libre).",
+    steps: [],
+    answer: "3 pivots (colonnes 1, 2, 4)",
+  },
+  {
+    id: "L19-MCQ3",
+    topicId: "linear-algebra",
+    lessonId: "L19",
+    number: 10,
+    title: "QCM — Variables libres en RREF",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Si une matrice M de dimension 3×5 a 2 pivots dans sa RREF, combien le système associé MX = 0 a-t-il de variables libres ?",
+    options: [
+      { id: "a", content: "1", correct: false },
+      { id: "b", content: "2", correct: false },
+      { id: "c", content: "3", correct: true },
+      { id: "d", content: "5", correct: false },
+    ],
+    explanation:
+      "Le nombre de variables libres est n − rang(M), où n est le nombre d'inconnues. Ici n = 5 et rang(M) = 2 (nombre de pivots), donc 5 − 2 = 3 variables libres.",
+    steps: [],
+    answer: "3 variables libres",
+  },
+  {
+    id: "L19-TF1",
+    topicId: "linear-algebra",
+    lessonId: "L19",
+    number: 11,
+    title: "Vrai ou Faux — Unicité de la RREF",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt:
+      "Pour toute matrice, la forme échelon réduite (RREF) est unique.",
+    isTrue: true,
+    explanation:
+      "Vrai. C'est l'un des théorèmes fondamentaux de l'algèbre linéaire : la RREF d'une matrice est unique, indépendamment des opérations élémentaires choisies pour y arriver. C'est ce qui rend le rang bien défini.",
+    steps: [],
+    answer: "Vrai",
+  },
+  {
+    id: "L19-TF2",
+    topicId: "linear-algebra",
+    lessonId: "L19",
+    number: 12,
+    title: "Vrai ou Faux — Même RREF implique égalité",
+    difficulty: "Avancé",
+    type: "tf",
+    prompt:
+      "Si deux matrices A et B ont la même forme échelon réduite, alors A = B.",
+    isTrue: false,
+    explanation:
+      "Faux. Deux matrices peuvent être ligne-équivalentes (avoir la même RREF) sans être égales. Par exemple, A = [[1, 0], [0, 1]] et B = [[2, 0], [0, 3]] ont toutes deux la RREF égale à I, mais A ≠ B.",
+    steps: [],
+    answer: "Faux",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Leçon 20 — 3 QCM + 2 Vrai/Faux
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "L20-MCQ1",
+    topicId: "linear-algebra",
+    lessonId: "L20",
+    number: 8,
+    title: "QCM — Calculer le rang d'une matrice",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      { type: "text", content: "Quel est le rang de la matrice " },
+      { type: "matrix", data: [[1, 2, 3], [2, 4, 6], [1, 2, 3]], label: "A =" },
+      { type: "text", content: " ?" },
+    ],
+    options: [
+      { id: "a", content: "1", correct: true },
+      { id: "b", content: "2", correct: false },
+      { id: "c", content: "3", correct: false },
+      { id: "d", content: "0", correct: false },
+    ],
+    explanation:
+      "Après réduction : L₂ → L₂ − 2L₁ donne (0, 0, 0) et L₃ → L₃ − L₁ donne aussi (0, 0, 0). Il ne reste qu'une seule ligne non nulle, donc rang(A) = 1.",
+    steps: [],
+    answer: "rang(A) = 1",
+  },
+  {
+    id: "L20-MCQ2",
+    topicId: "linear-algebra",
+    lessonId: "L20",
+    number: 9,
+    title: "QCM — Nombre de solutions par les rangs",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Soit un système AX = B avec A de dimension 4×3 (4 équations, 3 inconnues). Si rang(A) = rang(A | B) = 3, le système admet :",
+    options: [
+      { id: "a", content: "Une solution unique", correct: true },
+      { id: "b", content: "Aucune solution", correct: false },
+      { id: "c", content: "Une infinité avec 1 variable libre", correct: false },
+      { id: "d", content: "Une infinité avec 2 variables libres", correct: false },
+    ],
+    explanation:
+      "Théorème de compatibilité : rang(A) = rang(A|B) = nombre d'inconnues (3) ⇒ solution unique. Le nombre de variables libres est n − rang(A) = 3 − 3 = 0.",
+    steps: [],
+    answer: "Une solution unique",
+  },
+  {
+    id: "L20-MCQ3",
+    topicId: "linear-algebra",
+    lessonId: "L20",
+    number: 10,
+    title: "QCM — Borne supérieure du rang",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Pour une matrice A de dimension m × n, quelle est la valeur maximale possible de rang(A) ?",
+    options: [
+      { id: "a", content: "m", correct: false },
+      { id: "b", content: "n", correct: false },
+      { id: "c", content: "min(m, n)", correct: true },
+      { id: "d", content: "max(m, n)", correct: false },
+    ],
+    explanation:
+      "Le rang est borné par le plus petit nombre de lignes ou de colonnes linéairement indépendantes. Comme on a au plus m lignes et n colonnes, rang(A) ≤ min(m, n).",
+    steps: [],
+    answer: "min(m, n)",
+  },
+  {
+    id: "L20-TF1",
+    topicId: "linear-algebra",
+    lessonId: "L20",
+    number: 11,
+    title: "Vrai ou Faux — Système incompatible",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt:
+      "Si rang(A) ≠ rang(A | B), alors le système AX = B n'admet aucune solution.",
+    isTrue: true,
+    explanation:
+      "Vrai. C'est le théorème de compatibilité : rang(A) < rang(A|B) signifie qu'il existe une ligne de la forme [0 0 … 0 | k] avec k ≠ 0, ce qui est impossible. Le système est dit incompatible.",
+    steps: [],
+    answer: "Vrai",
+  },
+  {
+    id: "L20-TF2",
+    topicId: "linear-algebra",
+    lessonId: "L20",
+    number: 12,
+    title: "Vrai ou Faux — Système homogène avec moins d'équations",
+    difficulty: "Avancé",
+    type: "tf",
+    prompt:
+      "Si A est une matrice m × n avec m < n (moins d'équations que d'inconnues), alors le système homogène AX = 0 admet une infinité de solutions.",
+    isTrue: true,
+    explanation:
+      "Vrai. Le système homogène AX = 0 est toujours compatible (X = 0 marche). De plus, rang(A) ≤ min(m, n) = m < n, donc il y a au moins n − rang(A) ≥ 1 variable libre, d'où une infinité de solutions.",
+    steps: [],
+    answer: "Vrai",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Leçon 21 — 3 QCM + 2 Vrai/Faux
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "L21-MCQ1",
+    topicId: "linear-algebra",
+    lessonId: "L21",
+    number: 8,
+    title: "QCM — Objectif de la méthode de Gauss-Jordan",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Quel est le but de la méthode de Gauss-Jordan appliquée à une matrice augmentée ?",
+    options: [
+      { id: "a", content: "Calculer le déterminant", correct: false },
+      {
+        id: "b",
+        content: "Réduire la matrice à sa forme échelon réduite pour lire directement les solutions",
+        correct: true,
+      },
+      { id: "c", content: "Trouver la transposée de la matrice", correct: false },
+      { id: "d", content: "Calculer l'inverse uniquement", correct: false },
+    ],
+    explanation:
+      "La méthode de Gauss-Jordan transforme la matrice augmentée (A|B) en sa forme échelon réduite (RREF). Une fois en RREF, on peut directement lire la solution du système (ou conclure qu'il n'y en a pas).",
+    steps: [],
+    answer: "Réduire à la forme échelon réduite pour lire la solution",
+  },
+  {
+    id: "L21-MCQ2",
+    topicId: "linear-algebra",
+    lessonId: "L21",
+    number: 9,
+    title: "QCM — Conclure à partir de la RREF",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      { type: "text", content: "Après réduction par Gauss-Jordan d'une matrice augmentée 3×4, la dernière ligne devient " },
+      { type: "matrix", data: [[0, 0, 0, { type: "sep" }, 5]] },
+      { type: "text", content: ". Que peut-on conclure sur le système ?" },
+    ],
+    options: [
+      { id: "a", content: "Solution unique", correct: false },
+      { id: "b", content: "Aucune solution (système incompatible)", correct: true },
+      { id: "c", content: "Infinité de solutions", correct: false },
+      { id: "d", content: "Solution triviale uniquement", correct: false },
+    ],
+    explanation:
+      "La ligne [0 0 0 | 5] équivaut à l'équation 0·x + 0·y + 0·z = 5, soit 0 = 5, ce qui est impossible. Le système est donc incompatible : aucune solution.",
+    steps: [],
+    answer: "Aucune solution",
+  },
+  {
+    id: "L21-MCQ3",
+    topicId: "linear-algebra",
+    lessonId: "L21",
+    number: 10,
+    title: "QCM — Gauss vs Gauss-Jordan",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Quelle est la principale différence entre la méthode de Gauss (élimination) et la méthode de Gauss-Jordan ?",
+    options: [
+      {
+        id: "a",
+        content: "Gauss arrête à la forme échelon, Gauss-Jordan continue jusqu'à la forme échelon réduite",
+        correct: true,
+      },
+      { id: "b", content: "Gauss-Jordan utilise les déterminants", correct: false },
+      { id: "c", content: "Gauss ne s'applique qu'aux matrices carrées", correct: false },
+      { id: "d", content: "Gauss-Jordan multiplie les lignes entre elles", correct: false },
+    ],
+    explanation:
+      "Gauss s'arrête à la forme échelon (matrice triangulaire supérieure avec pivots) et utilise ensuite la substitution arrière. Gauss-Jordan pousse plus loin en annulant aussi les coefficients au-dessus des pivots et en normalisant chaque pivot à 1, ce qui donne directement la solution sans substitution.",
+    steps: [],
+    answer: "Gauss-Jordan continue jusqu'à la RREF",
+  },
+  {
+    id: "L21-TF1",
+    topicId: "linear-algebra",
+    lessonId: "L21",
+    number: 11,
+    title: "Vrai ou Faux — Applicabilité de Gauss-Jordan",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt:
+      "La méthode de Gauss-Jordan peut résoudre des systèmes AX = B même lorsque det(A) = 0.",
+    isTrue: true,
+    explanation:
+      "Vrai. Gauss-Jordan fonctionne avec n'importe quelle matrice (carrée ou non, inversible ou non). Si det(A) = 0, la méthode révèle simplement que le système a soit aucune solution, soit une infinité, mais elle s'applique toujours.",
+    steps: [],
+    answer: "Vrai",
+  },
+  {
+    id: "L21-TF2",
+    topicId: "linear-algebra",
+    lessonId: "L21",
+    number: 12,
+    title: "Vrai ou Faux — Indépendance vis-à-vis des opérations",
+    difficulty: "Avancé",
+    type: "tf",
+    prompt:
+      "Le résultat final (la RREF) obtenu par Gauss-Jordan dépend de l'ordre des opérations élémentaires choisies.",
+    isTrue: false,
+    explanation:
+      "Faux. La RREF d'une matrice est unique, quelle que soit la suite d'opérations élémentaires utilisée pour y arriver. Deux personnes qui choisissent des chemins différents obtiendront la même RREF finale.",
+    steps: [],
+    answer: "Faux",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Leçon 22 — 3 QCM + 2 Vrai/Faux
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "L22-MCQ1",
+    topicId: "linear-algebra",
+    lessonId: "L22",
+    number: 8,
+    title: "QCM — Forme finale de Gauss-Jordan pour AX = B",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Pour résoudre AX = B avec A inversible n×n par Gauss-Jordan, on réduit la matrice augmentée [A | B] jusqu'à obtenir :",
+    options: [
+      { id: "a", content: "[I | X] où X est la solution", correct: true },
+      { id: "b", content: "[A | I]", correct: false },
+      { id: "c", content: "[I | A]", correct: false },
+      { id: "d", content: "[A⁻¹ | B]", correct: false },
+    ],
+    explanation:
+      "Quand A est inversible, la réduction transforme A en la matrice identité I. La colonne B subit les mêmes opérations et devient X = A⁻¹·B, la solution du système.",
+    steps: [],
+    answer: "[I | X]",
+  },
+  {
+    id: "L22-MCQ2",
+    topicId: "linear-algebra",
+    lessonId: "L22",
+    number: 9,
+    title: "QCM — Résoudre un système 2×2 par Gauss-Jordan",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "En appliquant Gauss-Jordan au système {x + y = 3, x − y = 1}, on obtient :",
+    options: [
+      { id: "a", content: "x = 2, y = 1", correct: true },
+      { id: "b", content: "x = 1, y = 2", correct: false },
+      { id: "c", content: "x = 3, y = 1", correct: false },
+      { id: "d", content: "x = −1, y = 2", correct: false },
+    ],
+    explanation:
+      "Matrice augmentée : [[1, 1, 3], [1, −1, 1]]. L₂ → L₂ − L₁ : [[1, 1, 3], [0, −2, −2]]. L₂ → −L₂/2 : [[1, 1, 3], [0, 1, 1]]. L₁ → L₁ − L₂ : [[1, 0, 2], [0, 1, 1]]. Donc x = 2 et y = 1. Vérification : 2 + 1 = 3 ✓ et 2 − 1 = 1 ✓.",
+    steps: [],
+    answer: "x = 2, y = 1",
+  },
+  {
+    id: "L22-MCQ3",
+    topicId: "linear-algebra",
+    lessonId: "L22",
+    number: 10,
+    title: "QCM — Lire la solution paramétrique",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt: [
+      { type: "text", content: "Si la RREF de la matrice augmentée d'un système à 3 inconnues (x₁, x₂, x₃) est " },
+      {
+        type: "matrix",
+        data: [
+          [1, 0, 0, { type: "sep" }, 5],
+          [0, 1, 2, { type: "sep" }, 3],
+          [0, 0, 0, { type: "sep" }, 0],
+        ],
+      },
+      { type: "text", content: ", la solution générale est :" },
+    ],
+    options: [
+      { id: "a", content: "(5, 3 − 2t, t), pour t ∈ ℝ", correct: true },
+      { id: "b", content: "(5, 3, 0)", correct: false },
+      { id: "c", content: "(0, 3, 5)", correct: false },
+      { id: "d", content: "Aucune solution", correct: false },
+    ],
+    explanation:
+      "Les pivots sont en colonnes 1 et 2, donc x₁ et x₂ sont les variables principales ; x₃ est libre. On pose x₃ = t. Ligne 1 : x₁ = 5. Ligne 2 : x₂ + 2x₃ = 3, donc x₂ = 3 − 2t. Ligne 3 : 0 = 0 (consistant). Solution : (5, 3 − 2t, t).",
+    steps: [],
+    answer: "(5, 3 − 2t, t), t ∈ ℝ",
+  },
+  {
+    id: "L22-TF1",
+    topicId: "linear-algebra",
+    lessonId: "L22",
+    number: 11,
+    title: "Vrai ou Faux — Ligne incompatible",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt:
+      "Si la RREF de la matrice augmentée contient une ligne de la forme [0  0  …  0 | k] avec k ≠ 0, alors le système n'admet aucune solution.",
+    isTrue: true,
+    explanation:
+      "Vrai. Cette ligne représente l'équation 0·x₁ + 0·x₂ + … + 0·xₙ = k avec k ≠ 0, soit 0 = k, ce qui est impossible. Le système est incompatible.",
+    steps: [],
+    answer: "Vrai",
+  },
+  {
+    id: "L22-TF2",
+    topicId: "linear-algebra",
+    lessonId: "L22",
+    number: 12,
+    title: "Vrai ou Faux — Unicité garantie par Gauss-Jordan",
+    difficulty: "Avancé",
+    type: "tf",
+    prompt:
+      "La méthode de Gauss-Jordan donne toujours une solution unique pour AX = B.",
+    isTrue: false,
+    explanation:
+      "Faux. Gauss-Jordan révèle la structure du système, mais le système lui-même peut avoir 0 solution (incompatible), 1 solution (unique) ou une infinité (avec variables libres). La méthode ne crée pas l'unicité, elle la révèle quand elle existe.",
+    steps: [],
+    answer: "Faux",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
