@@ -1,0 +1,4994 @@
+# PDF total pages: 72
+
+
+========== PAGE 1 ==========
+
+
+========== PAGE 2 ==========
+Algèbre linéaire et géométrie vectorielle — Cahier d’exercices
+© 2026 Vecteur Math
+Tous droits réservés.
+Aucune partie de ce document ne peut être reproduite,
+transmise ou distribuée sans l’autorisation écrite de l’auteur.
+Publié par Vecteur Math
+Imprimé via Amazon KDP
+Collection Mathématiques au collégial
+
+========== PAGE 3 ==========
+Table des matières
+Matrices et opérations
+Leçon 1 — Définition d’une matrice
+Leçon 2 — Opérations, partie 1
+Leçon 3 — Opérations, partie 2
+Leçon 4 — Multiplication, partie 1
+Leçon 5 — Multiplication, partie 2
+Leçon 6 — Transposée
+Leçon 7 — Matrice inverse, partie 1
+Leçon 8 — Matrice inverse, partie 2
+Leçon 9 — Matrice inverse, partie 3
+Déterminants
+Leçon 10 — Déterminant, partie 1
+Leçon 11 — Déterminant, partie 2
+Leçon 12 — Déterminant, partie 3
+Leçon 13 — Propriétés, partie 1
+Leçon 14 — Propriétés, partie 2
+Leçon 15 — Inverse par cofacteurs, p.1
+Leçon 16 — Inverse par cofacteurs, p.2
+Systèmes linéaires
+Leçon 17 — Systèmes d’équations
+Leçon 18 — Réduction, partie 1
+Leçon 19 — Réduction, partie 2
+Leçon 20 — Rang et nombre de solutions
+Leçon 21 — Gauss-Jordan, partie 1
+Leçon 22 — Gauss-Jordan, partie 2
+Vecteurs géométriques
+Leçon 23 — Vecteurs géom., partie 1
+Leçon 24 — Vecteurs géom., partie 2
+Leçon 25 — Vecteurs géom., partie 3
+Leçon 26 — Démonstrations
+Leçon 27 — Vecteurs algéb., partie 1
+Leçon 28 — Vecteurs algéb., partie 2
+Leçon 29 — Vecteurs algéb., partie 3
+Espaces vectoriels
+Leçon 34 — Combinaison linéaire
+Leçon 35 — Ensemble générateur
+Leçon 36 — Dépendance linéaire
+Leçon 37 — Base et composantes
+Leçon 38 — Théorème sur les bases, p.1
+Leçon 39 — Théorème sur les bases, p.2
+Leçon 40 — Théorème sur les bases, p.3
+Produits et géométrie 3D
+Leçon 43 — Produit scalaire, partie 1
+Leçon 44 — Produit scalaire, partie 2
+Leçon 45 — Projection orthogonale
+Leçon 46 — Produit vectoriel, partie 1
+Leçon 47 — Produit vectoriel, partie 2
+Leçon 48 — Produit mixte, partie 1
+Leçon 49 — Produit mixte, partie 2
+Droites et plans
+Leçon 50 — Droite dans l’espace
+Leçon 51 — Position relative de droites
+Leçon 52 — Distance point-droite
+Leçon 53 — Distance entre droites
+Leçon 54 — Plan dans l’espace
+Leçon 55 — Position relative de plans
+Leçon 56 — Distance point-plan
+Leçon 57 — Droites et plans, partie 1
+Leçon 58 — Droites et plans, partie 2
+Solutions
+Démarches et réponses finales
+Aide-mémoire
+Définitions et formules essentielles
+
+========== PAGE 4 ==========
+Page intentionnellement laissée vierge.
+
+========== PAGE 5 ==========
+À propos de ce cahier
+Ce cahier d’exercices couvre les 52 leçons du cours d’algèbre linéaire et de géométrie vectorielle
+offert au niveau collégial. Il propose plus de 350 exercices originaux répartis sur trois niveaux
+de diﬀiculté :
+(⋆ facile ⋆⋆ intermédiaire ⋆⋆⋆ diﬀicile)
+Chaque leçon comprend entre 6 et 8 exercices , allant de l’application directe des définitions
+jusqu’à des problèmes de démonstration et de synthèse. Une section Solutions complète, avec
+démarche rapide et réponse finale, se trouve à la fin du cahier.
+Bonne étude!
+— Vecteur Math
+
+========== PAGE 6 ==========
+Comment utiliser ce cahier
+Approche recommandée
+Ce cahier est conçu pour accompagner votre apprentissage de façon progressive. Voici quelques
+conseils pour en tirer le maximum.
+⋆ Exercices faciles
+Ces exercices visent à vérifier votre compréhension des définitions et des méthodes de base.
+Faites-les sans consulter vos notes. Si vous bloquez, relisez la définition concernée, puis réessayez
+avant de consulter la solution.
+⋆⋆ Exercices intermédiaires
+Ces exercices demandent de combiner plusieurs notions . Prenez le temps de bien identifier ce
+qui est demandé avant de commencer. Si vous êtes bloqué après 10 minutes, consultez la démarche
+dans le solutionnaire (sans regarder la réponse), puis terminez seul.
+⋆⋆⋆ Exercices diﬀiciles
+Ces exercices sont de niveau examen ou démonstration . Ils requièrent une bonne maîtrise des
+notions de la leçon. N’hésitez pas à les faire en plusieurs étapes ou à revenir les résoudre après
+avoir complété la leçon suivante.
+Conseils généraux :
+• Écrivez toujours votre démarche complète — en examen, la démarche est souvent autant notée
+que la réponse.
+• Consultez l’ aide-mémoire (pages suivantes) pour retrouver rapidement une formule.
+• Après avoir consulté une solution, refaites l’exercice de mémoire le lendemain.
+• Utilisez les exercices diﬀiciles comme préparation aux examens .
+• Les solutions du solutionnaire montrent une démarche possible — il peut en exister d’autres
+tout aussi valides.
+« La mathématique est l’art de donner le même nom à des choses différentes. » — Henri Poincaré
+
+========== PAGE 7 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Aide-mémoire
+Définitions et formules essentielles
+1. Matrices et opérations
+Égalité : A = B ssi mêmes dimensions et aij = bij pour tout i, j.
+Addition : (A + B)ij = aij + bij (mêmes dimensions requises).
+Multiplication scalaire : (kA)ij = kaij.
+Produit : (AB)ij =
+p∑
+k=1
+aikbkj (Am×p, Bp×n⇒ ABm×n).
+Transposée : (AT )ij = aji; (AB)T = BT AT ; (AT )T = A.
+Symétrique : AT = A. Antisymétrique : AT =−A (diag. = 0).
+Inverse : AA−1 = A−1A = I; (AB)−1 = B−1A−1; (AT )−1 = (A−1)T .
+Inverse 2× 2 :
+(a b
+c d
+) −1
+= 1
+ad− bc
+( d −b
+−c a
+)
+.
+2. Déterminants
+Ordre 2 :
+⏐
+⏐
+⏐
+⏐
+a b
+c d
+⏐
+⏐
+⏐
+⏐ = ad− bc.
+Cofacteur : Cij = (−1)i+jMij où Mij = déterminant de la sous-matrice sans ligne i et colonne
+j.
+Développement de Laplace : det A =
+n∑
+j=1
+aijCij (selon n’importe quelle ligne ou colonne).
+Propriétés clés : det(AB) = det A· det B; det (AT ) = det A; det (kA) = kn det A.
+Matrice singulière : det A = 0⇔ A non inversible.
+Inverse par adjointe : A−1 = 1
+det A adj(A); adj (A) = cof(A)T .
+Règle de Cramer : xi = det Ai
+det A (où Ai remplace la colonne i par B).
+7
+
+========== PAGE 8 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+3. Systèmes d’équations linéaires
+Forme matricielle : AX = B.
+Théorème de compatibilité :
+• rang (A)̸= rang(A|B)⇒ aucune solution.
+• rang (A) = rang(A|B) = n⇒ solution unique.
+• rang (A) = rang(A|B) < n⇒ infinité de solutions ( n− r variables libres).
+Méthode de Gauss-Jordan : réduire (A|B) à la forme échelon réduite.
+Forme échelon réduite : pivots = 1, seuls non nuls dans leur colonne, lignes nulles en bas.
+Rang : nombre de pivots de la forme échelon; rang (A)≤ min(m, n).
+4. Espaces vectoriels
+Combinaison linéaire : ⃗ w= k1⃗ v1 + k2⃗ v2 +··· + kn⃗ vn.
+Ensemble générateur : S engendre V si tout ⃗ v∈ V est combinaison linéaire de S.
+Indépendance linéaire : {v1, . . . , vn} ind. si k1v1 +··· + knvn = 0⇒ ki = 0.
+• Tester via det̸= 0 pour n vecteurs dans Rn.
+Base : ensemble générateur et linéairement indépendant.
+Dimension : nombre de vecteurs dans toute base.
+• dim Rn = n; dim Pn = n + 1; dim Mmn = mn.
+Composantes : siB ={v1, . . . , vn} est une base et ⃗ u=∑ kivi, alors (⃗ u)B = (k1, . . . , kn).
+8
+
+========== PAGE 9 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+5. Produits scalaire, vectoriel et mixte
+Produit scalaire : ⃗ u· ⃗ v=∥⃗ u∥∥⃗ v∥ cos θ = u1v1 + u2v2 + u3v3.
+• Orthogonaux : ⃗ u· ⃗ v= 0. Angle : cos θ = ⃗ u· ⃗ v
+∥⃗ u∥∥⃗ v∥.
+• Inégalité de Cauchy-Schwarz : |⃗ u· ⃗ v|≤∥ ⃗ u∥∥⃗ v∥.
+Projection orthogonale : proj⃗ v⃗ u= ⃗ u· ⃗ v
+∥⃗ v∥2 ⃗ v.
+Produit vectoriel : ⃗ u× ⃗ v=
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⃗i ⃗j ⃗k
+u1 u2 u3
+v1 v2 v3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+; ∥⃗ u× ⃗ v∥ =∥⃗ u∥∥⃗ v∥ sin θ.
+• Perpendiculaire à ⃗ uet ⃗ v; ⃗ u× ⃗ v=−(⃗ v× ⃗ u); Parallèles : ⃗ u× ⃗ v= ⃗0.
+• Aire du parallélogramme : ∥⃗ u× ⃗ v∥.
+Produit mixte : [⃗ u, ⃗ v, ⃗ w] = ⃗ u· (⃗ v× ⃗ w) =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+u1 u2 u3
+v1 v2 v3
+w1 w2 w3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+.
+• Volume du parallélépipède : |[⃗ u, ⃗ v, ⃗ w]|. Volume du tétraèdre : 1
+6|[⃗ u, ⃗ v, ⃗ w]|.
+• Coplanaires : [⃗ u, ⃗ v, ⃗ w] = 0 .
+6. Droites et plans dans l’espace
+Droite : ⃗ r= ⃗ r0 + t⃗ u; param. : x = x0 + at, y = y0 + bt, z = z0 + ct; sym. : x− x0
+a = y− y0
+b =
+z− z0
+c .
+Plan : ⃗ n· (⃗ r− ⃗ r0) = 0 , soit ax + by + cz = d (normal ⃗ n= (a, b, c)).
+Distances :
+• Point à plan : d =|ax0 + by0 + cz0− d|
+√
+a2 + b2 + c2 .
+• Point à droite : d =∥−−→
+P0P× ⃗ u∥
+∥⃗ u∥ .
+• Droites gauches : d =|−−→
+P1P2· (⃗ u1× ⃗ u2)|
+∥⃗ u1× ⃗ u2∥ .
+Angle droite/plan : sin α = |⃗ u· ⃗ n|
+∥⃗ u∥∥⃗ n∥. Angle entre plans : cos θ = |⃗ n1· ⃗ n2|
+∥⃗ n1∥∥⃗ n2∥ .
+Cet aide-mémoire est un résumé — consultez les notes de cours pour les démonstrations complètes.
+9
+
+========== PAGE 10 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+7. Vecteurs géométriques et algébriques
+Vecteur : segment orienté défini par une direction, un sens et une norme.
+Loi de Chasles : ⃗AB + ⃗BC = ⃗AC.
+Vecteurs algébriques dans Rn :
+• ⃗ u+ ⃗ v= (u1 + v1, . . . , un + vn); k⃗ u= (ku1, . . . , kun).
+• Norme : ∥⃗ u∥ =
+√
+u2
+1 + u2
+2 +··· + u2
+n.
+• Vecteur unitaire : ˆu = ⃗ u
+∥⃗ u∥.
+Vecteur−→
+AB :−→
+AB = B− A = (b1− a1, . . . , bn− an).
+Parallèles : ⃗ u∥ ⃗ vssi ⃗ u= k⃗ vpour un scalaire k.
+Inégalité du triangle : ∥⃗ u+ ⃗ v∥≤∥ ⃗ u∥ +∥⃗ v∥.
+Point de division : le point P divisant AB dans le rapport t : (1− t) vérifie
+⃗OP = (1− t) ⃗OA + t ⃗OB, t∈ [0, 1]. En particulier, milieu : t = 1
+2 .
+Base canonique de R3 : ⃗i = (1, 0, 0), ⃗j = (0, 1, 0), ⃗k = (0, 0, 1).
+• ⃗i× ⃗j = ⃗k; ⃗j× ⃗k = ⃗i; ⃗k×⃗i = ⃗j.
+• ⃗i·⃗i = ⃗j· ⃗j = ⃗k· ⃗k = 1; ⃗i· ⃗j = ⃗i· ⃗k = ⃗j· ⃗k = 0.
+8. Propriétés et théorèmes sur les bases
+Sous-espace vectoriel : W⊆ V est un sous-espace si :
+(i) ⃗0∈ W ; (ii) ⃗ u, ⃗ v∈ W⇒ ⃗ u+ ⃗ v∈ W ; (iii) ⃗ u∈ W, k∈ R⇒ k⃗ u∈ W .
+Théorèmes fondamentaux :
+• Toute base d’un espace V a le même nombre de vecteurs = dim V .
+• Tout ensemble de m > dim V vecteurs est linéairement dépendant.
+• Tout ensemble de m < dim V vecteurs n’engendre pas V .
+• n vecteurs dans Rn forment une base ⇔ det̸= 0.
+Dimensions usuelles :
+Espace Base canonique Dimension
+Rn {e1, . . . , en} n
+Pn(x) {1, x, x2, . . . , xn} n + 1
+Mm×n {Eij} mn
+Formule des dimensions : dim(U + W ) = dim U + dim W− dim(U∩ W ).
+Cet aide-mémoire est un résumé — consultez les notes de cours pour les démonstrations complètes.
+10
+
+========== PAGE 11 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Algèbre linéaire et géométrie vectorielle
+Cahier d’exercices — Leçons 1 à 58 · Plus de 350 exercices
+(⋆ facile ⋆⋆ intermédiaire ⋆⋆⋆ diﬀicile)
+Leçon 1 — Définition d’une matrice
+1. ⋆ Soit la matrice A = (aij)3×4 où aij = i + 2j.
+a) Construire la matrice A.
+b) Identifier l’élément a23.
+c) Quelle est la dimension de A ?
+2. ⋆ Parmi les paires de matrices suivantes, déterminer lesquelles sont égales. Justifier.
+A =
+(1 0
+2 3
+)
+, B =
+(1 0 0
+2 3 0
+)
+, C =
+(1 0
+2 3
+)
+3.
+⋆⋆ Soit A = (aij)2×3 avec aij = 3i− j2. Construire A et identifier le(s) élément(s) nul(s).
+4. ⋆⋆ Trouver les valeurs de x et y telles que les matrices suivantes soient égales :
+(2x + 1 4
+3 y− 2
+)
+=
+(7 4
+3 5
+)
+5.
+⋆⋆⋆ Soit B = (bij)3×3 où bij = (−1)i+j
+i + j . Construire la matrice B et identifier les matrices lignes
+et colonnes qui pourraient en être extraites.
+6. ⋆⋆⋆ Soit A = ( aij)3×3 avec aij = (−1)i+j(i2− j). Construire A, puis déterminer si A est
+symétrique, antisymétrique ou ni l’un ni l’autre.
+7. ⋆⋆ Soit A = (aij)2×3 avec aij = 2i2− 3j. Construire A et identifier les éléments négatififs.
+8. ⋆⋆⋆ Trouver toutes les matrices A = (aij)2×2 avec aij∈{ 0, 1} telles que a11 + a12 + a21 + a22 = 2
+et a11 = a22.
+Leçon 2 — Opérations sur les matrices — partie 1
+1. ⋆ Effectuer les opérations suivantes :
+A =
+(1 −2
+3 0
+)
+, B =
+( 4 1
+−1 5
+)
+a) A + B
+11
+
+========== PAGE 12 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+b) 3A− 2B
+2. ⋆⋆ Trouver la matrice X telle que 2X−
+( 1 3
+−2 4
+)
+=
+(5 −1
+0 6
+)
+.
+3. ⋆⋆ En utilisant les propriétés de Mmn, vérifier que 0A = 0 et (−1)A =−A pour A =
+(2 −1
+0 3
+)
+.
+4. ⋆⋆⋆ Démontrer la propriété P6 : k(A + B) = kA + kB pour A, B∈M mn et k∈ R.
+5. ⋆⋆⋆ Démontrer la propriété P8 : k(lA) = ( kl)A pour tout A∈M mn et k, l∈ R.
+6. ⋆⋆ Soit A =
+(3 −2
+1 4
+)
+et B =
+(−1 5
+2 −3
+)
+. Calculer 1
+2 (A + B) et 2A− 1
+2 B.
+7. ⋆⋆⋆ Démontrer que (A + B)T = AT + BT pour A, B∈ M22 à partir de la définition de la
+transposee.
+Leçon 3 — Opérations sur les matrices — partie 2
+1. ⋆ Résoudre pour X : 3X +
+(2 −1
+0 4
+)
+=
+(8 2
+3 1
+)
+.
+2.
+⋆⋆ Isoler X dans l’équation matricielle 4X− 3A = B + X, puis calculer X si A =
+( 1 0
+−1 2
+)
+et
+B =
+(0 3
+2 −1
+)
+.
+3.
+⋆⋆ Démontrer la propriété P2 : A + (B + C) = ( A + B) + C dansM22.
+4. ⋆⋆⋆ Soit l’équation 2A− 3X = 5 B + X− C. Isoler X, puis trouver X si A =
+(2 −1 0
+1 3 −2
+)
+,
+B =
+( 0 1 1
+−1 0 2
+)
+et C =
+(4 0 −3
+2 1 0
+)
+.
+5. ⋆⋆⋆ Démontrer la loi de simplification additive : si A + B = A + C pour A, B, C∈M mn, alors
+B = C.
+6. ⋆⋆ Résoudre pour X et Y :
+
+
+
+
+
+
+
+
+
+
+
+X + Y =
+(
+3 1
+0 2
+)
+X− Y =
+(
+1 −1
+2 0
+)
+7.
+⋆⋆⋆ Démontrer que 1· A = A (propriété P7) à partir de la définition de la multiplication scalaire.
+12
+
+========== PAGE 13 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 4 — Multiplication matricielle — partie 1
+1. ⋆ Effectuer le produit matriciel suivant :
+(1 2
+3 4
+)( 0 1
+−1 2
+)
+2.
+⋆ Déterminer si les produits AB et BA sont définis pour A2×3 et B3×4. Si oui, donner leurs
+dimensions.
+3. ⋆⋆ Soit A = ( aij)2×3 avec aij = i− j et B = ( bij)3×2 avec bij = 2 i + j. Calculer c12 du produit
+C = AB.
+4. ⋆⋆⋆ Soit A =
+( 1 0 2
+−1 1 0
+)
+et B =
+
+
+1 −1
+0 2
+1 0
+
+ . Calculer AB et BA, puis comparer les résultats
+et leurs dimensions.
+5.
+⋆⋆⋆ Soit A =
+(1 1
+0 1
+)
+. Calculer An pour tout n≥ 1 et démontrer le résultat par récurrence.
+6.
+⋆⋆ Soit A =
+(2 1
+0 3
+)
+et B =
+(1 −1
+2 1
+)
+. Calculer A2− AB + BA.
+7.
+⋆⋆⋆ Soit A =
+(1 2
+0 1
+)
+et B =
+(1 0
+3 1
+)
+. Vérifier que (AB)−1 = B−1A−1 sans calculer directement
+(AB)−1.
+Leçon 5 — Multiplication matricielle — partie 2
+1. ⋆ Soit A =
+( 1 0
+−1 1
+)
+. Calculer A2 et A3.
+2. ⋆⋆ Montrer par un exemple que AB̸= BA en général, avec des matrices 2× 2.
+3. ⋆⋆ Trouver deux matrices A̸= 0 et B̸= 0 telles que AB = 0.
+4. ⋆⋆⋆ En utilisant les propriétés de la multiplication matricielle, simplifier 2A(3B− C) + 5AC où
+les matrices sont compatibles.
+5. ⋆⋆⋆ Soit A =
+(0 1
+0 0
+)
+. Calculer A2, A3 et conjecturer la valeur de An pour tout n≥ 2.
+6.
+⋆⋆ Soit A =
+( 0 1
+−1 0
+)
+. Calculer A2, A3, A4 et identifier le motif periodique.
+7. ⋆⋆⋆ Démontrer que si AB = BA, alors (AB)n = AnBn pour tout n≥ 1.
+13
+
+========== PAGE 14 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 6 — Transposée d’une matrice
+1. ⋆ Trouver AT pour A =
+(3 −1 0
+2 4 −5
+)
+.
+2. ⋆⋆ Soit A =
+(1 2
+3 4
+)
+et B =
+( 0 1
+−1 2
+)
+. Vérifier que (AB)T = BT AT .
+3.
+⋆⋆ Sachant que AT =
+(1 −1
+2 3
+)
+, trouver A + AT .
+4. ⋆⋆⋆ Démontrer la propriété iv) : (AB)T = BT AT pour des matrices quelconques compatibles.
+5. ⋆⋆⋆ Soit A et B deux matrices symétriques de même ordre. Démontrer que AB est symétrique
+si et seulement si AB = BA.
+6. ⋆⋆ Soit A =
+(2 −1 3
+0 4 −2
+)
+. Calculer AAT et AT A avec leurs dimensions.
+7. ⋆⋆⋆ Soit A inversible. Démontrer que (AT )−1 = (A−1)T et en deduire que AT est inversible.
+Leçon 7 — Matrice inverse — partie 1
+1. ⋆ Vérifier que B est l’inverse de A si A =
+(2 1
+5 3
+)
+et B =
+( 3 −1
+−5 2
+)
+.
+2.
+⋆⋆ Trouver la matrice inverse de A =
+(3 0
+0 4
+)
+.
+3.
+⋆⋆ Soit I3 la matrice identité d’ordre 3. Vérifier que AI3 = I3A = A pour A =
+
+
+2 −1 0
+1 0 3
+−2 4 1
+
+ .
+4.
+⋆⋆⋆ Trouver les valeurs de a et b telles que
+(a b
+2 3
+)
+soit l’inverse de
+( 3 −1
+−2 a
+)
+.
+5. ⋆⋆⋆ Soit A = kI2 pour k̸= 0. Montrer que A commute avec toute matrice B∈M 22, et trouver
+(kI2)−1.
+6. ⋆⋆ Vérifier que A =
+(cos θ − sin θ
+sin θ cos θ
+)
+est inversible pour tout θ et calculer A−1.
+7. ⋆⋆⋆ Démontrer que si A et B sont inversibles, alors (AB)−1 = B−1A−1.
+14
+
+========== PAGE 15 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 8 — Matrice inverse — partie 2
+1. ⋆ Résoudre le système
+{
+2x + y = 5
+x + y = 3 en utilisant la méthode de la matrice inverse, sachant que
+(2 1
+1 1
+) −1
+=
+( 1 −1
+−1 2
+)
+.
+2.
+⋆⋆ Montrer que si AX = B et A est inversible, alors X = A−1B. Résoudre ensuite
+(1 2
+3 5
+)
+X =
+(4
+7
+)
+.
+3.
+⋆⋆⋆ Démontrer l’unicité de la matrice inverse : si AB = I et AC = I, alors B = C.
+4. ⋆⋆⋆ Résoudre le système suivant par la méthode de la matrice inverse en calculant d’abord A−1 :
+
+
+
+
+
+x + 2y + z = 3
+2x + 3y + z = 4
+x + y + 2z = 5
+5.
+⋆⋆ Résoudre AX = B par la matrice inverse: A =
+(3 1
+2 1
+)
+, B =
+(7
+5
+)
+.
+6.
+⋆⋆⋆ Démontrer que (An)−1 = (A−1)n pour tout n≥ 1.
+Leçon 9 — Matrice inverse — partie 3
+1. ⋆ Déterminer si les matrices suivantes sont symétriques, antisymétriques ou ni l’un ni l’autre :
+A =
+(0 3
+3 0
+)
+, B =
+(0 −2
+2 0
+)
+, C =
+(1 2
+3 1
+)
+2.
+⋆⋆ Isoler X dans l’équation matricielle AX−B = 3CX +D (supposer toutes les matrices inversibles
+et compatibles).
+3. ⋆⋆ Vérifier que A + AT est symétrique et que A− AT est antisymétrique pour A =
+( 1 3
+−2 4
+)
+.
+4. ⋆⋆⋆ Démontrer la propriété i) : pour toute matrice A, le produit AAT est symétrique.
+5. ⋆⋆⋆ Montrer que toute matrice carrée A peut s’écrire comme la somme d’une matrice symétrique
+et d’une matrice antisymétrique.
+6. ⋆⋆ Soit A =
+( 1 3
+−2 0
+)
+. Exprimer A comme somme S + K dúne matrice symétrique et dúne
+antisymétrique.
+15
+
+========== PAGE 16 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+7. ⋆⋆⋆ Soit A une matrice antisymétrique. Montrer que tous ses éléments diagonaux sont nuls et
+que A2 est symétrique.
+Leçon 10 — Déterminant — partie 1
+1. ⋆ Calculer les déterminants suivants :
+a)
+⏐
+⏐
+⏐
+⏐
+3 −2
+1 5
+⏐
+⏐
+⏐
+⏐
+b)
+⏐
+⏐
+⏐
+⏐
+0 4
+−1 6
+⏐
+⏐
+⏐
+⏐
+2.
+⋆⋆ Calculer
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 3
+0 4 5
+1 0 6
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+par la règle de Sarrus.
+3.
+⋆⋆ Pour quelle valeur de k le déterminant
+⏐
+⏐
+⏐
+⏐
+k 1
+3 k− 2
+⏐
+⏐
+⏐
+⏐ est-il nul ?
+4.
+⋆⋆⋆ Calculer
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 −1 0 1
+1 3 −2 0
+0 1 4 −1
+2 0 1 3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+en développant selon la première ligne.
+5.
+⋆⋆⋆ Pour quelle(s) valeur(s) de k le système homogène
+{
+kx + y = 0
+x + ky = 0 admet-il une solution non
+triviale ? Résoudre dans ce cas.
+6. ⋆⋆ Calculer
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 −3 1
+0 4 −2
+3 1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+en developpant selon la deuxieme colonne.
+7.
+⋆⋆⋆ Soit A =
+(a b
+c d
+)
+. Montrer que det (A2) = ( det A)2 directement par calcul.
+Leçon 11 — Déterminant — partie 2
+1. ⋆ Soit A =
+
+
+2 1 −1
+0 3 2
+1 0 4
+
+ . Calculer M12 et C12.
+2.
+⋆⋆ Soit A =
+
+
+1 0 2
+3 −1 4
+0 5 1
+
+ . Calculer det A en développant selon la deuxième ligne.
+16
+
+========== PAGE 17 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+3. ⋆⋆ Calculer M23, C23 et det A pour A =
+
+
+0 1 3
+2 −1 0
+4 2 1
+
+ .
+4.
+⋆⋆⋆ Calculer le déterminant
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 0 0 2
+0 2 1 0
+3 0 −1 0
+0 1 0 3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+en utilisant le développement de Laplace selon la
+colonne la plus avantageuse.
+5.
+⋆⋆⋆ Soit A =
+
+
+0 1 2
+1 0 3
+2 3 0
+
+ . Calculer det A par deux développements de Laplace différents (ligne
+et colonne) et vérifier que les résultats coïncident.
+6.
+⋆⋆ Soit A =
+
+
+2 1 0
+−1 3 2
+0 1 4
+
+ . Calculer les cofacteurs C11, C12, C13 et en deduire det A.
+7.
+⋆⋆⋆ Calculer det A pour A =
+
+
+
+
+1 2 0 1
+0 1 3 0
+2 0 1 −1
+1 −1 0 2
+
+
+
+ .
+Leçon 12 — Déterminant — partie 3
+1. ⋆ Calculer
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+3 0 0
+−1 2 0
+4 −5 6
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+en choisissant la ligne ou la colonne la plus avantageuse.
+2.
+⋆⋆ Calculer D =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+0 0 1 2
+0 3 −1 0
+2 1 0 0
+0 0 4 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+deux fois : selon la 1 ère ligne et selon la 2 e colonne.
+3.
+⋆⋆⋆ Écrire l’expression du déterminant d’une matrice A d’ordre 4 comme développement selon
+la 3 e ligne, et montrer que les deux résultats coïncident pour A =
+
+
+
+
+1 0 2 0
+−1 1 0 3
+0 0 4 1
+2 −1 0 0
+
+
+
+ .
+4.
+⋆⋆⋆ Calculer det A pour A =
+
+
+
+
+1 1 1 1
+1 2 1 1
+1 1 3 1
+1 1 1 4
+
+
+
+ en choisissant judicieusement les opérations élémen-
+taires.
+17
+
+========== PAGE 18 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+5. ⋆⋆ Sans calculer, expliquer pourquoi
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+3 6 9
+1 4 2
+2 8 4
+⏐⏐⏐⏐⏐⏐
+= 0.
+6.
+⋆⋆⋆ Calculer D3 et D4 pour la matrice tridiagonale avec 2 sur la diagonale et 1 sur les sous/sur-
+diagonales, et conjecturer Dn.
+Leçon 13 — Propriétés des déterminants — partie 1
+1. ⋆ Sans calculer, donner la valeur de :
+a)
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 3
+0 0 0
+−1 4 5
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+b)
+⏐
+⏐
+⏐
+⏐
+2 1
+4 2
+⏐
+⏐
+⏐
+⏐ (deux lignes multiples)
+2.
+⋆⋆ Utiliser les propriétés des déterminants pour calculer :
+a)
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+5 0 0
+0 3 0
+0 0 4
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+b)
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 3
+2 4 6
+0 1 −1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+3.
+⋆⋆ Sachant que|A| = 6 pour A3×3, calculer|2A| et|− 3A|.
+4. ⋆⋆⋆ Démontrer la propriété 9 : si une ligne de A est multiple d’une autre ligne, alors det A = 0.
+5. ⋆⋆⋆ Soit A3×3 avec|A| = 5. Calculer |2A−1|,|(3A)T| et|A2|.
+6. ⋆⋆ Sachant que
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+a b c
+d e f
+g h i
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 5, calculer
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2a 2b 2c
+d + g e + h f + i
+3g 3h 3i
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+.
+7.
+⋆⋆⋆ Démontrer le déterminant de Vandermonde dórdre 3 :
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 1 1
+a b c
+a2 b2 c2
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= (b− a)(c− a)(c− b).
+Leçon 14 — Propriétés des déterminants — partie 2
+1. ⋆ Sachant que
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+a b c
+d e f
+g h i
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=−3, calculer
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+d e f
+a b c
+g h i
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+.
+2.
+⋆⋆ Sachant que|A| = 4 pour A3×3, calculer|AB| si det B =−2, et|3AT|.
+18
+
+========== PAGE 19 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+3. ⋆⋆ En ramenant à une forme triangulaire, calculer :
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 1 −1
+4 3 1
+−2 1 3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+4.
+⋆⋆⋆ Prouver que det A = det AT pour une matrice 2× 2 générale, puis vérifier pour A =
+
+2 −1 0
+1 3 2
+−1 0 4
+
+ .
+5.
+⋆⋆⋆ Calculer le déterminant suivant par triangularisation :
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 1 1 1
+2 3 1 0
+1 0 2 1
+0 1 1 2
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+6.
+⋆⋆ Sachant que|A| = 3 pour A3×3, calculer|A2|,|A−1| et| 1
+2 A|.
+7. ⋆⋆⋆ Soit An×n telle que A2 = A. Montrer que det A = 0 ou det A = 1.
+Leçon 15 — Calcul et propriétés de la matrice inverse — partie 1
+1. ⋆ Déterminer si les matrices suivantes sont singulières ou régulières :
+a) A =
+(2 4
+1 2
+)
+b) B =
+(3 1
+2 4
+)
+2.
+⋆⋆ Calculer cof (A), adj (A) et A−1 pour A =
+(1 2
+3 5
+)
+.
+3.
+⋆⋆ En utilisant la formule A−1 = 1
+|A| adj(A), calculer l’inverse de A =
+(2 −1
+1 3
+)
+.
+4. ⋆⋆⋆ Calculer A−1 pour A =
+
+
+1 0 1
+2 1 0
+−1 1 2
+
+ en utilisant la matrice des cofacteurs.
+5.
+⋆⋆⋆ Soit A =
+(1 2
+3 4
+)
+. Vérifier la formule A−1 = 1
+|A| adj(A) et montrer que A· adj(A) =|A|· I.
+6. ⋆⋆ Calculer A−1 via A−1 = 1
+|A| adj(A) pour A =
+(4 7
+2 6
+)
+.
+7.
+⋆⋆⋆ Soit A3×3 inversible. Montrer que adj (adj(A)) =|A|· A.
+19
+
+========== PAGE 20 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 16 — Calcul et propriétés de la matrice inverse — partie 2
+1. ⋆ Utiliser les propriétés pour calculer (2A)−1 et (AT )−1 si A−1 =
+(1 2
+0 3
+)
+.
+2.
+⋆⋆ Pour quelle valeur de k la matrice A =
+(k 1
+2 k− 1
+)
+n’est-elle pas inversible ?
+3. ⋆⋆ Montrer que (AB)−1 = B−1A−1 pour A =
+(2 1
+1 1
+)
+et B =
+(1 0
+2 3
+)
+.
+4.
+⋆⋆⋆ Sachant que det (B3×3) =−3, calculer det (adj(B)) en utilisant la relation A· adj(A) =|A|· I.
+5. ⋆⋆⋆ Soit A une matrice inversible. Démontrer que (AT )−1 = (A−1)T .
+6. ⋆⋆ Soit A =
+(2 1
+5 3
+)
+. Calculer (3A−1− I)T .
+7.
+⋆⋆⋆ Soit A une matrice orthogonale ( AT A = I). Montrer que | det A| = 1 et que A−1 = AT .
+Leçon 17 — Système d’équations linéaires
+1. ⋆ Écrire le système suivant sous forme matricielle AX = B :
+
+
+
+
+
+2x− y + z = 1
+x + 3y− 2z = 4
+−x + y + z =−2
+2.
+⋆⋆ Résoudre par la méthode de la matrice inverse :
+{
+x + y = 5
+2x− y = 1
+3. ⋆⋆ Résoudre par la règle de Cramer :
+{
+3x + y = 7
+x− 2y =−1
+4. ⋆⋆⋆ Résoudre par la règle de Cramer :
+
+
+
+
+
+x + y + z = 6
+2x− y + z = 3
+x + 2y− z = 2
+20
+
+========== PAGE 21 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+5. ⋆⋆⋆ Résoudre par la règle de Cramer :
+
+
+
+
+
+2x + y− z = 4
+x− y + 2z =−1
+3x + 2y + z = 7
+6.
+⋆⋆ Résoudre par Cramer :
+{
+4x− y = 9
+2x + 3y = 1 .
+7. ⋆⋆⋆ Montrer que si det A = 0, la regle de Cramer ne sápplique pas, et illustrer avec un système
+sans solution et un avec infiniment de solutions.
+Leçon 18 — Réduction matricielle — partie 1
+1. ⋆ Parmi les matrices suivantes, lesquelles sont échelonnées ?
+A =
+
+
+1 2 3
+0 4 5
+0 0 6
+
+ , B =
+
+
+1 2
+0 3
+0 0
+
+ , C =
+(1 0
+2 3
+)
+2.
+⋆⋆ Transformer la matrice augmentée suivante en une forme échelon :
+
+
+2 −1 3 | 1
+4 −2 5 | 3
+−2 1 −2 | −1
+
+
+3.
+⋆⋆ Identifier les pivots dans la matrice :
+
+
+0 2 −1
+0 0 5
+0 0 0
+
+ .
+4.
+⋆⋆⋆ Transformer la matrice suivante en forme échelon réduite :
+A =
+
+
+2 4 −2
+1 2 0
+−1 −2 3
+
+
+5.
+⋆⋆⋆ Transformer en forme échelon réduite et résoudre le système associé :
+
+
+1 −2 1
+2
+2 −3 1 3
+−1 3 −2 −3
+
+
+6.
+⋆⋆ Identifier les pivots et variables libres de :
+
+
+1 0 2 | 3
+0 1 −1 | 1
+0 0 0 | 0
+
+ .
+21
+
+========== PAGE 22 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+7. ⋆⋆⋆ Montrer que la forme échelon reduite est unique, contrairement aux formes échelon. Illustrer
+avec A =
+(1 2
+3 4
+)
+.
+Leçon 19 — Réduction matricielle — partie 2
+1. ⋆ Parmi les matrices suivantes, lesquelles sont des matrices échelon réduites ?
+A =
+
+
+1 0 2
+0 1 −3
+0 0 0
+
+ , B =
+(1 2 0
+0 1 0
+)
+2.
+⋆⋆ Transformer la matrice suivante en sa forme échelon réduite :
+A =
+
+
+1 2 1
+2 4 3
+−1 −2 0
+
+
+3.
+⋆⋆⋆ Trouver deux formes échelon différentes pour la matrice A =
+
+
+1 −1 2
+2 −1 3
+−1 2 0
+
+ , puis sa forme
+échelon réduite (unique).
+4.
+⋆⋆⋆ La matrice B =
+
+
+0 1 2 0 3
+0 0 0 1 −1
+0 0 0 0 0
+
+ est-elle sous forme échelon réduite ? Justifier en vérifiant
+chacune des trois propriétés.
+5.
+⋆⋆ Transformer en forme échelon reduite et donner le rang : A =
+
+
+0 2 −4
+1 −1 2
+3 −3 6
+
+ .
+6.
+⋆⋆⋆ Soit A une matrice m× n de rang r. Démontrer que r≤ min(m, n).
+Leçon 20 — Rang et nombre de solutions
+1. ⋆ Trouver le rang de A =
+
+
+1 2 3
+2 4 6
+0 1 0
+
+ .
+2.
+⋆⋆ Soit la matrice augmentée (A : B) =
+
+
+1 2 −1 | 3
+2 4 −2 | 6
+0 1 1 | 2
+
+ . Trouver rang (A) et rang (A : B), et
+conclure sur le nombre de solutions.
+22
+
+========== PAGE 23 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+3. ⋆⋆ Déterminer la valeur de k pour que le système
+{
+x + 2y = 3
+2x + 4y = k admette une infinité de solu-
+tions.
+4. ⋆⋆⋆ Pour le système
+
+
+
+
+
+x + y + z = 2
+2x− y + 3z = 5
+x− 2y + 2z = k
+, déterminer les valeurs de k pour lesquelles le système
+admet : aucune solution, une solution unique, ou une infinité de solutions.
+5.
+⋆⋆⋆ Trouver toutes les valeurs de a et b pour lesquelles le système a une infinité de solutions,
+puis donner la solution générale : 
+
+
+
+
+x + 2y + z = 3
+2x + ay + z = b
+x + 3y + 2z = 5
+6.
+⋆⋆ Le système
+
+
+
+
+
+x + 2y− z = 3
+2x + 4y− 2z = 6
+x− y + z = 1
+est-il compatible? Donner la solution générale.
+7.
+⋆⋆⋆ Soit Am×n avec rang(A) = n. Montrer que AX = B a au plus une solution pour tout B.
+Leçon 21 — Méthode de Gauss-Jordan — partie 1
+1. ⋆ Résoudre par la méthode de Gauss-Jordan :
+{
+x + 2y = 5
+3x− y = 1
+2. ⋆⋆ Résoudre par la méthode de Gauss-Jordan :
+
+
+
+
+
+x− y + z = 2
+2x + y− z = 1
+x + 2y− 2z =−1
+3.
+⋆⋆ Résoudre le système : 
+
+
+
+
+x + y− z = 1
+2x + 2y− 2z = 2
+x− y + 2z = 3
+et indiquer si le système a une solution unique, une infinité de solutions ou aucune solution.
+4.
+⋆⋆⋆ Résoudre et donner l’ensemble solution paramétrique :
+
+
+
+
+
+x + y + 2z + w = 1
+2x + y + 3z− w = 2
+x + 2y + 3z + 2w = 3
+23
+
+========== PAGE 24 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+5. ⋆⋆⋆ Résoudre par Gauss-Jordan et donner l’ensemble solution en forme paramétrique vectorielle :
+
+
+
+
+
+x1 + 2x2− x3 + x4 = 2
+2x1 + 4x2 + x3− x4 = 1
+x1 + 2x2 + 2x3− 2x4 =−1
+6.
+⋆⋆ Résoudre par Gauss-Jordan :
+
+
+
+
+
+x + y + 2z = 4
+2x + y + 3z = 6
+x− y + z = 1
+7.
+⋆⋆⋆ Trouver les valeurs de λ pour lesquelles
+
+
+
+
+
+x + y = 1
+λx + y = λ
+x + λy = 1
+admet une solution unique ou
+infiniment de solutions.
+Leçon 22 — Méthode de Gauss-Jordan — partie 2
+1. ⋆ La matrice augmentée réduite suivante provient d’un système à trois variables. Donner la solution
+générale :
+(A : B) =
+
+
+1 0 −3 | 2
+0 1 2 | −1
+0 0 0 | 0
+
+
+2.
+⋆⋆ Par la méthode de Gauss-Jordan, trouver l’inverse de A =
+(2 1
+5 3
+)
+.
+3.
+⋆⋆ Déterminer si B =
+
+
+1 2 3
+2 4 5
+1 2 3
+
+ est inversible. Justifier.
+4.
+⋆⋆⋆ Trouver A−1 par la méthode de Gauss-Jordan : A =
+
+
+1 0 2
+2 −1 3
+1 1 0
+
+ .
+5.
+⋆⋆⋆ En utilisant Gauss-Jordan, résoudre simultanément AX = B et AX = C pour A =
+(1 2
+3 5
+)
+,
+B =
+(1
+2
+)
+, C =
+(0
+1
+)
+.
+6.
+⋆⋆ Trouver línverse de A =
+
+
+1 0 0
+2 1 0
+3 2 1
+
+ par Gauss-Jordan.
+7.
+⋆⋆⋆ Soit An×n telle que AX = B a une solution unique pour tout B. Montrer que A est inversible.
+24
+
+========== PAGE 25 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 23 — Vecteurs géométriques — partie 1
+1. ⋆ Dessiner le vecteur opposé de ⃗ uet du vecteur nul.
+2. ⋆ Tracer la somme ⃗ u+ ⃗ vet la différence ⃗ u− ⃗ vpar la méthode du triangle pour deux vecteurs
+donnés.
+3. ⋆⋆ Soit un quadrilatère ABCD avec ⃗AB = ⃗DC. Quel type de quadrilatère est ABCD ? Justifier.
+4. ⋆⋆ Dans un triangle ABC avec les points D milieu de BC et E milieu de AC, montrer que
+⃗DE = 1
+2
+⃗BA.
+5. ⋆⋆⋆ Soit cinq points A, B, C, D, E. Simplifier l’expression ⃗AB + ⃗BC + ⃗CD− ⃗ED− ⃗AE et
+exprimer le résultat en utilisant la loi de Chasles.
+6. ⋆⋆⋆ Soit un quadrilatère ABCD et M le milieu de AC. Montrer que ⃗AB + ⃗CB = 2 ⃗M B.
+7. ⋆⋆ Soit O un point. Simplifier ⃗AB + ⃗BC + ⃗CA et 2 ⃗OA− ⃗OB + 3 ⃗OC− 4 ⃗OA + ⃗OB− 3 ⃗OC.
+8. ⋆⋆⋆ Soit ABCD un parallélogramme et O le centre. Montrer que ⃗OA + ⃗OB + ⃗OC + ⃗OD = ⃗0.
+Leçon 24 — Vecteurs géométriques — partie 2
+1. ⋆ Simplifier : ⃗AB + ⃗BC + ⃗CD + ⃗DE.
+2. ⋆⋆ Simplifier l’expression 3⃗ u− 2⃗ v+ ⃗ u+ 4⃗ v− 5⃗ u.
+3. ⋆⋆ Soit ⃗ uet ⃗ vdeux vecteurs géométriques avec ∥⃗ u∥ = 3 et∥⃗ v∥ = 5. Encadrer ∥⃗ u+ ⃗ v∥ en utilisant
+l’inégalité du triangle.
+4. ⋆⋆⋆ En utilisant les propriétés P1 à P8 de l’espace vectoriel des vecteurs géométriques, simplifier :
+4(2⃗ u− 3⃗ v)− 2(3⃗ u+ ⃗ v) + k(⃗ u− ⃗ v)
+et trouver k tel que l’expression soit nulle.
+5. ⋆⋆⋆ Soit ⃗ uet ⃗ vdeux vecteurs géométriques non colinéaires. Pour quelles valeurs de λ et µ le
+vecteur ⃗ w= (λ + 2)⃗ u+ (3µ− 1)⃗ vest-il nul ?
+6. ⋆⋆ Soit∥⃗ u∥ = 5,∥⃗ v∥ = 3. Encadrer ∥2⃗ u− ⃗ v∥.
+7. ⋆⋆⋆ Démontrer lídentité du parallélogramme : ∥⃗ a+ ⃗b∥2 +∥⃗ a− ⃗b∥2 = 2(∥⃗ a∥2 +∥⃗b∥2).
+Leçon 25 — Vecteurs géométriques — partie 3
+1. ⋆ Déterminer si les paires de vecteurs suivantes sont parallèles :
+a) ⃗ uet 3⃗ u
+b) ⃗ uet−⃗ u
+25
+
+========== PAGE 26 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+2. ⋆⋆ Soit ⃗AB = 5 ⃗CD. Que peut-on aﬀirmer sur les vecteurs ⃗AB et ⃗CD ?
+3. ⋆⋆ Soit P , Q et R trois points tels que ⃗P Q = 2 ⃗P R. Que peut-on dire sur la position relative de
+ces points ?
+4. ⋆⋆⋆ Dans un parallélépipède rectangle avec | ⃗AE| = 2 ,| ⃗AB| = 5 et| ⃗AD| = 3 , exprimer la
+diagonale principale ⃗AG comme combinaison de ⃗AE, ⃗AB et ⃗AD, puis calculer sa longueur.
+5. ⋆⋆⋆ Soit P (1, 2, 3), Q(4, 6, 7) et ⃗QR = (−1, 1, 0). Trouver R sachant que ⃗P R = 2 ⃗P Q + ⃗QR.
+6. ⋆⋆ Les points A(1, 2, 3), B(4, 5, 6), C(7, 8, 9) sont-ils alignes? Si oui, quelle est la position de B
+sur AC?
+7. ⋆⋆⋆ Soit P interieur a ABC tel que ⃗P A+ ⃗P B + ⃗P C = ⃗0. Montrer que P est le centre de gravite.
+Leçon 26 — Démonstration en géométrie
+1. ⋆ Soit ABCD un parallélogramme. Montrer que ⃗AB = ⃗DC implique ⃗AC = ⃗AB + ⃗AD.
+2. ⋆⋆ Soit G le point situé au tiers du segment AB à partir de A dans le triangle OAB. Exprimer
+⃗OG comme combinaison linéaire de ⃗OA et ⃗OB.
+3. ⋆⋆⋆ Soit ABCD un quadrilatère quelconque. Soient M et N les milieux de AC et BD respec-
+tivement. Montrer que ⃗AB + ⃗AD + ⃗CB + ⃗CD = 4 ⃗M N.
+4. ⋆⋆⋆ Soit un triangle ABC et G son centre de gravité. Montrer que ⃗GA + ⃗GB + ⃗GC = ⃗0.
+5. ⋆⋆ Montrer que dans un parallélogramme ABCD , les diagonales se coupent en leur milieu.
+6. ⋆⋆⋆ Soit D, E, F les milieux de BC , CA, AB dans le triangle ABC . Montrer que ⃗AD + ⃗BE +
+⃗CF = ⃗0.
+Leçon 27 — Vecteurs algébriques — partie 1
+1. ⋆ Soit ⃗ u= (3,−1) et ⃗ v= (−2, 4). Calculer :
+a) ⃗ u+ ⃗ v
+b) 2⃗ u− 3⃗ v
+c)∥⃗ v∥
+2. ⋆⋆ Trouver deux vecteurs unitaires dans la même direction que ⃗ w= (5,−12).
+3. ⋆⋆ Soit ⃗ u= (a, b)∈ R2. Montrer que ∥k⃗ u∥ =|k|∥⃗ u∥ pour k∈ R.
+4. ⋆⋆⋆ Trouver tous les vecteurs de norme 5 qui sont parallèles à ⃗ v= (3, 4).
+5. ⋆⋆⋆ Soit ⃗ u= ( a, b) un vecteur non nul. Trouver tous les vecteurs de R2 orthogonaux à ⃗ uayant
+la même norme que ⃗ u.
+26
+
+========== PAGE 27 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+6. ⋆⋆ Soit ⃗ u= (3,−4). Trouver un vecteur de norme 10 dans le meme sens et un vecteur de norme
+5 en sens contraire.
+7. ⋆⋆⋆ Démontrer línegalite de Cauchy-Schwarz dans R2 : |u1v1 + u2v2|≤
+√
+u2
+1 + u2
+2
+√
+v2
+1 + v2
+2 en
+utilisant le discriminant.
+Leçon 28 — Vecteurs algébriques — partie 2
+1. ⋆ Soit A(1, 3) et B(5,−2). Calculer les composantes de ⃗AB et la norme ∥ ⃗AB∥.
+2. ⋆⋆ Soit P (2,−1, 3) et Q(5, 1,−1) deux points de R3. Trouver :
+a) Les composantes de ⃗P Q
+b)∥ ⃗P Q∥
+c) Un vecteur unitaire dans le sens de ⃗P Q
+3. ⋆⋆ Soit P QRS un parallélogramme avec P (0, 0), Q(4, 1) et R(6, 3). Trouver les coordonnées de
+S.
+4. ⋆⋆⋆ Soit A(1, 2,−1) et B(3, 0, 5). Trouver les coordonnées du point C sur le segment AB tel que
+∥AC∥ = 3∥CB∥.
+5. ⋆⋆⋆ Soit A(2, 3,−1), B(0, 1, 4) et C tel que ⃗AC = 3 ⃗AB− 2 ⃗BC . Trouver les coordonnées de C.
+6. ⋆⋆ Soit A(1,−1, 2), B(3, 1, 0), C(2, 0, 1). Calculer le perimetre du triangle ABC .
+7. ⋆⋆⋆ Montrer que ABCD est un parallélogramme si ⃗AB = ⃗DC, et calculer son aire pour A(1, 0, 0),
+B(3, 1, 0), C(4, 3, 1), D(2, 2, 1).
+Leçon 29 — Vecteurs algébriques — partie 3
+1. ⋆ Déterminer si les points A(1, 2, 3), B(3, 6, 9) et C(2, 4, 6) sont alignés.
+2. ⋆⋆ Soit P (1, 0, 2) et Q(4, 3,−1). Trouver le point R sur le segment P Q situé deux fois plus près
+de P que de Q.
+3. ⋆⋆ Pour quelle valeur de t les points A(1, 2, 3), B(3, 1, t) et C(7,−1,−1) sont-ils alignés ?
+4. ⋆⋆⋆ Soit P (2, 1,−3) et Q(5,−2, 1). Trouver le point S aligné avec P et Q, situé à une distance
+de 12 unités de P dans la direction de Q.
+5. ⋆⋆⋆ Soit u = (1 , 2,−1, 0) et v = (2 ,−1, 1, 3) dans R4. Calculer ∥u∥,∥v∥,∥u + v∥ et vérifier
+l’inégalité du triangle.
+6. ⋆⋆ Soit A(2, 1, 3), B(5, 4, 1) et C tel que B est le milieu de AC. Trouver C.
+7. ⋆⋆⋆ Vérifier lídentité de polarisation pour ⃗ u= (1, 2, 3) et ⃗ v= (4, 5, 6) : ⃗ u·⃗ v= 1
+4 (∥⃗ u+⃗ v∥2−∥⃗ u−⃗ v∥2).
+27
+
+========== PAGE 28 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 34 — Combinaison linéaire
+1. ⋆ Exprimer ⃗ w= (7, 2) comme combinaison linéaire de ⃗ u= (1, 0) et ⃗ v= (0, 1).
+2. ⋆⋆ Déterminer si ⃗ w= (3 , 1, 2) peut s’écrire comme combinaison linéaire de ⃗ u= (1 , 0, 1) et ⃗ v=
+(0, 1, 1).
+3. ⋆⋆ Exprimer A =
+(5 −1
+2 3
+)
+comme combinaison linéaire de B =
+(1 0
+0 0
+)
+, C =
+(0 1
+0 0
+)
+, D =
+(0 0
+1 0
+)
+, E =
+(0 0
+0 1
+)
+.
+4.
+⋆⋆⋆ Soit le triangle OAB et M le milieu de AB. Exprimer ⃗OM comme combinaison linéaire de
+⃗OA et ⃗OB, puis généraliser pour un point P sur AB tel que ⃗AP = t ⃗AB avec t∈ [0, 1].
+5. ⋆⋆⋆ Déterminer si p(x) = 2 x2− x + 3 est une combinaison linéaire de f (x) = x2 + x, g(x) = x− 1
+et h(x) = x2 + 2. Si oui, donner les coeﬀicients.
+6. ⋆⋆ Exprimer ⃗ v= (4 ,−1, 7) comme combinaison linéaire de ⃗ e1 = (1 , 0, 0), ⃗ e2 = (0 , 1, 0), ⃗ e3 =
+(0, 0, 1).
+7. ⋆⋆⋆ Montrer que si {⃗ u1, ⃗ u2} est indépendant, alors {⃗ u1 + ⃗ u2, ⃗ u1− ⃗ u2} lést aussi.
+Leçon 35 — Ensemble générateur de V
+1. ⋆ L’ensemble{(1, 0), (0, 1)} engendre-t-il R2 ? Justifier.
+2. ⋆⋆ Soit S ={(1, 0, 0), (0, 1, 0)}. Est-ce que S engendre R3 ? Justifier.
+3. ⋆⋆ Montrer que{1, x, x2} engendre P2(x) (les polynômes de degré ≤ 2).
+4. ⋆⋆⋆ Déterminer si S ={v1, v2, v3} engendre R3 pour v1 = (1 , 1, 0), v2 = (0 , 1, 1), v3 = (1 , 0, 1).
+Si oui, exprimer w = (2, 3, 1) comme combinaison linéaire des vecteurs de S.
+5. ⋆⋆⋆ Soit V ={p(x)∈ P2(x)| p(1) = 0}. Montrer que V est un sous-espace de P2(x), trouver un
+ensemble générateur et sa dimension.
+6. ⋆⋆ Soit S ={(1, 2, 0), (0, 1, 3), (2, 5, 3)}. Montrer que S engendre R3 ou expliquer pourquoi non.
+7. ⋆⋆⋆ Montrer que S ={E11, E12, E21, E22} engendreM22 et que S est linéairement indépendant,
+donc une base.
+Leçon 36 — Dépendance et indépendance linéaire
+1. ⋆ Les vecteurs ⃗ u= (1, 2) et ⃗ v= (2, 4) sont-ils linéairement indépendants ? Justifier.
+2. ⋆⋆ Déterminer si{(1, 0, 1), (0, 1, 0), (1, 1, 1)} est linéairement indépendant.
+3. ⋆⋆ Déterminer si p(x) = 1 + x, q(x) = x + x2, r(x) = 1 + x2 forment un ensemble linéairement
+indépendant dans P2(x).
+28
+
+========== PAGE 29 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+4. ⋆⋆⋆ Montrer que tout ensemble contenant le vecteur nul est linéairement dépendant.
+5. ⋆⋆⋆ Pour quelle(s) valeur(s) de k les vecteurs v1 = (1, k, 0), v2 = (0, 1, k) et v3 = (k, 0, 1) sont-ils
+linéairement dépendants ?
+6. ⋆⋆ Déterminer si{1 + x, 1− x, x2 + 1} est linéairement indépendant dans P2(x).
+7. ⋆⋆⋆ Montrer que f1(x) = ex, f2(x) = e2x, f3(x) = e3x sont linéairement indépendantes (evaluer
+en x = 0, 1,−1).
+Leçon 37 — Base et composantes
+1. ⋆ Montrer queB ={(1, 0), (0, 1)} est une base de R2.
+2. ⋆⋆ Vérifier queA ={(1, 1), (1,−1)} est une base de R2, puis trouver les composantes de ⃗ u= (3, 5)
+dans cette base.
+3. ⋆⋆ Donner la base canonique de M22 et trouver les composantes de A =
+(2 −1
+0 3
+)
+dans cette
+base.
+4. ⋆⋆⋆ SoitA ={v1, v2, v3} avec v1 = (1 , 0, 0), v2 = (1 , 2, 0), v3 = (1 , 2, 3). Montrer que A est une
+base de R3 et trouver les composantes de ⃗ w= (4, 6, 9) dans cette base.
+5. ⋆⋆⋆ SoitA ={(1, 1, 0), (0, 1, 1), (1, 0, 1)} une base de R3. Trouver les composantes de ⃗ u= (5, 3, 7)
+dans la base A.
+6. ⋆⋆ DansB ={(1, 0), (1, 1)}, trouver les composantes de ⃗ u= (5, 3).
+7. ⋆⋆⋆ BasesB ={v1, v2} etB′ ={v1 + v2, v1− v2}. Si (⃗ u)B = (3, 1), trouver (⃗ u)B′.
+Leçon 38 — Théorème sur les bases — partie 1
+1. ⋆ Les vecteurs ⃗ u= (1, 2, 3) et ⃗ v= (−2,−4,−6) sont-ils linéairement dépendants ? Si oui, exprimer
+l’un comme combinaison linéaire de l’autre.
+2. ⋆⋆ Soit ⃗ u= (1 , 2, 0), ⃗ v= (0 , 1, 1), ⃗ w= (2 , 5, 1). Déterminer si ces vecteurs sont linéairement
+dépendants et, si oui, exprimer ⃗ wen fonction des autres.
+3. ⋆⋆⋆ Soit V = R3 etB ={e1, e2, e3} la base canonique (3 vecteurs). Montrer qu’un ensemble de
+4 vecteurs de R3 est nécessairement linéairement dépendant.
+4. ⋆⋆⋆ Vérifier que A ={2x + 1, x− 3} est une base de P1(x), puis trouver les composantes de
+p(x) = 5 x− 4 dans cette base.
+5. ⋆⋆ Vérifier si S ={(1, 2, 1), (2, 3, 1), (1, 1, 0)} est une base de R3 par le déterminant.
+6. ⋆⋆⋆ Démontrer que la representation dún vecteur dans une base est unique.
+29
+
+========== PAGE 30 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 39 — Théorème sur les bases — partie 2
+1. ⋆ Quelle est la dimension de R4 ? De P3(x) ? De M23 ?
+2. ⋆⋆ Déterminer siA ={(1, 2, 1), (0, 1,−1), (2, 1, 5)} est une base de R3.
+3. ⋆⋆ Trouver la dimension du sous-espace vectoriel V ={(a, b, c)∈ R3| a + b + c = 0}.
+4. ⋆⋆⋆ Trouver la dimension du sous-espace W =
+{( a b
+c d
+)
+∈M 22
+⏐
+⏐
+⏐
+⏐ a + d = 0
+}
+et en donner une
+base.
+5.
+⋆⋆⋆ Soit W ={(a, b, c, d)∈ R4| a− b + c = 0 et b− d = 0}. Trouver une base et la dimension
+de W .
+6. ⋆⋆ Trouver une base et la dimension de W ={(a, b, c)∈ R3| 2a− b + 3c = 0}.
+7. ⋆⋆⋆ Illustrer dim(U + W ) = dim U + dim W− dim(U∩ W ) avec U ={(a, b, 0)} et W ={(0, b, c)}
+dans R3.
+Leçon 40 — Théorème sur les bases — partie 3
+1. ⋆ Utiliser le déterminant pour vérifier si {(1, 2), (3, 5)} est une base de R2.
+2. ⋆⋆ Vérifier queB ={(1, 1, 0), (0, 1, 1), (1, 0, 1)} est une base de R3 en utilisant le déterminant.
+3. ⋆⋆ Montrer que{x + 1, x− 1, x2} est une base de P2(x).
+4. ⋆⋆⋆ SoitB ={v1, v2, v3, v4} avec v1 = (1, 0, 0, 1), v2 = (0, 1, 0, 1), v3 = (0, 0, 1, 1), v4 = (1, 1, 1, 0).
+Vérifier siB est une base de R4.
+5. ⋆⋆⋆ Vérifier queB ={1 + x, 1− x, x 2} est une base de P2(x), puis exprimer q(x) = 3 x2 + 2x− 1
+dans cette base.
+6. ⋆⋆ Donner la base canonique et la dimension de P3(x).
+7. ⋆⋆⋆ Soit T : R2→ R3, T (x, y) = ( x + y, x− y, 2x). Montrer la linearite et donner la matrice de
+T .
+Leçon 43 — Produit scalaire — partie 1
+1. ⋆ Soit deux vecteurs géométriques ⃗ uet ⃗ vavec∥⃗ u∥ = 4 ,∥⃗ v∥ = 6 et l’angle entre eux est 60◦.
+Calculer ⃗ u· ⃗ v.
+2. ⋆ Calculer ⃗i· ⃗j, ⃗i·⃗i, ⃗k· ⃗k et ⃗j· ⃗k dans R3.
+3. ⋆⋆ Déterminer le signe de ⃗ u· ⃗ vselon que l’angle θ entre les vecteurs soit π
+4 , π
+2 et 3π
+4 .
+4. ⋆⋆⋆ En utilisant les propriétés du produit scalaire, développer et simplifier :
+(2⃗ u− 3⃗ v)· (⃗ u+ 5⃗ v)
+30
+
+========== PAGE 31 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+sachant que∥⃗ u∥ = 2,∥⃗ v∥ = 3 et ⃗ u· ⃗ v=−1.
+5. ⋆⋆⋆ Soit ⃗ uet ⃗ vavec∥⃗ u∥ = 3,∥⃗ v∥ = 4 et ⃗ u· ⃗ v=−6. Calculer ∥⃗ u+ ⃗ v∥ et∥⃗ u− ⃗ v∥.
+6. ⋆⋆ Calculer ⃗ u· ⃗ vet lángle pour ⃗ u= (2,−1, 3) et ⃗ v= (1, 4,−1).
+7. ⋆⋆⋆ Démontrer lídentité de polarisation : ⃗ u· ⃗ v= 1
+4 (∥⃗ u+ ⃗ v∥2−∥ ⃗ u− ⃗ v∥2).
+Leçon 44 — Produit scalaire — partie 2
+1. ⋆ Calculer (2,−1, 3)· (1, 4,−2).
+2. ⋆⋆ Déterminer si les vecteurs ⃗ u= (1,−2, 1) et ⃗ v= (2, 1, 0) sont orthogonaux.
+3. ⋆⋆ Trouver l’angle entre ⃗ u= (1, 1, 1) et ⃗ v= (1, 0,−1).
+4. ⋆⋆⋆ Trouver toutes les valeurs de k telles que ⃗ u= (1 , k, 2) et ⃗ v= ( k, 3,−1) soient orthogonaux
+dans R3.
+5. ⋆⋆⋆ Trouver un vecteur unitaire de R3 orthogonal à la fois à ⃗ u= (1, 1, 1) et à ⃗ v= (1, 2, 3).
+6. ⋆⋆ Trouver tous les vecteurs de R3 orthogonaux a la fois a ⃗i et a ⃗j.
+7. ⋆⋆⋆ Démontrer|⃗ u· ⃗ v|≤∥ ⃗ u∥∥⃗ v∥ (Cauchy-Schwarz) et en deduire ∥⃗ u+ ⃗ v∥≤∥ ⃗ u∥ +∥⃗ v∥.
+Leçon 45 — Projection orthogonale
+1. ⋆ Calculer la projection de ⃗ u= (3, 4) sur ⃗ v= (1, 0).
+2. ⋆⋆ Calculer la projection de ⃗ u= (2, 1,−3) sur ⃗ v= (1, 2, 2).
+3. ⋆⋆ Soit A(1, 0, 2), B(3, 2, 0) et O(0, 0, 0). Calculer la hauteur du triangle OAB relative à la base
+OB.
+4. ⋆⋆⋆ Soit ⃗ u= ( a, b) et ⃗ v= ( c, d). Montrer que ⃗ u− proj⃗ v⃗ uest orthogonal à ⃗ v, puis calculer cela
+pour ⃗ u= (3, 2) et ⃗ v= (1, 1).
+5. ⋆⋆⋆ Décomposer ⃗ u= (2, 1,−2) en ⃗ u∥ + ⃗ u⊥ où ⃗ u∥∥ ⃗ v= (1,−1, 1) et ⃗ u⊥⊥ ⃗ v.
+6. ⋆⋆ Calculer la projection de ⃗ u= (4,−2, 1) sur ⃗ v= (2, 1,−2) et la composante orthogonale.
+7. ⋆⋆⋆ Montrer que∥proj⃗ v⃗ u∥≤∥ ⃗ u∥, avec egalite ssi ⃗ u∥ ⃗ v.
+Leçon 46 — Produit vectoriel — partie 1
+1. ⋆ Calculer : ⃗i× ⃗j, ⃗j× ⃗k, ⃗k×⃗i.
+2. ⋆ Expliquer pourquoi ⃗ u× ⃗ v=−(⃗ v× ⃗ u).
+3. ⋆⋆ Soit ⃗ uet ⃗ vavec∥⃗ u∥ = 3,∥⃗ v∥ = 5 et l’angle entre eux est 30◦. Calculer ∥⃗ u× ⃗ v∥.
+4. ⋆⋆⋆ Simplifier l’expression (3⃗i− ⃗j)× (2⃗i + 4⃗j) en utilisant les propriétés du produit vectoriel.
+31
+
+========== PAGE 32 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+5. ⋆⋆⋆ Démontrer algébriquement que ⃗ u× ⃗ v=−(⃗ v× ⃗ u) pour ⃗ u, ⃗ v∈ R3.
+6. ⋆⋆ Calculer ⃗ u× ⃗ vpour ⃗ u= (3,−1, 2), ⃗ v= (1, 2,−1), et vérifier lórthogonalite.
+7. ⋆⋆⋆ Démontrer lídentité de Lagrange : ∥⃗ u× ⃗ v∥2 =∥⃗ u∥2∥⃗ v∥2− (⃗ u· ⃗ v)2.
+Leçon 47 — Produit vectoriel — partie 2
+1. ⋆ Calculer ⃗ u× ⃗ vpour ⃗ u= (1, 0, 0) et ⃗ v= (0, 1, 0).
+2. ⋆⋆ Calculer ⃗ u× ⃗ vpour ⃗ u= (2,−1, 3) et ⃗ v= (1, 2,−1).
+3. ⋆⋆ Soit le triangle A(1, 0, 0), B(0, 2, 0), C(0, 0, 3) dans R3. Calculer l’aire du triangle ABC .
+4. ⋆⋆⋆ Soit A(0, 1, 2), B(3, 0, 1), C(2, 1, 4) et D(−1, 2, 3). Vérifier que ABCD est un parallélo-
+gramme et calculer son aire.
+5. ⋆⋆⋆ Trouver l’aire du triangle ABC avec A(1, 2, 3), B(4, 0, 1) et C(2, 3, 5).
+6. ⋆⋆ Trouver un vecteur normal au plan ABC pour A(1, 0, 0), B(0, 2, 0), C(0, 0, 3).
+7. ⋆⋆⋆ Démontrer le double produit vectoriel : ⃗ u× (⃗ v× ⃗ w) = ( ⃗ u· ⃗ w)⃗ v− (⃗ u· ⃗ v) ⃗ w. Vérifier pour ⃗ u= ⃗i,
+⃗ v= ⃗j, ⃗ w= ⃗k.
+Leçon 48 — Produit mixte — partie 1
+1. ⋆ Calculer le produit mixte ⃗ u· (⃗ v× ⃗ w) pour ⃗ u= (1, 0, 0), ⃗ v= (0, 1, 0), ⃗ w= (0, 0, 1).
+2. ⋆⋆ Calculer le produit mixte de ⃗ u= (1 , 2, 3), ⃗ v= (2 , 1, 0) et ⃗ w= (0 , 1, 2) en utilisant le détermi-
+nant.
+3. ⋆⋆ Pour quelle valeur de k les vecteurs ⃗ u= (1 , 2, k), ⃗ v= (0 , 1, 1) et ⃗ w= (1 , 0, 1) sont-ils
+coplanaires ?
+4. ⋆⋆⋆ Montrer que ⃗ u· (⃗ u× ⃗ v) = 0 pour tous vecteurs ⃗ uet ⃗ vde R3.
+5. ⋆⋆⋆ Calculer ⃗ u· (⃗ v× ⃗ w) pour ⃗ u= (2 ,−1, 3), ⃗ v= (1 , 0, 2), ⃗ w= (−1, 2, 1), puis interpréter
+géométriquement le signe.
+6. ⋆⋆ Calculer [⃗ u, ⃗ v, ⃗ w] pour ⃗ u= (1, 2, 0), ⃗ v= (0, 1, 3), ⃗ w= (2, 0, 1).
+7. ⋆⋆⋆ Démontrer que [⃗ u, ⃗ v, ⃗ w] = [ ⃗ v, ⃗ w, ⃗ u] = [ ⃗ w, ⃗ u, ⃗ v] (invariance par permutation circulaire).
+Leçon 49 — Produit mixte — partie 2
+1. ⋆ Calculer le volume du parallélépipède construit sur ⃗ u= (1, 0, 0), ⃗ v= (0, 2, 0) et ⃗ w= (0, 0, 3).
+2. ⋆⋆ Calculer le volume du parallélépipède construit sur ⃗ u= (1, 1, 0), ⃗ v= (1, 0, 1) et ⃗ w= (0, 1, 1).
+3. ⋆⋆ Calculer le volume du tétraèdre construit sur les vecteurs ⃗ u= (2 , 0, 0), ⃗ v= (0 , 3, 0) et ⃗ w=
+(0, 0, 4).
+32
+
+========== PAGE 33 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+4. ⋆⋆⋆ Déterminer si les points A(0, 0, 0), B(1, 2, 3), C(2, 1, 0) et D(3, 3, 3) sont coplanaires. Si non,
+calculer le volume du tétraèdre ABCD .
+5. ⋆⋆⋆ Les points A(1, 0, 0), B(0, 2, 0), C(0, 0, 3) et D(1, 1, 1) forment-ils un tétraèdre non dégénéré ?
+Si oui, calculer son volume.
+6. ⋆⋆ Calculer le volume du parallélépipède sur ⃗ u= (2, 1, 0), ⃗ v= (0, 3, 1), ⃗ w= (1, 0, 4).
+7. ⋆⋆⋆ Montrer que láire du parallélogramme =∥⃗ u×⃗ v∥ et que le volume du tétraèdre = 1
+6|[⃗ u, ⃗ v, ⃗ w]|.
+Leçon 50 — Droite dans l’espace
+1. ⋆ Écrire l’équation vectorielle d’une droite passant par P0(1, 2, 3) avec le vecteur directeur ⃗ u=
+(2,−1, 4).
+2. ⋆⋆ Soit la droite D passant par A(1, 0, 2) et B(3, 1,−1). Donner ses équations vectorielle,
+paramétriques et symétriques.
+3. ⋆⋆ Vérifier si le point P (7, 3,−7) appartient à la droite D : (x, y, z) = (1 , 0, 2) + t(2, 1,−3).
+4. ⋆⋆⋆ Trouver le point de la droite D : x− 1
+2 = y + 2
+−1 = z
+3 le plus proche de l’origine.
+5. ⋆⋆⋆ Trouver l’équation paramétrique de la droite d’intersection des plans π1 : x + y− z = 2 et
+π2 : 2x− y + z = 1.
+6. ⋆⋆ Vérifier que Q(3, 2,−1) appartient a la droite D : (x, y, z) = (1 , 0, 1) + t(2, 2,−2) et trouver t.
+7. ⋆⋆⋆ Trouver la droite passant par P (2, 1,−1), perpendiculaire a ⃗ u= (1, 2,−1) et dont la projec-
+tion sur xOy passe par lórigine.
+Leçon 51 — Position relative de deux droites
+1. ⋆ Deux droites ont pour vecteurs directeurs ⃗ u= (1, 2, 3) et ⃗ v= (2, 4, 6). Sont-elles parallèles ?
+2. ⋆⋆ Déterminer la position relative des droites :
+D1 :
+
+
+
+
+
+x = 1 + t
+y = 2t
+z = 3− t
+et D2 :
+
+
+
+
+
+x = 2 + s
+y = 1 + 2 s
+z = 1− s
+3.
+⋆⋆ Déterminer si les droites D1 : x− 1
+2 = y = z + 1
+3 et D2 : x
+1 = y− 2
+−1 = z− 1
+2 sont sécantes, et
+si oui, trouver leur point d’intersection.
+4. ⋆⋆⋆ Montrer que les droites D1 : ( x, y, z) = (0 , 1, 0) + t(1, 1, 1) et D2 : ( x, y, z) = (1 , 0, 1) +
+s(1,−1, 2) sont gauches (ni parallèles, ni sécantes).
+5. ⋆⋆⋆ Trouver l’angle entre D1 : (x, y, z) = (1 , 0, 0)+t(1, 1, 2) et D2 : (x, y, z) = (0 , 1, 0)+s(2, 1,−1),
+et déterminer leur position relative.
+33
+
+========== PAGE 34 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+6. ⋆⋆ Déterminer si D1 : (x, y, z) = (2 , 1, 0) + t(1,−1, 2) et D2 : (x, y, z) = (0 , 3, 4) + s(2,−2, 4) sont
+paralleles ou confondues.
+7. ⋆⋆⋆ Trouver la droite D qui coupe perpendiculairement D1 : (x, y, z) = t(1, 0, 0) et D2 : (x, y, z) =
+(0, 1, 1) + s(0, 1, 0).
+Leçon 52 — Distance d’un point à une droite
+1. ⋆ Trouver l’angle entre les droites D1 et D2 de vecteurs directeurs ⃗ u= (1, 0, 0) et ⃗ v= (0, 1, 1).
+2. ⋆⋆ Calculer la distance du point P (1, 2, 3) à la droite D : (x, y, z) = (0 , 0, 0) + t(1, 1, 0).
+3. ⋆⋆ Trouver le pied de la perpendiculaire abaissée du point P (2, 0, 1) sur la droite D : ( x, y, z) =
+(1,−1, 2) + t(1, 1,−1).
+4. ⋆⋆⋆ Soit la droite D : x− 2
+3 = y + 1
+−2 = z− 1
+1 et le point P (1, 3, 0). Calculer d(P, D) et trouver
+le point de D le plus proche de P .
+5. ⋆⋆⋆ Trouver le point H de D : ( x, y, z) = (0 , 1, 2) + t(1,−1, 2) le plus proche de P (3, 0, 1), puis
+calculer d(P, D).
+6. ⋆⋆ Calculer la distance de P (0, 0, 0) a la droite D : (x, y, z) = (1 , 1, 1) + t(1, 2, 2).
+7. ⋆⋆⋆ Trouver le lieu des points equidistants de deux droites secantes D1 et D2.
+Leçon 53 — Distance entre deux droites
+1. ⋆ Deux droites parallèles ont des vecteurs directeurs ⃗ u= (1 , 2, 3). L’une passe par P1(1, 0, 0),
+l’autre par P2(0, 1, 0). Comment calcule-t-on leur distance ?
+2. ⋆⋆ Calculer la distance entre les droites gauches :
+D1 : (x, y, z) = (1 , 0, 0) + t(0, 1, 1), D 2 : (x, y, z) = (0 , 0, 1) + s(1, 0, 1)
+3. ⋆⋆⋆ Soit D1 : x
+1 = y− 1
+2 = z + 1
+1 et D2 : x− 2
+1 = y
+−1 = z
+1 . Vérifier que ces droites sont gauches,
+calculer leur distance et trouver les points H1∈ D1 et H2∈ D2 réalisant cette distance.
+4. ⋆⋆⋆ Trouver la distance entre les droites parallèles D1 : ( x, y, z) = (1 , 0, 2) + t(1, 2, 1) et D2 :
+(x, y, z) = (3 , 1, 0) + s(1, 2, 1).
+5. ⋆⋆ Déterminer si D1 : ( x, y, z) = (1 , 0, 1) + t(2, 1, 3) et D2 : ( x, y, z) = (0 , 2, 0) + s(4, 2, 6) sont
+paralleles ou confondues.
+6. ⋆⋆⋆ Trouver la distance et les points H1 ∈ D1, H2 ∈ D2 pour D1 : ( x, y, z) = t(1, 1, 0) et
+D2 : (x, y, z) = (1 , 0, 1) + s(0, 1, 1).
+34
+
+========== PAGE 35 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+Leçon 54 — Plan dans l’espace
+1. ⋆ Trouver l’équation cartésienne du plan passant par P0(1, 2, 3) avec le vecteur normal ⃗ n=
+(2,−1, 4).
+2. ⋆⋆ Trouver l’équation vectorielle, les équations paramétriques et l’équation cartésienne du plan
+passant par A(1, 0, 0), B(0, 1, 0) et C(0, 0, 1).
+3. ⋆⋆ Vérifier si le point Q(3, 2,−1) appartient au plan π : 2x− y + 3z = 5.
+4. ⋆⋆⋆ Trouver l’équation cartésienne du plan contenant la droite D : (x, y, z) = (1 , 2, 3)+ t(1, 0,−1)
+et passant par le point P (0, 1, 2).
+5. ⋆⋆⋆ Trouver l’équation cartésienne du plan passant par A(2, 0, 1), B(1, 1, 0) et parallèle au vecteur
+⃗ v= (1,−1, 2).
+6. ⋆⋆ Trouver lé́quation du plan par P (2,−1, 3) avec ⃗ n= (1 ,−2, 4), et vérifier si Q(4,−3, 4) y
+appartient.
+7. ⋆⋆⋆ Trouver le plan contenant deux droites paralleles D1 : ( x, y, z) = (1 , 0, 0) + t(1, 1, 1) et
+D2 : (x, y, z) = (0 , 1, 0) + s(1, 1, 1).
+Leçon 55 — Position relative de deux plans
+1. ⋆ Déterminer si les plans π1 : x + 2y− z = 3 et π2 : 2x + 4y− 2z = 5 sont parallèles ou sécants.
+2. ⋆⋆ Trouver la droite d’intersection des plans π1 : x + y + z = 6 et π2 : x− y + z = 2.
+3. ⋆⋆ Trouver l’angle entre les plans π1 : x + y = 0 et π2 : y + z = 0.
+4. ⋆⋆⋆ Trouver la droite d’intersection des plans π1 : 2x− y + z = 3 et π2 : x + 2y− 3z = 1.
+5. ⋆⋆⋆ Trouver l’équation du plan passant par P (0, 2, 1) et contenant la droite D : ( x, y, z) =
+(1, 0,−1) + t(2, 1, 3).
+6. ⋆⋆ Trouver lángle diedre entre π1 : 2x− y + z = 3 et π2 : x + y− 2z = 1.
+7. ⋆⋆⋆ Trouver le plan par P (1, 2, 0) perpendiculaire a π1 : x + y + z = 1 et a π2 : 2x− y + 3z = 4.
+Leçon 56 — Distance entre un point et un plan
+1. ⋆ Calculer la distance du point P (1, 0, 0) au plan π : x + y + z = 1.
+2. ⋆⋆ Calculer la distance du point P (2,−1, 3) au plan π : 2x− 2y + z = 4, et trouver le pied de la
+perpendiculaire H.
+3. ⋆⋆ Trouver deux plans parallèles à π1 : 3x− 4y + 5z = 10 dont la distance à π1 est 2 unités.
+4. ⋆⋆⋆ Calculer la distance entre les plans parallèles π1 : x− 2y + 2z = 5 et π2 : x− 2y + 2z =−4.
+35
+
+========== PAGE 36 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+5. ⋆⋆⋆ Trouver le point H du plan π : x + 2y− 2z = 9 le plus proche de P (3, 2,−1) et calculer
+d(P, π).
+6. ⋆⋆ Calculer la distance de P (1,−2, 3) au plan π : 3x + 4y− 5z + 2 = 0 .
+7. ⋆⋆⋆ Trouver le plan equidistant de π1 : 2x− y + 2z = 6 et π2 : 2x− y + 2z =−3.
+Leçon 57 — Interactions entre droites et plans — partie 1
+1. ⋆ Trouver une droite perpendiculaire au plan π : x− 2y + 3z = 7 passant par l’origine.
+2. ⋆⋆ Trouver l’angle entre la droite D : (x, y, z) = (1 , 1, 0) + t(1, 1, 1) et le plan π : x + y = 0.
+3. ⋆⋆ Trouver une droite parallèle au plan π : 2x + y− z = 5 passant par Q(1, 0, 2).
+4. ⋆⋆⋆ Soit le plan π : x + 2y + z = 6 et le point Q(2, 1, 3). Trouver :
+a) La droite perpendiculaire à π passant par Q
+b) L’angle entre cette droite et π
+c) Le point d’intersection de cette droite avec π
+5. ⋆⋆⋆ Trouver le point d’intersection de D : x− 1
+2 = y + 1
+1 = z
+−1 et du plan π : 3x− y + 2z = 8.
+6. ⋆⋆ Déterminer si D : (x, y, z) = (1 , 2, 3) + t(1,−1, 1) est parallele, perpendiculaire ou oblique par
+rapport a π : x + y + z = 6.
+7. ⋆⋆⋆ Trouver le plan contenant D1 : x
+1 = y−1
+2 = z+1
+−1 et parallele a D2 : ( x, y, z) = (1 , 0, 1) +
+t(2,−1, 1).
+Leçon 58 — Interactions entre droites et plans — partie 2
+1. ⋆ Trouver le point du plan π : x + y + z = 3 le plus proche de l’origine.
+2. ⋆⋆ Trouver l’équation du plan contenant les points A(1, 0, 0), B(0, 2, 0) et C(0, 0, 3).
+3. ⋆⋆ Soit D : (x, y, z) = (1 , 0, 2) + t(1, 1,−1) et π : x + y + z = 4. Trouver le point d’intersection de
+D avec π.
+4. ⋆⋆⋆ Soit le plan π : x− y + 2z = 5 et la droite D : ( x, y, z) = (3 , 1, 0) + t(1, 2, 1). Trouver la
+droite D1 qui :
+a) est perpendiculaire à D
+b) est parallèle à π
+c) passe par le point Q(3, 1, 0)
+5. ⋆⋆⋆ Trouver l’équation du plan passant par P (1, 2, 3) et contenant la droite D : ( x, y, z) =
+(0, 1, 0) + t(1, 0, 1).
+36
+
+========== PAGE 37 ==========
+Cahier d’exercices Algèbre linéaire et géométrie vectorielle
+6. ⋆⋆ Trouver líntersection de D : (x, y, z) = (2 , 0, 1) + t(1, 1,−1) avec π : 2x− y + 3z = 7.
+7. ⋆⋆⋆ Trouver le point commun a π1 : x + y + z = 3, π2 : x− y + z = 1, π3 : x + y− z = 1, puis un
+plan par ce point perpendiculaire aux trois.
+37
+
+========== PAGE 38 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Solutions
+Démarches et réponses
+Leçon 1 — Définition d’une matrice
+1. Calculer aij = i + 2j pour chaque position.
+A =
+
+
+3 5 7 9
+4 6 8 10
+5 7 9 11
+
+ ; a23 = 2 + 2(3) = 8 ; dimension 3× 4.
+2. Deux matrices sont égales si elles ont mêmes dimensions et mêmes éléments.
+A = C (mêmes dimensions 2× 2 et éléments identiques). B est de dimension 2× 3, donc B̸= A et
+B̸= C.
+3. Calculer aij = 3i− j2 pour chaque position.
+A =
+(3− 1 3 − 4 3 − 9
+6− 1 6 − 4 6 − 9
+)
+=
+(2 −1 −6
+5 2 −3
+)
+. L’élément a12 =−1 et a13 =−6 ne sont pas nuls; il n’y
+a pas d’élément nul dans A.
+4. Égalité matricielle : comparer chaque entrée.
+2x + 1 = 7⇒ x = 3; y− 2 = 5⇒ y = 7.
+5. Calculer bij = (−1)i+j
+i+j pour i, j∈{ 1, 2, 3}.
+B =
+
+
+1
+2 − 1
+3
+1
+4
+− 1
+3
+1
+4 − 1
+51
+4 − 1
+5
+1
+6
+
+ . Matrices lignes : lignes 1, 2 ou 3. Matrices colonnes : colonnes 1, 2 ou 3.
+6. Calculer aij = (−1)i+j(i2− j), construire A, comparer à AT .
+A =
+
+
+0 −1 −2
+3 2 1
+6 5 4
+
+ ; AT =
+
+
+0 3 6
+−1 2 5
+−2 1 4
+
+ . A̸= AT et A̸=−AT : ni symétrique ni antisymétrique.
+7. Calculer aij = 2i2− 3j pour i∈{ 1, 2}, j∈{ 1, 2, 3}.
+A =
+(−1 −4 −7
+5 2 −1
+)
+. Éléments négatififs: a12, a13, a23.
+8. a11 = a22 et somme = 2, entrées dans {0, 1}.
+Cas a11 = a22 = 0: A =
+(0 1
+1 0
+)
+. Cas a11 = a22 = 1: A =
+(1 0
+0 1
+)
+.
+38
+
+========== PAGE 39 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 2 — Opérations sur les matrices — partie 1
+1. Additionner/soustraire élément par élément ; multiplier par un scalaire.
+a) A + B =
+(5 −1
+2 5
+)
+; b) 3A− 2B =
+(3− 8 −6− 2
+9 + 2 0 − 10
+)
+=
+(−5 −8
+11 −10
+)
+.
+2. Isoler X: 2X =
+(5 −1
+0 6
+)
++
+( 1 3
+−2 4
+)
+, puis diviser par 2.
+X = 1
+2
+( 6 2
+−2 10
+)
+=
+( 3 1
+−1 5
+)
+.
+3. Appliquer les définitions : 0A remplace chaque aij par 0; (−1)A remplace aij par−aij.
+0A =
+(0 0
+0 0
+)
+= 0; (−1)A =
+(−2 1
+0 −3
+)
+=−A. ✓
+4. Démonstration : écrire A = (aij) et B = (bij), puis développer k(A+B)ij = k(aij +bij) = kaij +kbij =
+(kA + kB)ij.
+Puisque cela vaut pour tout i, j, on conclut k(A + B) = kA + kB. □
+5. Comparer les entrées (i, j) des deux membres.
+(k(lA))ij = k(laij) = ( kl)aij = ((kl)A)ij par associativité dans R. Donc k(lA) = ( kl)A. □
+6. Operations élément par élément.
+1
+2 (A + B) =
+( 1 3/2
+3/2 1/2
+)
+; 2A− 1
+2 B =
+(13/2 −21/2
+0 17/2
+)
+.
+7. ((A + B)T )ij = (A + B)ji = aji + bji = (AT )ij + (BT )ij = (AT + BT )ij. □
+Leçon 3 — Opérations sur les matrices — partie 2
+1. Isoler X: 3X =
+(8 2
+3 1
+)
+−
+(2 −1
+0 4
+)
+=
+(6 3
+3 −3
+)
+.
+X =
+(2 1
+1 −1
+)
+.
+2. 4X− X = B + 3A⇒ 3X = B + 3A.
+3X =
+(0 3
+2 −1
+)
++
+( 3 0
+−3 6
+)
+=
+( 3 3
+−1 5
+)
+; X =
+( 1 1
+−1/3 5/3
+)
+.
+3. Démonstration : écrire les matrices génériques A = (aij), B = (bij), C = (cij) dansM22.
+39
+
+========== PAGE 40 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+(A + (B + C))ij = aij + (bij + cij) = ( aij + bij) + cij = ((A + B) + C)ij par associativité dans R. □
+4. 2A− 3X = 5B + X− C⇒ 2A− 5B + C = 4X⇒ X = 1
+4 (2A− 5B + C).
+X = 1
+4
+[( 4 −2 0
+2 6 −4
+)
+−
+( 0 5 5
+−5 0 10
+)
++
+(4 0 −3
+2 1 0
+)]
+= 1
+4
+(8 −7 −8
+9 7 −14
+)
+=
+( 2 −7/4 −2
+9/4 7/4 −7/2
+)
+.
+5. Ajouter (−A) des deux côtés; utiliser P2, P4, P3.
+(−A) + (A + B) = (−A) + (A + C)⇒ 0 + B = 0 + C⇒ B = C. □
+6. Additionner pour X, soustraire pour Y .
+X =
+(2 0
+1 1
+)
+; Y =
+( 1 1
+−1 1
+)
+.
+7. (1· A)ij = 1· aij = aij = (A)ij pour tout i, j. □
+Leçon 4 — Multiplication matricielle — partie 1
+1. cij =∑
+k aikbkj. Calculer chaque entrée du produit.
+(1 2
+3 4
+)( 0 1
+−1 2
+)
+=
+(0− 2 1 + 4
+0− 4 3 + 8
+)
+=
+(−2 5
+−4 11
+)
+.
+2. AB est défini si le nb de colonnes de A = nb de lignes de B.
+A2×3B3×4: AB est défini, de dimension 2× 4. BA n’est pas défini ( 4̸= 2).
+3. Utiliser c12 =∑ 3
+k=1 a1kbk2.
+a1k = 1 − k: a11 = 0 , a12 = −1, a13 = −2. bk2 = 2 k + 2 : b12 = 4 , b22 = 6 , b32 = 8 . c12 =
+(0)(4) + (−1)(6) + (−2)(8) = 0− 6− 16 =−22.
+4. Multiplier dans les deux sens et comparer.
+AB =
+( 1 + 0 + 2 −1 + 0 + 0
+−1 + 0 + 0 1 + 2 + 0
+)
+=
+( 3 −1
+−1 3
+)
+(dim 2× 2). BA =
+
+
+1 + 1 0 − 1 2 + 0
+0− 2 0 + 2 0 + 0
+1 + 0 0 + 0 2 + 0
+
+ =
+
+
+2 −1 2
+−2 2 0
+1 0 2
+
+ (dim 3× 3). AB̸= BA.
+5. Calculer A2 et A3 pour conjecturer An =
+(1 n
+0 1
+)
+; démontrer par récurrence.
+40
+
+========== PAGE 41 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Ak+1 =
+(1 k
+0 1
+)( 1 1
+0 1
+)
+=
+(1 k + 1
+0 1
+)
+. □
+6. A2 =
+(4 5
+0 9
+)
+; AB =
+(4 −1
+6 3
+)
+; BA =
+(2 1
+6 5
+)
+.
+A2− AB + BA =
+(2 7
+0 11
+)
+.
+7. (AB)(B−1A−1) = A(BB −1)A−1 = AIA −1 = I. Donc (AB)−1 = B−1A−1. □
+Leçon 5 — Multiplication matricielle — partie 2
+1. Multiplier A par elle-même.
+A2 =
+( 1 0
+−1 1
+)( 1 0
+−1 1
+)
+=
+( 1 0
+−2 1
+)
+; A3 = A2· A =
+( 1 0
+−3 1
+)
+.
+2. Choisir des matrices simples.
+A =
+(1 0
+0 0
+)
+, B =
+(0 0
+1 0
+)
+: AB =
+(0 0
+0 0
+)
+, BA =
+(0 0
+0 0
+)
+— même résultat. Autre exemple: A =
+(1 2
+3 4
+)
+, B =
+(0 1
+0 0
+)
+: AB =
+(0 1
+0 3
+)
+, BA =
+(3 4
+0 0
+)
+. AB̸= BA. ✓
+3. Chercher A, B̸= 0 avec AB = 0.
+A =
+(1 0
+0 0
+)
+, B =
+(0 0
+1 0
+)
+: AB =
+(0 0
+0 0
+)
+= 0. ✓
+4. Distribuer et regrouper en utilisant A(B + C) = AB + AC et (kA)B = k(AB).
+2A(3B− C) + 5AC = 6AB− 2AC + 5AC = 6AB + 3AC = 3(2AB + AC).
+5. Calculer A2 et A3 pour trouver le motif.
+A2 =
+(0 1
+0 0
+)( 0 1
+0 0
+)
+=
+(0 0
+0 0
+)
+= 0. Donc An = 0 pour tout n≥ 2 (matrice nilpotente d’indice 2).
+6. A2 =−I; A3 =−A; A4 = I. Motif de période 4.
+7. Par récurrence. (AB)k+1 = ( AB)kAB = AkBkAB. Puisque AB = BA, permuter Bk et A:
+= Ak+1Bk+1. □
+Leçon 6 — Transposée d’une matrice
+1. Écrire les lignes de A comme colonnes de AT .
+41
+
+========== PAGE 42 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+AT =
+
+
+3 2
+−1 4
+0 −5
+
+ .
+2. Calculer AB, transposer; puis calculer BT AT et comparer.
+AB =
+(1 0
+3 4
+)( 0 1
+−1 2
+)
+=
+( 0 1
+−4 11
+)
+, donc (AB)T =
+(0 −4
+1 11
+)
+. BT AT =
+(0 −1
+1 2
+)( 1 3
+2 4
+)
+=
+(0− 2 0 − 4
+1 + 4 3 + 8
+)
+=
+(−2 −4
+5 11
+)
+.
+Attention: recalcul de AB:
+(1· 0 + 2(−1) 1 · 1 + 2· 2
+3· 0 + 4(−1) 3 · 1 + 4· 2
+)
+=
+(−2 5
+−4 11
+)
+, donc (AB)T =
+(−2 −4
+5 11
+)
+=
+BT AT . ✓
+3. A = (AT )T , donc transposer AT pour obtenir A.
+A =
+( 1 2
+−1 3
+)
+; A + AT =
+( 1 2
+−1 3
+)
++
+(1 −1
+2 3
+)
+=
+(2 1
+1 6
+)
+.
+4. Poser A = (aij)m×p et B = (bjk)p×n. Montrer que les entrées (i, k) des deux membres coïncident.
+((AB)T )ki = (AB)ik =∑
+j aijbjk; (BT AT )ki =∑
+j(BT )kj(AT )ji =∑
+j bjkaij. Les deux sont égaux. □
+5. Calculer (AB)T = BT AT = BA (car A, B symétriques).
+(AB)T = AB⇔ BA = AB. □
+6. AAT est 2× 2; AT A est 3× 3.
+AAT =
+(14 −6
+−6 20
+)
+.
+7. AT (A−1)T = (A−1A)T = I et (A−1)T AT = (AA−1)T = I. Donc (AT )−1 = (A−1)T : AT est inversible.
+□
+Leçon 7 — Matrice inverse — partie 1
+1. Calculer AB et BA et vérifier qu’ils valent I2.
+AB =
+(2 1
+5 3
+)( 3 −1
+−5 2
+)
+=
+( 6− 5 −2 + 2
+15− 15 −5 + 6
+)
+=
+(1 0
+0 1
+)
+= I. De même BA = I. ✓
+2. Pour une matrice diagonale, l’inverse a les réciproques sur la diagonale.
+A−1 =
+(1/3 0
+0 1/4
+)
+.
+3. Effectuer le produit A· I3 et I3· A.
+42
+
+========== PAGE 43 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Par définition de I3 : (AI3)ij =∑
+k aik(δkj) = aij, donc AI3 = A. Idem pour I3A. ✓
+4. Poser le produit
+(a b
+2 3
+)( 3 −1
+−2 a
+)
+= I2 et résoudre le système.
+Entrée (1, 1): 3a− 2b = 1; entrée (1, 2):−a + ab = 0⇒ a(b− 1) = 0 . Cas a = 0:−2b = 1⇒ b =−1/2,
+vérifier entrée (2, 1): 6− 6 = 0 ̸= 1 . Contradiction. Cas b = 1 : 3a− 2 = 1 ⇒ a = 1 . Vérifier:(1 1
+2 3
+)( 3 −1
+−2 1
+)
+=
+(1 0
+0 1
+)
+. ✓Donc a = 1, b = 1.
+5. (kI )B = kB = B(kI ): commute avec tout B. (kI )−1 = 1
+k I.
+6.|A| = cos2 θ + sin2 θ = 1̸= 0: toujours inversible.
+A−1 =
+( cos θ sin θ
+− sin θ cos θ
+)
+= AT .
+7. (AB)(B−1A−1) = A(BB −1)A−1 = I et (B−1A−1)(AB) = I. Donc (AB)−1 = B−1A−1. □
+Leçon 8 — Matrice inverse — partie 2
+1. Le système s’écrit AX = B; multiplier à gauche par A−1.
+X = A−1B =
+( 1 −1
+−1 2
+)( 5
+3
+)
+=
+(2
+1
+)
+. Donc x = 2, y = 1.
+2. AX = B⇒ A−1(AX) = A−1B⇒ IX = A−1B⇒ X = A−1B.
+|A| = 5 − 6 = −1; A−1 = 1
+−1
+( 5 −2
+−3 1
+)
+=
+(−5 2
+3 −1
+)
+. X =
+(−5 2
+3 −1
+)( 4
+7
+)
+=
+(−20 + 14
+12− 7
+)
+=
+(−6
+5
+)
+.
+3. Supposer deux inverses B et C tels que AB = I et AC = I.
+B = BI = B(AC) = ( BA)C = IC = C. Donc l’inverse est unique. □
+4.|A| =−2; A−1 = −1
+2
+
+
+5 −3 −1
+−3 1 1
+−1 1 −1
+
+ ; X = A−1B.
+X = −1
+2
+
+
+−2
+0
+−4
+
+ =
+
+
+1
+0
+2
+
+ . Donc x = 1, y = 0, z = 2.
+5.|A| = 1; A−1 =
+( 1 −1
+−2 3
+)
+; X =
+(2
+1
+)
+.
+6. Par récurrence. (Ak+1)−1 = (AkA)−1 = A−1(Ak)−1 = A−1(A−1)k = (A−1)k+1. □
+43
+
+========== PAGE 44 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 9 — Matrice inverse — partie 3
+1. Vérifier si AT = A, AT =−A ou ni l’un ni l’autre.
+AT =
+(0 3
+3 0
+)
+= A: symétrique. BT =
+( 0 2
+−2 0
+)
+=−B: antisymétrique. C T =
+(1 3
+2 1
+)
+̸= C et̸=−C:
+ni l’un ni l’autre.
+2. Regrouper les termes en X d’un côté: AX− 3CX = B + D⇒ (A− 3C)X = B + D.
+Si (A− 3C) est inversible: X = (A− 3C)−1(B + D).
+3. Calculer A + AT et A− AT , puis vérifier les définitions.
+A + AT =
+(2 1
+1 8
+)
+; (A + AT )T =
+(2 1
+1 8
+)
+= A + AT . ✓symétrique. A− AT =
+( 0 5
+−5 0
+)
+; (A− AT )T =
+(0 −5
+5 0
+)
+=−(A− AT ). ✓antisymétrique.
+4. Montrer que (AAT )T = AAT en utilisant les propriétés de la transposée.
+(AAT )T = (AT )T AT = AAT . Donc AAT est symétrique. □
+5. Poser S = 1
+2 (A + AT ) et K = 1
+2 (A− AT ).
+ST = S (symétrique), K T =−K (antisymétrique), S + K = A. □
+6. S = 1
+2 (A + AT ) =
+( 1 1/2
+1/2 0
+)
+; K = 1
+2 (A− AT ) =
+( 0 5/2
+−5/2 0
+)
+.
+7. aii = (AT )ii = (−A)ii =−aii⇒ aii = 0. (A2)T = AT AT = (−A)(−A) = A2: symétrique. □
+Leçon 10 — Déterminant — partie 1
+1. det
+(a b
+c d
+)
+= ad− bc.
+a) 3(5)− (−2)(1) = 15 + 2 = 17 ; b) (0)(6)− (4)(−1) = 0 + 4 = 4 .
+2. Appliquer la règle de Sarrus : somme des diagonales descendantes moins somme des diagonales
+montantes.
+(1· 4· 6) + (2· 5· 1) + (3· 0· 0)− (1· 5· 3)− (2· 0· 6)− (3· 4· 0) = 24 + 10 + 0− 15− 0− 0 = 19.
+3. Développer det = k(k− 2)− 3 =−k2 + 2k + 3 = 0⇒ k2− 2k− 3 = 0 .
+(k− 3)(k + 1) = 0⇒ k = 3 ou k =−1.
+4. Développer selon la 1 ère ligne : det A = 2C11 + (−1)C12 + 0· C13 + 1· C14.
+44
+
+========== PAGE 45 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Calculer les cofacteurs de dimension 3× 3 correspondants. Résultat : det A = 2(3· 4· 3 + . . .)− . . .
+det A =−12 (calcul complet par développement en cascade).
+5. Solution non triviale ⇔ k2− 1 = 0⇒ k =±1.
+k = 1:{t(1,−1)| t∈ R}. k =−1:{t(1, 1)| t∈ R}.
+6. (−3)(−1)1+2(0 + 6) + 4(−1)2+2(0− 3) + 1(−1)3+2(−4− 0) = 18− 12 + 4 = 10.
+7. A2 =
+( a2 + bc b (a + d)
+c(a + d) bc + d2
+)
+; det(A2) = ( a2 + bc)(bc + d2)− b2c(a + d)2 = (ad− bc)2 = (det A)2. □
+Leçon 11 — Déterminant — partie 2
+1. Mij = déterminant de la sous-matrice obtenue en supprimant la ligne i et la colonne j.
+M12 =
+⏐
+⏐
+⏐
+⏐
+0 2
+1 4
+⏐
+⏐
+⏐
+⏐ = 0− 2 =−2; C12 = (−1)1+2M12 = (−1)(−2) = 2 .
+2. Développement de Laplace selon la 2 e ligne: det A = a21C21 + a22C22 + a23C23.
+C21 = (−1)2+1
+⏐
+⏐
+⏐
+⏐
+0 2
+5 1
+⏐
+⏐
+⏐
+⏐ = −(0− 10) = 10 ; C22 = (−1)2+2
+⏐
+⏐
+⏐
+⏐
+1 2
+0 1
+⏐
+⏐
+⏐
+⏐ = 1 ; C23 = (−1)2+3
+⏐
+⏐
+⏐
+⏐
+1 0
+0 5
+⏐
+⏐
+⏐
+⏐ = −5.
+det A = 3(10) + (−1)(1) + 4(−5) = 30− 1− 20 = 9.
+3. Supprimer ligne 2 et colonne 3 pour M23.
+M23 =
+⏐
+⏐
+⏐
+⏐
+0 1
+4 2
+⏐
+⏐
+⏐
+⏐ = 0−4 =−4; C23 = (−1)5(−4) = 4 . det A (développement col 1): 0·C11 +2·C21 +4·C31
+= 0 + 2(−1)3
+⏐
+⏐
+⏐
+⏐
+1 3
+2 1
+⏐
+⏐
+⏐
+⏐+ 4(−1)4
+⏐
+⏐
+⏐
+⏐
+1 3
+−1 0
+⏐
+⏐
+⏐
+⏐ = 2(−1)(1− 6) + 4(1)(0 + 3) = 2(5) + 12 = 10 + 12 = 22.
+4. Choisir la colonne avec le plus de zéros (colonnes 2 ou 3).
+Développement selon la colonne 3 ( 0, 1, 0, 0): seul b23 = 1 contribue. det A = (−1)2+3· 1· M23 avec
+M23 =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 0 2
+3 0 −1
+0 1 3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+. M23 = 1(0 · 3− (−1)· 1)− 0 + 2(3 · 1− 0· 0) = 1(1) + 2(3) = 1 + 6 = 7 .
+det A = (−1)5· 7 =−7.
+5. Développement ligne 1: 0− 1(0− 6) + 2(3− 0) = 12 . Développement col 1: 0 + (−1)3(0− 6) +
+2(−1)4(3− 0) = 6 + 6 = 12 . ✓
+6. C11 = 10; C12 = 4; C13 =−1. det A = 2(10) + 1(4) + 0 = 24.
+7. Triangulariser par L3− 2L1, L4− L1, puis continuer.
+det A = 40.
+45
+
+========== PAGE 46 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 12 — Déterminant — partie 3
+1. Choisir la ligne ou colonne avec le plus de zéros (colonne 3 ou ligne 1).
+Développement selon colonne 1: 3· (−1)1+1M11 = 3
+⏐
+⏐
+⏐
+⏐
+2 0
+−5 6
+⏐
+⏐
+⏐
+⏐ = 3(12) = 36.
+2. Développer selon la 4 e ligne (un seul élément non nul).
+4e ligne: seulement a43 = 4 est non nul. D = 4(−1)4+3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+0 0 2
+0 3 0
+2 1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=−4
+[
+2(−1)1+3
+⏐
+⏐
+⏐
+⏐
+3 0
+1 0
+⏐
+⏐
+⏐
+⏐
+]
+=−4[2(0)].
+Recalcul:
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+0 0 2
+0 3 0
+2 1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+: développement col 1, seul a31 = 2 : 2(−1)3+1
+⏐
+⏐
+⏐
+⏐
+0 2
+3 0
+⏐
+⏐
+⏐
+⏐ = 2(0 − 6) = −12. D =
+−4(−12) = 48. (Même résultat par 2 e colonne: D = 48.) ✓
+3. Démonstration et vérification numérique.
+Pour la 3 e ligne: det A = a31C31 + a32C32 + a33C33 + a34C34. = 0 · C31 + 0· C32 + 4· C33 + 1· C34.
+C33 = (−1)6
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 0 0
+−1 1 3
+2 −1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 1(0+9)−0+0 = 9 ; C34 = (−1)7
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 0 2
+−1 1 0
+2 −1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=−(0+0+2−0+0+0) =−2.
+Hmm. det A = 4(9) + 1(−2) = 36− 2 = 34.
+4. Li← Li− L1 (i = 2, 3, 4) donne matrice triangulaire supérieure.
+det A = 1· 1· 2· 3 = 6.
+5. L3 = (2, 8, 4) = 2(1 , 4, 2) = 2 L2: lignes proportionnelles, det = 0.
+6. D3 = 2
+⏐
+⏐
+⏐
+⏐
+2 1
+1 2
+⏐
+⏐
+⏐
+⏐− 1
+⏐
+⏐
+⏐
+⏐
+1 1
+0 2
+⏐
+⏐
+⏐
+⏐ = 6− 2 = 4 . D4 = 2D3− D2 = 8− 3 = 5 .
+Conjecture: Dn = n + 1.
+Leçon 13 — Propriétés des déterminants — partie 1
+1. Appliquer les propriétés directement.
+a) Ligne 2 est nulle ⇒ det = 0. b) Ligne 2 = 2× ligne 1⇒ det = 0.
+2. Utiliser les propriétés.
+a) Matrice triangulaire: det = 5· 3· 4 = 60. b) Ligne 2 = 2× ligne 1⇒ det = 0.
+3. Utiliser|cA| = cn|A| pour An×n.
+46
+
+========== PAGE 47 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+|2A| = 2 3|A| = 8· 6 = 48; |− 3A| = (−3)3|A| =−27· 6 =−162.
+4. Utiliser les propriétés 5 et 9.
+Si Li = kLj, alors par prop 6: det A = k· det A′ où A′ est obtenu en remplaçant Li par Lj. Mais A′ a
+deux lignes égales, donc det A′ = 0 (prop 5). Donc det A = 0. □
+5.|cA| = cn|A|,|AT| =|A|,|A−1| = 1/|A|,|AB| =|A||B|.
+|2A−1| = 8
+5 ; |(3A)T| = 135; |A2| = 25.
+6. L1× 2 (facteur 2); L2← L2 + L3 (pas de changement); L3× 3 (facteur 3).
+det = 2· 1· 3· 5 = 30.
+7. L2− aL1, L3− a2L1; factoriser (b− a) et (c− a).
+= (b− a)(c− a)(c− b). □
+Leçon 14 — Propriétés des déterminants — partie 2
+1. La permutation de deux lignes change le signe (propriété 4).
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+d e f
+a b c
+g h i
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=−|A| =−(−3) = 3.
+2. Utiliser|AB| =|A||B| et|kA| = kn|A|.
+|AB| =|A||B| = 4· (−2) =−8; |3AT| = 3 3|AT| = 27·| A| = 27· 4 = 108.
+3. Triangulariser par opérations élémentaires: L2← L2− 2L1; L3← L3 + L1.
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 1 −1
+0 1 3
+0 2 2
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+. Puis L3← L3− 2L2:
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 1 −1
+0 1 3
+0 0 −4
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 2· 1· (−4) =−8.
+4. Pour 2× 2: det A = ad− bc, det AT = ad− cb = ad− bc. Identique. Pour la 3× 3 : calcul direct.
+|A| = 2(3· 4− 2· 0)− (−1)(1· 4− 2· (−1)) + 0 = 2(12) + 1(6) = 24 + 6 = 30 .|AT| =|A| = 30. ✓
+5. L2− 2L1, L3− L1, L3 + L2, L4− L2; échanger L3↔ L4 (change signe).
+− det
+
+
+
+
+1 1 1 1
+0 1 −1 −2
+0 0 2 4
+0 0 0 −2
+
+
+
+ =−(1· 1· 2· (−2)) = 4.
+6.|A2| = 9; |A−1| = 1/3; | 1
+2 A| = 1
+8· 3 = 3
+8 .
+47
+
+========== PAGE 48 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+7. det(A2) = det A⇒ (det A)2 = det A⇒ det A(det A− 1) = 0 . Donc det A = 0 ou 1. □
+Leçon 15 — Calcul et propriétés de la matrice inverse — partie 1
+1. Calculer det A : si = 0 singulière; sinon régulière.
+|A| = 2· 2− 4· 1 = 0 : A est singulière.|B| = 3· 4− 1· 2 = 10̸= 0: B est régulière.
+2. cof(A)ij = (−1)i+jMij; adj (A) = cof(A)T ; A−1 = 1
+|A| adj(A).
+|A| = 5− 6 =−1; cof (A) =
+( 5 −3
+−2 1
+)
+; adj (A) =
+( 5 −2
+−3 1
+)
+; A−1 =
+(−5 2
+3 −1
+)
+.
+3.|A| = 2· 3− (−1)· 1 = 7 .
+adj(A) =
+( 3 1
+−1 2
+)
+; A−1 = 1
+7
+( 3 1
+−1 2
+)
+.
+4. Calculer|A|, puis les 9 cofacteurs, former la matrice adjointe.
+|A| = 1(1· 2− 0· 1)− 0 + 1(2· 1− 1· 0) = 2 + 1 = 3 . (Calcul des cofacteurs omis pour la brièveté.)
+A−1 = 1
+3
+
+
+2 2 −1
+−4 1 3
+3 −1 0
+
+ ... vérifier en calculant AA−1.
+5.|A| =−2; adj(A) =
+( 4 −2
+−3 1
+)
+; A· adj(A) =
+(−2 0
+0 −2
+)
+=|A|· I. □
+6.|A| = 10; adj(A) =
+( 6 −7
+−2 4
+)
+; A−1 = 1
+10
+( 6 −7
+−2 4
+)
+.
+7. adj(A) =|A|A−1; adj(adj(A)) =|A|n−1adj(A−1) =|A|2 1
+|A| A =|A|A. □
+Leçon 16 — Calcul et propriétés de la matrice inverse — partie 2
+1. Utiliser (kA)−1 = 1
+k A−1 et (AT )−1 = (A−1)T .
+(2A)−1 = 1
+2 A−1 = 1
+2
+(1 2
+0 3
+)
+=
+(1/2 1
+0 3/2
+)
+. (AT )−1 = (A−1)T =
+(1 0
+2 3
+)
+.
+2. A non inversible⇔ det A = 0.
+|A| = k(k− 1)− 2 = k2− k− 2 = ( k− 2)(k + 1) = 0⇒ k = 2 ou k =−1.
+3. Vérifier que (AB)(B−1A−1) = I.
+48
+
+========== PAGE 49 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+|A| = 2− 1 = 1 ⇒ A−1 =
+( 1 0
+−2 1
+)
+; |B| = 3 ⇒ B−1 = 1
+3
+( 3 0
+−2 1
+)
+. AB =
+(4 3
+7 3
+)
+; (AB)−1 =
+1
+−9
+( 3 −3
+−7 4
+)
+. B−1A−1 = 1
+3
+( 3 0
+−2 1
+)( 1 0
+−2 1
+)
+= 1
+3
+( 3 0
+−4 1
+)
+... Les deux doivent coïncider — vérifier
+que (AB)(B−1A−1) = I. ✓
+4. Utiliser A· adj(A) =|A|· I⇒| adj(A)| =|A|n−1 pour An×n.
+Pour n = 3:|adj(B)| =|B|3−1 = (−3)2 = 9.
+5. AT (A−1)T = (A−1A)T = I et (A−1)T AT = (AA−1)T = I. Donc (AT )−1 = (A−1)T . □
+6. A−1 =
+( 3 −1
+−5 2
+)
+; 3A−1− I =
+( 8 −3
+−15 5
+)
+; transposer.
+(3A−1− I)T =
+( 8 −15
+−3 5
+)
+.
+7. det(AT A) = 1⇒ (det A)2 = 1⇒| det A| = 1. De AT A = I: AT = A−1. □
+Leçon 17 — Système d’équations linéaires
+1. Identifier A, X et B.
+
+
+2 −1 1
+1 3 −2
+−1 1 1
+
+
+
+ 
+A
+
+
+x
+y
+z
+
+
+
+
+X
+=
+
+
+1
+4
+−2
+
+
+
+ 
+B
+.
+2.|A| = 1(−1)− 1(2) =−3; A−1 = 1
+−3
+(−1 −1
+−2 1
+)
+=
+(1/3 1/3
+2/3 −1/3
+)
+.
+X = A−1B =
+(1/3 1/3
+2/3 −1/3
+)( 5
+1
+)
+=
+(2
+3
+)
+. x = 2, y = 3.
+3. Ax =
+( 7 1
+−1 −2
+)
+, Ay =
+(3 7
+1 −1
+)
+;|A| = 3(−2)− 1(1) =−7.
+x = |Ax|
+|A| = −14+1
+−7 = −13
+−7 = 13
+7 ; y = |Ay|
+|A| = −3−7
+−7 = −10
+−7 = 10
+7 .
+4.|A| = 1(1− 2)− 1(2 + 1) + 1(4− 1) = (−1)− 3 + 3 =−1.
+|Ax| = 6(1(−1)− 1· 2)− 1(−1· 1− 2· 1) + 1(−1· 2− 1· 2) . . . Résultat: x = 1, y = 2, z = 3.
+5.|A| =−10;|Ax| =−6,|Ay| =−10,|Az| =−2.
+x = 3
+5 ; y = 1; z = 1
+5 .
+49
+
+========== PAGE 50 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+6.|A| = 14;|Ax| = 28;|Ay| =−14.
+x = 2; y =−1.
+7. xi =|Axi|/|A| =|Axi|/0: indéfini.
+Sans solution: x + y = 1 et x + y = 2. Infiniment: x + y = 1 et 2x + 2y = 2.
+Leçon 18 — Réduction matricielle — partie 1
+1. Vérifier les deux propriétés : lignes nulles en bas, chaque pivot à droite du précédent.
+A: ✓(triangulaire supérieure). B: ✓(pivots décalés à droite). C: Non (pivot de ligne 2 n’est pas à
+droite du pivot de ligne 1).
+2. L2← L2− 2L1; L3← L3 + L1.
+
+
+2 −1 3 | 1
+0 0 −1 | 1
+0 0 1 | 0
+
+ . Puis L3← L3 + L2:
+
+
+2 −1 3 | 1
+0 0 −1 | 1
+0 0 0 | 1
+
+ .
+3. Le pivot d’une ligne est le premier élément non nul.
+Ligne 1: pivot = 2 (colonne 2); Ligne 2: pivot = 5 (colonne 3); Ligne 3: nulle (pas de pivot).
+4. Réduire vers la forme échelon réduite.
+L2← L2− 1
+2 L1; L3← L3 + 1
+2 L1; normaliser les pivots; éliminer au-dessus. Résultat:
+
+
+1 2 0
+0 0 1
+0 0 0
+
+ .
+5. Après L2− 2L1, L3 + L1, L3− L2, L1 + 2L2: forme échelon réduite.
+z = t libre: x = t, y = t− 1. Ensemble solution: {(t, t− 1, t )| t∈ R}.
+6. Pivots: col 1 ( x1) et col 2 ( x2). Variable libre: x3 = t.
+Solution:{(3− 2t, 1 + t, t)| t∈ R}.
+7. Forme échelon 1:
+(1 2
+0 −2
+)
+; forme échelon 2 possible differente.
+Forme échelon reduite unique:
+(1 0
+0 1
+)
+.
+Leçon 19 — Réduction matricielle — partie 2
+1. Vérifier les trois propriétés : échelon, pivots = 1, pivot seul dans sa colonne.
+50
+
+========== PAGE 51 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+A: ✓(pivots 1 en colonne 1 et 2, seuls dans leurs colonnes). B: Non (pivot de la col 2 n’est pas le seul
+non nul : a12 = 2̸= 0).
+2. L2← L2− 2L1; L3← L3 + L1; puis éliminer.
+Forme échelon:
+
+
+1 2 1
+0 0 1
+0 0 1
+
+ . Après L3← L3− L2 et L1← L1− L2: Échelon réduit:
+
+
+1 2 0
+0 0 1
+0 0 0
+
+ .
+3. Deux formes échelon différentes (non uniques); forme échelon réduite unique.
+Forme 1:
+
+
+1 −1 2
+0 1 −1
+0 0 −3
+
+ . Forme 2:
+
+
+1 −1 2
+0 1 −1
+0 0 1
+
+ . Forme échelon réduite:
+
+
+1 0 0
+0 1 0
+0 0 1
+
+ (vérifier par
+calcul).
+4. Vérifier les 3 propriétés: lignes nulles en bas ✓; pivots en col 2 et 4 ✓; pivots = 1 ✓; seuls non nuls
+dans leurs colonnes ✓.
+B est bien sous forme échelon réduite .
+5. Apres reduction:
+
+
+1 0 0
+0 1 −2
+0 0 0
+
+ ; rang = 2.
+6. Le rang = nombre de pivots ≤ m (lignes) et≤ n (colonnes), donc≤ min(m, n). □
+Leçon 20 — Rang et nombre de solutions
+1. Réduire A et compter les pivots.
+L2← L2− 2L1: L2 devient nulle. L3 reste. Forme échelon:
+
+
+1 2 3
+0 1 0
+0 0 0
+
+ . rang (A) = 2.
+2. Réduire (A : B) et comparer les rangs.
+L2← L2− 2L1: ligne 2 devient (0, 0, 0| 0). rang (A) = 2 , rang (A : B) = 3 (car la 3 e ligne non nulle à
+droite).⇒ aucune solution .
+3. Inf. de solutions si les deux équations sont multiples: k = 6.
+L2 = 2L1⇒ 2(3) = 6 . Donc k = 6.
+4. Former (A : B) et réduire. Le rang de A est 2 (car det = 0: lié à k).
+Après réduction: si k = 3⇒∞ de solutions; si k̸= 3⇒ aucune solution. Il n’y a jamais une solution
+unique.
+5. Réduire; ligne nulle si a = 3 et b = 4.
+51
+
+========== PAGE 52 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+z = t libre: y = 2− t, x =−1 + t. Solution: {(−1 + t, 2− t, t )| t∈ R}.
+6. L2 = 2L1: supprimer. Système equivalent reduit; z = t libre.
+Solution:{(1, 1− t, t)| t∈ R}.
+7. Si AX1 = B et AX2 = B, alors A(X1−X2) = 0 . Rang = n: seule la solution triviale, donc X1 = X2.
+□
+Leçon 21 — Méthode de Gauss-Jordan — partie 1
+1. Écrire la matrice augmentée et réduire.
+(1 2 | 5
+3 −1 | 1
+)
+L2−3L1
+−−−−→
+(1 2 | 5
+0 −7 | −14
+)
+÷(−7)
+−−−→
+(1 2 | 5
+0 1 | 2
+)
+L1−2L2
+−−−−→
+(1 0 | 1
+0 1 | 2
+)
+. x = 1, y = 2.
+2. Réduire la matrice augmentée 3× 4.
+Après opérations: rang = 3 = n⇒ solution unique. x = 1, y = 2, z = 3.
+3. Réduire et analyser.
+L2 = 2 L1⇒ après L2← L2− 2L1, ligne nulle. rang (A) = 1 , rang (A : B): vérifier L3. Résultat: ∞ de
+solutions. Ensemble solution: {(1− t,−2t + t, t)| t∈ R}... paramétrer correctement.
+4. Réduire la matrice augmentée 3× 5.
+rang(A) = rang(A : B) = 2 < 4 = n⇒∞ de solutions avec 2 paramètres libres. x1 = 1− 2t + s,
+x2 = 2− 3t− 2s, x3 = t, x4 = s où t, s∈ R.
+5. Forme échelon réduite: x1 = 1− 2s, x2 = s, x3 = t− 1, x4 = t.
+
+
+
+
+1
+0
+−1
+0
+
+
+
+ + s
+
+
+
+
+−2
+1
+0
+0
+
+
+
+ + t
+
+
+
+
+0
+0
+1
+1
+
+
+
+ , s, t∈ R.
+6. Forme reduite:
+
+
+1 0 1 2
+0 1 1 2
+0 0 0 0
+
+ .
+z = t: x = 2− t, y = 2− t. Ensemble: {(2− t, 2− t, t)| t∈ R}.
+7. L2− λL1: y(1− λ) = 0 . L3− L1: y(λ− 1) = 0 .
+Si λ̸= 1: y = 0, x = 1 – solution unique. Si λ = 1:∞ de solutions.
+Leçon 22 — Méthode de Gauss-Jordan — partie 2
+52
+
+========== PAGE 53 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+1. Variables libres : z = t (libre). Exprimer x et y en fonction de t.
+x = 2 + 3 t, y =−1− 2t, z = t, t∈ R. Ensemble solution: {(2 + 3t,−1− 2t, t)| t∈ R}.
+2. Former (A| I) et réduire.
+(2 1 | 1 0
+5 3 | 0 1
+)
+→···→
+(1 0 | 3 −1
+0 1 | −5 2
+)
+. A−1 =
+( 3 −1
+−5 2
+)
+.
+3. Réduire: si une ligne nulle apparaît du côté B, B n ’est pas inversible.
+L3 = L1⇒ après L3← L3− L1, ligne nulle. rang = 2 < 3⇒ B non inversible .
+4. Former (A| I3) et réduire complètement.
+Après opérations: A−1 =
+
+
+3 2 −2
+3 2 −1
+−3 −1 1
+
+ . (Vérifier: AA−1 = I.)
+5. Former (A| B| C) et réduire en une passe.
+(1 0 −1 2
+0 1 1 −1
+)
+: pour B: x =−1, y = 1; pour C: x = 2, y =−1.
+6. A triangulaire inférieure; A−1 =
+
+
+1 0 0
+−2 1 0
+1 −2 1
+
+ .
+7. Prendre B = ei (colonnes de I); les solutions forment les colonnes de A−1. Donc A est inversible. □
+Leçon 23 — Vecteurs géométriques — partie 1
+1. Le vecteur opposé a même direction et longueur, sens contraire. Le vecteur nul a longueur 0.
+Dessiner−⃗ udans le sens opposé à ⃗ u; le vecteur nul est un point.
+2. Méthode du triangle: placer ⃗ vau bout de ⃗ upour ⃗ u+ ⃗ v; pour ⃗ u− ⃗ v, ajouter−⃗ v.
+Tracer les vecteurs correspondants. (Construction géométrique.)
+3. ⃗AB = ⃗DC signifie que AB et DC sont parallèles, de même sens et même longueur.
+ABCD est un parallélogramme.
+4. Utiliser la loi de Chasles: ⃗DE = ⃗DA + ⃗AE.
+⃗DE = ⃗DC + ⃗CE = ⃗DC + 1
+2
+⃗CA. Sachant ⃗DC = 1
+2
+⃗BA (côtés mi-parallèles), on conclut ⃗DE = 1
+2
+⃗BA. □
+5. Appliquer la loi de Chasles répétée: ⃗AB + ⃗BC + ⃗CD− ⃗ED− ⃗AE = ⃗AD− ⃗ED− ⃗AE.
+53
+
+========== PAGE 54 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+= ⃗AD + ⃗DE− ⃗AE = ⃗AE− ⃗AE = ⃗0.
+5. ⃗AB + ⃗CB = 2 ⃗OB− ( ⃗OA + ⃗OC) = 2 ⃗OB− 2 ⃗OM = 2 ⃗M B. □
+7. ⃗AB + ⃗BC + ⃗CA = ⃗0 (Chasles). 2 ⃗OA− ⃗OA− 4 ⃗OA =−3 ⃗OA.
+8. O milieu de AC et BD: ⃗OA + ⃗OC = ⃗0 et ⃗OB + ⃗OD = ⃗0. Somme = ⃗0. □
+Leçon 24 — Vecteurs géométriques — partie 2
+1. Appliquer la loi de Chasles.
+⃗AB + ⃗BC + ⃗CD + ⃗DE = ⃗AE.
+2. Regrouper les termes de ⃗ uet de ⃗ v.
+(3 + 1− 5)⃗ u+ (−2 + 4)⃗ v=−⃗ u+ 2⃗ v.
+3. Inégalité du triangle: |∥⃗ u∥−∥ ⃗ v∥|≤∥ ⃗ u+ ⃗ v∥≤∥ ⃗ u∥ +∥⃗ v∥.
+|3− 5|≤∥ ⃗ u+ ⃗ v∥≤ 3 + 5, donc 2≤∥ ⃗ u+ ⃗ v∥≤ 8.
+4. Développer et regrouper.
+8⃗ u− 12⃗ v− 6⃗ u− 2⃗ v+ k⃗ u− k⃗ v= (2 + k)⃗ u+ (−14− k)⃗ v= ⃗0.⇒ 2 + k = 0 et−14− k = 0⇒ k =−2
+et k =−14: contradiction. Impossible d’annuler pour ⃗ u, ⃗ vnon colinéaires. (Si ⃗ uet ⃗ vsont quelconques
+librement: pas de solution réelle unique.)
+5. Unicité: coeﬀicients nuls. λ + 2 = 0 et 3µ− 1 = 0 .
+λ =−2; µ = 1
+3 .
+6.∥2⃗ u∥ = 10;∥− ⃗ v∥ = 3;|10− 3|≤∥ 2⃗ u− ⃗ v∥≤ 10 + 3.
+7≤∥ 2⃗ u− ⃗ v∥≤ 13.
+7.∥⃗ a+ ⃗b∥2 =∥⃗ a∥2 + 2⃗ a· ⃗b +∥⃗b∥2;∥⃗ a− ⃗b∥2 =∥⃗ a∥2− 2⃗ a· ⃗b +∥⃗b∥2. Somme = 2∥⃗ a∥2 + 2∥⃗b∥2. □
+Leçon 25 — Vecteurs géométriques — partie 3
+1. Deux vecteurs sont parallèles si l’un est un multiple scalaire de l’autre.
+a) 3⃗ u= 3⃗ u: parallèles (colinéaires). b) −⃗ u= (−1)⃗ u: parallèles (sens contraire).
+2. ⃗AB = 5 ⃗CD signifie que les droites supports sont parallèles.
+⃗AB et ⃗CD sont colinéaires;∥ ⃗AB∥ = 5∥ ⃗CD∥; même sens.
+54
+
+========== PAGE 55 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+3. ⃗P Q = 2 ⃗P R signifie ⃗P Q et ⃗P R sont parallèles⇒ P , Q, R sont alignés.
+De plus, Q est au tiers du segment P R (P Q = 2
+3 P R... non: P Q = 2 P R signifie Q est au-delà de R
+dans le même sens, avec P Q = 2P R).
+4. ⃗AG = ⃗AE + ⃗AB + ⃗AD (diagonale du parallélépipède).
+∥ ⃗AG∥ =
+√
+22 + 52 + 32 =√4 + 25 + 9 =
+√
+38.
+5. ⃗P Q = (3, 4, 4); ⃗P R = 2(3, 4, 4) + (−1, 1, 0) = (5 , 9, 8); R = (6, 11, 11).
+6. ⃗AB = (3, 3, 3) = 1
+2
+⃗AC = (6, 6, 6): alignes. B est le milieu de AC.
+7. ( ⃗OA + ⃗OB + ⃗OC)− 3 ⃗OP = ⃗0⇒ ⃗OP = 1
+3 ( ⃗OA + ⃗OB + ⃗OC): définition du barycentre. □
+Leçon 26 — Démonstration en géométrie
+1. Utiliser la loi de Chasles.
+⃗AC = ⃗AB + ⃗BC = ⃗AB + ⃗AD (car dans un parallélogramme, ⃗BC = ⃗AD). □
+2. G est tel que ⃗AG = 1
+3
+⃗AB.
+⃗OG = ⃗OA + ⃗AG = ⃗OA + 1
+3
+⃗AB = ⃗OA + 1
+3 ( ⃗OB− ⃗OA) = 2
+3
+⃗OA + 1
+3
+⃗OB.
+3. Exprimer ⃗M N via la loi de Chasles.
+M milieu de AC: ⃗OM = 1
+2 ( ⃗OA + ⃗OC). N milieu de BD: ⃗ON = 1
+2 ( ⃗OB + ⃗OD). ⃗AB + ⃗AD + ⃗CB + ⃗CD =
+( ⃗OB− ⃗OA)+( ⃗OD− ⃗OA)+( ⃗OB− ⃗OC)+( ⃗OD− ⃗OC) = 2 ⃗OB+2 ⃗OD−2 ⃗OA−2 ⃗OC = 4( ⃗ON− ⃗OM ) = 4 ⃗M N.
+□
+4. ⃗GA + ⃗GB + ⃗GC = ( ⃗OA + ⃗OB + ⃗OC)− 3 ⃗OG = 3 ⃗OG− 3 ⃗OG = ⃗0. □
+5. Milieu de AC: 1
+2 ( ⃗OA + ⃗OC); milieu de BD: 1
+2 ( ⃗OB + ⃗OD).
+Dans un parallélogramme: ⃗OA + ⃗OC = ⃗OB + ⃗OD. Meme milieu. □
+6. ⃗AD = 1
+2 ( ⃗OB + ⃗OC)− ⃗OA; sommer les trois médianes: tout sánnule. □
+Leçon 27 — Vecteurs algébriques — partie 1
+1. Addition composante par composante; norme =
+√
+a2 + b2.
+a) (1,−5); b) 2(3,−1)− 3(−2, 4) = (6 ,−2) + (6,−12) = (12 ,−14); c) ∥(−2, 4)∥ =√4 + 16 =
+√
+20 =
+2
+√
+5.
+2. Diviser par la norme: ∥ ⃗ w∥ =√25 + 144 = 13 .
+55
+
+========== PAGE 56 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+± 1
+13 (5,−12).
+3.∥k⃗ u∥ =∥(ka, kb)∥ =
+√
+(ka)2 + (kb)2 =|k|
+√
+a2 + b2 =|k|∥⃗ u∥. □
+4. Les vecteurs de norme 5 parallèles à (3, 4) sont t(3, 4) avec|t|· 5 = 5⇒ t =±1.
+⃗ v1 = (3, 4) et ⃗ v2 = (−3,−4).
+5. Orthogonal: ⃗ v= t(−b, a); norme égale: |t| = 1.
+Les deux vecteurs sont (−b, a) et (b,−a).
+6.∥⃗ u∥ = 5; ˆu = 1
+5 (3,−4).
+Norme 10: (6,−8); norme 5 inverse: (−3, 4).
+7. f (t) = ( u1t + v1)2 + (u2t + v2)2≥ 0: discriminant ≤ 0.
+4(⃗ u· ⃗ v)2− 4∥⃗ u∥2∥⃗ v∥2≤ 0⇒| ⃗ u· ⃗ v|≤∥ ⃗ u∥∥⃗ v∥. □
+Leçon 28 — Vecteurs algébriques — partie 2
+1. ⃗AB = (xB− xA, yB− yA).
+⃗AB = (4,−5); ∥ ⃗AB∥ =√16 + 25 =
+√
+41.
+2. ⃗P Q = (Qx− Px, . . .).
+a) ⃗P Q = (3, 2,−4); b) ∥ ⃗P Q∥ =√9 + 4 + 16 =
+√
+29; c) ˆu = 1√
+29 (3, 2,−4).
+3. Dans un parallélogramme, ⃗P S = ⃗QR.
+⃗QR = (6− 4, 3− 1) = (2 , 2); S = (0 + 2 , 0 + 2) = ( 2, 2).
+4. C = A + t ⃗AB avec∥AC∥ = 3∥CB∥⇒ t = 3
+4 .
+C = A + 3
+4
+⃗AB = (1, 2,−1) + 3
+4 (2,−2, 6) = (1 + 1 .5, 2− 1.5,−1 + 4.5) = ( 2.5, 0.5, 3.5).
+5. ⃗BC = ⃗AC− ⃗AB; résoudre composante par composante.
+3x =−10, 3y =−10, 3z = 25; C =
+(
+− 4
+3 ,− 1
+3 , 22
+3
+)
+.
+6.∥ ⃗AB∥ = 2
+√
+3;∥ ⃗BC∥ =
+√
+3;∥ ⃗CA∥ =
+√
+3.
+Perimetre = 4
+√
+3≈ 6,93 unites.
+7. ⃗AB = (2, 1, 0) = ⃗DC: parallélogramme. ⃗AD = (1, 2, 1).
+Aire =∥ ⃗AB× ⃗AD∥ =∥(1,−2, 3)∥ =
+√
+14≈ 3,74 unites2.
+56
+
+========== PAGE 57 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 29 — Vecteurs algébriques — partie 3
+1. Vérifier si ⃗AB = k ⃗AC pour un certain k.
+⃗AB = (2, 4, 6) = 2(1 , 2, 3) = 2 ⃗AC. Oui, les points sont alignés.
+2. R = P + 1
+3
+⃗P Q (deux fois plus près de P : P R = 1
+3 P Q).
+R = (1, 0, 2) + 1
+3 (3, 3,−3) = (1 + 1 , 0 + 1, 2− 1) = ( 2, 1, 1).
+3. A, B, C alignés⇔ ⃗AB = k ⃗AC pour un certain k.
+⃗AB = (2,−1, t− 3), ⃗AC = (6,−3,−4). Ratio: k = 6
+2 = 3. t− 3 = k(−4) =−12⇒ t =−9.
+4. S = P + 12
+∥ ⃗P Q∥
+⃗P Q.
+⃗P Q = (3,−3, 4); ∥ ⃗P Q∥ =√9 + 9 + 16 =
+√
+34. S = (2, 1,−3) + 12√
+34 (3,−3, 4).
+5. u + v = (3, 1, 0, 3);∥u + v∥ =
+√
+19;∥u∥ =
+√
+6;∥v∥ =
+√
+15.
+√
+19≈ 4,36≤
+√
+6 +
+√
+15≈ 6,32. ✓
+6. C = 2B− A = (10− 2, 8− 1, 2− 3) = ( 8, 7,−1).
+7. ⃗ u· ⃗ v= 32.∥⃗ u+ ⃗ v∥2 = 155;∥⃗ u− ⃗ v∥2 = 27. 155−27
+4 = 32. ✓
+Leçon 34 — Combinaison linéaire
+1. k1⃗i + k2⃗j = (k1, k2) = (7 , 2).
+⃗ w= 7⃗i + 2⃗j = 7(1, 0) + 2(0, 1).
+2. Résoudre k1(1, 0, 1) + k2(0, 1, 1) = (3 , 1, 2).
+k1 = 3, k2 = 1; vérifier z: k1 + k2 = 4̸= 2. Non, ⃗ wne s’exprime pas comme combinaison linéaire.
+3. Chaque matrice de base contribue à une entrée.
+A = 5B + (−1)C + 2D + 3E = 5
+(1 0
+0 0
+)
++ (−1)
+(0 1
+0 0
+)
++ 2
+(0 0
+1 0
+)
++ 3
+(0 0
+0 1
+)
+.
+4. M milieu de AB: t = 1/2 dans ⃗OP = ⃗OA + t ⃗AB.
+⃗OM = ⃗OA + 1
+2 ( ⃗OB− ⃗OA) = 1
+2
+⃗OA + 1
+2
+⃗OB. Cas général: ⃗OP = (1− t) ⃗OA + t ⃗OB, t∈ [0, 1].
+5. Système: k1 + k3 = 2; k1 + k2 =−1;−k2 + 2k3 = 3.
+k1 = 2, k2 =−3, k3 = 0. Donc p(x) = 2 f (x)− 3g(x).
+57
+
+========== PAGE 58 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+6. ⃗ v= 4⃗ e1 + (−1)⃗ e2 + 7⃗ e3.
+7. α(⃗ u1 + ⃗ u2) + β(⃗ u1− ⃗ u2) = ( α + β)⃗ u1 + (α− β)⃗ u2 = ⃗0.
+Indépendance de{⃗ u1, ⃗ u2}: α + β = 0 et α− β = 0⇒ α = β = 0. □
+Leçon 35 — Ensemble générateur de V
+1. Tout vecteur (x, y) = x(1, 0) + y(0, 1).
+Oui,{(1, 0), (0, 1)} engendre R2.
+2. Il manque la composante z: aucun vecteur (0, 0, c) avec c̸= 0 ne peut être atteint.
+S n’engendre pas R3.
+3. Tout p(x) = a0 + a1x + a2x2 = a0· 1 + a1· x + a2· x2.
+Oui,{1, x, x2} engendre P2(x). □
+4. Résoudre k1(1, 1, 0) + k2(0, 1, 1) + k3(1, 0, 1) = (2 , 3, 1).
+k1 + k3 = 2 , k1 + k2 = 3 , k2 + k3 = 1 . Résolution: k1 = 2 , k2 = 1 , k3 = 0 . det
+
+
+1 0 1
+1 1 0
+0 1 1
+
+ =
+1− 0 + 1− 0− 1− 0 = 2̸= 0⇒ S engendre R3. ⃗ w= 2v1 + v2 + 0· v3.
+5. Sous-espace (vérification ✓). p(x) = a(x2− 1) + b(x− 1).
+Base:{x2− 1, x− 1}; dim V = 2.
+6. det
+
+
+1 2 0
+0 1 3
+2 5 3
+
+ = 0: vecteurs dépendants, S néngendre pas R3.
+7. Engendrement: A = aE11 + bE12 + cE21 + dE22. Indépendance: coefs nuls ⇒ matrice nulle. Base. □
+Leçon 36 — Dépendance et indépendance linéaire
+1. k1(1, 2) + k2(2, 4) = (0 , 0)⇒ k1 + 2k2 = 0 et 2k1 + 4k2 = 0: même équation, ∞ solutions.
+Linéairement dépendants (⃗ v= 2⃗ u).
+2. Résoudre k1(1, 0, 1) + k2(0, 1, 0) + k3(1, 1, 1) = (0 , 0, 0).
+58
+
+========== PAGE 59 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+det
+
+
+1 0 1
+0 1 0
+1 1 1
+
+ = 1(1− 0)− 0 + 1(0− 1) = 1− 1 = 0 . Linéairement dépendants . (Le déterminant
+est nul.)
+3. Résoudre k1(1 + x) + k2(x + x2) + k3(1 + x2) = 0 (polynôme nul).
+Coeﬀicients: k1 + k3 = 0 , k1 + k2 = 0 , k2 + k3 = 0 . Solution unique k1 = k2 = k3 = 0 . Linéairement
+indépendants.
+4. Si ⃗0∈ S ={v1, . . . , vn,⃗0}, poser ki = 0 pour i≤ n et kn+1 = 1: solution non triviale.
+Donc tout ensemble contenant ⃗0 est linéairement dépendant. □
+5. det = 1 + k3 = 0⇒ k =−1.
+6. k3 = 0; k1− k2 = 0; k1 + k2 = 0⇒ k1 = k2 = 0. Indépendant.
+7. Système en k1, k2, k3 via evaluations; déterminant de Vandermonde ̸= 0⇒ ki = 0. Indépendant. □
+Leçon 37 — Base et composantes
+1. Vérifier l’engendrement et l’indépendance linéaire.
+Tout (x, y) = x(1, 0)+y(0, 1): engendrement ✓. k1(1, 0)+k2(0, 1) = (0 , 0)⇒ k1 = k2 = 0: indépendance
+✓. Base canonique. □
+2. Vérifier indépendance ( det̸= 0), puis résoudre k1(1, 1) + k2(1,−1) = (3 , 5).
+det
+(1 1
+1 −1
+)
+=−2̸= 0: base ✓. k1 + k2 = 3, k1− k2 = 5: k1 = 4, k2 =−1. (⃗ u)A = (4,−1).
+3. La base canonique de M22: E11, E12, E21, E22.
+A = 2E11 + (−1)E12 + 0· E21 + 3E22; (A)B = (2,−1, 0, 3).
+4. Calculer det de la matrice formée par les vecteurs; résoudre le système.
+det
+
+
+1 1 1
+0 2 2
+0 0 3
+
+ = 6̸= 0: base ✓. Résoudre k1(1, 0, 0) +k2(1, 2, 0) +k3(1, 2, 3) = (4 , 6, 9): k3 = 3, k2 = 0,
+k1 = 1. ( ⃗ w)A = (1, 0, 3).
+5. Résoudre k1(1, 1, 0) + k2(0, 1, 1) + k3(1, 0, 1) = (5 , 3, 7).
+k3 = 9
+2 , k2 = 5
+2 , k1 = 1
+2 ; (⃗ u)A =
+(1
+2 , 5
+2 , 9
+2
+)
+.
+6. k1 + k2 = 5; k2 = 3: k1 = 2. (⃗ u)B = (2, 3).
+7. ⃗ u= 3v1 + v2 = α(v1 + v2) + β(v1− v2): α + β = 3, α− β = 1. α = 2, β = 1.
+59
+
+========== PAGE 60 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+(⃗ u)B′] = (2, 1).
+Leçon 38 — Théorème sur les bases — partie 1
+1. Vérifier si ⃗ v= k⃗ u.
+(−2,−4,−6) = (−2)(1, 2, 3): k =−2. Linéairement dépendants ; ⃗ v=−2⃗ u.
+2. Résoudre le système homogène ou vérifier si ⃗ w∈ Vect(⃗ u, ⃗ v).
+k1(1, 2, 0) + k2(0, 1, 1) = (2 , 5, 1): k1 = 2 , k2 = 1 ; vérif: (2, 4, 0) + (0, 1, 1) = (2 , 5, 1). ✓Linéairement
+dépendants: ⃗ w= 2⃗ u+ ⃗ v.
+3. Par le corollaire: tout ensemble de m > n vecteurs dans un espace de dimension n est dépendant.
+dim(R3) = 3 . Soit B ={u1, u2, u3, u4}. Puisque B (base de R3) a 3 vecteurs, B contient plus de 3
+vecteurs, donc B est linéairement dépendant. □
+5. det
+(2 1
+1 −3
+)
+=−7̸= 0: base ✓. Résoudre le système.
+k1 = 9
+7 , k2 = 13
+7 ; (p)A =
+(9
+7 , 13
+7
+)
+.
+5. det
+
+
+1 2 1
+2 3 1
+1 1 0
+
+ = 0: vecteurs dépendants, S nést pas une base .
+6. Deux décompositions⇒∑ (αi− βi)vi = ⃗0. Indépendance ⇒ αi = βi. □
+Leçon 39 — Théorème sur les bases — partie 2
+1. Dimensions des espaces canoniques.
+dim(R4) = 4 ; dim (P3(x)) = 4 (base:{1, x, x2, x3}); dim (M23) = 6 .
+2. Calculer det de la matrice 3× 3.
+det
+
+
+1 2 1
+0 1 −1
+2 1 5
+
+ = 1(5 + 1)− 2(0 + 2) + 1(0− 2) = 6− 4− 2 = 0 . Pas une base (dépendants).
+3. V = ker(f ) où f (a, b, c) = a + b + c.
+dim V = 3− 1 = 2 (le rang de la contrainte est 1).
+4. Condition: a + d = 0⇒ d =−a. Paramètres libres: a, b, c.
+60
+
+========== PAGE 61 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Base:
+{( 1 0
+0 −1
+)
+,
+(0 1
+0 0
+)
+,
+(0 0
+1 0
+)}
+; dim W = 3.
+5. b = d = t, c = s, a = t− s: paramétrer.
+Base:{(1, 1, 0, 1), (−1, 0, 1, 0)}; dim W = 2.
+6. a = b−3c
+2 ; base: {(1, 2, 0), (−3, 0, 2)}; dim W = 2.
+7. dim U = 2, dim W = 2; U∩ W ={(0, b, 0)}: dim = 1.
+dim(U + W ) = 2 + 2− 1 = 3 = dim R3. ✓
+Leçon 40 — Théorème sur les bases — partie 3
+1. det
+(1 2
+3 5
+)
+= 5− 6 =−1̸= 0: c’est une base.
+2. det
+
+
+1 1 0
+0 1 1
+1 0 1
+
+ = 1(1− 0)− 1(0− 1) + 0 = 1 + 1 = 2 ̸= 0. Base de R3. ✓
+3. dim(P2) = 3 ; montrer que {x + 1, x− 1, x2} est linéairement indépendant.
+k1(x + 1) + k2(x− 1) + k3x2 = 0 : coeﬀicients: k3 = 0 , k1 + k2 = 0 , k1− k2 = 0⇒ k1 = k2 = k3 = 0 .
+Base. ✓
+4. Calculer det de la matrice 4× 4.
+det
+
+
+
+
+1 0 0 1
+0 1 0 1
+0 0 1 1
+1 1 1 0
+
+
+
+ . Développement: = 1 · det
+
+
+1 0 1
+0 1 1
+1 1 0
+
+ − det
+
+
+0 0 1
+0 1 1
+1 1 0
+
+ . Calculer chaque 3× 3:
+M1 = 1(0− 1)− 0 + 1(0− 1) =−1− 1 =−2; M2 =−1(0− 1) = 1 . det = 1(−2)− 1(1) =−3̸= 0 .
+Base de R4.
+5. det
+
+
+1 1 0
+1 −1 0
+0 0 1
+
+ =−2̸= 0: base ✓.
+k1 = 1
+2 , k2 =− 3
+2 , k3 = 3; (q)B =
+(1
+2 ,− 3
+2 , 3
+)
+.
+6. Base:{1, x, x2, x3}; dim P3 = 4.
+7. T (αu + βv) = αT (u) + βT (v): vérifier composante par composante.
+[T ] =
+
+
+1 1
+1 −1
+2 0
+
+ .
+61
+
+========== PAGE 62 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 43 — Produit scalaire — partie 1
+1. ⃗ u· ⃗ v=∥⃗ u∥∥⃗ v∥ cos θ = 4· 6· cos 60◦ = 24· 1
+2 = 12.
+2. ⃗i· ⃗j = 1· 1· cos 90◦ = 0; ⃗i·⃗i = 1; ⃗k· ⃗k = 1; ⃗j· ⃗k = 0.
+3. Signe de cos θ: θ = π/4: cos > 0⇒ positif; θ = π/2: cos = 0⇒ nul; θ = 3π/4: cos < 0⇒ négatif.
+4. Développer (2⃗ u− 3⃗ v)· (⃗ u+ 5⃗ v) = 2∥⃗ u∥2 + 10(⃗ u· ⃗ v)− 3(⃗ v· ⃗ u)− 15∥⃗ v∥2.
+= 2(4) + 10(−1)− 3(−1)− 15(9) = 8− 10 + 3− 135 =−134.
+5.∥ ⃗ w∥2 =∥⃗ u∥2± 2⃗ u· ⃗ v+∥⃗ v∥2.
+∥⃗ u+ ⃗ v∥2 = 9− 12 + 16 = 13⇒
+√
+13; ∥⃗ u− ⃗ v∥2 = 37⇒
+√
+37.
+6. ⃗ u· ⃗ v=−5; θ = arccos
+(
+−5√
+14·3
+√
+2
+)
+≈ 108,4◦. Non orthogonaux.
+7.∥⃗ u+ ⃗ v∥2−∥ ⃗ u− ⃗ v∥2 = 4⃗ u· ⃗ v. Diviser par 4. □
+Leçon 44 — Produit scalaire — partie 2
+1. ⃗ u· ⃗ v= 2(1) + (−1)(4) + 3(−2) = 2− 4− 6 =−8.
+2. ⃗ u· ⃗ v= 1(2) + (−2)(1) + 1(0) = 2− 2 + 0 = 0 . Orthogonaux. ✓
+3. cos θ = (1)(1)+(1)(0)+(1)(−1)√
+3·
+√
+2 = 0√
+6 = 0, donc θ = π
+2 .
+4. ⃗ u· ⃗ v= k + 3k− 2 = 0⇒ 4k = 2⇒ k = 1
+2.
+5. ⃗ u× ⃗ v= (3− 2, 1− 3, 2− 1) = (1 ,−2, 1); ∥(1,−2, 1)∥ =
+√
+6.
+Vecteur unitaire:± 1√
+6 (1,−2, 1).
+6. v1 = 0 et v2 = 0; v3 libre: tous les t⃗k, t∈ R.
+7. f (t) =∥⃗ u+ t⃗ v∥2≥ 0: discriminant ≤ 0⇒| ⃗ u· ⃗ v|≤∥ ⃗ u∥∥⃗ v∥.
+Triangle:∥⃗ u+ ⃗ v∥2≤ (∥⃗ u∥ +∥⃗ v∥)2. □
+Leçon 45 — Projection orthogonale
+1. proj⃗ v⃗ u= ⃗ u·⃗ v
+∥⃗ v∥2 ⃗ v= 3
+1 (1, 0) = (3 , 0).
+62
+
+========== PAGE 63 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+2. ⃗ u· ⃗ v= 2 + 2− 6 =−2; ∥⃗ v∥2 = 1 + 4 + 4 = 9 .
+proj⃗ v⃗ u= −2
+9 (1, 2, 2) =
+(
+− 2
+9 ,− 4
+9 ,− 4
+9
+)
+.
+3. Poser ⃗OA = (1, 0, 2), ⃗OB = (3, 2, 0). Hauteur h =∥ ⃗OA− proj ⃗OB
+⃗OA∥.
+⃗OA· ⃗OB = 3 + 0 + 0 = 3 ; ∥ ⃗OB∥2 = 9 + 4 + 0 = 13 . proj = 3
+13 (3, 2, 0) = ( 9
+13 , 6
+13 , 0). ⃗OA− proj =
+(1− 9
+13 , 0− 6
+13 , 2) = ( 4
+13 ,− 6
+13 , 2). h =
+√
+16+36
+169 + 4 =
+√
+52
+169 + 4≈ 2,09 unités.
+4. Montrer (⃗ u− proj⃗ v⃗ u)· ⃗ v= 0.
+(⃗ u− k⃗ v)· ⃗ v= ⃗ u· ⃗ v− k∥⃗ v∥2 = ⃗ u· ⃗ v− ⃗ u·⃗ v
+∥⃗ v∥2∥⃗ v∥2 = 0 . □ Pour (3, 2) sur (1, 1): k = 5
+2 ; ⃗ u− proj =
+(3, 2)− ( 5
+2 , 5
+2 ) = ( 1
+2 ,− 1
+2 ). Vérification: ( 1
+2 ,− 1
+2 )· (1, 1) = 0 . ✓
+5. ⃗ u∥ = ⃗ u·⃗ v
+∥⃗ v∥2 ⃗ v= −1
+3 (1,−1, 1) =
+(
+− 1
+3 , 1
+3 ,− 1
+3
+)
+.
+⃗ u⊥ =
+(7
+3 , 2
+3 ,− 5
+3
+)
+. Vérif: ⃗ u⊥· ⃗ v= 0. ✓
+6. ⃗ u· ⃗ v= 4;∥⃗ v∥2 = 9; proj = 4
+9 (2, 1,−2).
+⃗ u⊥ = (4,−2, 1)− 4
+9 (2, 1,−2) =
+(28
+9 ,− 22
+9 , 17
+9
+)
+.
+7.∥proj⃗ v⃗ u∥ = |⃗ u·⃗ v|
+∥⃗ v∥ ≤ ∥⃗ u∥∥⃗ v∥
+∥⃗ v∥ =∥⃗ u∥ (Cauchy-Schwarz). Egalite ssi | cos θ| = 1. □
+Leçon 46 — Produit vectoriel — partie 1
+1. Par la règle de la main droite et les produits de la base.
+⃗i× ⃗j = ⃗k; ⃗j× ⃗k = ⃗i; ⃗k×⃗i = ⃗j.
+2. ⃗ v× ⃗ u=−(⃗ u× ⃗ v) découle de la règle de la main droite.
+Courber les doigts de ⃗ vvers ⃗ udonne le sens opposé au pouce comparé à ⃗ u→ ⃗ v.
+3.∥⃗ u× ⃗ v∥ =∥⃗ u∥∥⃗ v∥ sin θ = 3· 5· sin 30◦ = 15· 1
+2 = 7,5.
+4. (3⃗i− ⃗j)× (2⃗i + 4⃗j) = 6(⃗i×⃗i) + 12(⃗i× ⃗j) + (−2)(⃗j×⃗i) + (−4)(⃗j× ⃗j).
+= 6(0) + 12⃗k + (−2)(−⃗k) + (−4)(0) = 12 ⃗k + 2⃗k = 14~k = (0, 0, 14).
+5. Comparer composante par composante.
+(⃗ v× ⃗ u)i =−((⃗ u× ⃗ v)i) pour chaque i. Donc ⃗ v× ⃗ u=−⃗ u× ⃗ v. □
+6. ⃗ u× ⃗ v= (−3, 5, 7).
+(−3, 5, 7)· (3,−1, 2) = 0 ✓; (−3, 5, 7)· (1, 2,−1) = 0 ✓.
+7. Developper les deux membres en coordonnees; ils coïncident identiquement. □
+63
+
+========== PAGE 64 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 47 — Produit vectoriel — partie 2
+1. ⃗ u× ⃗ v=
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⃗i ⃗j ⃗k
+1 0 0
+0 1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= (0− 0)⃗i− (0− 0)⃗j + (1− 0)⃗k = ⃗k.
+2. ⃗ u× ⃗ v=
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⃗i ⃗j ⃗k
+2 −1 3
+1 2 −1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+.
+= ((−1)(−1)− 3(2))⃗i− (2(−1)− 3(1))⃗j + (2(2)− (−1)(1))⃗k = (1− 6)⃗i− (−2− 3)⃗j + (4 + 1)⃗k = (−5, 5, 5).
+3. Aire du triangle = 1
+2∥ ⃗AB× ⃗AC∥.
+⃗AB = (−1, 2, 0), ⃗AC = (−1, 0, 3). ⃗AB× ⃗AC = (6− 0, 0 + 3, 0 + 2) = (6 , 3, 2). Aire = 1
+2
+√36 + 9 + 4 =
+√
+49
+2 = 7
+2 unités2.
+4. Vérifier ⃗AB = ⃗DC pour le parallélogramme; aire =∥ ⃗AB× ⃗AD∥.
+⃗AB = (3,−1,−1), ⃗DC = (3,−1,−1). ✓Parallélogramme. ⃗AD = (−1, 1, 1). ⃗AB× ⃗AD =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⃗i ⃗j ⃗k
+3 −1 −1
+−1 1 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=
+(−1 + 1, 1− 3,−3− 1)· ⃗ e= (0,−2,−4)... recalcul: = ((−1)(1)− (−1)(1))⃗i− (3· 1− (−1)(−1))⃗j + (3·
+1− (−1)(−1))⃗k = (0,−2, 4− 1). Aire =∥(0,−2, 4)∥... =√
+0 + 4 + 16 =
+√
+20 = 2
+√
+5 unités2.
+5. ⃗AB = (3,−2,−2); ⃗AC = (1, 1, 2); ⃗AB× ⃗AC = (−2,−8, 5).
+Aire = 1
+2
+√4 + 64 + 25 =
+√
+93
+2 ≈ 4,82 unités2.
+6. ⃗AB = (−1, 2, 0); ⃗AC = (−1, 0, 3); ⃗ n= ⃗AB× ⃗AC = (6, 3, 2).
+7. Verification: ⃗i× (⃗j× ⃗k) = ⃗i×⃗i = ⃗0; (⃗i· ⃗k)⃗j− (⃗i· ⃗j)⃗k = ⃗0. ✓
+Leçon 48 — Produit mixte — partie 1
+1. ⃗ u· (⃗ v× ⃗ w) = ⃗i· (⃗j× ⃗k) = ⃗i·⃗i = 1.
+2. ⃗ u· (⃗ v× ⃗ w) =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 3
+2 1 0
+0 1 2
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+.
+= 1(2− 0)− 2(4− 0) + 3(2− 0) = 2− 8 + 6 = 0.
+64
+
+========== PAGE 65 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+3. Poser ⃗ u· (⃗ v× ⃗ w) =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 k
+0 1 1
+1 0 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 0.
+= 1(1− 0)− 2(0− 1) + k(0− 1) = 1 + 2− k = 3− k = 0⇒ k = 3.
+4. ⃗ u· (⃗ u× ⃗ v) = det
+
+
+u1 u2 u3
+u1 u2 u3
+v1 v2 v3
+
+ = 0 car deux lignes identiques. □
+5.
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 −1 3
+1 0 2
+−1 2 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 2(0− 4) + 1(1 + 2) + 3(2− 0) =−8 + 3 + 6 = 1.
+Positif: le triplet (⃗ u, ⃗ v, ⃗ w) est direct.
+6.
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 0
+0 1 3
+2 0 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 1(1) + 2(6) + 0 = 13 . Volume = 13 unites3.
+7. Permutation circulaire des lignes = 2 échanges = signe change 2 fois: det inchange. □
+Leçon 49 — Produit mixte — partie 2
+1. V =|⃗ u· (⃗ v× ⃗ w)| =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 0 0
+0 2 0
+0 0 3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 1· 2· 3 = 6 unités3.
+2. V =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 1 0
+1 0 1
+0 1 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=|1(0− 1)− 1(1− 0) + 0| =|− 1− 1| = 2 unités3.
+3. Vtet = 1
+6|⃗ u· (⃗ v× ⃗ w)| = 1
+6· 24 = 4 unités3.
+4. ⃗AB = (1, 2, 3), ⃗AC = (2, 1, 0), ⃗AD = (3, 3, 3).
+⃗AB· ( ⃗AC× ⃗AD) =
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+1 2 3
+2 1 0
+3 3 3
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= 1(3− 0)− 2(6− 0) + 3(6− 3) = 3− 12 + 9 = 0. Produit mixte nul ⇒
+coplanaires.
+5.
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+−1 2 0
+−1 0 3
+0 1 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=−1(0− 3)− 2(−1) + 0 = 3 + 2 = 5 ̸= 0: non dégénéré.
+Vtet = 5
+6 unités3.
+65
+
+========== PAGE 66 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+6.
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+2 1 0
+0 3 1
+1 0 4
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+=|24 + 1| = 25 unites3.
+7. Aire: base× hauteur =∥⃗ u∥∥⃗ v∥ sin θ =∥⃗ u× ⃗ v∥. Tétraèdre = 1
+6 du parallélépipède. □
+Leçon 50 — Droite dans l’espace
+1. Équation vectorielle: (x, y, z) = P0 + t⃗ u.
+D : (x, y, z) = (1 , 2, 3) + t(2,−1, 4), t∈ R.
+2. Vecteur directeur: ⃗AB = (2, 1,−3).
+Vectorielle: (x, y, z) = (1 , 0, 2) + t(2, 1,−3). Paramétriques: x = 1 + 2t, y = t, z = 2− 3t. Symétriques:
+x− 1
+2 = y = z− 2
+−3 .
+3. Substituer P dans l’équation vectorielle et vérifier la cohérence.
+1 + 2t = 7⇒ t = 3; 0 + t = 3. ✓; 2− 3t = 2− 9 =−7. ✓P∈ D.
+4. Paramétrer D: (1 + 2t, 2t− 2, 3t). Minimiser d2 = (1 + 2 t)2 + (2t− 2)2 + (3t)2 par d
+dt = 0.
+d
+dt [(1 + 2t)2 + (2t− 2)2 + 9t2] = 4(1 + 2 t) + 4(2t− 2) + 18t = 4 + 8t + 8t− 8 + 18t = 34t− 4 = 0 . t = 2
+17 ;
+point:
+(
+1 + 4
+17 , 4
+17− 2, 6
+17
+)
+=
+(21
+17 ,− 30
+17 , 6
+17
+)
+.
+5. ⃗ n1× ⃗ n2 = (0, 3,−3), soit (0, 1,−1). Point: x = 1, y = 1 (z = 0).
+D : (x, y, z) = (1 , 1, 0) + t(0, 1,−1).
+6. (1 + 2t, 2t, 1− 2t) = (3 , 2,−1): t = 1 dans les trois équations. Q∈ D. ✓
+7. Direction ⃗ v= (a, b, c) avec a + 2b− c = 0 et projection par origine: c = 4.
+D : (x, y, z) = (2 , 1,−1) + t(2, 1, 4).
+Leçon 51 — Position relative de deux droites
+1. ⃗ v= (2, 4, 6) = 2(1 , 2, 3) = 2 ⃗ u: les vecteurs directeurs sont parallèles ⇒ droites parallèles.
+2. Vérifier si les vecteurs directeurs sont proportionnels, puis chercher un point commun.
+⃗ u1 = (1 , 2,−1), ⃗ u2 = (1 , 2,−1): proportionnels (identiques). Droites parallèles. Vérifier si P1 =
+(1, 0, 0)∈ D2: 1 + s = 1⇒ s = 0 , mais 0 + 2(0) = 0 ̸= 0 ... y1 = 0 = 0 . ✓z1 = 0 = 1 − 0 = 1 . Non
+D1∥ D2, distinctes.
+3. Égaler les paramétriques et résoudre.
+66
+
+========== PAGE 67 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+x−1
+2 = y
+1 = z+1
+3 et x = s, y = 2 − s, z = 1 + 2 s. De la sym: x = 1 + 2 t, y = t, z =−1 + 3 t.
+1 + 2t = s; t = 2− s;−1 + 3t = 1 + 2 s. De 2: s = 2− t; substituer dans 1: t = 2− (2− t)⇒ 0 = 0 ...
+infiniment. Utiliser éq 3: −1 + 3 t = 1 + 2(2 − t) ⇒ −1 + 3 t = 5 − 2t ⇒ 5t = 6 ⇒ t = 6/5 .
+P = (1 + 12/5 , 6/5,−1 + 18/5) = (17/5 , 6/5, 13/5). Droites sécantes.
+4. Vérifier non-proportionnalité des directeurs, puis montrer aucun point commun.
+⃗ u1 = (1, 1, 1), ⃗ u2 = (1,−1, 2): non proportionnels. Chercher (t, s) tels que (t, 1+ t, t) = (1+ s,−s, 1+2 s).
+De 1: t = 1 + s; de 2: 1 + t =−s⇒ 1 + 1 + s =−s⇒ 2 =−2s⇒ s =−1, t = 0 . Vérif 3: z1 = 0 ;
+z2 = 1− 2 =−1̸= 0. Gauches. □
+5. ⃗ u1· ⃗ u2 = 2 + 1− 2 = 1̸= 0: non perpendiculaires. θ = arccos
+(1
+6
+)
+≈ 80,4◦.
+s =− 2
+3 , t = 1
+3 : sécantes en
+(4
+3 , 1
+3 , 2
+3
+)
+.
+6. ⃗ u2 = 2⃗ u1: paralleles. (0, 3, 4) /∈ D1 (verif: t =−2 donne (0, 3,−4)̸= (0, 3, 4)): distinctes.
+7. D⊥ (1, 0, 0) et⊥ (0, 1, 0): direction (0, 0, 1).
+Point commun: t = 0, s = 0. D : (x, y, z) = r(0, 0, 1) (axe z).
+Leçon 52 — Distance d’un point à une droite
+1. cos θ = |⃗ u·⃗ v|
+∥⃗ u∥∥⃗ v∥ = 0
+1·
+√
+2 = 0, donc θ = 90◦.
+2. P0 = (0, 0, 0)∈ D, ⃗ u= (1, 1, 0),−−→
+P0P = (1, 2, 3).
+−−→
+P0P× ⃗ u=
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⃗i ⃗j ⃗k
+1 2 3
+1 1 0
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= (0− 3,−3 + 0, 1− 2) = (−3,−3,−1). d = ∥(−3,−3,−1)∥
+∥(1,1,0)∥ =
+√9+9+1√
+2 =
+√
+19√
+2 =
+√
+19
+2 ≈
+3,08 unités.
+3. Le pied H = P0 + t0⃗ uoù t0 =
+− − →
+P0P ·⃗ u
+∥⃗ u∥2 .
+P0 = (1,−1, 2), ⃗ u= (1, 1,−1),−−→
+P0P = (1, 1,−1). t0 = 1+1+1
+3 = 1. H = (1 + 1 ,−1 + 1, 2− 1) = ( 2, 0, 1).
+4. P0 = (2,−1, 1) sur D, ⃗ u= (3,−2, 1).
+−−→
+P0P = (1− 2, 3 + 1 , 0− 1) = (−1, 4,−1). −−→
+P0P× ⃗ u=
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+⃗i ⃗j ⃗k
+−1 4 −1
+3 −2 1
+⏐
+⏐
+⏐
+⏐
+⏐
+⏐
+= (4− 2,−(−1− 3), 2− 12) =
+(2, 4,−10). d = ∥(2,4,−10)∥
+∥(3,−2,1)∥ =
+√4+16+100√
+14 =
+√
+120√
+14 =
+√
+120
+14 =
+√
+60
+7 ≈ 2,93 unités. t0 = (−1)(3)+(4)(−2)+(−1)(1)
+14 =
+−3−8−1
+14 = −12
+14 =− 6
+7 . H = P0 + t0⃗ u= (2− 18
+7 ,−1 + 12
+7 , 1− 6
+7 ) = (− 4
+7 , 5
+7 , 1
+7 ).
+5. t0 = (3,−1,−1)·(1,−1,2)
+6 = 2
+6 = 1
+3 ; H =
+(1
+3 , 2
+3 , 8
+3
+)
+.
+67
+
+========== PAGE 68 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+d =
+√
+93
+3 unités.
+6.−−→
+P0P = (−1,−1,−1);−−→
+P0P× ⃗ u= (0, 1,−1); d =
+√
+2
+3 ≈ 0,47 unites.
+7. Le lieu forme les deux plans bissecteurs de lángle forme par D1 et D2, contenant leur point dínter-
+section.
+Leçon 53 — Distance entre deux droites
+1. Formule pour droites parallèles: d = ∥− − − →
+P1P2×⃗ u∥
+∥⃗ u∥ .
+−−→
+P1P2 = (−1, 1, 0); ⃗ u= (1, 2, 3). (−1, 1, 0)× (1, 2, 3) = (3− 0, 0 + 3,−2− 1) = (3 , 3,−3). d =
+√
+9+9+9√
+14 =
+3
+√
+3√
+14 = 3
+√
+3
+14≈ 1,47 unités.
+2. Vérifier gauches, puis appliquer la formule d = |− − − →
+P1P2·(⃗ u1×⃗ u2)|
+∥⃗ u1×⃗ u2∥ .
+P1 = (1 , 0, 0), P2 = (0 , 0, 1), ⃗ u1 = (0 , 1, 1), ⃗ u2 = (1 , 0, 1). ⃗ u1× ⃗ u2 = (1− 0, 1− 0, 0− 1) = (1 , 1,−1).−−→
+P1P2 = (−1, 0, 1).−−→
+P1P2· (⃗ u1× ⃗ u2) =−1 + 0− 1 =−2. d = |−2|
+√
+3 = 2√
+3 = 2
+√
+3
+3 ≈ 1,15 unités.
+3. Vérifier gauches, trouver d, puis H1 et H2.
+⃗ u1 = (1 , 2, 1), ⃗ u2 = (1 ,−1, 1): non proportionnels. ⃗ u1× ⃗ u2 = (2 + 1 , 1− 1,−1− 2) = (3 , 0,−3).
+P1 = (0, 1,−1), P2 = (2, 0, 0),−−→
+P1P2 = (2,−1, 1). d = |6+0−3|
+√9+0+9 = 3
+3
+√
+2 = 1√
+2 =
+√
+2
+2 ≈ 0,71 unités.
+5.−−→
+P1P2× ⃗ u= (2, 1,−2)× (1, 2, 1) = (1 + 4 ,−2− 2, 4− 1) = (5 ,−4, 3).
+d =
+√
+50√
+6 = 5
+√
+3
+3 ≈ 2,89 unités.
+5. ⃗ u2 = 2⃗ u1: paralleles. (0, 2, 0) /∈ D1: distinctes.
+6. ⃗ u1× ⃗ u2 = (1,−1, 1);−−→
+P1P2 = (1, 0, 1); d = 2
+√
+3 = 2
+√
+3
+3 .
+t0 = s0 = 1
+2 ; H1 = ( 1
+2 , 1
+2 , 0); H2 = (1, 1
+2 , 3
+2 ).
+Leçon 54 — Plan dans l’espace
+1. ⃗ n· (P− P0) = 0 : 2(x− 1) + (−1)(y− 2) + 4(z− 3) = 0 .
+2x− 2− y + 2 + 4z− 12 = 0⇒ 2x− y + 4z = 12.
+2. Deux vecteurs directeurs: ⃗AB = (−1, 1, 0), ⃗AC = (−1, 0, 1). Vecteur normal ⃗ n= ⃗AB× ⃗AC =
+(1, 1, 1).
+Vectorielle: (x, y, z) = (1 , 0, 0) + r(−1, 1, 0) + s(−1, 0, 1); Cartésienne: x + y + z = 1.
+68
+
+========== PAGE 69 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+3. Substituer Q dans l’équation.
+2(3)− 2 + 3(−1) = 6− 2− 3 = 1̸= 5. Q /∈ π.
+4. Le plan contient P et la droite D. Deux directions dans le plan: ⃗ u= (1 , 0,−1) (directeur de D) et
+⃗P PD où PD = (1, 2, 3) est un point de D.
+−−→
+P PD = (1, 1, 1). ⃗ n= ⃗ u×−−→
+P PD = (0 + 1 , (−1− 1), 1− 0) = (1 ,−2, 1). Équation: 1(x− 0)− 2(y− 1) +
+1(z− 2) = 0⇒ x− 2y + z = 0.
+5. ⃗AB = (−1, 1,−1); ⃗ n= ⃗AB× ⃗ v= (2− 1,−(−2 + 1), 1− 1) = (1 , 1, 0).
+Équation: x + y = 2.
+6. (x− 2)− 2(y + 1) + 4(z− 3) = 0⇒ x− 2y + 4z = 16.
+Q: 4 + 6 + 16 = 26 ̸= 16: Q /∈ π.
+7. Directions: ⃗ u= (1, 1, 1) et−−→
+P1P2 = (−1, 1, 0). ⃗ n= (−1,−1, 2).
+Plan: x + y− 2z =−1.
+Leçon 55 — Position relative de deux plans
+1. Comparer les vecteurs normaux: ⃗ n1 = (1, 2,−1), ⃗ n2 = (2, 4,−2) = 2 ⃗ n1: parallèles.
+Vérifier si même plan: 2
+3̸= 5
+2⇒ plans parallèles distincts .
+2. Résoudre le système: soustraire les équations, paramétrer.
+π1− π2: 2y = 4 ⇒ y = 2 . Paramétrer z = t: x = 6 − 2− t = 4 − t. Droite: D : ( x, y, z) =
+(4, 2, 0) + t(−1, 0, 1).
+3. cos θ = |⃗ n1·⃗ n2|
+∥⃗ n1∥∥⃗ n2∥ = |0+1+0|√
+2·
+√
+2 = 1
+2 , donc θ = 60◦.
+4. Résoudre 2x− y + z = 3 et x + 2y− 3z = 1 par Gauss.
+L2← 2L2− L1: 5y− 7z =−1. Paramétrer z = t: y = −1+7t
+5 , x = 3−(−1+7t)/5+(−t)·5
+2 ... Vecteur directeur
+⃗ u= ⃗ n1× ⃗ n2 = (3− 2, 1 + 6, 4 + 1) = (1 , 7, 5). Point: z = 0,−y = 3 (de π1) et x + 2(−3) = 1⇒ x = 7.
+D : (x, y, z) = (7 ,−3, 0) + t(1, 7, 5).
+5. ⃗ u= (2, 1, 3);−−→
+P0P = (−1, 2, 2); ⃗ n= ⃗ u×−−→
+P0P = (−4,−7, 5).
+Équation: 4x + 7y− 5z = 9.
+6. cos θ = |⃗ n1·⃗ n2|
+∥⃗ n1∥∥⃗ n2∥ = 1
+6 ; θ≈ 80,4◦.
+7. ⃗ n= ⃗ n1× ⃗ n2 = (1, 1, 1)× (2,−1, 3) = (4 ,−1,−3).
+Plan: 4x− y− 3z = 2.
+69
+
+========== PAGE 70 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Leçon 56 — Distance entre un point et un plan
+1. d(P, π) = |ax0+by0+cz0−d|
+∥⃗ n∥ = |1+0+0−1|√
+3 = 0. Le point est dans le plan!
+2. ⃗ n= (2,−2, 1), P = (2,−1, 3).
+d = |2(2)−2(−1)+1(3)−4|√4+4+1 = |4+2+3−4|
+3 = 5
+3≈ 1,67 unités. H = P− 5
+3· (2,−2,1)
+3 = (2,−1, 3)−(10/9,−10/9, 5/9) =
+(8/9,−1/9 +9/9, ...) = ( 8
+9 , 1
+9 , 22
+9 ).
+3. Plan parallèle: 3x− 4y + 5z = d; d(d, 10) = |d−10|√
+50 = 2⇒| d− 10| = 2
+√
+50 = 10
+√
+2.
+d = 10± 10
+√
+2.
+4. Prendre P1 = (5, 0, 0)∈ π1 et calculer d(P1, π2).
+d = |1(5)−2(0)+2(0)+4|
+3 = 9
+3 = 3 unités.
+5. Droite⊥ par P : (3 + t, 2 + 2t,−1− 2t) dans π: 9t + 9 = 9⇒ t = 0.
+H = P = (3, 2,−1); P∈ π (vérif: 3 + 4 + 2 = 9 ✓); d(P, π) = 0.
+6. d = |3−8−15+2|√
+50 = 18
+5
+√
+2 = 9
+√
+2
+5 ≈ 2,55 unites.
+7. Constante médiane: c = 6+(−3)
+2 = 3
+2 .
+Plan: 4x− 2y + 4z = 3.
+Leçon 57 — Interactions entre droites et plans — partie 1
+1. La droite perpendiculaire à π a pour vecteur directeur ⃗ n= (1,−2, 3).
+D : (x, y, z) = (0 , 0, 0) + t(1,−2, 3), t∈ R.
+2. Angle droite-plan: sin α = |⃗ u·⃗ n|
+∥⃗ u∥∥⃗ n∥ .
+⃗ u= (1, 1, 1), ⃗ n= (1, 1, 0). sin α = |1+1+0|√
+3·
+√
+2 = 2√
+6 . α = arcsin
+(
+2√
+6
+)
+≈ 54,7◦.
+3. Trouver ⃗ utel que ⃗ u· ⃗ n= 0 (parallèle au plan).
+⃗ n= (2, 1,−1). Choisir ⃗ u= (1, 0, 2): 2 + 0− 2 = 0 . ✓D : (x, y, z) = (1 , 0, 2) + t(1, 0, 2).
+4. a) Perpendiculaire: directeur ⃗ n= (1, 2, 1); passe par Q(2, 1, 3). D⊥ : (x, y, z) = (2 , 1, 3) + t(1, 2, 1).
+b) Angle = 90 ◦ (droite perpendiculaire au plan). c) Substituer dans π: (2 + t) + 2(1 + 2 t) + (3 + t) =
+6⇒ 2 + t + 2 + 4t + 3 + t = 6⇒ 6t + 7 = 6⇒ t =− 1
+6 . Q′ = (2− 1
+6 , 1− 1
+3 , 3− 1
+6 ) = ( 11
+6 , 2
+3 , 17
+6 ).
+5. x = 1 + 2 t, y =−1 + t, z =−t dans π: 3t = 4⇒ t = 4
+3 .
+70
+
+========== PAGE 71 ==========
+Démarches et réponses Algèbre linéaire et géométrie vectorielle — Solutions
+Q =
+(11
+3 , 1
+3 ,− 4
+3
+)
+.
+6. ⃗ u· ⃗ n= 1− 1 + 1 = 1̸= 0: oblique.
+sin α = 1√
+3·
+√
+3 = 1
+3 ; α≈ 19,5◦.
+7. ⃗ n= ⃗ u1× ⃗ u2 = (1, 2,−1)× (2,−1, 1) = (1 , 3,−5).
+Plan par (0, 1,−1): x + 3y− 5z = 8.
+Leçon 58 — Interactions entre droites et plans — partie 2
+1. Le point le plus proche est le pied de la perpendiculaire depuis l’origine vers π. Droite: (x, y, z) =
+t(1, 1, 1); substituer: 3t = 3⇒ t = 1.
+Q = (1, 1, 1).
+2. Trouver ⃗ n= ⃗AB× ⃗AC, puis l’équation cartésienne.
+⃗AB = (−1, 2, 0), ⃗AC = (−1, 0, 3). ⃗ n= (6, 3, 2). 6(x− 1) + 3(y− 0) + 2(z− 0) = 0⇒ 6x + 3y + 2z = 6.
+3. Substituer la paramétrisation de D dans π: (1 + t) + (0 + t) + (2− t) = 4⇒ 3 + t = 4⇒ t = 1.
+Q = (1 + 1 , 0 + 1, 2− 1) = ( 2, 1, 1).
+4. D1 passe par Q(3, 1, 0), est perpendiculaire à D et parallèle à π.
+Vecteur directeur ⃗ vdoit satisfaire: ⃗ v· ⃗ uD = 0 (perpendiculaire à D) et ⃗ v· ⃗ nπ = 0 (parallèle à π).
+⃗ uD = (1 , 2, 3), ⃗ nπ = (1 ,−1, 2). ⃗ v= ⃗ uD× ⃗ nπ = (4 + 3 ,−2− 3,−1− 2) = (7 ,−5,−3). Vérif: ⃗ v· ⃗ uD =
+7−10−9 =−12̸= 0... Recalculer: (2·2−3·(−1), 3·1−1·2, 1·(−1)−2·1) = (4+3 , 3−2,−1−2) = (7 , 1,−3).
+Vérif: 7 + 2− 9 = 0 . ✓ 7− 1− 6 = 0 . ✓D1 : x− 3
+7 = y− 1
+1 = z
+−3 .
+5. ⃗ u= (1, 0, 1);−−→
+P0P = (1, 1, 3); ⃗ n= ⃗ u×−−→
+P0P = (−1,−2, 1).
+Équation: x + 2y− z = 2. Vérif P : 1 + 4− 3 = 2 . ✓
+6. 2(2 + t)− (t) + 3(1− t) = 7⇒ 7− 2t = 7⇒ t = 0. Point: (2, 0, 1) (deja dans π).
+7. y = 1, z = 1, x = 1: point (1, 1, 1). Plan supplementaire: choisir ⃗ n= (1, 0,−1); plan x− z = 0.
+Bonne étude! ( ⋆ facile ⋆⋆ intermédiaire ⋆⋆⋆ diﬀicile)
+71
+
+========== PAGE 72 ==========
+Page intentionnellement laissée vierge.
