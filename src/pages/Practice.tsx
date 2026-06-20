@@ -4,8 +4,9 @@ import clsx from "clsx";
 import type { Exercise } from "../data/exercises";
 import { exercises } from "../data/exercises";
 import { getChaptersForTopic, getLessonById } from "../data/lessons";
+import { topics } from "../data/topics";
 import { Link } from "react-router-dom";
-import TopicFilter from "../components/practice/TopicFilter";
+import TopicPicker from "../components/practice/TopicPicker";
 import LessonNav from "../components/practice/LessonNav";
 import ExerciseCard from "../components/practice/ExerciseCard";
 import AnimatedSection from "../components/ui/AnimatedSection";
@@ -27,12 +28,17 @@ function getExerciseKind(ex: Exercise): ExerciseKind {
 
 export default function Practice() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTopic = searchParams.get("topic") ?? "all";
+  const activeTopic = searchParams.get("topic");
   const activeLesson = searchParams.get("lesson");
   const activeKind = (searchParams.get("kind") as ExerciseKind | null) ?? "exercise";
 
+  const currentTopic = useMemo(
+    () => topics.find((t) => t.id === activeTopic) ?? null,
+    [activeTopic]
+  );
+
   const hasChapters = useMemo(
-    () => getChaptersForTopic(activeTopic).length > 0,
+    () => (activeTopic ? getChaptersForTopic(activeTopic).length > 0 : false),
     [activeTopic]
   );
 
@@ -43,9 +49,8 @@ export default function Practice() {
     if (activeLesson) {
       return exercises.filter((e) => e.lessonId === activeLesson);
     }
-    if (activeTopic === "all") {
-      // Skip lesson-based exercises in the "all" view — they live inside their lessons.
-      return exercises.filter((e) => !e.lessonId);
+    if (!activeTopic) {
+      return [];
     }
     if (hasChapters) {
       // The topic has chapters; we render LessonNav instead of an exercise grid.
@@ -71,15 +76,20 @@ export default function Practice() {
     return lessonAll.filter((ex) => getExerciseKind(ex) === activeKind);
   }, [lessonAll, activeLesson, activeKind]);
 
-  function handleTopicChange(topicId: string) {
-    if (topicId === "all") {
-      searchParams.delete("topic");
-    } else {
-      searchParams.set("topic", topicId);
-    }
+  function handleTopicSelect(topicId: string) {
+    searchParams.set("topic", topicId);
     searchParams.delete("lesson");
     searchParams.delete("kind");
     setSearchParams(searchParams, { replace: true });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function clearTopic() {
+    searchParams.delete("topic");
+    searchParams.delete("lesson");
+    searchParams.delete("kind");
+    setSearchParams(searchParams, { replace: true });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function openLesson(lessonId: string) {
@@ -108,19 +118,57 @@ export default function Practice() {
   const showLessonNav = hasChapters && !activeLesson;
   const showLessonHeader = hasChapters && !!activeLesson && lesson;
 
+  // Topic picker view: shown when no topic is selected yet
+  if (!activeTopic) {
+    return (
+      <div className="container-page py-12 sm:py-16">
+        <AnimatedSection className="max-w-2xl">
+          <h1 className="text-balance text-4xl font-bold sm:text-5xl">Exercices</h1>
+          <p className="mt-4 text-balance text-lg text-ink-600">
+            Choisissez une matière pour commencer. Chaque parcours vous guide à
+            travers les leçons à votre rythme, avec des solutions détaillées
+            étape par étape.
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1} className="mt-10">
+          <TopicPicker onTopicSelect={handleTopicSelect} />
+        </AnimatedSection>
+      </div>
+    );
+  }
+
   return (
     <div className="container-page py-12 sm:py-16">
-      <AnimatedSection className="max-w-2xl">
-        <h1 className="text-balance text-4xl font-bold sm:text-5xl">Exercices</h1>
-        <p className="mt-4 text-balance text-lg text-ink-600">
-          Choisissez une matière et avancez à votre rythme. Chaque carte
-          s'ouvre sur une solution complète étape par étape quand vous êtes
-          prêt à vérifier votre raisonnement.
-        </p>
+      <AnimatedSection>
+        <button
+          type="button"
+          onClick={clearTopic}
+          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-medium text-brand-700 transition-colors duration-200 hover:bg-brand-50"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M15 18l-6-6 6-6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          Changer de matière
+        </button>
       </AnimatedSection>
 
-      <AnimatedSection delay={0.1} className="mt-8">
-        <TopicFilter active={activeTopic} onChange={handleTopicChange} />
+      <AnimatedSection delay={0.05} className="mt-6 max-w-2xl">
+        <h1 className="text-balance text-4xl font-bold sm:text-5xl">
+          {currentTopic?.name ?? "Exercices"}
+        </h1>
+        {currentTopic && (
+          <p className="mt-4 text-balance text-lg text-ink-600">
+            {currentTopic.description}
+          </p>
+        )}
       </AnimatedSection>
 
       {showLessonHeader && lesson && (

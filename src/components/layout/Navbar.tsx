@@ -41,12 +41,6 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
-            <NavLink
-              to="/practice"
-              className="ml-2 cursor-pointer rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-brand-700"
-            >
-              Commencer
-            </NavLink>
           </div>
 
           <button

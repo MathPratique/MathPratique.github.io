@@ -14,7 +14,7 @@ const features = [
     icon: "M5 13l4 4L19 7",
   },
   {
-    title: "Niveau universitaire",
+    title: "Niveau collégial et universitaire",
     description:
       "Les problèmes sont rédigés pour les étudiants qui ont dépassé les bases et veulent du contenu à la hauteur de leur niveau.",
     icon: "M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4",

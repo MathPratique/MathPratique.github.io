@@ -139,14 +139,8 @@ export default function Hero() {
                 to="/practice"
                 className="cursor-pointer rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-colors duration-200 hover:bg-brand-700"
               >
-                Commencer les exercices
+                Choisir une matière
               </Link>
-              <a
-                href="#topics"
-                className="cursor-pointer rounded-full border border-brand-200 bg-white px-7 py-3.5 text-sm font-semibold text-brand-700 transition-colors duration-200 hover:border-brand-300 hover:bg-brand-50"
-              >
-                Parcourir les matières
-              </a>
             </div>
           </div>
 
