@@ -19,6 +19,10 @@ export const chapters: Chapter[] = [
   { id: "espaces", name: "Espaces vectoriels", topicId: "linear-algebra" },
   { id: "produits-3d", name: "Produits et géométrie 3D", topicId: "linear-algebra" },
   { id: "droites-plans", name: "Droites et plans dans l'espace", topicId: "linear-algebra" },
+
+  // Probabilités et statistiques
+  { id: "analyse-combinatoire", name: "Analyse combinatoire", topicId: "probability" },
+  { id: "probabilites", name: "Probabilités", topicId: "probability" },
 ];
 
 export const lessons: Lesson[] = [
@@ -87,6 +91,12 @@ export const lessons: Lesson[] = [
   { id: "L56", number: 56, name: "Distance entre un point et un plan", chapterId: "droites-plans" },
   { id: "L57", number: 57, name: "Interactions entre droites et plans — partie 1", chapterId: "droites-plans" },
   { id: "L58", number: 58, name: "Interactions entre droites et plans — partie 2", chapterId: "droites-plans" },
+
+  // Probabilités et statistiques — Analyse combinatoire
+  { id: "PA1", number: 1, name: "Combinaisons et permutations", chapterId: "analyse-combinatoire" },
+
+  // Probabilités et statistiques — Probabilités
+  { id: "PP1", number: 1, name: "Calcul de probabilités", chapterId: "probabilites" },
 ];
 
 export function getChapterById(id: string): Chapter | undefined {

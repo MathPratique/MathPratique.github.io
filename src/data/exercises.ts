@@ -75,6 +75,7 @@ const manualExercises: Exercise[] = [
   {
     id: "prob-bayes",
     topicId: "probability",
+    lessonId: "PP1",
     title: "Appliquer le théorème de Bayes",
     difficulty: "Avancé",
     prompt:
@@ -91,6 +92,7 @@ const manualExercises: Exercise[] = [
   {
     id: "prob-comb-committee",
     topicId: "probability",
+    lessonId: "PA1",
     title: "Former un comité (combinaison simple)",
     difficulty: "Fondamental",
     prompt:
@@ -107,6 +109,7 @@ const manualExercises: Exercise[] = [
   {
     id: "prob-comb-anagrams",
     topicId: "probability",
+    lessonId: "PA1",
     title: "Compter les anagrammes de MISSISSIPPI",
     difficulty: "Intermédiaire",
     prompt:
@@ -123,6 +126,7 @@ const manualExercises: Exercise[] = [
   {
     id: "prob-comb-derangements",
     topicId: "probability",
+    lessonId: "PA1",
     title: "Le problème des chapeaux (dérangements)",
     difficulty: "Avancé",
     prompt:
@@ -135,6 +139,396 @@ const manualExercises: Exercise[] = [
       "Multiplier par 5! = 120 : D(5) = 120 · (44 / 120) = 44 distributions valides.",
     ],
     answer: "D(5) = 44 manières",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Analyse combinatoire — 5 exercices Intermédiaire
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "prob-comb-arrangement-bureau",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Arrangement d'un bureau exécutif",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Dans un club de 12 membres, on doit choisir un président, un vice-président et un secrétaire. De combien de façons peut-on former ce bureau exécutif si une même personne ne peut occuper qu'un seul poste ?",
+    steps: [
+      "Reconnaître qu'on choisit 3 personnes pour des postes distincts : l'ordre compte, c'est un arrangement A(n, k).",
+      "Identifier les paramètres : n = 12 et k = 3.",
+      "Écrire la formule : A(n, k) = n! / (n − k)!.",
+      "Substituer : A(12, 3) = 12! / 9! = 12 · 11 · 10.",
+      "Calculer : 12 · 11 · 10 = 1 320 bureaux distincts.",
+    ],
+    answer: "A(12, 3) = 1 320 façons",
+  },
+  {
+    id: "prob-comb-table-ronde",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Permutations circulaires (table ronde)",
+    difficulty: "Intermédiaire",
+    prompt:
+      "De combien de façons peut-on asseoir 8 personnes autour d'une table ronde ? (Deux dispositions obtenues l'une de l'autre par rotation sont considérées identiques.)",
+    steps: [
+      "Reconnaître un problème de permutations circulaires.",
+      "Pour n personnes autour d'une table ronde, le nombre d'arrangements est (n − 1)!.",
+      "Intuitivement : on fixe une personne pour éliminer les rotations équivalentes, puis on permute les 7 autres.",
+      "Substituer : (8 − 1)! = 7!.",
+      "Calculer : 7! = 5 040 dispositions distinctes.",
+    ],
+    answer: "7! = 5 040 façons",
+  },
+  {
+    id: "prob-comb-comite-contrainte",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Comité avec contrainte",
+    difficulty: "Intermédiaire",
+    prompt:
+      "On doit former un comité de 5 personnes parmi 6 femmes et 4 hommes. Combien de comités peut-on former si le comité doit contenir exactement 3 femmes et 2 hommes ?",
+    steps: [
+      "Décomposer le choix en deux étapes indépendantes : choisir les femmes, puis choisir les hommes.",
+      "Nombre de façons de choisir 3 femmes parmi 6 : C(6, 3) = 6! / (3! · 3!) = 20.",
+      "Nombre de façons de choisir 2 hommes parmi 4 : C(4, 2) = 4! / (2! · 2!) = 6.",
+      "Par le principe de multiplication, le total est C(6, 3) · C(4, 2).",
+      "Calculer : 20 · 6 = 120 comités distincts.",
+    ],
+    answer: "C(6, 3) · C(4, 2) = 120 comités",
+  },
+  {
+    id: "prob-comb-binome-newton",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Coefficient du binôme de Newton",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Dans le développement de (x + y)¹⁰, quel est le coefficient du terme contenant x⁴y⁶ ?",
+    steps: [
+      "Rappeler la formule du binôme de Newton : (x + y)ⁿ = Σ C(n, k) · xⁿ⁻ᵏ · yᵏ.",
+      "Identifier le terme cherché : x⁴y⁶ correspond à n − k = 4 et k = 6 (avec n = 10).",
+      "Le coefficient est donc C(10, 6).",
+      "Calculer : C(10, 6) = 10! / (6! · 4!) = (10 · 9 · 8 · 7) / (4 · 3 · 2 · 1).",
+      "Simplifier : 5 040 / 24 = 210.",
+    ],
+    answer: "C(10, 6) = 210",
+  },
+  {
+    id: "prob-comb-mots-code",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Mots de code à lettres distinctes",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Combien de mots de code de 4 lettres distinctes peut-on former en utilisant les 26 lettres de l'alphabet, si le mot doit commencer par une voyelle (A, E, I, O, U, Y) ?",
+    steps: [
+      "Décomposer le problème : la 1ʳᵉ lettre est une voyelle, les 3 suivantes sont des consonnes ou voyelles distinctes des choix précédents.",
+      "Choisir la 1ʳᵉ lettre (voyelle) : 6 choix possibles.",
+      "Choisir la 2ᵉ lettre parmi les 25 restantes (toutes lettres sauf la 1ʳᵉ) : 25 choix.",
+      "Continuer pour la 3ᵉ (24 choix) et la 4ᵉ (23 choix).",
+      "Par le principe de multiplication : 6 · 25 · 24 · 23 = 82 800 mots de code.",
+    ],
+    answer: "6 · A(25, 3) = 82 800 mots",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Probabilités — 5 exercices Intermédiaire
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "prob-indep-deux-des",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Événements indépendants — deux dés",
+    difficulty: "Intermédiaire",
+    prompt:
+      "On lance deux dés équilibrés à 6 faces. Quelle est la probabilité d'obtenir un 6 au premier dé ET un nombre pair au second dé ?",
+    steps: [
+      "Identifier les deux événements : A = « 6 au premier dé », B = « nombre pair au second dé ».",
+      "Les deux lancers sont indépendants, donc P(A ∩ B) = P(A) · P(B).",
+      "Calculer P(A) = 1/6 (un seul cas favorable sur 6).",
+      "Calculer P(B) = 3/6 = 1/2 (trois cas pairs : 2, 4, 6).",
+      "Multiplier : P(A ∩ B) = (1/6) · (1/2) = 1/12 ≈ 0,0833 (environ 8,33 %).",
+    ],
+    answer: "1/12 ≈ 8,33 %",
+  },
+  {
+    id: "prob-union-cartes",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Union d'événements (jeu de cartes)",
+    difficulty: "Intermédiaire",
+    prompt:
+      "On tire une carte d'un jeu de 52 cartes. Quelle est la probabilité de tirer un cœur OU un roi ?",
+    steps: [
+      "Identifier les événements : C = « cœur » (13 cartes), R = « roi » (4 cartes).",
+      "Les événements ne sont PAS incompatibles : le roi de cœur appartient aux deux.",
+      "Utiliser la formule générale : P(C ∪ R) = P(C) + P(R) − P(C ∩ R).",
+      "Calculer chaque terme : P(C) = 13/52, P(R) = 4/52, P(C ∩ R) = 1/52 (le roi de cœur).",
+      "Additionner : P(C ∪ R) = (13 + 4 − 1) / 52 = 16/52 = 4/13 ≈ 0,3077 (environ 30,77 %).",
+    ],
+    answer: "16/52 = 4/13 ≈ 30,77 %",
+  },
+  {
+    id: "prob-binomiale-piles",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Loi binomiale — pile ou face",
+    difficulty: "Intermédiaire",
+    prompt:
+      "On lance une pièce équilibrée 10 fois. Quelle est la probabilité d'obtenir exactement 6 piles ?",
+    steps: [
+      "Reconnaître un schéma de Bernoulli : n = 10 lancers indépendants, deux issues (pile ou face), p = 1/2.",
+      "Le nombre de piles suit une loi binomiale B(n = 10, p = 0,5).",
+      "Appliquer la formule : P(X = k) = C(n, k) · pᵏ · (1 − p)ⁿ⁻ᵏ.",
+      "Pour k = 6 : P(X = 6) = C(10, 6) · (0,5)⁶ · (0,5)⁴ = 210 · (0,5)¹⁰.",
+      "Calculer : 210 · (1/1024) = 210/1024 ≈ 0,2051 (environ 20,51 %).",
+    ],
+    answer: "210/1024 ≈ 20,51 %",
+  },
+  {
+    id: "prob-esperance-jeu",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Espérance mathématique d'un jeu",
+    difficulty: "Intermédiaire",
+    prompt:
+      "On joue à un jeu où l'on lance un dé équilibré à 6 faces. Si le résultat est 6, on gagne 10 $. Si le résultat est 1, on perd 4 $. Sinon, il ne se passe rien. Quelle est l'espérance de gain par lancer ?",
+    steps: [
+      "Identifier la variable aléatoire X = gain (en $) à chaque lancer.",
+      "Lister les valeurs possibles et leurs probabilités : P(X = 10) = 1/6, P(X = −4) = 1/6, P(X = 0) = 4/6.",
+      "Appliquer la formule de l'espérance : E(X) = Σ xᵢ · P(X = xᵢ).",
+      "Substituer : E(X) = 10 · (1/6) + (−4) · (1/6) + 0 · (4/6) = (10 − 4) / 6.",
+      "Calculer : E(X) = 6/6 = 1 $.",
+    ],
+    answer: "E(X) = 1 $ par lancer (jeu favorable au joueur)",
+  },
+  {
+    id: "prob-cond-arbre",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Probabilité conditionnelle — diagramme en arbre",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Une urne contient 5 boules rouges et 3 boules bleues. On tire 2 boules sans remise. Quelle est la probabilité que la 2ᵉ boule tirée soit rouge, sachant que la 1ʳᵉ était bleue ?",
+    steps: [
+      "Identifier les événements : B₁ = « 1ʳᵉ boule bleue », R₂ = « 2ᵉ boule rouge ».",
+      "On cherche P(R₂ | B₁) — la probabilité conditionnelle.",
+      "Si la 1ʳᵉ boule est bleue, il reste 7 boules dans l'urne : 5 rouges et 2 bleues.",
+      "La probabilité de tirer une rouge parmi ces 7 est donc P(R₂ | B₁) = 5/7.",
+      "Calculer la valeur décimale : 5/7 ≈ 0,7143 (environ 71,43 %).",
+    ],
+    answer: "5/7 ≈ 71,43 %",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Analyse combinatoire — 3 exercices Fondamental
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "prob-comb-factorielle",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Calculer une factorielle",
+    difficulty: "Fondamental",
+    prompt: "Calculer 7! (sept factorielle).",
+    steps: [
+      "Rappeler la définition : n! = n · (n − 1) · (n − 2) · … · 2 · 1.",
+      "Écrire les facteurs : 7! = 7 · 6 · 5 · 4 · 3 · 2 · 1.",
+      "Multiplier deux à deux : 7 · 6 = 42, puis 42 · 5 = 210.",
+      "Continuer : 210 · 4 = 840, puis 840 · 3 = 2 520.",
+      "Finir : 2 520 · 2 = 5 040 (multiplier par 1 ne change rien).",
+    ],
+    answer: "7! = 5 040",
+  },
+  {
+    id: "prob-comb-livres",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Disposer des livres sur une étagère",
+    difficulty: "Fondamental",
+    prompt:
+      "De combien de façons peut-on placer 5 livres distincts côte à côte sur une étagère ?",
+    steps: [
+      "Reconnaître une permutation : on dispose tous les livres dans un ordre.",
+      "Le nombre de permutations de n objets distincts est n!.",
+      "Substituer : 5! = 5 · 4 · 3 · 2 · 1.",
+      "Calculer : 120 dispositions possibles.",
+    ],
+    answer: "5! = 120 façons",
+  },
+  {
+    id: "prob-comb-paire",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Choisir une paire dans un groupe",
+    difficulty: "Fondamental",
+    prompt:
+      "Combien de paires distinctes peut-on former en choisissant 2 personnes parmi un groupe de 6 ?",
+    steps: [
+      "On choisit 2 personnes sans tenir compte de l'ordre : c'est une combinaison C(n, k).",
+      "Identifier n = 6 et k = 2.",
+      "Appliquer la formule : C(n, k) = n! / (k! · (n − k)!).",
+      "Substituer : C(6, 2) = 6! / (2! · 4!) = (6 · 5) / (2 · 1).",
+      "Calculer : 30 / 2 = 15 paires distinctes.",
+    ],
+    answer: "C(6, 2) = 15 paires",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Analyse combinatoire — 3 exercices Avancé
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "prob-comb-chemins-grille",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Chemins dans une grille",
+    difficulty: "Avancé",
+    prompt:
+      "Sur une grille rectangulaire de 5 colonnes par 4 lignes, on part du coin inférieur gauche et on veut atteindre le coin supérieur droit en se déplaçant uniquement d'une case vers la droite (D) ou d'une case vers le haut (H). Combien de chemins distincts existe-t-il ?",
+    steps: [
+      "Pour atteindre le coin opposé, il faut exactement 5 déplacements D et 4 déplacements H, dans un ordre quelconque.",
+      "Un chemin est donc une séquence de 9 lettres composée de 5 D et 4 H.",
+      "Le nombre de séquences distinctes est C(9, 4) (choisir où placer les 4 H parmi les 9 positions).",
+      "Calculer C(9, 4) = 9! / (4! · 5!) = (9 · 8 · 7 · 6) / (4 · 3 · 2 · 1).",
+      "Simplifier : 3 024 / 24 = 126 chemins distincts.",
+    ],
+    answer: "C(9, 4) = 126 chemins",
+  },
+  {
+    id: "prob-comb-inclusion-exclusion",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Principe d'inclusion-exclusion (3 ensembles)",
+    difficulty: "Avancé",
+    prompt:
+      "Dans un sondage auprès de 100 étudiants, 60 aiment les maths, 50 aiment la physique et 40 aiment la chimie. Parmi eux, 30 aiment maths ET physique, 25 aiment maths ET chimie, 20 aiment physique ET chimie, et 15 aiment les trois matières. Combien d'étudiants aiment au moins une des trois matières ?",
+    steps: [
+      "Identifier les ensembles : M = aiment les maths, P = aiment la physique, C = aiment la chimie.",
+      "Appliquer le principe d'inclusion-exclusion à 3 ensembles : |M ∪ P ∪ C| = |M| + |P| + |C| − |M ∩ P| − |M ∩ C| − |P ∩ C| + |M ∩ P ∩ C|.",
+      "Substituer : |M ∪ P ∪ C| = 60 + 50 + 40 − 30 − 25 − 20 + 15.",
+      "Calculer la somme des trois premiers : 60 + 50 + 40 = 150.",
+      "Soustraire les intersections deux à deux : 150 − 30 − 25 − 20 = 75, puis ajouter 15 : 75 + 15 = 90 étudiants.",
+    ],
+    answer: "|M ∪ P ∪ C| = 90 étudiants",
+  },
+  {
+    id: "prob-comb-partitions",
+    topicId: "probability",
+    lessonId: "PA1",
+    title: "Répartir des étudiants en équipes",
+    difficulty: "Avancé",
+    prompt:
+      "On veut répartir 12 étudiants en 3 équipes distinctes (A, B, C) de 4 étudiants chacune. De combien de façons peut-on faire cette répartition ?",
+    steps: [
+      "Choisir les 4 étudiants de l'équipe A parmi les 12 : C(12, 4) façons.",
+      "Choisir les 4 étudiants de l'équipe B parmi les 8 restants : C(8, 4) façons.",
+      "Les 4 derniers vont automatiquement dans l'équipe C : C(4, 4) = 1 façon.",
+      "Par le principe de multiplication : C(12, 4) · C(8, 4) · C(4, 4) = 495 · 70 · 1.",
+      "Calculer : 495 · 70 = 34 650 répartitions distinctes.",
+    ],
+    answer: "C(12, 4) · C(8, 4) · C(4, 4) = 34 650 façons",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Probabilités — 3 exercices Fondamental
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "prob-fond-de",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Probabilité d'un événement simple",
+    difficulty: "Fondamental",
+    prompt:
+      "On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un 6 ?",
+    steps: [
+      "Lister les issues possibles : {1, 2, 3, 4, 5, 6}. Il y a 6 issues équiprobables.",
+      "Identifier l'événement A = « obtenir un 6 ». Il y a 1 cas favorable.",
+      "Appliquer la définition de la probabilité : P(A) = (cas favorables) / (cas possibles).",
+      "Substituer : P(A) = 1/6.",
+      "Calculer la valeur décimale : 1/6 ≈ 0,1667 (environ 16,67 %).",
+    ],
+    answer: "1/6 ≈ 16,67 %",
+  },
+  {
+    id: "prob-fond-complement",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Probabilité du complément",
+    difficulty: "Fondamental",
+    prompt:
+      "On tire une carte d'un jeu standard de 52 cartes. Quelle est la probabilité de NE PAS tirer un as ?",
+    steps: [
+      "Identifier l'événement A = « tirer un as ». Il y a 4 as dans le jeu.",
+      "Calculer P(A) = 4/52 = 1/13.",
+      "Appliquer la règle du complément : P(non A) = 1 − P(A).",
+      "Substituer : P(non A) = 1 − 1/13 = 12/13.",
+      "Calculer : 12/13 ≈ 0,9231 (environ 92,31 %).",
+    ],
+    answer: "12/13 ≈ 92,31 %",
+  },
+  {
+    id: "prob-fond-cartes-coeur",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Tirer un cœur (jeu de cartes)",
+    difficulty: "Fondamental",
+    prompt:
+      "On tire une carte d'un jeu standard de 52 cartes. Quelle est la probabilité de tirer un cœur ?",
+    steps: [
+      "Compter le nombre total de cartes : 52.",
+      "Compter le nombre de cœurs : 13 (un par valeur, de l'as au roi).",
+      "Appliquer la définition : P(cœur) = 13/52.",
+      "Simplifier la fraction : 13/52 = 1/4.",
+      "Calculer : 1/4 = 0,25 (exactement 25 %).",
+    ],
+    answer: "1/4 = 25 %",
+  },
+  // ─────────────────────────────────────────────────────────────────
+  // Probabilités — 3 exercices Avancé
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "prob-av-bayes-3",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Bayes avec trois hypothèses",
+    difficulty: "Avancé",
+    prompt:
+      "Trois machines produisent des pièces : la machine A produit 50 % des pièces, B en produit 30 % et C en produit 20 %. Le taux de défaut est de 1 % pour A, 2 % pour B et 3 % pour C. On choisit une pièce au hasard et elle est défectueuse. Quelle est la probabilité qu'elle provienne de la machine A ?",
+    steps: [
+      "Définir les événements : A, B, C = pièce provient de la machine A/B/C ; D = pièce défectueuse.",
+      "Écrire le théorème de Bayes : P(A | D) = P(D | A) · P(A) / P(D).",
+      "Calculer le numérateur : P(D | A) · P(A) = 0,01 × 0,50 = 0,005.",
+      "Calculer P(D) par la probabilité totale : 0,01·0,50 + 0,02·0,30 + 0,03·0,20 = 0,005 + 0,006 + 0,006 = 0,017.",
+      "Diviser : P(A | D) = 0,005 / 0,017 ≈ 0,2941 (environ 29,41 %).",
+    ],
+    answer: "P(A | D) ≈ 29,41 % (5/17 exactement)",
+  },
+  {
+    id: "prob-av-binomiale-cumul",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Loi binomiale — probabilité cumulative",
+    difficulty: "Avancé",
+    prompt:
+      "Un test à choix multiples comporte 8 questions, chacune avec 4 choix de réponse (1 seul correct). Un étudiant répond complètement au hasard. Quelle est la probabilité qu'il obtienne au moins 6 bonnes réponses ?",
+    steps: [
+      "Modèle : X = nombre de bonnes réponses suit B(n = 8, p = 1/4 = 0,25).",
+      "On cherche P(X ≥ 6) = P(X = 6) + P(X = 7) + P(X = 8).",
+      "Calculer P(X = 6) = C(8, 6) · (0,25)⁶ · (0,75)² = 28 · (1/4 096) · (9/16) ≈ 0,003845.",
+      "Calculer P(X = 7) = C(8, 7) · (0,25)⁷ · (0,75)¹ = 8 · (1/16 384) · 0,75 ≈ 0,000366.",
+      "Calculer P(X = 8) = (0,25)⁸ ≈ 0,0000153 ; additionner : P(X ≥ 6) ≈ 0,003845 + 0,000366 + 0,0000153 ≈ 0,004227 (environ 0,42 %).",
+    ],
+    answer: "P(X ≥ 6) ≈ 0,42 %",
+  },
+  {
+    id: "prob-av-esperance-variance",
+    topicId: "probability",
+    lessonId: "PP1",
+    title: "Espérance et variance d'une loi binomiale",
+    difficulty: "Avancé",
+    prompt:
+      "Un archer atteint sa cible avec une probabilité p = 0,8 à chaque tir. Il effectue 20 tirs indépendants. Calculer l'espérance et la variance du nombre X de cibles atteintes.",
+    steps: [
+      "Reconnaître que X suit une loi binomiale B(n = 20, p = 0,8).",
+      "Pour une loi binomiale, l'espérance est E(X) = n · p.",
+      "Calculer : E(X) = 20 · 0,8 = 16 cibles en moyenne.",
+      "Pour la variance, la formule est Var(X) = n · p · (1 − p).",
+      "Calculer : Var(X) = 20 · 0,8 · 0,2 = 3,2 (écart-type σ = √3,2 ≈ 1,79).",
+    ],
+    answer: "E(X) = 16 cibles ; Var(X) = 3,2 (σ ≈ 1,79)",
   },
   // ─────────────────────────────────────────────────────────────────
   // Leçon 15 — QCM + 2 Vrai/Faux

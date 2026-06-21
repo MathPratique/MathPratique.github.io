@@ -16,10 +16,7 @@ export default function LessonNav({ topicId, onLessonClick }: LessonNavProps) {
         const lessons = getLessonsForChapter(chapter.id);
         return (
           <AnimatedSection key={chapter.id} delay={ci * 0.05}>
-            <div className="mb-5 flex items-baseline gap-3">
-              <span className="rounded-full bg-brand-100 px-3 py-1 font-mono text-xs font-semibold text-brand-700">
-                Chapitre {ci + 1}
-              </span>
+            <div className="mb-5">
               <h2 className="font-display text-2xl font-bold text-brand-900">
                 {chapter.name}
               </h2>
