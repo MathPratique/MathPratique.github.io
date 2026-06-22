@@ -20268,7 +20268,7 @@
       },
       {
         "type": "text",
-        "content": " deux vecteurs géométriques avec \\|"
+        "content": " deux vecteurs géométriques avec ‖"
       },
       {
         "type": "vec",
@@ -20281,7 +20281,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 3 et \\|"
+        "content": "‖ = 3 et ‖"
       },
       {
         "type": "vec",
@@ -20294,7 +20294,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 5. Encadrer \\|"
+        "content": "‖ = 5. Encadrer ‖"
       },
       {
         "type": "vec",
@@ -20320,14 +20320,14 @@
       },
       {
         "type": "text",
-        "content": "\\| en utilisant l'inégalité du triangle."
+        "content": "‖ en utilisant l'inégalité du triangle."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "Inégalité du triangle: |\\|"
+          "content": "Inégalité du triangle: |‖"
         },
         {
           "type": "vec",
@@ -20340,7 +20340,7 @@
         },
         {
           "type": "text",
-          "content": "\\|-\\|"
+          "content": "‖-‖"
         },
         {
           "type": "vec",
@@ -20353,7 +20353,7 @@
         },
         {
           "type": "text",
-          "content": "\\||≤\\|"
+          "content": "‖|≤‖"
         },
         {
           "type": "vec",
@@ -20379,7 +20379,7 @@
         },
         {
           "type": "text",
-          "content": "\\|≤\\|"
+          "content": "‖≤‖"
         },
         {
           "type": "vec",
@@ -20392,7 +20392,7 @@
         },
         {
           "type": "text",
-          "content": "\\|+\\|"
+          "content": "‖+‖"
         },
         {
           "type": "vec",
@@ -20405,13 +20405,13 @@
         },
         {
           "type": "text",
-          "content": "\\|."
+          "content": "‖."
         }
       ],
       [
         {
           "type": "text",
-          "content": "|3-5|≤\\|"
+          "content": "|3-5|≤‖"
         },
         {
           "type": "vec",
@@ -20437,7 +20437,7 @@
         },
         {
           "type": "text",
-          "content": "\\|≤ 3+5, donc 2≤\\|"
+          "content": "‖≤ 3+5, donc 2≤‖"
         },
         {
           "type": "vec",
@@ -20463,7 +20463,7 @@
         },
         {
           "type": "text",
-          "content": "\\|≤ 8."
+          "content": "‖≤ 8."
         }
       ]
     ],
@@ -20868,7 +20868,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Soit \\|"
+        "content": "Soit ‖"
       },
       {
         "type": "vec",
@@ -20881,7 +20881,7 @@
       },
       {
         "type": "text",
-        "content": "\\|=5, \\|"
+        "content": "‖=5, ‖"
       },
       {
         "type": "vec",
@@ -20894,7 +20894,7 @@
       },
       {
         "type": "text",
-        "content": "\\|=3. Encadrer \\|2"
+        "content": "‖=3. Encadrer |2"
       },
       {
         "type": "vec",
@@ -20920,14 +20920,14 @@
       },
       {
         "type": "text",
-        "content": "\\|."
+        "content": "‖."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "\\|2"
+          "content": "|2"
         },
         {
           "type": "vec",
@@ -20940,7 +20940,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=10; \\|-"
+          "content": "‖=10; |-"
         },
         {
           "type": "vec",
@@ -20953,7 +20953,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=3; |10-3|≤\\|2"
+          "content": "‖=3; |10-3|≤|2"
         },
         {
           "type": "vec",
@@ -20979,13 +20979,13 @@
         },
         {
           "type": "text",
-          "content": "\\|≤10+3."
+          "content": "‖≤10+3."
         }
       ],
       [
         {
           "type": "text",
-          "content": "7≤\\|2"
+          "content": "7≤|2"
         },
         {
           "type": "vec",
@@ -21011,7 +21011,7 @@
         },
         {
           "type": "text",
-          "content": "\\|≤13."
+          "content": "‖≤13."
         }
       ]
     ],
@@ -21027,7 +21027,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer l\\'identité du parallélogramme : \\|"
+        "content": "Démontrer l\\'identité du parallélogramme : ‖"
       },
       {
         "type": "vec",
@@ -21053,7 +21053,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -21061,7 +21061,7 @@
       },
       {
         "type": "text",
-        "content": "+\\|"
+        "content": "+‖"
       },
       {
         "type": "vec",
@@ -21087,7 +21087,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -21095,7 +21095,7 @@
       },
       {
         "type": "text",
-        "content": "=2(\\|"
+        "content": "=2(‖"
       },
       {
         "type": "vec",
@@ -21108,7 +21108,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -21116,7 +21116,7 @@
       },
       {
         "type": "text",
-        "content": "+\\|"
+        "content": "+‖"
       },
       {
         "type": "vec",
@@ -21129,7 +21129,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -21144,7 +21144,7 @@
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -21170,7 +21170,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21178,7 +21178,7 @@
         },
         {
           "type": "text",
-          "content": "=\\|"
+          "content": "=‖"
         },
         {
           "type": "vec",
@@ -21191,7 +21191,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21225,7 +21225,7 @@
         },
         {
           "type": "text",
-          "content": "+\\|"
+          "content": "+‖"
         },
         {
           "type": "vec",
@@ -21238,7 +21238,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21246,7 +21246,7 @@
         },
         {
           "type": "text",
-          "content": "; \\|"
+          "content": "; ‖"
         },
         {
           "type": "vec",
@@ -21272,7 +21272,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21280,7 +21280,7 @@
         },
         {
           "type": "text",
-          "content": "=\\|"
+          "content": "=‖"
         },
         {
           "type": "vec",
@@ -21293,7 +21293,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21327,7 +21327,7 @@
         },
         {
           "type": "text",
-          "content": "+\\|"
+          "content": "+‖"
         },
         {
           "type": "vec",
@@ -21340,7 +21340,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21348,7 +21348,7 @@
         },
         {
           "type": "text",
-          "content": ". Somme =2\\|"
+          "content": ". Somme =2‖"
         },
         {
           "type": "vec",
@@ -21361,7 +21361,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21369,7 +21369,7 @@
         },
         {
           "type": "text",
-          "content": "+2\\|"
+          "content": "+2‖"
         },
         {
           "type": "vec",
@@ -21382,7 +21382,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -21650,7 +21650,7 @@
         },
         {
           "type": "text",
-          "content": " sont colinéaires; \\|"
+          "content": " sont colinéaires; ‖"
         },
         {
           "type": "vec",
@@ -21663,7 +21663,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=5\\|"
+          "content": "‖=5‖"
         },
         {
           "type": "vec",
@@ -21676,7 +21676,7 @@
         },
         {
           "type": "text",
-          "content": "\\|; même sens."
+          "content": "‖; même sens."
         }
       ]
     ],
@@ -21823,7 +21823,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Dans un parallélépipède rectangle avec |"
+        "content": "Dans un parallélépipède rectangle avec ‖"
       },
       {
         "type": "vec",
@@ -21836,7 +21836,7 @@
       },
       {
         "type": "text",
-        "content": "| = 2, |"
+        "content": "‖ = 2, ‖"
       },
       {
         "type": "vec",
@@ -21849,7 +21849,7 @@
       },
       {
         "type": "text",
-        "content": "| = 5 et |"
+        "content": "‖ = 5 et ‖"
       },
       {
         "type": "vec",
@@ -21862,7 +21862,7 @@
       },
       {
         "type": "text",
-        "content": "| = 3, exprimer la diagonale principale "
+        "content": "‖ = 3, exprimer la diagonale principale "
       },
       {
         "type": "vec",
@@ -21975,7 +21975,7 @@
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -21991,7 +21991,7 @@
           "content": [
             {
               "type": "text",
-              "content": "\\|=√(2"
+              "content": "|=√(2"
             },
             {
               "type": "sup",
@@ -23943,7 +23943,7 @@
       },
       {
         "type": "text",
-        "content": " c) \\|"
+        "content": " c) ‖"
       },
       {
         "type": "vec",
@@ -23956,7 +23956,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       }
     ],
     "steps": [
@@ -24005,7 +24005,7 @@
           "content": [
             {
               "type": "text",
-              "content": "c) \\|(-2,4)\\|=√(4+16)=√(20)=2√(5)."
+              "content": "c) |(-2,4)|=√(4+16)=√(20)=2√(5)."
             }
           ]
         }
@@ -24043,7 +24043,7 @@
       [
         {
           "type": "text",
-          "content": "Diviser par la norme: \\|"
+          "content": "Diviser par la norme: ‖"
         },
         {
           "type": "vec",
@@ -24056,7 +24056,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=√(25+144)=13."
+          "content": "‖=√(25+144)=13."
         }
       ],
       [
@@ -24118,7 +24118,7 @@
       },
       {
         "type": "text",
-        "content": ". Montrer que \\|k"
+        "content": ". Montrer que |k"
       },
       {
         "type": "vec",
@@ -24131,7 +24131,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = |k|\\|"
+        "content": "‖ = |k|‖"
       },
       {
         "type": "vec",
@@ -24144,14 +24144,14 @@
       },
       {
         "type": "text",
-        "content": "\\| pour k ∈ ℝ."
+        "content": "‖ pour k ∈ ℝ."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "\\|k"
+          "content": "|k"
         },
         {
           "type": "vec",
@@ -24164,7 +24164,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=\\|(ka,kb)\\|=√((ka)"
+          "content": "‖=|(ka,kb)|=√((ka)"
         },
         {
           "type": "sup",
@@ -24196,7 +24196,7 @@
         },
         {
           "type": "text",
-          "content": ")=|k|\\|"
+          "content": ")=|k|‖"
         },
         {
           "type": "vec",
@@ -24209,7 +24209,7 @@
         },
         {
           "type": "text",
-          "content": "\\|. □"
+          "content": "‖. □"
         }
       ]
     ],
@@ -24411,7 +24411,7 @@
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -24424,7 +24424,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=5; û="
+          "content": "‖=5; û="
         },
         {
           "type": "frac",
@@ -24648,7 +24648,7 @@
         },
         {
           "type": "text",
-          "content": "-4\\|"
+          "content": "-4‖"
         },
         {
           "type": "vec",
@@ -24661,7 +24661,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -24669,7 +24669,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -24682,7 +24682,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -24690,7 +24690,7 @@
         },
         {
           "type": "text",
-          "content": "≤0⇒|"
+          "content": "≤0⇒‖"
         },
         {
           "type": "vec",
@@ -24716,7 +24716,7 @@
         },
         {
           "type": "text",
-          "content": "|≤\\|"
+          "content": "‖≤‖"
         },
         {
           "type": "vec",
@@ -24729,7 +24729,7 @@
         },
         {
           "type": "text",
-          "content": "\\|\\|"
+          "content": "‖‖"
         },
         {
           "type": "vec",
@@ -24742,7 +24742,7 @@
         },
         {
           "type": "text",
-          "content": "\\|. □"
+          "content": "‖. □"
         }
       ]
     ],
@@ -24771,7 +24771,7 @@
       },
       {
         "type": "text",
-        "content": " et la norme \\|"
+        "content": " et la norme ‖"
       },
       {
         "type": "vec",
@@ -24784,7 +24784,7 @@
       },
       {
         "type": "text",
-        "content": "\\|."
+        "content": "‖."
       }
     ],
     "steps": [
@@ -24847,7 +24847,7 @@
         },
         {
           "type": "text",
-          "content": "=(4,-5); \\|"
+          "content": "=(4,-5); ‖"
         },
         {
           "type": "vec",
@@ -24863,7 +24863,7 @@
           "content": [
             {
               "type": "text",
-              "content": "\\|=√(16+25)=√(41)."
+              "content": "|=√(16+25)=√(41)."
             }
           ]
         }
@@ -24902,7 +24902,7 @@
       },
       {
         "type": "text",
-        "content": " b) \\|"
+        "content": " b) ‖"
       },
       {
         "type": "vec",
@@ -24915,7 +24915,7 @@
       },
       {
         "type": "text",
-        "content": "\\|\nc) Un vecteur unitaire dans le sens de "
+        "content": "‖\nc) Un vecteur unitaire dans le sens de "
       },
       {
         "type": "vec",
@@ -24986,7 +24986,7 @@
       [
         {
           "type": "text",
-          "content": "b) \\|"
+          "content": "b) ‖"
         },
         {
           "type": "vec",
@@ -25002,7 +25002,7 @@
           "content": [
             {
               "type": "text",
-              "content": "\\|=√(9+4+16)=√(29)"
+              "content": "|=√(9+4+16)=√(29)"
             }
           ]
         }
@@ -25114,7 +25114,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Soit A(1, 2, -1) et B(3, 0, 5). Trouver les coordonnées du point C sur le segment AB tel que \\|AC\\| = 3\\|CB\\|."
+        "content": "Soit A(1, 2, -1) et B(3, 0, 5). Trouver les coordonnées du point C sur le segment AB tel que |AC| = 3|CB|."
       }
     ],
     "steps": [
@@ -25134,7 +25134,7 @@
         },
         {
           "type": "text",
-          "content": " avec \\|AC\\|=3\\|CB\\|⇒ t="
+          "content": " avec |AC|=3|CB|⇒ t="
         },
         {
           "type": "frac",
@@ -25394,7 +25394,7 @@
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -25407,7 +25407,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=2√(3); \\|"
+          "content": "‖=2√(3); ‖"
         },
         {
           "type": "vec",
@@ -25420,7 +25420,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=√(3); \\|"
+          "content": "‖=√(3); ‖"
         },
         {
           "type": "vec",
@@ -25433,7 +25433,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=√(3)."
+          "content": "‖=√(3)."
         }
       ],
       [
@@ -25534,7 +25534,7 @@
       [
         {
           "type": "text",
-          "content": "Aire =\\|"
+          "content": "Aire =‖"
         },
         {
           "type": "vec",
@@ -25563,7 +25563,7 @@
           "content": [
             {
               "type": "text",
-              "content": "\\|=\\|(1,-2,3)\\|=√(14)≈3{,}74 unites"
+              "content": "|=|(1,-2,3)|=√(14)≈3{,}74 unites"
             },
             {
               "type": "sup",
@@ -25887,7 +25887,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -25900,7 +25900,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
@@ -25930,7 +25930,7 @@
         },
         {
           "type": "text",
-          "content": "=(3,-3,4); \\|"
+          "content": "=(3,-3,4); ‖"
         },
         {
           "type": "vec",
@@ -25943,7 +25943,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=√(9+9+16)=√(34).\nS=(2,1,-3)+"
+          "content": "‖=√(9+9+16)=√(34).\nS=(2,1,-3)+"
         },
         {
           "type": "frac",
@@ -25986,14 +25986,14 @@
       },
       {
         "type": "text",
-        "content": ". Calculer \\|u\\|, \\|v\\|, \\|u+v\\| et vérifier l'inégalité du triangle."
+        "content": ". Calculer |u|, |v|, |u+v| et vérifier l'inégalité du triangle."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "u+v=(3,1,0,3); \\|u+v\\|=√(19); \\|u\\|=√(6); \\|v\\|=√(15)."
+          "content": "u+v=(3,1,0,3); |u+v|=√(19); |u|=√(6); |v|=√(15)."
         }
       ],
       [
@@ -26109,7 +26109,7 @@
       },
       {
         "type": "text",
-        "content": "(\\|"
+        "content": "(‖"
       },
       {
         "type": "vec",
@@ -26135,7 +26135,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -26143,7 +26143,7 @@
       },
       {
         "type": "text",
-        "content": "-\\|"
+        "content": "-‖"
       },
       {
         "type": "vec",
@@ -26169,7 +26169,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -26206,7 +26206,7 @@
         },
         {
           "type": "text",
-          "content": "=32. \\|"
+          "content": "=32. ‖"
         },
         {
           "type": "vec",
@@ -26232,7 +26232,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -26240,7 +26240,7 @@
         },
         {
           "type": "text",
-          "content": "=155; \\|"
+          "content": "=155; ‖"
         },
         {
           "type": "vec",
@@ -26266,7 +26266,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -31973,7 +31973,7 @@
       },
       {
         "type": "text",
-        "content": " avec \\|"
+        "content": " avec ‖"
       },
       {
         "type": "vec",
@@ -31986,7 +31986,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 4, \\|"
+        "content": "‖ = 4, ‖"
       },
       {
         "type": "vec",
@@ -31999,7 +31999,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 6 et l'angle entre eux est 60^∘. Calculer "
+        "content": "‖ = 6 et l'angle entre eux est 60^∘. Calculer "
       },
       {
         "type": "vec",
@@ -32054,7 +32054,7 @@
         },
         {
           "type": "text",
-          "content": "=\\|"
+          "content": "=‖"
         },
         {
           "type": "vec",
@@ -32067,7 +32067,7 @@
         },
         {
           "type": "text",
-          "content": "\\|\\|"
+          "content": "‖‖"
         },
         {
           "type": "vec",
@@ -32080,7 +32080,7 @@
         },
         {
           "type": "text",
-          "content": "\\|cosθ=4·6·cos 60^∘=24·"
+          "content": "‖cosθ=4·6·cos 60^∘=24·"
         },
         {
           "type": "frac",
@@ -32508,7 +32508,7 @@
       },
       {
         "type": "text",
-        "content": ")\nsachant que \\|"
+        "content": ")\nsachant que ‖"
       },
       {
         "type": "vec",
@@ -32521,7 +32521,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 2, \\|"
+        "content": "‖ = 2, ‖"
       },
       {
         "type": "vec",
@@ -32534,7 +32534,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 3 et "
+        "content": "‖ = 3 et "
       },
       {
         "type": "vec",
@@ -32619,7 +32619,7 @@
         },
         {
           "type": "text",
-          "content": ")=2\\|"
+          "content": ")=2‖"
         },
         {
           "type": "vec",
@@ -32632,7 +32632,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -32692,7 +32692,7 @@
         },
         {
           "type": "text",
-          "content": ")-15\\|"
+          "content": ")-15‖"
         },
         {
           "type": "vec",
@@ -32705,7 +32705,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -32766,7 +32766,7 @@
       },
       {
         "type": "text",
-        "content": " avec \\|"
+        "content": " avec ‖"
       },
       {
         "type": "vec",
@@ -32779,7 +32779,7 @@
       },
       {
         "type": "text",
-        "content": "\\|=3, \\|"
+        "content": "‖=3, ‖"
       },
       {
         "type": "vec",
@@ -32792,7 +32792,7 @@
       },
       {
         "type": "text",
-        "content": "\\|=4 et "
+        "content": "‖=4 et "
       },
       {
         "type": "vec",
@@ -32818,7 +32818,7 @@
       },
       {
         "type": "text",
-        "content": "=-6. Calculer \\|"
+        "content": "=-6. Calculer ‖"
       },
       {
         "type": "vec",
@@ -32844,7 +32844,7 @@
       },
       {
         "type": "text",
-        "content": "\\| et \\|"
+        "content": "‖ et ‖"
       },
       {
         "type": "vec",
@@ -32870,14 +32870,14 @@
       },
       {
         "type": "text",
-        "content": "\\|."
+        "content": "‖."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -32890,7 +32890,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -32898,7 +32898,7 @@
         },
         {
           "type": "text",
-          "content": "=\\|"
+          "content": "=‖"
         },
         {
           "type": "vec",
@@ -32911,7 +32911,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -32945,7 +32945,7 @@
         },
         {
           "type": "text",
-          "content": "+\\|"
+          "content": "+‖"
         },
         {
           "type": "vec",
@@ -32958,7 +32958,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -32972,7 +32972,7 @@
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -32998,7 +32998,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -33006,7 +33006,7 @@
         },
         {
           "type": "text",
-          "content": "=9-12+16=13⇒√(13); \\|"
+          "content": "=9-12+16=13⇒√(13); ‖"
         },
         {
           "type": "vec",
@@ -33035,7 +33035,7 @@
           "content": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "|"
             },
             {
               "type": "sup",
@@ -33222,7 +33222,7 @@
       },
       {
         "type": "text",
-        "content": "(\\|"
+        "content": "(‖"
       },
       {
         "type": "vec",
@@ -33248,7 +33248,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -33256,7 +33256,7 @@
       },
       {
         "type": "text",
-        "content": "-\\|"
+        "content": "-‖"
       },
       {
         "type": "vec",
@@ -33282,7 +33282,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -33297,7 +33297,7 @@
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -33323,7 +33323,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -33331,7 +33331,7 @@
         },
         {
           "type": "text",
-          "content": "-\\|"
+          "content": "-‖"
         },
         {
           "type": "vec",
@@ -33357,7 +33357,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -33790,7 +33790,7 @@
         },
         {
           "type": "text",
-          "content": "=(3-2,1-3,2-1)=(1,-2,1); \\|(1,-2,1)\\|=√(6)."
+          "content": "=(3-2,1-3,2-1)=(1,-2,1); |(1,-2,1)|=√(6)."
         }
       ],
       [
@@ -33925,7 +33925,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer |"
+        "content": "Démontrer ‖"
       },
       {
         "type": "vec",
@@ -33951,7 +33951,7 @@
       },
       {
         "type": "text",
-        "content": "|≤\\|"
+        "content": "‖≤‖"
       },
       {
         "type": "vec",
@@ -33964,7 +33964,7 @@
       },
       {
         "type": "text",
-        "content": "\\|\\|"
+        "content": "‖‖"
       },
       {
         "type": "vec",
@@ -33977,7 +33977,7 @@
       },
       {
         "type": "text",
-        "content": "\\| (Cauchy-Schwarz) et en deduire \\|"
+        "content": "‖ (Cauchy-Schwarz) et en deduire ‖"
       },
       {
         "type": "vec",
@@ -34003,7 +34003,7 @@
       },
       {
         "type": "text",
-        "content": "\\|≤\\|"
+        "content": "‖≤‖"
       },
       {
         "type": "vec",
@@ -34016,7 +34016,7 @@
       },
       {
         "type": "text",
-        "content": "\\|+\\|"
+        "content": "‖+‖"
       },
       {
         "type": "vec",
@@ -34029,14 +34029,14 @@
       },
       {
         "type": "text",
-        "content": "\\|."
+        "content": "‖."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "f(t)=\\|"
+          "content": "f(t)=‖"
         },
         {
           "type": "vec",
@@ -34062,7 +34062,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -34070,7 +34070,7 @@
         },
         {
           "type": "text",
-          "content": "≥0: discriminant ≤0⇒|"
+          "content": "≥0: discriminant ≤0⇒‖"
         },
         {
           "type": "vec",
@@ -34096,7 +34096,7 @@
         },
         {
           "type": "text",
-          "content": "|≤\\|"
+          "content": "‖≤‖"
         },
         {
           "type": "vec",
@@ -34109,7 +34109,7 @@
         },
         {
           "type": "text",
-          "content": "\\|\\|"
+          "content": "‖‖"
         },
         {
           "type": "vec",
@@ -34122,13 +34122,13 @@
         },
         {
           "type": "text",
-          "content": "\\|."
+          "content": "‖."
         }
       ],
       [
         {
           "type": "text",
-          "content": "Triangle: \\|"
+          "content": "Triangle: ‖"
         },
         {
           "type": "vec",
@@ -34154,7 +34154,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -34162,7 +34162,7 @@
         },
         {
           "type": "text",
-          "content": "≤(\\|"
+          "content": "≤(‖"
         },
         {
           "type": "vec",
@@ -34175,7 +34175,7 @@
         },
         {
           "type": "text",
-          "content": "\\|+\\|"
+          "content": "‖+‖"
         },
         {
           "type": "vec",
@@ -34188,7 +34188,7 @@
         },
         {
           "type": "text",
-          "content": "\\|)"
+          "content": "‖)"
         },
         {
           "type": "sup",
@@ -34302,7 +34302,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -34315,7 +34315,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "sup",
@@ -34424,7 +34424,7 @@
         },
         {
           "type": "text",
-          "content": "=2+2-6=-2; \\|"
+          "content": "=2+2-6=-2; ‖"
         },
         {
           "type": "vec",
@@ -34437,7 +34437,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -34602,7 +34602,7 @@
         },
         {
           "type": "text",
-          "content": "=(3,2,0). Hauteur h=\\|"
+          "content": "=(3,2,0). Hauteur h=‖"
         },
         {
           "type": "vec",
@@ -34641,7 +34641,7 @@
         },
         {
           "type": "text",
-          "content": "\\|."
+          "content": "‖."
         }
       ],
       [
@@ -34669,7 +34669,7 @@
         },
         {
           "type": "text",
-          "content": "=3+0+0=3; \\|"
+          "content": "=3+0+0=3; ‖"
         },
         {
           "type": "vec",
@@ -34682,7 +34682,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -35124,7 +35124,7 @@
         },
         {
           "type": "text",
-          "content": "-k\\|"
+          "content": "-k‖"
         },
         {
           "type": "vec",
@@ -35137,7 +35137,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -35202,7 +35202,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -35215,7 +35215,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "sup",
@@ -35225,7 +35225,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -35238,7 +35238,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -35546,7 +35546,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -35559,7 +35559,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "sup",
@@ -35823,7 +35823,7 @@
         },
         {
           "type": "text",
-          "content": "=4; \\|"
+          "content": "=4; ‖"
         },
         {
           "type": "vec",
@@ -35836,7 +35836,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "sup",
@@ -35970,7 +35970,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Montrer que \\|proj_{"
+        "content": "Montrer que |proj_{"
       },
       {
         "type": "vec",
@@ -35996,7 +35996,7 @@
       },
       {
         "type": "text",
-        "content": "\\|≤\\|"
+        "content": "‖≤‖"
       },
       {
         "type": "vec",
@@ -36009,7 +36009,7 @@
       },
       {
         "type": "text",
-        "content": "\\|, avec egalite ssi "
+        "content": "‖, avec egalite ssi "
       },
       {
         "type": "vec",
@@ -36042,7 +36042,7 @@
       [
         {
           "type": "text",
-          "content": "\\|proj_{"
+          "content": "|proj_{"
         },
         {
           "type": "vec",
@@ -36068,14 +36068,14 @@
         },
         {
           "type": "text",
-          "content": "\\|="
+          "content": "‖="
         },
         {
           "type": "frac",
           "num": [
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -36101,13 +36101,13 @@
             },
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -36120,7 +36120,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
@@ -36133,7 +36133,7 @@
           "num": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -36146,7 +36146,7 @@
             },
             {
               "type": "text",
-              "content": "\\|\\|"
+              "content": "‖‖"
             },
             {
               "type": "vec",
@@ -36159,13 +36159,13 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -36178,13 +36178,13 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
         {
           "type": "text",
-          "content": "=\\|"
+          "content": "=‖"
         },
         {
           "type": "vec",
@@ -36197,7 +36197,7 @@
         },
         {
           "type": "text",
-          "content": "\\| (Cauchy-Schwarz). Egalite ssi |cosθ|=1. □"
+          "content": "‖ (Cauchy-Schwarz). Egalite ssi |cosθ|=1. □"
         }
       ]
     ],
@@ -36640,7 +36640,7 @@
       },
       {
         "type": "text",
-        "content": " avec \\|"
+        "content": " avec ‖"
       },
       {
         "type": "vec",
@@ -36653,7 +36653,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 3, \\|"
+        "content": "‖ = 3, ‖"
       },
       {
         "type": "vec",
@@ -36666,7 +36666,7 @@
       },
       {
         "type": "text",
-        "content": "\\| = 5 et l'angle entre eux est 30^∘. Calculer \\|"
+        "content": "‖ = 5 et l'angle entre eux est 30^∘. Calculer ‖"
       },
       {
         "type": "vec",
@@ -36692,14 +36692,14 @@
       },
       {
         "type": "text",
-        "content": "\\|."
+        "content": "‖."
       }
     ],
     "steps": [
       [
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -36725,7 +36725,7 @@
         },
         {
           "type": "text",
-          "content": "\\|=\\|"
+          "content": "‖=‖"
         },
         {
           "type": "vec",
@@ -36738,7 +36738,7 @@
         },
         {
           "type": "text",
-          "content": "\\|\\|"
+          "content": "‖‖"
         },
         {
           "type": "vec",
@@ -36751,7 +36751,7 @@
         },
         {
           "type": "text",
-          "content": "\\|sinθ=3·5·sin30^∘=15·"
+          "content": "‖sinθ=3·5·sin30^∘=15·"
         },
         {
           "type": "frac",
@@ -37436,7 +37436,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer l\\'identité de Lagrange : \\|"
+        "content": "Démontrer l\\'identité de Lagrange : ‖"
       },
       {
         "type": "vec",
@@ -37462,7 +37462,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -37470,7 +37470,7 @@
       },
       {
         "type": "text",
-        "content": "=\\|"
+        "content": "=‖"
       },
       {
         "type": "vec",
@@ -37483,7 +37483,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -37491,7 +37491,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "vec",
@@ -37504,7 +37504,7 @@
       },
       {
         "type": "text",
-        "content": "\\|"
+        "content": "‖"
       },
       {
         "type": "sup",
@@ -37986,7 +37986,7 @@
         },
         {
           "type": "text",
-          "content": "\\|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -38012,7 +38012,7 @@
         },
         {
           "type": "text",
-          "content": "\\|."
+          "content": "‖."
         }
       ],
       [
@@ -38180,7 +38180,7 @@
         },
         {
           "type": "text",
-          "content": " pour le parallélogramme; aire =\\|"
+          "content": " pour le parallélogramme; aire =‖"
         },
         {
           "type": "vec",
@@ -38206,7 +38206,7 @@
         },
         {
           "type": "text",
-          "content": "\\|."
+          "content": "‖."
         }
       ],
       [
@@ -38352,7 +38352,7 @@
           "content": [
             {
               "type": "text",
-              "content": "=(0,-2,4-1). Aire =\\|(0,-2,4)\\|... = √(0+4+16)=√(20)=2√(5) unités"
+              "content": "=(0,-2,4-1). Aire =|(0,-2,4)|... = √(0+4+16)=√(20)=2√(5) unités"
             },
             {
               "type": "sup",
@@ -40077,7 +40077,7 @@
       [
         {
           "type": "text",
-          "content": "V=|"
+          "content": "V=‖"
         },
         {
           "type": "vec",
@@ -40234,7 +40234,7 @@
         },
         {
           "type": "text",
-          "content": "|=|1(0-1)-1(1-0)+0|=|-1-1|=2 unités"
+          "content": "‖=|1(0-1)-1(1-0)+0|=|-1-1|=2 unités"
         },
         {
           "type": "sup",
@@ -40331,7 +40331,7 @@
         },
         {
           "type": "text",
-          "content": "|"
+          "content": "‖"
         },
         {
           "type": "vec",
@@ -40690,7 +40690,7 @@
         },
         {
           "type": "text",
-          "content": "|=|24+1|=25 unites"
+          "content": "‖=|24+1|=25 unites"
         },
         {
           "type": "sup",
@@ -40714,7 +40714,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Montrer que l\\'aire du parallélogramme =\\|"
+        "content": "Montrer que l\\'aire du parallélogramme =‖"
       },
       {
         "type": "vec",
@@ -40740,7 +40740,7 @@
       },
       {
         "type": "text",
-        "content": "\\| et que le volume du tétraèdre ="
+        "content": "‖ et que le volume du tétraèdre ="
       },
       {
         "type": "frac",
@@ -40805,7 +40805,7 @@
       [
         {
           "type": "text",
-          "content": "Aire: base×hauteur =\\|"
+          "content": "Aire: base×hauteur =‖"
         },
         {
           "type": "vec",
@@ -40818,7 +40818,7 @@
         },
         {
           "type": "text",
-          "content": "\\|\\|"
+          "content": "‖‖"
         },
         {
           "type": "vec",
@@ -40831,7 +40831,7 @@
         },
         {
           "type": "text",
-          "content": "\\|sinθ=\\|"
+          "content": "‖sinθ=‖"
         },
         {
           "type": "vec",
@@ -40857,7 +40857,7 @@
         },
         {
           "type": "text",
-          "content": "\\|. Tétraèdre ="
+          "content": "‖. Tétraèdre ="
         },
         {
           "type": "frac",
@@ -42453,7 +42453,7 @@
           "num": [
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -42479,13 +42479,13 @@
             },
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -42498,7 +42498,7 @@
             },
             {
               "type": "text",
-              "content": "\\|\\|"
+              "content": "‖‖"
             },
             {
               "type": "vec",
@@ -42511,7 +42511,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
@@ -42668,13 +42668,13 @@
           "num": [
             {
               "type": "text",
-              "content": "\\|(-3,-3,-1)\\|"
+              "content": "|(-3,-3,-1)|"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|(1,1,0)\\|"
+              "content": "|(1,1,0)|"
             }
           ]
         },
@@ -42832,7 +42832,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -42845,7 +42845,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "sup",
@@ -43124,13 +43124,13 @@
           "num": [
             {
               "type": "text",
-              "content": "\\|(2,4,-10)\\|"
+              "content": "|(2,4,-10)|"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|(3,-2,1)\\|"
+              "content": "|(3,-2,1)|"
             }
           ]
         },
@@ -43812,7 +43812,7 @@
           "num": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -43850,13 +43850,13 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -43869,7 +43869,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
@@ -44018,7 +44018,7 @@
           "num": [
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -44083,7 +44083,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -44117,7 +44117,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "|"
             }
           ]
         },
@@ -45985,7 +45985,7 @@
           "num": [
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -46025,7 +46025,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -46042,7 +46042,7 @@
             },
             {
               "type": "text",
-              "content": "\\|\\|"
+              "content": "|‖"
             },
             {
               "type": "vec",
@@ -46059,7 +46059,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "|"
             }
           ]
         },
@@ -46435,7 +46435,7 @@
           "num": [
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -46475,7 +46475,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -46492,7 +46492,7 @@
             },
             {
               "type": "text",
-              "content": "\\|\\|"
+              "content": "|‖"
             },
             {
               "type": "vec",
@@ -46509,7 +46509,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "|"
             }
           ]
         },
@@ -46691,7 +46691,7 @@
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -46704,7 +46704,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
@@ -47395,7 +47395,7 @@
           "num": [
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -47421,13 +47421,13 @@
             },
             {
               "type": "text",
-              "content": "|"
+              "content": "‖"
             }
           ],
           "den": [
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             },
             {
               "type": "vec",
@@ -47440,7 +47440,7 @@
             },
             {
               "type": "text",
-              "content": "\\|\\|"
+              "content": "‖‖"
             },
             {
               "type": "vec",
@@ -47453,7 +47453,7 @@
             },
             {
               "type": "text",
-              "content": "\\|"
+              "content": "‖"
             }
           ]
         },
