@@ -7,6 +7,7 @@ import clsx from "clsx";
 const links = [
   { to: "/", label: "Accueil" },
   { to: "/practice", label: "Exercices" },
+  { to: "/custom-quiz", label: "Quiz personnalisé" },
 ];
 
 export default function Navbar() {

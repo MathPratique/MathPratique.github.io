@@ -7956,7 +7956,7 @@
       },
       {
         "type": "text",
-        "content": ". Exprimer A comme somme S+K d\\'une matrice symétrique et d\\'une antisymétrique."
+        "content": ". Exprimer A comme somme S+K d'une matrice symétrique et d'une antisymétrique."
       }
     ],
     "steps": [
@@ -11131,7 +11131,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer le déterminant de Vandermonde d\\'ordre 3 : "
+        "content": "Démontrer le déterminant de Vandermonde d'ordre 3 : "
       },
       {
         "type": "matrix",
@@ -15210,7 +15210,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Montrer que si det A=0, la méthode de la matrice inverse ne s\\'applique pas, et illustrer avec un système sans solution et un avec infiniment de solutions."
+        "content": "Montrer que si det A=0, la méthode de la matrice inverse ne s'applique pas, et illustrer avec un système sans solution et un avec infiniment de solutions."
       }
     ],
     "steps": [
@@ -18556,7 +18556,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver l\\'inverse de A="
+        "content": "Trouver l'inverse de A="
       },
       {
         "type": "matrix",
@@ -21027,7 +21027,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer l\\'identité du parallélogramme : ‖"
+        "content": "Démontrer l'identité du parallélogramme : ‖"
       },
       {
         "type": "vec",
@@ -23849,7 +23849,7 @@
         },
         {
           "type": "text",
-          "content": "; sommer les trois médianes: tout s\\'annule. □"
+          "content": "; sommer les trois médianes: tout s'annule. □"
         }
       ]
     ],
@@ -24465,7 +24465,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer l\\'inegalite de Cauchy-Schwarz dans ℝ"
+        "content": "Démontrer l'inegalite de Cauchy-Schwarz dans ℝ"
       },
       {
         "type": "sup",
@@ -26038,7 +26038,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Vérifier l\\'identité de polarisation pour "
+        "content": "Vérifier l'identité de polarisation pour "
       },
       {
         "type": "vec",
@@ -27452,7 +27452,7 @@
       },
       {
         "type": "text",
-        "content": "} l\\'est aussi."
+        "content": "} l'est aussi."
       }
     ],
     "steps": [
@@ -28209,7 +28209,7 @@
         },
         {
           "type": "text",
-          "content": "=0: vecteurs dépendants, S n\\'engendre pas ℝ"
+          "content": "=0: vecteurs dépendants, S n'engendre pas ℝ"
         },
         {
           "type": "sup",
@@ -30615,7 +30615,7 @@
         },
         {
           "type": "text",
-          "content": "=0: vecteurs dépendants, S n\\'est pas une base."
+          "content": "=0: vecteurs dépendants, S n'est pas une base."
         }
       ]
     ],
@@ -30631,7 +30631,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer que la representation d\\'un vecteur dans une base est unique."
+        "content": "Démontrer que la representation d'un vecteur dans une base est unique."
       }
     ],
     "steps": [
@@ -33087,7 +33087,7 @@
       },
       {
         "type": "text",
-        "content": " et l\\'angle pour "
+        "content": " et l'angle pour "
       },
       {
         "type": "vec",
@@ -33177,7 +33177,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer l\\'identité de polarisation : "
+        "content": "Démontrer l'identité de polarisation : "
       },
       {
         "type": "vec",
@@ -37380,7 +37380,7 @@
       },
       {
         "type": "text",
-        "content": "=(1,2,-1), et vérifier l\\'orthogonalite."
+        "content": "=(1,2,-1), et vérifier l'orthogonalite."
       }
     ],
     "steps": [
@@ -37436,7 +37436,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Démontrer l\\'identité de Lagrange : ‖"
+        "content": "Démontrer l'identité de Lagrange : ‖"
       },
       {
         "type": "vec",
@@ -40714,7 +40714,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Montrer que l\\'aire du parallélogramme =‖"
+        "content": "Montrer que l'aire du parallélogramme =‖"
       },
       {
         "type": "vec",
@@ -41502,7 +41502,7 @@
       },
       {
         "type": "text",
-        "content": "=(1,2,-1) et dont la projection sur xOy passe par l\\'origine."
+        "content": "=(1,2,-1) et dont la projection sur xOy passe par l'origine."
       }
     ],
     "steps": [
@@ -43737,7 +43737,7 @@
       [
         {
           "type": "text",
-          "content": "Le lieu forme les deux plans bissecteurs de l\\'angle forme par D"
+          "content": "Le lieu forme les deux plans bissecteurs de l'angle forme par D"
         },
         {
           "type": "sub",
@@ -43753,7 +43753,7 @@
         },
         {
           "type": "text",
-          "content": ", contenant leur point d\\'intersection."
+          "content": ", contenant leur point d'intersection."
         }
       ]
     ],
@@ -45599,7 +45599,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver l\\'équation du plan par P(2,-1,3) avec "
+        "content": "Trouver l'équation du plan par P(2,-1,3) avec "
       },
       {
         "type": "vec",
@@ -46405,7 +46405,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver l\\'angle diedre entre π"
+        "content": "Trouver l'angle diedre entre π"
       },
       {
         "type": "sub",
@@ -48810,7 +48810,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver l\\'intersection de D:(x,y,z)=(2,0,1)+t(1,1,-1) avec π:2x-y+3z=7."
+        "content": "Trouver l'intersection de D:(x,y,z)=(2,0,1)+t(1,1,-1) avec π:2x-y+3z=7."
       }
     ],
     "steps": [

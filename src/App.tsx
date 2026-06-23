@@ -3,6 +3,7 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import Practice from "./pages/Practice";
 import Quiz from "./pages/Quiz";
+import CustomQuiz from "./pages/CustomQuiz";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/practice" element={<Practice />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/custom-quiz" element={<CustomQuiz />} />
       </Route>
     </Routes>
   );

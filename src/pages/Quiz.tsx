@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { getLessonById } from "../data/lessons";
 import { topics } from "../data/topics";
 import { generateQuiz, hasQuizGenerator } from "../quiz/registry";
+import { buildCustomQuiz, decodeCustomQuiz } from "../quiz/customGenerators";
 import ExerciseCard from "../components/practice/ExerciseCard";
 import AnimatedSection from "../components/ui/AnimatedSection";
 
@@ -11,6 +12,13 @@ export default function Quiz() {
   const [searchParams] = useSearchParams();
   const topicId = searchParams.get("topic") ?? "";
   const lessonId = searchParams.get("lesson") ?? "";
+  const customParam = searchParams.get("custom") ?? "";
+  const isCustom = customParam.length > 0;
+  const customSpecs = useMemo(
+    () => (isCustom ? decodeCustomQuiz(customParam) : []),
+    [customParam, isCustom]
+  );
+
   const lesson = lessonId ? getLessonById(lessonId) : null;
   const topic = topics.find((t) => t.id === topicId);
 
@@ -18,10 +26,11 @@ export default function Quiz() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const exercises = useMemo(() => {
+    if (isCustom) return buildCustomQuiz(customSpecs);
     if (!lessonId) return [];
     return generateQuiz(lessonId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lessonId, seed]);
+  }, [lessonId, seed, isCustom, customSpecs]);
 
   const generatorAvailable = lessonId ? hasQuizGenerator(lessonId) : false;
   const total = exercises.length;
@@ -41,7 +50,7 @@ export default function Quiz() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  if (!lessonId || !lesson) {
+  if (!isCustom && (!lessonId || !lesson)) {
     return (
       <div className="container-page py-16">
         <AnimatedSection className="max-w-2xl">
@@ -64,35 +73,80 @@ export default function Quiz() {
   return (
     <div className="container-page py-12 sm:py-16">
       <AnimatedSection className="max-w-3xl">
-        <Link
-          to={`/practice?topic=${topicId}&lesson=${lessonId}`}
-          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-medium text-brand-700 transition-colors duration-200 hover:bg-brand-50"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M15 18l-6-6 6-6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
-          Retour à la leçon
-        </Link>
+        {isCustom ? (
+          <>
+            <Link
+              to="/custom-quiz"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-medium text-brand-700 transition-colors duration-200 hover:bg-brand-50"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+              Modifier le quiz
+            </Link>
 
-        <div className="mt-6 flex flex-wrap items-baseline gap-3">
-          <span className="rounded-full bg-accent-500/15 px-3 py-1 font-mono text-xs font-semibold text-accent-600">
-            Quiz · Leçon {lesson.number}
-          </span>
-          <h1 className="font-display text-3xl font-bold text-brand-900 sm:text-4xl">
-            {lesson.name}
-          </h1>
-        </div>
-        <p className="mt-3 text-balance text-base text-ink-600">
-          5 exercices aléatoires : <strong>1 facile, 2 intermédiaires, 2 avancés</strong>.
-          {topic ? ` Matière : ${topic.name}.` : ""}
-        </p>
+            <div className="mt-6 flex flex-wrap items-baseline gap-3">
+              <span className="rounded-full bg-accent-500/15 px-3 py-1 font-mono text-xs font-semibold text-accent-600">
+                Quiz personnalisé
+              </span>
+              <h1 className="font-display text-3xl font-bold text-brand-900 sm:text-4xl">
+                {total} question{total > 1 ? "s" : ""} sur {customSpecs.length}{" "}
+                leçon{customSpecs.length > 1 ? "s" : ""}
+              </h1>
+            </div>
+            <p className="mt-3 text-balance text-base text-ink-600">
+              {customSpecs
+                .map((s) => {
+                  const l = getLessonById(s.lessonId);
+                  const parts: string[] = [];
+                  if (s.exerciseCount) parts.push(`${s.exerciseCount} calc`);
+                  if (s.mcqCount) parts.push(`${s.mcqCount} QCM`);
+                  if (s.tfCount) parts.push(`${s.tfCount} V/F`);
+                  return `Leçon ${l?.number ?? s.lessonId} : ${parts.join(", ")}`;
+                })
+                .join(" · ")}
+            </p>
+          </>
+        ) : lesson ? (
+          <>
+            <Link
+              to={`/practice?topic=${topicId}&lesson=${lessonId}`}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-medium text-brand-700 transition-colors duration-200 hover:bg-brand-50"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+              Retour à la leçon
+            </Link>
+
+            <div className="mt-6 flex flex-wrap items-baseline gap-3">
+              <span className="rounded-full bg-accent-500/15 px-3 py-1 font-mono text-xs font-semibold text-accent-600">
+                Quiz · Leçon {lesson.number}
+              </span>
+              <h1 className="font-display text-3xl font-bold text-brand-900 sm:text-4xl">
+                {lesson.name}
+              </h1>
+            </div>
+            <p className="mt-3 text-balance text-base text-ink-600">
+              5 exercices aléatoires : <strong>1 facile, 2 intermédiaires, 2 avancés</strong>.
+              {topic ? ` Matière : ${topic.name}.` : ""}
+            </p>
+          </>
+        ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <button
@@ -110,12 +164,12 @@ export default function Quiz() {
                 fill="none"
               />
             </svg>
-            Nouveau quiz
+            Nouveau tirage
           </button>
         </div>
       </AnimatedSection>
 
-      {!generatorAvailable ? (
+      {!isCustom && !generatorAvailable ? (
         <AnimatedSection className="mt-16 max-w-xl rounded-2xl border border-brand-100 bg-white p-8 text-center">
           <h2 className="font-display text-xl font-semibold text-brand-900">
             Quiz pas encore disponible pour cette leçon
