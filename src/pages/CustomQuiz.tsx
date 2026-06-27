@@ -110,8 +110,9 @@ export default function CustomQuiz() {
           Quiz personnalisé
         </h1>
         <p className="mt-4 text-balance text-lg text-ink-600">
-          Construis ton propre quiz : choisis combien d'exercices, de QCM et de
-          Vrai/Faux tu veux pour chaque leçon. Les questions sont{" "}
+          Construis ton propre quiz : choisis combien d'exercices calculatoires
+          (CALC), de questions à choix multiples (QCM) et de Vrai ou Faux (V/F)
+          tu veux pour chaque leçon. Les questions sont{" "}
           <strong>générées aléatoirement</strong> à chaque tirage — pas de
           limite, c'est toi qui décide !
         </p>
