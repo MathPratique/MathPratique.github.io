@@ -3,6 +3,40 @@ import { topics } from "../../data/topics";
 import { exercises } from "../../data/exercises";
 import AnimatedSection from "../ui/AnimatedSection";
 
+type TopicStyle = {
+  bg: string;
+  hoverBg: string;
+  ring: string;
+  iconBg: string;
+};
+
+const TOPIC_STYLES: Record<string, TopicStyle> = {
+  "differential-calculus": {
+    bg: "bg-indigo-500",
+    hoverBg: "hover:bg-indigo-600",
+    ring: "ring-indigo-200",
+    iconBg: "bg-indigo-400/40",
+  },
+  "integral-calculus": {
+    bg: "bg-emerald-500",
+    hoverBg: "hover:bg-emerald-600",
+    ring: "ring-emerald-200",
+    iconBg: "bg-emerald-400/40",
+  },
+  "linear-algebra": {
+    bg: "bg-fuchsia-500",
+    hoverBg: "hover:bg-fuchsia-600",
+    ring: "ring-fuchsia-200",
+    iconBg: "bg-fuchsia-400/40",
+  },
+  probability: {
+    bg: "bg-amber-500",
+    hoverBg: "hover:bg-amber-600",
+    ring: "ring-amber-200",
+    iconBg: "bg-amber-400/40",
+  },
+};
+
 export default function TopicsShowcase() {
   return (
     <section id="topics" className="container-page scroll-mt-28 py-20 sm:py-24">
@@ -16,62 +50,67 @@ export default function TopicsShowcase() {
         </p>
       </AnimatedSection>
 
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid gap-6 sm:grid-cols-2">
         {topics.map((topic, i) => {
           const count = exercises.filter((e) => e.topicId === topic.id).length;
+          const style = TOPIC_STYLES[topic.id];
           return (
-          <AnimatedSection key={topic.id} delay={i * 0.06}>
-            <Link
-              to={`/practice?topic=${topic.id}`}
-              className="group flex h-full cursor-pointer flex-col rounded-2xl border border-brand-100 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg hover:shadow-brand-900/10"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-200 group-hover:bg-brand-600 group-hover:text-white">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path
-                      d={topic.icon}
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                    />
-                  </svg>
-                </div>
-                <span className="font-mono text-xs text-ink-600">
-                  {count} exercice{count > 1 ? "s" : ""}
-                </span>
-              </div>
-
-              <h3 className="mt-5 font-display text-xl font-semibold text-brand-900">
-                {topic.name}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                {topic.description}
-              </p>
-
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
-                Pratiquer {topic.name.toLowerCase()}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                  className="transition-transform duration-200 group-hover:translate-x-1"
+            <AnimatedSection key={topic.id} delay={i * 0.08}>
+              <Link
+                to={`/practice?topic=${topic.id}`}
+                className={`group relative flex h-full w-full cursor-pointer flex-col gap-4 overflow-hidden rounded-3xl p-7 text-white shadow-lg shadow-black/5 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-4 sm:p-8 ${style.bg} ${style.hoverBg} ${style.ring}`}
+                aria-label={`Pratiquer la matière ${topic.name}`}
+              >
+                <div
+                  className={`flex h-14 w-14 items-center justify-center rounded-2xl ${style.iconBg}`}
                 >
-                  <path
-                    d="M5 12h14M13 6l6 6-6 6"
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-            </Link>
-          </AnimatedSection>
+                    aria-hidden="true"
+                  >
+                    <path d={topic.icon} />
+                  </svg>
+                </div>
+
+                <div className="flex-1">
+                  <h3 className="font-display text-2xl font-bold leading-tight !text-white sm:text-3xl">
+                    {topic.name}
+                  </h3>
+                  <p className="mt-3 text-base text-white/90">
+                    {topic.description}
+                  </p>
+                </div>
+
+                <div className="mt-2 flex w-full items-center justify-between">
+                  <span className="rounded-full bg-black/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                    {count} exercice{count > 1 ? "s" : ""}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold transition-transform duration-300 group-hover:translate-x-1">
+                    Commencer
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            </AnimatedSection>
           );
         })}
       </div>
