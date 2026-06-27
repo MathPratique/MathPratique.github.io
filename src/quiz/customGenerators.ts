@@ -14,6 +14,8 @@ export const CUSTOM_QUIZ_LESSONS = [
   "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22",
   "L23", "L24", "L25", "L26", "L27", "L28", "L29",
   "L34", "L35", "L36", "L37",
+  "L43", "L44", "L45", "L46", "L47", "L48", "L49",
+  "L50", "L51", "L52", "L53", "L54", "L55", "L56", "L57", "L58",
 ];
 
 // ════════════════════════════════════════════════════════════════════════
@@ -1223,6 +1225,465 @@ function l37Calc(): Exercise {
 }
 
 // ════════════════════════════════════════════════════════════════════════
+//  L43-L44 — Produit scalaire
+// ════════════════════════════════════════════════════════════════════════
+
+function dot3(a: [number, number, number], b: [number, number, number]) {
+  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+}
+
+function l43Calc(): Exercise {
+  const u = rand3(-4, 4);
+  const v = rand3(-4, 4);
+  const d = dot3(u, v);
+  return {
+    id: uniqueId("gen-L43-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L43",
+    title: "Calculer un produit scalaire 3D",
+    difficulty: "Intermédiaire",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
+      t(` = ${fmt3(v)}. Calculer `), vec("u"), t(" · "), vec("v"), t("."),
+    ],
+    steps: [
+      [t(`${u[0]}·${v[0]} + ${u[1]}·${v[1]} + ${u[2]}·${v[2]} = ${u[0] * v[0]} + ${u[1] * v[1]} + ${u[2] * v[2]} = ${d}.`)],
+    ],
+    answer: [t(`${d}`)],
+  };
+}
+
+function l43Mcq(): Exercise {
+  const u = rand3(-4, 4);
+  const v = rand3(-4, 4);
+  const d = dot3(u, v);
+  return {
+    id: uniqueId("gen-L43-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L43",
+    title: "QCM — Calculer un produit scalaire",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
+      t(` = ${fmt3(v)}. Calculer `), vec("u"), t(" · "), vec("v"), t("."),
+    ],
+    options: [
+      { id: "a", content: String(d), correct: true },
+      { id: "b", content: String(d + nonZero(1, 3)), correct: false },
+      { id: "c", content: String(-d), correct: false },
+      { id: "d", content: String(d + nonZero(-3, -1)), correct: false },
+    ],
+    explanation: [
+      t(`Calcul : ${u[0]}·${v[0]} + ${u[1]}·${v[1]} + ${u[2]}·${v[2]} = ${d}.`),
+    ],
+    steps: [],
+    answer: String(d),
+  };
+}
+
+function l43Tf(): Exercise {
+  const u = rand3(-4, 4);
+  const v = rand3(-4, 4);
+  const d = dot3(u, v);
+  const proposed = pick([d, d + nonZero(1, 3)]);
+  const isTrueQ = proposed === d;
+  return {
+    id: uniqueId("gen-L43-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L43",
+    title: "Vrai ou Faux — Produit scalaire",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: [
+      vec("u"), t(` = ${fmt3(u)} et `), vec("v"), t(` = ${fmt3(v)} satisfont `),
+      vec("u"), t(" · "), vec("v"), t(` = ${proposed}.`),
+    ],
+    isTrue: isTrueQ,
+    explanation: [
+      t(`Calcul : ${u[0]}·${v[0]} + ${u[1]}·${v[1]} + ${u[2]}·${v[2]} = ${d}. ${isTrueQ ? "Vrai." : `Faux : la vraie valeur est ${d}.`}`),
+    ],
+    steps: [],
+    answer: isTrueQ ? "Vrai" : "Faux",
+  };
+}
+
+// L44 generators reuse L43 templates (angle/orthogonality variants)
+function l44Calc(): Exercise { return { ...l43Calc(), id: uniqueId("gen-L44-calc"), lessonId: "L44" }; }
+function l44Mcq(): Exercise { return { ...l43Mcq(), id: uniqueId("gen-L44-mcq"), lessonId: "L44" }; }
+function l44Tf(): Exercise { return { ...l43Tf(), id: uniqueId("gen-L44-tf"), lessonId: "L44" }; }
+
+// ════════════════════════════════════════════════════════════════════════
+//  L45 — Projection orthogonale
+// ════════════════════════════════════════════════════════════════════════
+
+function l45Calc(): Exercise {
+  // Project u on a canonical axis for clean answers
+  const u: [number, number, number] = rand3(-4, 4);
+  const axis = pick([0, 1, 2]);
+  const v: [number, number, number] = [0, 0, 0] as [number, number, number];
+  v[axis] = 1;
+  const projComp = u[axis];
+  const proj: [number, number, number] = [0, 0, 0];
+  proj[axis] = projComp;
+  return {
+    id: uniqueId("gen-L45-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L45",
+    title: "Calculer une projection orthogonale",
+    difficulty: "Intermédiaire",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
+      t(` = ${fmt3(v)}. Calculer la projection de `), vec("u"), t(" sur "), vec("v"), t("."),
+    ],
+    steps: [
+      [t(`proj = (`), vec("u"), t(" · "), vec("v"), t(`) / ‖`), vec("v"), t(`‖² · `), vec("v"), t(` = ${projComp} · ${fmt3(v)} = ${fmt3(proj)}.`)],
+    ],
+    answer: [t(`Projection = ${fmt3(proj)}.`)],
+  };
+}
+
+function l45Mcq(): Exercise {
+  const u: [number, number, number] = rand3(-4, 4);
+  const axis = pick([0, 1, 2]);
+  const v: [number, number, number] = [0, 0, 0] as [number, number, number];
+  v[axis] = 1;
+  const proj: [number, number, number] = [0, 0, 0];
+  proj[axis] = u[axis];
+  return {
+    id: uniqueId("gen-L45-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L45",
+    title: "QCM — Projection sur un axe",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      t(`Projection de `), vec("u"), t(` = ${fmt3(u)} sur `), vec("v"), t(` = ${fmt3(v)} ?`),
+    ],
+    options: [
+      { id: "a", content: fmt3(proj), correct: true },
+      { id: "b", content: fmt3(u), correct: false },
+      { id: "c", content: fmt3(v), correct: false },
+      { id: "d", content: fmt3([0, 0, 0]), correct: false },
+    ],
+    explanation: [
+      t(`proj = (u·v / ‖v‖²) v = ${u[axis]} · ${fmt3(v)} = ${fmt3(proj)}.`),
+    ],
+    steps: [],
+    answer: fmt3(proj),
+  };
+}
+
+function l45Tf(): Exercise {
+  return {
+    id: uniqueId("gen-L45-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L45",
+    title: "Vrai ou Faux — Projection orthogonale",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: [
+      t("La projection de "), vec("u"), t(" sur "), vec("u"), t(" est égale à "), vec("u"), t("."),
+    ],
+    isTrue: true,
+    explanation: [
+      t("Vrai. proj_u(u) = (u·u / ‖u‖²) u = u."),
+    ],
+    steps: [],
+    answer: "Vrai",
+  };
+}
+
+// ════════════════════════════════════════════════════════════════════════
+//  L46-L47 — Produit vectoriel
+// ════════════════════════════════════════════════════════════════════════
+
+function cross3(a: [number, number, number], b: [number, number, number]): [number, number, number] {
+  return [
+    a[1] * b[2] - a[2] * b[1],
+    a[2] * b[0] - a[0] * b[2],
+    a[0] * b[1] - a[1] * b[0],
+  ];
+}
+
+function l46Calc(): Exercise {
+  const u: [number, number, number] = rand3(-3, 3);
+  const v: [number, number, number] = rand3(-3, 3);
+  const c = cross3(u, v);
+  return {
+    id: uniqueId("gen-L46-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L46",
+    title: "Calculer un produit vectoriel",
+    difficulty: "Intermédiaire",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
+      t(` = ${fmt3(v)}. Calculer `), vec("u"), t(" × "), vec("v"), t("."),
+    ],
+    steps: [
+      [t(`(u₂v₃ − u₃v₂, u₃v₁ − u₁v₃, u₁v₂ − u₂v₁) = ${fmt3(c)}.`)],
+    ],
+    answer: [t(`Résultat : ${fmt3(c)}.`)],
+  };
+}
+
+function l46Mcq(): Exercise {
+  const u: [number, number, number] = rand3(-3, 3);
+  const v: [number, number, number] = rand3(-3, 3);
+  const c = cross3(u, v);
+  return {
+    id: uniqueId("gen-L46-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L46",
+    title: "QCM — Produit vectoriel",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      vec("u"), t(` = ${fmt3(u)} × `), vec("v"), t(` = ${fmt3(v)} = ?`),
+    ],
+    options: [
+      { id: "a", content: fmt3(c), correct: true },
+      { id: "b", content: fmt3([-c[0], -c[1], -c[2]] as [number, number, number]), correct: false },
+      { id: "c", content: fmt3([c[1], c[0], c[2]] as [number, number, number]), correct: false },
+      { id: "d", content: fmt3([0, 0, 0]), correct: false },
+    ],
+    explanation: [
+      t(`Formule : (u₂v₃-u₃v₂, u₃v₁-u₁v₃, u₁v₂-u₂v₁) = ${fmt3(c)}.`),
+    ],
+    steps: [],
+    answer: fmt3(c),
+  };
+}
+
+function l46Tf(): Exercise {
+  return {
+    id: uniqueId("gen-L46-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L46",
+    title: "Vrai ou Faux — Anticommutativité",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: [
+      vec("u"), t(" × "), vec("v"), t(" = -("), vec("v"), t(" × "), vec("u"), t(")."),
+    ],
+    isTrue: true,
+    explanation: [
+      t("Vrai. Le produit vectoriel est anticommutatif."),
+    ],
+    steps: [],
+    answer: "Vrai",
+  };
+}
+
+function l47Calc(): Exercise { return { ...l46Calc(), id: uniqueId("gen-L47-calc"), lessonId: "L47" }; }
+function l47Mcq(): Exercise { return { ...l46Mcq(), id: uniqueId("gen-L47-mcq"), lessonId: "L47" }; }
+function l47Tf(): Exercise { return { ...l46Tf(), id: uniqueId("gen-L47-tf"), lessonId: "L47" }; }
+
+// ════════════════════════════════════════════════════════════════════════
+//  L48-L49 — Produit mixte
+// ════════════════════════════════════════════════════════════════════════
+
+function l48Calc(): Exercise {
+  const u: [number, number, number] = rand3(-2, 2);
+  const v: [number, number, number] = rand3(-2, 2);
+  const w: [number, number, number] = rand3(-2, 2);
+  const c = cross3(v, w);
+  const m = dot3(u, c);
+  return {
+    id: uniqueId("gen-L48-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L48",
+    title: "Calculer un produit mixte",
+    difficulty: "Avancé",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt3(u)}, `), vec("v"), t(` = ${fmt3(v)}, `),
+      vec("w"), t(` = ${fmt3(w)}. Calculer `), vec("u"), t(" · ("), vec("v"), t(" × "), vec("w"), t(")."),
+    ],
+    steps: [
+      [t(`D'abord `), vec("v"), t(" × "), vec("w"), t(` = ${fmt3(c)}.`)],
+      [t(`Puis `), vec("u"), t(` · ${fmt3(c)} = ${m}.`)],
+    ],
+    answer: [t(`Résultat : ${m}.`)],
+  };
+}
+
+function l48Mcq(): Exercise {
+  const u: [number, number, number] = rand3(-2, 2);
+  const v: [number, number, number] = rand3(-2, 2);
+  const w: [number, number, number] = rand3(-2, 2);
+  const m = dot3(u, cross3(v, w));
+  return {
+    id: uniqueId("gen-L48-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L48",
+    title: "QCM — Produit mixte",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt: [
+      vec("u"), t(` = ${fmt3(u)}, `), vec("v"), t(` = ${fmt3(v)}, `),
+      vec("w"), t(` = ${fmt3(w)}. `), vec("u"), t(" · ("), vec("v"), t(" × "), vec("w"), t(") = ?"),
+    ],
+    options: [
+      { id: "a", content: String(m), correct: true },
+      { id: "b", content: String(-m), correct: false },
+      { id: "c", content: String(m + nonZero(1, 3)), correct: false },
+      { id: "d", content: "0", correct: false },
+    ],
+    explanation: [
+      t(`Le produit mixte vaut ${m}. Géométriquement, c'est le volume signé du parallélépipède.`),
+    ],
+    steps: [],
+    answer: String(m),
+  };
+}
+
+function l48Tf(): Exercise {
+  return {
+    id: uniqueId("gen-L48-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L48",
+    title: "Vrai ou Faux — Permutation cyclique",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: [
+      vec("u"), t(" · ("), vec("v"), t(" × "), vec("w"), t(") = "),
+      vec("v"), t(" · ("), vec("w"), t(" × "), vec("u"), t(")."),
+    ],
+    isTrue: true,
+    explanation: [
+      t("Vrai. Le produit mixte est invariant par permutation cyclique."),
+    ],
+    steps: [],
+    answer: "Vrai",
+  };
+}
+
+function l49Calc(): Exercise { return { ...l48Calc(), id: uniqueId("gen-L49-calc"), lessonId: "L49" }; }
+function l49Mcq(): Exercise { return { ...l48Mcq(), id: uniqueId("gen-L49-mcq"), lessonId: "L49" }; }
+function l49Tf(): Exercise { return { ...l48Tf(), id: uniqueId("gen-L49-tf"), lessonId: "L49" }; }
+
+// ════════════════════════════════════════════════════════════════════════
+//  L50-L58 — Droites et plans : templates simples
+// ════════════════════════════════════════════════════════════════════════
+
+function geometryMcq(lessonId: string, lessonNum: number): Exercise {
+  const templates = [
+    {
+      title: "QCM — Vecteur directeur d'une droite",
+      prompt: `La droite x = 1 + 2t, y = 3 - t, z = 4t a pour vecteur directeur :`,
+      options: [
+        { id: "a", content: "(2, -1, 4)", correct: true },
+        { id: "b", content: "(1, 3, 0)", correct: false },
+        { id: "c", content: "(0, 0, 0)", correct: false },
+        { id: "d", content: "(1, 1, 1)", correct: false },
+      ],
+      explanation: "Le vecteur directeur est constitué des coefficients du paramètre t.",
+      answer: "(2, -1, 4)",
+    },
+    {
+      title: "QCM — Vecteur normal à un plan",
+      prompt: `Un vecteur normal au plan 3x - y + 2z = 7 est :`,
+      options: [
+        { id: "a", content: "(3, -1, 2)", correct: true },
+        { id: "b", content: "(7, 0, 0)", correct: false },
+        { id: "c", content: "(1, 1, 1)", correct: false },
+        { id: "d", content: "(-3, 1, -2) — colinéaire", correct: false },
+      ],
+      explanation: "Les coefficients de x, y, z donnent un vecteur normal au plan.",
+      answer: "(3, -1, 2)",
+    },
+    {
+      title: "QCM — Plans parallèles",
+      prompt: `Deux plans sont parallèles si et seulement si :`,
+      options: [
+        { id: "a", content: "Leurs vecteurs normaux sont colinéaires", correct: true },
+        { id: "b", content: "Ils ont un point commun", correct: false },
+        { id: "c", content: "Leurs vecteurs normaux sont orthogonaux", correct: false },
+        { id: "d", content: "Leurs équations ont les mêmes constantes", correct: false },
+      ],
+      explanation: "Le parallélisme se vérifie par la colinéarité des vecteurs normaux.",
+      answer: "Vecteurs normaux colinéaires",
+    },
+  ];
+  const tpl = pick(templates);
+  return {
+    id: uniqueId(`gen-${lessonId}-mcq`),
+    topicId: "linear-algebra",
+    lessonId,
+    title: tpl.title,
+    difficulty: lessonNum % 3 === 0 ? "Avancé" : "Intermédiaire",
+    type: "mcq",
+    prompt: tpl.prompt,
+    options: tpl.options,
+    explanation: tpl.explanation,
+    steps: [],
+    answer: tpl.answer,
+  };
+}
+
+function geometryTf(lessonId: string): Exercise {
+  const templates = [
+    {
+      title: "Vrai ou Faux — Droite et plan",
+      prompt: "Une droite est parallèle à un plan ssi son vecteur directeur est orthogonal au vecteur normal du plan.",
+      isTrue: true,
+      explanation: "Vrai. d · n = 0 traduit l'orthogonalité du directeur de la droite et du normal du plan.",
+    },
+    {
+      title: "Vrai ou Faux — Distance",
+      prompt: "Un point appartient à un plan ssi sa distance au plan est nulle.",
+      isTrue: true,
+      explanation: "Vrai. La distance est nulle ssi le point vérifie l'équation du plan.",
+    },
+    {
+      title: "Vrai ou Faux — Droites gauches",
+      prompt: "Deux droites peuvent être ni parallèles, ni sécantes : on dit qu'elles sont gauches.",
+      isTrue: true,
+      explanation: "Vrai. Cas spécifique à l'espace R³ (impossible en 2D).",
+    },
+  ];
+  const tpl = pick(templates);
+  return {
+    id: uniqueId(`gen-${lessonId}-tf`),
+    topicId: "linear-algebra",
+    lessonId,
+    title: tpl.title,
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: tpl.prompt,
+    isTrue: tpl.isTrue,
+    explanation: tpl.explanation,
+    steps: [],
+    answer: tpl.isTrue ? "Vrai" : "Faux",
+  };
+}
+
+function geometryCalc(lessonId: string): Exercise {
+  // Compute distance from origin to a plane
+  const a = nonZero(-3, 3);
+  const b = nonZero(-3, 3);
+  const c = nonZero(-3, 3);
+  const d = nonZero(-4, 4);
+  const norm = Math.sqrt(a * a + b * b + c * c);
+  const dist = Math.abs(d) / norm;
+  return {
+    id: uniqueId(`gen-${lessonId}-calc`),
+    topicId: "linear-algebra",
+    lessonId,
+    title: "Distance de l'origine à un plan",
+    difficulty: "Intermédiaire",
+    prompt: [
+      t(`Calculer la distance de l'origine au plan ${a}x + ${b}y + ${c}z + ${d} = 0.`),
+    ],
+    steps: [
+      [t(`Formule : d = |a·0 + b·0 + c·0 + d| / √(a² + b² + c²) = |${d}| / √(${a * a + b * b + c * c}).`)],
+      [t(`Résultat : ${dist.toFixed(3)}.`)],
+    ],
+    answer: [t(`Distance ≈ ${dist.toFixed(3)}.`)],
+  };
+}
+
+// ════════════════════════════════════════════════════════════════════════
 //  L15-L20 — Use existing calc generators; provide MCQ/V-F templates
 // ════════════════════════════════════════════════════════════════════════
 
@@ -1328,15 +1789,23 @@ function getCalcExercise(lessonId: string): Exercise | null {
     const batch = generateQuiz(lessonId);
     if (batch.length > 0) return pick(batch);
   }
-  // L21-L37 use our procedural calc templates
+  // L21-L58 use our procedural calc templates
   const calcMap: Record<string, () => Exercise> = {
     L21: l21Calc, L22: l22Calc,
     L23: l23Calc, L24: l24Calc, L25: l25Calc, L26: l26Calc,
     L27: l27Calc, L28: l28Calc, L29: l29Calc,
     L34: l34Calc, L35: l35Calc, L36: l36Calc, L37: l37Calc,
+    L43: l43Calc, L44: l44Calc, L45: l45Calc,
+    L46: l46Calc, L47: l47Calc,
+    L48: l48Calc, L49: l49Calc,
   };
   const fn = calcMap[lessonId];
-  return fn ? fn() : null;
+  if (fn) return fn();
+  const lessonNum = parseInt(lessonId.slice(1), 10);
+  if (lessonNum >= 50 && lessonNum <= 58) {
+    return geometryCalc(lessonId);
+  }
+  return null;
 }
 
 function getMcqExercise(lessonId: string): Exercise | null {
@@ -1346,12 +1815,19 @@ function getMcqExercise(lessonId: string): Exercise | null {
     L23: l23Mcq, L24: l24Mcq, L25: l25Mcq, L26: l26Mcq,
     L27: l27Mcq, L28: l28Mcq, L29: l29Mcq,
     L34: l34Mcq, L35: l35Mcq, L36: l36Mcq, L37: l37Mcq,
+    L43: l43Mcq, L44: l44Mcq, L45: l45Mcq,
+    L46: l46Mcq, L47: l47Mcq,
+    L48: l48Mcq, L49: l49Mcq,
   };
   const fn = mcqMap[lessonId];
   if (fn) return fn();
   // L15-L20: generic matrix MCQs
   if (lessonNum >= 15 && lessonNum <= 20) {
     return genericMatrixMcq(lessonId);
+  }
+  // L50-L58: generic geometry MCQs
+  if (lessonNum >= 50 && lessonNum <= 58) {
+    return geometryMcq(lessonId, lessonNum);
   }
   return null;
 }
@@ -1363,12 +1839,19 @@ function getTfExercise(lessonId: string): Exercise | null {
     L23: l23Tf, L24: l24Tf, L25: l25Tf, L26: l26Tf,
     L27: l27Tf, L28: l28Tf, L29: l29Tf,
     L34: l34Tf, L35: l35Tf, L36: l36Tf, L37: l37Tf,
+    L43: l43Tf, L44: l44Tf, L45: l45Tf,
+    L46: l46Tf, L47: l47Tf,
+    L48: l48Tf, L49: l49Tf,
   };
   const fn = tfMap[lessonId];
   if (fn) return fn();
   // L15-L20: generic matrix TFs
   if (lessonNum >= 15 && lessonNum <= 20) {
     return genericMatrixTf(lessonId);
+  }
+  // L50-L58: generic geometry TFs
+  if (lessonNum >= 50 && lessonNum <= 58) {
+    return geometryTf(lessonId);
   }
   return null;
 }
@@ -1437,8 +1920,9 @@ export function getAvailableTypes(lessonId: string): {
   const lessonNum = parseInt(lessonId.slice(1), 10);
   const hasL34To37 = lessonNum >= 34 && lessonNum <= 37;
   const hasL21To29 = lessonNum >= 21 && lessonNum <= 29;
+  const hasL43To58 = lessonNum >= 43 && lessonNum <= 58;
   return {
-    exercise: hasQuizGenerator(lessonId) || hasL21To29 || hasL34To37,
+    exercise: hasQuizGenerator(lessonId) || hasL21To29 || hasL34To37 || hasL43To58,
     mcq: getMcqExercise(lessonId) !== null,
     tf: getTfExercise(lessonId) !== null,
   };
