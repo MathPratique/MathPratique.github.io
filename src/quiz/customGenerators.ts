@@ -6,8 +6,6 @@ import { generateQuiz, hasQuizGenerator } from "./registry";
 const t = (s: string): RichPart => ({ type: "text", content: s });
 const vec = (s: string): RichPart => ({ type: "vec", content: [{ type: "text", content: s }] });
 
-type Kind = "exercise" | "mcq" | "tf";
-
 // ════════════════════════════════════════════════════════════════════════
 //  Eligible lessons for the custom quiz generator
 // ════════════════════════════════════════════════════════════════════════
@@ -44,9 +42,6 @@ function addV(a: number[], b: number[]) {
 }
 function scaleV(k: number, a: number[]) {
   return a.map((x) => k * x);
-}
-function norm2(a: number[]) {
-  return Math.sqrt(a.reduce((s, x) => s + x * x, 0));
 }
 
 // ════════════════════════════════════════════════════════════════════════
