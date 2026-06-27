@@ -13,6 +13,7 @@ const vec = (s: string): RichPart => ({ type: "vec", content: [{ type: "text", c
 export const CUSTOM_QUIZ_LESSONS = [
   "L15", "L16", "L17", "L18", "L19", "L20", "L21", "L22",
   "L23", "L24", "L25", "L26", "L27", "L28", "L29",
+  "L34", "L35", "L36", "L37",
 ];
 
 // ════════════════════════════════════════════════════════════════════════
@@ -831,6 +832,397 @@ function l22Calc(): Exercise {
 }
 
 // ════════════════════════════════════════════════════════════════════════
+//  L34 — Combinaison linéaire (espaces vectoriels)
+// ════════════════════════════════════════════════════════════════════════
+
+function l34Mcq(): Exercise {
+  // Vérifier si w est une combinaison linéaire de u et v en R²
+  const u: [number, number] = rand2(-3, 3);
+  let v: [number, number] = rand2(-3, 3);
+  // Ensure u and v are not colinear
+  while (u[0] * v[1] - u[1] * v[0] === 0) v = rand2(-3, 3);
+  const a = nonZero(-3, 3);
+  const b = nonZero(-3, 3);
+  const w: [number, number] = [a * u[0] + b * v[0], a * u[1] + b * v[1]];
+  return {
+    id: uniqueId("gen-L34-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L34",
+    title: "QCM — Combinaison linéaire en 2D",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt2(u)}, `), vec("v"), t(` = ${fmt2(v)} et `),
+      vec("w"), t(` = ${fmt2(w)}. Trouver a et b tels que `),
+      vec("w"), t(" = a"), vec("u"), t(" + b"), vec("v"), t("."),
+    ],
+    options: [
+      { id: "a", content: `a = ${a}, b = ${b}`, correct: true },
+      { id: "b", content: `a = ${b}, b = ${a}`, correct: false },
+      { id: "c", content: `a = ${-a}, b = ${b}`, correct: false },
+      { id: "d", content: "Aucune solution", correct: false },
+    ],
+    explanation: [
+      t(`On résout (${w[0]}, ${w[1]}) = a${fmt2(u)} + b${fmt2(v)}. Le système donne a = ${a}, b = ${b}.`),
+    ],
+    steps: [],
+    answer: `a = ${a}, b = ${b}`,
+  };
+}
+
+function l34Tf(): Exercise {
+  const isTrueQ = pick([true, false]);
+  return {
+    id: uniqueId("gen-L34-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L34",
+    title: "Vrai ou Faux — Combinaison linéaire",
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: [
+      t(isTrueQ
+        ? "Toute combinaison linéaire avec coefficients tous nuls donne le vecteur nul."
+        : "Si une combinaison linéaire est nulle, alors tous les coefficients sont nuls."),
+    ],
+    isTrue: isTrueQ,
+    explanation: [
+      t(isTrueQ
+        ? "Vrai. 0·v₁ + 0·v₂ + ... + 0·vₙ = 0 toujours."
+        : "Faux. Ce n'est vrai que si les vecteurs sont linéairement indépendants. S'ils sont liés, il existe des coefficients non tous nuls dont la combinaison est nulle."),
+    ],
+    steps: [],
+    answer: isTrueQ ? "Vrai" : "Faux",
+  };
+}
+
+function l34Calc(): Exercise {
+  const u: [number, number] = rand2(-3, 3);
+  const v: [number, number] = rand2(-3, 3);
+  const a = nonZero(-3, 3);
+  const b = nonZero(-3, 3);
+  const result: [number, number] = [a * u[0] + b * v[0], a * u[1] + b * v[1]];
+  return {
+    id: uniqueId("gen-L34-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L34",
+    title: "Calculer une combinaison linéaire",
+    difficulty: "Fondamental",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt2(u)} et `), vec("v"), t(` = ${fmt2(v)}. Calculer ${a}`),
+      vec("u"), t(` + ${b}`), vec("v"), t("."),
+    ],
+    steps: [
+      [t(`${a}`), vec("u"), t(` = ${fmt2([a * u[0], a * u[1]])}.`)],
+      [t(`${b}`), vec("v"), t(` = ${fmt2([b * v[0], b * v[1]])}.`)],
+      [t(`Somme : ${fmt2(result)}.`)],
+    ],
+    answer: [t(`Résultat : ${fmt2(result)}.`)],
+  };
+}
+
+// ════════════════════════════════════════════════════════════════════════
+//  L35 — Ensemble générateur de V
+// ════════════════════════════════════════════════════════════════════════
+
+function l35Mcq(): Exercise {
+  const templates = [
+    {
+      title: "QCM — Engendre R² ?",
+      prompt: "Lequel des ensembles suivants engendre R² ?",
+      options: [
+        { id: "a", content: "{(1, 0), (0, 1)}", correct: true },
+        { id: "b", content: "{(2, 4), (1, 2)}", correct: false },
+        { id: "c", content: "{(0, 0), (1, 1)}", correct: false },
+        { id: "d", content: "{(1, 1)}", correct: false },
+      ],
+      explanation: "La base canonique {(1, 0), (0, 1)} engendre R². Les autres ensembles contiennent des vecteurs colinéaires ou le vecteur nul.",
+      answer: "{(1, 0), (0, 1)}",
+    },
+    {
+      title: "QCM — Engendre R³ ?",
+      prompt: "Lequel des ensembles suivants engendre R³ ?",
+      options: [
+        { id: "a", content: "{(1, 0, 0), (0, 1, 0), (0, 0, 1)}", correct: true },
+        { id: "b", content: "{(1, 1, 1), (2, 2, 2)}", correct: false },
+        { id: "c", content: "{(1, 0, 0), (0, 1, 0)}", correct: false },
+        { id: "d", content: "{(1, 2, 3)}", correct: false },
+      ],
+      explanation: "La base canonique de R³ a 3 vecteurs et engendre R³. Les autres ensembles ont trop peu de vecteurs ou sont colinéaires.",
+      answer: "Base canonique de R³",
+    },
+  ];
+  const tpl = pick(templates);
+  return {
+    id: uniqueId("gen-L35-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L35",
+    title: tpl.title,
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: tpl.prompt,
+    options: tpl.options,
+    explanation: tpl.explanation,
+    steps: [],
+    answer: tpl.answer,
+  };
+}
+
+function l35Tf(): Exercise {
+  const templates = [
+    {
+      title: "Vrai ou Faux — Plus de vecteurs qu'il n'en faut",
+      prompt: "Un ensemble générateur de R² peut contenir plus de 2 vecteurs.",
+      isTrue: true,
+      explanation: "Vrai. {(1, 0), (0, 1), (1, 1)} engendre R² avec 3 vecteurs. Un générateur n'a pas à être minimal.",
+    },
+    {
+      title: "Vrai ou Faux — Trop peu de vecteurs",
+      prompt: "Deux vecteurs suffisent toujours pour engendrer R³.",
+      isTrue: false,
+      explanation: "Faux. Deux vecteurs n'engendrent qu'un plan (au plus). Il faut au moins 3 vecteurs linéairement indépendants pour engendrer R³.",
+    },
+  ];
+  const tpl = pick(templates);
+  return {
+    id: uniqueId("gen-L35-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L35",
+    title: tpl.title,
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: tpl.prompt,
+    isTrue: tpl.isTrue,
+    explanation: tpl.explanation,
+    steps: [],
+    answer: tpl.isTrue ? "Vrai" : "Faux",
+  };
+}
+
+function l35Calc(): Exercise {
+  // Verify if a given vector is in span{e1, e2} (plan z=0)
+  const x = nonZero(-5, 5);
+  const y = nonZero(-5, 5);
+  const z = pick([0, nonZero(-5, 5)]);
+  const v: [number, number, number] = [x, y, z];
+  const inSpan = z === 0;
+  return {
+    id: uniqueId("gen-L35-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L35",
+    title: "Tester l'appartenance à un sous-espace",
+    difficulty: "Intermédiaire",
+    prompt: [
+      t(`Soit S = {(1, 0, 0), (0, 1, 0)}. Le vecteur `), vec("v"),
+      t(` = ${fmt3(v)} appartient-il à l'engendrement de S ? Justifier.`),
+    ],
+    steps: [
+      [t("L'engendrement de S est l'ensemble des vecteurs de la forme a(1, 0, 0) + b(0, 1, 0) = (a, b, 0).")],
+      [t(`Pour que `), vec("v"), t(` ∈ engendrement(S), il faut z = 0. Ici z = ${z}, donc `),
+        t(inSpan ? "le vecteur appartient à l'engendrement (a = " + x + ", b = " + y + ")." : "le vecteur n'appartient pas à l'engendrement.")],
+    ],
+    answer: [t(inSpan ? "Oui" : "Non")],
+  };
+}
+
+// ════════════════════════════════════════════════════════════════════════
+//  L36 — Dépendance et indépendance linéaire
+// ════════════════════════════════════════════════════════════════════════
+
+function l36Mcq(): Exercise {
+  // Test if 2 vectors are colinear (dependent) in R²
+  const k = nonZero(-4, 4);
+  const v: [number, number] = rand2(-3, 3);
+  const useColin = pick([true, false]);
+  const u: [number, number] = useColin
+    ? [k * v[0], k * v[1]]
+    : [v[1] + 1, v[0]]; // typically not colinear
+  return {
+    id: uniqueId("gen-L36-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L36",
+    title: "QCM — Indépendance de 2 vecteurs",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      t(`Soit `), vec("u"), t(` = ${fmt2(u)} et `), vec("v"),
+      t(` = ${fmt2(v)}. Ces vecteurs sont :`),
+    ],
+    options: [
+      { id: "a", content: useColin ? "Linéairement dépendants" : "Linéairement indépendants", correct: true },
+      { id: "b", content: useColin ? "Linéairement indépendants" : "Linéairement dépendants", correct: false },
+      { id: "c", content: "Orthogonaux", correct: false },
+      { id: "d", content: "Identiques", correct: false },
+    ],
+    explanation: [
+      t(useColin
+        ? `Calcul du déterminant : ${u[0]}·${v[1]} − ${u[1]}·${v[0]} = ${u[0] * v[1] - u[1] * v[0]} = 0. Les vecteurs sont colinéaires (dépendants).`
+        : `Calcul du déterminant : ${u[0]}·${v[1]} − ${u[1]}·${v[0]} = ${u[0] * v[1] - u[1] * v[0]} ≠ 0. Les vecteurs sont indépendants.`),
+    ],
+    steps: [],
+    answer: useColin ? "Linéairement dépendants" : "Linéairement indépendants",
+  };
+}
+
+function l36Tf(): Exercise {
+  const templates = [
+    {
+      title: "Vrai ou Faux — Vecteur nul dans l'ensemble",
+      prompt: "Tout ensemble de vecteurs contenant le vecteur nul est linéairement dépendant.",
+      isTrue: true,
+      explanation: "Vrai. La combinaison 1·0 + 0·v₁ + ... = 0 a un coefficient non nul, ce qui rend l'ensemble lié.",
+    },
+    {
+      title: "Vrai ou Faux — Trop de vecteurs dans R³",
+      prompt: "Quatre vecteurs de R³ sont toujours linéairement dépendants.",
+      isTrue: true,
+      explanation: "Vrai. La dimension de R³ est 3. Tout ensemble de plus de 3 vecteurs dans R³ est nécessairement lié.",
+    },
+    {
+      title: "Vrai ou Faux — Trop de vecteurs dans R²",
+      prompt: "Trois vecteurs de R² sont toujours linéairement dépendants.",
+      isTrue: true,
+      explanation: "Vrai. La dimension de R² est 2. Tout ensemble de plus de 2 vecteurs dans R² est lié.",
+    },
+  ];
+  const tpl = pick(templates);
+  return {
+    id: uniqueId("gen-L36-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L36",
+    title: tpl.title,
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: tpl.prompt,
+    isTrue: tpl.isTrue,
+    explanation: tpl.explanation,
+    steps: [],
+    answer: tpl.isTrue ? "Vrai" : "Faux",
+  };
+}
+
+function l36Calc(): Exercise {
+  const v: [number, number] = rand2(-3, 3);
+  const k = nonZero(-3, 3);
+  const u: [number, number] = [k * v[0], k * v[1]];
+  const det = u[0] * v[1] - u[1] * v[0];
+  return {
+    id: uniqueId("gen-L36-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L36",
+    title: "Tester l'indépendance par déterminant",
+    difficulty: "Intermédiaire",
+    prompt: [
+      t(`Vérifier si `), vec("u"), t(` = ${fmt2(u)} et `), vec("v"),
+      t(` = ${fmt2(v)} sont linéairement indépendants.`),
+    ],
+    steps: [
+      [t(`Calculer le déterminant : ${u[0]}·${v[1]} − ${u[1]}·${v[0]} = ${u[0] * v[1]} − ${u[1] * v[0]} = ${det}.`)],
+      [t(det === 0
+        ? `Le déterminant est 0, donc les vecteurs sont liés.`
+        : `Le déterminant est ≠ 0, donc les vecteurs sont indépendants.`)],
+    ],
+    answer: [t(det === 0 ? "Liés" : "Indépendants")],
+  };
+}
+
+// ════════════════════════════════════════════════════════════════════════
+//  L37 — Base et composantes
+// ════════════════════════════════════════════════════════════════════════
+
+function l37Mcq(): Exercise {
+  const x = nonZero(-5, 5);
+  const y = nonZero(-5, 5);
+  const z = nonZero(-5, 5);
+  return {
+    id: uniqueId("gen-L37-mcq"),
+    topicId: "linear-algebra",
+    lessonId: "L37",
+    title: "QCM — Composantes dans la base canonique",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt: [
+      t(`Soit `), vec("v"),
+      t(` = (${x}, ${y}, ${z}) dans R³. Quelles sont ses composantes dans la base canonique ?`),
+    ],
+    options: [
+      { id: "a", content: `(${x}, ${y}, ${z})`, correct: true },
+      { id: "b", content: `(${z}, ${y}, ${x})`, correct: false },
+      { id: "c", content: `(${x + 1}, ${y}, ${z})`, correct: false },
+      { id: "d", content: "(1, 1, 1)", correct: false },
+    ],
+    explanation: [
+      t(`Dans la base canonique, les composantes sont les coordonnées : (${x}, ${y}, ${z}). En effet, `),
+      vec("v"), t(` = ${x}`), vec("e₁"), t(` + ${y}`), vec("e₂"), t(` + ${z}`), vec("e₃"), t("."),
+    ],
+    steps: [],
+    answer: `(${x}, ${y}, ${z})`,
+  };
+}
+
+function l37Tf(): Exercise {
+  const templates = [
+    {
+      title: "Vrai ou Faux — Cardinalité d'une base",
+      prompt: "Toute base de R² contient exactement 2 vecteurs.",
+      isTrue: true,
+      explanation: "Vrai. La dimension de R² est 2, et toutes les bases d'un même espace ont le même cardinal (la dimension).",
+    },
+    {
+      title: "Vrai ou Faux — Cardinalité dans R³",
+      prompt: "Toute base de R³ contient exactement 3 vecteurs.",
+      isTrue: true,
+      explanation: "Vrai. La dimension de R³ est 3, donc toutes les bases ont 3 vecteurs.",
+    },
+    {
+      title: "Vrai ou Faux — Base avec vecteurs colinéaires",
+      prompt: "Un ensemble {(1, 0), (2, 0)} est une base de R².",
+      isTrue: false,
+      explanation: "Faux. Les deux vecteurs sont colinéaires (le 2e est 2× le 1er), donc l'ensemble est lié et n'est pas une base.",
+    },
+  ];
+  const tpl = pick(templates);
+  return {
+    id: uniqueId("gen-L37-tf"),
+    topicId: "linear-algebra",
+    lessonId: "L37",
+    title: tpl.title,
+    difficulty: "Intermédiaire",
+    type: "tf",
+    prompt: tpl.prompt,
+    isTrue: tpl.isTrue,
+    explanation: tpl.explanation,
+    steps: [],
+    answer: tpl.isTrue ? "Vrai" : "Faux",
+  };
+}
+
+function l37Calc(): Exercise {
+  // Find components of (x,y) in base B = {(1,1), (1,-1)}
+  const a = nonZero(-4, 4);
+  const b = nonZero(-4, 4);
+  const x = a + b;
+  const y = a - b;
+  return {
+    id: uniqueId("gen-L37-calc"),
+    topicId: "linear-algebra",
+    lessonId: "L37",
+    title: "Trouver les composantes dans une base donnée",
+    difficulty: "Avancé",
+    prompt: [
+      t(`Soit B = {`), vec("b₁"), t(` = (1, 1), `), vec("b₂"),
+      t(` = (1, −1)} une base de R². Trouver les composantes de `),
+      vec("v"), t(` = (${x}, ${y}) dans la base B.`),
+    ],
+    steps: [
+      [t(`On cherche a, b tels que (${x}, ${y}) = a(1, 1) + b(1, −1) = (a + b, a − b).`)],
+      [t(`Système : a + b = ${x} et a − b = ${y}. Addition : 2a = ${x + y}, donc a = ${a}. Soustraction : 2b = ${x - y}, donc b = ${b}.`)],
+      [t(`Composantes : (a, b) = (${a}, ${b}).`)],
+    ],
+    answer: [t(`Composantes dans B : (${a}, ${b}).`)],
+  };
+}
+
+// ════════════════════════════════════════════════════════════════════════
 //  L15-L20 — Use existing calc generators; provide MCQ/V-F templates
 // ════════════════════════════════════════════════════════════════════════
 
@@ -936,11 +1328,12 @@ function getCalcExercise(lessonId: string): Exercise | null {
     const batch = generateQuiz(lessonId);
     if (batch.length > 0) return pick(batch);
   }
-  // L21-L29 use our procedural calc templates
+  // L21-L37 use our procedural calc templates
   const calcMap: Record<string, () => Exercise> = {
     L21: l21Calc, L22: l22Calc,
     L23: l23Calc, L24: l24Calc, L25: l25Calc, L26: l26Calc,
     L27: l27Calc, L28: l28Calc, L29: l29Calc,
+    L34: l34Calc, L35: l35Calc, L36: l36Calc, L37: l37Calc,
   };
   const fn = calcMap[lessonId];
   return fn ? fn() : null;
@@ -952,6 +1345,7 @@ function getMcqExercise(lessonId: string): Exercise | null {
     L21: l21Mcq, L22: l22Mcq,
     L23: l23Mcq, L24: l24Mcq, L25: l25Mcq, L26: l26Mcq,
     L27: l27Mcq, L28: l28Mcq, L29: l29Mcq,
+    L34: l34Mcq, L35: l35Mcq, L36: l36Mcq, L37: l37Mcq,
   };
   const fn = mcqMap[lessonId];
   if (fn) return fn();
@@ -968,6 +1362,7 @@ function getTfExercise(lessonId: string): Exercise | null {
     L21: l21Tf, L22: l22Tf,
     L23: l23Tf, L24: l24Tf, L25: l25Tf, L26: l26Tf,
     L27: l27Tf, L28: l28Tf, L29: l29Tf,
+    L34: l34Tf, L35: l35Tf, L36: l36Tf, L37: l37Tf,
   };
   const fn = tfMap[lessonId];
   if (fn) return fn();
@@ -1040,8 +1435,10 @@ export function getAvailableTypes(lessonId: string): {
   tf: boolean;
 } {
   const lessonNum = parseInt(lessonId.slice(1), 10);
+  const hasL34To37 = lessonNum >= 34 && lessonNum <= 37;
+  const hasL21To29 = lessonNum >= 21 && lessonNum <= 29;
   return {
-    exercise: getCalcExercise.length >= 0 && (hasQuizGenerator(lessonId) || lessonNum >= 21),
+    exercise: hasQuizGenerator(lessonId) || hasL21To29 || hasL34To37,
     mcq: getMcqExercise(lessonId) !== null,
     tf: getTfExercise(lessonId) !== null,
   };
