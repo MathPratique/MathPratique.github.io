@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import clsx from "clsx";
-import type { Exercise } from "../../data/exercises";
+import type { Exercise, MCQOption } from "../../data/exercises";
 import { topics } from "../../data/topics";
 import { getLessonById } from "../../data/lessons";
 import RichContent from "../ui/RichContent";
@@ -12,6 +12,25 @@ const difficultyStyles: Record<Exercise["difficulty"], string> = {
   Avancé: "bg-amber-100 text-amber-700",
 };
 
+// Deterministic shuffle so the same exercise always shows options in the same
+// order across renders, but different exercises get different orderings.
+function seededShuffle<T>(arr: T[], seed: string): T[] {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash << 5) - hash + seed.charCodeAt(i);
+    hash |= 0;
+  }
+  const result = arr.slice();
+  for (let i = result.length - 1; i > 0; i--) {
+    hash = (hash * 9301 + 49297) % 233280;
+    const j = Math.abs(hash) % (i + 1);
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+const OPTION_LETTERS = ["a", "b", "c", "d", "e", "f"];
+
 type MCQCardProps = { exercise: Exercise };
 
 export default function MCQCard({ exercise }: MCQCardProps) {
@@ -21,7 +40,11 @@ export default function MCQCard({ exercise }: MCQCardProps) {
   const lesson = exercise.lessonId ? getLessonById(exercise.lessonId) : null;
   const contextLabel = lesson ? `Leçon ${lesson.number}` : topic?.name;
 
-  const options = exercise.options ?? [];
+  const options: MCQOption[] = useMemo(() => {
+    const original = exercise.options ?? [];
+    const shuffled = seededShuffle(original, exercise.id);
+    return shuffled.map((opt, i) => ({ ...opt, id: OPTION_LETTERS[i] ?? opt.id }));
+  }, [exercise.id, exercise.options]);
   const answered = selected !== null;
   const selectedOption = options.find((o) => o.id === selected);
   const isCorrect = selectedOption?.correct ?? false;

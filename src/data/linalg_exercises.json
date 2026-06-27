@@ -16798,7 +16798,7 @@
             {
               "type": "sep"
             },
-            "6"
+            "7"
           ],
           [
             "0",
@@ -16850,22 +16850,14 @@
         },
         {
           "type": "text",
-          "content": ": ligne 2 devient (0,0,0|0).\n"
+          "content": ": ligne 2 devient (0,0,0|1) (car 7-2·3=1).\n"
         },
         {
           "type": "bold",
           "content": [
             {
               "type": "text",
-              "content": "rang(A)=2, rang(A:B)=3 (car la 3"
-            },
-            {
-              "type": "sup",
-              "content": "e"
-            },
-            {
-              "type": "text",
-              "content": " ligne non nulle à droite). ⇒ aucune solution."
+              "content": "rang(A)=2, rang(A:B)=3 (la ligne réduite (0,0,0|1) est non nulle à droite mais nulle à gauche). ⇒ aucune solution."
             }
           ]
         }
@@ -17112,13 +17104,13 @@
         },
         {
           "type": "text",
-          "content": ": supprimer. Système equivalent reduit; z=t libre."
+          "content": ": supprimer. Système équivalent : x+2y-z=3 et x-y+z=1. Poser z=t libre."
         }
       ],
       [
         {
           "type": "text",
-          "content": "Solution: {(1,1-t,t)| t∈ℝ}."
+          "content": "De la 2e équation : x = 1+y-t. Substituer dans la 1ère : (1+y-t)+2y-t=3 ⇒ 3y=2+2t ⇒ y=(2+2t)/3. Puis x=(5-t)/3. Solution : {((5-t)/3, (2+2t)/3, t) | t∈ℝ}."
         }
       ]
     ],
@@ -17537,15 +17529,7 @@
         },
         {
           "type": "text",
-          "content": ", ligne nulle. rang(A)=1, rang(A:B): vérifier L"
-        },
-        {
-          "type": "sub",
-          "content": "3"
-        },
-        {
-          "type": "text",
-          "content": ".\nRésultat: ∞ de solutions. Ensemble solution: {(1-t, -2t+t, t)| t∈ℝ}... paramétrer correctement."
+          "content": ", ligne nulle. rang(A)=2=rang(A:B)<n=3 ⇒ ∞ de solutions avec 1 paramètre libre.\nDe x+y-z=1 et x-y+2z=3, soustraction : 2y-3z=-2. Avec z=t libre : y=(3t-2)/2, x=1-y+z=(4-t)/2. Solution : {((4-t)/2, (3t-2)/2, t) | t∈ℝ}."
         }
       ]
     ],
@@ -17600,7 +17584,7 @@
           "content": [
             {
               "type": "text",
-              "content": "rang(A)=rang(A:B)=2<4=n ⇒ ∞ de solutions avec 2 paramètres libres.\nx"
+              "content": "rang(A)=rang(A:B)=3<4=n ⇒ ∞ de solutions avec 1 paramètre libre.\nAprès réduction : w=-1, y=3-z, x=-1-z. Avec z=t libre : x"
             },
             {
               "type": "sub",
@@ -17608,7 +17592,7 @@
             },
             {
               "type": "text",
-              "content": "=1-2t+s, x"
+              "content": "=-1-t, x"
             },
             {
               "type": "sub",
@@ -17616,7 +17600,7 @@
             },
             {
               "type": "text",
-              "content": "=2-3t-2s, x"
+              "content": "=3-t, x"
             },
             {
               "type": "sub",
@@ -17632,7 +17616,7 @@
             },
             {
               "type": "text",
-              "content": "=s où t,s∈ℝ."
+              "content": "=-1 où t∈ℝ."
             }
           ]
         }
@@ -17919,7 +17903,7 @@
       [
         {
           "type": "text",
-          "content": "Forme reduite: "
+          "content": "Forme réduite: "
         },
         {
           "type": "matrix",
@@ -17927,20 +17911,20 @@
             [
               "1",
               "0",
-              "1",
-              "2"
+              "0",
+              "1"
             ],
             [
               "0",
               "1",
-              "1",
-              "2"
+              "0",
+              "1"
             ],
             [
               "0",
               "0",
-              "0",
-              "0"
+              "1",
+              "1"
             ]
           ]
         },
@@ -17952,7 +17936,7 @@
       [
         {
           "type": "text",
-          "content": "z=t: x=2-t, y=2-t. Ensemble: {(2-t,2-t,t)| t∈ℝ}."
+          "content": "Solution unique : x=1, y=1, z=1. Vérification : 1+1+2=4 ✓, 2+1+3=6 ✓, 1-1+1=1 ✓."
         }
       ]
     ],
@@ -18389,7 +18373,7 @@
       [
         {
           "type": "text",
-          "content": "Après opérations: A"
+          "content": "Après opérations: |A|=3, A"
         },
         {
           "type": "sup",
@@ -18400,22 +18384,37 @@
           "content": "="
         },
         {
+          "type": "frac",
+          "num": [
+            {
+              "type": "text",
+              "content": "1"
+            }
+          ],
+          "den": [
+            {
+              "type": "text",
+              "content": "3"
+            }
+          ]
+        },
+        {
           "type": "matrix",
           "data": [
             [
-              "3",
-              "2",
-              "-2"
-            ],
-            [
-              "3",
-              "2",
-              "-1"
-            ],
-            [
               "-3",
-              "-1",
+              "2",
+              "2"
+            ],
+            [
+              "3",
+              "-2",
               "1"
+            ],
+            [
+              "3",
+              "-1",
+              "-1"
             ]
           ]
         },
