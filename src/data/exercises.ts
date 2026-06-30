@@ -12,8 +12,8 @@ export type MCQOption = {
 
 export type RichPart =
   | { type: "text"; content: string }
-  | { type: "sub"; content: string }
-  | { type: "sup"; content: string }
+  | { type: "sub"; content: RichContent }
+  | { type: "sup"; content: RichContent }
   | { type: "matrix"; data: MatrixCell[][]; label?: string }
   | { type: "cases"; rows: RichContent[] }
   | { type: "frac"; num: RichContent; den: RichContent }
@@ -45,6 +45,13 @@ export type Exercise = {
 // `[t("Si "), vec("v"), t(" est un vecteur…")]` instead of the verbose object form.
 const t = (s: string): RichPart => ({ type: "text", content: s });
 const vec = (s: string): RichPart => ({ type: "vec", content: [{ type: "text", content: s }] });
+// Subscript with a vector inside (e.g., `u⃗_v⃗` for "projection of u onto v" in
+// Vecteur Math notation): `[vec("u"), subVec("v")]` renders as u with v as
+// vector subscript.
+const subVec = (s: string): RichPart => ({
+  type: "sub",
+  content: [{ type: "vec", content: [{ type: "text", content: s }] }],
+});
 
 const manualExercises: Exercise[] = [
   {
@@ -3043,7 +3050,8 @@ const manualExercises: Exercise[] = [
     ],
     explanation: [
       t("La projection de "), vec("u"), t(" sur "), vec("v"),
-      t(" s'écrit proj("), vec("u"), t(") = (("), vec("u"), t(" · "), vec("v"),
+      t(" s'écrit "), vec("u"), subVec("v"),
+      t(" = (("), vec("u"), t(" · "), vec("v"),
       t(") / ‖"), vec("v"), t("‖²) "), vec("v"), t("."),
     ],
     steps: [],
@@ -3069,7 +3077,7 @@ const manualExercises: Exercise[] = [
     ],
     explanation: [
       vec("u"), t(" · "), vec("v"), t(" = 3·1 + 4·0 = 3. ‖"), vec("v"),
-      t("‖² = 1. proj = (3/1)·(1, 0) = (3, 0)."),
+      t("‖² = 1. "), vec("u"), subVec("v"), t(" = (3/1)·(1, 0) = (3, 0)."),
     ],
     steps: [],
     answer: "(3, 0)",
@@ -3084,7 +3092,7 @@ const manualExercises: Exercise[] = [
     type: "mcq",
     prompt: [
       t("Si "), vec("u"), t(" = (5, 2) et "), vec("v"), t(" = (1, 0), alors "), vec("u"),
-      t(" = proj"), vec("v"), t("("), vec("u"), t(") + ?"),
+      t(" = "), vec("u"), subVec("v"), t(" + ?"),
     ],
     options: [
       { id: "a", content: "(0, 2)", correct: true },
@@ -3093,8 +3101,8 @@ const manualExercises: Exercise[] = [
       { id: "d", content: "(0, 0)", correct: false },
     ],
     explanation: [
-      t("proj"), vec("v"), t("("), vec("u"), t(") = (5, 0). Donc "), vec("u"),
-      t(" - proj = (5, 2) - (5, 0) = (0, 2), qui est orthogonal à "), vec("v"), t("."),
+      vec("u"), subVec("v"), t(" = (5, 0). Donc "), vec("u"),
+      t(" - "), vec("u"), subVec("v"), t(" = (5, 2) - (5, 0) = (0, 2), qui est orthogonal à "), vec("v"), t("."),
     ],
     steps: [],
     answer: "(0, 2)",
@@ -3108,12 +3116,12 @@ const manualExercises: Exercise[] = [
     difficulty: "Intermédiaire",
     type: "tf",
     prompt: [
-      t("Pour tout vecteur non nul "), vec("u"), t(", proj"), vec("u"),
-      t("("), vec("u"), t(") = "), vec("u"), t("."),
+      t("Pour tout vecteur non nul "), vec("u"), t(", "),
+      vec("u"), subVec("u"), t(" = "), vec("u"), t("."),
     ],
     isTrue: true,
     explanation: [
-      t("Vrai. proj"), vec("u"), t("("), vec("u"), t(") = (("), vec("u"),
+      t("Vrai. "), vec("u"), subVec("u"), t(" = (("), vec("u"),
       t(" · "), vec("u"), t(") / ‖"), vec("u"), t("‖²) "), vec("u"),
       t(" = (‖"), vec("u"), t("‖² / ‖"), vec("u"), t("‖²) "), vec("u"), t(" = "), vec("u"), t("."),
     ],
@@ -3134,7 +3142,7 @@ const manualExercises: Exercise[] = [
     ],
     isTrue: true,
     explanation: [
-      t("Vrai. ‖proj"), vec("v"), t("("), vec("u"), t(")‖ = |"), vec("u"),
+      t("Vrai. ‖"), vec("u"), subVec("v"), t("‖ = |"), vec("u"),
       t(" · "), vec("v"), t("| / ‖"), vec("v"), t("‖ ≤ ‖"), vec("u"),
       t("‖ (par Cauchy-Schwarz). Égalité ssi "), vec("u"), t(" est colinéaire à "), vec("v"), t("."),
     ],

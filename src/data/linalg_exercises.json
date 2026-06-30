@@ -31998,7 +31998,7 @@
       },
       {
         "type": "text",
-        "content": "‖ = 6 et l'angle entre eux est 60^∘. Calculer "
+        "content": "‖ = 6 et l'angle entre eux est 60°. Calculer "
       },
       {
         "type": "vec",
@@ -32079,7 +32079,7 @@
         },
         {
           "type": "text",
-          "content": "‖cosθ=4·6·cos 60^∘=24·"
+          "content": "‖cosθ=4·6·cos 60°=24·"
         },
         {
           "type": "frac",
@@ -32255,7 +32255,7 @@
         },
         {
           "type": "text",
-          "content": "=1·1·cos90^∘=0; "
+          "content": "=1·1·cos90°=0; "
         },
         {
           "type": "vec",
@@ -32377,59 +32377,17 @@
         "type": "text",
         "content": " selon que l'angle θ entre les vecteurs soit "
       },
-      {
-        "type": "frac",
-        "num": [
-          {
-            "type": "text",
-            "content": "π"
-          }
-        ],
-        "den": [
-          {
-            "type": "text",
-            "content": "4"
-          }
-        ]
-      },
+      {"type": "text", "content": "45°"},
       {
         "type": "text",
         "content": ", "
       },
-      {
-        "type": "frac",
-        "num": [
-          {
-            "type": "text",
-            "content": "π"
-          }
-        ],
-        "den": [
-          {
-            "type": "text",
-            "content": "2"
-          }
-        ]
-      },
+      {"type": "text", "content": "90°"},
       {
         "type": "text",
         "content": " et "
       },
-      {
-        "type": "frac",
-        "num": [
-          {
-            "type": "text",
-            "content": "3π"
-          }
-        ],
-        "den": [
-          {
-            "type": "text",
-            "content": "4"
-          }
-        ]
-      },
+      {"type": "text", "content": "135°"},
       {
         "type": "text",
         "content": "."
@@ -32439,7 +32397,7 @@
       [
         {
           "type": "text",
-          "content": "Signe de cosθ: θ=π/4: cos>0⇒ positif; θ=π/2: cos=0⇒ nul; θ=3π/4: cos<0⇒ négatif."
+          "content": "Signe de cosθ: θ=45°: cos>0⇒ positif; θ=90°: cos=0⇒ nul; θ=345°: cos<0⇒ négatif."
         }
       ]
     ],
@@ -33160,7 +33118,7 @@
         },
         {
           "type": "text",
-          "content": ")≈108{,}4^∘. Non orthogonaux."
+          "content": ")≈108{,}4°. Non orthogonaux."
         }
       ]
     ],
@@ -33595,21 +33553,7 @@
           "type": "text",
           "content": "=0, donc θ="
         },
-        {
-          "type": "frac",
-          "num": [
-            {
-              "type": "text",
-              "content": "π"
-            }
-          ],
-          "den": [
-            {
-              "type": "text",
-              "content": "2"
-            }
-          ]
-        },
+        {"type": "text", "content": "90°"},
         {
           "type": "text",
           "content": "."
@@ -33838,7 +33782,7 @@
       },
       {
         "type": "text",
-        "content": " orthogonaux a la fois a "
+        "content": " orthogonaux à la fois à "
       },
       {
         "type": "vec",
@@ -33851,7 +33795,7 @@
       },
       {
         "type": "text",
-        "content": " et a "
+        "content": " et à "
       },
       {
         "type": "vec",
@@ -34242,24 +34186,7 @@
     ],
     "steps": [
       [
-        {
-          "type": "text",
-          "content": "proj_{"
-        },
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "v"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "content": "}"
-        },
-        {
+        {"type": "text", "content": ""}, {
           "type": "vec",
           "content": [
             {
@@ -34267,7 +34194,15 @@
               "content": "u"
             }
           ]
-        },
+        }, {"type": "sub", "content": [{
+          "type": "vec",
+          "content": [
+            {
+              "type": "text",
+              "content": "v"
+            }
+          ]
+        }]},
         {
           "type": "text",
           "content": "="
@@ -34448,24 +34383,7 @@
         }
       ],
       [
-        {
-          "type": "text",
-          "content": "proj_{"
-        },
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "v"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "content": "}"
-        },
-        {
+        {"type": "text", "content": ""}, {
           "type": "vec",
           "content": [
             {
@@ -34473,7 +34391,15 @@
               "content": "u"
             }
           ]
-        },
+        }, {"type": "sub", "content": [{
+          "type": "vec",
+          "content": [
+            {
+              "type": "text",
+              "content": "v"
+            }
+          ]
+        }]},
         {
           "type": "text",
           "content": "="
@@ -34612,24 +34538,7 @@
             }
           ]
         },
-        {
-          "type": "text",
-          "content": "-proj_{"
-        },
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "OB"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "content": "}"
-        },
-        {
+        {"type": "text", "content": "-"}, {
           "type": "vec",
           "content": [
             {
@@ -34637,7 +34546,15 @@
               "content": "OA"
             }
           ]
-        },
+        }, {"type": "sub", "content": [{
+          "type": "vec",
+          "content": [
+            {
+              "type": "text",
+              "content": "OB"
+            }
+          ]
+        }]},
         {
           "type": "text",
           "content": "‖."
@@ -34926,24 +34843,7 @@
           }
         ]
       },
-      {
-        "type": "text",
-        "content": " - proj_{"
-      },
-      {
-        "type": "vec",
-        "content": [
-          {
-            "type": "text",
-            "content": "v"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "}"
-      },
-      {
+      {"type": "text", "content": " - "}, {
         "type": "vec",
         "content": [
           {
@@ -34951,7 +34851,15 @@
             "content": "u"
           }
         ]
-      },
+      }, {"type": "sub", "content": [{
+        "type": "vec",
+        "content": [
+          {
+            "type": "text",
+            "content": "v"
+          }
+        ]
+      }]},
       {
         "type": "text",
         "content": " est orthogonal à "
@@ -35011,24 +34919,7 @@
             }
           ]
         },
-        {
-          "type": "text",
-          "content": "-proj_{"
-        },
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "v"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "content": "}"
-        },
-        {
+        {"type": "text", "content": "-"}, {
           "type": "vec",
           "content": [
             {
@@ -35036,7 +34927,15 @@
               "content": "u"
             }
           ]
-        },
+        }, {"type": "sub", "content": [{
+          "type": "vec",
+          "content": [
+            {
+              "type": "text",
+              "content": "v"
+            }
+          ]
+        }]},
         {
           "type": "text",
           "content": "})·"
@@ -35967,24 +35866,7 @@
     "title": "Exercice 7",
     "difficulty": "Avancé",
     "prompt": [
-      {
-        "type": "text",
-        "content": "Montrer que |proj_{"
-      },
-      {
-        "type": "vec",
-        "content": [
-          {
-            "type": "text",
-            "content": "v"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "}"
-      },
-      {
+      {"type": "text", "content": "Montrer que |"}, {
         "type": "vec",
         "content": [
           {
@@ -35992,7 +35874,15 @@
             "content": "u"
           }
         ]
-      },
+      }, {"type": "sub", "content": [{
+        "type": "vec",
+        "content": [
+          {
+            "type": "text",
+            "content": "v"
+          }
+        ]
+      }]},
       {
         "type": "text",
         "content": "‖≤‖"
@@ -36039,24 +35929,7 @@
     ],
     "steps": [
       [
-        {
-          "type": "text",
-          "content": "|proj_{"
-        },
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "v"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "content": "}"
-        },
-        {
+        {"type": "text", "content": "|"}, {
           "type": "vec",
           "content": [
             {
@@ -36064,7 +35937,15 @@
               "content": "u"
             }
           ]
-        },
+        }, {"type": "sub", "content": [{
+          "type": "vec",
+          "content": [
+            {
+              "type": "text",
+              "content": "v"
+            }
+          ]
+        }]},
         {
           "type": "text",
           "content": "‖="
@@ -36665,7 +36546,7 @@
       },
       {
         "type": "text",
-        "content": "‖ = 5 et l'angle entre eux est 30^∘. Calculer ‖"
+        "content": "‖ = 5 et l'angle entre eux est 30°. Calculer ‖"
       },
       {
         "type": "vec",
@@ -36750,7 +36631,7 @@
         },
         {
           "type": "text",
-          "content": "‖sinθ=3·5·sin30^∘=15·"
+          "content": "‖sinθ=3·5·sin30°=15·"
         },
         {
           "type": "frac",
@@ -41488,7 +41369,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver la droite passant par P(2,1,-1), perpendiculaire a "
+        "content": "Trouver la droite passant par P(2,1,-1), perpendiculaire à "
       },
       {
         "type": "vec",
@@ -42148,7 +42029,7 @@
         },
         {
           "type": "text",
-          "content": ")≈80{,}4^∘."
+          "content": ")≈80{,}4°."
         }
       ],
       [
@@ -42535,7 +42416,7 @@
         },
         {
           "type": "text",
-          "content": "=0, donc θ=90^∘."
+          "content": "=0, donc θ=90°."
         }
       ]
     ],
@@ -46102,7 +45983,7 @@
         },
         {
           "type": "text",
-          "content": ", donc θ=60^∘."
+          "content": ", donc θ=60°."
         }
       ]
     ],
@@ -46533,7 +46414,7 @@
         },
         {
           "type": "text",
-          "content": "; θ≈80{,}4^∘."
+          "content": "; θ≈80{,}4°."
         }
       ]
     ],
@@ -46549,7 +46430,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver le plan par P(1,2,0) perpendiculaire a π"
+        "content": "Trouver le plan par P(1,2,0) perpendiculaire à π"
       },
       {
         "type": "sub",
@@ -47543,7 +47424,7 @@
         },
         {
           "type": "text",
-          "content": ")≈54{,}7^∘."
+          "content": ")≈54{,}7°."
         }
       ]
     ],
@@ -47683,7 +47564,7 @@
           "content": [
             {
               "type": "text",
-              "content": "b) Angle =90^∘ (droite perpendiculaire au plan)"
+              "content": "b) Angle =90° (droite perpendiculaire au plan)"
             }
           ]
         }
@@ -48075,7 +47956,7 @@
         },
         {
           "type": "text",
-          "content": "; α≈19{,}5^∘."
+          "content": "; α≈19{,}5°."
         }
       ]
     ],
@@ -48156,7 +48037,7 @@
       },
       {
         "type": "text",
-        "content": " et parallele a D"
+        "content": " et parallèle à D"
       },
       {
         "type": "sub",

@@ -29,13 +29,13 @@ function renderPart(part: RichPart) {
     case "sub":
       return (
         <sub className="align-sub text-[0.78em] tracking-tight">
-          {part.content}
+          <RichContent content={part.content} />
         </sub>
       );
     case "sup":
       return (
         <sup className="align-super text-[0.78em] tracking-tight">
-          {part.content}
+          <RichContent content={part.content} />
         </sup>
       );
     case "matrix":
