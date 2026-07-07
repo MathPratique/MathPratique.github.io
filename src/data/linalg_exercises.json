@@ -32102,7 +32102,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = 4 · 6 · cos 60° = 12."}]
   },
   {
     "id": "L43-E2",
@@ -32337,7 +32337,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":" = 0 ; "},{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" = 1 ; "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" = 1 ; "},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" = 0."}]
   },
   {
     "id": "L43-E3",
@@ -32401,7 +32401,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "θ = 45° : positif ; θ = 90° : nul ; θ = 135° : négatif."
   },
   {
     "id": "L43-E4",
@@ -32685,7 +32685,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"(2"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" − 3"},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":") · ("},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" + 5"},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":") = -134."}]
   },
   {
     "id": "L43-E5",
@@ -33006,7 +33006,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"‖"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" + "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"‖ = √13 ; ‖"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" − "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"‖ = √37."}]
   },
   {
     "id": "L43-E6",
@@ -33122,7 +33122,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = -5 ; θ ≈ 108,4° (non orthogonaux)."}]
   },
   {
     "id": "L43-E7",
@@ -33352,7 +33352,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Identité démontrée par développement de ‖"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" + "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"‖² et ‖"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" − "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"‖²."}]
   },
   {
     "id": "L44-E1",
@@ -33397,7 +33397,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "(2, -1, 3) · (1, 4, -2) = -8."
   },
   {
     "id": "L44-E2",
@@ -33468,7 +33468,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = 0 : les vecteurs sont orthogonaux."}]
   },
   {
     "id": "L44-E3",
@@ -33560,7 +33560,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "θ = 90° (vecteurs orthogonaux)."
   },
   {
     "id": "L44-E4",
@@ -33658,7 +33658,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "k = 1/2."
   },
   {
     "id": "L44-E5",
@@ -33762,7 +33762,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Vecteur unitaire : ±(1/√6)(1, -2, 1)."
   },
   {
     "id": "L44-E6",
@@ -33856,7 +33856,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Tous les vecteurs de la forme t·"},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" avec t ∈ ℝ (axe z)."}]
   },
   {
     "id": "L44-E7",
@@ -34143,7 +34143,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Inégalités démontrées : Cauchy-Schwarz puis inégalité triangulaire."
   },
   {
     "id": "L45-E1",
@@ -34291,7 +34291,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"projection de "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" sur "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = (3, 0)."}]
   },
   {
     "id": "L45-E2",
@@ -34482,7 +34482,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "projection = (-2/9, -4/9, -4/9)."
   },
   {
     "id": "L45-E3",
@@ -34794,7 +34794,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Hauteur du triangle h ≈ 2,09 unités."
   },
   {
     "id": "L45-E4",
@@ -35294,7 +35294,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Pour "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" = (3, 2) et "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = (1, 1) : "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"sub","content":[{"type":"vec","content":[{"type":"text","content":"v"}]}]},{"type":"text","content":" = (5/2, 5/2) et "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" − "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"sub","content":[{"type":"vec","content":[{"type":"text","content":"v"}]}]},{"type":"text","content":" = (1/2, −1/2) qui est orthogonal à "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"."}]
   },
   {
     "id": "L45-E5",
@@ -35654,7 +35654,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"sub","content":[{"type":"text","content":"∥"}]},{"type":"text","content":" = (-1/3, 1/3, -1/3) ; "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"sub","content":[{"type":"text","content":"⊥"}]},{"type":"text","content":" = (7/3, 2/3, -5/3)."}]
   },
   {
     "id": "L45-E6",
@@ -35856,7 +35856,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "projection = (8/9, 4/9, -8/9) ; composante orthogonale = (28/9, -22/9, 17/9)."
   },
   {
     "id": "L45-E7",
@@ -36081,7 +36081,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Inégalité démontrée à partir de l'expression de la projection orthogonale."
   },
   {
     "id": "L46-E1",
@@ -36301,7 +36301,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":" = "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" ; "},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" = "},{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" ; "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" = "},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":"."}]
   },
   {
     "id": "L46-E2",
@@ -36482,7 +36482,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Démontré par la règle de la main droite : changer l'ordre inverse le sens."
   },
   {
     "id": "L46-E3",
@@ -36654,7 +36654,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"‖"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"‖ = 3 · 5 · sin 30° = 7,5."}]
   },
   {
     "id": "L46-E4",
@@ -36961,7 +36961,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"(3"},{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" − "},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":") × (2"},{"type":"vec","content":[{"type":"text","content":"i"}]},{"type":"text","content":" + 4"},{"type":"vec","content":[{"type":"text","content":"j"}]},{"type":"text","content":") = 14"},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":" = (0, 0, 14)."}]
   },
   {
     "id": "L46-E5",
@@ -37196,7 +37196,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Démontré composante par composante : "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" = −("},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":")."}]
   },
   {
     "id": "L46-E6",
@@ -37304,7 +37304,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = (-3, 5, 7) ; vérifié orthogonal à "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" et "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"."}]
   },
   {
     "id": "L46-E7",
@@ -37437,7 +37437,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Identité de Lagrange démontrée par développement en coordonnées."
   },
   {
     "id": "L47-E1",
@@ -37610,7 +37610,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = (0, 0, 1) = "},{"type":"vec","content":[{"type":"text","content":"k"}]},{"type":"text","content":"."}]
   },
   {
     "id": "L47-E2",
@@ -37820,7 +37820,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" = (-5, 5, 5)."}]
   },
   {
     "id": "L47-E3",
@@ -38015,7 +38015,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Aire du triangle ABC = 7/2 unités²."
   },
   {
     "id": "L47-E4",
@@ -38246,7 +38246,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "ABCD est un parallélogramme. Aire = √20 = 2√5 unités²."
   },
   {
     "id": "L47-E5",
@@ -38369,7 +38369,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Aire du triangle ABC = √93 / 2 ≈ 4,82 unités²."
   },
   {
     "id": "L47-E6",
@@ -38453,7 +38453,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Vecteur normal au plan ABC : "},{"type":"vec","content":[{"type":"text","content":"n"}]},{"type":"text","content":" = (6, 3, 2)."}]
   },
   {
     "id": "L47-E7",
@@ -38840,7 +38840,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Identité du double produit vectoriel démontrée : "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × ("},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":") = ("},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":") "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" − ("},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":") "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":"."}]
   },
   {
     "id": "L48-E1",
@@ -39041,7 +39041,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · ("},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":") = 1."}]
   },
   {
     "id": "L48-E2",
@@ -39173,7 +39173,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Produit mixte = 0 : les trois vecteurs sont coplanaires."
   },
   {
     "id": "L48-E3",
@@ -39309,7 +39309,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "k = 3."
   },
   {
     "id": "L48-E4",
@@ -39464,7 +39464,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Démontré : "},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" · ("},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":") = 0 car deux lignes identiques dans le déterminant."}]
   },
   {
     "id": "L48-E5",
@@ -39630,7 +39630,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Produit mixte = 1 ; positif donc le triplet ("},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":", "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":", "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":") est direct."}]
   },
   {
     "id": "L48-E6",
@@ -39759,7 +39759,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"["},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":", "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":", "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":"] = 13 unités³."}]
   },
   {
     "id": "L48-E7",
@@ -39899,7 +39899,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Invariance par permutation circulaire démontrée (2 échanges de lignes = signe inchangé)."
   },
   {
     "id": "L49-E1",
@@ -40032,7 +40032,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "V = 6 unités³."
   },
   {
     "id": "L49-E2",
@@ -40126,7 +40126,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "V = 2 unités³."
   },
   {
     "id": "L49-E3",
@@ -40281,7 +40281,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "V_tétraèdre = 4 unités³."
   },
   {
     "id": "L49-E4",
@@ -40404,7 +40404,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Produit mixte = 0 : les points A, B, C, D sont coplanaires (pas de tétraèdre)."
   },
   {
     "id": "L49-E5",
@@ -40488,7 +40488,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Tétraèdre non dégénéré ; V_tétraèdre = 5/6 unités³."
   },
   {
     "id": "L49-E6",
@@ -40582,7 +40582,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "V = 25 unités³."
   },
   {
     "id": "L49-E7",
@@ -40760,7 +40760,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": [{"type":"text","content":"Formules démontrées : Aire = ‖"},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":" × "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":"‖ et V_tétraèdre = (1/6)|["},{"type":"vec","content":[{"type":"text","content":"u"}]},{"type":"text","content":", "},{"type":"vec","content":[{"type":"text","content":"v"}]},{"type":"text","content":", "},{"type":"vec","content":[{"type":"text","content":"w"}]},{"type":"text","content":"]|."}]
   },
   {
     "id": "L50-E1",
@@ -40836,7 +40836,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D : (x, y, z) = (1, 2, 3) + t(2, -1, 4), t ∈ ℝ."
   },
   {
     "id": "L50-E2",
@@ -40916,7 +40916,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Vectorielle : (x, y, z) = (1, 0, 2) + t(2, 1, -3). Paramétriques : x = 1+2t, y = t, z = 2-3t. Symétrique : (x-1)/2 = y = (z-2)/(-3)."
   },
   {
     "id": "L50-E3",
@@ -40945,7 +40945,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "t = 3 satisfait les 3 équations : P ∈ D."
   },
   {
     "id": "L50-E4",
@@ -41254,7 +41254,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Point le plus proche de l'origine : (21/17, -30/17, 6/17) avec t = 2/17."
   },
   {
     "id": "L50-E5",
@@ -41262,86 +41262,6 @@
     "lessonId": "L50",
     "number": 5,
     "title": "Exercice 5",
-    "difficulty": "Avancé",
-    "prompt": [
-      {
-        "type": "text",
-        "content": "Trouver l'équation paramétrique de la droite d'intersection des plans π"
-      },
-      {
-        "type": "sub",
-        "content": "1"
-      },
-      {
-        "type": "text",
-        "content": " : x+y-z=2 et π"
-      },
-      {
-        "type": "sub",
-        "content": "2"
-      },
-      {
-        "type": "text",
-        "content": " : 2x-y+z=1."
-      }
-    ],
-    "steps": [
-      [
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "n"
-            }
-          ]
-        },
-        {
-          "type": "sub",
-          "content": "1"
-        },
-        {
-          "type": "text",
-          "content": "×"
-        },
-        {
-          "type": "vec",
-          "content": [
-            {
-              "type": "text",
-              "content": "n"
-            }
-          ]
-        },
-        {
-          "type": "sub",
-          "content": "2"
-        },
-        {
-          "type": "text",
-          "content": "=(0,3,-3), soit (0,1,-1). Point: x=1, y=1 (z=0)."
-        }
-      ],
-      [
-        {
-          "type": "bold",
-          "content": [
-            {
-              "type": "text",
-              "content": "D:(x,y,z)=(1,1,0)+t(0,1,-1)."
-            }
-          ]
-        }
-      ]
-    ],
-    "answer": "Voir la démarche complète ci-dessus."
-  },
-  {
-    "id": "L50-E6",
-    "topicId": "linear-algebra",
-    "lessonId": "L50",
-    "number": 6,
-    "title": "Exercice 6",
     "difficulty": "Intermédiaire",
     "prompt": [
       {
@@ -41357,14 +41277,14 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "t = 1 : Q ∈ D ✓."
   },
   {
-    "id": "L50-E7",
+    "id": "L50-E6",
     "topicId": "linear-algebra",
     "lessonId": "L50",
-    "number": 7,
-    "title": "Exercice 7",
+    "number": 6,
+    "title": "Exercice 6",
     "difficulty": "Avancé",
     "prompt": [
       {
@@ -41417,7 +41337,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D : (x, y, z) = (2, 1, -1) + t(2, 1, 4)."
   },
   {
     "id": "L51-E1",
@@ -41488,7 +41408,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Oui, les droites sont parallèles."
   },
   {
     "id": "L51-E2",
@@ -41661,7 +41581,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D₁ ∥ D₂, distinctes."
   },
   {
     "id": "L51-E3",
@@ -41854,7 +41774,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Droites sécantes, intersection P = (17/5, 6/5, 13/5)."
   },
   {
     "id": "L51-E4",
@@ -41945,7 +41865,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Les droites sont gauches."
   },
   {
     "id": "L51-E5",
@@ -42134,7 +42054,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Sécantes en (4/3, 1/3, 2/3), angle θ ≈ 80,4°."
   },
   {
     "id": "L51-E6",
@@ -42211,7 +42131,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Parallèles distinctes."
   },
   {
     "id": "L51-E7",
@@ -42265,7 +42185,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D : (x, y, z) = r(0, 0, 1) (axe z)."
   },
   {
     "id": "L52-E1",
@@ -42420,7 +42340,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "θ = 90° (droites perpendiculaires)."
   },
   {
     "id": "L52-E2",
@@ -42621,7 +42541,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = √(19/2) ≈ 3,08 unités."
   },
   {
     "id": "L52-E3",
@@ -42819,7 +42739,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Pied de la perpendiculaire H = (2, 0, 1) (qui coïncide avec P)."
   },
   {
     "id": "L52-E4",
@@ -43319,7 +43239,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = √(60/7) ≈ 2,93 unités ; point le plus proche H = (-4/7, 5/7, 1/7)."
   },
   {
     "id": "L52-E5",
@@ -43489,7 +43409,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "H = (1/3, 2/3, 8/3) ; d = √93/3 unités."
   },
   {
     "id": "L52-E6",
@@ -43582,7 +43502,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = √2/3 ≈ 0,47 unités."
   },
   {
     "id": "L52-E7",
@@ -43637,7 +43557,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Le lieu est l'union des deux plans bissecteurs de l'angle formé par D₁ et D₂."
   },
   {
     "id": "L53-E1",
@@ -43856,7 +43776,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 3√(3/14) ≈ 1,47 unités."
   },
   {
     "id": "L53-E2",
@@ -44238,7 +44158,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 2√3/3 ≈ 1,15 unités."
   },
   {
     "id": "L53-E3",
@@ -44626,7 +44546,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Droites gauches ; d = √2/2 ≈ 0,71 unités."
   },
   {
     "id": "L53-E4",
@@ -44658,7 +44578,7 @@
       }
     ],
     "steps": [],
-    "answer": "Voir le solutionnaire."
+    "answer": "d = 5√3/3 ≈ 2,89 unités."
   },
   {
     "id": "L53-E5",
@@ -44735,7 +44655,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D₂ = 2·D₁ : parallèles distinctes."
   },
   {
     "id": "L53-E6",
@@ -45032,7 +44952,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 2√3/3 ≈ 1,15 unités ; t₀ = s₀ = 1/2."
   },
   {
     "id": "L54-E1",
@@ -45104,7 +45024,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Équation : 2x − y + 4z = 12."
   },
   {
     "id": "L54-E2",
@@ -45207,7 +45127,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Vectorielle : (x,y,z) = (1,0,0) + r(-1,1,0) + s(-1,0,1) ; cartésienne : x + y + z = 1."
   },
   {
     "id": "L54-E3",
@@ -45236,7 +45156,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "2(3) − 2 + 3(−1) = 1 ≠ 5 : Q ∉ π."
   },
   {
     "id": "L54-E4",
@@ -45368,7 +45288,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Équation : x − 2y + z = 0."
   },
   {
     "id": "L54-E5",
@@ -45467,7 +45387,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Équation : x + y = 2."
   },
   {
     "id": "L54-E6",
@@ -45509,7 +45429,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : x − 2y + 4z = 16. Q(4,−3,4) donne 26 ≠ 16 : Q ∉ π."
   },
   {
     "id": "L54-E7",
@@ -45614,7 +45534,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : x + y − 2z = −1."
   },
   {
     "id": "L55-E1",
@@ -45753,7 +45673,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plans parallèles distincts (vecteurs normaux colinéaires, ratios des constantes différents)."
   },
   {
     "id": "L55-E2",
@@ -45823,7 +45743,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Droite d'intersection : D : (x,y,z) = (4,2,0) + t(−1,0,1)."
   },
   {
     "id": "L55-E3",
@@ -45987,7 +45907,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "θ = 60°."
   },
   {
     "id": "L55-E4",
@@ -46158,7 +46078,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Droite d'intersection : D : (x,y,z) = (7,−3,0) + t(1,7,5)."
   },
   {
     "id": "L55-E5",
@@ -46273,7 +46193,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : 4x + 7y − 5z = 9."
   },
   {
     "id": "L55-E6",
@@ -46418,7 +46338,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Angle dièdre θ ≈ 80,4° (cos θ = 1/6)."
   },
   {
     "id": "L55-E7",
@@ -46515,7 +46435,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : 4x − y − 3z = 2."
   },
   {
     "id": "L56-E1",
@@ -46613,7 +46533,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 0 : le point appartient au plan."
   },
   {
     "id": "L56-E2",
@@ -46803,7 +46723,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 5/3 ≈ 1,67 unités ; pied H = (8/9, 1/9, 22/9)."
   },
   {
     "id": "L56-E3",
@@ -46872,7 +46792,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Deux plans parallèles : 3x − 4y + 5z = 10 ± 10√2."
   },
   {
     "id": "L56-E4",
@@ -46992,7 +46912,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 3 unités."
   },
   {
     "id": "L56-E5",
@@ -47030,7 +46950,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "P appartient à π (3 + 4 + 2 = 9) ; donc H = P = (3, 2, −1) et d(P, π) = 0."
   },
   {
     "id": "L56-E6",
@@ -47110,7 +47030,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "d = 9√2/5 ≈ 2,55 unités."
   },
   {
     "id": "L56-E7",
@@ -47202,7 +47122,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan équidistant : 2x − y + 2z = 3/2 (ou 4x − 2y + 4z = 3)."
   },
   {
     "id": "L57-E1",
@@ -47249,7 +47169,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D : (x, y, z) = (0, 0, 0) + t(1, −2, 3), t ∈ ℝ."
   },
   {
     "id": "L57-E2",
@@ -47428,7 +47348,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "α = arcsin(2/√6) ≈ 54,7°."
   },
   {
     "id": "L57-E3",
@@ -47523,7 +47443,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D : (x, y, z) = (1, 0, 2) + t(1, 0, 2) (ou tout vecteur directeur tel que u · n = 0)."
   },
   {
     "id": "L57-E4",
@@ -47709,7 +47629,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "a) D⊥ : (x, y, z) = (2, 1, 3) + t(1, 2, 1). b) Angle = 90°. c) Intersection : Q' = (11/6, 2/3, 17/6)."
   },
   {
     "id": "L57-E5",
@@ -47871,7 +47791,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Point d'intersection : Q = (11/3, 1/3, −4/3)."
   },
   {
     "id": "L57-E6",
@@ -47960,7 +47880,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Droite oblique au plan ; α ≈ 19,5°."
   },
   {
     "id": "L57-E7",
@@ -48114,7 +48034,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : x + 3y − 5z = 8."
   },
   {
     "id": "L58-E1",
@@ -48148,7 +48068,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Q = (1, 1, 1)."
   },
   {
     "id": "L58-E2",
@@ -48256,7 +48176,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : 6x + 3y + 2z = 6."
   },
   {
     "id": "L58-E3",
@@ -48290,7 +48210,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Point d'intersection : Q = (2, 1, 1) avec t = 1."
   },
   {
     "id": "L58-E4",
@@ -48572,7 +48492,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "D₁ : (x − 3)/7 = (y − 1)/1 = z/(−3), soit (x, y, z) = (3, 1, 0) + t(7, 1, −3)."
   },
   {
     "id": "L58-E5",
@@ -48678,7 +48598,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Plan : x + 2y − z = 2."
   },
   {
     "id": "L58-E6",
@@ -48701,7 +48621,7 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Intersection : (2, 0, 1) ; le point appartient déjà à π (t = 0)."
   },
   {
     "id": "L58-E7",
@@ -48767,6 +48687,6 @@
         }
       ]
     ],
-    "answer": "Voir la démarche complète ci-dessus."
+    "answer": "Point commun aux trois plans : (1, 1, 1) ; plan supplémentaire : x − z = 0."
   }
 ]
