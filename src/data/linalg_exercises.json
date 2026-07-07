@@ -5490,7 +5490,7 @@
       },
       {
         "type": "text",
-        "content": " et en deduire que A"
+        "content": " et en déduire que A"
       },
       {
         "type": "sup",
@@ -9555,7 +9555,7 @@
       },
       {
         "type": "text",
-        "content": " et en deduire det A."
+        "content": " et en déduire det A."
       }
     ],
     "steps": [
@@ -16015,7 +16015,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Montrer que la forme échelon reduite est unique, contrairement aux formes échelon. Illustrer avec A="
+        "content": "Montrer que la forme échelon réduite est unique, contrairement aux formes échelon. Illustrer avec A="
       },
       {
         "type": "matrix",
@@ -16062,7 +16062,7 @@
       [
         {
           "type": "text",
-          "content": "Forme échelon reduite unique: "
+          "content": "Forme échelon réduite unique: "
         },
         {
           "type": "matrix",
@@ -16557,7 +16557,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Transformer en forme échelon reduite et donner le rang : A="
+        "content": "Transformer en forme échelon réduite et donner le rang : A="
       },
       {
         "type": "matrix",
@@ -16588,7 +16588,7 @@
       [
         {
           "type": "text",
-          "content": "Apres reduction: "
+          "content": "Apres réduction: "
         },
         {
           "type": "matrix",
@@ -24403,7 +24403,7 @@
       },
       {
         "type": "text",
-        "content": "=(3,-4). Trouver un vecteur de norme 10 dans le meme sens et un vecteur de norme 5 en sens contraire."
+        "content": "=(3,-4). Trouver un vecteur de norme 10 dans le même sens et un vecteur de norme 5 en sens contraire."
       }
     ],
     "steps": [
@@ -25441,7 +25441,7 @@
           "content": [
             {
               "type": "text",
-              "content": "Perimetre =4√(3)≈6{,}93 unites."
+              "content": "Perimetre =4√(3)≈6,93 unites."
             }
           ]
         }
@@ -25562,7 +25562,7 @@
           "content": [
             {
               "type": "text",
-              "content": "|=|(1,-2,3)|=√(14)≈3{,}74 unites"
+              "content": "|=|(1,-2,3)|=√(14)≈3,74 unites"
             },
             {
               "type": "sup",
@@ -25998,7 +25998,7 @@
       [
         {
           "type": "text",
-          "content": "√(19)≈4{,}36≤√(6)+√(15)≈6{,}32. ✓"
+          "content": "√(19)≈4,36≤√(6)+√(15)≈6,32. ✓"
         }
       ]
     ],
@@ -33118,7 +33118,7 @@
         },
         {
           "type": "text",
-          "content": ")≈108{,}4°. Non orthogonaux."
+          "content": ")≈108,4°. Non orthogonaux."
         }
       ]
     ],
@@ -33920,7 +33920,7 @@
       },
       {
         "type": "text",
-        "content": "‖ (Cauchy-Schwarz) et en deduire ‖"
+        "content": "‖ (Cauchy-Schwarz) et en déduire ‖"
       },
       {
         "type": "vec",
@@ -34790,7 +34790,7 @@
         },
         {
           "type": "text",
-          "content": "+4}≈2{,}09 unités."
+          "content": "+4}≈2,09 unités."
         }
       ]
     ],
@@ -38357,7 +38357,7 @@
         },
         {
           "type": "text",
-          "content": "≈4{,}82 unités"
+          "content": "≈4,82 unités"
         },
         {
           "type": "sup",
@@ -41266,7 +41266,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Vérifier que Q(3,2,-1) appartient a la droite D:(x,y,z)=(1,0,1)+t(2,2,-2) et trouver t."
+        "content": "Vérifier que Q(3,2,-1) appartient à la droite D:(x,y,z)=(1,0,1)+t(2,2,-2) et trouver t."
       }
     ],
     "steps": [
@@ -41949,7 +41949,7 @@
         },
         {
           "type": "text",
-          "content": ")≈80{,}4°."
+          "content": ")≈80,4°."
         }
       ],
       [
@@ -42082,7 +42082,7 @@
       },
       {
         "type": "text",
-        "content": ":(x,y,z)=(0,3,4)+s(2,-2,4) sont paralleles ou confondues."
+        "content": ":(x,y,z)=(0,3,4)+s(2,-2,4) sont parallèles ou confondues."
       }
     ],
     "steps": [
@@ -42119,7 +42119,7 @@
         },
         {
           "type": "text",
-          "content": ": paralleles. (0,3,4)∉ D"
+          "content": ": parallèles. (0,3,4)∉ D"
         },
         {
           "type": "sub",
@@ -42537,7 +42537,7 @@
         },
         {
           "type": "text",
-          "content": "}≈3{,}08 unités."
+          "content": "}≈3,08 unités."
         }
       ]
     ],
@@ -43012,7 +43012,7 @@
         },
         {
           "type": "text",
-          "content": "}≈2{,}93 unités.\nt"
+          "content": "}≈2,93 unités.\nt"
         },
         {
           "type": "sub",
@@ -43421,7 +43421,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Calculer la distance de P(0,0,0) a la droite D:(x,y,z)=(1,1,1)+t(1,2,2)."
+        "content": "Calculer la distance de P(0,0,0) à la droite D:(x,y,z)=(1,1,1)+t(1,2,2)."
       }
     ],
     "steps": [
@@ -43498,7 +43498,7 @@
         },
         {
           "type": "text",
-          "content": "≈0{,}47 unites."
+          "content": "≈0,47 unites."
         }
       ]
     ],
@@ -43514,7 +43514,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver le lieu des points equidistants de deux droites secantes D"
+        "content": "Trouver le lieu des points équidistants de deux droites secantes D"
       },
       {
         "type": "sub",
@@ -43772,7 +43772,7 @@
         },
         {
           "type": "text",
-          "content": "}≈1{,}47 unités."
+          "content": "}≈1,47 unités."
         }
       ]
     ],
@@ -44154,7 +44154,7 @@
         },
         {
           "type": "text",
-          "content": "≈1{,}15 unités."
+          "content": "≈1,15 unités."
         }
       ]
     ],
@@ -44542,7 +44542,7 @@
         },
         {
           "type": "text",
-          "content": "≈0{,}71 unités."
+          "content": "≈0,71 unités."
         }
       ]
     ],
@@ -44606,7 +44606,7 @@
       },
       {
         "type": "text",
-        "content": ":(x,y,z)=(0,2,0)+s(4,2,6) sont paralleles ou confondues."
+        "content": ":(x,y,z)=(0,2,0)+s(4,2,6) sont parallèles ou confondues."
       }
     ],
     "steps": [
@@ -44643,7 +44643,7 @@
         },
         {
           "type": "text",
-          "content": ": paralleles. (0,2,0)∉ D"
+          "content": ": parallèles. (0,2,0)∉ D"
         },
         {
           "type": "sub",
@@ -45441,7 +45441,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver le plan contenant deux droites paralleles D"
+        "content": "Trouver le plan contenant deux droites parallèles D"
       },
       {
         "type": "sub",
@@ -46334,7 +46334,7 @@
         },
         {
           "type": "text",
-          "content": "; θ≈80{,}4°."
+          "content": "; θ≈80,4°."
         }
       ]
     ],
@@ -46358,7 +46358,7 @@
       },
       {
         "type": "text",
-        "content": ":x+y+z=1 et a π"
+        "content": ":x+y+z=1 et à π"
       },
       {
         "type": "sub",
@@ -46624,7 +46624,7 @@
         },
         {
           "type": "text",
-          "content": "≈1{,}67 unités.\nH=P-"
+          "content": "≈1,67 unités.\nH=P-"
         },
         {
           "type": "frac",
@@ -47026,7 +47026,7 @@
         },
         {
           "type": "text",
-          "content": "≈2{,}55 unites."
+          "content": "≈2,55 unites."
         }
       ]
     ],
@@ -47042,7 +47042,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver le plan equidistant de π"
+        "content": "Trouver le plan équidistant de π"
       },
       {
         "type": "sub",
@@ -47344,7 +47344,7 @@
         },
         {
           "type": "text",
-          "content": ")≈54{,}7°."
+          "content": ")≈54,7°."
         }
       ]
     ],
@@ -47803,7 +47803,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Déterminer si D:(x,y,z)=(1,2,3)+t(1,-1,1) est parallele, perpendiculaire ou oblique par rapport a π:x+y+z=6."
+        "content": "Déterminer si D:(x,y,z)=(1,2,3)+t(1,-1,1) est parallèle, perpendiculaire ou oblique par rapport à π:x+y+z=6."
       }
     ],
     "steps": [
@@ -47876,7 +47876,7 @@
         },
         {
           "type": "text",
-          "content": "; α≈19{,}5°."
+          "content": "; α≈19,5°."
         }
       ]
     ],
@@ -48617,7 +48617,7 @@
       [
         {
           "type": "text",
-          "content": "2(2+t)-(t)+3(1-t)=7⇒7-2t=7⇒ t=0. Point: (2,0,1) (deja dans π)."
+          "content": "2(2+t)-(t)+3(1-t)=7⇒7-2t=7⇒ t=0. Point: (2,0,1) (déjà dans π)."
         }
       ]
     ],
@@ -48633,7 +48633,7 @@
     "prompt": [
       {
         "type": "text",
-        "content": "Trouver le point commun a π"
+        "content": "Trouver le point commun à π"
       },
       {
         "type": "sub",

@@ -26,7 +26,7 @@ export default function Footer() {
 
       <div className="border-t border-brand-100">
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-ink-600 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} MathPratique. Conçu pour les étudiants, par des étudiants.</p>
+          <p>© {new Date().getFullYear()} MathPratique. Conçu pour les étudiants, par d'anciens étudiants.</p>
           <p>Fait avec soin, pour la clarté avant la vitesse.</p>
         </div>
       </div>
