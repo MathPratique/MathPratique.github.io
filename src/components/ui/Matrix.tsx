@@ -1,4 +1,5 @@
-import type { MatrixCell } from "../../data/exercises";
+import type { MatrixCell, RichPart } from "../../data/exercises";
+import RichContent from "./RichContent";
 
 type MatrixProps = {
   data: MatrixCell[][];
@@ -7,13 +8,34 @@ type MatrixProps = {
 };
 
 function isSep(cell: MatrixCell): cell is { type: "sep" } {
-  return typeof cell === "object" && cell !== null && "type" in cell && cell.type === "sep";
+  return typeof cell === "object" && !Array.isArray(cell) && cell !== null && "type" in cell && cell.type === "sep";
+}
+
+function isRichCell(cell: MatrixCell): cell is RichPart[] {
+  return Array.isArray(cell);
+}
+
+function cellToText(cell: MatrixCell): string {
+  if (isSep(cell)) return "│";
+  if (isRichCell(cell)) {
+    return cell
+      .map((p) => {
+        if (p.type === "text") return p.content;
+        if (p.type === "vec") {
+          const inner = typeof p.content === "string" ? p.content : p.content.map((x) => (x.type === "text" ? x.content : "")).join("");
+          return `${inner} (vecteur)`;
+        }
+        return "";
+      })
+      .join("");
+  }
+  return String(cell);
 }
 
 function ariaLabelFor(data: MatrixCell[][]): string {
   const rowDesc = data
     .map((row, i) => {
-      const cells = row.map((c) => (isSep(c) ? "│" : String(c)));
+      const cells = row.map((c) => cellToText(c));
       return `ligne ${i + 1} : ${cells.join(", ")}`;
     })
     .join(" ; ");
@@ -62,7 +84,7 @@ export default function Matrix({ data, label, inline = false }: MatrixProps) {
                   />
                 ) : (
                   <span key={`${i}-${j}`} className="text-center">
-                    {cell}
+                    {isRichCell(cell) ? <RichContent content={cell} /> : cell}
                   </span>
                 )
               )

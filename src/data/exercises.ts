@@ -2,7 +2,7 @@ import linalgRawExercises from "./linalg_exercises.json";
 
 export type Difficulty = "Fondamental" | "Intermédiaire" | "Avancé";
 
-export type MatrixCell = string | number | { type: "sep" };
+export type MatrixCell = string | number | { type: "sep" } | RichPart[];
 
 export type MCQOption = {
   id: string;

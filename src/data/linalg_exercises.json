@@ -36650,7 +36650,7 @@
         },
         {
           "type": "text",
-          "content": "=7{,5}."
+          "content": "=7,5."
         }
       ]
     ],
@@ -37536,9 +37536,9 @@
           "type": "matrix",
           "data": [
             [
-              "i⃗",
-              "j⃗",
-              "k⃗"
+              [{"type":"vec","content":[{"type":"text","content":"i"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"j"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"k"}]}]
             ],
             [
               "1",
@@ -37709,9 +37709,9 @@
           "type": "matrix",
           "data": [
             [
-              "i⃗",
-              "j⃗",
-              "k⃗"
+              [{"type":"vec","content":[{"type":"text","content":"i"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"j"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"k"}]}]
             ],
             [
               "2",
@@ -38159,9 +38159,9 @@
           "type": "matrix",
           "data": [
             [
-              "i⃗",
-              "j⃗",
-              "k⃗"
+              [{"type":"vec","content":[{"type":"text","content":"i"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"j"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"k"}]}]
             ],
             [
               "3",
@@ -42443,9 +42443,9 @@
           "type": "matrix",
           "data": [
             [
-              "i⃗",
-              "j⃗",
-              "k⃗"
+              [{"type":"vec","content":[{"type":"text","content":"i"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"j"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"k"}]}]
             ],
             [
               "1",
@@ -42899,9 +42899,9 @@
           "type": "matrix",
           "data": [
             [
-              "i⃗",
-              "j⃗",
-              "k⃗"
+              [{"type":"vec","content":[{"type":"text","content":"i"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"j"}]}],
+              [{"type":"vec","content":[{"type":"text","content":"k"}]}]
             ],
             [
               "-1",
