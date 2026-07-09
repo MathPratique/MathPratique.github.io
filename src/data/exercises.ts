@@ -3704,7 +3704,7 @@ const manualExercises: Exercise[] = [
     ],
     isTrue: false,
     explanation: [
-      t("Faux. Tout multiple scalaire non nul d'un vecteur directeur est aussi vecteur directeur. Une droite a donc une infinité de vecteurs directeurs (tous colinéaires entre eux)."),
+      t("Faux. Tout multiple scalaire non nul d'un vecteur directeur est aussi vecteur directeur. Une droite a donc une infinité de vecteurs directeurs (tous parallèles entre eux)."),
     ],
     steps: [],
     answer: "Faux",
@@ -3765,16 +3765,16 @@ const manualExercises: Exercise[] = [
       t("Deux droites de vecteurs directeurs "), vec("d₁"), t(" et "), vec("d₂"), t(" sont parallèles (distinctes ou confondues) si :"),
     ],
     options: [
-      { id: "a", content: [vec("d₁"), t(" et "), vec("d₂"), t(" sont colinéaires")], correct: true },
+      { id: "a", content: [vec("d₁"), t(" et "), vec("d₂"), t(" sont parallèles")], correct: true },
       { id: "b", content: [vec("d₁"), t(" · "), vec("d₂"), t(" = 0")], correct: false },
       { id: "c", content: [t("‖"), vec("d₁"), t("‖ = ‖"), vec("d₂"), t("‖")], correct: false },
       { id: "d", content: [vec("d₁"), t(" = "), vec("d₂")], correct: false },
     ],
     explanation: [
-      t("Le parallélisme se vérifie sur les vecteurs directeurs : ils doivent être colinéaires (l'un multiple de l'autre)."),
+      t("Le parallélisme se vérifie sur les vecteurs directeurs : ils doivent être parallèles (l'un multiple de l'autre)."),
     ],
     steps: [],
-    answer: "Vecteurs directeurs colinéaires",
+    answer: "Vecteurs directeurs parallèles",
   },
   {
     id: "L51-MCQ3",
@@ -3794,7 +3794,7 @@ const manualExercises: Exercise[] = [
       { id: "d", content: "Elles sont sur le même plan", correct: false },
     ],
     explanation: [
-      t("Deux droites gauches ne sont pas parallèles (vecteurs directeurs non colinéaires) ET n'ont aucun point commun. Cas spécifique à la 3D."),
+      t("Deux droites gauches ne sont pas parallèles (vecteurs directeurs non parallèles) ET n'ont aucun point commun. Cas spécifique à la 3D."),
     ],
     steps: [],
     answer: "Ni parallèles ni sécantes",
@@ -4142,7 +4142,7 @@ const manualExercises: Exercise[] = [
     ],
     isTrue: false,
     explanation: [
-      t("Faux. Tout multiple scalaire non nul d'un vecteur normal est aussi normal au plan. Il existe une infinité de vecteurs normaux (tous colinéaires)."),
+      t("Faux. Tout multiple scalaire non nul d'un vecteur normal est aussi normal au plan. Il existe une infinité de vecteurs normaux (tous parallèles)."),
     ],
     steps: [],
     answer: "Faux",
@@ -4160,7 +4160,7 @@ const manualExercises: Exercise[] = [
     ],
     isTrue: true,
     explanation: [
-      t("Vrai. Trois points non alignés (non colinéaires) définissent un et un seul plan qui les contient tous les trois."),
+      t("Vrai. Trois points non alignés définissent un et un seul plan qui les contient tous les trois."),
     ],
     steps: [],
     answer: "Vrai",
@@ -4180,17 +4180,17 @@ const manualExercises: Exercise[] = [
       t("Deux plans sont parallèles si et seulement si :"),
     ],
     options: [
-      { id: "a", content: "Leurs vecteurs normaux sont colinéaires", correct: true },
+      { id: "a", content: "Leurs vecteurs normaux sont parallèles", correct: true },
       { id: "b", content: "Leurs vecteurs normaux sont orthogonaux", correct: false },
       { id: "c", content: "Ils ont le même point d'intersection", correct: false },
       { id: "d", content: "Leurs équations sont identiques", correct: false },
     ],
     explanation: [
-      t("Le parallélisme se vérifie par la colinéarité des vecteurs normaux : "),
+      t("Le parallélisme se vérifie par le parallélisme des vecteurs normaux : "),
       vec("n₁"), t(" = k·"), vec("n₂"), t(" pour un scalaire k ≠ 0."),
     ],
     steps: [],
-    answer: "Vecteurs normaux colinéaires",
+    answer: "Vecteurs normaux parallèles",
   },
   {
     id: "L55-MCQ2",
@@ -4449,7 +4449,7 @@ const manualExercises: Exercise[] = [
       t("Une droite est perpendiculaire à un plan si et seulement si :"),
     ],
     options: [
-      { id: "a", content: [t("Son vecteur directeur est colinéaire au vecteur normal du plan")], correct: true },
+      { id: "a", content: [t("Son vecteur directeur est parallèle au vecteur normal du plan")], correct: true },
       { id: "b", content: [vec("d"), t(" · "), vec("n"), t(" = 0")], correct: false },
       { id: "c", content: "Elle a un point d'intersection avec le plan", correct: false },
       { id: "d", content: "Le vecteur directeur est unitaire", correct: false },
@@ -4459,7 +4459,7 @@ const manualExercises: Exercise[] = [
       vec("d"), t(" = k·"), vec("n"), t(" pour un certain scalaire k."),
     ],
     steps: [],
-    answer: "Direction colinéaire au normal",
+    answer: "Direction parallèle au normal",
   },
   {
     id: "L57-TF1",
