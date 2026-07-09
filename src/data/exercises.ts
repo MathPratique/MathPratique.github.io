@@ -3742,16 +3742,16 @@ const manualExercises: Exercise[] = [
       t("Dans l'espace R³, deux droites peuvent être :"),
     ],
     options: [
-      { id: "a", content: "Sécantes, parallèles, confondues ou gauches", correct: true },
-      { id: "b", content: "Seulement sécantes ou parallèles", correct: false },
+      { id: "a", content: "Parallèles distinctes, parallèles confondues, sécantes ou gauches", correct: true },
+      { id: "b", content: "Seulement sécantes ou parallèles distinctes", correct: false },
       { id: "c", content: "Toujours sécantes", correct: false },
-      { id: "d", content: "Seulement parallèles ou confondues", correct: false },
+      { id: "d", content: "Seulement parallèles distinctes ou confondues", correct: false },
     ],
     explanation: [
-      t("En 3D, deux droites peuvent être : sécantes (1 point commun), parallèles (mêmes directions, aucun point commun), confondues (mêmes points), ou gauches (non parallèles et sans point commun)."),
+      t("En 3D, deux droites peuvent être dans l'une des 4 positions relatives : parallèles distinctes (mêmes directions, aucun point commun), parallèles confondues (mêmes points), sécantes (exactement 1 point commun), ou gauches (ni parallèles ni sécantes)."),
     ],
     steps: [],
-    answer: "Sécantes, parallèles, confondues ou gauches",
+    answer: "Parallèles distinctes, parallèles confondues, sécantes ou gauches",
   },
   {
     id: "L51-MCQ2",
@@ -3762,7 +3762,7 @@ const manualExercises: Exercise[] = [
     difficulty: "Intermédiaire",
     type: "mcq",
     prompt: [
-      t("Deux droites de vecteurs directeurs "), vec("d₁"), t(" et "), vec("d₂"), t(" sont parallèles ou confondues si :"),
+      t("Deux droites de vecteurs directeurs "), vec("d₁"), t(" et "), vec("d₂"), t(" sont parallèles (distinctes ou confondues) si :"),
     ],
     options: [
       { id: "a", content: [vec("d₁"), t(" et "), vec("d₂"), t(" sont colinéaires")], correct: true },
@@ -3788,8 +3788,8 @@ const manualExercises: Exercise[] = [
       t("Deux droites sont gauches si :"),
     ],
     options: [
-      { id: "a", content: "Elles ne sont ni parallèles ni sécantes", correct: true },
-      { id: "b", content: "Elles sont parallèles et confondues", correct: false },
+      { id: "a", content: "Elles ne sont ni parallèles (distinctes ou confondues) ni sécantes", correct: true },
+      { id: "b", content: "Elles sont parallèles confondues", correct: false },
       { id: "c", content: "Elles ont un seul point d'intersection", correct: false },
       { id: "d", content: "Elles sont sur le même plan", correct: false },
     ],
@@ -3957,7 +3957,7 @@ const manualExercises: Exercise[] = [
     difficulty: "Intermédiaire",
     type: "mcq",
     prompt: [
-      t("Si deux droites sont parallèles (non confondues), leur distance se calcule en :"),
+      t("Si deux droites sont parallèles distinctes, leur distance se calcule en :"),
     ],
     options: [
       { id: "a", content: "Prenant la distance d'un point quelconque d'une droite à l'autre droite", correct: true },
@@ -4204,16 +4204,16 @@ const manualExercises: Exercise[] = [
       t("Les plans x + 2y + 3z = 4 et 2x + 4y + 6z = 8 sont :"),
     ],
     options: [
-      { id: "a", content: "Confondus", correct: true },
-      { id: "b", content: "Parallèles non confondus", correct: false },
+      { id: "a", content: "Parallèles confondus", correct: true },
+      { id: "b", content: "Parallèles distincts", correct: false },
       { id: "c", content: "Sécants", correct: false },
       { id: "d", content: "Perpendiculaires", correct: false },
     ],
     explanation: [
-      t("La 2ᵉ équation est 2× la 1ʳᵉ (à droite : 2·4 = 8). Les deux équations représentent donc le même plan, ils sont confondus."),
+      t("La 2ᵉ équation est 2× la 1ʳᵉ (à droite : 2·4 = 8). Les deux équations représentent donc le même plan, ils sont parallèles confondus."),
     ],
     steps: [],
-    answer: "Confondus",
+    answer: "Parallèles confondus",
   },
   {
     id: "L55-MCQ3",
@@ -4244,15 +4244,15 @@ const manualExercises: Exercise[] = [
     topicId: "linear-algebra",
     lessonId: "L55",
     number: 11,
-    title: "Vrai ou Faux — Parallèles disjoints",
+    title: "Vrai ou Faux — Parallèles distincts",
     difficulty: "Intermédiaire",
     type: "tf",
     prompt: [
-      t("Deux plans parallèles non confondus ne s'intersectent pas."),
+      t("Deux plans parallèles distincts ne s'intersectent pas."),
     ],
     isTrue: true,
     explanation: [
-      t("Vrai. Si les plans sont parallèles mais distincts, ils n'ont aucun point commun."),
+      t("Vrai. Si les plans sont parallèles distincts (non confondus), ils n'ont aucun point commun."),
     ],
     steps: [],
     answer: "Vrai",
