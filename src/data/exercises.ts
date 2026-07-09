@@ -4539,7 +4539,7 @@ const manualExercises: Exercise[] = [
       t("Pour trouver le point d'intersection entre une droite et un plan, on :"),
     ],
     options: [
-      { id: "a", content: "Substitue les équations paramétriques de la droite dans l'équation du plan et résout pour t", correct: true },
+      { id: "a", content: "Substitue les équations paramétriques de la droite dans l'équation cartésienne du plan", correct: true },
       { id: "b", content: "Calcule le produit scalaire des vecteurs directeur et normal", correct: false },
       { id: "c", content: "Trouve la perpendiculaire commune", correct: false },
       { id: "d", content: "Additionne les équations", correct: false },
