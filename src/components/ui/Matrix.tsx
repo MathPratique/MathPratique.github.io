@@ -126,7 +126,7 @@ export default function Matrix({ data, label, inline = false }: MatrixProps) {
                 />
               ) : (
                 <span key={`${i}-${j}`} className="text-center">
-                  {cell}
+                  {isRichCell(cell) ? <RichContent content={cell} /> : cell}
                 </span>
               )
             )
