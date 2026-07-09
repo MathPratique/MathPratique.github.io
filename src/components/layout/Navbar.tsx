@@ -8,6 +8,7 @@ const links = [
   { to: "/", label: "Accueil" },
   { to: "/practice", label: "Exercices" },
   { to: "/custom-quiz", label: "Quiz personnalisé" },
+  { to: "/boutique", label: "Boutique" },
 ];
 
 export default function Navbar() {
