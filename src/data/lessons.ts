@@ -22,8 +22,6 @@ export const chapters: Chapter[] = [
 
   // Probabilités et statistiques
   { id: "stat-descriptives", name: "Statistiques descriptives", topicId: "probability" },
-  { id: "analyse-combinatoire", name: "Analyse combinatoire", topicId: "probability" },
-  { id: "probabilites", name: "Probabilités", topicId: "probability" },
 ];
 
 export const lessons: Lesson[] = [
@@ -95,12 +93,6 @@ export const lessons: Lesson[] = [
 
   // Probabilités et statistiques — Statistiques descriptives (Ch.1 201-SN1-RE)
   { id: "PSD1", number: 1, name: "Chapitre 1 — Statistiques descriptives", chapterId: "stat-descriptives" },
-
-  // Probabilités et statistiques — Analyse combinatoire
-  { id: "PA1", number: 1, name: "Combinaisons et permutations", chapterId: "analyse-combinatoire" },
-
-  // Probabilités et statistiques — Probabilités
-  { id: "PP1", number: 1, name: "Calcul de probabilités", chapterId: "probabilites" },
 ];
 
 export function getChapterById(id: string): Chapter | undefined {
