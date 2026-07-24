@@ -4609,6 +4609,403 @@ const manualExercises: Exercise[] = [
     steps: [],
     answer: "Vrai",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (25 exercices faciles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "stat-facile-01",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 1,
+    title: "Identifier population, échantillon et variable",
+    difficulty: "Fondamental",
+    prompt:
+      "On veut estimer la longueur moyenne des saumons de l'Atlantique dans la rivière Matapédia. Un biologiste en attrape 60 au filet et mesure la longueur de chacun. Identifie la population, l'échantillon, l'unité statistique et la variable étudiée.",
+    steps: [
+      "La population regroupe tous les individus visés par l'étude : tous les saumons de la rivière Matapédia.",
+      "L'échantillon est le sous-ensemble effectivement observé : les 60 saumons attrapés.",
+      "Chaque unité statistique est un saumon.",
+      "La variable est la caractéristique mesurée sur chaque unité, soit la longueur.",
+    ],
+    answer: "Population = saumons de la rivière ; échantillon = 60 saumons ; unité = un saumon ; variable = longueur.",
+  },
+  {
+    id: "stat-facile-02",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 2,
+    title: "Recensement ou sondage",
+    difficulty: "Fondamental",
+    prompt:
+      "Un contrôleur qualité veut vérifier la durée de vie des 500 piles produites lors d'un lot. Il choisit de tester chacune des 500 piles jusqu'à ce qu'elles s'éteignent. S'agit-il d'un recensement ou d'un sondage ? Cette approche est-elle réaliste ?",
+    steps: [
+      "Un recensement observe toute la population ; un sondage observe seulement un échantillon.",
+      "Ici, les 500 piles (toute la population) sont testées : c'est un recensement.",
+      "Comme le test est destructif (la pile est vidée), tester toute la population ne laisse aucune pile à commercialiser. Un sondage sur un échantillon est donc la seule approche réaliste.",
+    ],
+    answer: "Recensement (mais non réaliste ici, car test destructif).",
+  },
+  {
+    id: "stat-facile-03",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 3,
+    title: "Classer une variable — nombre de fleurs",
+    difficulty: "Fondamental",
+    prompt:
+      "Un botaniste observe le nombre de fleurs sur chaque tige d'un plant de trille blanc. Classe cette variable (qualitative ou quantitative) et précise son sous-type.",
+    steps: [
+      "La variable prend des valeurs numériques (0, 1, 2, 3, …) donc elle est quantitative.",
+      "Les valeurs proviennent d'un comptage et sont isolées (on ne peut pas avoir 2,5 fleurs) : la variable est discrète.",
+    ],
+    answer: "Quantitative discrète.",
+  },
+  {
+    id: "stat-facile-04",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 4,
+    title: "Classer une variable — couleur des yeux",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans une étude de génétique, on note la couleur des yeux (bleu, brun, vert, noisette) de chaque participant. Classe cette variable et précise son sous-type.",
+    steps: [
+      "Les valeurs sont des catégories (mots), donc la variable est qualitative.",
+      "Aucun ordre naturel n'existe entre les couleurs d'yeux : la variable est nominale.",
+    ],
+    answer: "Qualitative nominale.",
+  },
+  {
+    id: "stat-facile-05",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 5,
+    title: "Piège du code numérique — dossards",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans un marathon, chaque coureur porte un dossard numéroté de 1 à 500. Cette variable (le numéro de dossard) est-elle qualitative ou quantitative ? Justifie ta réponse.",
+    steps: [
+      "Test à te poser : « est-ce que faire la moyenne aurait du sens ? »",
+      "La moyenne du dossard n° 42 et du dossard n° 318 (soit 180) ne représente rien de significatif.",
+      "Les dossards servent uniquement d'étiquettes, sans ordre ni arithmétique : c'est une variable qualitative nominale.",
+    ],
+    answer: "Qualitative nominale (les chiffres ne sont que des étiquettes).",
+  },
+  {
+    id: "stat-facile-06",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 6,
+    title: "Identifier les éléments d'une étude — lacs",
+    difficulty: "Fondamental",
+    prompt:
+      "Un climatologue veut connaître la profondeur moyenne des 320 lacs de plus de 1 km² du parc national de la Mauricie. Il en visite 40 choisis au hasard et mesure la profondeur maximale de chacun. Identifie la population, l'échantillon et la variable étudiée.",
+    steps: [
+      "Population : tous les individus visés par l'étude → les 320 lacs de plus de 1 km² du parc.",
+      "Échantillon : le sous-ensemble effectivement observé → les 40 lacs visités.",
+      "Variable : la caractéristique mesurée → la profondeur maximale.",
+    ],
+    answer: "Population = 320 lacs ; échantillon = 40 lacs ; variable = profondeur maximale.",
+  },
+  {
+    id: "stat-facile-07",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 7,
+    title: "Classer une variable — satisfaction",
+    difficulty: "Fondamental",
+    prompt:
+      "Un restaurant sonde ses clients sur leur satisfaction avec les catégories : très insatisfait, insatisfait, neutre, satisfait, très satisfait. Classe cette variable et précise son sous-type.",
+    steps: [
+      "Les valeurs sont des catégories (mots), donc la variable est qualitative.",
+      "Les catégories ont un ordre naturel (du moins au plus satisfait) : la variable est ordinale.",
+    ],
+    answer: "Qualitative ordinale.",
+  },
+  {
+    id: "stat-facile-08",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 8,
+    title: "Classer une variable — température corporelle",
+    difficulty: "Fondamental",
+    prompt:
+      "Un infirmier mesure la température corporelle (en °C) de chaque patient à son arrivée à l'urgence. Classe cette variable et précise son sous-type.",
+    steps: [
+      "La variable prend des valeurs numériques, donc elle est quantitative.",
+      "Elle provient d'une mesure et peut prendre n'importe quelle valeur dans un intervalle (37,2 ; 37,25 ; 37,254…) : elle est continue.",
+    ],
+    answer: "Quantitative continue.",
+  },
+  {
+    id: "stat-facile-09",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 9,
+    title: "Calculer une fréquence relative",
+    difficulty: "Fondamental",
+    prompt:
+      "Sur 200 étudiants d'un cégep, 45 sont inscrits en Sciences de la nature. Quelle est la fréquence relative des étudiants inscrits en Sciences de la nature ? Exprime ta réponse en pourcentage.",
+    steps: [
+      "Formule de la fréquence relative : fᵢ = nᵢ / n.",
+      "Substituer : f = 45 / 200 = 0,225.",
+      "Convertir en pourcentage : 0,225 × 100 = 22,5 %.",
+    ],
+    answer: "22,5 %.",
+  },
+  {
+    id: "stat-facile-10",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 10,
+    title: "Calculer une fréquence relative cumulée",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans une étude sur les revenus annuels d'un groupe, les fréquences relatives des 4 premières classes de revenus sont 12 %, 25 %, 30 % et 20 %. Quelle est la fréquence relative cumulée jusqu'à la 4ᵉ classe (incluse) ?",
+    steps: [
+      "La fréquence cumulée est la somme des fréquences des classes précédentes et de la classe considérée.",
+      "Additionner : 12 + 25 + 30 + 20 = 87 %.",
+    ],
+    answer: "87 %.",
+  },
+  {
+    id: "stat-facile-11",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 11,
+    title: "Compléter un tableau de fréquences",
+    difficulty: "Fondamental",
+    prompt:
+      "Un professeur relève la discipline principale de 50 étudiants de première année : 20 en Sciences, 15 en Arts, 10 en Sciences humaines et 5 en Techniques. Calcule la fréquence relative de chaque discipline en pourcentage.",
+    steps: [
+      "Diviser l'effectif de chaque discipline par le total (50), puis multiplier par 100.",
+      "Sciences : 20/50 = 40 %.",
+      "Arts : 15/50 = 30 %.",
+      "Sciences humaines : 10/50 = 20 %.",
+      "Techniques : 5/50 = 10 %. La somme donne bien 100 %.",
+    ],
+    answer: "Sciences : 40 % ; Arts : 30 % ; Sciences humaines : 20 % ; Techniques : 10 %.",
+  },
+  {
+    id: "stat-facile-12",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 12,
+    title: "Amplitude de classes",
+    difficulty: "Fondamental",
+    prompt:
+      "Un chercheur veut regrouper en 5 classes d'amplitude égale les tailles de 80 plants d'épinette, qui varient de 15 cm à 65 cm. Quelle amplitude minimale doit avoir chaque classe ?",
+    steps: [
+      "Calculer l'étendue : E = xmax − xmin = 65 − 15 = 50 cm.",
+      "Calculer l'amplitude minimale : A = E / k = 50 / 5 = 10 cm.",
+      "10 cm est déjà un nombre commode, on peut le garder tel quel.",
+    ],
+    answer: "A = 10 cm.",
+  },
+  {
+    id: "stat-facile-13",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 13,
+    title: "Proportion cumulée dans une distribution en classes",
+    difficulty: "Fondamental",
+    prompt:
+      "Sur 60 étudiants, la distribution des notes à un examen est : 12 dans [0 ; 50), 24 dans [50 ; 70), 18 dans [70 ; 90) et 6 dans [90 ; 100]. Quelle proportion (en pourcentage) des étudiants a obtenu une note inférieure à 70 ?",
+    steps: [
+      "Additionner les effectifs des classes correspondant à une note < 70 : 12 + 24 = 36 étudiants.",
+      "Calculer la proportion : 36 / 60 = 0,60 = 60 %.",
+    ],
+    answer: "60 %.",
+  },
+  {
+    id: "stat-facile-14",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 14,
+    title: "Lire un tableau à double entrée",
+    difficulty: "Fondamental",
+    prompt:
+      "Un sondage auprès de 100 étudiants croise le sexe et le programme d'études. On relève : 22 femmes en biologie, 18 femmes en chimie, 15 hommes en biologie et 45 hommes en chimie. Combien d'étudiants au total sont inscrits en biologie ?",
+    steps: [
+      "Additionner les femmes en biologie et les hommes en biologie : 22 + 15 = 37.",
+    ],
+    answer: "37 étudiants.",
+  },
+  {
+    id: "stat-facile-15",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 15,
+    title: "Proportion conditionnelle dans un tableau croisé",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans un groupe de 200 personnes, on croise le sexe et le statut tabagique : 30 femmes fumeuses, 70 femmes non-fumeuses, 45 hommes fumeurs et 55 hommes non-fumeuses. Quelle proportion (en pourcentage) des femmes sont fumeuses ?",
+    steps: [
+      "Calculer le total de femmes : 30 + 70 = 100.",
+      "Calculer la proportion de fumeuses parmi les femmes : 30 / 100 = 0,30 = 30 %.",
+    ],
+    answer: "30 %.",
+  },
+  {
+    id: "stat-facile-16",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 16,
+    title: "Choix du graphique — variable nominale",
+    difficulty: "Fondamental",
+    prompt:
+      "Tu veux illustrer la répartition des groupes sanguins (O, A, B, AB) dans un échantillon de 50 donneurs. Quel type de graphique est approprié ?",
+    steps: [
+      "La variable « groupe sanguin » est qualitative nominale : les catégories n'ont pas d'ordre naturel.",
+      "Le diagramme à bandes est le choix classique.",
+      "Le diagramme circulaire (pie chart) est aussi acceptable, car il n'y a pas d'ordre à préserver.",
+    ],
+    answer: "Diagramme à bandes (ou diagramme circulaire).",
+  },
+  {
+    id: "stat-facile-17",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 17,
+    title: "Choix du graphique — variable continue",
+    difficulty: "Fondamental",
+    prompt:
+      "Tu veux visualiser la distribution des taux de cholestérol (mg/dL) mesurés chez 200 patients. Quel type de graphique est le plus approprié ?",
+    steps: [
+      "Le taux de cholestérol est une variable quantitative continue.",
+      "On regroupe les valeurs en classes d'amplitude égale et on utilise un histogramme.",
+    ],
+    answer: "Un histogramme.",
+  },
+  {
+    id: "stat-facile-18",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 18,
+    title: "Calculer une moyenne arithmétique",
+    difficulty: "Fondamental",
+    prompt:
+      "Un étudiant a obtenu les notes suivantes à ses 5 quiz de calcul : 82, 75, 88, 91, 79. Calcule sa moyenne.",
+    steps: [
+      "Somme des notes : 82 + 75 + 88 + 91 + 79 = 415.",
+      "Diviser par n = 5 : x̄ = 415 / 5 = 83.",
+    ],
+    answer: "x̄ = 83.",
+  },
+  {
+    id: "stat-facile-19",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 19,
+    title: "Trouver la médiane (n impair)",
+    difficulty: "Fondamental",
+    prompt:
+      "Les températures maximales enregistrées à Montréal sur 7 jours consécutifs de juillet ont été (en °C) : 24, 27, 22, 30, 26, 29, 25. Trouve la médiane.",
+    steps: [
+      "Ordonner les valeurs : 22, 24, 25, 26, 27, 29, 30.",
+      "Comme n = 7 est impair, la médiane est la valeur de rang (n+1)/2 = 4.",
+      "La 4ᵉ valeur ordonnée est 26 °C.",
+    ],
+    answer: "Me = 26 °C.",
+  },
+  {
+    id: "stat-facile-20",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 20,
+    title: "Trouver le mode",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans une clinique podologique, on a relevé les pointures de chaussures des 10 derniers patients : 40, 42, 38, 40, 41, 42, 40, 39, 42, 40. Quel est le mode ?",
+    steps: [
+      "Le mode est la valeur qui apparaît le plus souvent.",
+      "Dénombrer : 38 (1 fois), 39 (1 fois), 40 (4 fois), 41 (1 fois), 42 (3 fois).",
+      "La valeur 40 revient le plus souvent.",
+    ],
+    answer: "Mo = 40 (apparaît 4 fois).",
+  },
+  {
+    id: "stat-facile-21",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 21,
+    title: "Calculer une moyenne pondérée",
+    difficulty: "Fondamental",
+    prompt:
+      "Un cours comporte deux évaluations : un examen de mi-session pondéré à 40 % et un examen final pondéré à 60 %. Un étudiant a obtenu 72 % à la mi-session et 85 % au final. Calcule sa note finale du cours.",
+    steps: [
+      "Appliquer la formule : x̄ = 0,40 × 72 + 0,60 × 85.",
+      "Calculer chaque terme : 0,40 × 72 = 28,8 et 0,60 × 85 = 51,0.",
+      "Additionner : 28,8 + 51,0 = 79,8 %.",
+    ],
+    answer: "79,8 %.",
+  },
+  {
+    id: "stat-facile-22",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 22,
+    title: "Calculer une étendue avec nombres négatifs",
+    difficulty: "Fondamental",
+    prompt:
+      "Les températures minimales enregistrées à Montréal en janvier 2024 ont varié de −28 °C à −2 °C. Quelle est l'étendue de ces températures ?",
+    steps: [
+      "Appliquer la formule : E = xmax − xmin = −2 − (−28).",
+      "Attention au signe : −2 − (−28) = −2 + 28 = 26 °C.",
+    ],
+    answer: "E = 26 °C.",
+  },
+  {
+    id: "stat-facile-23",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 23,
+    title: "Calculer un écart-type échantillonnal",
+    difficulty: "Fondamental",
+    prompt:
+      "Un chercheur mesure la longueur (en mm) de 3 larves d'insecte : 12, 15, 18. Calcule l'écart-type échantillonnal s.",
+    steps: [
+      "Calculer la moyenne : x̄ = (12 + 15 + 18) / 3 = 15 mm.",
+      "Calculer les écarts à la moyenne : −3, 0, 3.",
+      "Élever au carré : 9, 0, 9. Somme des carrés : 18.",
+      "Variance échantillonnale : s² = 18 / (n − 1) = 18 / 2 = 9.",
+      "Écart-type : s = √9 = 3 mm.",
+    ],
+    answer: "s = 3 mm.",
+  },
+  {
+    id: "stat-facile-24",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 24,
+    title: "Interpréter un écart-type",
+    difficulty: "Fondamental",
+    prompt:
+      "Un logiciel calcule, pour la masse de 40 graines de tournesol, une moyenne x̄ = 45,0 g et un écart-type s = 4,2 g. Rédige une phrase d'interprétation qui inclut la moyenne, l'écart-type et les unités.",
+    steps: [
+      "Un écart-type doit toujours se lire avec sa moyenne et dans les unités de la variable.",
+      "Ne jamais dire « s = 4,2 » tout seul, sans contexte.",
+      "Formuler la phrase-type : « En moyenne, les [valeurs] s'écartent de [s] [unité] de la [valeur] moyenne, qui est de [x̄] [unité]. »",
+    ],
+    answer:
+      "En moyenne, les masses des graines s'écartent de 4,2 g de la masse moyenne, qui est de 45,0 g.",
+  },
+  {
+    id: "stat-facile-25",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 25,
+    title: "Calculer une cote z",
+    difficulty: "Fondamental",
+    prompt:
+      "À un examen dont la moyenne du groupe est de 70 % avec un écart-type de 8 %, un étudiant a obtenu 82 %. Calcule sa cote z et interprète le résultat.",
+    steps: [
+      "Appliquer la formule : z = (x − x̄) / s = (82 − 70) / 8.",
+      "Calculer : z = 12 / 8 = 1,5.",
+      "Interpréter : comme z > 0, l'observation est au-dessus de la moyenne, à 1,5 écart-type au-dessus.",
+    ],
+    answer: "z = 1,5 (1,5 écart-type au-dessus de la moyenne du groupe).",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
