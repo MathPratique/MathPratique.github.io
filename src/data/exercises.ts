@@ -5809,6 +5809,387 @@ const manualExercises: Exercise[] = [
     steps: [],
     answer: "Faux.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 2 : Probabilités (25 exercices faciles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "prob-facile-01",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 1,
+    title: "Univers d'une expérience aléatoire",
+    difficulty: "Fondamental",
+    prompt:
+      "On lance un dé équilibré à 6 faces et on note le résultat. Quel est l'univers Ω de cette expérience aléatoire ?",
+    steps: [
+      "L'univers Ω est l'ensemble de tous les résultats possibles de l'expérience.",
+      "Pour un dé à 6 faces, les résultats possibles sont 1, 2, 3, 4, 5, 6.",
+    ],
+    answer: "Ω = {1, 2, 3, 4, 5, 6}.",
+  },
+  {
+    id: "prob-facile-02",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 2,
+    title: "Événement contraire",
+    difficulty: "Fondamental",
+    prompt:
+      "On lance un dé à 6 faces. Soit A = « obtenir un nombre pair ». Décris l'événement contraire A̅ en donnant l'ensemble de ses résultats.",
+    steps: [
+      "L'événement contraire A̅ contient tous les résultats de Ω qui ne sont pas dans A.",
+      "A = {2, 4, 6} (nombres pairs). Donc A̅ = {1, 3, 5} (nombres impairs).",
+    ],
+    answer: "A̅ = {1, 3, 5} = « obtenir un nombre impair ».",
+  },
+  {
+    id: "prob-facile-03",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 3,
+    title: "Principe de multiplication — cadenas",
+    difficulty: "Fondamental",
+    prompt:
+      "Un cadenas comporte 4 roulettes, chacune numérotée de 0 à 9. Combien de combinaisons différentes sont possibles ?",
+    steps: [
+      "À chaque roulette, on a 10 choix indépendants.",
+      "Par le principe de multiplication : 10 × 10 × 10 × 10 = 10 000.",
+    ],
+    answer: "10 000 combinaisons.",
+  },
+  {
+    id: "prob-facile-04",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 4,
+    title: "Principe d'addition — trajets",
+    difficulty: "Fondamental",
+    prompt:
+      "Pour se rendre au cégep, Léa peut prendre l'un des 3 autobus, l'une des 2 lignes de métro, ou son vélo. De combien de façons différentes peut-elle s'y rendre ?",
+    steps: [
+      "Les 3 modes de transport sont mutuellement exclusifs (on n'en choisit qu'un).",
+      "Par le principe d'addition : 3 + 2 + 1 = 6 façons.",
+    ],
+    answer: "6 façons.",
+  },
+  {
+    id: "prob-facile-05",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 5,
+    title: "Factorielle de 6",
+    difficulty: "Fondamental",
+    prompt: "Calcule 6! (factorielle de 6).",
+    steps: [
+      "6! = 6 × 5 × 4 × 3 × 2 × 1.",
+      "= 30 × 4 × 3 × 2 × 1 = 120 × 6 = 720.",
+    ],
+    answer: "6! = 720.",
+  },
+  {
+    id: "prob-facile-06",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 6,
+    title: "Permutation — livres sur étagère",
+    difficulty: "Fondamental",
+    prompt:
+      "De combien de façons différentes peut-on aligner 7 livres distincts sur une étagère ?",
+    steps: [
+      "On ordonne tous les 7 livres, sans répétition → permutation.",
+      "P₇ = 7! = 5040.",
+    ],
+    answer: "7! = 5 040 façons.",
+  },
+  {
+    id: "prob-facile-07",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 7,
+    title: "Arrangement — bureau de direction",
+    difficulty: "Fondamental",
+    prompt:
+      "Un club de 10 membres doit désigner un président, un vice-président et un secrétaire (rôles distincts). De combien de façons peut-on faire ces nominations ?",
+    steps: [
+      "On choisit 3 personnes parmi 10 pour des rôles distincts : l'ordre compte → arrangement.",
+      "A(10, 3) = 10 × 9 × 8 = 720.",
+    ],
+    answer: "A(10, 3) = 720 nominations.",
+  },
+  {
+    id: "prob-facile-08",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 8,
+    title: "Combinaison — former un comité",
+    difficulty: "Fondamental",
+    prompt:
+      "Combien de comités de 4 personnes peut-on former parmi un groupe de 12 étudiants (sans distinction de rôles) ?",
+    steps: [
+      "L'ordre ne compte pas dans un comité → combinaison.",
+      "C(12, 4) = 12! / (4! × 8!) = (12 × 11 × 10 × 9) / (4 × 3 × 2 × 1) = 11 880 / 24 = 495.",
+    ],
+    answer: "C(12, 4) = 495 comités.",
+  },
+  {
+    id: "prob-facile-09",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 9,
+    title: "Combinaison — main de 5 cartes",
+    difficulty: "Fondamental",
+    prompt:
+      "Combien de mains de 5 cartes distinctes peut-on tirer d'un jeu de 52 cartes ?",
+    steps: [
+      "Une main ne dépend pas de l'ordre des cartes tirées → combinaison.",
+      "C(52, 5) = 52! / (5! × 47!) = 2 598 960 mains possibles.",
+    ],
+    answer: "C(52, 5) = 2 598 960 mains.",
+  },
+  {
+    id: "prob-facile-10",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 10,
+    title: "Choisir la bonne formule",
+    difficulty: "Fondamental",
+    prompt:
+      "On veut choisir 3 personnes parmi 8 pour former une équipe (sans distinction de rôles). Quelle formule utiliser : permutation, arrangement ou combinaison ?",
+    steps: [
+      "Une équipe = ensemble non ordonné (échanger deux membres ne change pas l'équipe).",
+      "→ Combinaison. C(8, 3) = 56.",
+    ],
+    answer: "Combinaison (l'ordre ne compte pas). C(8, 3) = 56.",
+  },
+  {
+    id: "prob-facile-11",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 11,
+    title: "Équiprobabilité — dé",
+    difficulty: "Fondamental",
+    prompt:
+      "On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un nombre strictement supérieur à 4 ?",
+    steps: [
+      "Cas favorables : {5, 6} → 2 résultats.",
+      "Cas possibles : |Ω| = 6.",
+      "P(A) = |A| / |Ω| = 2/6 = 1/3 ≈ 0,333.",
+    ],
+    answer: "1/3 ≈ 33,3 %.",
+  },
+  {
+    id: "prob-facile-12",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 12,
+    title: "Équiprobabilité — carte à jouer",
+    difficulty: "Fondamental",
+    prompt:
+      "On tire une carte au hasard d'un jeu de 52 cartes. Quelle est la probabilité que ce soit un roi ?",
+    steps: [
+      "Il y a 4 rois dans un jeu de 52 cartes.",
+      "P(roi) = 4/52 = 1/13 ≈ 0,077.",
+    ],
+    answer: "1/13 ≈ 7,7 %.",
+  },
+  {
+    id: "prob-facile-13",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 13,
+    title: "Probabilité de l'événement contraire",
+    difficulty: "Fondamental",
+    prompt:
+      "Un événement A a une probabilité P(A) = 0,35. Quelle est la probabilité de l'événement contraire A̅ ?",
+    steps: [
+      "Par la formule du complément : P(A̅) = 1 − P(A).",
+      "P(A̅) = 1 − 0,35 = 0,65.",
+    ],
+    answer: "P(A̅) = 0,65.",
+  },
+  {
+    id: "prob-facile-14",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 14,
+    title: "Union d'événements incompatibles",
+    difficulty: "Fondamental",
+    prompt:
+      "Deux événements incompatibles A et B ont P(A) = 0,3 et P(B) = 0,2. Quelle est la probabilité de A ∪ B ?",
+    steps: [
+      "A et B incompatibles ⇒ A ∩ B = ∅, donc P(A ∩ B) = 0.",
+      "Par additivité : P(A ∪ B) = P(A) + P(B) = 0,3 + 0,2 = 0,5.",
+    ],
+    answer: "P(A ∪ B) = 0,5.",
+  },
+  {
+    id: "prob-facile-15",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 15,
+    title: "Probabilité conditionnelle — application directe",
+    difficulty: "Fondamental",
+    prompt:
+      "Sur 200 patients dépistés, 60 ont un test positif et parmi eux 45 sont réellement malades. Quelle est la probabilité qu'un patient soit malade sachant que son test est positif ?",
+    steps: [
+      "On calcule P(M | T⁺) = P(M ∩ T⁺) / P(T⁺).",
+      "P(M ∩ T⁺) = 45/200 et P(T⁺) = 60/200.",
+      "P(M | T⁺) = (45/200) / (60/200) = 45/60 = 0,75.",
+    ],
+    answer: "P(M | T⁺) = 75 %.",
+  },
+  {
+    id: "prob-facile-16",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 16,
+    title: "Probabilité d'intersection par conditionnement",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans une classe, 60 % des étudiants ont une bonne note ; parmi eux, 30 % participent activement en classe. Quelle est la probabilité qu'un étudiant tiré au hasard ait à la fois une bonne note ET participe activement ?",
+    steps: [
+      "On applique P(A ∩ B) = P(A) × P(B | A).",
+      "P(bonne note ∩ actif) = 0,60 × 0,30 = 0,18.",
+    ],
+    answer: "0,18 = 18 %.",
+  },
+  {
+    id: "prob-facile-17",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 17,
+    title: "Événements indépendants — deux lancers",
+    difficulty: "Fondamental",
+    prompt:
+      "On lance deux fois une pièce équilibrée. Quelle est la probabilité d'obtenir « pile » aux deux lancers ?",
+    steps: [
+      "Les deux lancers sont indépendants, chacun avec P(pile) = 0,5.",
+      "P(pile ∩ pile) = P(pile) × P(pile) = 0,5 × 0,5 = 0,25.",
+    ],
+    answer: "0,25 = 25 %.",
+  },
+  {
+    id: "prob-facile-18",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 18,
+    title: "Somme des branches d'un arbre",
+    difficulty: "Fondamental",
+    prompt:
+      "À un nœud d'un arbre de probabilités, il y a deux branches : l'une avec probabilité 0,7. Quelle est nécessairement la probabilité de l'autre branche ?",
+    steps: [
+      "La somme des probabilités des branches issues d'un même nœud vaut toujours 1.",
+      "Autre branche : 1 − 0,7 = 0,3.",
+    ],
+    answer: "0,3.",
+  },
+  {
+    id: "prob-facile-19",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 19,
+    title: "Compléter une loi de probabilité",
+    difficulty: "Fondamental",
+    prompt:
+      "Une variable aléatoire X prend les valeurs 0, 1, 2 avec les probabilités respectives 0,3, 0,5 et p. Quelle est la valeur de p ?",
+    steps: [
+      "La somme des probabilités d'une v.a. discrète doit valoir 1.",
+      "0,3 + 0,5 + p = 1 ⇒ p = 0,2.",
+    ],
+    answer: "p = 0,2.",
+  },
+  {
+    id: "prob-facile-20",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 20,
+    title: "Espérance d'une v.a. discrète",
+    difficulty: "Fondamental",
+    prompt:
+      "Une variable aléatoire X prend les valeurs 1, 2, 3 avec les probabilités 0,2, 0,5 et 0,3. Calcule E(X).",
+    steps: [
+      "E(X) = Σ xᵢ · P(X = xᵢ).",
+      "E(X) = 1(0,2) + 2(0,5) + 3(0,3) = 0,2 + 1,0 + 0,9 = 2,1.",
+    ],
+    answer: "E(X) = 2,1.",
+  },
+  {
+    id: "prob-facile-21",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 21,
+    title: "Écart-type d'une v.a.",
+    difficulty: "Fondamental",
+    prompt:
+      "Une variable aléatoire X a une variance Var(X) = 4. Quel est son écart-type σ(X) ?",
+    steps: [
+      "L'écart-type est la racine carrée de la variance.",
+      "σ(X) = √Var(X) = √4 = 2.",
+    ],
+    answer: "σ(X) = 2.",
+  },
+  {
+    id: "prob-facile-22",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 22,
+    title: "Conditions de la loi binomiale",
+    difficulty: "Fondamental",
+    prompt:
+      "Nomme les deux conditions pour qu'une expérience puisse être modélisée par une loi binomiale.",
+    steps: [
+      "L'expérience doit être formée de n épreuves de Bernoulli (2 issues : succès/échec).",
+      "Condition 1 : les n épreuves sont indépendantes les unes des autres.",
+      "Condition 2 : chaque épreuve a la même probabilité de succès p.",
+    ],
+    answer: "(1) n épreuves indépendantes ; (2) même probabilité de succès p à chaque épreuve.",
+  },
+  {
+    id: "prob-facile-23",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 23,
+    title: "Loi binomiale — calcul direct",
+    difficulty: "Fondamental",
+    prompt:
+      "Une pièce équilibrée est lancée 5 fois. Quelle est la probabilité d'obtenir exactement 3 faces ?",
+    steps: [
+      "X ~ Bin(5 ; 0,5) : n = 5, p = 0,5.",
+      "P(X = 3) = C(5, 3) × 0,5³ × 0,5² = 10 × 0,125 × 0,25.",
+      "= 10 × 0,03125 = 0,3125.",
+    ],
+    answer: "P(X = 3) = 0,3125 = 31,25 %.",
+  },
+  {
+    id: "prob-facile-24",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 24,
+    title: "Loi normale — règle empirique",
+    difficulty: "Fondamental",
+    prompt:
+      "Dans une distribution normale de moyenne µ et d'écart-type σ, environ quelle proportion des valeurs se trouve dans l'intervalle [µ − σ ; µ + σ] ?",
+    steps: [
+      "Règle empirique 68-95-99,7 : ~68 % dans ±1σ, ~95 % dans ±2σ, ~99,7 % dans ±3σ.",
+      "Pour ±1σ : environ 68 %.",
+    ],
+    answer: "≈ 68 %.",
+  },
+  {
+    id: "prob-facile-25",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 25,
+    title: "Loi normale centrée réduite — lecture de la table",
+    difficulty: "Fondamental",
+    prompt:
+      "Si Z suit une loi normale centrée réduite N(0, 1) et que Φ(1,0) = 0,8413, quelle est la valeur de P(Z ≤ 1,0) ?",
+    steps: [
+      "Par définition, Φ(z) = P(Z ≤ z) est la fonction de répartition cumulative.",
+      "P(Z ≤ 1,0) = Φ(1,0) = 0,8413.",
+    ],
+    answer: "P(Z ≤ 1,0) = 0,8413.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
