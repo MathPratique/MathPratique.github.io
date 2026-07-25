@@ -6190,6 +6190,404 @@ const manualExercises: Exercise[] = [
     ],
     answer: "P(Z ≤ 1,0) = 0,8413.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 2 : Probabilités (25 exercices intermédiaires)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "prob-inter-01",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 26,
+    title: "Union, intersection et incompatibilité",
+    difficulty: "Moyen",
+    prompt:
+      "On lance un dé à 6 faces. Soit A = {2, 4, 6} et B = {5, 6}. Détermine A ∪ B et A ∩ B, puis dis si les événements A et B sont incompatibles.",
+    steps: [
+      "A ∪ B contient tous les résultats appartenant à A ou à B : {2, 4, 5, 6}.",
+      "A ∩ B contient les résultats appartenant à A ET à B : {6}.",
+      "A ∩ B ≠ ∅, donc A et B sont compatibles (non incompatibles).",
+    ],
+    answer: "A ∪ B = {2, 4, 5, 6} ; A ∩ B = {6} ; A et B ne sont pas incompatibles (A ∩ B ≠ ∅).",
+  },
+  {
+    id: "prob-inter-02",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 27,
+    title: "Traduction français → ensembles",
+    difficulty: "Moyen",
+    prompt:
+      "Traduis chaque phrase en langage ensembliste (avec A et B des événements) : (a) « ni A ni B » ; (b) « A, mais pas B ».",
+    steps: [
+      "(a) « ni A ni B » = ne pas se produire dans A et ne pas se produire dans B = A̅ ∩ B̅ (équivalent à A ∪ B̅ par les lois de De Morgan).",
+      "(b) « A mais pas B » = se produire dans A et ne pas se produire dans B = A ∩ B̅.",
+    ],
+    answer: "(a) A̅ ∩ B̅ ; (b) A ∩ B̅.",
+  },
+  {
+    id: "prob-inter-03",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 28,
+    title: "Multiplication — code avec/sans répétition",
+    difficulty: "Moyen",
+    prompt:
+      "Un code d'accès est formé de 2 lettres (parmi 26) suivies de 3 chiffres (parmi 0-9). Combien de codes distincts sont possibles (a) avec répétition ; (b) sans répétition ?",
+    steps: [
+      "(a) Avec répétition : 26 × 26 × 10 × 10 × 10 = 676 000.",
+      "(b) Sans répétition : 26 × 25 × 10 × 9 × 8 = 468 000.",
+    ],
+    answer: "(a) 676 000 codes ; (b) 468 000 codes.",
+  },
+  {
+    id: "prob-inter-04",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 29,
+    title: "Multiplication + addition combinés",
+    difficulty: "Moyen",
+    prompt:
+      "Un menu offre 3 entrées, 4 plats principaux et 3 desserts. (a) Combien de menus complets (entrée + plat + dessert) peut-on composer ? (b) Combien si on peut sauter le dessert (menu 2 ou 3 services) ?",
+    steps: [
+      "(a) Menus complets : 3 × 4 × 3 = 36.",
+      "(b) Menus 2 services (sans dessert) : 3 × 4 = 12.",
+      "Total = 36 + 12 = 48 menus.",
+    ],
+    answer: "(a) 36 menus complets ; (b) 48 menus au total.",
+  },
+  {
+    id: "prob-inter-05",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 30,
+    title: "Simplification de factorielles",
+    difficulty: "Moyen",
+    prompt: "Simplifie 10! / 8! sans calculer 10! ni 8!.",
+    steps: [
+      "10! = 10 × 9 × 8!.",
+      "Donc 10! / 8! = (10 × 9 × 8!) / 8! = 10 × 9 = 90.",
+    ],
+    answer: "10! / 8! = 90.",
+  },
+  {
+    id: "prob-inter-06",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 31,
+    title: "Anagrammes du mot MATIN",
+    difficulty: "Moyen",
+    prompt: "Combien d'anagrammes distinctes peut-on former avec toutes les lettres du mot MATIN ?",
+    steps: [
+      "Le mot MATIN contient 5 lettres, toutes distinctes.",
+      "Nombre d'anagrammes = 5! = 120.",
+    ],
+    answer: "5! = 120 anagrammes.",
+  },
+  {
+    id: "prob-inter-07",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 32,
+    title: "Arrangement — classement au tournoi",
+    difficulty: "Moyen",
+    prompt:
+      "Un tournoi comporte 8 équipes. On veut afficher au tableau les 4 premières positions (1ʳᵉ, 2ᵉ, 3ᵉ, 4ᵉ). Combien de classements différents sont possibles ?",
+    steps: [
+      "On choisit 4 équipes parmi 8, l'ordre compte (les positions sont distinctes) → arrangement.",
+      "A(8, 4) = 8 × 7 × 6 × 5 = 1680.",
+    ],
+    answer: "A(8, 4) = 1 680 classements.",
+  },
+  {
+    id: "prob-inter-08",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 33,
+    title: "Combinaison avec contrainte de composition",
+    difficulty: "Moyen",
+    prompt:
+      "Dans une classe de 20 étudiants (12 filles, 8 garçons), on choisit au hasard 4 étudiants pour un projet. De combien de façons peut-on former un groupe composé de 2 filles et 2 garçons ?",
+    steps: [
+      "Choix des filles : C(12, 2) = 66 façons.",
+      "Choix des garçons : C(8, 2) = 28 façons.",
+      "Par le principe de multiplication : 66 × 28 = 1 848.",
+    ],
+    answer: "C(12, 2) × C(8, 2) = 1 848 façons.",
+  },
+  {
+    id: "prob-inter-09",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 34,
+    title: "Combinaison — main de poker à 2 as",
+    difficulty: "Moyen",
+    prompt:
+      "Combien de mains de 5 cartes tirées d'un jeu de 52 contiennent exactement 2 as ?",
+    steps: [
+      "Choisir 2 as parmi 4 : C(4, 2) = 6.",
+      "Choisir 3 non-as parmi 48 : C(48, 3) = 17 296.",
+      "Total : 6 × 17 296 = 103 776 mains.",
+    ],
+    answer: "C(4, 2) × C(48, 3) = 103 776 mains.",
+  },
+  {
+    id: "prob-inter-10",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 35,
+    title: "Choisir la bonne formule dans 3 scénarios",
+    difficulty: "Moyen",
+    prompt:
+      "Pour chaque scénario, dis si on utilise permutation, arrangement ou combinaison, et calcule : (a) former un mot de passe de 4 lettres distinctes parmi 26 ; (b) choisir 5 chansons parmi 10 pour une liste sans ordre ; (c) créer une playlist ordonnée de 5 chansons parmi 10.",
+    steps: [
+      "(a) Ordre compte, sans répétition → arrangement. A(26, 4) = 26 × 25 × 24 × 23 = 358 800.",
+      "(b) Ordre ne compte pas → combinaison. C(10, 5) = 252.",
+      "(c) Ordre compte → arrangement. A(10, 5) = 10 × 9 × 8 × 7 × 6 = 30 240.",
+    ],
+    answer:
+      "(a) Arrangement, 358 800 ; (b) combinaison, 252 ; (c) arrangement, 30 240.",
+  },
+  {
+    id: "prob-inter-11",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 36,
+    title: "Équiprobabilité — 2 rois tirés sans remise",
+    difficulty: "Moyen",
+    prompt:
+      "On tire 2 cartes au hasard sans remise d'un jeu de 52. Quelle est la probabilité d'obtenir 2 rois ?",
+    steps: [
+      "Nombre de façons d'obtenir 2 rois : C(4, 2) = 6.",
+      "Nombre total de mains de 2 cartes : C(52, 2) = 1 326.",
+      "P = 6/1326 = 1/221 ≈ 0,45 %.",
+    ],
+    answer: "1/221 ≈ 0,45 %.",
+  },
+  {
+    id: "prob-inter-12",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 37,
+    title: "Probabilité d'obtenir au moins un 6",
+    difficulty: "Moyen",
+    prompt:
+      "On lance 3 dés équilibrés. Quelle est la probabilité d'obtenir au moins un 6 ? (Indice : passer par l'événement contraire.)",
+    steps: [
+      "Événement contraire : « aucun 6 sur les 3 dés ». Par indépendance : P(aucun 6) = (5/6)³ = 125/216.",
+      "P(au moins un 6) = 1 − P(aucun 6) = 1 − 125/216 = 91/216.",
+      "Résultat : 91/216 ≈ 0,4213 = 42,13 %.",
+    ],
+    answer: "91/216 ≈ 42,1 %.",
+  },
+  {
+    id: "prob-inter-13",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 38,
+    title: "Union de deux événements non incompatibles",
+    difficulty: "Moyen",
+    prompt:
+      "Deux événements A et B satisfont P(A) = 0,60, P(B) = 0,40 et P(A ∩ B) = 0,25. Calcule P(A ∪ B).",
+    steps: [
+      "Formule d'inclusion-exclusion : P(A ∪ B) = P(A) + P(B) − P(A ∩ B).",
+      "P(A ∪ B) = 0,60 + 0,40 − 0,25 = 0,75.",
+    ],
+    answer: "P(A ∪ B) = 0,75.",
+  },
+  {
+    id: "prob-inter-14",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 39,
+    title: "Trois probabilités conditionnelles à partir d'un tableau",
+    difficulty: "Moyen",
+    prompt:
+      "Dans une école, on croise sexe et pratique d'un sport : 80 filles (dont 45 sportives) et 70 garçons (dont 55 sportifs). Calcule : (a) P(sport) ; (b) P(sport | fille) ; (c) P(fille | sport).",
+    steps: [
+      "Total = 150 personnes. Sportifs = 45 + 55 = 100.",
+      "(a) P(sport) = 100 / 150 = 2/3 ≈ 66,7 %.",
+      "(b) P(sport | fille) = 45 / 80 = 0,5625 = 56,25 %.",
+      "(c) P(fille | sport) = 45 / 100 = 45 %.",
+    ],
+    answer: "(a) 2/3 ≈ 66,7 % ; (b) 56,25 % ; (c) 45 %.",
+  },
+  {
+    id: "prob-inter-15",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 40,
+    title: "Tirages successifs sans remise — deux boules rouges",
+    difficulty: "Moyen",
+    prompt:
+      "Une urne contient 5 boules rouges et 3 boules blanches. On tire 2 boules successivement, sans remise. Quelle est la probabilité d'obtenir 2 boules rouges ?",
+    steps: [
+      "Soit R₁ et R₂ les événements « 1er tirage rouge » et « 2ᵉ tirage rouge ». Les tirages sans remise sont dépendants.",
+      "P(R₁) = 5/8. Sachant R₁, il reste 4 rouges sur 7 boules : P(R₂ | R₁) = 4/7.",
+      "P(R₁ ∩ R₂) = P(R₁) × P(R₂ | R₁) = (5/8)(4/7) = 20/56 = 5/14 ≈ 35,7 %.",
+    ],
+    answer: "5/14 ≈ 35,7 %.",
+  },
+  {
+    id: "prob-inter-16",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 41,
+    title: "Exactement l'un des deux — événements indépendants",
+    difficulty: "Moyen",
+    prompt:
+      "Alice réussit un examen avec probabilité 0,7 et Bruno avec probabilité 0,8, indépendamment l'un de l'autre. Quelle est la probabilité qu'exactement l'un des deux réussisse ?",
+    steps: [
+      "Deux scénarios exclusifs : (Alice réussit ET Bruno échoue) OU (Alice échoue ET Bruno réussit).",
+      "P(A ∩ B̅) = 0,7 × 0,2 = 0,14.",
+      "P(A̅ ∩ B) = 0,3 × 0,8 = 0,24.",
+      "Total : 0,14 + 0,24 = 0,38.",
+    ],
+    answer: "0,38 = 38 %.",
+  },
+  {
+    id: "prob-inter-17",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 42,
+    title: "Arbre de probabilités — pièce défectueuse",
+    difficulty: "Moyen",
+    prompt:
+      "Une usine A produit 60 % des pièces avec un taux de défauts de 2 %. Une usine B produit 40 % des pièces avec un taux de défauts de 5 %. Quelle est la probabilité qu'une pièce prise au hasard soit défectueuse ?",
+    steps: [
+      "Loi des probabilités totales : P(déf) = P(A) × P(déf | A) + P(B) × P(déf | B).",
+      "P(déf) = 0,60 × 0,02 + 0,40 × 0,05 = 0,012 + 0,020 = 0,032.",
+      "Environ 3,2 % des pièces sont défectueuses.",
+    ],
+    answer: "P(déf) = 0,032 = 3,2 %.",
+  },
+  {
+    id: "prob-inter-18",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 43,
+    title: "Loi d'une v.a. — lancer de deux pièces",
+    difficulty: "Moyen",
+    prompt:
+      "On lance deux pièces équilibrées. Soit X = nombre de faces obtenues. Établis la loi de probabilité de X.",
+    steps: [
+      "Univers : {PP, PF, FP, FF}. Chaque résultat est équiprobable (probabilité 1/4).",
+      "X = 0 correspond à {PP} → P(X=0) = 1/4.",
+      "X = 1 correspond à {PF, FP} → P(X=1) = 2/4 = 1/2.",
+      "X = 2 correspond à {FF} → P(X=2) = 1/4.",
+      "Vérification : 1/4 + 1/2 + 1/4 = 1 ✓.",
+    ],
+    answer: "P(X=0) = 1/4 ; P(X=1) = 1/2 ; P(X=2) = 1/4.",
+  },
+  {
+    id: "prob-inter-19",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 44,
+    title: "Espérance d'un jeu de hasard",
+    difficulty: "Moyen",
+    prompt:
+      "Un jeu coûte 2 $ pour tirer une carte au hasard d'un jeu de 52. Tu gagnes 10 $ si tu tires un as, sinon rien. Quel est le gain net espéré par tirage ?",
+    steps: [
+      "Gain net X : +8 $ (10 − 2) si tu tires un as ; −2 $ (juste le coût) sinon.",
+      "P(as) = 4/52 = 1/13. P(pas as) = 48/52 = 12/13.",
+      "E(X) = 8 × (1/13) + (−2) × (12/13) = 8/13 − 24/13 = −16/13 ≈ −1,23 $.",
+      "Le jeu est défavorable au joueur (perte moyenne de 1,23 $ par tirage).",
+    ],
+    answer: "E(X) = −16/13 ≈ −1,23 $ (jeu défavorable).",
+  },
+  {
+    id: "prob-inter-20",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 45,
+    title: "Espérance et variance d'une v.a. discrète",
+    difficulty: "Moyen",
+    prompt:
+      "Une variable aléatoire X prend les valeurs 0, 1, 2 avec les probabilités 0,3, 0,4 et 0,3. Calcule E(X) et Var(X).",
+    steps: [
+      "E(X) = 0(0,3) + 1(0,4) + 2(0,3) = 0 + 0,4 + 0,6 = 1.",
+      "Var(X) = (0−1)²(0,3) + (1−1)²(0,4) + (2−1)²(0,3) = 0,3 + 0 + 0,3 = 0,6.",
+    ],
+    answer: "E(X) = 1 ; Var(X) = 0,6.",
+  },
+  {
+    id: "prob-inter-21",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 46,
+    title: "Loi binomiale — probabilité d'au moins un succès",
+    difficulty: "Moyen",
+    prompt:
+      "Un archer atteint sa cible avec probabilité 0,7 à chaque tir, indépendamment. Il tire 5 fois. Quelle est la probabilité d'atteindre la cible au moins une fois ?",
+    steps: [
+      "X ~ Bin(5 ; 0,7). Passer par le complément est plus rapide.",
+      "P(X ≥ 1) = 1 − P(X = 0) = 1 − (0,3)⁵.",
+      "(0,3)⁵ = 0,00243. Donc P(X ≥ 1) = 1 − 0,00243 ≈ 0,9976.",
+      "Environ 99,76 % de chance d'atteindre la cible au moins une fois.",
+    ],
+    answer: "P(X ≥ 1) ≈ 0,9976 = 99,76 %.",
+  },
+  {
+    id: "prob-inter-22",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 47,
+    title: "Loi binomiale — espérance et écart-type",
+    difficulty: "Moyen",
+    prompt:
+      "Une pièce équilibrée est lancée 20 fois. Soit X le nombre de faces obtenues. Calcule E(X) et σ(X).",
+    steps: [
+      "X ~ Bin(20 ; 0,5). Formules : E(X) = np et σ(X) = √(np(1−p)).",
+      "E(X) = 20 × 0,5 = 10 faces en moyenne.",
+      "σ(X) = √(20 × 0,5 × 0,5) = √5 ≈ 2,24 faces.",
+    ],
+    answer: "E(X) = 10 ; σ(X) = √5 ≈ 2,24.",
+  },
+  {
+    id: "prob-inter-23",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 48,
+    title: "Loi normale — règle empirique ±2σ",
+    difficulty: "Moyen",
+    prompt:
+      "La taille des adultes d'une région suit approximativement N(175 ; 8) cm. Quelle proportion d'entre eux mesurent entre 159 et 191 cm ?",
+    steps: [
+      "L'intervalle [159 ; 191] correspond à [175 − 16 ; 175 + 16] = [µ − 2σ ; µ + 2σ].",
+      "Règle empirique 68-95-99,7 : environ 95 % des valeurs sont dans [µ − 2σ ; µ + 2σ].",
+    ],
+    answer: "Environ 95 %.",
+  },
+  {
+    id: "prob-inter-24",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 49,
+    title: "Loi normale — probabilité entre deux valeurs",
+    difficulty: "Moyen",
+    prompt:
+      "Soit Z ~ N(0, 1). Sachant que Φ(1,5) = 0,9332 et Φ(2,0) = 0,9772, calcule P(1,5 ≤ Z ≤ 2,0).",
+    steps: [
+      "P(a ≤ Z ≤ b) = Φ(b) − Φ(a).",
+      "P(1,5 ≤ Z ≤ 2,0) = Φ(2,0) − Φ(1,5) = 0,9772 − 0,9332 = 0,0440.",
+    ],
+    answer: "P(1,5 ≤ Z ≤ 2,0) = 0,044 = 4,4 %.",
+  },
+  {
+    id: "prob-inter-25",
+    topicId: "probability",
+    lessonId: "PSD2",
+    number: 50,
+    title: "Valeur critique — problème inverse",
+    difficulty: "Moyen",
+    prompt:
+      "Dans une distribution N(100 ; 15), on cherche la valeur x telle que 90 % des observations sont inférieures à x. Sachant que Φ(1,28) ≈ 0,90, trouve x.",
+    steps: [
+      "On cherche x tel que P(X ≤ x) = 0,90. Le z correspondant satisfait Φ(z) = 0,90, donc z = 1,28.",
+      "Dé-standardiser : x = µ + z × σ = 100 + 1,28 × 15 = 100 + 19,2 = 119,2.",
+    ],
+    answer: "x = 119,2.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
