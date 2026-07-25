@@ -19,7 +19,7 @@ function easyTranspose(): Exercise {
   const A = randMat(r, c, -3, 4);
   const AT = transpose(A);
   return {
-    ...meta("quiz-L6-easy", "Calculer la transposée d'une matrice", "Fondamental"),
+    ...meta("quiz-L6-easy", "Calculer la transposée d'une matrice", "Facile"),
     prompt: [
       t("Trouver A"),
       sup("T"),
@@ -43,7 +43,7 @@ function interVerifyABT(): Exercise {
   const AT = transpose(A);
   const BTAT = mul(BT, AT);
   return {
-    ...meta("quiz-L6-inter", "Vérifier (AB)ᵀ = BᵀAᵀ", "Intermédiaire"),
+    ...meta("quiz-L6-inter", "Vérifier (AB)ᵀ = BᵀAᵀ", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -85,7 +85,7 @@ function interSymmetricCheck(): Exercise {
   const isSym = JSON.stringify(A) === JSON.stringify(AT);
   const isAnti = JSON.stringify(A) === JSON.stringify(AT.map((r) => r.map((v) => -v)));
   return {
-    ...meta("quiz-L6-inter", "Symétrique, antisymétrique ou ni l'un ni l'autre", "Intermédiaire"),
+    ...meta("quiz-L6-inter", "Symétrique, antisymétrique ou ni l'un ni l'autre", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -120,7 +120,7 @@ function advForceSymmetric(): Exercise {
   const AT = transpose(A);
   const S = A.map((row, i) => row.map((v, j) => (v + AT[i][j]) / 2));
   return {
-    ...meta("quiz-L6-adv", "Construire la partie symétrique de A", "Avancé"),
+    ...meta("quiz-L6-adv", "Construire la partie symétrique de A", "Difficile"),
     prompt: [
       t("Pour toute matrice carrée A, la matrice S = (A + A"),
       sup("T"),
@@ -146,7 +146,7 @@ function advTransposeChain(): Exercise {
     row.map((v, j) => v + transpose(B)[i][j])
   );
   return {
-    ...meta("quiz-L6-adv", "Vérifier (A + B)ᵀ = Aᵀ + Bᵀ", "Avancé"),
+    ...meta("quiz-L6-adv", "Vérifier (A + B)ᵀ = Aᵀ + Bᵀ", "Difficile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),

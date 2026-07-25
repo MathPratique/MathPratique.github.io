@@ -14,7 +14,7 @@ function meta(id: string, title: string, difficulty: Exercise["difficulty"]) {
 
 function easyZeroByRow(): Exercise {
   return {
-    ...meta("quiz-L13-easy", "Identifier un déterminant nul", "Fondamental"),
+    ...meta("quiz-L13-easy", "Identifier un déterminant nul", "Facile"),
     prompt: [
       t("Sans calculer, donner det("),
       mat([
@@ -36,7 +36,7 @@ function interDetkA(): Exercise {
   const k = pick([2, 3]);
   const d = pick([2, 3, 5, -4]);
   return {
-    ...meta("quiz-L13-inter", "Calculer det(kA) en dimension n", "Intermédiaire"),
+    ...meta("quiz-L13-inter", "Calculer det(kA) en dimension n", "Moyen"),
     prompt: [
       t(`Si A est une matrice ${n}×${n} avec det(A) = ${d}, calculer det(${k}A).`),
     ],
@@ -51,7 +51,7 @@ function interProdInv(): Exercise {
   const da = pick([2, -3, 5]);
   const db = pick([3, -2, 4]);
   return {
-    ...meta("quiz-L13-inter", "det(A⁻¹B²) par les propriétés", "Intermédiaire"),
+    ...meta("quiz-L13-inter", "det(A⁻¹B²) par les propriétés", "Moyen"),
     prompt: [
       t(`Si det(A) = ${da} et det(B) = ${db}, calculer det(A⁻¹B²).`),
     ],
@@ -75,7 +75,7 @@ function advProportional(): Exercise {
   ];
   A[2] = [k * A[0][0], k * A[0][1], k * A[0][2]];
   return {
-    ...meta("quiz-L13-adv", "Déterminant avec lignes proportionnelles", "Avancé"),
+    ...meta("quiz-L13-adv", "Déterminant avec lignes proportionnelles", "Difficile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -93,7 +93,7 @@ function advChain(): Exercise {
   const da = pick([2, 3, 4]);
   const n = pick([2, 3]);
   return {
-    ...meta("quiz-L13-adv", "Chaîne de propriétés sur le déterminant", "Avancé"),
+    ...meta("quiz-L13-adv", "Chaîne de propriétés sur le déterminant", "Difficile"),
     prompt: [
       t(`Soit A une matrice ${n}×${n} avec det(A) = ${da}. Calculer det((2A)⁻¹·Aᵀ·A).`),
     ],

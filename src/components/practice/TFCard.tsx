@@ -3,23 +3,22 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import clsx from "clsx";
 import type { Exercise } from "../../data/exercises";
 import { topics } from "../../data/topics";
-import { getLessonById } from "../../data/lessons";
 import RichContent from "../ui/RichContent";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
-  Fondamental: "bg-accent-500/10 text-accent-600",
-  Intermédiaire: "bg-brand-100 text-brand-700",
-  Avancé: "bg-amber-100 text-amber-700",
+  Facile: "bg-accent-500/10 text-accent-600",
+  Moyen: "bg-brand-100 text-brand-700",
+  Difficile: "bg-amber-100 text-amber-700",
 };
 
-type TFCardProps = { exercise: Exercise };
+type TFCardProps = { exercise: Exercise; displayIndex?: number };
 
-export default function TFCard({ exercise }: TFCardProps) {
+export default function TFCard({ exercise, displayIndex }: TFCardProps) {
   const [picked, setPicked] = useState<boolean | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const topic = topics.find((t) => t.id === exercise.topicId);
-  const lesson = exercise.lessonId ? getLessonById(exercise.lessonId) : null;
-  const contextLabel = lesson ? `Leçon ${lesson.number}` : topic?.name;
+  const contextLabel =
+    displayIndex != null ? `Exercice #${displayIndex}` : topic?.name ?? "Exercice";
 
   const correctAnswer = exercise.isTrue ?? false;
   const answered = picked !== null;

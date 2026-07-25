@@ -26,7 +26,7 @@ function easyDet3FromInverse(): Exercise {
   const A = randInvertible3x3();
   const d = det3(A);
   return {
-    ...meta("quiz-L9-easy", "Lien entre |A| et |A⁻¹|", "Fondamental"),
+    ...meta("quiz-L9-easy", "Lien entre |A| et |A⁻¹|", "Facile"),
     prompt: [
       t("Sachant que A est une matrice 3×3 inversible avec det(A"),
       sup("-1"),
@@ -44,7 +44,7 @@ function interSolveAXB_3x3(): Exercise {
   const X = [[randInt(-2, 3)], [randInt(-2, 3)], [randInt(-2, 3)]];
   const B = mul(A, X);
   return {
-    ...meta("quiz-L9-inter", "Résoudre AX = B en 3 dimensions", "Intermédiaire"),
+    ...meta("quiz-L9-inter", "Résoudre AX = B en 3 dimensions", "Moyen"),
     prompt: [
       t("Résoudre AX = B avec "),
       mat(asCells(A), "A ="),
@@ -66,7 +66,7 @@ function interPropertyChain(): Exercise {
   const invAT = transpose(inv2(A)!);
   const d = det2(A);
   return {
-    ...meta("quiz-L9-inter", "Vérifier (Aᵀ)⁻¹ = (A⁻¹)ᵀ", "Intermédiaire"),
+    ...meta("quiz-L9-inter", "Vérifier (Aᵀ)⁻¹ = (A⁻¹)ᵀ", "Moyen"),
     prompt: [
       t("Démontrer pratiquement l'identité (A"),
       sup("T"),
@@ -110,7 +110,7 @@ function advChainOfProperties(): Exercise {
   const invAT = transpose(inv2(A)!);
   const result = invAT.map((row) => row.map((v) => v / k));
   return {
-    ...meta("quiz-L9-adv", "Combinaison de propriétés d'inverse et transposée", "Avancé"),
+    ...meta("quiz-L9-adv", "Combinaison de propriétés d'inverse et transposée", "Difficile"),
     prompt: [
       t(`Calculer (${k}A`),
       sup("T"),
@@ -140,7 +140,7 @@ function advChainOfProperties(): Exercise {
 function advConditionsInvertibility(): Exercise {
   // Find values of k such that [[1, k], [k, 1]] is invertible
   return {
-    ...meta("quiz-L9-adv", "Condition d'inversibilité d'une matrice paramétrée", "Avancé"),
+    ...meta("quiz-L9-adv", "Condition d'inversibilité d'une matrice paramétrée", "Difficile"),
     prompt: [
       t("Pour quelles valeurs de k la matrice "),
       mat([

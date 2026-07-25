@@ -41,7 +41,7 @@ function easyTriangularInverse3(): Exercise {
   const adj = transpose(cofactorMatrix3(A));
   const inv = adj.map((row) => row.map((v) => v / d));
   return {
-    ...meta("quiz-L16-easy", "Inverse 3×3 par cofacteurs (matrice triangulaire)", "Fondamental"),
+    ...meta("quiz-L16-easy", "Inverse 3×3 par cofacteurs (matrice triangulaire)", "Facile"),
     prompt: [
       t("Calculer A"),
       sup("-1"),
@@ -71,7 +71,7 @@ function interInverse3By3(): Exercise {
   const d = det3(A);
   const adj = transpose(cofactorMatrix3(A));
   return {
-    ...meta("quiz-L16-inter", "Inverse 3×3 par cofacteurs", "Intermédiaire"),
+    ...meta("quiz-L16-inter", "Inverse 3×3 par cofacteurs", "Moyen"),
     prompt: [
       t("Calculer A"),
       sup("-1"),
@@ -100,7 +100,7 @@ function interVerify(): Exercise {
   const A = randInvertible3x3();
   const d = det3(A);
   return {
-    ...meta("quiz-L16-inter", "Vérifier A · A⁻¹ = I", "Intermédiaire"),
+    ...meta("quiz-L16-inter", "Vérifier A · A⁻¹ = I", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -135,7 +135,7 @@ function advSolveAXBby3(): Exercise {
   const X = [[randInt(-2, 3)], [randInt(-2, 3)], [randInt(-2, 3)]];
   const B = mul(A, X);
   return {
-    ...meta("quiz-L16-adv", "Résoudre AX = B (3×3) par cofacteurs", "Avancé"),
+    ...meta("quiz-L16-adv", "Résoudre AX = B (3×3) par cofacteurs", "Difficile"),
     prompt: [
       t("Résoudre AX = B avec "),
       mat(asCells(A), "A ="),
@@ -156,7 +156,7 @@ function advDetOfAdj(): Exercise {
   const n = 3;
   const d = pick([2, 3, -3, 4]);
   return {
-    ...meta("quiz-L16-adv", "det(adj(A)) en dimension n", "Avancé"),
+    ...meta("quiz-L16-adv", "det(adj(A)) en dimension n", "Difficile"),
     prompt: [
       t(`Soit A une matrice ${n}×${n} avec det(A) = ${d}. Calculer det(adj(A)).`),
     ],

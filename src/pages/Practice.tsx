@@ -282,7 +282,7 @@ export default function Practice() {
             <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {filtered.map((exercise, i) => (
                 <AnimatedSection key={exercise.id} delay={Math.min(i * 0.04, 0.25)}>
-                  <ExerciseCard exercise={exercise} />
+                  <ExerciseCard exercise={exercise} displayIndex={i + 1} />
                 </AnimatedSection>
               ))}
             </div>

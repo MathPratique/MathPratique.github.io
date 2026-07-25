@@ -59,7 +59,7 @@ function l23Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L23",
     title: "QCM — Relation de Chasles",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Selon la relation de Chasles, ${p1}${p2} + ${p2}${p3} = ?`),
@@ -88,7 +88,7 @@ function l23Tf(): Exercise {
       topicId: "linear-algebra",
       lessonId: "L23",
       title: "Vrai ou Faux — Vecteur opposé",
-      difficulty: "Intermédiaire",
+      difficulty: "Moyen",
       type: "tf",
       prompt: [
         t("Le vecteur opposé de "), vec(`${p1}${p2}`), t(" est "), vec(`${p2}${p1}`),
@@ -110,7 +110,7 @@ function l23Tf(): Exercise {
       topicId: "linear-algebra",
       lessonId: "L23",
       title: "Vrai ou Faux — Addition non commutative ?",
-      difficulty: "Intermédiaire",
+      difficulty: "Moyen",
       type: "tf",
       prompt: [
         t("L'addition de vecteurs n'est pas commutative : "),
@@ -134,7 +134,7 @@ function l23Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L23",
     title: "Simplifier par Chasles",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t("Simplifier l'expression : "),
       vec(`${p[0]}${p[1]}`), t(" + "), vec(`${p[1]}${p[2]}`), t(" + "), vec(`${p[2]}${p[3]}`), t("."),
@@ -161,7 +161,7 @@ function l24Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L24",
     title: "QCM — Multiplication par un scalaire négatif",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Si "), vec(v), t(" est un vecteur non nul, alors le vecteur "),
@@ -193,7 +193,7 @@ function l24Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L24",
     title: "Vrai ou Faux — Norme d'un multiple",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t(`Si ‖`), vec(v), t(`‖ = ${norm}, alors ‖`), t(`${k}`), vec(v), t(`‖ = ${proposed}.`),
@@ -216,7 +216,7 @@ function l24Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L24",
     title: "Calculer une norme",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt: [
       t(`Sachant que ‖`), vec(v), t(`‖ = ${norm}, calculer ‖`), t(`${k}`), vec(v), t(`‖.`),
     ],
@@ -240,7 +240,7 @@ function l25Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L25",
     title: "QCM — Norme d'un vecteur réduit",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Soit `), vec(v), t(` un vecteur tel que ‖`), vec(v), t(`‖ = ${norm}. Quelle est la norme du vecteur (1/${norm})`), vec(v), t(` ?`),
@@ -267,7 +267,7 @@ function l25Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L25",
     title: "Vrai ou Faux — Vecteur unitaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t(`Le vecteur ${isTrueQ ? "" : "−"}`), vec(v), t(` / ‖`), vec(v), t(`‖ est un vecteur unitaire ${isTrueQ ? "dans le même sens" : "dans le sens opposé"} de `), vec(v), t("."),
@@ -291,7 +291,7 @@ function l25Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L25",
     title: "Simplifier une combinaison linéaire",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt: [
       t(`Simplifier l'expression : ${a}`), vec(v1), t(` + ${b}`), vec(v2), t(` + ${-a}`), vec(v1),
       t(` + ${1 - b}`), vec(v2), t("."),
@@ -317,7 +317,7 @@ function l26Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L26",
     title: "QCM — Point sur un segment",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t(`Soit M un point tel que `), vec(`${P}M`), t(` = (1/${k})`), vec(`${P}${Q}`),
@@ -347,7 +347,7 @@ function l26Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L26",
     title: "Vrai ou Faux — Parallélogramme",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t(`${P}${Q}${R}${S} est un parallélogramme si et seulement si `),
@@ -378,7 +378,7 @@ function l26Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L26",
     title: "Trouver le point symétrique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Soit A = ${fmt2(A)} et B = ${fmt2(B)}. Trouver le point C tel que B soit le milieu du segment [AC].`),
     ],
@@ -405,7 +405,7 @@ function l27Mcq(): Exercise {
       topicId: "linear-algebra",
       lessonId: "L27",
       title: "QCM — Composantes d'un vecteur en 3D",
-      difficulty: "Intermédiaire",
+      difficulty: "Moyen",
       type: "mcq",
       prompt: [
         t(`Si A = ${fmt3(A)} et B = ${fmt3(B)} dans R³, quelles sont les composantes de `),
@@ -432,7 +432,7 @@ function l27Mcq(): Exercise {
       topicId: "linear-algebra",
       lessonId: "L27",
       title: "QCM — Composantes d'un vecteur (2D)",
-      difficulty: "Intermédiaire",
+      difficulty: "Moyen",
       type: "mcq",
       prompt: [
         t(`Si A = ${fmt2(A)} et B = ${fmt2(B)}, quelles sont les composantes de `),
@@ -466,7 +466,7 @@ function l27Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L27",
     title: "Vrai ou Faux — Addition 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t(`Si `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"), t(` = ${fmt3(v)}, alors `),
@@ -490,7 +490,7 @@ function l27Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L27",
     title: "Trouver les composantes d'un vecteur 3D",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt: [
       t(`Soit A = ${fmt3(A)} et B = ${fmt3(B)} dans R³. Trouver les composantes de `),
       vec("AB"), t("."),
@@ -527,7 +527,7 @@ function l28Mcq(): Exercise {
       topicId: "linear-algebra",
       lessonId: "L28",
       title: "QCM — Norme d'un vecteur 3D",
-      difficulty: "Intermédiaire",
+      difficulty: "Moyen",
       type: "mcq",
       prompt: [
         t(`Quelle est la norme du vecteur `), vec("v"), t(` = ${fmt3(v)} dans R³ ?`),
@@ -552,7 +552,7 @@ function l28Mcq(): Exercise {
       topicId: "linear-algebra",
       lessonId: "L28",
       title: "QCM — Norme d'un vecteur 2D",
-      difficulty: "Intermédiaire",
+      difficulty: "Moyen",
       type: "mcq",
       prompt: [
         t(`Quelle est la norme du vecteur `), vec("v"), t(` = ${fmt2(v)} ?`),
@@ -582,7 +582,7 @@ function l28Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L28",
     title: "Vrai ou Faux — Norme 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t(`Le vecteur `), vec("v"), t(` = ${fmt3(v)} a une norme de ${proposed}.`),
@@ -604,7 +604,7 @@ function l28Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L28",
     title: "Calculer la norme d'un vecteur 3D",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt: [
       t(`Calculer la norme du vecteur `), vec("v"), t(` = ${fmt3(v)}.`),
     ],
@@ -631,7 +631,7 @@ function l29Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L29",
     title: "QCM — Combinaison linéaire (3D)",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"), t(` = ${fmt3(v)} dans R³. Quelle est la valeur de ${a}`),
@@ -665,7 +665,7 @@ function l29Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L29",
     title: "Vrai ou Faux — Colinéarité en 3D",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t(`Les vecteurs `), vec("u"), t(` = ${fmt3(realU)} et `), vec("v"), t(` = ${fmt3(v)} sont colinéaires.`),
@@ -694,7 +694,7 @@ function l29Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L29",
     title: "Calculer une combinaison linéaire 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"), t(` = ${fmt3(v)}. Calculer ${a}`),
       vec("u"), t(` + ${b}`), vec("v"), t("."),
@@ -718,7 +718,7 @@ function l21Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L21",
     title: "QCM — Nombre de solutions d'un système",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Un système d'équations linéaires à n inconnues peut avoir :"),
@@ -743,7 +743,7 @@ function l21Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L21",
     title: "Vrai ou Faux — Échange de lignes",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Échanger deux lignes d'une matrice augmentée modifie l'ensemble des solutions du système associé."),
@@ -772,7 +772,7 @@ function l21Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L21",
     title: "Résoudre un système 2×2",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Résoudre le système : ${a}x + ${b}y = ${r1} ; ${c}x + ${d}y = ${r2}.`),
     ],
@@ -790,7 +790,7 @@ function l22Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L22",
     title: "QCM — Méthode de la matrice inverse",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Pour résoudre AX = B avec A inversible n×n par Gauss-Jordan, on réduit [A | B] jusqu'à obtenir :"),
@@ -815,7 +815,7 @@ function l22Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L22",
     title: "Vrai ou Faux — Solution unique garantie ?",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("La méthode de Gauss-Jordan donne toujours une solution unique pour AX = B."),
@@ -851,7 +851,7 @@ function l34Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L34",
     title: "QCM — Combinaison linéaire en 2D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt2(u)}, `), vec("v"), t(` = ${fmt2(v)} et `),
@@ -879,7 +879,7 @@ function l34Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L34",
     title: "Vrai ou Faux — Combinaison linéaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t(isTrueQ
@@ -908,7 +908,7 @@ function l34Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L34",
     title: "Calculer une combinaison linéaire",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt2(u)} et `), vec("v"), t(` = ${fmt2(v)}. Calculer ${a}`),
       vec("u"), t(` + ${b}`), vec("v"), t("."),
@@ -959,7 +959,7 @@ function l35Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L35",
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: tpl.prompt,
     options: tpl.options,
@@ -990,7 +990,7 @@ function l35Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L35",
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: tpl.prompt,
     isTrue: tpl.isTrue,
@@ -1012,7 +1012,7 @@ function l35Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L35",
     title: "Tester l'appartenance à un sous-espace",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Soit S = {(1, 0, 0), (0, 1, 0)}. Le vecteur `), vec("v"),
       t(` = ${fmt3(v)} appartient-il à l'engendrement de S ? Justifier.`),
@@ -1043,7 +1043,7 @@ function l36Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L36",
     title: "QCM — Indépendance de 2 vecteurs",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt2(u)} et `), vec("v"),
@@ -1092,7 +1092,7 @@ function l36Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L36",
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: tpl.prompt,
     isTrue: tpl.isTrue,
@@ -1112,7 +1112,7 @@ function l36Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L36",
     title: "Tester l'indépendance par déterminant",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Vérifier si `), vec("u"), t(` = ${fmt2(u)} et `), vec("v"),
       t(` = ${fmt2(v)} sont linéairement indépendants.`),
@@ -1140,7 +1140,7 @@ function l37Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L37",
     title: "QCM — Composantes dans la base canonique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Soit `), vec("v"),
@@ -1188,7 +1188,7 @@ function l37Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L37",
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: tpl.prompt,
     isTrue: tpl.isTrue,
@@ -1209,7 +1209,7 @@ function l37Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L37",
     title: "Trouver les composantes dans une base donnée",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt: [
       t(`Soit B = {`), vec("b₁"), t(` = (1, 1), `), vec("b₂"),
       t(` = (1, −1)} une base de R². Trouver les composantes de `),
@@ -1241,7 +1241,7 @@ function l43Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L43",
     title: "Calculer un produit scalaire 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
       t(` = ${fmt3(v)}. Calculer `), vec("u"), t(" · "), vec("v"), t("."),
@@ -1262,7 +1262,7 @@ function l43Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L43",
     title: "QCM — Calculer un produit scalaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
@@ -1293,7 +1293,7 @@ function l43Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L43",
     title: "Vrai ou Faux — Produit scalaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       vec("u"), t(` = ${fmt3(u)} et `), vec("v"), t(` = ${fmt3(v)} satisfont `),
@@ -1331,7 +1331,7 @@ function l45Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L45",
     title: "Calculer une projection orthogonale",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
       t(` = ${fmt3(v)}. Calculer la projection de `), vec("u"), t(" sur "), vec("v"), t("."),
@@ -1355,7 +1355,7 @@ function l45Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L45",
     title: "QCM — Projection sur un axe",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t(`Projection de `), vec("u"), t(` = ${fmt3(u)} sur `), vec("v"), t(` = ${fmt3(v)} ?`),
@@ -1380,7 +1380,7 @@ function l45Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L45",
     title: "Vrai ou Faux — Projection orthogonale",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("La projection de "), vec("u"), t(" sur "), vec("u"), t(" est égale à "), vec("u"), t("."),
@@ -1415,7 +1415,7 @@ function l46Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L46",
     title: "Calculer un produit vectoriel",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)} et `), vec("v"),
       t(` = ${fmt3(v)}. Calculer `), vec("u"), t(" × "), vec("v"), t("."),
@@ -1436,7 +1436,7 @@ function l46Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L46",
     title: "QCM — Produit vectoriel",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       vec("u"), t(` = ${fmt3(u)} × `), vec("v"), t(` = ${fmt3(v)} = ?`),
@@ -1461,7 +1461,7 @@ function l46Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L46",
     title: "Vrai ou Faux — Anticommutativité",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       vec("u"), t(" × "), vec("v"), t(" = -("), vec("v"), t(" × "), vec("u"), t(")."),
@@ -1494,7 +1494,7 @@ function l48Calc(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L48",
     title: "Calculer un produit mixte",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt: [
       t(`Soit `), vec("u"), t(` = ${fmt3(u)}, `), vec("v"), t(` = ${fmt3(v)}, `),
       vec("w"), t(` = ${fmt3(w)}. Calculer `), vec("u"), t(" · ("), vec("v"), t(" × "), vec("w"), t(")."),
@@ -1517,7 +1517,7 @@ function l48Mcq(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L48",
     title: "QCM — Produit mixte",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       vec("u"), t(` = ${fmt3(u)}, `), vec("v"), t(` = ${fmt3(v)}, `),
@@ -1543,7 +1543,7 @@ function l48Tf(): Exercise {
     topicId: "linear-algebra",
     lessonId: "L48",
     title: "Vrai ou Faux — Permutation cyclique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       vec("u"), t(" · ("), vec("v"), t(" × "), vec("w"), t(") = "),
@@ -1611,7 +1611,7 @@ function geometryMcq(lessonId: string, lessonNum: number): Exercise {
     topicId: "linear-algebra",
     lessonId,
     title: tpl.title,
-    difficulty: lessonNum % 3 === 0 ? "Avancé" : "Intermédiaire",
+    difficulty: lessonNum % 3 === 0 ? "Difficile" : "Moyen",
     type: "mcq",
     prompt: tpl.prompt,
     options: tpl.options,
@@ -1648,7 +1648,7 @@ function geometryTf(lessonId: string): Exercise {
     topicId: "linear-algebra",
     lessonId,
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: tpl.prompt,
     isTrue: tpl.isTrue,
@@ -1671,7 +1671,7 @@ function geometryCalc(lessonId: string): Exercise {
     topicId: "linear-algebra",
     lessonId,
     title: "Distance de l'origine à un plan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: [
       t(`Calculer la distance de l'origine au plan ${a}x + ${b}y + ${c}z + ${d} = 0.`),
     ],
@@ -1732,7 +1732,7 @@ function genericMatrixMcq(lessonId: string): Exercise {
     topicId: "linear-algebra",
     lessonId,
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: tpl.prompt,
     options: tpl.options,
@@ -1769,7 +1769,7 @@ function genericMatrixTf(lessonId: string): Exercise {
     topicId: "linear-algebra",
     lessonId,
     title: tpl.title,
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: tpl.prompt,
     isTrue: tpl.isTrue,

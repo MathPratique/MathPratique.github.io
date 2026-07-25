@@ -18,7 +18,7 @@ function easyAdd(): Exercise {
   const B = randMat(2, 2, -3, 4);
   const C = add(A, B);
   return {
-    ...meta("quiz-L2-easy", "Additionner deux matrices 2×2", "Fondamental"),
+    ...meta("quiz-L2-easy", "Additionner deux matrices 2×2", "Facile"),
     prompt: [
       t("Effectuer A + B avec "),
       mat(asCells(A), "A ="),
@@ -38,7 +38,7 @@ function interLinear(): Exercise {
   const b = pick([1, 2]);
   const C = msub(scale(a, A), scale(b, B));
   return {
-    ...meta("quiz-L2-inter", `Calculer ${a}A − ${b}B`, "Intermédiaire"),
+    ...meta("quiz-L2-inter", `Calculer ${a}A − ${b}B`, "Moyen"),
     prompt: [
       t(`Calculer ${a}A − ${b}B avec `),
       mat(asCells(A), "A ="),
@@ -61,7 +61,7 @@ function interSolveX(): Exercise {
   const X = randMat(2, 2, -2, 3);
   const realB = msub(scale(k, X), A);
   return {
-    ...meta("quiz-L2-inter", `Résoudre ${k}X − A = B pour X`, "Intermédiaire"),
+    ...meta("quiz-L2-inter", `Résoudre ${k}X − A = B pour X`, "Moyen"),
     prompt: [
       t(`Résoudre l'équation matricielle ${k}X − A = B pour X, avec `),
       mat(asCells(A), "A ="),
@@ -83,7 +83,7 @@ function advancedHalfSum(): Exercise {
   const B = randMat(2, 2, -3, 4).map((row) => row.map((v) => v * 2));
   const half = scale(0.5, add(A, B));
   return {
-    ...meta("quiz-L2-adv", "Calculer (1/2)(A + B)", "Avancé"),
+    ...meta("quiz-L2-adv", "Calculer (1/2)(A + B)", "Difficile"),
     prompt: [
       t("Calculer (1/2)(A + B) avec "),
       mat(asCells(A), "A ="),
@@ -101,7 +101,7 @@ function advancedHalfSum(): Exercise {
 function advancedVerifyZero(): Exercise {
   const A = randMat(2, 2, -3, 4);
   return {
-    ...meta("quiz-L2-adv", "Vérifier que 0·A = 0 et (−1)·A = −A", "Avancé"),
+    ...meta("quiz-L2-adv", "Vérifier que 0·A = 0 et (−1)·A = −A", "Difficile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),

@@ -25,7 +25,7 @@ function easySingleCofactor(): Exercise {
   const j = randInt(0, 2);
   const c = cofactor3(A, i, j);
   return {
-    ...meta("quiz-L15-easy", "Calculer un cofacteur précis", "Fondamental"),
+    ...meta("quiz-L15-easy", "Calculer un cofacteur précis", "Facile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -42,7 +42,7 @@ function interCofactorMatrix(): Exercise {
   const A = randInvertible3x3();
   const cof = cofactorMatrix3(A);
   return {
-    ...meta("quiz-L15-inter", "Construire la matrice des cofacteurs", "Intermédiaire"),
+    ...meta("quiz-L15-inter", "Construire la matrice des cofacteurs", "Moyen"),
     prompt: [
       t("Construire la matrice des cofacteurs cof(A) pour "),
       mat(asCells(A), "A ="),
@@ -60,7 +60,7 @@ function interAdjoint(): Exercise {
   const cof = cofactorMatrix3(A);
   const adj = transpose(cof);
   return {
-    ...meta("quiz-L15-inter", "Calculer la matrice adjointe", "Intermédiaire"),
+    ...meta("quiz-L15-inter", "Calculer la matrice adjointe", "Moyen"),
     prompt: [
       t("Calculer adj(A) (la transposée de la matrice des cofacteurs) pour "),
       mat(asCells(A), "A ="),
@@ -81,7 +81,7 @@ function advInverseByCofactors(): Exercise {
   const fmt = (n: number) =>
     d === 1 ? String(n) : d === -1 ? String(-n) : `${n}/${d}`;
   return {
-    ...meta("quiz-L15-adv", "Calculer A⁻¹ par la méthode des cofacteurs", "Avancé"),
+    ...meta("quiz-L15-adv", "Calculer A⁻¹ par la méthode des cofacteurs", "Difficile"),
     prompt: [
       t("Calculer A"),
       sup("-1"),
@@ -112,7 +112,7 @@ function advVerifyAdjProperty(): Exercise {
   const A = randInvertible3x3();
   const d = det3(A);
   return {
-    ...meta("quiz-L15-adv", "Vérifier A · adj(A) = det(A)·I", "Avancé"),
+    ...meta("quiz-L15-adv", "Vérifier A · adj(A) = det(A)·I", "Difficile"),
     prompt: [
       t("Vérifier l'identité A · adj(A) = det(A)·I pour "),
       mat(asCells(A), "A ="),

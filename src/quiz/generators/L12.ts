@@ -17,7 +17,7 @@ function easyDet3Mixed(): Exercise {
   const A = randMat(3, 3, -3, 3);
   const d = det3(A);
   return {
-    ...meta("quiz-L12-easy", "Déterminant 3×3 — calcul direct", "Fondamental"),
+    ...meta("quiz-L12-easy", "Déterminant 3×3 — calcul direct", "Facile"),
     prompt: [t("Calculer det(A) pour "), mat(asCells(A), "A ="), t(".")],
     steps: [
       [t("Développer selon la ligne ou colonne la plus pratique.")],
@@ -45,7 +45,7 @@ function interCofactorRule(): Exercise {
   const m = minor[0][0] * minor[1][1] - minor[0][1] * minor[1][0];
   const cof = ((i + j) % 2 === 0 ? 1 : -1) * m;
   return {
-    ...meta("quiz-L12-inter", "Calculer un cofacteur d'une matrice 3×3", "Intermédiaire"),
+    ...meta("quiz-L12-inter", "Calculer un cofacteur d'une matrice 3×3", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -64,7 +64,7 @@ function interSarrus(): Exercise {
   const A = randMat(3, 3, -2, 3);
   const d = det3(A);
   return {
-    ...meta("quiz-L12-inter", "Déterminant 3×3 par la règle de Sarrus", "Intermédiaire"),
+    ...meta("quiz-L12-inter", "Déterminant 3×3 par la règle de Sarrus", "Moyen"),
     prompt: [
       t("Appliquer la règle de Sarrus pour calculer det(A) où "),
       mat(asCells(A), "A ="),
@@ -86,7 +86,7 @@ function advParameterized(): Exercise {
   ];
   // det = x(x² − 1) − 1·(x − 0) + 0 = x³ − x − x = x³ − 2x = x(x² − 2)
   return {
-    ...meta("quiz-L12-adv", "Trouver x pour rendre A singulière", "Avancé"),
+    ...meta("quiz-L12-adv", "Trouver x pour rendre A singulière", "Difficile"),
     prompt: [
       t("Trouver toutes les valeurs de x telles que det(A) = 0 où "),
       mat(A),
@@ -113,7 +113,7 @@ function advBlock(): Exercise {
   ];
   // det = (a·b) · (c·2 − 0·1) = a·b·2c
   return {
-    ...meta("quiz-L12-adv", "Déterminant d'une matrice 4×4 triangulaire par blocs", "Avancé"),
+    ...meta("quiz-L12-adv", "Déterminant d'une matrice 4×4 triangulaire par blocs", "Difficile"),
     prompt: [
       t("Calculer det(A) pour la matrice triangulaire par blocs "),
       mat(asCells(A), "A ="),

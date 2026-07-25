@@ -1,6 +1,6 @@
 import linalgRawExercises from "./linalg_exercises.json";
 
-export type Difficulty = "Fondamental" | "Intermédiaire" | "Avancé";
+export type Difficulty = "Facile" | "Moyen" | "Difficile";
 
 export type MatrixCell = string | number | { type: "sep" } | RichPart[];
 
@@ -58,7 +58,7 @@ const manualExercises: Exercise[] = [
     id: "calc-chain-rule",
     topicId: "differential-calculus",
     title: "Dériver avec la règle de la chaîne",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: "Trouver f′(x) pour f(x) = (3x² + 1)⁵",
     steps: [
       "Reconnaître la composition : fonction extérieure u⁵, fonction intérieure u = 3x² + 1.",
@@ -73,7 +73,7 @@ const manualExercises: Exercise[] = [
     id: "calc-definite-integral",
     topicId: "integral-calculus",
     title: "Évaluer une intégrale définie",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt: "Évaluer ∫₀² (3x² − 4x + 1) dx",
     steps: [
       "Trouver la primitive terme à terme : ∫3x² dx = x³, ∫−4x dx = −2x², ∫1 dx = x.",
@@ -93,7 +93,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L15",
     number: 8,
     title: "QCM — Déterminant de l'adjointe",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: "Pour une matrice A de dimension 3×3 avec det(A) = 2, quelle est la valeur de det(adj(A)) ?",
     options: [
@@ -113,7 +113,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L15",
     number: 9,
     title: "Vrai ou Faux — Adjointe d'une matrice singulière",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "Si A est une matrice carrée et det(A) = 0, alors adj(A) est nécessairement la matrice nulle.",
@@ -129,7 +129,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L15",
     number: 10,
     title: "Vrai ou Faux — Formule det(adj(A))",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "Pour toute matrice carrée A inversible d'ordre n, det(adj(A)) = det(A)^(n−1).",
@@ -145,7 +145,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L15",
     number: 11,
     title: "QCM — Adjointe d'une matrice 2×2",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: "Quelle est la matrice adj(A) pour A = [[3, 4], [1, 2]] ?",
     options: [
@@ -165,7 +165,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L15",
     number: 12,
     title: "QCM — Adjointe d'un produit AB",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Pour deux matrices A et B carrées de même dimension et inversibles, quelle est la relation correcte pour adj(AB) ?",
@@ -189,7 +189,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L16",
     number: 8,
     title: "QCM — Inverse de kA",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Si A est une matrice inversible et k est un scalaire non nul, alors (kA)⁻¹ vaut :",
@@ -210,7 +210,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L16",
     number: 9,
     title: "Vrai ou Faux — Inverse d'un produit",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "Si A et B sont des matrices inversibles de même dimension, alors (AB)⁻¹ = A⁻¹ · B⁻¹.",
@@ -226,7 +226,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L16",
     number: 10,
     title: "Vrai ou Faux — Transposée de l'inverse",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "Pour toute matrice carrée A inversible, (Aᵀ)⁻¹ = (A⁻¹)ᵀ.",
@@ -242,7 +242,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L16",
     number: 11,
     title: "QCM — Inverse de l'inverse",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: "Si A est une matrice carrée inversible, alors (A⁻¹)⁻¹ vaut :",
     options: [
@@ -262,7 +262,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L16",
     number: 12,
     title: "QCM — Inverse d'une puissance",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Si A est une matrice carrée inversible et n est un entier positif, alors (Aⁿ)⁻¹ vaut :",
@@ -286,7 +286,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L17",
     number: 8,
     title: "QCM — Condition pour appliquer la méthode de la matrice inverse",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Pour résoudre le système AX = B par la méthode de la matrice inverse, quelle condition la matrice A doit-elle satisfaire ?",
@@ -311,7 +311,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L17",
     number: 9,
     title: "Vrai ou Faux — Unicité de la solution quand det(A) ≠ 0",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "Si det(A) ≠ 0, alors le système AX = B admet une solution unique donnée par X = A⁻¹·B.",
@@ -327,7 +327,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L17",
     number: 10,
     title: "Vrai ou Faux — Système avec matrice singulière",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: "Si det(A) = 0, alors le système AX = B n'a aucune solution.",
     isTrue: false,
@@ -342,7 +342,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L17",
     number: 11,
     title: "QCM — Résoudre un système 2×2 par matrice inverse",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Soit le système {2x + y = 5, x − y = 1}. En appliquant la méthode X = A⁻¹·B (avec A = [[2, 1], [1, −1]] et B = [[5], [1]]), la solution est :",
@@ -363,7 +363,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L17",
     number: 12,
     title: "QCM — Nombre de solutions selon les rangs",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Soit un système AX = B avec A de dimension 3×3 et 3 inconnues. Si rang(A) = rang(A | B) = 2, combien le système admet-il de solutions ?",
@@ -395,7 +395,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L18",
     number: 8,
     title: "QCM — Reconnaître une opération élémentaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Parmi les opérations suivantes, laquelle N'EST PAS une opération élémentaire valide sur les lignes ?",
@@ -416,7 +416,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L18",
     number: 9,
     title: "QCM — Appliquer une opération élémentaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       { type: "text", content: "Soit " },
@@ -440,7 +440,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L18",
     number: 10,
     title: "QCM — Effet sur le déterminant",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Après l'application de l'opération Lᵢ → Lᵢ + k·Lⱼ (avec i ≠ j) sur une matrice carrée A, le déterminant :",
@@ -461,7 +461,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L18",
     number: 11,
     title: "Vrai ou Faux — Multiplier une ligne par 0",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "L'opération L₁ → 0·L₁ (multiplier une ligne par 0) est une opération élémentaire valide.",
@@ -477,7 +477,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L18",
     number: 12,
     title: "Vrai ou Faux — Déterminant et lignes-équivalence",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "Deux matrices ligne-équivalentes ont toujours le même déterminant.",
@@ -496,7 +496,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L19",
     number: 8,
     title: "QCM — Reconnaître une forme échelon réduite",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Parmi les matrices suivantes, laquelle N'EST PAS en forme échelon réduite (RREF) ?",
@@ -533,7 +533,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L19",
     number: 9,
     title: "QCM — Compter les pivots",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       { type: "text", content: "Combien la matrice " },
@@ -557,7 +557,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L19",
     number: 10,
     title: "QCM — Variables libres en RREF",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Si une matrice M de dimension 3×5 a 2 pivots dans sa RREF, combien le système associé MX = 0 a-t-il de variables libres ?",
@@ -578,7 +578,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L19",
     number: 11,
     title: "Vrai ou Faux — Unicité de la RREF",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "Pour toute matrice, la forme échelon réduite (RREF) est unique.",
@@ -594,7 +594,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L19",
     number: 12,
     title: "Vrai ou Faux — Même RREF implique égalité",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "Si deux matrices A et B ont la même forme échelon réduite, alors A = B.",
@@ -613,7 +613,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L20",
     number: 8,
     title: "QCM — Calculer le rang d'une matrice",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       { type: "text", content: "Quel est le rang de la matrice " },
@@ -637,7 +637,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L20",
     number: 9,
     title: "QCM — Nombre de solutions par les rangs",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Soit un système AX = B avec A de dimension 4×3 (4 équations, 3 inconnues). Si rang(A) = rang(A | B) = 3, le système admet :",
@@ -658,7 +658,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L20",
     number: 10,
     title: "QCM — Borne supérieure du rang",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Pour une matrice A de dimension m × n, quelle est la valeur maximale possible de rang(A) ?",
@@ -679,7 +679,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L20",
     number: 11,
     title: "Vrai ou Faux — Système incompatible",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "Si rang(A) ≠ rang(A | B), alors le système AX = B n'admet aucune solution.",
@@ -695,7 +695,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L20",
     number: 12,
     title: "Vrai ou Faux — Système homogène avec moins d'équations",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "Si A est une matrice m × n avec m < n (moins d'équations que d'inconnues), alors le système homogène AX = 0 admet une infinité de solutions.",
@@ -714,7 +714,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L21",
     number: 8,
     title: "QCM — Objectif de la méthode de Gauss-Jordan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Quel est le but de la méthode de Gauss-Jordan appliquée à une matrice augmentée ?",
@@ -739,7 +739,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L21",
     number: 9,
     title: "QCM — Conclure à partir de la RREF",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       { type: "text", content: "Après réduction par Gauss-Jordan d'une matrice augmentée 3×4, la dernière ligne devient " },
@@ -763,7 +763,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L21",
     number: 10,
     title: "QCM — Gauss vs Gauss-Jordan",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Quelle est la principale différence entre la méthode de Gauss (élimination) et la méthode de Gauss-Jordan ?",
@@ -788,7 +788,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L21",
     number: 11,
     title: "Vrai ou Faux — Applicabilité de Gauss-Jordan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "La méthode de Gauss-Jordan peut résoudre des systèmes AX = B même lorsque det(A) = 0.",
@@ -804,7 +804,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L21",
     number: 12,
     title: "Vrai ou Faux — Indépendance vis-à-vis des opérations",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "Le résultat final (la RREF) obtenu par Gauss-Jordan dépend de l'ordre des opérations élémentaires choisies.",
@@ -823,7 +823,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L22",
     number: 8,
     title: "QCM — Forme finale de Gauss-Jordan pour AX = B",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Pour résoudre AX = B avec A inversible n×n par Gauss-Jordan, on réduit la matrice augmentée [A | B] jusqu'à obtenir :",
@@ -844,7 +844,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L22",
     number: 9,
     title: "QCM — Résoudre un système 2×2 par Gauss-Jordan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "En appliquant Gauss-Jordan au système {x + y = 3, x − y = 1}, on obtient :",
@@ -865,7 +865,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L22",
     number: 10,
     title: "QCM — Lire la solution paramétrique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       { type: "text", content: "Si la RREF de la matrice augmentée d'un système à 3 inconnues (x₁, x₂, x₃) est " },
@@ -896,7 +896,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L22",
     number: 11,
     title: "Vrai ou Faux — Ligne incompatible",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt:
       "Si la RREF de la matrice augmentée contient une ligne de la forme [0  0  …  0 | k] avec k ≠ 0, alors le système n'admet aucune solution.",
@@ -912,7 +912,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L22",
     number: 12,
     title: "Vrai ou Faux — Unicité garantie par Gauss-Jordan",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt:
       "La méthode de Gauss-Jordan donne toujours une solution unique pour AX = B.",
@@ -931,7 +931,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L23",
     number: 8,
     title: "QCM — Caractéristiques d'un vecteur géométrique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: "Un vecteur géométrique est caractérisé par :",
     options: [
@@ -951,7 +951,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L23",
     number: 9,
     title: "QCM — Relation de Chasles",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Selon la relation de Chasles, pour trois points A, B et C : "),
@@ -977,7 +977,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L23",
     number: 10,
     title: "QCM — Vecteurs équivalents",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: "Deux vecteurs géométriques sont équivalents (égaux) si :",
     options: [
@@ -997,7 +997,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L23",
     number: 11,
     title: "Vrai ou Faux — Commutativité de l'addition",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("L'addition de vecteurs géométriques est commutative : "),
@@ -1019,7 +1019,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L23",
     number: 12,
     title: "Vrai ou Faux — Vecteur opposé",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Le vecteur opposé de "), vec("AB"), t(" est "), vec("BA"),
@@ -1045,7 +1045,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L24",
     number: 8,
     title: "QCM — Multiplication par un scalaire négatif",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Si "), vec("v"), t(" est un vecteur non nul, alors le vecteur −3"), vec("v"), t(" a :"),
@@ -1070,7 +1070,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L24",
     number: 9,
     title: "QCM — Norme après multiplication",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Si ‖"), vec("v"), t("‖ = 5, alors ‖−2"), vec("v"), t("‖ vaut :"),
@@ -1095,7 +1095,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L24",
     number: 10,
     title: "QCM — Vecteurs colinéaires",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Deux vecteurs non nuls "), vec("u"), t(" et "), vec("v"),
@@ -1119,7 +1119,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L24",
     number: 11,
     title: "Vrai ou Faux — Produit nul",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Si k"), vec("v"), t(" = 0 (vecteur nul), alors nécessairement k = 0 ou "),
@@ -1140,7 +1140,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L24",
     number: 12,
     title: "Vrai ou Faux — Distributivité scalaire",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Pour tout scalaire k et tous vecteurs "), vec("u"), t(", "), vec("v"), t(" : k·("),
@@ -1162,7 +1162,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L25",
     number: 8,
     title: "QCM — Définition d'une combinaison linéaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Une combinaison linéaire des vecteurs "),
@@ -1189,7 +1189,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L25",
     number: 9,
     title: "QCM — Vecteur unitaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Le vecteur unitaire dans la direction de "), vec("v"),
@@ -1216,7 +1216,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L25",
     number: 10,
     title: "QCM — Norme d'un vecteur unitaire",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" un vecteur tel que ‖"), vec("u"),
@@ -1241,7 +1241,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L25",
     number: 11,
     title: "Vrai ou Faux — Combinaison nulle",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Une combinaison linéaire 0"), vec("u"), t(" + 0"), vec("v"),
@@ -1262,7 +1262,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L25",
     number: 12,
     title: "Vrai ou Faux — Vecteur unitaire opposé",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Si "), vec("v"), t(" ≠ 0, alors le vecteur −"), vec("v"),
@@ -1288,7 +1288,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L26",
     number: 8,
     title: "QCM — Milieu d'un segment",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit M le milieu du segment [AB]. Laquelle des relations vectorielles est correcte ?"),
@@ -1315,7 +1315,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L26",
     number: 9,
     title: "QCM — Caractérisation d'un parallélogramme",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("ABCD est un parallélogramme si et seulement si :"),
@@ -1342,7 +1342,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L26",
     number: 10,
     title: "QCM — Centre de gravité d'un triangle",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit G le centre de gravité (barycentre) du triangle ABC. Quelle relation est vraie ?"),
@@ -1367,7 +1367,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L26",
     number: 11,
     title: "Vrai ou Faux — Diagonales d'un parallélogramme",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Dans tout parallélogramme ABCD, les diagonales AC et BD se coupent en leur milieu."),
@@ -1387,7 +1387,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L26",
     number: 12,
     title: "Vrai ou Faux — Trois points alignés",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Trois points A, B, C sont alignés si et seulement s'il existe un scalaire k tel que "),
@@ -1412,7 +1412,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 8,
     title: "QCM — Composantes d'un vecteur entre deux points",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Dans le plan, si A = (2, 3) et B = (5, 7), quelles sont les composantes du vecteur "),
@@ -1437,7 +1437,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 9,
     title: "QCM — Addition de vecteurs en composantes",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Si "), vec("u"), t(" = (1, −2) et "), vec("v"),
@@ -1462,7 +1462,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 10,
     title: "QCM — Vecteur dans l'espace 3D",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Si A = (1, 0, 2) et B = (4, −3, 5) dans R³, alors "),
@@ -1487,7 +1487,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 11,
     title: "Vrai ou Faux — Égalité de vecteurs",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Deux vecteurs algébriques "), vec("u"), t(" = (a, b) et "),
@@ -1506,7 +1506,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 12,
     title: "Vrai ou Faux — AB = −BA",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Pour tous points A et B, on a toujours "), vec("AB"),
@@ -1528,7 +1528,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 13,
     title: "QCM — Composantes d'un vecteur en 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Dans R³, si A = (2, −1, 5) et B = (6, 3, 1), quelles sont les composantes de "),
@@ -1552,7 +1552,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L27",
     number: 14,
     title: "Vrai ou Faux — Addition de vecteurs en 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Si "), vec("u"), t(" = (1, 2, 3) et "), vec("v"),
@@ -1575,7 +1575,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 8,
     title: "QCM — Norme d'un vecteur en 2D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Quelle est la norme du vecteur "), vec("v"), t(" = (3, 4) ?"),
@@ -1599,7 +1599,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 9,
     title: "QCM — Distance entre deux points",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Quelle est la distance entre A = (1, 2) et B = (4, 6) ?"),
@@ -1624,7 +1624,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 10,
     title: "QCM — Vecteur unitaire algébrique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Quel est le vecteur unitaire dans la direction de "), vec("v"),
@@ -1651,7 +1651,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 11,
     title: "Vrai ou Faux — Norme et vecteur nul",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("La norme d'un vecteur est nulle si et seulement si le vecteur est le vecteur nul."),
@@ -1670,7 +1670,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 12,
     title: "Vrai ou Faux — Norme du produit par un scalaire",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Pour tout scalaire k et tout vecteur "), vec("v"), t(" : ‖k"),
@@ -1690,7 +1690,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 13,
     title: "QCM — Norme d'un vecteur en 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Quelle est la norme du vecteur "), vec("v"),
@@ -1715,7 +1715,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 14,
     title: "QCM — Distance entre deux points en 3D",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Quelle est la distance entre A = (1, 0, 2) et B = (3, 4, 2) dans R³ ?"),
@@ -1740,7 +1740,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L28",
     number: 15,
     title: "Vrai ou Faux — Norme en 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Le vecteur "), vec("v"), t(" = (2, 3, 6) a une norme de 7."),
@@ -1762,7 +1762,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L29",
     number: 8,
     title: "QCM — Combinaison linéaire en 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 2, 3) et "), vec("v"),
@@ -1790,7 +1790,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L29",
     number: 9,
     title: "QCM — Trouver le scalaire de colinéarité (3D)",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (2, 4, −6) et "), vec("v"),
@@ -1815,7 +1815,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L29",
     number: 10,
     title: "QCM — Combinaison linéaire de trois vecteurs (3D)",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 0, −1), "), vec("v"),
@@ -1844,7 +1844,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L29",
     number: 11,
     title: "Vrai ou Faux — Calcul de combinaison en 3D",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Le vecteur 2(1, 2, 3) + 3(0, −1, 1) est égal à (2, 1, 9)."),
@@ -1862,7 +1862,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L29",
     number: 12,
     title: "Vrai ou Faux — Colinéarité en 3D",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Les vecteurs "), vec("u"), t(" = (3, −6, 9) et "),
@@ -1885,7 +1885,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L34",
     number: 8,
     title: "QCM — Combinaison linéaire simple",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 2) et "), vec("v"),
@@ -1912,7 +1912,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L34",
     number: 9,
     title: "QCM — Trouver les coefficients",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 0, 1), "), vec("v"),
@@ -1939,7 +1939,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L34",
     number: 10,
     title: "QCM — Combinaison nulle non triviale",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 2), "), vec("v"),
@@ -1966,7 +1966,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L34",
     number: 11,
     title: "Vrai ou Faux — Combinaison nulle triviale",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Pour tout ensemble de vecteurs {"), vec("v₁"), t(", "), vec("v₂"),
@@ -1988,7 +1988,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L34",
     number: 12,
     title: "Vrai ou Faux — Décomposition unique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Tout vecteur de R² peut s'écrire comme combinaison linéaire de deux vecteurs non colinéaires donnés."),
@@ -2009,7 +2009,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L35",
     number: 8,
     title: "QCM — Ensemble générateur de R²",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Lequel des ensembles suivants engendre R² ?"),
@@ -2032,7 +2032,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L35",
     number: 9,
     title: "QCM — Vecteur dans l'engendrement",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit S = {(1, 0, 0), (0, 1, 0)}. Lequel des vecteurs suivants appartient à l'engendrement de S ?"),
@@ -2055,7 +2055,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L35",
     number: 10,
     title: "QCM — Nombre minimal pour engendrer R³",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Combien faut-il au minimum de vecteurs pour engendrer R³ ?"),
@@ -2078,7 +2078,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L35",
     number: 11,
     title: "Vrai ou Faux — Ensemble avec plus de vecteurs",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Un ensemble générateur de R² peut contenir plus de 2 vecteurs."),
@@ -2096,7 +2096,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L35",
     number: 12,
     title: "Vrai ou Faux — Sous-ensemble générateur",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Si {"), vec("v₁"), t(", "), vec("v₂"), t(", "), vec("v₃"),
@@ -2118,7 +2118,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L36",
     number: 8,
     title: "QCM — Critère d'indépendance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Les vecteurs "), vec("v₁"), t(", "), vec("v₂"), t(", …, "),
@@ -2142,7 +2142,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L36",
     number: 9,
     title: "QCM — Dépendance de 2 vecteurs",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (2, 4, 6) et "), vec("v"),
@@ -2167,7 +2167,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L36",
     number: 10,
     title: "QCM — Indépendance de 3 vecteurs",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Les vecteurs (1, 0, 0), (0, 1, 0) et (1, 1, 0) de R³ sont :"),
@@ -2190,7 +2190,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L36",
     number: 11,
     title: "Vrai ou Faux — Ensemble avec vecteur nul",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Tout ensemble de vecteurs contenant le vecteur nul est linéairement dépendant."),
@@ -2210,7 +2210,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L36",
     number: 12,
     title: "Vrai ou Faux — Trop de vecteurs",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Quatre vecteurs de R³ sont toujours linéairement dépendants."),
@@ -2231,7 +2231,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L37",
     number: 8,
     title: "QCM — Définition d'une base",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Un ensemble B est une base d'un espace vectoriel V si et seulement si :"),
@@ -2254,7 +2254,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L37",
     number: 9,
     title: "QCM — Composantes dans la base canonique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("v"),
@@ -2281,7 +2281,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L37",
     number: 10,
     title: "QCM — Composantes dans une base non canonique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit B = {"), vec("b₁"), t(" = (1, 1), "), vec("b₂"),
@@ -2307,7 +2307,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L37",
     number: 11,
     title: "Vrai ou Faux — Cardinalité d'une base",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Toute base de R² contient exactement 2 vecteurs."),
@@ -2325,7 +2325,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L37",
     number: 12,
     title: "Vrai ou Faux — Test d'une base de R³",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("L'ensemble {(1, 0, 0), (1, 1, 0), (1, 1, 1)} est une base de R³."),
@@ -2346,7 +2346,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L43",
     number: 8,
     title: "QCM — Calculer un produit scalaire (2D)",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (3, 4) et "), vec("v"),
@@ -2370,7 +2370,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L43",
     number: 9,
     title: "QCM — Vecteurs orthogonaux",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Lesquels des vecteurs suivants sont orthogonaux à "), vec("u"), t(" = (2, 3) ?"),
@@ -2393,7 +2393,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L43",
     number: 10,
     title: "QCM — Produit scalaire en 3D",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 2, 3) et "), vec("v"),
@@ -2417,7 +2417,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L43",
     number: 11,
     title: "Vrai ou Faux — Commutativité du produit scalaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Le produit scalaire est commutatif : "), vec("u"), t(" · "), vec("v"),
@@ -2436,7 +2436,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L43",
     number: 12,
     title: "Vrai ou Faux — Norme et produit scalaire",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       vec("u"), t(" · "), vec("u"), t(" = ‖"), vec("u"), t("‖² pour tout vecteur "), vec("u"), t("."),
@@ -2458,7 +2458,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L44",
     number: 8,
     title: "QCM — Angle entre deux vecteurs",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 0) et "), vec("v"),
@@ -2483,7 +2483,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L44",
     number: 9,
     title: "QCM — Angle aigu ou obtus",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Si "), vec("u"), t(" · "), vec("v"),
@@ -2508,7 +2508,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L44",
     number: 10,
     title: "QCM — Angle en 3D",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Trouver l'angle entre "), vec("u"), t(" = (1, 1, 0) et "), vec("v"),
@@ -2533,7 +2533,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L44",
     number: 11,
     title: "Vrai ou Faux — Orthogonalité",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Deux vecteurs non nuls "), vec("u"), t(" et "), vec("v"),
@@ -2554,7 +2554,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L44",
     number: 12,
     title: "Vrai ou Faux — Inégalité de Cauchy-Schwarz",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Pour tous vecteurs "), vec("u"), t(" et "), vec("v"),
@@ -2578,7 +2578,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L45",
     number: 8,
     title: "QCM — Formule de la projection",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("La projection orthogonale de "), vec("u"), t(" sur "), vec("v"),
@@ -2605,7 +2605,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L45",
     number: 9,
     title: "QCM — Calculer une projection",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Calculer la projection de "), vec("u"), t(" = (3, 4) sur "), vec("v"),
@@ -2630,7 +2630,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L45",
     number: 10,
     title: "QCM — Décomposition orthogonale",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Si "), vec("u"), t(" = (5, 2) et "), vec("v"), t(" = (1, 0), alors "), vec("u"),
@@ -2655,7 +2655,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L45",
     number: 11,
     title: "Vrai ou Faux — Projection sur soi-même",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Pour tout vecteur non nul "), vec("u"), t(", "),
@@ -2676,7 +2676,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L45",
     number: 12,
     title: "Vrai ou Faux — Inégalité de la projection",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("La norme de la projection de "), vec("u"), t(" sur "), vec("v"),
@@ -2700,7 +2700,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L46",
     number: 8,
     title: "QCM — Direction du produit vectoriel",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Le vecteur "), vec("u"), t(" × "), vec("v"), t(" est :"),
@@ -2724,7 +2724,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L46",
     number: 9,
     title: "QCM — Calculer un produit vectoriel",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 0, 0) et "), vec("v"),
@@ -2748,7 +2748,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L46",
     number: 10,
     title: "QCM — Norme du produit vectoriel",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("‖"), vec("u"), t(" × "), vec("v"), t("‖ = ?"),
@@ -2772,7 +2772,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L46",
     number: 11,
     title: "Vrai ou Faux — Anticommutativité",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       vec("u"), t(" × "), vec("v"), t(" = "), vec("v"), t(" × "),
@@ -2792,7 +2792,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L46",
     number: 12,
     title: "Vrai ou Faux — Produit vectoriel d'un vecteur avec lui-même",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       vec("u"), t(" × "), vec("u"), t(" = 0 pour tout vecteur "), vec("u"), t("."),
@@ -2814,7 +2814,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L47",
     number: 8,
     title: "QCM — Aire d'un parallélogramme",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("L'aire du parallélogramme construit sur les vecteurs "), vec("u"), t(" et "), vec("v"), t(" est :"),
@@ -2838,7 +2838,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L47",
     number: 9,
     title: "QCM — Calculer une aire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Calculer l'aire du parallélogramme construit sur "), vec("u"), t(" = (1, 0, 0) et "),
@@ -2862,7 +2862,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L47",
     number: 10,
     title: "QCM — Aire d'un triangle",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("L'aire du triangle formé par les vecteurs "), vec("AB"), t(" et "), vec("AC"), t(" est :"),
@@ -2886,7 +2886,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L47",
     number: 11,
     title: "Vrai ou Faux — Orthogonalité du produit vectoriel",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       vec("u"), t(" × "), vec("v"), t(" est orthogonal à "), vec("u"), t(" et à "), vec("v"), t("."),
@@ -2905,7 +2905,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L47",
     number: 12,
     title: "Vrai ou Faux — Identité de Lagrange",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("‖"), vec("u"), t(" × "), vec("v"), t("‖² + ("),
@@ -2927,7 +2927,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L48",
     number: 8,
     title: "QCM — Définition du produit mixte",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Le produit mixte de trois vecteurs "), vec("u"), t(", "), vec("v"), t(", "), vec("w"), t(" s'écrit :"),
@@ -2952,7 +2952,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L48",
     number: 9,
     title: "QCM — Calcul du produit mixte",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 0, 0), "), vec("v"), t(" = (0, 1, 0), "),
@@ -2977,7 +2977,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L48",
     number: 10,
     title: "QCM — Coplanarité",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Trois vecteurs "), vec("u"), t(", "), vec("v"), t(", "), vec("w"),
@@ -3001,7 +3001,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L48",
     number: 11,
     title: "Vrai ou Faux — Permutation cyclique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       vec("u"), t(" · ("), vec("v"), t(" × "), vec("w"), t(") = "),
@@ -3020,7 +3020,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L48",
     number: 12,
     title: "Vrai ou Faux — Volume du parallélépipède",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Le volume du parallélépipède construit sur trois vecteurs est la valeur absolue de leur produit mixte."),
@@ -3041,7 +3041,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L49",
     number: 8,
     title: "QCM — Volume d'un parallélépipède",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Soit "), vec("u"), t(" = (1, 0, 0), "), vec("v"), t(" = (0, 2, 0), "),
@@ -3065,7 +3065,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L49",
     number: 9,
     title: "QCM — Volume d'un tétraèdre",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Le volume du tétraèdre formé par trois vecteurs "), vec("u"), t(", "), vec("v"), t(", "),
@@ -3089,7 +3089,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L49",
     number: 10,
     title: "QCM — Coplanarité de 4 points",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Pour vérifier que 4 points A, B, C, D sont coplanaires, il suffit de montrer que :"),
@@ -3113,7 +3113,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L49",
     number: 11,
     title: "Vrai ou Faux — Indépendance linéaire",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Trois vecteurs de R³ sont linéairement indépendants si et seulement si leur produit mixte est non nul."),
@@ -3131,7 +3131,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L49",
     number: 12,
     title: "Vrai ou Faux — Signe du produit mixte",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Le produit mixte peut être négatif."),
@@ -3152,7 +3152,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L50",
     number: 7,
     title: "QCM — Équations paramétriques d'une droite",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Les équations paramétriques d'une droite passant par P₀ = (x₀, y₀, z₀) et de vecteur directeur "),
@@ -3193,7 +3193,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L50",
     number: 8,
     title: "QCM — Identifier un vecteur directeur",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("La droite x = 1 + 2t, y = 3 - t, z = 4t a comme vecteur directeur :"),
@@ -3216,7 +3216,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L50",
     number: 9,
     title: "QCM — Équation symétrique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("La forme symétrique d'une droite passant par (1, 2, 3) de vecteur directeur (4, 5, 6) est :"),
@@ -3239,7 +3239,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L50",
     number: 10,
     title: "Vrai ou Faux — Unicité du vecteur directeur",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Une droite a un seul vecteur directeur."),
@@ -3257,7 +3257,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L50",
     number: 11,
     title: "Vrai ou Faux — Déterminer une droite",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Un point et un vecteur directeur non nul suffisent pour déterminer une droite de manière unique."),
@@ -3278,7 +3278,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L51",
     number: 8,
     title: "QCM — Possibilités d'intersection",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Dans l'espace R³, deux droites peuvent être :"),
@@ -3301,7 +3301,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L51",
     number: 9,
     title: "QCM — Test de parallélisme",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Deux droites de vecteurs directeurs "), vec("d₁"), t(" et "), vec("d₂"), t(" sont parallèles (distinctes ou confondues) si :"),
@@ -3324,7 +3324,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L51",
     number: 10,
     title: "QCM — Droites gauches",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Deux droites sont gauches si :"),
@@ -3347,7 +3347,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L51",
     number: 11,
     title: "Vrai ou Faux — Parallèles dans le plan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Dans le plan R², deux droites non parallèles se coupent toujours en un seul point."),
@@ -3365,7 +3365,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L51",
     number: 12,
     title: "Vrai ou Faux — Coplanarité",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Deux droites sécantes ou parallèles sont toujours coplanaires."),
@@ -3386,7 +3386,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L52",
     number: 8,
     title: "QCM — Formule de la distance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("La distance d'un point P à une droite passant par P₀ de vecteur directeur "), vec("d"), t(" est :"),
@@ -3410,7 +3410,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L52",
     number: 9,
     title: "QCM — Calcul de distance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Distance du point P = (2, 0, 0) à la droite passant par l'origine et de vecteur directeur (1, 0, 0) ?"),
@@ -3434,7 +3434,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L52",
     number: 10,
     title: "QCM — Distance perpendiculaire",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Distance du point P = (1, 1, 0) à la droite (axe des x) ?"),
@@ -3457,7 +3457,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L52",
     number: 11,
     title: "Vrai ou Faux — Distance et appartenance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Un point appartient à une droite si et seulement si sa distance à la droite est nulle."),
@@ -3475,7 +3475,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L52",
     number: 12,
     title: "Vrai ou Faux — Distance minimale",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("La distance d'un point à une droite est la distance minimale entre ce point et tout point de la droite, atteinte sur la perpendiculaire."),
@@ -3496,7 +3496,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L53",
     number: 8,
     title: "QCM — Distance entre droites parallèles",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Si deux droites sont parallèles distinctes, leur distance se calcule en :"),
@@ -3519,7 +3519,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L53",
     number: 9,
     title: "QCM — Distance entre droites gauches",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Soit "), vec("d₁"), t(" et "), vec("d₂"), t(" deux vecteurs directeurs, P₁ et P₂ deux points sur les droites. La distance entre deux droites gauches est :"),
@@ -3543,7 +3543,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L53",
     number: 10,
     title: "QCM — Distance entre droites sécantes",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("La distance entre deux droites sécantes est :"),
@@ -3566,7 +3566,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L53",
     number: 11,
     title: "Vrai ou Faux — Distance et confondues",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("La distance entre deux droites confondues est 0."),
@@ -3584,7 +3584,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L53",
     number: 12,
     title: "Vrai ou Faux — Perpendiculaire commune",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Pour deux droites gauches, il existe toujours une unique droite perpendiculaire commune aux deux."),
@@ -3606,7 +3606,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L54",
     number: 8,
     title: "QCM — Équation cartésienne d'un plan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("L'équation cartésienne générale d'un plan est :"),
@@ -3630,7 +3630,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L54",
     number: 9,
     title: "QCM — Vecteur normal",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Quel est un vecteur normal au plan 2x - 3y + z = 5 ?"),
@@ -3653,7 +3653,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L54",
     number: 10,
     title: "QCM — Plan défini par trois points",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Pour trouver l'équation d'un plan passant par 3 points A, B, C non alignés, on peut utiliser comme vecteur normal :"),
@@ -3677,7 +3677,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L54",
     number: 11,
     title: "Vrai ou Faux — Vecteur normal unique",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Le vecteur normal à un plan est unique."),
@@ -3695,7 +3695,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L54",
     number: 12,
     title: "Vrai ou Faux — Détermination d'un plan",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Trois points non alignés déterminent un plan unique dans l'espace."),
@@ -3716,7 +3716,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L55",
     number: 8,
     title: "QCM — Plans parallèles",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Deux plans sont parallèles si et seulement si :"),
@@ -3740,7 +3740,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L55",
     number: 9,
     title: "QCM — Plans confondus",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Les plans x + 2y + 3z = 4 et 2x + 4y + 6z = 8 sont :"),
@@ -3763,7 +3763,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L55",
     number: 10,
     title: "QCM — Intersection de plans sécants",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("L'intersection de deux plans sécants (non parallèles) est :"),
@@ -3787,7 +3787,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L55",
     number: 11,
     title: "Vrai ou Faux — Parallèles distincts",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Deux plans parallèles distincts ne s'intersectent pas."),
@@ -3805,7 +3805,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L55",
     number: 12,
     title: "Vrai ou Faux — Direction de l'intersection",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("La droite d'intersection de deux plans sécants a pour vecteur directeur "),
@@ -3828,7 +3828,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L56",
     number: 8,
     title: "QCM — Formule de la distance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("La distance d'un point P = (x₀, y₀, z₀) au plan ax + by + cz + d = 0 est :"),
@@ -3852,7 +3852,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L56",
     number: 9,
     title: "QCM — Calculer la distance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Distance du point P = (1, 2, 2) au plan x + 2y + 2z = 0 ?"),
@@ -3875,7 +3875,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L56",
     number: 10,
     title: "QCM — Point sur le plan",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Distance du point P = (1, 1, 1) au plan x + y + z = 3 ?"),
@@ -3898,7 +3898,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L56",
     number: 11,
     title: "Vrai ou Faux — Distance et appartenance",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Un point appartient à un plan si et seulement si sa distance au plan est nulle."),
@@ -3916,7 +3916,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L56",
     number: 12,
     title: "Vrai ou Faux — Projection orthogonale",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("La distance d'un point P à un plan est la distance entre P et sa projection orthogonale sur le plan."),
@@ -3937,7 +3937,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L57",
     number: 8,
     title: "QCM — Droite parallèle à un plan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Une droite de vecteur directeur "), vec("d"), t(" est parallèle à un plan de vecteur normal "), vec("n"), t(" si et seulement si :"),
@@ -3961,7 +3961,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L57",
     number: 9,
     title: "QCM — Droite contenue dans un plan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Une droite est contenue dans un plan si et seulement si :"),
@@ -3985,7 +3985,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L57",
     number: 10,
     title: "QCM — Droite perpendiculaire à un plan",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Une droite est perpendiculaire à un plan si et seulement si :"),
@@ -4009,7 +4009,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L57",
     number: 11,
     title: "Vrai ou Faux — Test de parallélisme",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Si "), vec("d"), t(" · "), vec("n"), t(" = 0, alors la droite est parallèle au plan (ou contenue dedans)."),
@@ -4028,7 +4028,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L57",
     number: 12,
     title: "Vrai ou Faux — Intersection droite-plan",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("Une droite et un plan non parallèles se coupent en un et un seul point."),
@@ -4049,7 +4049,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L58",
     number: 8,
     title: "QCM — Angle entre droite et plan",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("L'angle θ entre une droite de vecteur directeur "), vec("d"),
@@ -4075,7 +4075,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L58",
     number: 9,
     title: "QCM — Point d'intersection",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt: [
       t("Pour trouver le point d'intersection entre une droite et un plan, on :"),
@@ -4098,7 +4098,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L58",
     number: 10,
     title: "QCM — Distance droite-plan parallèles",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt: [
       t("Si une droite est parallèle à un plan mais non contenue dans celui-ci, la distance entre eux est :"),
@@ -4121,7 +4121,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L58",
     number: 11,
     title: "Vrai ou Faux — Angle 90°",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: [
       t("Si une droite est perpendiculaire à un plan, l'angle entre la droite et le plan est 90°."),
@@ -4139,7 +4139,7 @@ const manualExercises: Exercise[] = [
     lessonId: "L58",
     number: 12,
     title: "Vrai ou Faux — Distance et parallélisme",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: [
       t("La distance entre une droite et un plan est strictement positive si et seulement si la droite est parallèle au plan sans y être contenue."),
@@ -4160,7 +4160,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 1,
     title: "Identifier population, échantillon et variable",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On veut estimer la longueur moyenne des saumons de l'Atlantique dans la rivière Matapédia. Un biologiste en attrape 60 au filet et mesure la longueur de chacun. Identifie la population, l'échantillon, l'unité statistique et la variable étudiée.",
     steps: [
@@ -4177,7 +4177,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 2,
     title: "Recensement ou sondage",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un contrôleur qualité veut vérifier la durée de vie des 500 piles produites lors d'un lot. Il choisit de tester chacune des 500 piles jusqu'à ce qu'elles s'éteignent. S'agit-il d'un recensement ou d'un sondage ? Cette approche est-elle réaliste ?",
     steps: [
@@ -4193,7 +4193,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 3,
     title: "Classer une variable — nombre de fleurs",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un botaniste observe le nombre de fleurs sur chaque tige d'un plant de trille blanc. Classe cette variable (qualitative ou quantitative) et précise son sous-type.",
     steps: [
@@ -4208,7 +4208,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 4,
     title: "Classer une variable — couleur des yeux",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans une étude de génétique, on note la couleur des yeux (bleu, brun, vert, noisette) de chaque participant. Classe cette variable et précise son sous-type.",
     steps: [
@@ -4223,7 +4223,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 5,
     title: "Piège du code numérique — dossards",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans un marathon, chaque coureur porte un dossard numéroté de 1 à 500. Cette variable (le numéro de dossard) est-elle qualitative ou quantitative ? Justifie ta réponse.",
     steps: [
@@ -4239,7 +4239,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 6,
     title: "Identifier les éléments d'une étude — lacs",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un climatologue veut connaître la profondeur moyenne des 320 lacs de plus de 1 km² du parc national de la Mauricie. Il en visite 40 choisis au hasard et mesure la profondeur maximale de chacun. Identifie la population, l'échantillon et la variable étudiée.",
     steps: [
@@ -4255,7 +4255,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 7,
     title: "Classer une variable — satisfaction",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un restaurant sonde ses clients sur leur satisfaction avec les catégories : très insatisfait, insatisfait, neutre, satisfait, très satisfait. Classe cette variable et précise son sous-type.",
     steps: [
@@ -4270,7 +4270,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 8,
     title: "Classer une variable — température corporelle",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un infirmier mesure la température corporelle (en °C) de chaque patient à son arrivée à l'urgence. Classe cette variable et précise son sous-type.",
     steps: [
@@ -4285,7 +4285,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 9,
     title: "Calculer une fréquence relative",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Sur 200 étudiants d'un cégep, 45 sont inscrits en Sciences de la nature. Quelle est la fréquence relative des étudiants inscrits en Sciences de la nature ? Exprime ta réponse en pourcentage.",
     steps: [
@@ -4301,7 +4301,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 10,
     title: "Calculer une fréquence relative cumulée",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans une étude sur les revenus annuels d'un groupe, les fréquences relatives des 4 premières classes de revenus sont 12 %, 25 %, 30 % et 20 %. Quelle est la fréquence relative cumulée jusqu'à la 4ᵉ classe (incluse) ?",
     steps: [
@@ -4316,7 +4316,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 11,
     title: "Compléter un tableau de fréquences",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un professeur relève la discipline principale de 50 étudiants de première année : 20 en Sciences, 15 en Arts, 10 en Sciences humaines et 5 en Techniques. Calcule la fréquence relative de chaque discipline en pourcentage.",
     steps: [
@@ -4334,7 +4334,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 12,
     title: "Amplitude de classes",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un chercheur veut regrouper en 5 classes d'amplitude égale les tailles de 80 plants d'épinette, qui varient de 15 cm à 65 cm. Quelle amplitude minimale doit avoir chaque classe ?",
     steps: [
@@ -4350,7 +4350,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 13,
     title: "Proportion cumulée dans une distribution en classes",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Sur 60 étudiants, la distribution des notes à un examen est : 12 dans [0 ; 50), 24 dans [50 ; 70), 18 dans [70 ; 90) et 6 dans [90 ; 100]. Quelle proportion (en pourcentage) des étudiants a obtenu une note inférieure à 70 ?",
     steps: [
@@ -4365,7 +4365,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 14,
     title: "Lire un tableau à double entrée",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un sondage auprès de 100 étudiants croise le sexe et le programme d'études. On relève : 22 femmes en biologie, 18 femmes en chimie, 15 hommes en biologie et 45 hommes en chimie. Combien d'étudiants au total sont inscrits en biologie ?",
     steps: [
@@ -4379,7 +4379,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 15,
     title: "Proportion conditionnelle dans un tableau croisé",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans un groupe de 200 personnes, on croise le sexe et le statut tabagique : 30 femmes fumeuses, 70 femmes non-fumeuses, 45 hommes fumeurs et 55 hommes non-fumeuses. Quelle proportion (en pourcentage) des femmes sont fumeuses ?",
     steps: [
@@ -4394,7 +4394,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 16,
     title: "Choix du graphique — variable nominale",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Tu veux illustrer la répartition des groupes sanguins (O, A, B, AB) dans un échantillon de 50 donneurs. Quel type de graphique est approprié ?",
     steps: [
@@ -4410,7 +4410,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 17,
     title: "Choix du graphique — variable continue",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Tu veux visualiser la distribution des taux de cholestérol (mg/dL) mesurés chez 200 patients. Quel type de graphique est le plus approprié ?",
     steps: [
@@ -4425,7 +4425,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 18,
     title: "Calculer une moyenne arithmétique",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un étudiant a obtenu les notes suivantes à ses 5 quiz de calcul : 82, 75, 88, 91, 79. Calcule sa moyenne.",
     steps: [
@@ -4440,7 +4440,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 19,
     title: "Trouver la médiane (n impair)",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Les températures maximales enregistrées à Montréal sur 7 jours consécutifs de juillet ont été (en °C) : 24, 27, 22, 30, 26, 29, 25. Trouve la médiane.",
     steps: [
@@ -4456,7 +4456,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 20,
     title: "Trouver le mode",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans une clinique podologique, on a relevé les pointures de chaussures des 10 derniers patients : 40, 42, 38, 40, 41, 42, 40, 39, 42, 40. Quel est le mode ?",
     steps: [
@@ -4472,7 +4472,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 21,
     title: "Calculer une moyenne pondérée",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un cours comporte deux évaluations : un examen de mi-session pondéré à 40 % et un examen final pondéré à 60 %. Un étudiant a obtenu 72 % à la mi-session et 85 % au final. Calcule sa note finale du cours.",
     steps: [
@@ -4488,7 +4488,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 22,
     title: "Calculer une étendue avec nombres négatifs",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Les températures minimales enregistrées à Montréal en janvier 2024 ont varié de −28 °C à −2 °C. Quelle est l'étendue de ces températures ?",
     steps: [
@@ -4503,7 +4503,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 23,
     title: "Calculer un écart-type échantillonnal",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un chercheur mesure la longueur (en mm) de 3 larves d'insecte : 12, 15, 18. Calcule l'écart-type échantillonnal s.",
     steps: [
@@ -4521,7 +4521,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 24,
     title: "Interpréter un écart-type",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un logiciel calcule, pour la masse de 40 graines de tournesol, une moyenne x̄ = 45,0 g et un écart-type s = 4,2 g. Rédige une phrase d'interprétation qui inclut la moyenne, l'écart-type et les unités.",
     steps: [
@@ -4538,7 +4538,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 25,
     title: "Calculer une cote z",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "À un examen dont la moyenne du groupe est de 70 % avec un écart-type de 8 %, un étudiant a obtenu 82 %. Calcule sa cote z et interprète le résultat.",
     steps: [
@@ -4557,7 +4557,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 26,
     title: "Représentativité et biais de sélection",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un sondage en ligne demande aux étudiants leur temps hebdomadaire consacré aux jeux vidéo. 1200 étudiants répondent librement, et la moyenne obtenue est 25 h/semaine. Explique pourquoi cet échantillon n'est probablement pas représentatif malgré sa grande taille.",
     steps: [
@@ -4573,7 +4573,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 27,
     title: "Choisir entre recensement et sondage",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un contrôleur qualité doit vérifier que les 30 extincteurs d'un immeuble fonctionnent, à l'aide d'un test non destructif. Doit-il faire un recensement ou un sondage ? Justifie.",
     steps: [
@@ -4589,7 +4589,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 28,
     title: "Classer plusieurs variables cliniques",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un médecin recueille pour chaque patient : (a) le sexe ; (b) le stade du cancer (I, II, III, IV) ; (c) le nombre de traitements suivis ; (d) la concentration sanguine d'un biomarqueur (µg/mL). Classe chaque variable (type et sous-type).",
     steps: [
@@ -4607,7 +4607,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 29,
     title: "Échelle de douleur — variable ambiguë",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Une échelle de douleur de 0 à 10 est utilisée en médecine pour évaluer la douleur ressentie par un patient. Est-ce une variable qualitative ou quantitative ? Justifie ta réponse.",
     steps: [
@@ -4623,7 +4623,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 30,
     title: "Classer quatre variables du quotidien",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Pour chaque variable ci-dessous, précise son type et son sous-type : (a) la ville de naissance ; (b) la mention obtenue à l'examen (échec, passable, bien, très bien) ; (c) le nombre de personnes vivant dans un ménage ; (d) le temps (en secondes) pour compléter une tâche.",
     steps: [
@@ -4641,7 +4641,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 31,
     title: "Fréquences absolues, cumulées et proportion",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Sur 100 étudiants, la répartition des mentions à un examen est : Échec 5 %, Passable 25 %, Bien 45 %, Très bien 25 %. (a) Calcule les effectifs absolus. (b) Calcule les fréquences relatives cumulées (dans l'ordre Échec → Très bien). (c) Quelle proportion d'étudiants a obtenu au moins « Bien » ?",
     steps: [
@@ -4658,7 +4658,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 32,
     title: "Construire un tableau de fréquences",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Voici les âges de 15 personnes dans une classe : 18, 19, 18, 20, 21, 18, 19, 22, 19, 20, 18, 21, 19, 20, 25. Construis un tableau de distribution de fréquences absolues et relatives (en pourcentage arrondi au dixième).",
     steps: [
@@ -4676,7 +4676,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 33,
     title: "Distribution des heures de sommeil",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Sur 200 adultes, la distribution du nombre d'heures de sommeil par nuit est : [4 ; 6) → 20 personnes ; [6 ; 7) → 60 ; [7 ; 8) → 80 ; [8 ; 10) → 40. (a) Combien d'adultes dorment moins de 7 h ? (b) Quelle proportion (en %) dort au moins 7 h ?",
     steps: [
@@ -4691,7 +4691,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 34,
     title: "Regrouper 20 fossiles en 5 classes",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Les longueurs (en mm) de 20 fossiles sont : 12, 18, 25, 30, 14, 22, 28, 16, 20, 35, 27, 33, 15, 21, 26, 29, 32, 19, 24, 31. Détermine l'étendue et propose 5 classes d'amplitude égale.",
     steps: [
@@ -4708,7 +4708,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 35,
     title: "Fréquences relatives et cumulées (pH des sols)",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un tableau donne les effectifs de 60 échantillons de sol répartis par pH : [6,0 ; 6,5) : 8 ; [6,5 ; 7,0) : 15 ; [7,0 ; 7,5) : 22 ; [7,5 ; 8,0) : 10 ; [8,0 ; 8,5) : 5. Calcule les fréquences relatives et les fréquences relatives cumulées (arrondies au dixième de %).",
     steps: [
@@ -4724,7 +4724,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 36,
     title: "Proportion de bébés d'au moins 3,5 kg",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Sur 500 nouveau-nés, les masses à la naissance (en kg) sont réparties : [2,0 ; 2,5) : 15 ; [2,5 ; 3,0) : 85 ; [3,0 ; 3,5) : 200 ; [3,5 ; 4,0) : 155 ; [4,0 ; 4,5) : 45. Quelle proportion des bébés a une masse d'au moins 3,5 kg ?",
     steps: [
@@ -4739,7 +4739,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 37,
     title: "Tableau croisé — hypertension et consommation de sel",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Sur 300 patients, on croise l'hypertension (Oui/Non) et la consommation de sel (Faible/Modérée/Forte). Effectifs : Hypertension × Faible = 20, Modérée = 50, Forte = 60 ; Sans hypertension × Faible = 60, Modérée = 70, Forte = 40. (a) Quelle proportion des patients hypertendus consomme du sel en forte quantité ? (b) Quelle proportion des grands consommateurs de sel sont hypertendus ?",
     steps: [
@@ -4754,7 +4754,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 38,
     title: "Deux proportions dans un tableau croisé",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un cégep compte 500 étudiants en Sciences (300 hommes, 200 femmes) et 300 étudiants en Arts (100 hommes, 200 femmes). (a) Quelle proportion des étudiants en Sciences sont des femmes ? (b) Quelle proportion des femmes du cégep étudient en Sciences ?",
     steps: [
@@ -4770,7 +4770,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 39,
     title: "Piège du diagramme circulaire pour une variable ordinale",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un directeur d'école veut visualiser la répartition des mentions à un examen (Échec, Passable, Bien, Très bien). Un enseignant propose un diagramme circulaire. Est-ce un bon choix ? Justifie.",
     steps: [
@@ -4786,7 +4786,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 40,
     title: "Choix du graphique pour quatre variables",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Pour chacune de ces variables, indique quel graphique est le plus approprié : (a) nombre de bactéries observées par échantillon ; (b) espèce d'oiseau capturée ; (c) hauteur des arbres (mesurée en cm) ; (d) niveau de scolarité (primaire, secondaire, collégial, universitaire).",
     steps: [
@@ -4804,7 +4804,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 41,
     title: "Moyenne, médiane et mode d'un jeu bimodal",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "On a le jeu de données suivant : 12, 15, 18, 12, 20, 15, 22, 18, 15, 25, 30. Calcule la moyenne, la médiane et le mode.",
     steps: [
@@ -4820,7 +4820,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 42,
     title: "Moyenne pondérée par les crédits",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un étudiant a suivi 3 cours : Mathématiques (4 crédits, note 78 %), Français (3 crédits, note 82 %) et Éducation physique (1 crédit, note 90 %). Calcule sa moyenne pondérée par les crédits.",
     steps: [
@@ -4836,7 +4836,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 43,
     title: "Médiane avec n pair",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Les temps de réaction (en ms) de 8 sujets à un test cognitif sont : 245, 312, 198, 265, 289, 302, 220, 275. Calcule la médiane.",
     steps: [
@@ -4851,7 +4851,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 44,
     title: "Moyenne sur données groupées",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Le tableau donne les scores (sur 100) de 60 étudiants regroupés en classes : [0 ; 20) : 6 ; [20 ; 40) : 12 ; [40 ; 60) : 24 ; [60 ; 80) : 15 ; [80 ; 100) : 3. Calcule la moyenne à partir des centres de classe.",
     steps: [
@@ -4867,7 +4867,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 45,
     title: "Étendue et conversion d'unités",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Les températures relevées chez 5 patients sont : 37,2 °C ; 38,5 °C ; 36,8 °C ; 39,1 °C ; 37,5 °C. (a) Quelle est l'étendue en °C ? (b) Exprime cette étendue en degrés Fahrenheit (conversion d'un écart : ΔF = (9/5) × ΔC).",
     steps: [
@@ -4882,7 +4882,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 46,
     title: "Comparer deux écarts-types",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Deux groupes d'étudiants ont la même moyenne x̄ = 74 mais des écarts-types différents : groupe A avec s = 5, groupe B avec s = 15. Compare les deux groupes en une ou deux phrases.",
     steps: [
@@ -4899,7 +4899,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 47,
     title: "Calcul complet de l'écart-type",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Un chercheur mesure la masse (en g) de 5 grenouilles : 42, 38, 45, 41, 44. Calcule la moyenne et l'écart-type échantillonnal.",
     steps: [
@@ -4917,7 +4917,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 48,
     title: "Choisir entre moyenne et médiane (revenus)",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Les revenus annuels (en k$) de 7 personnes dans un petit bureau sont : 42, 45, 48, 50, 52, 55, 380. (a) Calcule la moyenne et la médiane. (b) Laquelle représente mieux le « revenu typique » des employés ? Justifie.",
     steps: [
@@ -4933,7 +4933,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 49,
     title: "Comparer deux performances via la cote z",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Marie a obtenu 78 % à un test de biologie dont la moyenne du groupe est 65 et l'écart-type 10. Jean a obtenu 82 % à un test de chimie dont la moyenne du groupe est 75 et l'écart-type 6. Qui a mieux performé par rapport à son groupe ?",
     steps: [
@@ -4950,7 +4950,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 50,
     title: "Passer d'une cote z à un score brut",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     prompt:
       "Dans un groupe où la moyenne des notes est 68 et l'écart-type 8, quel score brut correspond à une cote z = −1,5 ? Interprète ce que cela signifie pour l'étudiant.",
     steps: [
@@ -4969,7 +4969,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 51,
     title: "Critiquer un sondage électoral",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un institut prédit le résultat d'une élection provinciale en sondant 1200 personnes dans 5 régions urbaines du Québec, avec une marge d'erreur affichée de ±3 %. Le lendemain de l'élection, les résultats diffèrent nettement du sondage. Propose au moins deux raisons statistiques pouvant expliquer cet écart.",
     steps: [
@@ -4987,7 +4987,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 52,
     title: "Deux variables — types et représentation",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un chercheur mesure l'apport calorique quotidien (kcal) de 200 étudiants et note s'ils pratiquent un sport (Oui/Non). Il veut comparer les deux groupes. (a) Identifie les deux variables et leur type. (b) Propose une représentation graphique adaptée pour comparer les distributions.",
     steps: [
@@ -5004,7 +5004,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 53,
     title: "Feu de circulation — nominale ou ordinale ?",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "La couleur d'un feu de circulation prend les valeurs « rouge », « jaune », « vert ». Argumente d'abord en faveur d'une classification nominale, puis en faveur d'une classification ordinale. Quelle classification retiens-tu et pourquoi ?",
     steps: [
@@ -5021,7 +5021,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 54,
     title: "Construire une distribution en 4 classes",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Voici les temps (en secondes) que 20 rats ont pris pour résoudre un labyrinthe : 45, 67, 52, 78, 34, 92, 55, 71, 48, 63, 82, 58, 41, 75, 88, 66, 51, 73, 60, 84. Construis une distribution en 4 classes d'amplitude égale et calcule les fréquences relatives cumulées.",
     steps: [
@@ -5040,7 +5040,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 55,
     title: "Distribution asymétrique — moyenne ou médiane ?",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "L'histogramme des revenus annuels d'une population montre une distribution très asymétrique à droite (longue queue à droite). (a) La moyenne sera-t-elle plus grande, plus petite ou égale à la médiane ? (b) Quelle mesure privilégier pour représenter le « revenu typique » ? Justifie.",
     steps: [
@@ -5056,7 +5056,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 56,
     title: "Choix du nombre de classes",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un chercheur analyse les rendements agricoles de 500 parcelles, allant de 2 à 12 t/ha. Il hésite entre 4 classes (amplitude 2,5 t/ha) et 20 classes (amplitude 0,5 t/ha). Discute des avantages et inconvénients de chaque choix et propose un compromis.",
     steps: [
@@ -5074,7 +5074,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 57,
     title: "Paradoxe de Simpson dans un tableau croisé",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Le cégep A a un taux global d'admission de 40 %, le cégep B de 50 %. Pourtant, quand on compare programme par programme, le cégep A admet un plus grand pourcentage de candidats dans chaque programme. Comment est-ce possible ?",
     steps: [
@@ -5092,7 +5092,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 58,
     title: "Graphique trompeur — axe tronqué",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un magazine publie un graphique à bandes comparant les ventes 2022 (500 000 $) et 2023 (550 000 $) d'une entreprise. La barre de 2023 paraît environ deux fois plus grande que celle de 2022. Quel est le problème et comment le corriger ?",
     steps: [
@@ -5109,7 +5109,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 59,
     title: "La moyenne cache la distribution",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un professeur affirme : « La moyenne de ma classe à l'examen est de 75 %, donc la majorité de mes étudiants ont bien réussi. » Cette affirmation est-elle nécessairement vraie ? Donne un contre-exemple numérique clair.",
     steps: [
@@ -5127,7 +5127,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 60,
     title: "Mesure de tendance centrale sur temps de visite",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un analyste étudie le temps passé par les visiteurs sur un site web. La distribution montre une longue queue à droite (quelques « power users » restent des heures). Quelle mesure de tendance centrale devrait-il rapporter pour caractériser un visiteur typique ? Que se passerait-il s'il rapportait la moyenne ?",
     steps: [
@@ -5145,7 +5145,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 61,
     title: "Coefficient de variation — comparer des unités différentes",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Un ornithologue compare la variabilité de deux caractéristiques mesurées sur une même population d'oiseaux : la masse (moyenne 30 g, écart-type 5 g) et l'envergure des ailes (moyenne 300 mm, écart-type 20 mm). Laquelle est proportionnellement plus variable ? Calcule le coefficient de variation CV = s / x̄ (exprimé en %).",
     steps: [
@@ -5162,7 +5162,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 62,
     title: "Sensibilité aux valeurs aberrantes",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Voici les temps d'attente (en minutes) de 8 patients aux urgences : 20, 25, 30, 22, 28, 24, 26, 200. (a) Calcule la moyenne et la médiane. (b) Retire la valeur 200 et refais les calculs. (c) Commente sur la sensibilité de chaque mesure à la valeur aberrante.",
     steps: [
@@ -5180,7 +5180,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 63,
     title: "Cote z pour détecter une valeur atypique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Dans une étude clinique, la glycémie à jeun d'un groupe de contrôle a une moyenne de 5,2 mmol/L et un écart-type de 0,4 mmol/L. Un patient présente une valeur de 7,8 mmol/L. (a) Calcule sa cote z. (b) Cette valeur est-elle atypique ? (c) Quelle recommandation clinique donnerais-tu ?",
     steps: [
@@ -5197,7 +5197,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 64,
     title: "Retrouver deux notes à partir de cotes z",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Deux étudiants ont obtenu des cotes z de +1,25 et −0,75 à un examen dont la moyenne est 70 % et l'écart-type est 12 %. (a) Retrouve leurs notes brutes. (b) Quelle est la différence entre leurs notes en écarts-types ? En points ?",
     steps: [
@@ -5216,7 +5216,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 65,
     title: "Contrôle qualité et règle empirique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     prompt:
       "Une usine produit des barres d'acier dont la longueur suit approximativement une loi symétrique en cloche, avec moyenne 200 mm et écart-type 3 mm. Le contrôle qualité rejette toute barre dont la cote z est en dehors de [−3 ; +3]. (a) À quelles longueurs correspondent les seuils de rejet ? (b) Sur 500 barres produites, environ combien seront rejetées ? (Indice : règle empirique 68-95-99,7.)",
     steps: [
@@ -5237,7 +5237,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 66,
     title: "QCM — Définition de la population",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "mcq",
     prompt:
       "Un chercheur veut estimer la proportion de personnes séropositives dans la région de Montréal. Il teste 300 volontaires. Dans ce contexte, quelle est la population de l'étude ?",
@@ -5258,7 +5258,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 67,
     title: "QCM — Type de variable (poids)",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "mcq",
     prompt: "Le poids d'un colis (en kg) est une variable :",
     options: [
@@ -5278,7 +5278,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 68,
     title: "QCM — Calcul d'une fréquence relative",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "mcq",
     prompt:
       "Dans un groupe de 80 étudiants, 20 sont inscrits en Sciences. La fréquence relative des étudiants en Sciences est :",
@@ -5299,7 +5299,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 69,
     title: "QCM — Amplitude d'une classe",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "mcq",
     prompt:
       "Pour construire une distribution en 5 classes d'amplitude égale à partir de données allant de 0 à 100, quelle amplitude minimale doit avoir chaque classe ?",
@@ -5320,7 +5320,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 70,
     title: "QCM — Graphique pour variable continue",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "mcq",
     prompt:
       "Pour représenter la distribution de la taille (en cm) de 500 adultes, le graphique le plus approprié est :",
@@ -5341,7 +5341,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 71,
     title: "QCM — Définition du mode",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "mcq",
     prompt: "Le mode d'une série de données est :",
     options: [
@@ -5361,7 +5361,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 72,
     title: "QCM — Sondage sur Instagram",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Un sondage en ligne diffusé sur Instagram récolte 5000 réponses de jeunes de 15 à 25 ans sur leur usage des écrans. Ce sondage souffre principalement de :",
@@ -5382,7 +5382,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 73,
     title: "QCM — Échelle de Likert",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Une échelle de Likert « Fortement en désaccord / En désaccord / Neutre / D'accord / Fortement d'accord » est une variable :",
@@ -5403,7 +5403,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 74,
     title: "QCM — Fréquence relative cumulée",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Dans une distribution, la fréquence relative cumulée jusqu'à la 3ᵉ classe est de 65 %. La 4ᵉ classe a une fréquence relative de 20 %. La fréquence relative cumulée jusqu'à la 4ᵉ classe est :",
@@ -5424,7 +5424,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 75,
     title: "QCM — Proportion conditionnelle (tableau croisé)",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Dans un groupe de 200 personnes : 80 femmes (dont 30 fument) et 120 hommes (dont 45 fument). La proportion de fumeurs parmi les hommes est :",
@@ -5445,7 +5445,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 76,
     title: "QCM — Choix de la meilleure mesure de position",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Sur les données 15, 22, 19, 44, 21, 18, 23, quelle mesure représente le mieux le « centre typique » ?",
@@ -5466,7 +5466,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 77,
     title: "QCM — Comparaison d'écarts-types",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "mcq",
     prompt:
       "Deux jeux de données ont la même moyenne. Le premier a un écart-type s = 2, le deuxième s = 10. Que peut-on affirmer ?",
@@ -5487,7 +5487,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 78,
     title: "QCM — Piège du code numérique",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Un chercheur numérote ses échantillons de 1 à 100 pour les identifier. Il calcule la « moyenne des numéros d'échantillons ». Ce calcul :",
@@ -5508,7 +5508,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 79,
     title: "QCM — Forme de la distribution",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Dans une distribution où moyenne = 100, médiane = 80 et mode = 75, la forme de la distribution est :",
@@ -5529,7 +5529,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 80,
     title: "QCM — Effet d'une translation sur l'écart-type",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Une variable X a x̄ = 50 et s = 10. Si on ajoute 5 à chaque valeur, quelle est la nouvelle valeur de l'écart-type ?",
@@ -5550,7 +5550,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 81,
     title: "QCM — Retrouver une valeur à partir d'une cote z",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "mcq",
     prompt:
       "Dans une distribution normale de moyenne 100 et d'écart-type 15, une observation a une cote z de +2,5. La valeur brute correspondante est :",
@@ -5574,7 +5574,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 82,
     title: "V/F — Sondage",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "tf",
     prompt: "Un sondage n'observe qu'une partie de la population.",
     isTrue: true,
@@ -5589,7 +5589,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 83,
     title: "V/F — Nombres et variables quantitatives",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "tf",
     prompt: "Toute variable dont les valeurs sont des nombres est une variable quantitative.",
     isTrue: false,
@@ -5604,7 +5604,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 84,
     title: "V/F — Somme des fréquences relatives",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "tf",
     prompt: "La somme de toutes les fréquences relatives d'une distribution est toujours égale à 1 (ou 100 %).",
     isTrue: true,
@@ -5619,7 +5619,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 85,
     title: "V/F — Classes fermées",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "tf",
     prompt:
       "Dans un regroupement en classes, on utilise généralement des intervalles fermés de la forme [a ; b] pour chaque classe.",
@@ -5635,7 +5635,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 86,
     title: "V/F — Médiane et moyenne",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "tf",
     prompt: "La médiane d'une série de données est toujours différente de la moyenne.",
     isTrue: false,
@@ -5650,7 +5650,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 87,
     title: "V/F — Histogramme et variable continue",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     type: "tf",
     prompt: "L'histogramme est adapté pour représenter la distribution d'une variable quantitative continue.",
     isTrue: true,
@@ -5665,7 +5665,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 88,
     title: "V/F — Grande taille et représentativité",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: "Un échantillon de grande taille est automatiquement représentatif de la population.",
     isTrue: false,
@@ -5680,7 +5680,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 89,
     title: "V/F — Stade de cancer",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: "Le stade d'un cancer (I, II, III, IV) est une variable qualitative ordinale.",
     isTrue: true,
@@ -5695,7 +5695,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 90,
     title: "V/F — Sens du conditionnement",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: "La proportion des femmes qui sont fumeuses est nécessairement égale à la proportion des fumeurs qui sont des femmes.",
     isTrue: false,
@@ -5710,7 +5710,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 91,
     title: "V/F — Sensibilité de la moyenne",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: "La moyenne est plus sensible aux valeurs extrêmes que la médiane.",
     isTrue: true,
@@ -5725,7 +5725,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 92,
     title: "V/F — Signe de l'écart-type",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: "L'écart-type d'un échantillon peut prendre des valeurs négatives.",
     isTrue: false,
@@ -5740,7 +5740,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 93,
     title: "V/F — Signe de la cote z",
-    difficulty: "Intermédiaire",
+    difficulty: "Moyen",
     type: "tf",
     prompt: "Une cote z peut être négative.",
     isTrue: true,
@@ -5755,7 +5755,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 94,
     title: "V/F — Asymétrie à droite et moyenne",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: "Si la distribution est asymétrique à droite (longue queue vers les grandes valeurs), la moyenne est plus grande que la médiane.",
     isTrue: true,
@@ -5770,7 +5770,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 95,
     title: "V/F — Effet d'un facteur multiplicatif sur s",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: "Multiplier toutes les valeurs d'un jeu de données par 3 multiplie l'écart-type par 3.",
     isTrue: true,
@@ -5785,7 +5785,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 96,
     title: "V/F — Cote z de +2 et rareté",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: "Une cote z de +2 indique toujours qu'un événement est extrêmement rare.",
     isTrue: false,
@@ -5800,7 +5800,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD1",
     number: 97,
     title: "V/F — Même écart-type et même moyenne",
-    difficulty: "Avancé",
+    difficulty: "Difficile",
     type: "tf",
     prompt: "Si deux jeux de données ont le même écart-type, ils ont nécessairement la même moyenne.",
     isTrue: false,
@@ -5818,7 +5818,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 1,
     title: "Univers d'une expérience aléatoire",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On lance un dé équilibré à 6 faces et on note le résultat. Quel est l'univers Ω de cette expérience aléatoire ?",
     steps: [
@@ -5833,7 +5833,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 2,
     title: "Événement contraire",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On lance un dé à 6 faces. Soit A = « obtenir un nombre pair ». Décris l'événement contraire A̅ en donnant l'ensemble de ses résultats.",
     steps: [
@@ -5848,7 +5848,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 3,
     title: "Principe de multiplication — cadenas",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un cadenas comporte 4 roulettes, chacune numérotée de 0 à 9. Combien de combinaisons différentes sont possibles ?",
     steps: [
@@ -5863,7 +5863,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 4,
     title: "Principe d'addition — trajets",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Pour se rendre au cégep, Léa peut prendre l'un des 3 autobus, l'une des 2 lignes de métro, ou son vélo. De combien de façons différentes peut-elle s'y rendre ?",
     steps: [
@@ -5878,7 +5878,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 5,
     title: "Factorielle de 6",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt: "Calcule 6! (factorielle de 6).",
     steps: [
       "6! = 6 × 5 × 4 × 3 × 2 × 1.",
@@ -5892,7 +5892,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 6,
     title: "Permutation — livres sur étagère",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "De combien de façons différentes peut-on aligner 7 livres distincts sur une étagère ?",
     steps: [
@@ -5907,7 +5907,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 7,
     title: "Arrangement — bureau de direction",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un club de 10 membres doit désigner un président, un vice-président et un secrétaire (rôles distincts). De combien de façons peut-on faire ces nominations ?",
     steps: [
@@ -5922,7 +5922,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 8,
     title: "Combinaison — former un comité",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Combien de comités de 4 personnes peut-on former parmi un groupe de 12 étudiants (sans distinction de rôles) ?",
     steps: [
@@ -5937,7 +5937,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 9,
     title: "Combinaison — main de 5 cartes",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Combien de mains de 5 cartes distinctes peut-on tirer d'un jeu de 52 cartes ?",
     steps: [
@@ -5952,7 +5952,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 10,
     title: "Choisir la bonne formule",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On veut choisir 3 personnes parmi 8 pour former une équipe (sans distinction de rôles). Quelle formule utiliser : permutation, arrangement ou combinaison ?",
     steps: [
@@ -5967,7 +5967,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 11,
     title: "Équiprobabilité — dé",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un nombre strictement supérieur à 4 ?",
     steps: [
@@ -5983,7 +5983,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 12,
     title: "Équiprobabilité — carte à jouer",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On tire une carte au hasard d'un jeu de 52 cartes. Quelle est la probabilité que ce soit un roi ?",
     steps: [
@@ -5998,7 +5998,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 13,
     title: "Probabilité de l'événement contraire",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Un événement A a une probabilité P(A) = 0,35. Quelle est la probabilité de l'événement contraire A̅ ?",
     steps: [
@@ -6013,7 +6013,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 14,
     title: "Union d'événements incompatibles",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Deux événements incompatibles A et B ont P(A) = 0,3 et P(B) = 0,2. Quelle est la probabilité de A ∪ B ?",
     steps: [
@@ -6028,7 +6028,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 15,
     title: "Probabilité conditionnelle — application directe",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Sur 200 patients dépistés, 60 ont un test positif et parmi eux 45 sont réellement malades. Quelle est la probabilité qu'un patient soit malade sachant que son test est positif ?",
     steps: [
@@ -6044,7 +6044,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 16,
     title: "Probabilité d'intersection par conditionnement",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans une classe, 60 % des étudiants ont une bonne note ; parmi eux, 30 % participent activement en classe. Quelle est la probabilité qu'un étudiant tiré au hasard ait à la fois une bonne note ET participe activement ?",
     steps: [
@@ -6059,7 +6059,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 17,
     title: "Événements indépendants — deux lancers",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "On lance deux fois une pièce équilibrée. Quelle est la probabilité d'obtenir « pile » aux deux lancers ?",
     steps: [
@@ -6074,7 +6074,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 18,
     title: "Somme des branches d'un arbre",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "À un nœud d'un arbre de probabilités, il y a deux branches : l'une avec probabilité 0,7. Quelle est nécessairement la probabilité de l'autre branche ?",
     steps: [
@@ -6089,7 +6089,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 19,
     title: "Compléter une loi de probabilité",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Une variable aléatoire X prend les valeurs 0, 1, 2 avec les probabilités respectives 0,3, 0,5 et p. Quelle est la valeur de p ?",
     steps: [
@@ -6104,7 +6104,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 20,
     title: "Espérance d'une v.a. discrète",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Une variable aléatoire X prend les valeurs 1, 2, 3 avec les probabilités 0,2, 0,5 et 0,3. Calcule E(X).",
     steps: [
@@ -6119,7 +6119,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 21,
     title: "Écart-type d'une v.a.",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Une variable aléatoire X a une variance Var(X) = 4. Quel est son écart-type σ(X) ?",
     steps: [
@@ -6134,7 +6134,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 22,
     title: "Conditions de la loi binomiale",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Nomme les deux conditions pour qu'une expérience puisse être modélisée par une loi binomiale.",
     steps: [
@@ -6150,7 +6150,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 23,
     title: "Loi binomiale — calcul direct",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Une pièce équilibrée est lancée 5 fois. Quelle est la probabilité d'obtenir exactement 3 faces ?",
     steps: [
@@ -6166,7 +6166,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 24,
     title: "Loi normale — règle empirique",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Dans une distribution normale de moyenne µ et d'écart-type σ, environ quelle proportion des valeurs se trouve dans l'intervalle [µ − σ ; µ + σ] ?",
     steps: [
@@ -6181,7 +6181,7 @@ const manualExercises: Exercise[] = [
     lessonId: "PSD2",
     number: 25,
     title: "Loi normale centrée réduite — lecture de la table",
-    difficulty: "Fondamental",
+    difficulty: "Facile",
     prompt:
       "Si Z suit une loi normale centrée réduite N(0, 1) et que Φ(1,0) = 0,8413, quelle est la valeur de P(Z ≤ 1,0) ?",
     steps: [

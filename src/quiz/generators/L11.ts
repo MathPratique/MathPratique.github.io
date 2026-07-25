@@ -17,7 +17,7 @@ function easyDet3Cofactor(): Exercise {
   const A = randMat(3, 3, -2, 3);
   const d = det3(A);
   return {
-    ...meta("quiz-L11-easy", "Déterminant 3×3 par développement de Laplace", "Fondamental"),
+    ...meta("quiz-L11-easy", "Déterminant 3×3 par développement de Laplace", "Facile"),
     prompt: [t("Calculer det(A) pour "), mat(asCells(A), "A ="), t(".")],
     steps: [
       [t("Développer selon la première ligne.")],
@@ -32,7 +32,7 @@ function easyZeroRow(): Exercise {
   const zRow = randInt(0, 2);
   A[zRow] = [0, 0, 0];
   return {
-    ...meta("quiz-L11-easy", "Déterminant d'une matrice avec ligne nulle", "Fondamental"),
+    ...meta("quiz-L11-easy", "Déterminant d'une matrice avec ligne nulle", "Facile"),
     prompt: [t("Sans calculer, donner det(A) pour "), mat(asCells(A), "A ="), t(".")],
     steps: [
       [t(`La ligne ${zRow + 1} est nulle, donc det(A) = 0.`)],
@@ -50,7 +50,7 @@ function interDevAlongCol(): Exercise {
   ];
   const d = det3(A);
   return {
-    ...meta("quiz-L11-inter", "Choisir la meilleure ligne pour développer", "Intermédiaire"),
+    ...meta("quiz-L11-inter", "Choisir la meilleure ligne pour développer", "Moyen"),
     prompt: [
       t("Calculer det(A) pour "),
       mat(asCells(A), "A ="),
@@ -68,7 +68,7 @@ function interIdentical(): Exercise {
   const A = randMat(3, 3, -2, 3);
   A[1] = A[0].slice();
   return {
-    ...meta("quiz-L11-inter", "Reconnaître det = 0 par lignes proportionnelles", "Intermédiaire"),
+    ...meta("quiz-L11-inter", "Reconnaître det = 0 par lignes proportionnelles", "Moyen"),
     prompt: [t("Sans tout calculer, déterminer det(A) pour "), mat(asCells(A), "A ="), t(".")],
     steps: [
       [t("Les lignes 1 et 2 sont identiques (donc proportionnelles avec coefficient 1).")],
@@ -81,7 +81,7 @@ function interIdentical(): Exercise {
 function advCombineProps(): Exercise {
   const d = pick([2, 3, -4]);
   return {
-    ...meta("quiz-L11-adv", "det(kA) en fonction de la dimension", "Avancé"),
+    ...meta("quiz-L11-adv", "det(kA) en fonction de la dimension", "Difficile"),
     prompt: [
       t(`Si A est une matrice 3×3 avec det(A) = ${d}, calculer det(2A) et det(−A).`),
     ],
@@ -97,7 +97,7 @@ function advProdDet(): Exercise {
   const da = pick([2, 3, -3]);
   const db = pick([2, 4, -2]);
   return {
-    ...meta("quiz-L11-adv", "Déterminant d'un produit", "Avancé"),
+    ...meta("quiz-L11-adv", "Déterminant d'un produit", "Difficile"),
     prompt: [
       t(`Si A et B sont 3×3 avec det(A) = ${da} et det(B) = ${db}, calculer det(AB), det(A`),
       t("²B), det((AB)"),

@@ -39,7 +39,7 @@ function easyInverse2x2(): Exercise {
     [d * -A[1][0], d * A[0][0]],
   ];
   return {
-    ...meta("quiz-L7-easy", "Inverse d'une matrice 2×2 avec det = ±1", "Fondamental"),
+    ...meta("quiz-L7-easy", "Inverse d'une matrice 2×2 avec det = ±1", "Facile"),
     prompt: [
       t("Calculer A"),
       sup("-1"),
@@ -68,7 +68,7 @@ function interVerifyInverse(): Exercise {
   const inv = inv2(A)!;
   // Show that A · inv ≈ I
   return {
-    ...meta("quiz-L7-inter", "Vérifier qu'une matrice est l'inverse d'une autre", "Intermédiaire"),
+    ...meta("quiz-L7-inter", "Vérifier qu'une matrice est l'inverse d'une autre", "Moyen"),
     prompt: [
       t("Vérifier que B = "),
       mat([
@@ -97,7 +97,7 @@ function interInverseFormula(): Exercise {
   const fracStr = (n: number) => fmtFrac(n, d);
   const invStr = cof.map((row) => row.map(fracStr));
   return {
-    ...meta("quiz-L7-inter", "Inverse d'une matrice 2×2 par la formule", "Intermédiaire"),
+    ...meta("quiz-L7-inter", "Inverse d'une matrice 2×2 par la formule", "Moyen"),
     prompt: [
       t("Trouver A"),
       sup("-1"),
@@ -121,7 +121,7 @@ function advProductInverse(): Exercise {
   const dAB = det2(AB);
   const invStr = invAB.map((row) => row.map((v) => fmtFrac(v * dAB, dAB)));
   return {
-    ...meta("quiz-L7-adv", "Inverse d'un produit AB", "Avancé"),
+    ...meta("quiz-L7-adv", "Inverse d'un produit AB", "Difficile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -154,7 +154,7 @@ function advInverseOfkA(): Exercise {
   // (kA)^-1 = (1/k) A^-1
   const inv_kA_num = invA.map((row) => row.map((v) => v * dA));
   return {
-    ...meta("quiz-L7-adv", "Inverse de kA", "Avancé"),
+    ...meta("quiz-L7-adv", "Inverse de kA", "Difficile"),
     prompt: [
       t("Soit "),
       mat(asCells(A), "A ="),

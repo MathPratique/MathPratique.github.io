@@ -3,16 +3,15 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import clsx from "clsx";
 import type { Exercise, RichContent as RichContentValue } from "../../data/exercises";
 import { topics } from "../../data/topics";
-import { getLessonById } from "../../data/lessons";
 import Matrix from "../ui/Matrix";
 import RichContent from "../ui/RichContent";
 import MCQCard from "./MCQCard";
 import TFCard from "./TFCard";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
-  Fondamental: "bg-accent-500/10 text-accent-600",
-  Intermédiaire: "bg-brand-100 text-brand-700",
-  Avancé: "bg-amber-100 text-amber-700",
+  Facile: "bg-accent-500/10 text-accent-600",
+  Moyen: "bg-brand-100 text-brand-700",
+  Difficile: "bg-amber-100 text-amber-700",
 };
 
 const stepListVariants = {
@@ -29,7 +28,18 @@ const stepItemVariants = {
 
 type ExerciseCardProps = {
   exercise: Exercise;
+  displayIndex?: number;
 };
+
+// Split a plain-string answer into multiple lines when it contains " ; " separators.
+// Each part gets its first letter capitalised. Non-string answers (RichContent arrays)
+// are returned as a single element unchanged.
+function splitAnswerLines(answer: unknown): string[] | null {
+  if (typeof answer !== "string") return null;
+  const parts = answer.split(/\s*;\s*/).map((s) => s.trim()).filter(Boolean);
+  if (parts.length < 2) return null;
+  return parts.map((p) => (p.length > 0 ? p.charAt(0).toLocaleUpperCase("fr-FR") + p.slice(1) : p));
+}
 
 const SUBPART_PREFIX = /^([a-h])\)\s*/;
 
@@ -48,16 +58,17 @@ function detectSubpart(
   return { letter: m[1], rest: [newFirst, ...step.slice(1)] };
 }
 
-export default function ExerciseCard({ exercise }: ExerciseCardProps) {
+export default function ExerciseCard({ exercise, displayIndex }: ExerciseCardProps) {
   // Interactive question types — render specialised cards
-  if (exercise.type === "mcq") return <MCQCard exercise={exercise} />;
-  if (exercise.type === "tf") return <TFCard exercise={exercise} />;
+  if (exercise.type === "mcq") return <MCQCard exercise={exercise} displayIndex={displayIndex} />;
+  if (exercise.type === "tf") return <TFCard exercise={exercise} displayIndex={displayIndex} />;
 
   const [open, setOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const topic = topics.find((t) => t.id === exercise.topicId);
-  const lesson = exercise.lessonId ? getLessonById(exercise.lessonId) : null;
-  const contextLabel = lesson ? `Leçon ${lesson.number}` : topic?.name;
+  const contextLabel =
+    displayIndex != null ? `Exercice #${displayIndex}` : topic?.name ?? "Exercice";
+  const answerLines = splitAnswerLines(exercise.answer);
 
   return (
     <div className="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm shadow-brand-900/5 transition-shadow duration-200 hover:shadow-md hover:shadow-brand-900/10">
@@ -162,7 +173,18 @@ export default function ExerciseCard({ exercise }: ExerciseCardProps) {
               transition={{ delay: exercise.steps.length * 0.12 }}
               className="mt-4 rounded-xl bg-accent-500/10 px-4 py-3 text-sm font-semibold text-accent-600"
             >
-              Réponse : <RichContent content={exercise.answer} />
+              {answerLines ? (
+                <>
+                  <div>Réponse :</div>
+                  <ul className="mt-1 space-y-0.5">
+                    {answerLines.map((line, i) => (
+                      <li key={i} className="break-words">{line}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <>Réponse : <RichContent content={exercise.answer} /></>
+              )}
             </motion.div>
           </motion.div>
         )}

@@ -37,7 +37,7 @@ function easyMatrixForm(): Exercise {
   const X = [[randInt(-2, 3)], [randInt(-2, 3)], [randInt(-2, 3)]];
   const B = mul(A, X);
   return {
-    ...meta("quiz-L17-easy", "Écrire un système 3×3 sous forme matricielle AX = B", "Fondamental"),
+    ...meta("quiz-L17-easy", "Écrire un système 3×3 sous forme matricielle AX = B", "Facile"),
     prompt: [
       t(
         `Écrire le système suivant sous forme matricielle AX = B :\n${A[0][0]}x + ${A[0][1]}y + ${A[0][2]}z = ${B[0][0]}\n${A[1][0]}x + ${A[1][1]}y + ${A[1][2]}z = ${B[1][0]}\n${A[2][0]}x + ${A[2][1]}y + ${A[2][2]}z = ${B[2][0]}`
@@ -66,7 +66,7 @@ function interSolve3x3(): Exercise {
   const X = [[randInt(-2, 3)], [randInt(-2, 3)], [randInt(-2, 3)]];
   const B = mul(A, X);
   return {
-    ...meta("quiz-L17-inter", "Résoudre un système 3×3 par la méthode de la matrice inverse", "Intermédiaire"),
+    ...meta("quiz-L17-inter", "Résoudre un système 3×3 par la méthode de la matrice inverse", "Moyen"),
     prompt: [
       t("Résoudre par la méthode de la matrice inverse le système 3×3 :\n"),
       t(`${A[0][0]}x + ${A[0][1]}y + ${A[0][2]}z = ${B[0][0]}\n`),
@@ -91,7 +91,7 @@ function interApplyGivenInverse3(): Exercise {
   const adj = transpose(cofactorMatrix3(A));
   const invStr = adj.map((row) => row.map((v) => fmtFrac(v, d)));
   return {
-    ...meta("quiz-L17-inter", "Appliquer A⁻¹·B pour résoudre un système 3×3", "Intermédiaire"),
+    ...meta("quiz-L17-inter", "Appliquer A⁻¹·B pour résoudre un système 3×3", "Moyen"),
     prompt: [
       t("Le système AX = B avec "),
       mat(asCells(A), "A ="),
@@ -122,7 +122,7 @@ function advSolve3x3(): Exercise {
   const X = [[randInt(-3, 3)], [randInt(-3, 3)], [randInt(-3, 3)]];
   const B = mul(A, X);
   return {
-    ...meta("quiz-L17-adv", "Résoudre un système 3×3 (méthode de la matrice inverse)", "Avancé"),
+    ...meta("quiz-L17-adv", "Résoudre un système 3×3 (méthode de la matrice inverse)", "Difficile"),
     prompt: [
       t(
         `Résoudre le système suivant par la méthode de la matrice inverse :\n${A[0][0]}x + ${A[0][1]}y + ${A[0][2]}z = ${B[0][0]}\n${A[1][0]}x + ${A[1][1]}y + ${A[1][2]}z = ${B[1][0]}\n${A[2][0]}x + ${A[2][1]}y + ${A[2][2]}z = ${B[2][0]}`
@@ -144,7 +144,7 @@ function advDetermineSingular(): Exercise {
     [randInt(1, 3), randInt(-2, 2), randInt(-2, 2)],
   ];
   return {
-    ...meta("quiz-L17-adv", "Quand la méthode de la matrice inverse échoue", "Avancé"),
+    ...meta("quiz-L17-adv", "Quand la méthode de la matrice inverse échoue", "Difficile"),
     prompt: [
       t("Examiner la matrice "),
       mat(asCells(A), "A ="),

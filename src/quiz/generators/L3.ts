@@ -20,7 +20,7 @@ function easySolveLinear(): Exercise {
   const A = randMat(2, 2, -3, 3);
   const B = add(scale(k, X), A);
   return {
-    ...meta("quiz-L3-easy", `Résoudre ${k}X + A = B pour X`, "Fondamental"),
+    ...meta("quiz-L3-easy", `Résoudre ${k}X + A = B pour X`, "Facile"),
     prompt: [
       t(`Résoudre l'équation ${k}X + A = B pour X, avec `),
       mat(asCells(A), "A ="),
@@ -41,7 +41,7 @@ function interIsolateMultiTerm(): Exercise {
   const A = randMat(2, 2, -2, 3);
   const B = msub(scale(3, X), scale(3, A));  // B = 3X − 3A, so X = (B + 3A)/3
   return {
-    ...meta("quiz-L3-inter", "Isoler X dans 4X − 3A = B + X", "Intermédiaire"),
+    ...meta("quiz-L3-inter", "Isoler X dans 4X − 3A = B + X", "Moyen"),
     prompt: [
       t("Isoler X dans l'équation 4X − 3A = B + X, puis calculer X si "),
       mat(asCells(A), "A ="),
@@ -65,7 +65,7 @@ function interMixed(): Exercise {
   // 3X = 3B − A  →  A = 3B − 3X
   const A = msub(scale(3, B), scale(3, X));
   return {
-    ...meta("quiz-L3-inter", "Isoler X dans 2X + A = 3B − X", "Intermédiaire"),
+    ...meta("quiz-L3-inter", "Isoler X dans 2X + A = 3B − X", "Moyen"),
     prompt: [
       t("Isoler X dans 2X + A = 3B − X, puis calculer X avec "),
       mat(asCells(A), "A ="),
@@ -89,7 +89,7 @@ function advSystemXY(): Exercise {
   const M1 = add(X, Y);
   const M2 = msub(X, Y);
   return {
-    ...meta("quiz-L3-adv", "Résoudre un système matriciel X+Y, X−Y", "Avancé"),
+    ...meta("quiz-L3-adv", "Résoudre un système matriciel X+Y, X−Y", "Difficile"),
     prompt: [
       t("Résoudre pour X et Y : X + Y = "),
       mat(asCells(M1)),
@@ -122,7 +122,7 @@ function advTripleEq(): Exercise {
   const B = randMat(2, 2, -2, 3);
   const C = add(scale(4, X), add(scale(-2, A), scale(5, B)));
   return {
-    ...meta("quiz-L3-adv", "Isoler X dans 2A − 3X = 5B + X − C", "Avancé"),
+    ...meta("quiz-L3-adv", "Isoler X dans 2A − 3X = 5B + X − C", "Difficile"),
     prompt: [
       t("Isoler X dans 2A − 3X = 5B + X − C, puis calculer X avec "),
       mat(asCells(A), "A ="),

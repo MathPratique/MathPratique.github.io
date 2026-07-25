@@ -17,7 +17,7 @@ function easyTranspose(): Exercise {
   const A = randMat(3, 3, -2, 3);
   const d = det3(A);
   return {
-    ...meta("quiz-L14-easy", "det(Aᵀ) en utilisant les propriétés", "Fondamental"),
+    ...meta("quiz-L14-easy", "det(Aᵀ) en utilisant les propriétés", "Facile"),
     prompt: [
       t("Sans tout recalculer, donner det(Aᵀ) si "),
       mat(asCells(A), "A ="),
@@ -34,7 +34,7 @@ function easyTranspose(): Exercise {
 function interSwap(): Exercise {
   const d = pick([3, -4, 5, 8]);
   return {
-    ...meta("quiz-L14-inter", "Effet d'un échange de lignes", "Intermédiaire"),
+    ...meta("quiz-L14-inter", "Effet d'un échange de lignes", "Moyen"),
     prompt: [
       t(`Si det(A) = ${d}, et B est obtenue en échangeant deux lignes de A, calculer det(B). Puis si C est obtenue en multipliant deux lignes différentes par 2 et 3, calculer det(C).`),
     ],
@@ -49,7 +49,7 @@ function interSwap(): Exercise {
 function interReplaceRow(): Exercise {
   const d = pick([2, 3, 5]);
   return {
-    ...meta("quiz-L14-inter", "Effet de Lᵢ → Lᵢ + kLⱼ", "Intermédiaire"),
+    ...meta("quiz-L14-inter", "Effet de Lᵢ → Lᵢ + kLⱼ", "Moyen"),
     prompt: [
       t(`Si det(A) = ${d}, et B est obtenue en remplaçant L₂ par L₂ + 5L₁ dans A, calculer det(B).`),
     ],
@@ -70,7 +70,7 @@ function advReduceToTriangular(): Exercise {
   ];
   const d = det3(A);
   return {
-    ...meta("quiz-L14-adv", "Calculer det(A) par opérations sur les lignes", "Avancé"),
+    ...meta("quiz-L14-adv", "Calculer det(A) par opérations sur les lignes", "Difficile"),
     prompt: [
       t("Calculer det(A) en réduisant A à une forme triangulaire par opérations sur les lignes, sans modifier le déterminant. "),
       mat(asCells(A), "A ="),
@@ -91,7 +91,7 @@ function advFindParam(): Exercise {
   // A = [[1, k, 0], [0, 1, 1], [k, 0, 1]]
   // det = 1·(1 − 0) − k·(0 − k) + 0 = 1 + k²
   return {
-    ...meta("quiz-L14-adv", "Trouver k pour un déterminant donné", "Avancé"),
+    ...meta("quiz-L14-adv", "Trouver k pour un déterminant donné", "Difficile"),
     prompt: [
       t("Trouver les valeurs de k telles que det("),
       mat([

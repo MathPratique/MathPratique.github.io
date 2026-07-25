@@ -227,7 +227,7 @@ export default function Quiz() {
                 key={ex.id}
                 style={{ display: i === currentIndex ? "block" : "none" }}
               >
-                <ExerciseCard exercise={ex} />
+                <ExerciseCard exercise={ex} displayIndex={i + 1} />
               </div>
             ))}
           </div>

@@ -20,7 +20,7 @@ function easyOneOperation(): Exercise {
   const B = A.map((row) => row.slice());
   B[1] = B[1].map((v, j) => v + k * A[0][j]);
   return {
-    ...meta("quiz-L18-easy", "Effectuer une opération élémentaire sur une matrice", "Fondamental"),
+    ...meta("quiz-L18-easy", "Effectuer une opération élémentaire sur une matrice", "Facile"),
     prompt: [
       t("Effectuer l'opération L₂ → L₂ + "),
       t(`${k}`),
@@ -49,7 +49,7 @@ function interMakeZeroBelowPivot(): Exercise {
   B[1] = B[1].map((v, j) => v + k2 * A[0][j]);
   B[2] = B[2].map((v, j) => v + k3 * A[0][j]);
   return {
-    ...meta("quiz-L18-inter", "Annuler la colonne 1 sous le pivot", "Intermédiaire"),
+    ...meta("quiz-L18-inter", "Annuler la colonne 1 sous le pivot", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -70,7 +70,7 @@ function interTwoOps(): Exercise {
   B[0] = B[0].map((v) => 2 * v);
   B[1] = B[1].map((v, j) => v - B[0][j]);
   return {
-    ...meta("quiz-L18-inter", "Enchaîner deux opérations élémentaires", "Intermédiaire"),
+    ...meta("quiz-L18-inter", "Enchaîner deux opérations élémentaires", "Moyen"),
     prompt: [
       t("Appliquer dans l'ordre L₁ → 2L₁ puis L₂ → L₂ − L₁ à "),
       mat(asCells(A), "A ="),
@@ -99,7 +99,7 @@ function advReduceToEchelon(): Exercise {
     [0, 0, 1],
   ];
   return {
-    ...meta("quiz-L18-adv", "Réduire à la forme échelon", "Avancé"),
+    ...meta("quiz-L18-adv", "Réduire à la forme échelon", "Difficile"),
     prompt: [
       t("Réduire la matrice à sa forme échelon : "),
       mat(asCells(A), "A ="),
@@ -124,7 +124,7 @@ function advRescaleRow(): Exercise {
   ];
   const B = [[a, b, c], A[1]];
   return {
-    ...meta("quiz-L18-adv", "Normaliser une ligne", "Avancé"),
+    ...meta("quiz-L18-adv", "Normaliser une ligne", "Difficile"),
     prompt: [
       t("Appliquer L₁ → (1/3)·L₁ à "),
       mat(asCells(A), "A ="),

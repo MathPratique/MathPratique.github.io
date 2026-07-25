@@ -33,7 +33,7 @@ function easyRREFCheck(): Exercise {
     reason = "La colonne du pivot de L₃ n'est pas réduite (il reste un 3 en L₁ et 1 en L₂).";
   }
   return {
-    ...meta("quiz-L19-easy", "Reconnaître la forme échelon réduite", "Fondamental"),
+    ...meta("quiz-L19-easy", "Reconnaître la forme échelon réduite", "Facile"),
     prompt: [
       t("Cette matrice est-elle en forme échelon réduite ? "),
       mat(asCells(A)),
@@ -55,7 +55,7 @@ function interReduceToRREF2(): Exercise {
     [0, 1, y],
   ];
   return {
-    ...meta("quiz-L19-inter", "Réduire à la forme échelon réduite (2×3)", "Intermédiaire"),
+    ...meta("quiz-L19-inter", "Réduire à la forme échelon réduite (2×3)", "Moyen"),
     prompt: [
       t("Réduire à la forme échelon réduite : "),
       mat(asCells(A)),
@@ -84,7 +84,7 @@ function interIdentifyPivots(): Exercise {
     [0, 0, 0, 1],
   ];
   return {
-    ...meta("quiz-L19-inter", "Identifier pivots et variables libres", "Intermédiaire"),
+    ...meta("quiz-L19-inter", "Identifier pivots et variables libres", "Moyen"),
     prompt: [
       t("Pour la matrice "),
       mat(asCells(A)),
@@ -122,7 +122,7 @@ function advReduce3x4(): Exercise {
     [0, 0, 1, X[2]],
   ];
   return {
-    ...meta("quiz-L19-adv", "Réduire un système 3×4 augmenté en forme échelon réduite", "Avancé"),
+    ...meta("quiz-L19-adv", "Réduire un système 3×4 augmenté en forme échelon réduite", "Difficile"),
     prompt: [
       t("Réduire la matrice augmentée à sa forme échelon réduite : "),
       mat(aug),
@@ -150,7 +150,7 @@ function advNumberOfSolutions(): Exercise {
     [0, 0, 0, 1, 2],
   ];
   return {
-    ...meta("quiz-L19-adv", "Déterminer le nombre de solutions d'un système en RREF", "Avancé"),
+    ...meta("quiz-L19-adv", "Déterminer le nombre de solutions d'un système en RREF", "Difficile"),
     prompt: [
       t("La matrice augmentée d'un système est, après réduction : "),
       mat(asCells(A)),

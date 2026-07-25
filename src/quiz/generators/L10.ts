@@ -17,7 +17,7 @@ function easyDet2(): Exercise {
   const A = randMat(2, 2, -4, 5);
   const d = det2(A);
   return {
-    ...meta("quiz-L10-easy", "Déterminant 2×2", "Fondamental"),
+    ...meta("quiz-L10-easy", "Déterminant 2×2", "Facile"),
     prompt: [t("Calculer le déterminant de "), mat(asCells(A), "A ="), t(".")],
     steps: [[t(`det(A) = ${A[0][0]}·${A[1][1]} − ${A[0][1]}·${A[1][0]} = ${d}.`)]],
     answer: [bold([t(`det(A) = ${d}.`)])],
@@ -31,7 +31,7 @@ function inter2x2Param(): Exercise {
   // A = [[x, 1], [2, a]] → det = ax − 2 = c → x = (c + 2)/a
   const x = (c + 2) / a;
   return {
-    ...meta("quiz-L10-inter", "Trouver une valeur pour obtenir un déterminant donné", "Intermédiaire"),
+    ...meta("quiz-L10-inter", "Trouver une valeur pour obtenir un déterminant donné", "Moyen"),
     prompt: [
       t("Trouver la valeur de x telle que det("),
       mat([
@@ -51,7 +51,7 @@ function interDet3(): Exercise {
   const A = randMat(3, 3, -2, 3);
   const d = det3(A);
   return {
-    ...meta("quiz-L10-inter", "Déterminant 3×3 par cofacteurs", "Intermédiaire"),
+    ...meta("quiz-L10-inter", "Déterminant 3×3 par cofacteurs", "Moyen"),
     prompt: [t("Calculer le déterminant de "), mat(asCells(A), "A ="), t(".")],
     steps: [
       [t("Développer selon la première ligne : det(A) = a₁₁·M₁₁ − a₁₂·M₁₂ + a₁₃·M₁₃.")],
@@ -76,7 +76,7 @@ function advDetTriangular(): Exercise {
     [0, 0, c],
   ];
   return {
-    ...meta("quiz-L10-adv", "Déterminant d'une matrice triangulaire", "Avancé"),
+    ...meta("quiz-L10-adv", "Déterminant d'une matrice triangulaire", "Difficile"),
     prompt: [t("Calculer le déterminant de la matrice triangulaire "), mat(asCells(A), "A ="), t(".")],
     steps: [
       [t("Pour une matrice triangulaire (supérieure ou inférieure), det = produit des éléments diagonaux.")],
@@ -90,7 +90,7 @@ function advDetWithRowOp(): Exercise {
   const d = pick([2, 3, -4, 5]);
   const k = pick([2, 3]);
   return {
-    ...meta("quiz-L10-adv", "Effet d'une opération sur le déterminant", "Avancé"),
+    ...meta("quiz-L10-adv", "Effet d'une opération sur le déterminant", "Difficile"),
     prompt: [
       t(`Si A est une matrice 3×3 avec det(A) = ${d}, et B est obtenue en multipliant une ligne de A par ${k}, calculer det(B).`),
     ],

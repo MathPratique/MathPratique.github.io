@@ -18,7 +18,7 @@ function easyProduct22(): Exercise {
   const B = randMat(2, 2, -3, 3);
   const C = mul(A, B);
   return {
-    ...meta("quiz-L4-easy", "Produit matriciel 2×2", "Fondamental"),
+    ...meta("quiz-L4-easy", "Produit matriciel 2×2", "Facile"),
     prompt: [
       t("Effectuer le produit AB avec "),
       mat(asCells(A), "A ="),
@@ -41,7 +41,7 @@ function interDimensions(): Exercise {
   const ABDefined = n === p;
   const BADefined = q === m;
   return {
-    ...meta("quiz-L4-inter", "Vérifier les dimensions d'un produit", "Intermédiaire"),
+    ...meta("quiz-L4-inter", "Vérifier les dimensions d'un produit", "Moyen"),
     prompt: [
       t(`Soit A de dimension ${m}×${n} et B de dimension ${p}×${q}. Déterminer si les produits AB et BA sont définis. Donner les dimensions des produits définis.`),
     ],
@@ -69,7 +69,7 @@ function interSpecificEntry(): Exercise {
   const i = randInt(0, 1);
   const j = randInt(0, 1);
   return {
-    ...meta("quiz-L4-inter", "Calculer un élément précis d'un produit", "Intermédiaire"),
+    ...meta("quiz-L4-inter", "Calculer un élément précis d'un produit", "Moyen"),
     prompt: [
       t("Soit "),
       mat(asCells(A), "A ="),
@@ -96,7 +96,7 @@ function advCompareABBA(): Exercise {
   const AB = mul(A, B);
   const BA = mul(B, A);
   return {
-    ...meta("quiz-L4-adv", "Comparer AB et BA", "Avancé"),
+    ...meta("quiz-L4-adv", "Comparer AB et BA", "Difficile"),
     prompt: [
       t("Calculer AB et BA pour "),
       mat(asCells(A), "A ="),
@@ -126,7 +126,7 @@ function advMixedProduct(): Exercise {
   const AB = mul(A, B);
   const BA = mul(B, A);
   return {
-    ...meta("quiz-L4-adv", "Produits non carrés AB et BA", "Avancé"),
+    ...meta("quiz-L4-adv", "Produits non carrés AB et BA", "Difficile"),
     prompt: [
       t("Calculer AB et BA pour "),
       mat(asCells(A), "A ="),

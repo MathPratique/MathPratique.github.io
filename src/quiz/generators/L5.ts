@@ -18,7 +18,7 @@ function easySquareCube(): Exercise {
   const A2 = mul(A, A);
   const A3 = mul(A2, A);
   return {
-    ...meta("quiz-L5-easy", "Calculer A² et A³", "Fondamental"),
+    ...meta("quiz-L5-easy", "Calculer A² et A³", "Facile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -61,7 +61,7 @@ function interShowNonCommut(): Exercise {
   const AB = mul(A, B);
   const BA = mul(B, A);
   return {
-    ...meta("quiz-L5-inter", "Vérifier que AB ≠ BA en général", "Intermédiaire"),
+    ...meta("quiz-L5-inter", "Vérifier que AB ≠ BA en général", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -95,7 +95,7 @@ function interMixedExpr(): Exercise {
     row.map((v, j) => v - AB[i][j] + BA[i][j])
   );
   return {
-    ...meta("quiz-L5-inter", "Calculer A² − AB + BA", "Intermédiaire"),
+    ...meta("quiz-L5-inter", "Calculer A² − AB + BA", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -130,7 +130,7 @@ function advPattern(): Exercise {
     [0, 1],
   ];
   return {
-    ...meta("quiz-L5-adv", "Conjecturer Aⁿ pour une matrice unipotente", "Avancé"),
+    ...meta("quiz-L5-adv", "Conjecturer Aⁿ pour une matrice unipotente", "Difficile"),
     prompt: [
       t("Soit "),
       mat(asCells(A), "A ="),
@@ -168,7 +168,7 @@ function advNilpotent(): Exercise {
     [0, 0],
   ];
   return {
-    ...meta("quiz-L5-adv", "Étudier les puissances d'une matrice nilpotente", "Avancé"),
+    ...meta("quiz-L5-adv", "Étudier les puissances d'une matrice nilpotente", "Difficile"),
     prompt: [
       t("Soit "),
       mat(asCells(A), "A ="),

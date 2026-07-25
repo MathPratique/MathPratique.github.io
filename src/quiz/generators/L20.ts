@@ -28,7 +28,7 @@ function easyRankFromRREF(): Exercise {
           [0, 0, 1, randInt(-2, 2)],
         ];
   return {
-    ...meta("quiz-L20-easy", "Lire le rang directement d'une matrice en RREF", "Fondamental"),
+    ...meta("quiz-L20-easy", "Lire le rang directement d'une matrice en RREF", "Facile"),
     prompt: [
       t("Donner le rang de la matrice suivante (déjà en forme échelon réduite) : "),
       mat(asCells(A)),
@@ -56,7 +56,7 @@ function interCompareRanks(): Exercise {
         [0, 0, 0, 0],
       ];
   return {
-    ...meta("quiz-L20-inter", "Comparer rang(A) et rang(A|B)", "Intermédiaire"),
+    ...meta("quiz-L20-inter", "Comparer rang(A) et rang(A|B)", "Moyen"),
     prompt: [
       t("Pour la matrice augmentée "),
       mat(asCells(A_aug)),
@@ -84,7 +84,7 @@ function interRankFromNonRREF(): Exercise {
     [0, 0, 0],
   ];
   return {
-    ...meta("quiz-L20-inter", "Trouver le rang en réduisant d'abord", "Intermédiaire"),
+    ...meta("quiz-L20-inter", "Trouver le rang en réduisant d'abord", "Moyen"),
     prompt: [
       t("Trouver rang(A) pour "),
       mat(asCells(A), "A ="),
@@ -102,7 +102,7 @@ function advNumberOfSolutionsAnalysis(): Exercise {
   // System: [[1, k, 1], [k, 1, 1], [1, 1, k]] X = [[1], [1], [1]]
   // For specific k = 1: rank degenerates
   return {
-    ...meta("quiz-L20-adv", "Discuter le nombre de solutions en fonction d'un paramètre", "Avancé"),
+    ...meta("quiz-L20-adv", "Discuter le nombre de solutions en fonction d'un paramètre", "Difficile"),
     prompt: [
       t("Soit le système ayant pour matrice augmentée "),
       mat([
@@ -132,7 +132,7 @@ function advRankProduct(): Exercise {
   const ra = pick([2, 3]);
   const rb = pick([1, 2]);
   return {
-    ...meta("quiz-L20-adv", "Borner le rang d'un produit AB", "Avancé"),
+    ...meta("quiz-L20-adv", "Borner le rang d'un produit AB", "Difficile"),
     prompt: [
       t(`Si A est 4×3 avec rang(A) = ${ra}, et B est 3×5 avec rang(B) = ${rb}, donner une borne supérieure pour rang(AB).`),
     ],

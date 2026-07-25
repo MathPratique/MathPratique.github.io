@@ -29,7 +29,7 @@ function easyAX_B(): Exercise {
   const d = det2(A);
   const invA = inv2(A)!;
   return {
-    ...meta("quiz-L8-easy", "Résoudre AX = B par la matrice inverse", "Fondamental"),
+    ...meta("quiz-L8-easy", "Résoudre AX = B par la matrice inverse", "Facile"),
     prompt: [
       t("Résoudre AX = B avec "),
       mat(asCells(A), "A ="),
@@ -58,7 +58,7 @@ function interTransposeInverse(): Exercise {
   const invAT = inv2(AT)!;
   const dAT = det2(AT);
   return {
-    ...meta("quiz-L8-inter", "Calculer (Aᵀ)⁻¹ via (A⁻¹)ᵀ", "Intermédiaire"),
+    ...meta("quiz-L8-inter", "Calculer (Aᵀ)⁻¹ via (A⁻¹)ᵀ", "Moyen"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
@@ -96,7 +96,7 @@ function interSolveSystem(): Exercise {
   const X = [[randInt(-3, 3)], [randInt(-3, 3)]];
   const B = mul(A, X);
   return {
-    ...meta("quiz-L8-inter", "Résoudre un système 2×2 via l'inverse", "Intermédiaire"),
+    ...meta("quiz-L8-inter", "Résoudre un système 2×2 via l'inverse", "Moyen"),
     prompt: [
       t("Résoudre le système AX = B pour X, avec "),
       mat(asCells(A), "A ="),
@@ -124,7 +124,7 @@ function advInversionCheck(): Exercise {
   }
   const product = mul(A, B);
   return {
-    ...meta("quiz-L8-adv", "Vérifier si une matrice est bien l'inverse", "Avancé"),
+    ...meta("quiz-L8-adv", "Vérifier si une matrice est bien l'inverse", "Difficile"),
     prompt: [
       t("Soit "),
       mat(asCells(A), "A ="),
@@ -153,7 +153,7 @@ function advProperty(): Exercise {
   const invA = inv2(A)!;
   const d = det2(A);
   return {
-    ...meta("quiz-L8-adv", "Vérifier (A⁻¹)⁻¹ = A", "Avancé"),
+    ...meta("quiz-L8-adv", "Vérifier (A⁻¹)⁻¹ = A", "Difficile"),
     prompt: [
       t("Pour "),
       mat(asCells(A), "A ="),
