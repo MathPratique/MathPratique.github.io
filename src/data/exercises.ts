@@ -4960,6 +4960,274 @@ const manualExercises: Exercise[] = [
     ],
     answer: "x = 56 (à 1,5 écart-type sous la moyenne du groupe).",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (15 exercices difficiles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "stat-diff-01",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 51,
+    title: "Critiquer un sondage électoral",
+    difficulty: "Avancé",
+    prompt:
+      "Un institut prédit le résultat d'une élection provinciale en sondant 1200 personnes dans 5 régions urbaines du Québec, avec une marge d'erreur affichée de ±3 %. Le lendemain de l'élection, les résultats diffèrent nettement du sondage. Propose au moins deux raisons statistiques pouvant expliquer cet écart.",
+    steps: [
+      "Représentativité géographique : les 5 régions urbaines ne couvrent pas la population rurale et semi-urbaine, ce qui introduit un biais.",
+      "Méthode de collecte : selon le mode (téléphone, en ligne), certains groupes sont sous-représentés (aînés, jeunes sans ligne fixe, non-abonnés).",
+      "Comportement des indécis : ils peuvent basculer massivement dans les derniers jours, non captés par un sondage antérieur.",
+      "La marge de ±3 % couvre l'erreur d'échantillonnage aléatoire, pas les biais systématiques ci-dessus.",
+    ],
+    answer:
+      "Biais géographique + biais de méthode + volatilité des indécis. La marge d'erreur ne couvre que l'aléa d'échantillonnage, pas les biais systémiques.",
+  },
+  {
+    id: "stat-diff-02",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 52,
+    title: "Deux variables — types et représentation",
+    difficulty: "Avancé",
+    prompt:
+      "Un chercheur mesure l'apport calorique quotidien (kcal) de 200 étudiants et note s'ils pratiquent un sport (Oui/Non). Il veut comparer les deux groupes. (a) Identifie les deux variables et leur type. (b) Propose une représentation graphique adaptée pour comparer les distributions.",
+    steps: [
+      "(a) Pratique du sport : Oui/Non → qualitative nominale (deux catégories, sans ordre).",
+      "Apport calorique : mesure numérique → quantitative continue.",
+      "(b) Comme on croise une qualitative (sport) et une quantitative continue (apport), on trace deux histogrammes (un pour Oui, un pour Non) ou deux boîtes à moustaches parallèles pour comparer les distributions.",
+    ],
+    answer:
+      "(a) Sport : qualitative nominale ; apport calorique : quantitative continue. (b) Deux histogrammes superposés ou deux boîtes à moustaches parallèles.",
+  },
+  {
+    id: "stat-diff-03",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 53,
+    title: "Feu de circulation — nominale ou ordinale ?",
+    difficulty: "Avancé",
+    prompt:
+      "La couleur d'un feu de circulation prend les valeurs « rouge », « jaune », « vert ». Argumente d'abord en faveur d'une classification nominale, puis en faveur d'une classification ordinale. Quelle classification retiens-tu et pourquoi ?",
+    steps: [
+      "Argument nominal : les couleurs sont des étiquettes sans ordre intrinsèque — rouge ≠ « plus grand » que vert.",
+      "Argument ordinal : dans le contexte du feu, il existe un ordre fonctionnel (vert → jaune → rouge → vert), donc un cycle.",
+      "Cependant, un ordre cyclique n'est pas un ordre total (on ne peut pas dire strictement rouge < vert ou l'inverse). La classification usuelle est donc nominale.",
+      "Retenu : qualitative nominale.",
+    ],
+    answer: "Qualitative nominale (l'ordre cyclique du feu ne définit pas un ordre total).",
+  },
+  {
+    id: "stat-diff-04",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 54,
+    title: "Construire une distribution en 4 classes",
+    difficulty: "Avancé",
+    prompt:
+      "Voici les temps (en secondes) que 20 rats ont pris pour résoudre un labyrinthe : 45, 67, 52, 78, 34, 92, 55, 71, 48, 63, 82, 58, 41, 75, 88, 66, 51, 73, 60, 84. Construis une distribution en 4 classes d'amplitude égale et calcule les fréquences relatives cumulées.",
+    steps: [
+      "Étendue : E = 92 − 34 = 58 s. Amplitude : A = 58/4 = 14,5 → arrondie à 15 s.",
+      "Classes (à partir de 34) : [34 ; 49), [49 ; 64), [64 ; 79), [79 ; 94).",
+      "Effectifs (en comptant chaque valeur) : 4, 6, 6, 4. Total : 20 ✓.",
+      "Fréquences relatives : 20 %, 30 %, 30 %, 20 %.",
+      "Cumulées : 20 %, 50 %, 80 %, 100 %.",
+    ],
+    answer:
+      "[34;49) : 4 (20 %) ; [49;64) : 6 (30 %) ; [64;79) : 6 (30 %) ; [79;94) : 4 (20 %). Cumulées : 20 %, 50 %, 80 %, 100 %.",
+  },
+  {
+    id: "stat-diff-05",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 55,
+    title: "Distribution asymétrique — moyenne ou médiane ?",
+    difficulty: "Avancé",
+    prompt:
+      "L'histogramme des revenus annuels d'une population montre une distribution très asymétrique à droite (longue queue à droite). (a) La moyenne sera-t-elle plus grande, plus petite ou égale à la médiane ? (b) Quelle mesure privilégier pour représenter le « revenu typique » ? Justifie.",
+    steps: [
+      "(a) Dans une distribution asymétrique à droite, la longue queue tire la moyenne vers les grandes valeurs. La moyenne > médiane.",
+      "(b) La médiane est plus représentative du revenu typique : robuste aux valeurs extrêmes, elle indique le milieu réel de la distribution.",
+      "La moyenne, elle, serait tirée vers le haut par une minorité de très hauts revenus.",
+    ],
+    answer: "(a) Moyenne > médiane. (b) La médiane représente mieux le revenu typique.",
+  },
+  {
+    id: "stat-diff-06",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 56,
+    title: "Choix du nombre de classes",
+    difficulty: "Avancé",
+    prompt:
+      "Un chercheur analyse les rendements agricoles de 500 parcelles, allant de 2 à 12 t/ha. Il hésite entre 4 classes (amplitude 2,5 t/ha) et 20 classes (amplitude 0,5 t/ha). Discute des avantages et inconvénients de chaque choix et propose un compromis.",
+    steps: [
+      "4 classes : histogramme lisible et compact, mais très peu de résolution — risque de masquer une structure bimodale ou des sous-groupes.",
+      "20 classes : très détaillé mais bruité (peu d'observations par classe → hauteurs de barres irrégulières et peu fiables).",
+      "Règle empirique : pour n = 500, entre 8 et 15 classes est raisonnable.",
+      "Compromis : 10 classes d'amplitude 1 t/ha — lisibilité correcte et résolution suffisante.",
+    ],
+    answer:
+      "4 classes = trop grossier ; 20 classes = trop bruité. Compromis : 10 classes d'amplitude 1 t/ha.",
+  },
+  {
+    id: "stat-diff-07",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 57,
+    title: "Paradoxe de Simpson dans un tableau croisé",
+    difficulty: "Avancé",
+    prompt:
+      "Le cégep A a un taux global d'admission de 40 %, le cégep B de 50 %. Pourtant, quand on compare programme par programme, le cégep A admet un plus grand pourcentage de candidats dans chaque programme. Comment est-ce possible ?",
+    steps: [
+      "C'est un exemple du paradoxe de Simpson (effet de composition).",
+      "Le cégep A reçoit peut-être beaucoup de candidatures dans des programmes très sélectifs (taux d'admission faible), tirant sa moyenne globale vers le bas.",
+      "Le cégep B reçoit peut-être surtout des candidatures dans des programmes peu sélectifs (taux d'admission élevé), tirant sa moyenne vers le haut.",
+      "En agrégeant les données, la composition différente des candidatures inverse la comparaison programme par programme.",
+    ],
+    answer:
+      "Paradoxe de Simpson : la composition différente des candidatures (par programme) inverse la comparaison globale.",
+  },
+  {
+    id: "stat-diff-08",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 58,
+    title: "Graphique trompeur — axe tronqué",
+    difficulty: "Avancé",
+    prompt:
+      "Un magazine publie un graphique à bandes comparant les ventes 2022 (500 000 $) et 2023 (550 000 $) d'une entreprise. La barre de 2023 paraît environ deux fois plus grande que celle de 2022. Quel est le problème et comment le corriger ?",
+    steps: [
+      "L'axe des Y est probablement tronqué (par exemple, commence à 480 000 $ au lieu de 0).",
+      "Cela exagère visuellement une croissance réelle de 10 % (50 000 sur 500 000).",
+      "Correction : étendre l'axe Y jusqu'à 0 pour que la hauteur des bandes soit proportionnelle à la valeur réelle.",
+      "Sinon, mentionner explicitement la troncature et l'échelle utilisée.",
+    ],
+    answer: "L'axe Y est tronqué (ne part pas de 0), ce qui exagère la différence. Étendre l'axe à 0.",
+  },
+  {
+    id: "stat-diff-09",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 59,
+    title: "La moyenne cache la distribution",
+    difficulty: "Avancé",
+    prompt:
+      "Un professeur affirme : « La moyenne de ma classe à l'examen est de 75 %, donc la majorité de mes étudiants ont bien réussi. » Cette affirmation est-elle nécessairement vraie ? Donne un contre-exemple numérique clair.",
+    steps: [
+      "Non. La moyenne ne renseigne pas sur la répartition des notes.",
+      "Contre-exemple : dans une classe de 20 étudiants, 4 obtiennent 100 % et 16 obtiennent 68,75 %.",
+      "Vérification de la moyenne : (4 × 100 + 16 × 68,75) / 20 = (400 + 1100) / 20 = 75 %. ✓",
+      "Mais 80 % des étudiants ont eu moins que 75 % — le professeur ne peut pas conclure que « la majorité » a bien réussi.",
+    ],
+    answer:
+      "Non. Ex : 4 étudiants à 100 % et 16 à 68,75 % → moyenne = 75 %, mais 80 % des étudiants ont moins que 75 %.",
+  },
+  {
+    id: "stat-diff-10",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 60,
+    title: "Mesure de tendance centrale sur temps de visite",
+    difficulty: "Avancé",
+    prompt:
+      "Un analyste étudie le temps passé par les visiteurs sur un site web. La distribution montre une longue queue à droite (quelques « power users » restent des heures). Quelle mesure de tendance centrale devrait-il rapporter pour caractériser un visiteur typique ? Que se passerait-il s'il rapportait la moyenne ?",
+    steps: [
+      "La distribution asymétrique à droite tire la moyenne vers le haut à cause des power users.",
+      "La moyenne surestimerait donc le temps du visiteur typique.",
+      "La médiane, robuste aux valeurs extrêmes, est plus fidèle au comportement du visiteur ordinaire.",
+      "Compléter éventuellement avec un mode ou une distribution complète pour révéler la présence de sous-populations.",
+    ],
+    answer:
+      "Rapporter la médiane. La moyenne serait surestimée par les power users et ne représenterait pas le visiteur typique.",
+  },
+  {
+    id: "stat-diff-11",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 61,
+    title: "Coefficient de variation — comparer des unités différentes",
+    difficulty: "Avancé",
+    prompt:
+      "Un ornithologue compare la variabilité de deux caractéristiques mesurées sur une même population d'oiseaux : la masse (moyenne 30 g, écart-type 5 g) et l'envergure des ailes (moyenne 300 mm, écart-type 20 mm). Laquelle est proportionnellement plus variable ? Calcule le coefficient de variation CV = s / x̄ (exprimé en %).",
+    steps: [
+      "CV de la masse : CV_M = s / x̄ = 5 / 30 ≈ 0,167 = 16,7 %.",
+      "CV de l'envergure : CV_E = 20 / 300 ≈ 0,067 = 6,7 %.",
+      "16,7 % / 6,7 % ≈ 2,5 : la masse est environ 2,5 fois plus variable proportionnellement à sa moyenne.",
+      "Le CV permet de comparer la variabilité entre variables d'unités différentes, ce que l'écart-type seul ne permet pas.",
+    ],
+    answer: "CV_M ≈ 16,7 % ; CV_E ≈ 6,7 %. La masse est ~2,5× plus variable proportionnellement.",
+  },
+  {
+    id: "stat-diff-12",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 62,
+    title: "Sensibilité aux valeurs aberrantes",
+    difficulty: "Avancé",
+    prompt:
+      "Voici les temps d'attente (en minutes) de 8 patients aux urgences : 20, 25, 30, 22, 28, 24, 26, 200. (a) Calcule la moyenne et la médiane. (b) Retire la valeur 200 et refais les calculs. (c) Commente sur la sensibilité de chaque mesure à la valeur aberrante.",
+    steps: [
+      "(a) Somme = 375, moyenne = 375/8 ≈ 46,9 min. Ordonné : 20, 22, 24, 25, 26, 28, 30, 200 → médiane = (25+26)/2 = 25,5 min.",
+      "(b) Sans 200 : somme = 175, moyenne = 175/7 = 25 min. Ordonné : 20, 22, 24, 25, 26, 28, 30 → médiane = 25 min.",
+      "(c) La moyenne a chuté de 46,9 à 25 min (variation de ~47 %) — très sensible à la valeur aberrante.",
+      "La médiane est passée de 25,5 à 25 min (variation négligeable) — robuste aux valeurs aberrantes.",
+    ],
+    answer:
+      "(a) Moyenne ≈ 46,9 ; médiane = 25,5. (b) Moyenne = 25 ; médiane = 25. (c) La médiane est robuste, la moyenne est très sensible aux valeurs aberrantes.",
+  },
+  {
+    id: "stat-diff-13",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 63,
+    title: "Cote z pour détecter une valeur atypique",
+    difficulty: "Avancé",
+    prompt:
+      "Dans une étude clinique, la glycémie à jeun d'un groupe de contrôle a une moyenne de 5,2 mmol/L et un écart-type de 0,4 mmol/L. Un patient présente une valeur de 7,8 mmol/L. (a) Calcule sa cote z. (b) Cette valeur est-elle atypique ? (c) Quelle recommandation clinique donnerais-tu ?",
+    steps: [
+      "(a) z = (7,8 − 5,2) / 0,4 = 2,6 / 0,4 = 6,5.",
+      "(b) |z| = 6,5 est très largement supérieur au seuil typique de 2. C'est une valeur extrêmement atypique.",
+      "(c) Recommandation : vérifier la mesure (risque d'erreur), refaire un test à jeun, et investiguer une possible pathologie (diabète). Un z de 6,5 est cliniquement très significatif.",
+    ],
+    answer:
+      "(a) z = 6,5. (b) Extrêmement atypique. (c) Vérifier la mesure et investiguer une pathologie (diabète possible).",
+  },
+  {
+    id: "stat-diff-14",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 64,
+    title: "Retrouver deux notes à partir de cotes z",
+    difficulty: "Avancé",
+    prompt:
+      "Deux étudiants ont obtenu des cotes z de +1,25 et −0,75 à un examen dont la moyenne est 70 % et l'écart-type est 12 %. (a) Retrouve leurs notes brutes. (b) Quelle est la différence entre leurs notes en écarts-types ? En points ?",
+    steps: [
+      "(a) On isole x dans z = (x − x̄) / s : x = x̄ + z · s.",
+      "Étudiant 1 : x₁ = 70 + 1,25 × 12 = 70 + 15 = 85 %.",
+      "Étudiant 2 : x₂ = 70 + (−0,75) × 12 = 70 − 9 = 61 %.",
+      "(b) En écarts-types : 1,25 − (−0,75) = 2 écarts-types de différence.",
+      "En points : 85 − 61 = 24 points (équivalent à 2 × 12 = 24 ✓).",
+    ],
+    answer:
+      "(a) 85 % et 61 %. (b) 2 écarts-types = 24 points.",
+  },
+  {
+    id: "stat-diff-15",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 65,
+    title: "Contrôle qualité et règle empirique",
+    difficulty: "Avancé",
+    prompt:
+      "Une usine produit des barres d'acier dont la longueur suit approximativement une loi symétrique en cloche, avec moyenne 200 mm et écart-type 3 mm. Le contrôle qualité rejette toute barre dont la cote z est en dehors de [−3 ; +3]. (a) À quelles longueurs correspondent les seuils de rejet ? (b) Sur 500 barres produites, environ combien seront rejetées ? (Indice : règle empirique 68-95-99,7.)",
+    steps: [
+      "(a) Seuil bas : x = 200 + (−3)(3) = 191 mm. Seuil haut : x = 200 + 3(3) = 209 mm.",
+      "Rejet si longueur < 191 mm ou > 209 mm.",
+      "(b) D'après la règle empirique 68-95-99,7, environ 99,7 % des valeurs sont dans [µ − 3σ ; µ + 3σ].",
+      "Donc environ 0,3 % (soit 100 % − 99,7 %) sont hors de cet intervalle.",
+      "Sur 500 barres : 500 × 0,003 = 1,5 barre. En pratique, on rejettera 1 ou 2 barres.",
+    ],
+    answer: "(a) Rejet si < 191 mm ou > 209 mm. (b) ≈ 0,3 % soit environ 1 ou 2 barres sur 500.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
