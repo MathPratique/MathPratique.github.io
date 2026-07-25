@@ -7,8 +7,8 @@ import RichContent from "../ui/RichContent";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
   Facile: "bg-accent-500/10 text-accent-600",
-  Moyen: "bg-brand-100 text-brand-700",
-  Difficile: "bg-amber-100 text-amber-700",
+  Moyen: "bg-yellow-100 text-yellow-700",
+  Difficile: "bg-red-100 text-red-700",
 };
 
 // Deterministic shuffle so the same exercise always shows options in the same
