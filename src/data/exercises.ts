@@ -5228,6 +5228,343 @@ const manualExercises: Exercise[] = [
     ],
     answer: "(a) Rejet si < 191 mm ou > 209 mm. (b) ≈ 0,3 % soit environ 1 ou 2 barres sur 500.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (16 QCM)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "stat-qcm-01",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 66,
+    title: "QCM — Définition de la population",
+    difficulty: "Fondamental",
+    type: "mcq",
+    prompt:
+      "Un chercheur veut estimer la proportion de personnes séropositives dans la région de Montréal. Il teste 300 volontaires. Dans ce contexte, quelle est la population de l'étude ?",
+    options: [
+      { id: "a", content: "Les 300 volontaires testés", correct: false },
+      { id: "b", content: "L'ensemble des habitants de la région de Montréal", correct: true },
+      { id: "c", content: "Uniquement les personnes séropositives", correct: false },
+      { id: "d", content: "Les 4 % de résultats positifs obtenus", correct: false },
+    ],
+    explanation:
+      "La population est l'ensemble de tous les individus visés par l'étude — ici, tous les habitants de Montréal. Les 300 volontaires constituent l'échantillon (a). L'option (c) confond population et sous-groupe d'intérêt, et (d) est une statistique, pas une population.",
+    steps: [],
+    answer: "L'ensemble des habitants de la région de Montréal.",
+  },
+  {
+    id: "stat-qcm-02",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 67,
+    title: "QCM — Type de variable (poids)",
+    difficulty: "Fondamental",
+    type: "mcq",
+    prompt: "Le poids d'un colis (en kg) est une variable :",
+    options: [
+      { id: "a", content: "Qualitative nominale", correct: false },
+      { id: "b", content: "Qualitative ordinale", correct: false },
+      { id: "c", content: "Quantitative discrète", correct: false },
+      { id: "d", content: "Quantitative continue", correct: true },
+    ],
+    explanation:
+      "Le poids est un nombre → quantitatif. Il provient d'une mesure sur un intervalle continu (peut prendre n'importe quelle valeur : 2,3 kg, 2,315 kg, etc.) → continu.",
+    steps: [],
+    answer: "Quantitative continue.",
+  },
+  {
+    id: "stat-qcm-03",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 68,
+    title: "QCM — Calcul d'une fréquence relative",
+    difficulty: "Fondamental",
+    type: "mcq",
+    prompt:
+      "Dans un groupe de 80 étudiants, 20 sont inscrits en Sciences. La fréquence relative des étudiants en Sciences est :",
+    options: [
+      { id: "a", content: "0,20", correct: false },
+      { id: "b", content: "20 %", correct: false },
+      { id: "c", content: "0,25 (soit 25 %)", correct: true },
+      { id: "d", content: "60 %", correct: false },
+    ],
+    explanation:
+      "Fréquence relative = nᵢ / n = 20 / 80 = 0,25 = 25 %. Les options (a) et (b) confondent avec 20 / 100. (d) est le complément (les 60 % non-Sciences).",
+    steps: [],
+    answer: "0,25 (25 %).",
+  },
+  {
+    id: "stat-qcm-04",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 69,
+    title: "QCM — Amplitude d'une classe",
+    difficulty: "Fondamental",
+    type: "mcq",
+    prompt:
+      "Pour construire une distribution en 5 classes d'amplitude égale à partir de données allant de 0 à 100, quelle amplitude minimale doit avoir chaque classe ?",
+    options: [
+      { id: "a", content: "5", correct: false },
+      { id: "b", content: "10", correct: false },
+      { id: "c", content: "20", correct: true },
+      { id: "d", content: "25", correct: false },
+    ],
+    explanation:
+      "Étendue E = 100 − 0 = 100. Amplitude minimale A = E / k = 100 / 5 = 20. Une amplitude plus petite (5, 10) ne couvre pas toute l'étendue en 5 classes.",
+    steps: [],
+    answer: "20.",
+  },
+  {
+    id: "stat-qcm-05",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 70,
+    title: "QCM — Graphique pour variable continue",
+    difficulty: "Fondamental",
+    type: "mcq",
+    prompt:
+      "Pour représenter la distribution de la taille (en cm) de 500 adultes, le graphique le plus approprié est :",
+    options: [
+      { id: "a", content: "Un diagramme à bandes", correct: false },
+      { id: "b", content: "Un diagramme circulaire", correct: false },
+      { id: "c", content: "Un histogramme", correct: true },
+      { id: "d", content: "Un nuage de points", correct: false },
+    ],
+    explanation:
+      "La taille est une variable quantitative continue. Pour visualiser sa distribution, on regroupe les valeurs en classes d'amplitude égale et on utilise un histogramme.",
+    steps: [],
+    answer: "Un histogramme.",
+  },
+  {
+    id: "stat-qcm-06",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 71,
+    title: "QCM — Définition du mode",
+    difficulty: "Fondamental",
+    type: "mcq",
+    prompt: "Le mode d'une série de données est :",
+    options: [
+      { id: "a", content: "La valeur qui divise les données ordonnées en deux moitiés égales", correct: false },
+      { id: "b", content: "La moyenne arithmétique des valeurs", correct: false },
+      { id: "c", content: "La valeur qui apparaît le plus souvent", correct: true },
+      { id: "d", content: "La différence entre le maximum et le minimum", correct: false },
+    ],
+    explanation:
+      "Le mode est la valeur (ou classe) qui apparaît le plus souvent dans le jeu de données. (a) définit la médiane, (b) la moyenne, (d) l'étendue.",
+    steps: [],
+    answer: "La valeur qui apparaît le plus souvent.",
+  },
+  {
+    id: "stat-qcm-07",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 72,
+    title: "QCM — Sondage sur Instagram",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Un sondage en ligne diffusé sur Instagram récolte 5000 réponses de jeunes de 15 à 25 ans sur leur usage des écrans. Ce sondage souffre principalement de :",
+    options: [
+      { id: "a", content: "Une taille d'échantillon insuffisante", correct: false },
+      { id: "b", content: "Un biais de sélection (auto-sélection)", correct: true },
+      { id: "c", content: "Une variable mal définie", correct: false },
+      { id: "d", content: "Aucun problème, l'échantillon est représentatif", correct: false },
+    ],
+    explanation:
+      "L'échantillon est auto-sélectionné : seuls les jeunes actifs sur Instagram et intéressés par le sujet répondent. Cela surreprésente les grands utilisateurs d'écrans. Une taille de 5000 n'est pas insuffisante ; c'est la méthode qui pose problème.",
+    steps: [],
+    answer: "Un biais de sélection (auto-sélection).",
+  },
+  {
+    id: "stat-qcm-08",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 73,
+    title: "QCM — Échelle de Likert",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Une échelle de Likert « Fortement en désaccord / En désaccord / Neutre / D'accord / Fortement d'accord » est une variable :",
+    options: [
+      { id: "a", content: "Qualitative nominale", correct: false },
+      { id: "b", content: "Qualitative ordinale", correct: true },
+      { id: "c", content: "Quantitative discrète", correct: false },
+      { id: "d", content: "Quantitative continue", correct: false },
+    ],
+    explanation:
+      "Les valeurs sont des catégories (mots) → qualitative. Elles ont un ordre naturel du plus en désaccord au plus d'accord → ordinale. On ne peut pas dire que la différence entre « Neutre » et « D'accord » est numériquement égale à celle entre « D'accord » et « Fortement d'accord », donc pas quantitative.",
+    steps: [],
+    answer: "Qualitative ordinale.",
+  },
+  {
+    id: "stat-qcm-09",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 74,
+    title: "QCM — Fréquence relative cumulée",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Dans une distribution, la fréquence relative cumulée jusqu'à la 3ᵉ classe est de 65 %. La 4ᵉ classe a une fréquence relative de 20 %. La fréquence relative cumulée jusqu'à la 4ᵉ classe est :",
+    options: [
+      { id: "a", content: "20 %", correct: false },
+      { id: "b", content: "45 %", correct: false },
+      { id: "c", content: "85 %", correct: true },
+      { id: "d", content: "100 %", correct: false },
+    ],
+    explanation:
+      "La fréquence cumulée s'obtient en ajoutant la fréquence relative de la 4ᵉ classe à la cumulée précédente : 65 % + 20 % = 85 %.",
+    steps: [],
+    answer: "85 %.",
+  },
+  {
+    id: "stat-qcm-10",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 75,
+    title: "QCM — Proportion conditionnelle (tableau croisé)",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Dans un groupe de 200 personnes : 80 femmes (dont 30 fument) et 120 hommes (dont 45 fument). La proportion de fumeurs parmi les hommes est :",
+    options: [
+      { id: "a", content: "22,5 %", correct: false },
+      { id: "b", content: "37,5 %", correct: true },
+      { id: "c", content: "45 %", correct: false },
+      { id: "d", content: "60 %", correct: false },
+    ],
+    explanation:
+      "On conditionne sur les hommes : 45 fumeurs sur 120 hommes = 45/120 = 0,375 = 37,5 %. L'option (a) est 45/200 (proportion des hommes fumeurs dans le total). (c) confond avec le nombre absolu 45.",
+    steps: [],
+    answer: "37,5 %.",
+  },
+  {
+    id: "stat-qcm-11",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 76,
+    title: "QCM — Choix de la meilleure mesure de position",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Sur les données 15, 22, 19, 44, 21, 18, 23, quelle mesure représente le mieux le « centre typique » ?",
+    options: [
+      { id: "a", content: "La moyenne (≈ 23,1), car elle utilise toutes les données", correct: false },
+      { id: "b", content: "La médiane (21), car elle est robuste à la valeur extrême 44", correct: true },
+      { id: "c", content: "Le mode (aucun, car pas de répétition)", correct: false },
+      { id: "d", content: "L'étendue (29)", correct: false },
+    ],
+    explanation:
+      "La donnée 44 est nettement plus élevée que les autres, ce qui tire la moyenne (≈ 23,1) vers le haut. La médiane (rang 4 = 21) reste au cœur de la majorité des données. Le mode n'existe pas ici (aucune répétition). L'étendue n'est pas une mesure de tendance centrale.",
+    steps: [],
+    answer: "La médiane (21).",
+  },
+  {
+    id: "stat-qcm-12",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 77,
+    title: "QCM — Comparaison d'écarts-types",
+    difficulty: "Intermédiaire",
+    type: "mcq",
+    prompt:
+      "Deux jeux de données ont la même moyenne. Le premier a un écart-type s = 2, le deuxième s = 10. Que peut-on affirmer ?",
+    options: [
+      { id: "a", content: "Le deuxième jeu contient plus de données", correct: false },
+      { id: "b", content: "Les deux jeux sont identiques", correct: false },
+      { id: "c", content: "Le premier jeu a des valeurs plus regroupées autour de la moyenne", correct: true },
+      { id: "d", content: "Le premier jeu contient plus de valeurs aberrantes", correct: false },
+    ],
+    explanation:
+      "L'écart-type mesure la dispersion. Un petit s (= 2) signifie que les valeurs sont proches de la moyenne (regroupées). Un grand s (= 10) signifie qu'elles sont dispersées. La taille des jeux n'est pas indiquée (a). Ils ne sont pas identiques (b). Les valeurs aberrantes sont plus probables dans le deuxième jeu, pas le premier (d).",
+    steps: [],
+    answer: "Le premier jeu a des valeurs plus regroupées autour de la moyenne.",
+  },
+  {
+    id: "stat-qcm-13",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 78,
+    title: "QCM — Piège du code numérique",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Un chercheur numérote ses échantillons de 1 à 100 pour les identifier. Il calcule la « moyenne des numéros d'échantillons ». Ce calcul :",
+    options: [
+      { id: "a", content: "Est valide, car les numéros sont quantitatifs", correct: false },
+      { id: "b", content: "Est valide et donne 50, la médiane des identifiants", correct: false },
+      { id: "c", content: "N'est pas valide : les numéros sont des étiquettes (qualitative nominale)", correct: true },
+      { id: "d", content: "N'est valide que si les échantillons sont ordonnés chronologiquement", correct: false },
+    ],
+    explanation:
+      "Un code numérique n'est pas automatiquement quantitatif. Ici, les numéros servent uniquement d'identifiants — leur moyenne (50,5) n'a aucune signification. C'est une variable qualitative nominale. Test à retenir : « Est-ce que la moyenne aurait du sens ? » — non, donc pas quantitatif.",
+    steps: [],
+    answer: "N'est pas valide (variable qualitative nominale).",
+  },
+  {
+    id: "stat-qcm-14",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 79,
+    title: "QCM — Forme de la distribution",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Dans une distribution où moyenne = 100, médiane = 80 et mode = 75, la forme de la distribution est :",
+    options: [
+      { id: "a", content: "Symétrique", correct: false },
+      { id: "b", content: "Asymétrique à gauche (queue à gauche)", correct: false },
+      { id: "c", content: "Asymétrique à droite (queue à droite)", correct: true },
+      { id: "d", content: "Uniforme", correct: false },
+    ],
+    explanation:
+      "Lorsque moyenne > médiane > mode, la queue s'étend vers la droite (grandes valeurs). C'est parce que la moyenne est tirée vers les extrémités hautes par quelques valeurs élevées, alors que médiane et mode restent au cœur de la majorité. Ordre inverse (moyenne < médiane < mode) → asymétrique à gauche. Symétrique : moyenne = médiane = mode.",
+    steps: [],
+    answer: "Asymétrique à droite.",
+  },
+  {
+    id: "stat-qcm-15",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 80,
+    title: "QCM — Effet d'une translation sur l'écart-type",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Une variable X a x̄ = 50 et s = 10. Si on ajoute 5 à chaque valeur, quelle est la nouvelle valeur de l'écart-type ?",
+    options: [
+      { id: "a", content: "5", correct: false },
+      { id: "b", content: "10", correct: true },
+      { id: "c", content: "15", correct: false },
+      { id: "d", content: "55", correct: false },
+    ],
+    explanation:
+      "Une translation (ajouter la même constante à toutes les valeurs) déplace la moyenne mais ne change pas la dispersion. Chaque écart (xᵢ − x̄) reste identique : (xᵢ + 5) − (x̄ + 5) = xᵢ − x̄. Donc s reste 10. Seule la moyenne passe de 50 à 55.",
+    steps: [],
+    answer: "10 (l'écart-type ne change pas sous translation).",
+  },
+  {
+    id: "stat-qcm-16",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 81,
+    title: "QCM — Retrouver une valeur à partir d'une cote z",
+    difficulty: "Avancé",
+    type: "mcq",
+    prompt:
+      "Dans une distribution normale de moyenne 100 et d'écart-type 15, une observation a une cote z de +2,5. La valeur brute correspondante est :",
+    options: [
+      { id: "a", content: "62,5", correct: false },
+      { id: "b", content: "100", correct: false },
+      { id: "c", content: "137,5", correct: true },
+      { id: "d", content: "250", correct: false },
+    ],
+    explanation:
+      "On isole x dans z = (x − x̄) / s : x = x̄ + z · s = 100 + 2,5 × 15 = 100 + 37,5 = 137,5. L'option (a) est le cas symétrique z = −2,5. (d) confond avec z · x̄. Puisque z > 0, la valeur brute est plus grande que la moyenne 100.",
+    steps: [],
+    answer: "137,5.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
