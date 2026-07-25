@@ -4548,6 +4548,418 @@ const manualExercises: Exercise[] = [
     ],
     answer: "z = 1,5 (1,5 écart-type au-dessus de la moyenne du groupe).",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (25 exercices intermédiaires)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "stat-inter-01",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 26,
+    title: "Représentativité et biais de sélection",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un sondage en ligne demande aux étudiants leur temps hebdomadaire consacré aux jeux vidéo. 1200 étudiants répondent librement, et la moyenne obtenue est 25 h/semaine. Explique pourquoi cet échantillon n'est probablement pas représentatif malgré sa grande taille.",
+    steps: [
+      "La représentativité dépend de la méthode d'échantillonnage, pas seulement de la taille.",
+      "Ici, les étudiants s'auto-sélectionnent : seuls les intéressés par le sujet (souvent des joueurs actifs) répondent.",
+      "Ce biais de sélection surestime probablement la vraie moyenne dans la population étudiante.",
+    ],
+    answer: "L'échantillon subit un biais de sélection (auto-sélection). Un grand n ne compense pas ce biais.",
+  },
+  {
+    id: "stat-inter-02",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 27,
+    title: "Choisir entre recensement et sondage",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un contrôleur qualité doit vérifier que les 30 extincteurs d'un immeuble fonctionnent, à l'aide d'un test non destructif. Doit-il faire un recensement ou un sondage ? Justifie.",
+    steps: [
+      "La population est petite (30 unités) et le test est non destructif : rien n'empêche de vérifier chaque unité.",
+      "En contexte de sécurité incendie, un sondage laisserait passer un extincteur défectueux avec une probabilité non nulle : inacceptable.",
+      "Le recensement est donc la seule approche prudente ici.",
+    ],
+    answer: "Recensement (population petite, test non destructif, enjeu de sécurité).",
+  },
+  {
+    id: "stat-inter-03",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 28,
+    title: "Classer plusieurs variables cliniques",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un médecin recueille pour chaque patient : (a) le sexe ; (b) le stade du cancer (I, II, III, IV) ; (c) le nombre de traitements suivis ; (d) la concentration sanguine d'un biomarqueur (µg/mL). Classe chaque variable (type et sous-type).",
+    steps: [
+      "(a) Sexe : catégories sans ordre naturel → qualitative nominale.",
+      "(b) Stade I à IV : catégories ordonnées (gravité croissante) → qualitative ordinale.",
+      "(c) Nombre de traitements : valeurs entières issues d'un comptage → quantitative discrète.",
+      "(d) Concentration : mesure sur un intervalle continu → quantitative continue.",
+    ],
+    answer:
+      "(a) Qualitative nominale ; (b) qualitative ordinale ; (c) quantitative discrète ; (d) quantitative continue.",
+  },
+  {
+    id: "stat-inter-04",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 29,
+    title: "Échelle de douleur — variable ambiguë",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Une échelle de douleur de 0 à 10 est utilisée en médecine pour évaluer la douleur ressentie par un patient. Est-ce une variable qualitative ou quantitative ? Justifie ta réponse.",
+    steps: [
+      "L'échelle est numérique, ce qui suggère une variable quantitative.",
+      "Mais elle est subjective : la différence entre 4 et 5 n'est pas nécessairement égale à celle entre 8 et 9.",
+      "Sans unité de mesure objective, on la classe usuellement comme qualitative ordinale.",
+    ],
+    answer: "Habituellement traitée comme qualitative ordinale (bien que numérique, elle est subjective).",
+  },
+  {
+    id: "stat-inter-05",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 30,
+    title: "Classer quatre variables du quotidien",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Pour chaque variable ci-dessous, précise son type et son sous-type : (a) la ville de naissance ; (b) la mention obtenue à l'examen (échec, passable, bien, très bien) ; (c) le nombre de personnes vivant dans un ménage ; (d) le temps (en secondes) pour compléter une tâche.",
+    steps: [
+      "(a) Ville de naissance : catégories sans ordre → qualitative nominale.",
+      "(b) Mention : catégories ordonnées → qualitative ordinale.",
+      "(c) Nombre de personnes : comptage → quantitative discrète.",
+      "(d) Temps : mesure continue → quantitative continue.",
+    ],
+    answer:
+      "(a) Qualitative nominale ; (b) qualitative ordinale ; (c) quantitative discrète ; (d) quantitative continue.",
+  },
+  {
+    id: "stat-inter-06",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 31,
+    title: "Fréquences absolues, cumulées et proportion",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Sur 100 étudiants, la répartition des mentions à un examen est : Échec 5 %, Passable 25 %, Bien 45 %, Très bien 25 %. (a) Calcule les effectifs absolus. (b) Calcule les fréquences relatives cumulées (dans l'ordre Échec → Très bien). (c) Quelle proportion d'étudiants a obtenu au moins « Bien » ?",
+    steps: [
+      "(a) Effectif = fréquence × n : Échec 5, Passable 25, Bien 45, Très bien 25.",
+      "(b) Cumulées par sommes successives : 5 %, 30 %, 75 %, 100 %.",
+      "(c) « Au moins Bien » = Bien + Très bien = 45 % + 25 % = 70 %.",
+    ],
+    answer:
+      "(a) 5, 25, 45, 25. (b) 5 %, 30 %, 75 %, 100 %. (c) 70 %.",
+  },
+  {
+    id: "stat-inter-07",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 32,
+    title: "Construire un tableau de fréquences",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Voici les âges de 15 personnes dans une classe : 18, 19, 18, 20, 21, 18, 19, 22, 19, 20, 18, 21, 19, 20, 25. Construis un tableau de distribution de fréquences absolues et relatives (en pourcentage arrondi au dixième).",
+    steps: [
+      "Compter chaque valeur : 18 (4 fois), 19 (4), 20 (3), 21 (2), 22 (1), 25 (1). Total 15.",
+      "Fréquences relatives = effectif / 15, puis × 100 :",
+      "18 → 26,7 % ; 19 → 26,7 % ; 20 → 20,0 % ; 21 → 13,3 % ; 22 → 6,7 % ; 25 → 6,7 %.",
+      "Somme des pourcentages ≈ 100 %.",
+    ],
+    answer:
+      "18 : 4 (26,7 %) ; 19 : 4 (26,7 %) ; 20 : 3 (20,0 %) ; 21 : 2 (13,3 %) ; 22 : 1 (6,7 %) ; 25 : 1 (6,7 %).",
+  },
+  {
+    id: "stat-inter-08",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 33,
+    title: "Distribution des heures de sommeil",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Sur 200 adultes, la distribution du nombre d'heures de sommeil par nuit est : [4 ; 6) → 20 personnes ; [6 ; 7) → 60 ; [7 ; 8) → 80 ; [8 ; 10) → 40. (a) Combien d'adultes dorment moins de 7 h ? (b) Quelle proportion (en %) dort au moins 7 h ?",
+    steps: [
+      "(a) Somme des classes inférieures à 7 h : 20 + 60 = 80 adultes.",
+      "(b) Somme des classes ≥ 7 h : 80 + 40 = 120 adultes. Proportion : 120/200 = 60 %.",
+    ],
+    answer: "(a) 80 adultes. (b) 60 %.",
+  },
+  {
+    id: "stat-inter-09",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 34,
+    title: "Regrouper 20 fossiles en 5 classes",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Les longueurs (en mm) de 20 fossiles sont : 12, 18, 25, 30, 14, 22, 28, 16, 20, 35, 27, 33, 15, 21, 26, 29, 32, 19, 24, 31. Détermine l'étendue et propose 5 classes d'amplitude égale.",
+    steps: [
+      "Trouver xmax = 35 et xmin = 12 → étendue E = 35 − 12 = 23 mm.",
+      "Amplitude minimale : A = E / k = 23 / 5 = 4,6 mm.",
+      "On arrondit vers le haut à un nombre commode : A = 5 mm.",
+      "Classes : [12 ; 17), [17 ; 22), [22 ; 27), [27 ; 32), [32 ; 37).",
+    ],
+    answer: "E = 23 mm ; A = 5 mm ; classes [12 ; 17), [17 ; 22), [22 ; 27), [27 ; 32), [32 ; 37).",
+  },
+  {
+    id: "stat-inter-10",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 35,
+    title: "Fréquences relatives et cumulées (pH des sols)",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un tableau donne les effectifs de 60 échantillons de sol répartis par pH : [6,0 ; 6,5) : 8 ; [6,5 ; 7,0) : 15 ; [7,0 ; 7,5) : 22 ; [7,5 ; 8,0) : 10 ; [8,0 ; 8,5) : 5. Calcule les fréquences relatives et les fréquences relatives cumulées (arrondies au dixième de %).",
+    steps: [
+      "Fréquences relatives (nᵢ/60 × 100) : 13,3 % ; 25,0 % ; 36,7 % ; 16,7 % ; 8,3 %.",
+      "Cumulées (sommes successives) : 13,3 % ; 38,3 % ; 75,0 % ; 91,7 % ; 100,0 %.",
+    ],
+    answer:
+      "fᵢ : 13,3 %, 25,0 %, 36,7 %, 16,7 %, 8,3 %. Cumulées : 13,3 %, 38,3 %, 75,0 %, 91,7 %, 100,0 %.",
+  },
+  {
+    id: "stat-inter-11",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 36,
+    title: "Proportion de bébés d'au moins 3,5 kg",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Sur 500 nouveau-nés, les masses à la naissance (en kg) sont réparties : [2,0 ; 2,5) : 15 ; [2,5 ; 3,0) : 85 ; [3,0 ; 3,5) : 200 ; [3,5 ; 4,0) : 155 ; [4,0 ; 4,5) : 45. Quelle proportion des bébés a une masse d'au moins 3,5 kg ?",
+    steps: [
+      "Additionner les effectifs des classes ≥ 3,5 kg : 155 + 45 = 200.",
+      "Diviser par le total : 200 / 500 = 0,40 = 40 %.",
+    ],
+    answer: "40 %.",
+  },
+  {
+    id: "stat-inter-12",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 37,
+    title: "Tableau croisé — hypertension et consommation de sel",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Sur 300 patients, on croise l'hypertension (Oui/Non) et la consommation de sel (Faible/Modérée/Forte). Effectifs : Hypertension × Faible = 20, Modérée = 50, Forte = 60 ; Sans hypertension × Faible = 60, Modérée = 70, Forte = 40. (a) Quelle proportion des patients hypertendus consomme du sel en forte quantité ? (b) Quelle proportion des grands consommateurs de sel sont hypertendus ?",
+    steps: [
+      "(a) Total hypertendus = 20 + 50 + 60 = 130. Fort consommateurs parmi eux = 60. Proportion : 60/130 ≈ 46,2 %.",
+      "(b) Total grands consommateurs = 60 + 40 = 100. Hypertendus parmi eux = 60. Proportion : 60/100 = 60 %.",
+    ],
+    answer: "(a) ≈ 46,2 %. (b) 60 %.",
+  },
+  {
+    id: "stat-inter-13",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 38,
+    title: "Deux proportions dans un tableau croisé",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un cégep compte 500 étudiants en Sciences (300 hommes, 200 femmes) et 300 étudiants en Arts (100 hommes, 200 femmes). (a) Quelle proportion des étudiants en Sciences sont des femmes ? (b) Quelle proportion des femmes du cégep étudient en Sciences ?",
+    steps: [
+      "(a) Femmes en Sciences / total Sciences = 200 / 500 = 40 %.",
+      "(b) Total femmes = 200 + 200 = 400. Femmes en Sciences / total femmes = 200 / 400 = 50 %.",
+      "Les deux questions conditionnent sur des populations de référence différentes, d'où deux résultats différents.",
+    ],
+    answer: "(a) 40 %. (b) 50 %.",
+  },
+  {
+    id: "stat-inter-14",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 39,
+    title: "Piège du diagramme circulaire pour une variable ordinale",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un directeur d'école veut visualiser la répartition des mentions à un examen (Échec, Passable, Bien, Très bien). Un enseignant propose un diagramme circulaire. Est-ce un bon choix ? Justifie.",
+    steps: [
+      "La variable « mention » est qualitative ordinale : les catégories ont un ordre naturel.",
+      "Le diagramme circulaire fait perdre cet ordre (aucune direction de lecture ne le préserve).",
+      "Un diagramme à bandes avec l'ordre Échec → Très bien est plus adapté.",
+    ],
+    answer: "Non : diagramme à bandes préférable (préserve l'ordre naturel des catégories).",
+  },
+  {
+    id: "stat-inter-15",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 40,
+    title: "Choix du graphique pour quatre variables",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Pour chacune de ces variables, indique quel graphique est le plus approprié : (a) nombre de bactéries observées par échantillon ; (b) espèce d'oiseau capturée ; (c) hauteur des arbres (mesurée en cm) ; (d) niveau de scolarité (primaire, secondaire, collégial, universitaire).",
+    steps: [
+      "(a) Quantitative discrète → diagramme à bâtons.",
+      "(b) Qualitative nominale → diagramme à bandes ou circulaire.",
+      "(c) Quantitative continue → histogramme.",
+      "(d) Qualitative ordinale → diagramme à bandes avec ordre respecté.",
+    ],
+    answer:
+      "(a) Bâtons ; (b) bandes ou circulaire ; (c) histogramme ; (d) bandes ordonnées.",
+  },
+  {
+    id: "stat-inter-16",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 41,
+    title: "Moyenne, médiane et mode d'un jeu bimodal",
+    difficulty: "Intermédiaire",
+    prompt:
+      "On a le jeu de données suivant : 12, 15, 18, 12, 20, 15, 22, 18, 15, 25, 30. Calcule la moyenne, la médiane et le mode.",
+    steps: [
+      "Somme = 202. Moyenne : x̄ = 202 / 11 ≈ 18,4.",
+      "Ordonné : 12, 12, 15, 15, 15, 18, 18, 20, 22, 25, 30. n = 11 impair → médiane = rang 6 = 18.",
+      "Mode : 15 apparaît 3 fois, plus que toute autre valeur.",
+    ],
+    answer: "Moyenne ≈ 18,4 ; médiane = 18 ; mode = 15.",
+  },
+  {
+    id: "stat-inter-17",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 42,
+    title: "Moyenne pondérée par les crédits",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un étudiant a suivi 3 cours : Mathématiques (4 crédits, note 78 %), Français (3 crédits, note 82 %) et Éducation physique (1 crédit, note 90 %). Calcule sa moyenne pondérée par les crédits.",
+    steps: [
+      "Numérateur : 4 × 78 + 3 × 82 + 1 × 90 = 312 + 246 + 90 = 648.",
+      "Dénominateur : total des crédits = 4 + 3 + 1 = 8.",
+      "Moyenne pondérée : 648 / 8 = 81 %.",
+    ],
+    answer: "81 %.",
+  },
+  {
+    id: "stat-inter-18",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 43,
+    title: "Médiane avec n pair",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Les temps de réaction (en ms) de 8 sujets à un test cognitif sont : 245, 312, 198, 265, 289, 302, 220, 275. Calcule la médiane.",
+    steps: [
+      "Ordonner : 198, 220, 245, 265, 275, 289, 302, 312.",
+      "n = 8 pair → médiane = moyenne des rangs 4 et 5 = (265 + 275) / 2 = 270.",
+    ],
+    answer: "Me = 270 ms.",
+  },
+  {
+    id: "stat-inter-19",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 44,
+    title: "Moyenne sur données groupées",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Le tableau donne les scores (sur 100) de 60 étudiants regroupés en classes : [0 ; 20) : 6 ; [20 ; 40) : 12 ; [40 ; 60) : 24 ; [60 ; 80) : 15 ; [80 ; 100) : 3. Calcule la moyenne à partir des centres de classe.",
+    steps: [
+      "Centres de classe : 10, 30, 50, 70, 90.",
+      "Somme pondérée Σ nᵢ · cᵢ = 6·10 + 12·30 + 24·50 + 15·70 + 3·90 = 60 + 360 + 1200 + 1050 + 270 = 2940.",
+      "Moyenne : x̄ ≈ 2940 / 60 = 49.",
+    ],
+    answer: "x̄ ≈ 49.",
+  },
+  {
+    id: "stat-inter-20",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 45,
+    title: "Étendue et conversion d'unités",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Les températures relevées chez 5 patients sont : 37,2 °C ; 38,5 °C ; 36,8 °C ; 39,1 °C ; 37,5 °C. (a) Quelle est l'étendue en °C ? (b) Exprime cette étendue en degrés Fahrenheit (conversion d'un écart : ΔF = (9/5) × ΔC).",
+    steps: [
+      "(a) E = xmax − xmin = 39,1 − 36,8 = 2,3 °C.",
+      "(b) Conversion d'un écart (sans ajout de 32) : 2,3 × 9/5 = 4,14 °F.",
+    ],
+    answer: "(a) 2,3 °C. (b) 4,14 °F.",
+  },
+  {
+    id: "stat-inter-21",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 46,
+    title: "Comparer deux écarts-types",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Deux groupes d'étudiants ont la même moyenne x̄ = 74 mais des écarts-types différents : groupe A avec s = 5, groupe B avec s = 15. Compare les deux groupes en une ou deux phrases.",
+    steps: [
+      "L'écart-type mesure la dispersion autour de la moyenne : plus il est grand, plus les valeurs sont éparpillées.",
+      "Groupe A : valeurs regroupées (s'écartent en moyenne de 5 unités de la moyenne).",
+      "Groupe B : valeurs très dispersées (écart moyen d'environ 15 unités).",
+    ],
+    answer:
+      "Le groupe A est plus régulier (s = 5) ; le groupe B est 3× plus dispersé (s = 15). Même moyenne, mais expériences très différentes.",
+  },
+  {
+    id: "stat-inter-22",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 47,
+    title: "Calcul complet de l'écart-type",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Un chercheur mesure la masse (en g) de 5 grenouilles : 42, 38, 45, 41, 44. Calcule la moyenne et l'écart-type échantillonnal.",
+    steps: [
+      "Moyenne : x̄ = (42 + 38 + 45 + 41 + 44) / 5 = 210 / 5 = 42 g.",
+      "Écarts à la moyenne : 0, −4, 3, −1, 2.",
+      "Carrés : 0, 16, 9, 1, 4. Somme : 30.",
+      "Variance : s² = 30 / (5 − 1) = 7,5.",
+      "Écart-type : s = √7,5 ≈ 2,74 g.",
+    ],
+    answer: "x̄ = 42 g ; s ≈ 2,74 g.",
+  },
+  {
+    id: "stat-inter-23",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 48,
+    title: "Choisir entre moyenne et médiane (revenus)",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Les revenus annuels (en k$) de 7 personnes dans un petit bureau sont : 42, 45, 48, 50, 52, 55, 380. (a) Calcule la moyenne et la médiane. (b) Laquelle représente mieux le « revenu typique » des employés ? Justifie.",
+    steps: [
+      "(a) Moyenne : x̄ = 672 / 7 = 96 k$. Ordonné : 42, 45, 48, 50, 52, 55, 380. n = 7 impair → médiane = rang 4 = 50 k$.",
+      "(b) La moyenne (96) est fortement tirée vers le haut par la valeur extrême (380 k$, probablement le patron).",
+      "La médiane (50 k$), robuste aux valeurs aberrantes, reflète mieux le revenu de la majorité.",
+    ],
+    answer: "(a) Moyenne = 96 k$ ; médiane = 50 k$. (b) La médiane représente mieux le revenu typique.",
+  },
+  {
+    id: "stat-inter-24",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 49,
+    title: "Comparer deux performances via la cote z",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Marie a obtenu 78 % à un test de biologie dont la moyenne du groupe est 65 et l'écart-type 10. Jean a obtenu 82 % à un test de chimie dont la moyenne du groupe est 75 et l'écart-type 6. Qui a mieux performé par rapport à son groupe ?",
+    steps: [
+      "Cote z de Marie : z_M = (78 − 65) / 10 = 1,30.",
+      "Cote z de Jean : z_J = (82 − 75) / 6 ≈ 1,17.",
+      "Marie se situe plus haut au-dessus de la moyenne de son groupe (1,30 vs 1,17).",
+      "Même si Jean a une note brute plus élevée, Marie a mieux performé relativement à son groupe.",
+    ],
+    answer: "Marie (z ≈ 1,30) a mieux performé que Jean (z ≈ 1,17) par rapport à son groupe.",
+  },
+  {
+    id: "stat-inter-25",
+    topicId: "probability",
+    lessonId: "PSD1",
+    number: 50,
+    title: "Passer d'une cote z à un score brut",
+    difficulty: "Intermédiaire",
+    prompt:
+      "Dans un groupe où la moyenne des notes est 68 et l'écart-type 8, quel score brut correspond à une cote z = −1,5 ? Interprète ce que cela signifie pour l'étudiant.",
+    steps: [
+      "Isoler x dans z = (x − x̄) / s : x = x̄ + z · s.",
+      "Substituer : x = 68 + (−1,5)(8) = 68 − 12 = 56.",
+      "Interpréter : l'étudiant est à 1,5 écart-type sous la moyenne. Comme |z| < 2, ce n'est pas encore une valeur atypique, mais c'est clairement dans la partie basse de la distribution.",
+    ],
+    answer: "x = 56 (à 1,5 écart-type sous la moyenne du groupe).",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
