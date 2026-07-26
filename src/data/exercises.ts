@@ -9464,6 +9464,404 @@ const manualExercises: Exercise[] = [
     ],
     answer: "Tous les effectifs attendus doivent être ≥ 5.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (25 Moyens)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "cor-moy-01",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 26,
+    title: "Calculer r à partir de sommes agrégées",
+    difficulty: "Moyen",
+    prompt:
+      "Pour n = 10 étudiants, on a Σx = 100, Σy = 200, Σxy = 2200, Σx² = 1200, Σy² = 4400. Calcule r à l'aide de la formule r = [nΣxy − ΣxΣy] / √{[nΣx² − (Σx)²][nΣy² − (Σy)²]}.",
+    steps: [
+      "Numérateur : nΣxy − ΣxΣy = 10×2200 − 100×200 = 22 000 − 20 000 = 2000.",
+      "Dénominateur : nΣx² − (Σx)² = 12 000 − 10 000 = 2000 ; nΣy² − (Σy)² = 44 000 − 40 000 = 4000. Produit = 8 000 000, racine ≈ 2828,4.",
+      "r = 2000 / 2828,4 ≈ 0,71.",
+    ],
+    answer: "r ≈ 0,71 (corrélation positive modérée à forte).",
+  },
+  {
+    id: "cor-moy-02",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 27,
+    title: "Calculer r à partir d'un petit tableau",
+    difficulty: "Moyen",
+    prompt:
+      "Un professeur relève 5 paires (heures d'étude x, note y) : (1;3), (2;5), (3;4), (4;8), (5;10). Calcule le coefficient r à l'aide des écarts à la moyenne.",
+    steps: [
+      "x̄ = 3 ; ȳ = 6.",
+      "Écarts : (x−x̄) = −2,−1,0,1,2 ; (y−ȳ) = −3,−1,−2,2,4.",
+      "Σ(x−x̄)² = 4+1+0+1+4 = 10 ; Σ(y−ȳ)² = 9+1+4+4+16 = 34.",
+      "Σ(x−x̄)(y−ȳ) = 6+1+0+2+8 = 17.",
+      "r = 17 / √(10 × 34) = 17 / √340 ≈ 17 / 18,44 ≈ 0,92.",
+    ],
+    answer: "r ≈ 0,92 (corrélation positive très forte).",
+  },
+  {
+    id: "cor-moy-03",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 28,
+    title: "Interpréter r dans un contexte de santé",
+    difficulty: "Moyen",
+    prompt:
+      "Une étude en santé publique auprès de 500 adultes trouve r = 0,45 entre l'IMC et la pression artérielle systolique. Décris ce résultat : sens, force, et donne une phrase d'interprétation prudente.",
+    steps: [
+      "Signe positif → à IMC plus élevé correspond en moyenne une pression plus élevée.",
+      "|r| = 0,45 → force modérée.",
+      "Interprétation prudente : lien réel mais non déterministe, et corrélation ≠ causalité.",
+    ],
+    answer:
+      "Corrélation positive modérée : les personnes avec un IMC plus élevé tendent à avoir une pression plus élevée, mais le lien n'est pas déterministe.",
+  },
+  {
+    id: "cor-moy-04",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 29,
+    title: "Sensibilité de r aux valeurs aberrantes",
+    difficulty: "Moyen",
+    prompt:
+      "Sur 10 points, on calcule r = 0,80. Après avoir identifié et retiré un point clairement aberrant, r tombe à 0,30. Que révèle ce résultat sur la robustesse du coefficient r et sur le vrai lien ?",
+    steps: [
+      "r est très sensible aux valeurs aberrantes.",
+      "Le point aberrant « tirait » la droite et gonflait artificiellement r.",
+    ],
+    answer:
+      "r est peu robuste aux valeurs aberrantes ; le lien réel entre x et y est faible (r ≈ 0,30), pas fort.",
+  },
+  {
+    id: "cor-moy-05",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 30,
+    title: "Corrélation fallacieuse",
+    difficulty: "Moyen",
+    prompt:
+      "L'été au Québec, la consommation de crème glacée et le nombre de noyades sont fortement corrélés (r ≈ 0,90). Peut-on en conclure que manger de la crème glacée cause des noyades ? Identifie l'explication tierce probable.",
+    steps: [
+      "Corrélation ≠ causalité. Il faut chercher une variable de confusion.",
+      "Chaleur estivale : plus de baignade (plus de noyades) ET plus de crème glacée.",
+    ],
+    answer: "Non — la variable tierce (chaleur estivale) explique les deux augmentations. Corrélation fallacieuse.",
+  },
+  {
+    id: "cor-moy-06",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 31,
+    title: "Choisir la variable explicative",
+    difficulty: "Moyen",
+    prompt:
+      "Un chercheur veut prédire le rendement scolaire d'un étudiant à partir de son temps d'étude hebdomadaire. Quelle variable désigne-t-il par x (explicative) et laquelle par y (dépendante) ? Justifie brièvement pourquoi le choix compte.",
+    steps: [
+      "x = temps d'étude ; y = rendement (note).",
+      "En régression, la droite de y sur x diffère de celle de x sur y : le choix change le modèle.",
+    ],
+    answer:
+      "x = temps d'étude (explicative) ; y = rendement (à prédire). Le rôle des variables n'est pas symétrique en régression.",
+  },
+  {
+    id: "cor-moy-07",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 32,
+    title: "Estimer r à partir d'un nuage",
+    difficulty: "Moyen",
+    prompt:
+      "On observe un nuage de points dont les points sont dispersés (mais reconnaissablement) autour d'une droite légèrement descendante. Estime le signe et la magnitude approximative de r.",
+    steps: [
+      "Tendance descendante → r < 0.",
+      "Dispersion visible mais motif visible → force modérée.",
+    ],
+    answer: "r négatif, magnitude modérée (environ −0,4 à −0,6).",
+  },
+  {
+    id: "cor-moy-08",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 33,
+    title: "Comparer r sur des sous-groupes",
+    difficulty: "Moyen",
+    prompt:
+      "Une étude sur l'exercice physique et la tension trouve r = 0,60 chez les femmes ET r = 0,60 chez les hommes. Est-ce que la corrélation calculée sur l'ensemble combiné vaudra nécessairement 0,60 ? Justifie.",
+    steps: [
+      "Pas nécessairement : la corrélation combinée dépend aussi de la position relative des moyennes des deux sous-groupes.",
+      "Si les deux nuages sont décalés, le r combiné peut être plus élevé (ou plus faible).",
+    ],
+    answer: "Non — c'est un cas simple du paradoxe de Simpson : la corrélation combinée peut différer de celle des sous-groupes.",
+  },
+  {
+    id: "cor-moy-09",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 34,
+    title: "Calculer la pente b",
+    difficulty: "Moyen",
+    prompt: "Sachant r = 0,85, s_x = 4 et s_y = 12, calcule la pente b de la droite de régression de y sur x.",
+    steps: [
+      "Formule : b = r × s_y / s_x.",
+      "b = 0,85 × 12/4 = 0,85 × 3 = 2,55.",
+    ],
+    answer: "b = 2,55.",
+  },
+  {
+    id: "cor-moy-10",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 35,
+    title: "Calculer l'ordonnée à l'origine a",
+    difficulty: "Moyen",
+    prompt:
+      "En reprenant b = 2,55, on a aussi x̄ = 10 et ȳ = 50. Calcule l'ordonnée à l'origine a de la droite de régression.",
+    steps: [
+      "Formule : a = ȳ − b × x̄.",
+      "a = 50 − 2,55 × 10 = 50 − 25,5 = 24,5.",
+    ],
+    answer: "a = 24,5.",
+  },
+  {
+    id: "cor-moy-11",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 36,
+    title: "Écrire la droite et prédire",
+    difficulty: "Moyen",
+    prompt:
+      "En reprenant a = 24,5 et b = 2,55, écris l'équation de la droite ŷ en fonction de x, puis fais une prédiction pour x = 15.",
+    steps: [
+      "ŷ = 24,5 + 2,55x.",
+      "Pour x = 15 : ŷ = 24,5 + 2,55 × 15 = 24,5 + 38,25 = 62,75.",
+    ],
+    answer: "ŷ = 24,5 + 2,55x ; ŷ(15) = 62,75.",
+  },
+  {
+    id: "cor-moy-12",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 37,
+    title: "Fiabilité selon la position de x",
+    difficulty: "Moyen",
+    prompt:
+      "L'étendue des données de x va de 5 à 20. On veut prédire ŷ pour x = 12 puis pour x = 50. Nomme chaque type de prédiction et discute leur fiabilité relative.",
+    steps: [
+      "x = 12 ∈ [5 ; 20] → interpolation, fiable.",
+      "x = 50 ∉ [5 ; 20] → extrapolation, non fiable car la relation peut changer hors de l'étendue.",
+    ],
+    answer: "x = 12 : interpolation (fiable) ; x = 50 : extrapolation (à éviter, non fiable).",
+  },
+  {
+    id: "cor-moy-13",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 38,
+    title: "Interpréter r² dans un contexte",
+    difficulty: "Moyen",
+    prompt:
+      "Une étude relie le nombre d'heures d'ensoleillement (x) et le rendement d'une culture (y) et obtient r = 0,7. Calcule r² et rédige une phrase d'interprétation.",
+    steps: [
+      "r² = (0,7)² = 0,49.",
+      "49 % de la variation du rendement est expliquée par l'ensoleillement (dans le modèle linéaire).",
+    ],
+    answer: "r² = 0,49 : environ 49 % de la variation du rendement est expliquée par l'ensoleillement ; le reste (51 %) dépend d'autres facteurs.",
+  },
+  {
+    id: "cor-moy-14",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 39,
+    title: "Calculer plusieurs résidus",
+    difficulty: "Moyen",
+    prompt:
+      "Le modèle ŷ = 2 + 3x est ajusté à trois points observés : (1;6), (2;9), (3;10). Calcule les résidus pour chacun des trois points.",
+    steps: [
+      "Pour x = 1 : ŷ = 5, résidu = 6 − 5 = 1.",
+      "Pour x = 2 : ŷ = 8, résidu = 9 − 8 = 1.",
+      "Pour x = 3 : ŷ = 11, résidu = 10 − 11 = −1.",
+    ],
+    answer: "Résidus : 1, 1 et −1.",
+  },
+  {
+    id: "cor-moy-15",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 40,
+    title: "Retrouver y à partir de ŷ et résidu",
+    difficulty: "Moyen",
+    prompt:
+      "Pour un certain point, on lit x = 4, valeur prédite ŷ = 15 et résidu = −3. Retrouve la valeur observée y.",
+    steps: [
+      "Résidu = y − ŷ, donc y = ŷ + résidu.",
+      "y = 15 + (−3) = 12.",
+    ],
+    answer: "y = 12.",
+  },
+  {
+    id: "cor-moy-16",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 41,
+    title: "Comparer deux modèles par r²",
+    difficulty: "Moyen",
+    prompt:
+      "Deux modèles concurrents donnent : Modèle A avec r² = 0,64, Modèle B avec r² = 0,81. Lequel explique mieux la variation de y ? De combien de points de pourcentage ?",
+    steps: [
+      "B > A car 0,81 > 0,64.",
+      "Différence : 0,81 − 0,64 = 0,17 = 17 points de pourcentage.",
+    ],
+    answer: "Modèle B (81 % vs 64 %) — écart de 17 points de pourcentage.",
+  },
+  {
+    id: "cor-moy-17",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 42,
+    title: "Calcul d'effectif attendu et contribution (2×2)",
+    difficulty: "Moyen",
+    prompt:
+      "Dans un tableau 2 × 2 : ligne 1 = [40, 60] (total 100), ligne 2 = [30, 70] (total 100), grand total = 200 (colonnes : 70 et 130). Calcule E(1,1) puis la contribution χ² de la case (1,1).",
+    steps: [
+      "E(1,1) = (100 × 70)/200 = 35.",
+      "Contribution = (40 − 35)²/35 = 25/35 ≈ 0,714.",
+    ],
+    answer: "E(1,1) = 35 ; contribution ≈ 0,714.",
+  },
+  {
+    id: "cor-moy-18",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 43,
+    title: "Effectifs attendus d'un tableau 2 × 3",
+    difficulty: "Moyen",
+    prompt:
+      "Tableau 2 × 3 : ligne 1 = [20, 30, 50] (total 100), ligne 2 = [30, 20, 50] (total 100), total général = 200 (colonnes : 50, 50, 100). Calcule les 6 effectifs attendus.",
+    steps: [
+      "Ligne 1 : E(1,1) = 100×50/200 = 25 ; E(1,2) = 25 ; E(1,3) = 100×100/200 = 50.",
+      "Ligne 2 : E(2,1) = 25 ; E(2,2) = 25 ; E(2,3) = 50.",
+    ],
+    answer: "Ligne 1 : 25 ; 25 ; 50. Ligne 2 : 25 ; 25 ; 50.",
+  },
+  {
+    id: "cor-moy-19",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 44,
+    title: "Test d'adéquation — dé équilibré",
+    difficulty: "Moyen",
+    prompt:
+      "On lance un dé 60 fois. Effectifs observés pour les faces 1 à 6 : 8, 12, 10, 9, 11, 10. Sous H₀ « dé équilibré », calcule les effectifs attendus puis la statistique χ².",
+    steps: [
+      "E = 60/6 = 10 pour chaque face.",
+      "Contributions : (8−10)²/10 + (12−10)²/10 + 0 + (9−10)²/10 + (11−10)²/10 + 0.",
+      "= 0,4 + 0,4 + 0 + 0,1 + 0,1 + 0 = 1,0.",
+    ],
+    answer: "χ² = 1,0.",
+  },
+  {
+    id: "cor-moy-20",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 45,
+    title: "Effectifs attendus avec proportions théoriques",
+    difficulty: "Moyen",
+    prompt:
+      "Dans un échantillon de 400 personnes, on observe les groupes sanguins A, B, AB, O : 180, 40, 20, 160. Les proportions théoriques québécoises sont 42 %, 10 %, 4 %, 44 %. Calcule les effectifs attendus.",
+    steps: [
+      "E(A) = 400 × 0,42 = 168.",
+      "E(B) = 400 × 0,10 = 40.",
+      "E(AB) = 400 × 0,04 = 16.",
+      "E(O) = 400 × 0,44 = 176.",
+    ],
+    answer: "E : 168 (A) ; 40 (B) ; 16 (AB) ; 176 (O).",
+  },
+  {
+    id: "cor-moy-21",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 46,
+    title: "Test d'adéquation complet — groupes sanguins",
+    difficulty: "Moyen",
+    prompt:
+      "Suite de l'exercice précédent : calcule χ²_obs, précise le nombre de ddl et conclus au seuil 5 % avec χ²_crit(3 ddl ; 5 %) = 7,81.",
+    steps: [
+      "Contributions : (180−168)²/168 ≈ 0,857 ; (40−40)²/40 = 0 ; (20−16)²/16 = 1 ; (160−176)²/176 ≈ 1,455.",
+      "χ²_obs ≈ 0,857 + 0 + 1 + 1,455 ≈ 3,31.",
+      "ddl = k − 1 = 4 − 1 = 3.",
+      "3,31 < 7,81 → on ne rejette pas H₀.",
+    ],
+    answer: "χ²_obs ≈ 3,31 ; 3 ddl ; on ne rejette pas H₀ : les proportions sont compatibles avec les valeurs théoriques.",
+  },
+  {
+    id: "cor-moy-22",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 47,
+    title: "Ajustement — présence à des séances",
+    difficulty: "Moyen",
+    prompt:
+      "On observe la présence à 4 séances : 25, 30, 20, 25. Sous H₀ « présence homogène », calcule les effectifs attendus puis χ²_obs.",
+    steps: [
+      "Total = 100 ; sous H₀ homogène, E = 100/4 = 25 par séance.",
+      "Contributions : 0 ; (30−25)²/25 = 1 ; (20−25)²/25 = 1 ; 0.",
+      "χ² = 0 + 1 + 1 + 0 = 2.",
+    ],
+    answer: "χ²_obs = 2.",
+  },
+  {
+    id: "cor-moy-23",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 48,
+    title: "Test d'indépendance 2 × 2 — tabagisme",
+    difficulty: "Moyen",
+    prompt:
+      "Tableau observé (n = 400) : Fumeurs [50 Malades ; 150 Sains] ; Non-fumeurs [30 Malades ; 170 Sains]. Marges : lignes 200/200 ; colonnes 80/320. Calcule les 4 effectifs attendus puis χ²_obs.",
+    steps: [
+      "E(Fum, Mal) = 200×80/400 = 40 ; E(Fum, Sain) = 200×320/400 = 160.",
+      "E(NonF, Mal) = 40 ; E(NonF, Sain) = 160.",
+      "Contributions : (50−40)²/40 = 2,5 ; (150−160)²/160 = 0,625 ; (30−40)²/40 = 2,5 ; (170−160)²/160 = 0,625.",
+      "χ²_obs = 2,5 + 0,625 + 2,5 + 0,625 = 6,25.",
+    ],
+    answer: "χ²_obs = 6,25 (avec E = 40, 160, 40, 160).",
+  },
+  {
+    id: "cor-moy-24",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 49,
+    title: "Décision et interprétation contextuelle",
+    difficulty: "Moyen",
+    prompt:
+      "Suite de l'exercice 48 (χ²_obs = 6,25). Précise le nombre de ddl et conclus au seuil 5 % avec χ²_crit(1 ddl ; 5 %) = 3,84. Rédige la conclusion en langage clair.",
+    steps: [
+      "ddl = (r − 1)(c − 1) = 1 × 1 = 1.",
+      "6,25 > 3,84 → on rejette H₀.",
+      "Interprétation : le tabagisme et l'état de santé ne sont pas indépendants dans cet échantillon.",
+    ],
+    answer:
+      "1 ddl ; on rejette H₀ (6,25 > 3,84). Il existe un lien statistiquement significatif entre le tabagisme et la maladie (attention : lien ≠ causalité prouvée).",
+  },
+  {
+    id: "cor-moy-25",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 50,
+    title: "Vérifier la condition E ≥ 5",
+    difficulty: "Moyen",
+    prompt:
+      "Dans un tableau 2 × 3 destiné à un test du khi-carré d'indépendance, une des cases affiche un effectif attendu E = 3. Peux-tu appliquer le test tel quel ? Sinon, cite deux solutions pratiques.",
+    steps: [
+      "Condition d'application : E ≥ 5 pour toutes les cases.",
+      "Une case avec E = 3 viole la condition → test peu fiable.",
+      "Solutions : regrouper des catégories pour augmenter les E, ou augmenter n, ou utiliser un test exact (Fisher).",
+    ],
+    answer:
+      "Non — E = 3 viole la condition E ≥ 5. Solutions : regrouper des catégories, augmenter n, ou utiliser un test exact (Fisher).",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
