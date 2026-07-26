@@ -8235,6 +8235,271 @@ const manualExercises: Exercise[] = [
     answer:
       "Non — signification statistique ≠ importance pratique. Toujours interpréter la magnitude.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 3 : Inférence statistique (15 exercices difficiles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "inf-diff-01",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 51,
+    title: "TCL sur une population asymétrique",
+    difficulty: "Difficile",
+    prompt:
+      "On mesure le nombre d'accidents par jour à un carrefour. La distribution est très asymétrique à droite avec µ = 2,5 et σ = 3,0. Sur 90 jours, quelle est la probabilité que la moyenne quotidienne X̄ soit supérieure à 3 ? Justifie l'application du TCL. (Φ(1,58) ≈ 0,9429.)",
+    steps: [
+      "Malgré l'asymétrie de la population, n = 90 ≥ 30 → le TCL s'applique et X̄ est approximativement normale.",
+      "Erreur type : σ_X̄ = σ/√n = 3/√90 ≈ 0,316.",
+      "Standardiser : z = (3 − 2,5)/0,316 ≈ 1,58.",
+      "P(X̄ > 3) = 1 − Φ(1,58) ≈ 1 − 0,9429 = 0,0571 ≈ 5,7 %.",
+    ],
+    answer: "P(X̄ > 3) ≈ 5,7 % (TCL applicable car n ≥ 30, même sans normalité de la population).",
+  },
+  {
+    id: "inf-diff-02",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 52,
+    title: "Réduire la largeur d'un IC — quel n nouveau ?",
+    difficulty: "Difficile",
+    prompt:
+      "Un chercheur a un IC à 95 % de largeur 4 avec n = 100. Quelle taille d'échantillon lui faudrait-il pour obtenir un IC à 99 % de largeur 2 (en supposant que s ne change pas) ?",
+    steps: [
+      "Largeur = 2E, donc E₀ = 2 (95 %) et E' = 1 (99 %).",
+      "De E = z·s/√n on tire n = (z·s/E)². Le rapport donne n'/n = (z'/z × E/E')².",
+      "z'/z = 2,576/1,96 ≈ 1,314 ; E/E' = 2/1 = 2.",
+      "n'/n = (1,314 × 2)² = 2,628² ≈ 6,91.",
+      "n' ≈ 6,91 × 100 = 691. Il faut multiplier n par environ 7.",
+    ],
+    answer: "n' ≈ 691 (multiplier n par ~7).",
+  },
+  {
+    id: "inf-diff-03",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 53,
+    title: "IC petit échantillon avec discussion des limites",
+    difficulty: "Difficile",
+    prompt:
+      "Un biochimiste mesure la concentration d'une enzyme chez n = 12 lapins d'une nouvelle lignée : x̄ = 4,80 µg/mL, s = 0,45 µg/mL. Construis l'IC à 95 % pour µ (t_{0,025 ; 11} = 2,201) et discute des limites de validité de cet IC.",
+    steps: [
+      "n = 12 < 30, σ inconnu → loi de Student, ν = 11 ddl.",
+      "E = 2,201 × 0,45/√12 ≈ 2,201 × 0,130 ≈ 0,286.",
+      "IC = [4,80 − 0,286 ; 4,80 + 0,286] ≈ [4,514 ; 5,086] µg/mL.",
+      "Limites : (1) hypothèse de normalité de la population à vérifier (histogramme, quantile plot) ; (2) petit échantillon → intervalle large ; (3) résultat valable seulement pour cette lignée particulière.",
+    ],
+    answer: "IC₉₅ % ≈ [4,51 ; 5,09] µg/mL. Limites : normalité, petit n, généralisation restreinte.",
+  },
+  {
+    id: "inf-diff-04",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 54,
+    title: "Taille d'échantillon pour un IC de proportion — cas défavorable",
+    difficulty: "Difficile",
+    prompt:
+      "On veut estimer par IC la proportion d'électeurs favorables à un référendum avec une marge d'erreur d'au plus 2 % au niveau 95 %. Sans idée préalable de p̂, quelle taille minimale d'échantillon faut-il ?",
+    steps: [
+      "Sans information sur p, on utilise le cas le plus défavorable p = 0,5 (maximise p(1−p) = 0,25).",
+      "De E = z·√(p(1−p)/n), on tire n = (z/E)²·p(1−p).",
+      "n = (1,96/0,02)² × 0,25 = (98)² × 0,25 = 9 604 × 0,25 = 2 401.",
+      "Il faut interroger au moins 2 401 personnes.",
+    ],
+    answer: "n ≥ 2 401 personnes.",
+  },
+  {
+    id: "inf-diff-05",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 55,
+    title: "Test bilatéral + valeur p bilatérale",
+    difficulty: "Difficile",
+    prompt:
+      "Un thermomètre est censé afficher 100 °C dans de l'eau bouillante. On effectue n = 40 mesures : x̄ = 100,8 °C, s = 2,5 °C. Teste au seuil 5 % (bilatéral) si le thermomètre est biaisé. Calcule aussi la valeur p bilatérale. (Φ(2,02) ≈ 0,9783.)",
+    steps: [
+      "H₀ : µ = 100 ; H₁ : µ ≠ 100 (bilatéral).",
+      "z = (100,8 − 100)/(2,5/√40) = 0,8/0,3953 ≈ 2,02.",
+      "Valeur critique z_{0,025} = 1,96 ; |z| = 2,02 > 1,96 → on rejette H₀.",
+      "Valeur p bilatérale = 2 · P(Z > |z|) = 2 · (1 − Φ(2,02)) = 2 × 0,0217 = 0,0434.",
+      "0,0434 < 0,05 → même conclusion : le thermomètre est biaisé (probablement surévalue la température).",
+    ],
+    answer: "z ≈ 2,02 ; valeur p ≈ 0,043 ; rejeter H₀ (thermomètre biaisé).",
+  },
+  {
+    id: "inf-diff-06",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 56,
+    title: "Test Student unilatéral — éolienne sous performance",
+    difficulty: "Difficile",
+    prompt:
+      "Une nouvelle éolienne devrait produire au moins 300 kWh/jour. Sur 12 jours d'essai : x̄ = 285 kWh, s = 25 kWh (production supposée normale). Teste au seuil 5 % si la production est significativement INFÉRIEURE à 300 kWh (t_{0,05 ; 11} = 1,796).",
+    steps: [
+      "H₀ : µ = 300 ; H₁ : µ < 300 (unilatéral à gauche).",
+      "Zone de rejet : t < −1,796. ν = 11 ddl.",
+      "t = (285 − 300)/(25/√12) = −15/7,22 ≈ −2,08.",
+      "−2,08 < −1,796 → on rejette H₀.",
+      "La production quotidienne moyenne est significativement inférieure à 300 kWh au seuil 5 %.",
+    ],
+    answer: "t ≈ −2,08 ; rejeter H₀. Production significativement inférieure à 300 kWh/jour.",
+  },
+  {
+    id: "inf-diff-07",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 57,
+    title: "Équivalence entre test bilatéral et IC",
+    difficulty: "Difficile",
+    prompt:
+      "Un échantillon donne n = 100, x̄ = 25, s = 10. (a) Teste H₀ : µ = 22 vs H₁ : µ ≠ 22 au seuil 5 %. (b) Construis l'IC à 95 % pour µ. (c) Vérifie que les deux méthodes concordent.",
+    steps: [
+      "(a) z = (25 − 22)/(10/√100) = 3/1 = 3. |z| = 3 > 1,96 → rejeter H₀.",
+      "(b) E = 1,96 × 10/√100 = 1,96. IC = [25 − 1,96 ; 25 + 1,96] = [23,04 ; 26,96].",
+      "(c) µ₀ = 22 n'appartient PAS à l'IC → cohérent avec le rejet de H₀.",
+      "Principe général : rejeter H₀ bilatéral au seuil α ⇔ µ₀ ∉ IC au niveau 1 − α.",
+    ],
+    answer: "Test rejette H₀ ; IC = [23,04 ; 26,96] ne contient pas 22 → équivalence confirmée.",
+  },
+  {
+    id: "inf-diff-08",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 58,
+    title: "Test proportion — conditions non satisfaites",
+    difficulty: "Difficile",
+    prompt:
+      "Un marketeur veut prouver qu'un nouveau design a un taux de clic supérieur à 3 %. Sur n = 50 essais, il observe 3 clics. (a) Vérifie les conditions du test z. (b) Peut-on effectuer le test tel quel ? Justifie.",
+    steps: [
+      "(a) Conditions : n·p₀ ≥ 5 ET n·(1 − p₀) ≥ 5.",
+      "n·p₀ = 50 × 0,03 = 1,5 < 5 ✗.",
+      "n·(1 − p₀) = 50 × 0,97 = 48,5 ✓, mais la première condition suffit pour disqualifier.",
+      "(b) Non — le test z n'est pas fiable dans ce cas. Il faut soit augmenter n (au moins n ≥ 5/p₀ ≈ 167), soit utiliser la loi binomiale exacte (hors cours).",
+    ],
+    answer: "Non — condition n·p₀ ≥ 5 non satisfaite (1,5 < 5). Augmenter n ou utiliser binomiale exacte.",
+  },
+  {
+    id: "inf-diff-09",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 59,
+    title: "Puissance d'un test (β)",
+    difficulty: "Difficile",
+    prompt:
+      "Un test compare H₀ : µ = 100 à H₁ : µ > 100 au seuil α = 0,05 avec n = 25 et σ = 10 (connu). Si la vraie moyenne est µ = 105, quelle est la probabilité de rejeter H₀ (« puissance ») ? (Φ(0,855) ≈ 0,80.)",
+    steps: [
+      "Zone de rejet en termes de X̄ : X̄ > 100 + z_{0,05} · σ/√n = 100 + 1,645 × 10/5 = 100 + 3,29 = 103,29.",
+      "Si µ = 105, alors X̄ ~ N(105, 10/5) = N(105, 2).",
+      "Puissance = P(X̄ > 103,29 | µ = 105) = P(Z > (103,29 − 105)/2) = P(Z > −0,855) = Φ(0,855) ≈ 0,80.",
+      "Puissance ≈ 80 % ; erreur de type II : β = 1 − 0,80 = 0,20 = 20 %.",
+    ],
+    answer: "Puissance ≈ 80 % (β ≈ 20 %).",
+  },
+  {
+    id: "inf-diff-10",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 60,
+    title: "Interpréter un test non-significatif",
+    difficulty: "Difficile",
+    prompt:
+      "Un test donne une valeur p = 0,15 au seuil α = 0,05. Un chercheur affirme : « On a prouvé que H₀ est vraie. » Corrige cette conclusion.",
+    steps: [
+      "Un test statistique ne prouve JAMAIS H₀ : il fournit seulement des données incompatibles ou non avec H₀.",
+      "Ici p = 0,15 > 0,05 → on ne rejette pas H₀. Formulation correcte : « on conserve H₀ » ou « on ne rejette pas H₀ ».",
+      "Raisons possibles pour ne pas rejeter : (1) H₀ est effectivement vraie ; (2) H₀ est fausse mais notre échantillon manque de puissance (n trop petit, σ trop grand, différence trop faible).",
+      "Principe : « L'absence de preuve n'est pas la preuve de l'absence. »",
+    ],
+    answer: "Faux — on ne prouve jamais H₀. Dire seulement « on ne rejette pas H₀ » (peut-être manque de puissance).",
+  },
+  {
+    id: "inf-diff-11",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 61,
+    title: "Signif. statistique sur grand n — utilité clinique",
+    difficulty: "Difficile",
+    prompt:
+      "Un chercheur teste deux médicaments sur n = 5 000 sujets par groupe. Différence des moyennes de tension artérielle : 0,05 mm Hg. Test très significatif (p = 0,002). Interprète et discute de l'utilité clinique.",
+    steps: [
+      "Le test est statistiquement significatif (p = 0,002 < α = 0,05) : H₀ (aucune différence) est rejetée.",
+      "Cependant, 0,05 mm Hg est cliniquement négligeable — une différence utile en tension artérielle serait plutôt de 5 à 10 mm Hg.",
+      "Une grande taille d'échantillon (5 000/groupe) permet de détecter des différences infimes.",
+      "Distinguer : (1) signification statistique (H₀ rejetée) et (2) importance clinique (magnitude utile). Toujours rapporter la magnitude, pas juste la valeur p.",
+    ],
+    answer:
+      "Statistiquement significatif mais cliniquement sans intérêt (0,05 mm Hg négligeable). Grand n = détection d'effets minimes.",
+  },
+  {
+    id: "inf-diff-12",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 62,
+    title: "Taille d'échantillon avec estimation préalable de p̂",
+    difficulty: "Difficile",
+    prompt:
+      "Une usine veut estimer par IC à 95 % la proportion de pièces défectueuses avec une marge d'erreur de 1 %. Une étude préliminaire suggère p̂ ≈ 0,08. Quelle taille d'échantillon faut-il ?",
+    steps: [
+      "Formule : n = (z/E)² · p̂(1 − p̂).",
+      "n = (1,96/0,01)² × (0,08 × 0,92) = 38 416 × 0,0736.",
+      "n ≈ 2 827.",
+      "L'usine doit inspecter au moins 2 827 pièces. Note : sans information préalable (cas défavorable p = 0,5), il aurait fallu (1,96/0,01)² × 0,25 = 9 604 pièces.",
+    ],
+    answer: "n ≥ 2 827 pièces (grâce à l'estimation préalable p̂ = 0,08).",
+  },
+  {
+    id: "inf-diff-13",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 63,
+    title: "Test unilatéral avec observation dans le mauvais sens",
+    difficulty: "Difficile",
+    prompt:
+      "Un pharmacien teste si un médicament a un taux de guérison supérieur à 90 % (p₀ = 0,90). Sur n = 200 patients, il observe 175 guérisons (p̂ = 0,875). Teste au seuil 5 %. Que peut-on conclure ?",
+    steps: [
+      "H₀ : p = 0,90 ; H₁ : p > 0,90 (unilatéral à droite).",
+      "p̂ = 175/200 = 0,875, ce qui est INFÉRIEUR à p₀ = 0,90.",
+      "z = (0,875 − 0,90)/√(0,90 × 0,10/200) = −0,025/0,0212 ≈ −1,18.",
+      "z_{0,05} = 1,645. Zone de rejet : z > 1,645. −1,18 est loin de cette zone → on ne rejette PAS H₀.",
+      "Conclusion : on n'a pas prouvé que le taux dépasse 90 %. En fait, le résultat va dans le sens opposé, ce qui rend impossible tout rejet dans le sens H₁.",
+    ],
+    answer: "z ≈ −1,18 ; ne pas rejeter H₀. On n'a pas prouvé que le taux dépasse 90 % (résultat va même dans le sens opposé).",
+  },
+  {
+    id: "inf-diff-14",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 64,
+    title: "Test unilatéral vs bilatéral — puissance",
+    difficulty: "Difficile",
+    prompt:
+      "Sur un même échantillon, on peut faire un test unilatéral ou bilatéral. (a) Lequel donne plus facilement un rejet de H₀ ? (b) Pourquoi le choix ne peut-il pas être fait après avoir vu les données ?",
+    steps: [
+      "(a) Le test unilatéral. Ex. à α = 0,05 : z_{0,05} = 1,645 (unilatéral) contre z_{0,025} = 1,96 (bilatéral). Le seuil unilatéral est moins extrême → plus facile à dépasser.",
+      "(b) Choisir unilatéral APRÈS avoir vu les données ferait doubler artificiellement le taux réel d'erreur de type I (data snooping) : on regarderait toujours du bon côté.",
+      "Règle : le choix (unilatéral vs bilatéral) et le sens (gauche vs droite) doivent être posés AVANT de collecter/regarder les données, à partir de la théorie ou du contexte.",
+    ],
+    answer:
+      "(a) Unilatéral (seuil moins extrême). (b) Sinon on double le taux d'erreur I (choix doit être a priori).",
+  },
+  {
+    id: "inf-diff-15",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 65,
+    title: "Étude complète — test + valeur p + IC",
+    difficulty: "Difficile",
+    prompt:
+      "On veut savoir si un groupe de 40 étudiants a une moyenne significativement supérieure à la moyenne provinciale de 70 %. On observe x̄ = 74, s = 12. (a) Test z applicable ? (b) Test unilatéral au seuil 5 % + valeur p. (c) IC à 95 % pour µ. (Φ(2,11) ≈ 0,9826.)",
+    steps: [
+      "(a) n = 40 ≥ 30 → test z applicable (TCL).",
+      "(b) H₀ : µ = 70 ; H₁ : µ > 70 (unilatéral droite). z = (74 − 70)/(12/√40) = 4/1,897 ≈ 2,11.",
+      "z_{0,05} = 1,645 ; 2,11 > 1,645 → rejeter H₀. Valeur p = 1 − Φ(2,11) ≈ 1 − 0,9826 = 0,0174. Très significatif.",
+      "(c) IC : E = 1,96 × 1,897 ≈ 3,72. IC₉₅ % = [74 − 3,72 ; 74 + 3,72] ≈ [70,28 ; 77,72].",
+      "Cohérence : la moyenne provinciale 70 est juste sous l'IC, confirmant que le groupe est supérieur.",
+    ],
+    answer:
+      "(a) Oui, n ≥ 30. (b) z ≈ 2,11 ; p ≈ 0,017 ; rejet. (c) IC ≈ [70,28 ; 77,72] (ne contient pas 70).",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
