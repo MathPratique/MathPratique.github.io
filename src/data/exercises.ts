@@ -7423,6 +7423,396 @@ const manualExercises: Exercise[] = [
     steps: [],
     answer: "Vrai.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 3 : Inférence statistique (25 exercices faciles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "inf-facile-01",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 1,
+    title: "Paramètre ou statistique ?",
+    difficulty: "Facile",
+    prompt:
+      "Un biologiste calcule x̄ = 24,7 cm sur les 40 truites qu'il a capturées. Cette valeur est-elle un paramètre ou une statistique ? Justifie.",
+    steps: [
+      "Un paramètre décrit une population entière (généralement inconnu, noté par lettre grecque : µ, σ, p).",
+      "Une statistique est calculée à partir d'un échantillon (connue, notée par lettre latine : x̄, s, p̂).",
+      "Ici, x̄ est calculé sur les 40 truites (échantillon) → c'est une statistique.",
+    ],
+    answer: "Une statistique (calculée sur un échantillon ; notée par une lettre latine).",
+  },
+  {
+    id: "inf-facile-02",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 2,
+    title: "Notation paramètre vs statistique",
+    difficulty: "Facile",
+    prompt:
+      "Quel symbole représente chacun des concepts suivants ? (a) moyenne d'une population ; (b) écart-type d'un échantillon ; (c) proportion d'une population ; (d) proportion d'un échantillon.",
+    steps: [
+      "(a) Moyenne de population : µ (mu, paramètre).",
+      "(b) Écart-type d'échantillon : s (statistique).",
+      "(c) Proportion de population : p (paramètre).",
+      "(d) Proportion d'échantillon : p̂ (« p chapeau », statistique).",
+    ],
+    answer: "(a) µ ; (b) s ; (c) p ; (d) p̂.",
+  },
+  {
+    id: "inf-facile-03",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 3,
+    title: "Distribution d'échantillonnage",
+    difficulty: "Facile",
+    prompt:
+      "On répète 1 000 fois la même expérience : à chaque répétition, on prélève un échantillon de taille 40 et on calcule sa moyenne x̄. Comment appelle-t-on la distribution des 1 000 valeurs de x̄ obtenues ?",
+    steps: [
+      "Chaque valeur de x̄ vient d'un échantillon différent (elle varie d'un échantillon à l'autre).",
+      "La distribution formée de toutes les x̄ possibles est appelée « distribution d'échantillonnage de la moyenne X̄ ».",
+    ],
+    answer: "Distribution d'échantillonnage de la moyenne X̄.",
+  },
+  {
+    id: "inf-facile-04",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 4,
+    title: "Erreur type de la moyenne",
+    difficulty: "Facile",
+    prompt:
+      "Un échantillon de taille n = 100 est prélevé d'une population d'écart-type σ = 10. Quelle est l'erreur type (écart-type) de la moyenne X̄ ?",
+    steps: [
+      "Erreur type = σ_X̄ = σ / √n.",
+      "σ_X̄ = 10 / √100 = 10 / 10 = 1.",
+    ],
+    answer: "σ_X̄ = 1.",
+  },
+  {
+    id: "inf-facile-05",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 5,
+    title: "Condition du théorème central limite",
+    difficulty: "Facile",
+    prompt:
+      "Selon le théorème central limite, à quelle condition la distribution d'échantillonnage de X̄ est-elle approximativement normale ?",
+    steps: [
+      "Le TCL affirme que X̄ est approximativement normale lorsque n est suffisamment grand.",
+      "En pratique, on utilise le seuil n ≥ 30.",
+      "Point remarquable : cette conclusion tient peu importe la forme de la distribution originale de la population.",
+    ],
+    answer: "Si n est suffisamment grand (typiquement n ≥ 30), peu importe la distribution originale.",
+  },
+  {
+    id: "inf-facile-06",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 6,
+    title: "TCL — application directe",
+    difficulty: "Facile",
+    prompt:
+      "Une population a µ = 50 et σ = 6. On prélève un échantillon de taille n = 36. Quelle est l'espérance et l'écart-type de X̄ ?",
+    steps: [
+      "Par le TCL : E(X̄) = µ = 50 (l'estimateur X̄ est non biaisé).",
+      "Erreur type : σ_X̄ = σ / √n = 6 / √36 = 6 / 6 = 1.",
+    ],
+    answer: "E(X̄) = 50 ; σ_X̄ = 1.",
+  },
+  {
+    id: "inf-facile-07",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 7,
+    title: "Formule de l'IC pour µ (grand échantillon)",
+    difficulty: "Facile",
+    prompt:
+      "Quelle est la formule de l'intervalle de confiance au niveau 1 − α pour la moyenne µ, dans le cas d'un grand échantillon (n ≥ 30) ?",
+    steps: [
+      "L'IC est centré sur x̄, avec une marge d'erreur E dépendant du niveau de confiance.",
+      "Formule : x̄ ± z_{α/2} · s/√n, où z_{α/2} est la valeur critique de la loi normale.",
+    ],
+    answer: "IC = x̄ ± z_{α/2} × s/√n.",
+  },
+  {
+    id: "inf-facile-08",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 8,
+    title: "Construire un IC à 95 %",
+    difficulty: "Facile",
+    prompt:
+      "Un échantillon de n = 100 donne x̄ = 50 et s = 10. Construis l'IC à 95 % pour µ (utilise z_{α/2} = 1,96).",
+    steps: [
+      "Marge d'erreur : E = z_{α/2} · s/√n = 1,96 × 10/√100 = 1,96 × 1 = 1,96.",
+      "IC = [x̄ − E ; x̄ + E] = [50 − 1,96 ; 50 + 1,96] = [48,04 ; 51,96].",
+    ],
+    answer: "IC₉₅ % = [48,04 ; 51,96].",
+  },
+  {
+    id: "inf-facile-09",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 9,
+    title: "Valeurs critiques z usuelles",
+    difficulty: "Facile",
+    prompt:
+      "Donne la valeur critique z_{α/2} pour un intervalle de confiance à 90 %, 95 % et 99 %.",
+    steps: [
+      "À 90 % : α = 0,10, α/2 = 0,05 → z_{0,05} = 1,645.",
+      "À 95 % : α = 0,05, α/2 = 0,025 → z_{0,025} = 1,96.",
+      "À 99 % : α = 0,01, α/2 = 0,005 → z_{0,005} = 2,576.",
+    ],
+    answer: "90 % → 1,645 ; 95 % → 1,96 ; 99 % → 2,576.",
+  },
+  {
+    id: "inf-facile-10",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 10,
+    title: "Interprétation d'un IC à 95 %",
+    difficulty: "Facile",
+    prompt:
+      "Un IC à 95 % pour µ est [48,04 ; 51,96]. Explique correctement ce que veut dire « 95 % de confiance ».",
+    steps: [
+      "Bonne interprétation : si l'on répétait cet échantillonnage un grand nombre de fois et qu'on construisait un IC à 95 % chaque fois, environ 95 % de ces intervalles contiendraient la vraie valeur µ.",
+      "À NE PAS DIRE : « la probabilité que µ soit dans [48,04 ; 51,96] est 95 % ». µ est fixe (pas aléatoire) — il est dans l'intervalle ou il ne l'est pas.",
+    ],
+    answer:
+      "Si on répétait la procédure, environ 95 % des intervalles ainsi construits contiendraient la vraie moyenne µ.",
+  },
+  {
+    id: "inf-facile-11",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 11,
+    title: "Quand utiliser la loi de Student ?",
+    difficulty: "Facile",
+    prompt:
+      "Dans quel cas utilise-t-on la loi de Student plutôt que la loi normale pour construire un IC pour la moyenne µ ?",
+    steps: [
+      "Trois conditions doivent être réunies :",
+      "1) Petit échantillon (n < 30) ;",
+      "2) La population est approximativement normale ;",
+      "3) σ est inconnu (on utilise s à la place).",
+    ],
+    answer: "Petit échantillon (n < 30), population approximativement normale, σ inconnu.",
+  },
+  {
+    id: "inf-facile-12",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 12,
+    title: "IC petit échantillon (Student)",
+    difficulty: "Facile",
+    prompt:
+      "Un échantillon de n = 16 donne x̄ = 20 et s = 4. Sachant que t_{0,025 ; 15} = 2,131, construis l'IC à 95 % pour µ.",
+    steps: [
+      "Degrés de liberté : ν = n − 1 = 15.",
+      "Marge d'erreur : E = t_{α/2 ; n−1} · s/√n = 2,131 × 4/√16 = 2,131 × 1 = 2,131.",
+      "IC = [20 − 2,131 ; 20 + 2,131] ≈ [17,87 ; 22,13].",
+    ],
+    answer: "IC₉₅ % ≈ [17,87 ; 22,13].",
+  },
+  {
+    id: "inf-facile-13",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 13,
+    title: "Erreur type d'une proportion",
+    difficulty: "Facile",
+    prompt:
+      "Un échantillon de n = 200 donne une proportion p̂ = 0,3. Quelle est l'erreur type σ_p̂ ?",
+    steps: [
+      "Formule : σ_p̂ = √(p̂(1 − p̂) / n).",
+      "σ_p̂ = √(0,3 × 0,7 / 200) = √(0,21 / 200) = √0,00105 ≈ 0,0324.",
+    ],
+    answer: "σ_p̂ ≈ 0,0324.",
+  },
+  {
+    id: "inf-facile-14",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 14,
+    title: "IC pour une proportion",
+    difficulty: "Facile",
+    prompt:
+      "Un échantillon de n = 400 donne p̂ = 0,25. Construis l'IC à 95 % pour la proportion p (z_{α/2} = 1,96).",
+    steps: [
+      "Vérifier les conditions : np̂ = 100 ≥ 5 ✓ et n(1 − p̂) = 300 ≥ 5 ✓.",
+      "Erreur type : σ_p̂ = √(0,25 × 0,75 / 400) = √(0,1875/400) ≈ 0,0217.",
+      "Marge d'erreur : E = 1,96 × 0,0217 ≈ 0,0425.",
+      "IC = [0,25 − 0,0425 ; 0,25 + 0,0425] ≈ [0,208 ; 0,293] = [20,8 % ; 29,3 %].",
+    ],
+    answer: "IC₉₅ % ≈ [20,8 % ; 29,3 %].",
+  },
+  {
+    id: "inf-facile-15",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 15,
+    title: "Formuler l'hypothèse nulle",
+    difficulty: "Facile",
+    prompt:
+      "Un fabricant prétend que la masse moyenne de ses boîtes de céréales est de 500 g. Formule l'hypothèse nulle H₀ pour tester cette prétention.",
+    steps: [
+      "H₀ contient toujours un signe d'égalité et représente la valeur de référence à tester.",
+      "Ici, la valeur de référence est 500 g : H₀ : µ = 500.",
+    ],
+    answer: "H₀ : µ = 500.",
+  },
+  {
+    id: "inf-facile-16",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 16,
+    title: "Test unilatéral à gauche",
+    difficulty: "Facile",
+    prompt:
+      "Un chercheur veut montrer qu'un nouveau médicament réduit le temps de récupération. Le temps moyen actuel est 14 jours. Formule H₀ et H₁.",
+    steps: [
+      "H₀ (hypothèse nulle) : le nouveau médicament ne fait aucune différence → µ = 14.",
+      "H₁ (alternative) : le nouveau médicament réduit le temps → µ < 14 (unilatéral à gauche).",
+    ],
+    answer: "H₀ : µ = 14 ; H₁ : µ < 14 (unilatéral à gauche).",
+  },
+  {
+    id: "inf-facile-17",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 17,
+    title: "Méthode en 5 étapes",
+    difficulty: "Facile",
+    prompt: "Nomme les 5 étapes d'un test d'hypothèse.",
+    steps: [
+      "1) Poser H₀ et H₁ (identifier bilatéral vs unilatéral).",
+      "2) Choisir le seuil α et déterminer la valeur critique et la zone de rejet.",
+      "3) Calculer la statistique de test à partir de l'échantillon.",
+      "4) Décider : rejeter H₀ ou non (selon si la statistique est dans la zone de rejet).",
+      "5) Interpréter la décision en contexte.",
+    ],
+    answer: "1) H₀/H₁ ; 2) seuil + zone de rejet ; 3) statistique de test ; 4) décision ; 5) interprétation.",
+  },
+  {
+    id: "inf-facile-18",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 18,
+    title: "Erreur de type I",
+    difficulty: "Facile",
+    prompt: "Qu'est-ce qu'une erreur de type I dans un test d'hypothèse ? Quelle est sa probabilité ?",
+    steps: [
+      "Erreur de type I : rejeter H₀ alors qu'elle est vraie (« faux positif »).",
+      "Sa probabilité est le seuil α choisi à l'avance (typiquement 0,05).",
+    ],
+    answer: "Rejeter H₀ alors qu'elle est vraie ; probabilité = α (seuil de signification).",
+  },
+  {
+    id: "inf-facile-19",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 19,
+    title: "Statistique de test — moyenne (grand échantillon)",
+    difficulty: "Facile",
+    prompt:
+      "Un échantillon de n = 100 donne x̄ = 105 et s = 20. On teste H₀ : µ = 100 vs H₁ : µ ≠ 100. Calcule la statistique de test z.",
+    steps: [
+      "Formule : z = (x̄ − µ₀) / (s/√n).",
+      "z = (105 − 100) / (20/√100) = 5 / 2 = 2,5.",
+    ],
+    answer: "z = 2,5.",
+  },
+  {
+    id: "inf-facile-20",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 20,
+    title: "Décision d'un test bilatéral",
+    difficulty: "Facile",
+    prompt:
+      "Suite de l'exercice précédent : la statistique de test est z = 2,5. Au seuil α = 0,05 (test bilatéral, z_{α/2} = 1,96), quelle est la décision ?",
+    steps: [
+      "Zone de rejet bilatérale : |z| > 1,96.",
+      "|2,5| = 2,5 > 1,96 → on rejette H₀.",
+      "Il y a une différence significative entre x̄ et la valeur de référence µ₀ = 100.",
+    ],
+    answer: "On rejette H₀ (2,5 > 1,96) : différence significative au seuil 5 %.",
+  },
+  {
+    id: "inf-facile-21",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 21,
+    title: "Définition de la valeur p",
+    difficulty: "Facile",
+    prompt: "Qu'est-ce que la valeur p (p-value) d'un test d'hypothèse ?",
+    steps: [
+      "La valeur p est la probabilité d'observer un résultat au moins aussi extrême que celui obtenu, SI H₀ était vraie.",
+      "Plus la valeur p est petite, plus les données sont incompatibles avec H₀.",
+    ],
+    answer: "Probabilité d'observer un résultat aussi ou plus extrême, sachant que H₀ est vraie.",
+  },
+  {
+    id: "inf-facile-22",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 22,
+    title: "Décision par la valeur p",
+    difficulty: "Facile",
+    prompt: "Un test donne une valeur p = 0,03. Au seuil α = 0,05, quelle est la décision ?",
+    steps: [
+      "Règle : on rejette H₀ si valeur p < α.",
+      "0,03 < 0,05 → on rejette H₀.",
+    ],
+    answer: "On rejette H₀ (p < α).",
+  },
+  {
+    id: "inf-facile-23",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 23,
+    title: "Statistique de test — moyenne (petit échantillon)",
+    difficulty: "Facile",
+    prompt:
+      "Quelle est la formule de la statistique de test pour tester H₀ : µ = µ₀ avec un petit échantillon (n < 30) ? Précise la loi de référence.",
+    steps: [
+      "Statistique : t = (x̄ − µ₀) / (s/√n).",
+      "Cette statistique suit une loi de Student à n − 1 degrés de liberté.",
+    ],
+    answer: "t = (x̄ − µ₀) / (s/√n), qui suit une loi de Student à n − 1 ddl.",
+  },
+  {
+    id: "inf-facile-24",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 24,
+    title: "Statistique de test — proportion",
+    difficulty: "Facile",
+    prompt:
+      "Quelle est la formule de la statistique de test pour tester H₀ : p = p₀ (n grand) ?",
+    steps: [
+      "Statistique : z = (p̂ − p₀) / √(p₀(1 − p₀)/n).",
+      "Attention : on utilise p₀ (et non p̂) au dénominateur, car sous H₀ c'est p₀ qui est la vraie proportion supposée.",
+    ],
+    answer: "z = (p̂ − p₀) / √(p₀(1 − p₀)/n) — p₀ au dénominateur (sous H₀).",
+  },
+  {
+    id: "inf-facile-25",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 25,
+    title: "Choisir le bon outil",
+    difficulty: "Facile",
+    prompt:
+      "On veut estimer par intervalle de confiance la moyenne d'une population avec n = 50 (grand échantillon) et σ inconnu. Quelle formule utiliser ?",
+    steps: [
+      "n ≥ 30 → on utilise le TCL et la loi normale.",
+      "σ inconnu → on remplace par s.",
+      "IC = x̄ ± z_{α/2} · s/√n.",
+    ],
+    answer: "IC pour µ, grand échantillon : x̄ ± z_{α/2} · s/√n.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
