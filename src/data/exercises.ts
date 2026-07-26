@@ -7813,6 +7813,428 @@ const manualExercises: Exercise[] = [
     ],
     answer: "IC pour µ, grand échantillon : x̄ ± z_{α/2} · s/√n.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 3 : Inférence statistique (25 exercices intermédiaires)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "inf-inter-01",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 26,
+    title: "Identifier paramètre et statistique dans un sondage",
+    difficulty: "Moyen",
+    prompt:
+      "Un institut sonde 1 200 Québécois pour connaître leur intention de vote. 46 % des sondés disent voter pour le parti X. Identifie le paramètre, la statistique et donne la valeur numérique de chacun (si elle est connue).",
+    steps: [
+      "Paramètre : p = proportion réelle des Québécois qui voteraient X — INCONNU (c'est ce qu'on cherche à estimer).",
+      "Statistique : p̂ = 0,46 (calculée sur l'échantillon de 1 200 personnes).",
+      "La statistique p̂ est utilisée pour estimer le paramètre p.",
+    ],
+    answer: "Paramètre : p (inconnu). Statistique : p̂ = 0,46.",
+  },
+  {
+    id: "inf-inter-02",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 27,
+    title: "Erreur type et précision selon n",
+    difficulty: "Moyen",
+    prompt:
+      "Deux études estiment la même moyenne. Étude A : n = 100 avec σ_X̄ = 2. Étude B : n = 400 (même σ dans la population). Calcule σ_X̄ pour B et compare la précision.",
+    steps: [
+      "De A : σ_X̄ = σ/√n = 2 → σ/√100 = 2 → σ = 20.",
+      "Pour B : σ_X̄ = 20/√400 = 20/20 = 1.",
+      "Précision : σ_X̄(B) est deux fois plus petit que σ_X̄(A) → B est 2× plus précise.",
+      "Généralité : quadrupler n divise σ_X̄ par √4 = 2.",
+    ],
+    answer: "σ_X̄(B) = 1 (B est 2× plus précise).",
+  },
+  {
+    id: "inf-inter-03",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 28,
+    title: "TCL — probabilité que X̄ dépasse un seuil",
+    difficulty: "Moyen",
+    prompt:
+      "Une population a µ = 500 et σ = 60. On prélève un échantillon de n = 36. Quelle est la probabilité que X̄ soit supérieure à 520 ? (Φ(2) = 0,9772.)",
+    steps: [
+      "Par le TCL : X̄ ~ N(µ, σ/√n) approximativement. σ_X̄ = 60/√36 = 10.",
+      "Standardiser : z = (520 − 500)/10 = 2.",
+      "P(X̄ > 520) = P(Z > 2) = 1 − Φ(2) = 1 − 0,9772 = 0,0228.",
+    ],
+    answer: "P(X̄ > 520) ≈ 2,28 %.",
+  },
+  {
+    id: "inf-inter-04",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 29,
+    title: "TCL — probabilité inférieure à un seuil",
+    difficulty: "Moyen",
+    prompt:
+      "Le taux de sucre à jeun d'une population adulte a µ = 5,0 mmol/L et σ = 0,6 mmol/L. Sur un échantillon de 36 patients, quelle est la probabilité que X̄ soit inférieure à 4,85 ? (Φ(1,5) = 0,9332.)",
+    steps: [
+      "n = 36 ≥ 30, TCL applicable. σ_X̄ = 0,6/√36 = 0,1.",
+      "z = (4,85 − 5,0)/0,1 = −1,5.",
+      "P(X̄ < 4,85) = P(Z < −1,5) = 1 − Φ(1,5) = 1 − 0,9332 = 0,0668.",
+    ],
+    answer: "P(X̄ < 4,85) ≈ 6,68 %.",
+  },
+  {
+    id: "inf-inter-05",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 30,
+    title: "IC à 99 % — nitrates dans une rivière",
+    difficulty: "Moyen",
+    prompt:
+      "Un environnementaliste mesure le taux de nitrates dans 64 prélèvements et obtient x̄ = 12,8 mg/L et s = 3,0 mg/L. Construis l'IC à 99 % pour la vraie concentration µ (z_{0,005} = 2,576).",
+    steps: [
+      "n = 64 ≥ 30, on utilise la loi normale.",
+      "E = z_{α/2} · s/√n = 2,576 × 3/√64 = 2,576 × 0,375 ≈ 0,966.",
+      "IC = [12,8 − 0,966 ; 12,8 + 0,966] ≈ [11,83 ; 13,77] mg/L.",
+    ],
+    answer: "IC₉₉ % ≈ [11,83 ; 13,77] mg/L.",
+  },
+  {
+    id: "inf-inter-06",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 31,
+    title: "Effet de la taille d'échantillon sur la marge",
+    difficulty: "Moyen",
+    prompt:
+      "Pour un même niveau de confiance, si on quadruple la taille de l'échantillon (n → 4n), par quel facteur la marge d'erreur E est-elle multipliée ?",
+    steps: [
+      "E = z_{α/2} · s/√n. Le dénominateur est √n.",
+      "Si n → 4n, alors √n → √(4n) = 2√n.",
+      "Donc E est divisée par 2.",
+      "Autrement dit, pour diviser E par 10, il faut multiplier n par 100.",
+    ],
+    answer: "E est divisée par 2 (quadrupler n divise E par √4 = 2).",
+  },
+  {
+    id: "inf-inter-07",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 32,
+    title: "Effet du niveau de confiance sur la marge",
+    difficulty: "Moyen",
+    prompt:
+      "Pour un même échantillon, compare la marge d'erreur d'un IC à 90 %, 95 % et 99 %. Que peut-on conclure sur le compromis à faire ?",
+    steps: [
+      "Les valeurs critiques sont z_{0,05} = 1,645, z_{0,025} = 1,96, z_{0,005} = 2,576.",
+      "Comme E = z_{α/2}·s/√n avec s et n fixes, E augmente avec le niveau de confiance.",
+      "E(90 %) < E(95 %) < E(99 %) — l'intervalle est de plus en plus large.",
+      "Compromis : plus on veut être sûr, plus l'intervalle est vague (« prix » du niveau de confiance).",
+    ],
+    answer: "Plus le niveau de confiance est élevé, plus la marge d'erreur est grande.",
+  },
+  {
+    id: "inf-inter-08",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 33,
+    title: "Corriger une mauvaise formulation d'IC",
+    difficulty: "Moyen",
+    prompt:
+      "Un journal titre : « Le taux de chômage réel est entre 4,5 % et 5,5 % avec 95 % de probabilité ». Cette formulation est-elle correcte ? Corrige si nécessaire.",
+    steps: [
+      "Non, incorrecte. Le taux de chômage réel µ est fixe (pas aléatoire) — il est dans l'intervalle ou il n'y est pas.",
+      "Formulation correcte : « Nous sommes confiants à 95 % que le taux réel se trouve entre 4,5 % et 5,5 %. »",
+      "Ou, plus précisément : « Si on répétait l'échantillonnage, environ 95 % des intervalles ainsi construits contiendraient le vrai taux. »",
+      "C'est la procédure qui a une probabilité de 95 %, pas le paramètre µ.",
+    ],
+    answer:
+      "Non. Corriger en : « Nous sommes confiants à 95 % que le taux réel se trouve entre 4,5 % et 5,5 %. »",
+  },
+  {
+    id: "inf-inter-09",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 34,
+    title: "Calcul de la taille d'échantillon minimale",
+    difficulty: "Moyen",
+    prompt:
+      "On veut estimer la moyenne µ d'une population avec une marge d'erreur d'au plus 1 unité au niveau 95 % (z = 1,96). On sait que σ ≈ 5. Quelle est la taille minimale d'échantillon nécessaire ?",
+    steps: [
+      "On isole n dans E = z · σ/√n : √n ≥ z · σ / E.",
+      "√n ≥ 1,96 × 5 / 1 = 9,8.",
+      "n ≥ 9,8² = 96,04.",
+      "Comme n est entier, on prend n = 97 (arrondir vers le haut).",
+    ],
+    answer: "n = 97 (arrondi vers le haut).",
+  },
+  {
+    id: "inf-inter-10",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 35,
+    title: "IC petit échantillon — résistance d'un alliage",
+    difficulty: "Moyen",
+    prompt:
+      "Un ingénieur teste 8 échantillons d'un nouvel alliage et obtient x̄ = 420 MPa, s = 8,4 MPa. Construis l'IC à 95 % pour µ (population approximativement normale, t_{0,025 ; 7} = 2,365).",
+    steps: [
+      "n = 8 < 30, population normale, σ inconnu → loi de Student avec ν = 7 ddl.",
+      "E = t_{0,025 ; 7} · s/√n = 2,365 × 8,4/√8 = 2,365 × 2,97 ≈ 7,02.",
+      "IC = [420 − 7,02 ; 420 + 7,02] ≈ [413,0 ; 427,0] MPa.",
+    ],
+    answer: "IC₉₅ % ≈ [413,0 ; 427,0] MPa.",
+  },
+  {
+    id: "inf-inter-11",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 36,
+    title: "Comparer Student et loi normale",
+    difficulty: "Moyen",
+    prompt:
+      "Explique pourquoi t_{α/2 ; n−1} > z_{α/2} pour un même niveau de confiance et un petit n. Que se passe-t-il quand n → ∞ ?",
+    steps: [
+      "La loi de Student a des queues plus épaisses que la normale (pour compenser l'incertitude sur s comme estimateur de σ).",
+      "Pour couvrir le même niveau de confiance, il faut donc aller « plus loin » dans les queues → t > z.",
+      "Ex. à 95 % : t_{0,025 ; 5} = 2,571 vs z_{0,025} = 1,96.",
+      "Quand n → ∞, la loi de Student converge vers la loi normale, et t_{α/2 ; n−1} → z_{α/2}.",
+    ],
+    answer:
+      "t > z car les queues de Student sont plus épaisses ; convergence vers z quand n → ∞.",
+  },
+  {
+    id: "inf-inter-12",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 37,
+    title: "IC proportion — sondage électoral",
+    difficulty: "Moyen",
+    prompt:
+      "Sur n = 1 000 personnes interrogées, 460 disent avoir l'intention de voter pour le parti A. Construis l'IC à 95 % pour la proportion réelle p (z = 1,96).",
+    steps: [
+      "p̂ = 460/1000 = 0,46. Conditions : np̂ = 460 ≥ 5 ✓ ; n(1 − p̂) = 540 ≥ 5 ✓.",
+      "Erreur type : √(0,46 × 0,54/1000) ≈ √0,0002484 ≈ 0,01576.",
+      "E = 1,96 × 0,01576 ≈ 0,031.",
+      "IC = [0,46 − 0,031 ; 0,46 + 0,031] = [0,429 ; 0,491] = [42,9 % ; 49,1 %].",
+    ],
+    answer: "IC₉₅ % ≈ [42,9 % ; 49,1 %] (le fameux « 46 % ± 3 % »).",
+  },
+  {
+    id: "inf-inter-13",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 38,
+    title: "IC proportion — sondage trop serré pour conclure",
+    difficulty: "Moyen",
+    prompt:
+      "Un sondage donne p̂ = 0,52 avec un IC à 95 % de [0,49 ; 0,55]. Un journaliste titre : « Le parti X va gagner (52 % dans les intentions) ». Est-ce raisonnable ? Justifie.",
+    steps: [
+      "L'IC couvre à la fois des valeurs < 50 % (comme 0,49) et > 50 % (comme 0,55).",
+      "Avec 95 % de confiance, on ne peut pas exclure que p < 50 % — donc pas de gagnant clair.",
+      "Le titre est trompeur : la marge d'erreur (±3 %) rend l'écart non significatif.",
+      "Correct : « X est en légère avance, mais le résultat est trop serré pour conclure au vainqueur. »",
+    ],
+    answer: "Non — l'IC franchit 50 %, l'écart n'est pas statistiquement significatif.",
+  },
+  {
+    id: "inf-inter-14",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 39,
+    title: "Formuler un test bilatéral",
+    difficulty: "Moyen",
+    prompt:
+      "Un professeur veut tester si la moyenne d'une classe de mathématiques diffère de la moyenne provinciale de 75 %. Formule H₀ et H₁ et indique le type de test.",
+    steps: [
+      "H₀ (aucune différence) : µ = 75.",
+      "H₁ (ce qu'on cherche à établir) : µ ≠ 75 → différence dans un sens ou l'autre.",
+      "Type de test : bilatéral (on rejette d'un côté ou de l'autre).",
+    ],
+    answer: "H₀ : µ = 75 ; H₁ : µ ≠ 75 (test bilatéral).",
+  },
+  {
+    id: "inf-inter-15",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 40,
+    title: "Erreurs de type I et II",
+    difficulty: "Moyen",
+    prompt:
+      "Un test d'hypothèse a α = 0,05. (a) Avec quelle probabilité rejette-t-on H₀ à tort ? (b) Comment appelle-t-on l'erreur inverse (conserver H₀ à tort) et quelle est sa probabilité ?",
+    steps: [
+      "(a) Erreur de type I = rejeter H₀ vraie. Sa probabilité est α = 0,05 = 5 %.",
+      "(b) Erreur de type II = conserver H₀ alors qu'elle est fausse. Sa probabilité est notée β (dépend de la vraie valeur de µ, difficile à quantifier sans plus d'information).",
+    ],
+    answer: "(a) 5 % (α). (b) Erreur de type II, probabilité β.",
+  },
+  {
+    id: "inf-inter-16",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 41,
+    title: "Test bilatéral — masse de boîtes de céréales",
+    difficulty: "Moyen",
+    prompt:
+      "Un fabricant prétend µ = 500 g. Un inspecteur mesure n = 50 boîtes : x̄ = 494 g, s = 15 g. Teste au seuil 5 % (bilatéral) et interprète.",
+    steps: [
+      "H₀ : µ = 500 ; H₁ : µ ≠ 500. Zone de rejet : |z| > z_{0,025} = 1,96.",
+      "z = (494 − 500)/(15/√50) = −6/2,121 ≈ −2,83.",
+      "|z| = 2,83 > 1,96 → on rejette H₀.",
+      "Interprétation : au seuil 5 %, la masse moyenne diffère significativement de 500 g (vraisemblablement inférieure).",
+    ],
+    answer: "z ≈ −2,83 ; rejeter H₀. La masse moyenne diffère significativement de 500 g.",
+  },
+  {
+    id: "inf-inter-17",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 42,
+    title: "Test unilatéral — efficacité d'un fertilisant",
+    difficulty: "Moyen",
+    prompt:
+      "Un fertilisant classique donne µ₀ = 4,2 t/ha. Un nouveau est testé sur n = 36 parcelles : x̄ = 4,45 t/ha, s = 0,60 t/ha. Teste au seuil 5 % si le nouveau est meilleur.",
+    steps: [
+      "H₀ : µ = 4,2 ; H₁ : µ > 4,2 (unilatéral à droite, car on cherche à montrer une amélioration).",
+      "Valeur critique : z_{0,05} = 1,645. Zone de rejet : z > 1,645.",
+      "z = (4,45 − 4,2)/(0,60/√36) = 0,25/0,10 = 2,5.",
+      "z = 2,5 > 1,645 → rejeter H₀. Le nouveau fertilisant est significativement plus productif.",
+    ],
+    answer: "z = 2,5 ; rejeter H₀. Fertilisant significativement plus productif.",
+  },
+  {
+    id: "inf-inter-18",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 43,
+    title: "Confirmer une décision par la valeur p",
+    difficulty: "Moyen",
+    prompt:
+      "Reprends l'exercice précédent (z = 2,5, test unilatéral à droite). Calcule la valeur p et confirme la décision. (Φ(2,5) = 0,9938.)",
+    steps: [
+      "Test unilatéral à droite → valeur p = P(Z > z_observé) = P(Z > 2,5).",
+      "valeur p = 1 − Φ(2,5) = 1 − 0,9938 = 0,0062.",
+      "0,0062 < 0,05 → on rejette H₀ (même décision qu'avec la zone de rejet).",
+      "Résultat très significatif : la probabilité d'observer un tel écart si H₀ était vraie n'est que 0,62 %.",
+    ],
+    answer: "valeur p ≈ 0,0062 ; on rejette H₀ (résultat très significatif).",
+  },
+  {
+    id: "inf-inter-19",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 44,
+    title: "Test moyenne (Student, bilatéral)",
+    difficulty: "Moyen",
+    prompt:
+      "Traitement standard : temps de rémission moyen 14 jours. Nouveau traitement testé sur n = 16 patients : x̄ = 12,3 j, s = 3,1 j (population supposée normale). Teste bilatéralement au seuil 5 % (t_{0,025 ; 15} = 2,131).",
+    steps: [
+      "H₀ : µ = 14 ; H₁ : µ ≠ 14. Zone de rejet : |t| > 2,131. ν = 15 ddl.",
+      "t = (12,3 − 14)/(3,1/√16) = −1,7/0,775 ≈ −2,19.",
+      "|t| = 2,19 > 2,131 → rejeter H₀ (de peu !).",
+      "Le nouveau traitement modifie significativement le temps de rémission (vers une réduction).",
+    ],
+    answer: "t ≈ −2,19 ; rejeter H₀ de peu (traitement significativement plus rapide).",
+  },
+  {
+    id: "inf-inter-20",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 45,
+    title: "Test moyenne (Student, unilatéral)",
+    difficulty: "Moyen",
+    prompt:
+      "Une usine annonce un temps de production moyen de 45 min par pièce. Un audit de 10 pièces donne x̄ = 48,5 min, s = 5,2 min. Teste au seuil 5 % si le temps est supérieur à 45 min (t_{0,05 ; 9} = 1,833).",
+    steps: [
+      "H₀ : µ = 45 ; H₁ : µ > 45 (unilatéral à droite).",
+      "Zone de rejet : t > 1,833. ν = 9 ddl.",
+      "t = (48,5 − 45)/(5,2/√10) = 3,5/1,644 ≈ 2,13.",
+      "2,13 > 1,833 → rejeter H₀. Le temps réel est significativement plus long qu'annoncé.",
+    ],
+    answer: "t ≈ 2,13 ; rejeter H₀. Temps significativement plus long que 45 min.",
+  },
+  {
+    id: "inf-inter-21",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 46,
+    title: "Test proportion — taux de défauts",
+    difficulty: "Moyen",
+    prompt:
+      "Une usine annonce un taux de défauts p₀ = 2 %. Un contrôleur prélève n = 400 pièces et trouve 14 défectueuses. Teste au seuil 5 % si le vrai taux dépasse 2 %.",
+    steps: [
+      "H₀ : p = 0,02 ; H₁ : p > 0,02. Conditions : np₀ = 8 ≥ 5 ✓ ; n(1 − p₀) = 392 ≥ 5 ✓.",
+      "p̂ = 14/400 = 0,035.",
+      "z = (0,035 − 0,02)/√(0,02 × 0,98/400) = 0,015/√0,000049 = 0,015/0,007 ≈ 2,14.",
+      "z_{0,05} = 1,645. 2,14 > 1,645 → rejeter H₀. Le taux réel dépasse significativement 2 %.",
+    ],
+    answer: "z ≈ 2,14 ; rejeter H₀. Taux réel significativement supérieur à 2 %.",
+  },
+  {
+    id: "inf-inter-22",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 47,
+    title: "Test proportion (bilatéral, seuil strict)",
+    difficulty: "Moyen",
+    prompt:
+      "Un site web reçoit habituellement 10 % de clics sur un bouton. Après changement de design, on observe 145 clics sur 1 200 vues. Teste bilatéralement au seuil 1 % si le taux de clic a changé.",
+    steps: [
+      "H₀ : p = 0,10 ; H₁ : p ≠ 0,10. p̂ = 145/1200 ≈ 0,1208. Conditions ✓.",
+      "z = (0,1208 − 0,10)/√(0,10 × 0,90/1200) = 0,0208/√0,000075 = 0,0208/0,00866 ≈ 2,40.",
+      "Valeur critique : z_{0,005} = 2,576. |2,40| < 2,576 → NE PAS rejeter H₀.",
+      "Interprétation : au seuil très strict de 1 %, les données ne permettent pas de conclure à un changement. (Note : au seuil 5 %, on aurait rejeté H₀ puisque 2,40 > 1,96.)",
+    ],
+    answer: "z ≈ 2,40 ; ne pas rejeter H₀ au seuil 1 % (rejeté au seuil 5 %).",
+  },
+  {
+    id: "inf-inter-23",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 48,
+    title: "Choisir la bonne procédure",
+    difficulty: "Moyen",
+    prompt:
+      "Pour chaque situation, dis quelle procédure utiliser (IC ou test, moyenne ou proportion, grand ou petit échantillon). (a) Estimer par un IC la proportion de gauchers, n = 200. (b) Tester si µ ≠ 100 avec n = 25 (population normale, σ inconnu). (c) Tester si la proportion d'insatisfaits dépasse 20 %, n = 500.",
+    steps: [
+      "(a) IC pour proportion, n grand (200) : p̂ ± z_{α/2}·√(p̂(1−p̂)/n).",
+      "(b) Test moyenne, petit échantillon (Student, ν = 24 ddl) : t = (x̄ − µ₀)/(s/√n).",
+      "(c) Test proportion, n grand, unilatéral à droite : z = (p̂ − p₀)/√(p₀(1−p₀)/n).",
+    ],
+    answer:
+      "(a) IC proportion (z) ; (b) test moyenne Student ; (c) test proportion (z, unilatéral à droite).",
+  },
+  {
+    id: "inf-inter-24",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 49,
+    title: "Interpréter une valeur p très petite",
+    difficulty: "Moyen",
+    prompt:
+      "Un test d'hypothèse donne une valeur p = 0,001. Interprète ce résultat et son implication.",
+    steps: [
+      "Si H₀ était vraie, on n'aurait qu'1 chance sur 1 000 (0,1 %) d'observer un résultat aussi extrême ou plus.",
+      "0,001 est bien inférieur à tous les seuils usuels (0,05, 0,01) → on rejette H₀ avec forte confiance.",
+      "Résultat très significatif : les données sont fortement incompatibles avec H₀.",
+    ],
+    answer: "Résultat très significatif ; on rejette H₀ à tous les seuils usuels.",
+  },
+  {
+    id: "inf-inter-25",
+    topicId: "probability",
+    lessonId: "PSD3",
+    number: 50,
+    title: "Signification statistique vs importance pratique",
+    difficulty: "Moyen",
+    prompt:
+      "Un très grand échantillon (n = 10 000) détecte une différence de moyennes de 0,3 mm entre deux groupes (valeur p < 0,001, test très significatif). Cette différence est-elle nécessairement importante en pratique ?",
+    steps: [
+      "Non. Une grande taille d'échantillon peut détecter des différences très petites.",
+      "0,3 mm peut être statistiquement significatif (rejet de H₀) mais sans importance pratique.",
+      "Il faut toujours distinguer : (1) signification statistique (H₀ rejetée) et (2) magnitude/importance en contexte.",
+      "Ex : une différence médicamenteuse de 0,3 mm sur une glycémie serait cliniquement négligeable.",
+    ],
+    answer:
+      "Non — signification statistique ≠ importance pratique. Toujours interpréter la magnitude.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
