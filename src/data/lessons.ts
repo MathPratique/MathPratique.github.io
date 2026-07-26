@@ -24,6 +24,7 @@ export const chapters: Chapter[] = [
   { id: "stat-descriptives", name: "Statistiques descriptives", topicId: "probability" },
   { id: "probabilites", name: "Probabilités", topicId: "probability" },
   { id: "inference", name: "Inférence statistique", topicId: "probability" },
+  { id: "correlation-regression", name: "Corrélation, régression et χ²", topicId: "probability" },
 ];
 
 export const lessons: Lesson[] = [
@@ -101,6 +102,9 @@ export const lessons: Lesson[] = [
 
   // Probabilités et statistiques — Inférence statistique (Ch.3 201-SN1-RE)
   { id: "PSD3", number: 3, name: "Chapitre 3 — Inférence statistique", chapterId: "inference" },
+
+  // Probabilités et statistiques — Corrélation, régression et χ² (Ch.4 201-SN1-RE)
+  { id: "PSD4", number: 4, name: "Chapitre 4 — Corrélation, régression et χ²", chapterId: "correlation-regression" },
 ];
 
 export function getChapterById(id: string): Chapter | undefined {

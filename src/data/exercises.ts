@@ -9090,6 +9090,380 @@ const manualExercises: Exercise[] = [
     steps: [],
     answer: "Vrai.",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (25 Faciles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "cor-fac-01",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 1,
+    title: "Sens d'un nuage de points",
+    difficulty: "Facile",
+    prompt:
+      "Un chercheur trace le nuage de points « nombre d'heures de sommeil (x) » vs « score à un test cognitif (y) ». Les points forment un motif clairement montant de gauche à droite. Le sens de la corrélation est-il positif ou négatif ? Justifie en une phrase.",
+    steps: [
+      "Un motif montant : quand x augmente, y augmente aussi.",
+      "C'est la définition d'une corrélation positive.",
+    ],
+    answer: "Corrélation positive.",
+  },
+  {
+    id: "cor-fac-02",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 2,
+    title: "Interpréter r = 0,85",
+    difficulty: "Facile",
+    prompt:
+      "Une étude sur la biomasse d'une forêt trouve r = 0,85 entre le diamètre des troncs et leur hauteur. Comment qualifies-tu cette corrélation ? Utilise les mots sens (positif/négatif) et force (faible, modérée, forte).",
+    steps: [
+      "Signe de r : positif → corrélation positive.",
+      "Force : |r| = 0,85 ≥ 0,80 → forte (parfois très forte).",
+    ],
+    answer: "Forte corrélation positive.",
+  },
+  {
+    id: "cor-fac-03",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 3,
+    title: "Interpréter r = −0,72",
+    difficulty: "Facile",
+    prompt:
+      "Dans un lac, on mesure la concentration en oxygène dissous (x) et l'abondance d'une algue nuisible (y). Le calcul donne r = −0,72. Décris le sens et la force du lien.",
+    steps: [
+      "Signe négatif → quand x augmente, y tend à diminuer.",
+      "|r| = 0,72 → force modérée à forte.",
+    ],
+    answer: "Corrélation négative de force modérée à forte : plus il y a d'oxygène, moins il y a d'algue.",
+  },
+  {
+    id: "cor-fac-04",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 4,
+    title: "Signification de r = 0",
+    difficulty: "Facile",
+    prompt:
+      "Un chercheur calcule r ≈ 0 entre deux variables. Que peut-on conclure sur le lien LINÉAIRE entre elles ? (Attention à la nuance.)",
+    steps: [
+      "r ≈ 0 signifie qu'il n'y a pas de lien linéaire détectable.",
+      "Cela n'exclut pas un lien non linéaire (ex. parabolique).",
+    ],
+    answer: "Il n'y a pas de lien linéaire, mais un lien non linéaire reste possible.",
+  },
+  {
+    id: "cor-fac-05",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 5,
+    title: "Bornes du coefficient r",
+    difficulty: "Facile",
+    prompt: "Entre quelles bornes le coefficient de corrélation linéaire r peut-il varier ?",
+    steps: [
+      "Par définition, r est un rapport normalisé.",
+      "Il vérifie toujours −1 ≤ r ≤ 1.",
+    ],
+    answer: "−1 ≤ r ≤ 1.",
+  },
+  {
+    id: "cor-fac-06",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 6,
+    title: "Corrélation faible",
+    difficulty: "Facile",
+    prompt:
+      "Une étude québécoise sur le lien entre le nombre d'heures passées devant un écran et la note en français donne r = 0,18. Comment qualifies-tu ce résultat ?",
+    steps: [
+      "Signe positif → lien positif (peu marqué).",
+      "|r| = 0,18 < 0,30 → corrélation faible.",
+    ],
+    answer: "Corrélation positive faible.",
+  },
+  {
+    id: "cor-fac-07",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 7,
+    title: "Corrélation parfaite",
+    difficulty: "Facile",
+    prompt:
+      "Que signifie une valeur r = 1 exactement, sur le plan géométrique du nuage de points ?",
+    steps: [
+      "r = 1 est la borne supérieure.",
+      "Tous les points sont alignés sur une droite de pente positive.",
+    ],
+    answer: "Tous les points sont exactement alignés sur une droite de pente positive.",
+  },
+  {
+    id: "cor-fac-08",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 8,
+    title: "Comparer deux corrélations",
+    difficulty: "Facile",
+    prompt:
+      "Deux études donnent r₁ = 0,60 et r₂ = −0,80. Laquelle des deux montre le lien linéaire le plus fort ? Justifie.",
+    steps: [
+      "La force se lit sur |r|, pas sur le signe.",
+      "|r₁| = 0,60 ; |r₂| = 0,80. Donc r₂ est plus fort.",
+    ],
+    answer: "r₂ = −0,80 (car |r| est plus grand : 0,80 > 0,60).",
+  },
+  {
+    id: "cor-fac-09",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 9,
+    title: "Forme de la droite de régression",
+    difficulty: "Facile",
+    prompt:
+      "La droite de régression de y en fonction de x prend la forme ŷ = a + bx. Identifie ce que représentent les paramètres a et b.",
+    steps: [
+      "a = ordonnée à l'origine (valeur prédite de y quand x = 0).",
+      "b = pente (variation moyenne de y pour une unité de plus de x).",
+    ],
+    answer: "a : ordonnée à l'origine ; b : pente (variation moyenne de y par unité de x).",
+  },
+  {
+    id: "cor-fac-10",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 10,
+    title: "Signe de la pente vs signe de r",
+    difficulty: "Facile",
+    prompt:
+      "Sans faire de calcul, comment se comparent le signe de la pente b et le signe du coefficient de corrélation r pour une même paire (x, y) ?",
+    steps: [
+      "Formule : b = r × (s_y / s_x). Comme s_x et s_y sont positifs, seul r peut changer de signe.",
+    ],
+    answer: "b et r ont toujours le même signe.",
+  },
+  {
+    id: "cor-fac-11",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 11,
+    title: "Prédire avec la droite de régression",
+    difficulty: "Facile",
+    prompt:
+      "La droite de régression du poids d'un chiot (kg) en fonction de son âge (mois) est ŷ = 1,5 + 0,8x. Quel poids prédis-tu pour un chiot de 6 mois ?",
+    steps: [
+      "Remplacer x = 6 dans ŷ = 1,5 + 0,8x.",
+      "ŷ = 1,5 + 0,8 × 6 = 1,5 + 4,8 = 6,3 kg.",
+    ],
+    answer: "6,3 kg.",
+  },
+  {
+    id: "cor-fac-12",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 12,
+    title: "Interpréter la pente",
+    difficulty: "Facile",
+    prompt:
+      "Une droite de régression donne : ŷ = 20 − 0,4x, où x = âge (années) et y = performance à une tâche mémoire (0 à 100). Interprète concrètement la pente −0,4.",
+    steps: [
+      "La pente donne la variation moyenne de y pour +1 en x.",
+      "Ici, chaque année de plus fait baisser la performance moyenne de 0,4 point.",
+    ],
+    answer: "Chaque année supplémentaire d'âge est associée à une baisse moyenne de 0,4 point de performance.",
+  },
+  {
+    id: "cor-fac-13",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 13,
+    title: "Interpréter l'ordonnée à l'origine",
+    difficulty: "Facile",
+    prompt:
+      "La droite ŷ = 5 + 3x modélise le coût (y, en $) d'une commande selon le nombre d'articles (x). Que représente l'ordonnée à l'origine (5) dans ce contexte ?",
+    steps: [
+      "a est la valeur prédite de y quand x = 0.",
+      "Ici, x = 0 article ⇒ coût prédit = 5 $. C'est le coût fixe (livraison, frais de base).",
+    ],
+    answer: "C'est le coût de base (frais fixes) de 5 $, prédit pour 0 article commandé.",
+  },
+  {
+    id: "cor-fac-14",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 14,
+    title: "Résidu — définition",
+    difficulty: "Facile",
+    prompt:
+      "Un point observé vaut (x, y) = (10, 22). La droite de régression prédit ŷ = 20 pour x = 10. Quel est le résidu associé à ce point ?",
+    steps: [
+      "Résidu = valeur observée − valeur prédite.",
+      "Résidu = 22 − 20 = 2.",
+    ],
+    answer: "Résidu = 2.",
+  },
+  {
+    id: "cor-fac-15",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 15,
+    title: "Coefficient de détermination r²",
+    difficulty: "Facile",
+    prompt:
+      "Une étude sur la relation température–consommation d'électricité donne r = 0,9. Quelle valeur cela donne-t-il pour r², et comment l'interprète-t-on ?",
+    steps: [
+      "r² = (0,9)² = 0,81 = 81 %.",
+      "r² est la proportion de la variation de y expliquée par la régression sur x.",
+    ],
+    answer: "r² = 0,81 : 81 % de la variation de la consommation est expliquée par la température.",
+  },
+  {
+    id: "cor-fac-16",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 16,
+    title: "Interpolation vs extrapolation",
+    difficulty: "Facile",
+    prompt:
+      "Les données de l'échantillon vont de x = 5 à x = 25. On veut prédire ŷ pour x = 15 puis pour x = 40. Nomme correctement chaque prédiction et laquelle est la plus risquée.",
+    steps: [
+      "x = 15 ∈ [5 ; 25] → interpolation (dans l'étendue).",
+      "x = 40 ∉ [5 ; 25] → extrapolation (hors étendue), plus risquée.",
+    ],
+    answer: "x = 15 : interpolation ; x = 40 : extrapolation (plus risquée).",
+  },
+  {
+    id: "cor-fac-17",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 17,
+    title: "Formule du khi-carré",
+    difficulty: "Facile",
+    prompt:
+      "Écris la formule qui permet de calculer la statistique χ² d'un test d'ajustement ou d'indépendance à partir des effectifs observés (O) et attendus (E).",
+    steps: [
+      "On somme sur toutes les cases.",
+      "Pour chaque case : (O − E)² / E.",
+    ],
+    answer: "χ² = Σ (O − E)² / E.",
+  },
+  {
+    id: "cor-fac-18",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 18,
+    title: "Effectif attendu — formule (contingence)",
+    difficulty: "Facile",
+    prompt:
+      "Dans un test du χ² d'indépendance, comment calcule-t-on l'effectif attendu E_{ij} d'une case (i, j) d'un tableau de contingence ?",
+    steps: [
+      "Sous H₀ (indépendance), E_{ij} = (total ligne_i × total colonne_j) / grand total.",
+    ],
+    answer: "E_{ij} = (total ligne × total colonne) / total général.",
+  },
+  {
+    id: "cor-fac-19",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 19,
+    title: "Calcul d'un effectif attendu",
+    difficulty: "Facile",
+    prompt:
+      "Un tableau de contingence donne : total de la ligne « Fumeurs » = 80, total de la colonne « Malades » = 60, total général = 200. Calcule l'effectif attendu E pour la case (Fumeurs, Malades).",
+    steps: [
+      "E = (total ligne × total colonne) / total général.",
+      "E = (80 × 60) / 200 = 4800 / 200 = 24.",
+    ],
+    answer: "E = 24.",
+  },
+  {
+    id: "cor-fac-20",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 20,
+    title: "Degrés de liberté (indépendance)",
+    difficulty: "Facile",
+    prompt:
+      "Un tableau de contingence a 4 lignes et 3 colonnes. Combien de degrés de liberté (ddl) le test d'indépendance du χ² utilise-t-il ?",
+    steps: [
+      "ddl = (r − 1)(c − 1) où r = lignes et c = colonnes.",
+      "ddl = (4 − 1)(3 − 1) = 3 × 2 = 6.",
+    ],
+    answer: "ddl = 6.",
+  },
+  {
+    id: "cor-fac-21",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 21,
+    title: "H₀ d'un test d'indépendance",
+    difficulty: "Facile",
+    prompt:
+      "Un chercheur veut savoir si le sexe (H/F) et la préférence pour un vaccin (A/B/C) sont indépendants. Formule l'hypothèse nulle H₀.",
+    steps: [
+      "Test du χ² d'indépendance : H₀ suppose l'absence de lien entre les deux variables.",
+    ],
+    answer: "H₀ : le sexe et la préférence pour un vaccin sont indépendants (pas de lien).",
+  },
+  {
+    id: "cor-fac-22",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 22,
+    title: "Degrés de liberté (ajustement)",
+    difficulty: "Facile",
+    prompt:
+      "Un dé à 6 faces est testé pour vérifier s'il est équilibré. Combien de degrés de liberté un test d'ajustement (adéquation) du χ² utilise-t-il ici ?",
+    steps: [
+      "Pour un test d'ajustement : ddl = k − 1, où k = nombre de catégories.",
+      "Ici, k = 6 (les 6 faces), donc ddl = 6 − 1 = 5.",
+    ],
+    answer: "ddl = 5.",
+  },
+  {
+    id: "cor-fac-23",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 23,
+    title: "Contribution d'une case au χ²",
+    difficulty: "Facile",
+    prompt:
+      "Pour une case donnée, on a observé O = 30 et attendu E = 20. Calcule la contribution de cette case à la statistique χ².",
+    steps: [
+      "Contribution = (O − E)² / E.",
+      "= (30 − 20)² / 20 = 100 / 20 = 5.",
+    ],
+    answer: "Contribution = 5.",
+  },
+  {
+    id: "cor-fac-24",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 24,
+    title: "Règle de décision (valeur critique)",
+    difficulty: "Facile",
+    prompt:
+      "Dans un test du χ², la statistique calculée vaut χ²_obs = 8,4 et la valeur critique au seuil 5 % (avec les bons ddl) vaut χ²_crit = 5,99. Quelle est la décision ?",
+    steps: [
+      "Règle : rejeter H₀ si χ²_obs > χ²_crit.",
+      "Ici 8,4 > 5,99 → on rejette H₀.",
+    ],
+    answer: "On rejette H₀ (χ²_obs > χ²_crit).",
+  },
+  {
+    id: "cor-fac-25",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 25,
+    title: "Effectif attendu minimal (condition)",
+    difficulty: "Facile",
+    prompt:
+      "Quelle est la condition classique sur les effectifs attendus E qui doit être vérifiée pour appliquer un test du khi-carré ?",
+    steps: [
+      "Règle usuelle : chaque effectif attendu doit être suffisamment grand.",
+      "Seuil pratique : E ≥ 5 pour toutes les cases.",
+    ],
+    answer: "Tous les effectifs attendus doivent être ≥ 5.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
