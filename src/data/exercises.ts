@@ -9862,6 +9862,267 @@ const manualExercises: Exercise[] = [
     answer:
       "Non — E = 3 viole la condition E ≥ 5. Solutions : regrouper des catégories, augmenter n, ou utiliser un test exact (Fisher).",
   },
+  // ═════════════════════════════════════════════════════════════════
+  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (15 Difficiles)
+  // ═════════════════════════════════════════════════════════════════
+  {
+    id: "cor-dif-01",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 51,
+    title: "Corrélation vs causalité — 3 explications concurrentes",
+    difficulty: "Difficile",
+    prompt:
+      "Une étude en psychologie trouve r = 0,80 entre la qualité du sommeil (x) et le score à un test de mémoire (y) chez 500 adultes. Un journaliste titre : « Bien dormir améliore la mémoire ! » Cite au moins trois explications concurrentes que la seule corrélation ne permet pas de départager.",
+    steps: [
+      "Causalité directe : mieux dormir → meilleure mémoire.",
+      "Causalité inverse : une meilleure mémoire (structure cognitive) favorise un meilleur sommeil.",
+      "Variable de confusion : stress, âge, exercice physique, dépression peuvent affecter les deux.",
+      "Coïncidence sur cet échantillon (moins probable si r = 0,80 mais possible en principe).",
+    ],
+    answer:
+      "1) Sommeil cause mémoire ; 2) Mémoire (santé cérébrale) cause meilleur sommeil ; 3) Variable tierce (stress, âge, exercice) affecte les deux. r seul ne tranche pas.",
+  },
+  {
+    id: "cor-dif-02",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 52,
+    title: "Invariance de r par transformation linéaire",
+    difficulty: "Difficile",
+    prompt:
+      "On a calculé r = 0,60 pour un jeu de données (x, y). On crée deux nouvelles variables : x' = x − 10 et y' = y/2. Quelle est la nouvelle valeur de r' entre x' et y' ? Justifie sans refaire tous les calculs.",
+    steps: [
+      "r est invariant par transformation linéaire à coefficient positif (translation ou changement d'échelle positif).",
+      "Ici, on translate x et on multiplie y par 1/2 (positif) → r inchangé.",
+      "Attention : si on multipliait par un nombre négatif, r changerait de signe.",
+    ],
+    answer: "r' = 0,60 (r est invariant par translation et par mise à l'échelle positive).",
+  },
+  {
+    id: "cor-dif-03",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 53,
+    title: "Piège style Anscombe — même r, nuages différents",
+    difficulty: "Difficile",
+    prompt:
+      "Deux jeux de données A et B ont exactement les mêmes x̄, ȳ, s_x, s_y et r = 0,82. Le nuage A est parfaitement linéaire ; le nuage B est une courbe en cloche avec un point aberrant qui « imite » un alignement. Que retiens-tu comme leçon méthodologique, et quelle est la première chose à faire AVANT d'utiliser r ?",
+    steps: [
+      "r ne caractérise pas seul la relation : deux structures très différentes peuvent produire le même r.",
+      "Il faut toujours tracer le nuage de points AVANT d'interpréter r ou d'ajuster une droite.",
+    ],
+    answer:
+      "Toujours tracer et regarder le nuage de points avant d'interpréter r : deux relations très différentes peuvent partager la même valeur de r (exemple classique : le quartet d'Anscombe).",
+  },
+  {
+    id: "cor-dif-04",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 54,
+    title: "r élevé sur petit échantillon",
+    difficulty: "Difficile",
+    prompt:
+      "Un étudiant relève 4 observations et calcule r = 0,99. Il conclut à « un lien très fort et fiable ». Explique pourquoi cette conclusion est prématurée en deux arguments.",
+    steps: [
+      "Avec n = 4, la variance d'échantillonnage de r est très grande : r peut être très élevé par pur hasard.",
+      "Un test de significativité (comparaison à une valeur critique) montrerait que même |r| = 0,99 n'est parfois pas concluant à si petit n.",
+      "De plus, un seul point aberrant sur 4 peut déjà tout gonfler.",
+    ],
+    answer:
+      "Avec n = 4, r fluctue énormément d'un échantillon à l'autre ; un r ≈ 0,99 peut apparaître par hasard, et un seul point aberrant sur 4 suffit à le gonfler. Il faut plus de données avant de conclure.",
+  },
+  {
+    id: "cor-dif-05",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 55,
+    title: "Régression complète — de r à la prédiction et au résidu",
+    difficulty: "Difficile",
+    prompt:
+      "On dispose de : n = 8, x̄ = 20, ȳ = 50, s_x = 5, s_y = 15, r = 0,80. (a) Calcule la pente b et l'ordonnée à l'origine a de la droite de régression de y sur x. (b) Prédis ŷ pour x = 25. (c) Un point observé vaut (x, y) = (25, 70). Calcule son résidu.",
+    steps: [
+      "(a) b = r · s_y/s_x = 0,80 · 15/5 = 0,80 · 3 = 2,4.",
+      "a = ȳ − b·x̄ = 50 − 2,4·20 = 50 − 48 = 2.",
+      "(b) ŷ(25) = 2 + 2,4·25 = 2 + 60 = 62.",
+      "(c) Résidu = y − ŷ = 70 − 62 = 8.",
+    ],
+    answer: "b = 2,4 ; a = 2 ; ŷ(25) = 62 ; résidu = 8.",
+  },
+  {
+    id: "cor-dif-06",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 56,
+    title: "Deux droites : y sur x et x sur y",
+    difficulty: "Difficile",
+    prompt:
+      "Pour un jeu de données avec r = 0,60, s_x = 4, s_y = 8, x̄ = 10 et ȳ = 20 : (a) calcule la pente b_{y|x} de la droite de régression de y sur x, et la pente b_{x|y} de la droite de x sur y. (b) Explique pourquoi les deux droites diffèrent en général et à quelle condition elles coïncideraient.",
+    steps: [
+      "(a) b_{y|x} = r · s_y/s_x = 0,60 · 8/4 = 1,2.",
+      "b_{x|y} = r · s_x/s_y = 0,60 · 4/8 = 0,3. (Attention : c'est la pente de x sur y, soit ∂x/∂y.)",
+      "(b) Le produit b_{y|x} · b_{x|y} = r² = 0,36. Les deux droites coïncident si et seulement si r² = 1 (c'est-à-dire r = ±1, alignement parfait).",
+    ],
+    answer:
+      "b_{y|x} = 1,2 ; b_{x|y} = 0,3. Les deux droites sont distinctes en général (car b_{y|x}·b_{x|y} = r² < 1) ; elles ne coïncident que lorsque r = ±1.",
+  },
+  {
+    id: "cor-dif-07",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 57,
+    title: "Transformation d'échelle — effet sur a, b et r",
+    difficulty: "Difficile",
+    prompt:
+      "Une droite ajustée est ŷ = 5 + 2x, avec r = 0,70. On remplace la variable x par x' = 100 − x (inversion d'échelle). Sans refaire les calculs bruts : (a) quel est le signe de r' ? (b) que devient la pente b' ? (c) l'ordonnée à l'origine a' ?",
+    steps: [
+      "Inverser x change son signe (à une constante près) : Var(x') = Var(x), mais Cov(x', y) = −Cov(x, y).",
+      "(a) r' = −r = −0,70 (signe inversé, magnitude conservée).",
+      "(b) b' = r' · s_y/s_{x'} = −r · s_y/s_x = −b = −2.",
+      "(c) a' = ȳ − b'·x̄'. Or x̄' = 100 − x̄ et b' = −b, donc a' = ȳ − (−b)(100 − x̄) = ȳ + b·100 − b·x̄ = a + 100·b.",
+    ],
+    answer:
+      "r' = −0,70 (signe inversé) ; b' = −2 (opposé) ; a' = a + 100·b = 5 + 200 = 205.",
+  },
+  {
+    id: "cor-dif-08",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 58,
+    title: "Analyse résiduelle — détecter un modèle inadéquat",
+    difficulty: "Difficile",
+    prompt:
+      "Un chercheur ajuste une droite ŷ = a + bx et trace les résidus en fonction de x. Il observe que les résidus forment clairement une courbe en U (négatifs pour x moyen, positifs aux extrémités). Que conclus-tu sur l'adéquation du modèle linéaire ? Que devrait-il essayer ensuite ?",
+    steps: [
+      "Sous un modèle linéaire adéquat, les résidus devraient être aléatoirement dispersés autour de zéro (sans motif).",
+      "Un motif en U signale une non-linéarité systématique : le vrai lien est courbe.",
+      "Il faut essayer un modèle non linéaire (quadratique, exponentiel...) ou transformer les variables (log, √).",
+    ],
+    answer:
+      "Le modèle linéaire est inadéquat : la structure en U des résidus révèle une relation non linéaire. Il faut essayer un modèle courbe (ex. quadratique) ou transformer les variables (log, √x).",
+  },
+  {
+    id: "cor-dif-09",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 59,
+    title: "Domaine de validité et ordonnée à l'origine impossible",
+    difficulty: "Difficile",
+    prompt:
+      "On modélise le nombre de mots retenus lors d'un test mémoire (y) selon l'âge (x, en années) chez 200 personnes de 20 à 70 ans. La droite obtenue est ŷ = 45 − 0,4x. À x = 0 (nouveau-né), ŷ = 45. À x = 120, ŷ = −3. Que peux-tu dire de la validité du modèle à ces valeurs ? Formule proprement le domaine de validité.",
+    steps: [
+      "Le modèle est ajusté sur [20 ; 70]. En dehors, on est en extrapolation, non fiable.",
+      "À x = 0 : « ŷ = 45 » n'a pas de sens biologique — un nouveau-né ne fait pas ce test. Ce point est un pur artefact de la droite.",
+      "À x = 120 : ŷ = −3 est mathématiquement défini mais physiquement absurde (on ne peut pas retenir un nombre négatif de mots).",
+      "Domaine de validité : x ∈ [20 ; 70] (intervalle d'observation).",
+    ],
+    answer:
+      "Le modèle n'est valide que sur son intervalle d'observation, soit x ∈ [20 ; 70]. Aux valeurs extrêmes (x = 0 ou x = 120), l'extrapolation donne des prédictions dépourvues de sens (négatives) — c'est un rappel que la droite ne « survit » pas hors de son étendue.",
+  },
+  {
+    id: "cor-dif-10",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 60,
+    title: "Test d'indépendance complet 3 × 2",
+    difficulty: "Difficile",
+    prompt:
+      "On étudie la préférence pour trois vaccins (A, B, C) selon le sexe. Tableau observé : Hommes [30, 45, 25] (total 100) ; Femmes [50, 40, 30] (total 120). Colonnes : 80, 85, 55 (total 220). Calcule tous les E, χ²_obs, les ddl, puis conclus au seuil 5 % avec χ²_crit(2 ddl ; 5 %) = 5,99.",
+    steps: [
+      "E(H,A) = 100·80/220 ≈ 36,36 ; E(H,B) = 100·85/220 ≈ 38,64 ; E(H,C) = 100·55/220 = 25,00.",
+      "E(F,A) = 120·80/220 ≈ 43,64 ; E(F,B) = 120·85/220 ≈ 46,36 ; E(F,C) = 120·55/220 = 30,00.",
+      "Contributions : (30−36,36)²/36,36 ≈ 1,113 ; (45−38,64)²/38,64 ≈ 1,047 ; (25−25)²/25 = 0 ; (50−43,64)²/43,64 ≈ 0,928 ; (40−46,36)²/46,36 ≈ 0,873 ; (30−30)²/30 = 0.",
+      "χ²_obs ≈ 1,113 + 1,047 + 0 + 0,928 + 0,873 + 0 ≈ 3,96.",
+      "ddl = (2−1)(3−1) = 2. Comparaison : 3,96 < 5,99 → non-rejet.",
+    ],
+    answer:
+      "χ²_obs ≈ 3,96 ; 2 ddl ; 3,96 < 5,99 → on ne rejette pas H₀. Les préférences pour les vaccins ne diffèrent pas significativement entre hommes et femmes dans cet échantillon.",
+  },
+  {
+    id: "cor-dif-11",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 61,
+    title: "Cas limite — significativité tout juste atteinte",
+    difficulty: "Difficile",
+    prompt:
+      "Un test du χ² à 1 ddl donne χ²_obs = 3,90 avec χ²_crit(1 ; 5 %) = 3,84. Quelle est la décision formelle au seuil 5 % ? Que dirais-tu à un journaliste qui écrirait « c'est prouvé » ?",
+    steps: [
+      "3,90 > 3,84, donc formellement on rejette H₀ au seuil 5 %.",
+      "Mais on est TRÈS près de la limite : la valeur p vaut à peine sous 0,05 (autour de 0,048).",
+      "« Prouvé » est trop fort : les tests d'hypothèse ne prouvent jamais rien, ils indiquent une incompatibilité avec H₀ ; ici, l'évidence est faible et devrait être répliquée.",
+    ],
+    answer:
+      "Décision formelle : on rejette H₀ (3,90 > 3,84), mais tout juste. L'évidence est faible et fragile — parler de « preuve » est abusif ; il faut reproduire l'étude avant toute conclusion ferme.",
+  },
+  {
+    id: "cor-dif-12",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 62,
+    title: "Test d'adéquation à la loi de Mendel (9:3:3:1)",
+    difficulty: "Difficile",
+    prompt:
+      "Un croisement Mendel prédit les proportions 9:3:3:1 pour quatre phénotypes. Sur 160 plants observés, on compte : 95, 32, 25, 8. (a) Calcule les E théoriques. (b) Calcule χ²_obs. (c) Conclus au seuil 5 % avec χ²_crit(3 ddl ; 5 %) = 7,81.",
+    steps: [
+      "(a) Proportions : 9/16, 3/16, 3/16, 1/16. E : 160·9/16 = 90 ; 160·3/16 = 30 ; 30 ; 160·1/16 = 10.",
+      "(b) Contributions : (95−90)²/90 = 25/90 ≈ 0,278 ; (32−30)²/30 = 4/30 ≈ 0,133 ; (25−30)²/30 = 25/30 ≈ 0,833 ; (8−10)²/10 = 4/10 = 0,4. χ²_obs ≈ 0,278 + 0,133 + 0,833 + 0,4 ≈ 1,64.",
+      "(c) ddl = 4 − 1 = 3. 1,64 < 7,81 → non-rejet.",
+    ],
+    answer:
+      "E : 90 ; 30 ; 30 ; 10. χ²_obs ≈ 1,64. Non-rejet de H₀ : les observations sont compatibles avec les proportions mendéliennes 9:3:3:1.",
+  },
+  {
+    id: "cor-dif-13",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 63,
+    title: "Erreur d'application — quand χ² est mal utilisé",
+    difficulty: "Difficile",
+    prompt:
+      "Pour chacune des situations suivantes, dis si un test du χ² usuel s'applique correctement. Sinon, cite l'erreur méthodologique. (a) Tableau 2×2 avec E = 3 dans une case. (b) Comparaison avant/après chez les 30 MÊMES patients (mesures appariées). (c) Test d'ajustement à une loi théorique avec toutes les E ≥ 5 et catégories nominales.",
+    steps: [
+      "(a) Non : condition E ≥ 5 violée. Solutions : Fisher exact, ou regroupement.",
+      "(b) Non : les deux mesures viennent des mêmes individus (appariées) ; il faut un test adapté (McNemar en 2×2, par exemple), pas χ² d'indépendance.",
+      "(c) Oui : conditions respectées, cas classique.",
+    ],
+    answer:
+      "(a) Non — E < 5. (b) Non — données appariées, il faut McNemar. (c) Oui — cas valide du test d'ajustement.",
+  },
+  {
+    id: "cor-dif-14",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 64,
+    title: "Comparer l'évidence de deux tests",
+    difficulty: "Difficile",
+    prompt:
+      "Étude A : χ²_obs = 12 avec 1 ddl. Étude B : χ²_obs = 12 avec 6 ddl. Toutes deux dépassent leur χ²_crit à 5 %. Laquelle apporte l'évidence la plus forte contre H₀ ? Justifie avec les valeurs critiques : χ²_crit(1 ; 5 %) = 3,84 et χ²_crit(6 ; 5 %) = 12,59.",
+    steps: [
+      "Étude A : 12 vs χ²_crit = 3,84 → énorme dépassement (facteur ~3), valeur p très petite.",
+      "Étude B : 12 vs χ²_crit = 12,59 → en fait, 12 < 12,59, donc B ne rejette PAS H₀ au seuil 5 %.",
+      "Attention à l'énoncé : la même valeur χ² observée n'a pas la même « force » selon les ddl.",
+    ],
+    answer:
+      "L'étude A rejette clairement H₀ (12 ≫ 3,84) ; l'étude B ne rejette même PAS H₀ au seuil 5 % (12 < 12,59). La même valeur observée n'a pas la même signification selon les ddl — l'énoncé de départ (« toutes deux rejettent H₀ ») est faux pour B.",
+  },
+  {
+    id: "cor-dif-15",
+    topicId: "probability",
+    lessonId: "PSD4",
+    number: 65,
+    title: "Effet de la taille d'échantillon sur χ²",
+    difficulty: "Difficile",
+    prompt:
+      "Une étude portant sur n = 100 personnes trouve une différence entre deux traitements mais χ²_obs = 2,5 (non significatif au seuil 5 % avec 1 ddl, car χ²_crit = 3,84). On refait exactement la même étude avec n = 1000 personnes et les MÊMES proportions observées. Que devient χ²_obs (grossièrement), et que conclus-tu sur le lien entre significativité et taille d'effet ?",
+    steps: [
+      "Les contributions (O − E)²/E scalent avec n : si on multiplie tous les effectifs par 10 en gardant les proportions, χ² est multiplié par 10.",
+      "Donc χ²_obs devient ≈ 25, très largement significatif (25 ≫ 3,84).",
+      "Leçon : avec n suffisant, presque toute différence, même minime, devient « statistiquement significative ». La significativité ne garantit pas une importance pratique — il faut aussi regarder l'ampleur de l'écart (taille d'effet).",
+    ],
+    answer:
+      "χ²_obs ≈ 25, largement significatif. Leçon : avec un très grand n, même une différence minime devient significative ; toujours combiner test statistique et taille d'effet (ampleur pratique de l'écart) pour interpréter.",
+  },
 ];
 
 // Imported from the Vecteur Math algebra exercise book (auteur du projet).
