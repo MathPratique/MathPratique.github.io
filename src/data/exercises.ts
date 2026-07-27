@@ -18,7 +18,10 @@ export type RichPart =
   | { type: "cases"; rows: RichContent[] }
   | { type: "frac"; num: RichContent; den: RichContent }
   | { type: "bold"; content: RichContent }
-  | { type: "vec"; content: RichContent };
+  | { type: "vec"; content: RichContent }
+  | { type: "bar"; content: RichContent }
+  | { type: "hat"; content: RichContent }
+  | { type: "list"; intro?: RichContent; items: RichContent[]; trailing?: RichContent };
 
 export type RichContent = string | RichPart[];
 
