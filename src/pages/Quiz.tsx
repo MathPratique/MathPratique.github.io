@@ -109,7 +109,9 @@ export default function Quiz() {
                   if (s.exerciseCount) parts.push(`${s.exerciseCount} calc`);
                   if (s.mcqCount) parts.push(`${s.mcqCount} QCM`);
                   if (s.tfCount) parts.push(`${s.tfCount} V/F`);
-                  return `Leçon ${l?.number ?? s.lessonId} : ${parts.join(", ")}`;
+                  const label = s.lessonId.startsWith("PSD") ? "Chapitre" : "Leçon";
+                  const diff = s.difficulty ? ` (${s.difficulty.toLowerCase()})` : "";
+                  return `${label} ${l?.number ?? s.lessonId}${diff} : ${parts.join(", ")}`;
                 })
                 .join(" · ")}
             </p>

@@ -1,6 +1,12 @@
-import type { Exercise, RichPart } from "../data/exercises";
+import type { Difficulty, Exercise, RichPart } from "../data/exercises";
 import { randInt, nonZero, pick, uniqueId } from "./rng";
 import { generateQuiz, hasQuizGenerator } from "./registry";
+import {
+  isProbStatLesson,
+  hasAny as probStatHasAny,
+  ProbStatPicker,
+  type ProbStatLessonId,
+} from "./probStatPicker";
 
 // Inline rich-content helpers (same shape as the manualExercises).
 const t = (s: string): RichPart => ({ type: "text", content: s });
@@ -16,6 +22,8 @@ export const CUSTOM_QUIZ_LESSONS = [
   "L34", "L35", "L36", "L37",
   "L43", "L44", "L45", "L46", "L47", "L48", "L49",
   "L50", "L51", "L52", "L53", "L54", "L55", "L56", "L57", "L58",
+  // Probabilités et statistique (banque figée de 388 exercices — voir probStatPicker.ts)
+  "PSD1", "PSD2", "PSD3", "PSD4",
 ];
 
 // ════════════════════════════════════════════════════════════════════════
@@ -1865,11 +1873,32 @@ export type CustomQuizSpec = {
   exerciseCount: number;
   mcqCount: number;
   tfCount: number;
+  // Optional per-spec difficulty filter — currently only wired for the
+  // Prob-Stat lessons (procedural linalg generators ignore it).
+  difficulty?: Difficulty;
 };
 
 export function buildCustomQuiz(specs: CustomQuizSpec[]): Exercise[] {
   const out: Exercise[] = [];
+  // One picker per quiz so PSD draws are unique within the quiz but the
+  // pool resets on the next tirage.
+  const psdPicker = new ProbStatPicker();
   for (const spec of specs) {
+    if (isProbStatLesson(spec.lessonId)) {
+      for (let i = 0; i < spec.exerciseCount; i++) {
+        const ex = psdPicker.draw(spec.lessonId, "exercise", spec.difficulty);
+        if (ex) out.push(ex);
+      }
+      for (let i = 0; i < spec.mcqCount; i++) {
+        const ex = psdPicker.draw(spec.lessonId, "mcq", spec.difficulty);
+        if (ex) out.push(ex);
+      }
+      for (let i = 0; i < spec.tfCount; i++) {
+        const ex = psdPicker.draw(spec.lessonId, "tf", spec.difficulty);
+        if (ex) out.push(ex);
+      }
+      continue;
+    }
     for (let i = 0; i < spec.exerciseCount; i++) {
       const ex = getCalcExercise(spec.lessonId);
       if (ex) out.push(ex);
@@ -1886,11 +1915,28 @@ export function buildCustomQuiz(specs: CustomQuizSpec[]): Exercise[] {
   return out;
 }
 
-// URL encoding: "L15-e2m3t1_L17-e1m2t0"  (e=exercise, m=mcq, t=tf)
+// URL encoding examples:
+//   "L15-e2m3t1_L17-e1m2t0"        (linalg, no difficulty)
+//   "PSD1-e2m3t1-df_PSD2-e1m0t2"    (PSD1 filtered to Facile, PSD2 mixed)
+//   difficulty codes: f=Facile, m=Moyen, d=Difficile (omitted when undefined)
+const DIFF_TO_CODE: Record<Difficulty, string> = {
+  Facile: "f",
+  Moyen: "m",
+  Difficile: "d",
+};
+const CODE_TO_DIFF: Record<string, Difficulty> = {
+  f: "Facile",
+  m: "Moyen",
+  d: "Difficile",
+};
 export function encodeCustomQuiz(specs: CustomQuizSpec[]): string {
   return specs
     .filter((s) => s.exerciseCount + s.mcqCount + s.tfCount > 0)
-    .map((s) => `${s.lessonId}-e${s.exerciseCount}m${s.mcqCount}t${s.tfCount}`)
+    .map((s) => {
+      const base = `${s.lessonId}-e${s.exerciseCount}m${s.mcqCount}t${s.tfCount}`;
+      const diff = s.difficulty ? `-d${DIFF_TO_CODE[s.difficulty]}` : "";
+      return base + diff;
+    })
     .join("_");
 }
 
@@ -1899,24 +1945,38 @@ export function decodeCustomQuiz(str: string): CustomQuizSpec[] {
   return str
     .split("_")
     .map((seg) => {
-      const m = seg.match(/^(L\d+)-e(\d+)m(\d+)t(\d+)$/);
+      const m = seg.match(/^([A-Z]+\d+)-e(\d+)m(\d+)t(\d+)(?:-d([fmd]))?$/);
       if (!m) return null;
-      return {
+      const spec: CustomQuizSpec = {
         lessonId: m[1],
         exerciseCount: parseInt(m[2], 10),
         mcqCount: parseInt(m[3], 10),
         tfCount: parseInt(m[4], 10),
       };
+      if (m[5]) spec.difficulty = CODE_TO_DIFF[m[5]];
+      return spec;
     })
     .filter((x): x is CustomQuizSpec => x !== null);
 }
 
-// Which lesson-type combos have a generator (used to enable/disable inputs in the UI)
-export function getAvailableTypes(lessonId: string): {
+// Which lesson-type combos have a generator (used to enable/disable inputs in the UI).
+// For Prob-Stat lessons, availability depends on the (optional) difficulty filter.
+export function getAvailableTypes(
+  lessonId: string,
+  difficulty?: Difficulty,
+): {
   exercise: boolean;
   mcq: boolean;
   tf: boolean;
 } {
+  if (isProbStatLesson(lessonId)) {
+    const id = lessonId as ProbStatLessonId;
+    return {
+      exercise: probStatHasAny(id, "exercise", difficulty),
+      mcq: probStatHasAny(id, "mcq", difficulty),
+      tf: probStatHasAny(id, "tf", difficulty),
+    };
+  }
   const lessonNum = parseInt(lessonId.slice(1), 10);
   const hasL34To37 = lessonNum >= 34 && lessonNum <= 37;
   const hasL21To29 = lessonNum >= 21 && lessonNum <= 29;
