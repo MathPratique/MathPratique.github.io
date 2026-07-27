@@ -33,14 +33,14 @@ export default function AchatConfirme() {
 
         {product ? (
           <p className="mt-4 text-balance text-lg text-ink-600">
-            Ton pack <strong>{product.name}</strong> t'attend dans ta boîte email.
-            Le lien de téléchargement a été envoyé à l'adresse utilisée lors du
-            paiement.
+            Ton package <strong>{product.courseName}</strong> t'attend dans ta boîte
+            email : notes de cours complètes, 3 intras et 3 finaux corrigés. Les PDF
+            ont été envoyés à l'adresse utilisée lors du paiement.
           </p>
         ) : (
           <p className="mt-4 text-balance text-lg text-ink-600">
-            Ton achat est confirmé. Le lien de téléchargement a été envoyé à ta
-            boîte email.
+            Ton achat est confirmé. Les PDF (notes + intras + finaux corrigés) ont
+            été envoyés à ta boîte email.
           </p>
         )}
 
@@ -63,7 +63,7 @@ export default function AchatConfirme() {
                 2
               </span>
               <span>
-                Clique sur le lien pour télécharger ton pack (accessible à vie).
+                Télécharge tes PDF (accessibles à vie et remis à jour gratuitement).
               </span>
             </li>
             <li className="flex items-start gap-3">
