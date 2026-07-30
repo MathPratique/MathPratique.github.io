@@ -6,6 +6,7 @@ import Quiz from "./pages/Quiz";
 import CustomQuiz from "./pages/CustomQuiz";
 import Boutique from "./pages/Boutique";
 import AchatConfirme from "./pages/AchatConfirme";
+import Enseignants from "./pages/Enseignants";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/custom-quiz" element={<CustomQuiz />} />
         <Route path="/boutique" element={<Boutique />} />
         <Route path="/achat-confirme" element={<AchatConfirme />} />
+        <Route path="/enseignants" element={<Enseignants />} />
       </Route>
     </Routes>
   );

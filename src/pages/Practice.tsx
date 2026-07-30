@@ -297,6 +297,20 @@ export default function Practice() {
           )}
         </>
       )}
+
+      {currentTopic?.teacherContentReady && (
+        <AnimatedSection delay={0.2} className="mt-16 border-t border-brand-100 pt-8 text-center text-sm text-ink-600">
+          <p>
+            Vous êtes enseignant?{" "}
+            <Link
+              to="/enseignants"
+              className="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800"
+            >
+              Voici comment utiliser ce matériel avec votre groupe.
+            </Link>
+          </p>
+        </AnimatedSection>
+      )}
     </div>
   );
 }

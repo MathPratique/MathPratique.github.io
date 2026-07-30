@@ -3,6 +3,10 @@ export type Topic = {
   name: string;
   description: string;
   icon: string;
+  // Contenu enseignant prêt (notes version prof/étudiant, exercices avec démarches,
+  // examens corrigés + grilles de correction). Sert à décider si la ligne
+  // « Vous êtes enseignant? » s'affiche en bas des pages Pratique de ce cours.
+  teacherContentReady?: boolean;
 };
 
 export const topics: Topic[] = [
@@ -11,6 +15,7 @@ export const topics: Topic[] = [
     name: "Calcul différentiel",
     description: "Limites, dérivées et taux de variation — le langage du changement.",
     icon: "M3 17c3-1 4-9 7-9s3 9 6 9 4-9 5-9",
+    teacherContentReady: true,
   },
   {
     id: "integral-calculus",
@@ -29,5 +34,6 @@ export const topics: Topic[] = [
     name: "Probabilités et statistiques",
     description: "Hasard, distributions et raisonnement dans l'incertitude.",
     icon: "M4 19V9M10 19V5M16 19v-7M22 19H2",
+    teacherContentReady: true,
   },
 ];
