@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/verifier-fichiers-statiques.mjs public",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/verifier-fichiers-statiques.mjs dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },

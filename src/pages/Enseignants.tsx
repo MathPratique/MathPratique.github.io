@@ -14,8 +14,14 @@ const PRIX_LICENCE_MIN = 400; // $ CAD par groupe, par session
 const FORMSPREE_ENDPOINT = "";
 
 // PDF de l'échantillon (chapitre complet version enseignant + une dizaine
-// d'exercices). Le fichier doit être déposé dans public/enseignants/.
+// d'exercices). Le fichier est déposé dans public/enseignants/ ; sa présence
+// est contrôlée au build par scripts/verifier-fichiers-statiques.mjs, car un
+// fichier manquant serait servi sous forme de page d'accueil renommée en .pdf.
 const PDF_ECHANTILLON = "/enseignants/echantillon.pdf";
+
+// Nom sous lequel le fichier est enregistré : lisible, sans espace ni accent,
+// et explicite une fois seul dans un dossier de téléchargements.
+const NOM_TELECHARGEMENT = "calcul-differentiel-echantillon.pdf";
 
 // Adresse mail de secours utilisée en fallback si Formspree n'est pas configuré.
 const EMAIL_CONTACT = "simonboileauenseignement@gmail.com";
@@ -157,7 +163,7 @@ function Echantillon() {
         </p>
         <a
           href={PDF_ECHANTILLON}
-          download
+          download={NOM_TELECHARGEMENT}
           className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-brand-700"
         >
           <svg
