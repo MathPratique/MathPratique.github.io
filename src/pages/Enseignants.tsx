@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import AnimatedSection from "../components/ui/AnimatedSection";
+import { EMAIL_CONTACT } from "../data/site";
 
 // ═════════════════════════════════════════════════════════════════════════
 //  Constantes de contenu — modifier ici plutôt que dans le JSX.
@@ -23,8 +24,9 @@ const PDF_ECHANTILLON = "/enseignants/echantillon.pdf";
 // et explicite une fois seul dans un dossier de téléchargements.
 const NOM_TELECHARGEMENT = "calcul-differentiel-echantillon.pdf";
 
-// Adresse mail de secours utilisée en fallback si Formspree n'est pas configuré.
-const EMAIL_CONTACT = "simonboileauenseignement@gmail.com";
+// Adresse mail de secours utilisée en fallback si Formspree n'est pas
+// configuré. Elle vient de src/data/site.ts : une seule ligne à changer pour
+// tout le site.
 
 // Rate limit côté client : refuse une soumission < N minutes après la précédente.
 const RATE_LIMIT_MINUTES = 30;

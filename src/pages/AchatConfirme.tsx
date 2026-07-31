@@ -1,6 +1,15 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { getProductById } from "../data/products";
 import AnimatedSection from "../components/ui/AnimatedSection";
+import { EMAIL_CONTACT } from "../data/site";
+
+// Doit rester cohérent avec la page produit.
+const DUREE_ACCES_MOIS = 12;
+
+// ⚠️ Cette page est un contenu d'attente. Le parcours d'achat n'existe pas
+// encore : quand il sera en place, la date de fin d'accès réelle devra être
+// lue depuis le compte de l'étudiant et affichée ici en clair, plutôt que
+// d'énoncer la durée dans l'abstrait.
 
 export default function AchatConfirme() {
   const [searchParams] = useSearchParams();
@@ -33,14 +42,14 @@ export default function AchatConfirme() {
 
         {product ? (
           <p className="mt-4 text-balance text-lg text-ink-600">
-            Ton package <strong>{product.courseName}</strong> t'attend dans ta boîte
-            email : notes de cours complètes, 3 intras et 3 finaux corrigés. Les PDF
-            ont été envoyés à l'adresse utilisée lors du paiement.
+            Ton accès à <strong>{product.courseName}</strong> est ouvert pour{" "}
+            {DUREE_ACCES_MOIS} mois : notes de cours, exercices, séries de
+            révision et examens corrigés.
           </p>
         ) : (
           <p className="mt-4 text-balance text-lg text-ink-600">
-            Ton achat est confirmé. Les PDF (notes + intras + finaux corrigés) ont
-            été envoyés à ta boîte email.
+            Ton achat est confirmé. Ton accès est ouvert pour{" "}
+            {DUREE_ACCES_MOIS} mois.
           </p>
         )}
 
@@ -54,8 +63,8 @@ export default function AchatConfirme() {
                 1
               </span>
               <span>
-                Vérifie ta boîte de réception (et le dossier « courriels indésirables »
-                juste au cas).
+                Un reçu t'a été envoyé par courriel, avec la date de fin de ton
+                accès. Vérifie le dossier « courriels indésirables » juste au cas.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -63,7 +72,8 @@ export default function AchatConfirme() {
                 2
               </span>
               <span>
-                Télécharge tes PDF (accessibles à vie et remis à jour gratuitement).
+                Télécharge tes PDF pendant ta période d'accès. Les mises à jour
+                publiées d'ici la fin sont incluses.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -104,12 +114,12 @@ export default function AchatConfirme() {
         </div>
 
         <p className="mt-10 text-sm text-ink-600">
-          Tu ne reçois rien ? Écris-moi à{" "}
+          Tu ne reçois rien ? Écris-nous à{" "}
           <a
-            href="mailto:simonboileauenseignement@gmail.com"
+            href={`mailto:${EMAIL_CONTACT}`}
             className="font-semibold text-brand-700 hover:text-brand-800"
           >
-            simonboileauenseignement@gmail.com
+            {EMAIL_CONTACT}
           </a>
         </p>
       </AnimatedSection>

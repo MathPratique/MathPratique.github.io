@@ -1,19 +1,22 @@
 // Boutique — un seul package par cours.
 //
-// Chaque package contient exactement :
-//   - Notes de cours complètes (PDF)
-//   - Accès à vie au contenu du site + mises à jour gratuites
-//   - 3 intras corrigés (PDF)
-//   - 3 examens finaux corrigés (PDF)
+// Chaque package donne 12 MOIS d'accès : consultation en ligne et
+// téléchargement, mises à jour incluses, sans abonnement ni renouvellement
+// automatique. Le modèle « accès à vie » qui figurait ici a été abandonné ;
+// aucune mention ne doit en subsister sur le site.
 //
-// Contenu identique pour tous les packages → hardcodé dans ProductCard.
-// Ici, seuls varient : nom, description, prix, URL Stripe, activation.
+// Contenu identique pour tous les packages → dans ProductCard.
+// Ici, seuls varient : nom, description, prix, activation.
 //
-// Un produit avec `active: false` N'APPARAÎT PAS dans la boutique
-// (au lieu d'être affiché en « Bientôt disponible »). Pour activer :
-//   1. Créer un Payment Link dans le dashboard Stripe (attache les 7 PDF).
-//   2. Coller l'URL dans `stripeUrl`.
-//   3. Passer `active: true`.
+// ⚠️ `stripeUrl` est un vestige du modèle précédent — un Payment Link avec
+// les PDF en pièces jointes, sans compte. Ce n'est plus l'architecture visée :
+// l'achat passera par une session Stripe Checkout créée côté serveur, et
+// l'accès sera octroyé par le webhook, jamais par la page de succès. Le champ
+// disparaîtra quand ce parcours sera en place ; il reste vide d'ici là, ce qui
+// garde `getActiveProducts()` sur une liste vide.
+//
+// La page /boutique n'utilise plus cette liste : elle présente le seul
+// package en vente. `getProductById` sert encore à /achat-confirme.
 
 export type CourseTopicId =
   | "differential-calculus"

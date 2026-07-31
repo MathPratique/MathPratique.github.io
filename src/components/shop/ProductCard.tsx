@@ -27,9 +27,9 @@ const TOPIC_STYLES: Record<CourseTopicId, { bg: string; iconBg: string; ring: st
 // Contenu identique pour tous les packages (voir products.ts).
 const PACKAGE_CONTENT: string[] = [
   "Notes de cours complètes (PDF)",
-  "Accès à vie au contenu du site + mises à jour gratuites",
-  "3 intras corrigés (PDF)",
-  "3 examens finaux corrigés (PDF)",
+  "12 mois d'accès en ligne + mises à jour incluses",
+  "Exercices classés, avec réponses et démarches",
+  "Examens intra et finaux, corrigés détaillés",
 ];
 
 export default function ProductCard({ product }: { product: Product }) {

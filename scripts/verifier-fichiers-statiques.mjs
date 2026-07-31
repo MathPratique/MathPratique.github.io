@@ -43,8 +43,15 @@ const REQUIS = [
     chemin: "enseignants/echantillon.pdf",
     signature: "%PDF",
     tailleMin: 50_000,
-    role: "échantillon téléchargeable depuis /enseignants",
+    role: "échantillon téléchargeable depuis /enseignants (version enseignant)",
     lien: "src/pages/Enseignants.tsx (PDF_ECHANTILLON)",
+  },
+  {
+    chemin: "boutique/echantillon.pdf",
+    signature: "%PDF",
+    tailleMin: 50_000,
+    role: "aperçu gratuit téléchargeable depuis /boutique (version étudiant)",
+    lien: "src/pages/Boutique.tsx (PDF_APERCU)",
   },
 ];
 
