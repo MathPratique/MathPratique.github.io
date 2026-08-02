@@ -7,15 +7,17 @@
     "dev": "vite",
     "prebuild": "node scripts/verifier-fichiers-statiques.mjs public && bash scripts/verifier-textes.sh",
     "build": "tsc -b && vite build",
-    "postbuild": "node scripts/verifier-fichiers-statiques.mjs dist",
+    "postbuild": "node scripts/verifier-fichiers-statiques.mjs dist && npm run build:ssr && node scripts/prerendre.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "tsc src/acces/regles.ts src/acces/webhook.ts src/acces/telechargement.ts src/acces/documents.ts --ignoreConfig --outDir .tmp-test --target es2022 --module es2022 --moduleResolution bundler --strict && node --test \"tests/**/*.test.mjs\""
+    "test": "tsc src/acces/regles.ts src/acces/webhook.ts src/acces/telechargement.ts src/acces/documents.ts src/components/practice/decouper-latex.ts src/components/practice/latex-vers-html.ts --ignoreConfig --rootDir src --outDir .tmp-test --target es2022 --module es2022 --moduleResolution bundler --strict && node --test \"tests/**/*.test.mjs\"",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "firebase": "^12.17.0",
     "framer-motion": "^12.40.0",
+    "katex": "^0.18.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.17.0"
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tailwindcss/postcss": "^4.3.0",
+    "@types/katex": "^0.16.8",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

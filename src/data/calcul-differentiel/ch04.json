@@ -1,0 +1,544 @@
+{
+  "chapitre": 4,
+  "titre": "La dérivée : définition et interprétation",
+  "heuresEnseignement": 5,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C04-E006",
+      "chapitre": 4,
+      "section": "4.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Le taux de variation moyen",
+      "motsCles": [
+        "taux de variation moyen",
+        "dépendance à l'intervalle"
+      ],
+      "savoirFaire": [
+        "2a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Le taux de variation moyen d'une fonction dépend de l'intervalle sur lequel on le calcule.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Prends une fonction simple et calcule son TVM sur deux intervalles différents. Obtiens-tu la même valeur ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le TVM se définit <em>toujours</em> par rapport à un intervalle précis :\\[ \\text{TVM} = \\dfrac{f(b)-f(a)}{b-a}. \\]",
+            "Changer $a$ ou $b$ change généralement le résultat.",
+            "<strong>Exemple.</strong> Pour $f(x) = x^{2}$ :\\begin{align*} \\text{sur } [0,1] &: \\quad \\dfrac{1-0}{1} = 1, \\\\ \\text{sur } [1,2] &: \\quad \\dfrac{4-1}{1} = 3, \\\\ \\text{sur } [2,3] &: \\quad \\dfrac{9-4}{1} = 5. \\end{align*}",
+            "Trois intervalles de même longueur, trois TVM différents. L'énoncé est donc <strong>vrai</strong>.",
+            "C'est pourquoi on ne dit jamais « le TVM de $f$ » tout court, mais toujours « le TVM de $f$ <strong>entre $a$ et $b$</strong> ».",
+            "<strong>Une exception notable :</strong> pour une fonction <em>affine</em> $f(x) = mx + b$, le TVM vaut $m$ sur n'importe quel intervalle. C'est précisément ce qui caractérise une droite."
+          ],
+          "piegeCourant": "Énoncer un TVM sans préciser l'intervalle auquel il se rapporte."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E010",
+      "chapitre": 4,
+      "section": "4.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Du taux moyen au taux instantané",
+      "motsCles": [
+        "TVI",
+        "vitesse instantanée",
+        "contexte physique"
+      ],
+      "savoirFaire": [
+        "2a",
+        "4e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La position d'un mobile est $s(t) = t^{2} + 3t$, où $s$ est en mètres et $t$ en secondes. Calcule sa vitesse instantanée à $t = 2$~s par la définition, avec les unités."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Écris d'abord la limite, puis factorise le numérateur en vérifiant qu'il s'annule bien en $t=2$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$7$ m/s"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Écrire la définition.</strong>\\[ v(2) = \\lim_{t \\to 2}\\dfrac{s(t)-s(2)}{t-2}. \\]",
+            "<strong>Calculer $s(2)$.</strong>\\[ s(2) = 4 + 6 = 10 \\ \\text{m}. \\]",
+            "<strong>Substituer.</strong>\\[ \\lim_{t \\to 2}\\dfrac{t^{2}+3t-10}{t-2}. \\]",
+            "<strong>Vérifier la forme.</strong> En $t=2$ : $4+6-10 = 0$ au numérateur et $0$ au dénominateur. Forme $\\dfrac{0}{0}$.",
+            "<strong>Factoriser.</strong> On cherche deux nombres de produit $-10$ et de somme $3$ : ce sont $5$ et $-2$.\\[ t^{2}+3t-10 = (t+5)(t-2). \\]",
+            "\\[ \\dfrac{(t+5)(t-2)}{t-2} = t+5, \\qquad t \\neq 2. \\]",
+            "<strong>Évaluer.</strong>\\[ v(2) = \\lim_{t \\to 2}(t+5) = 7. \\]",
+            "<strong>Unités et interprétation.</strong> La vitesse est en m/s. À l'instant précis $t = 2$~s, le mobile se déplace à $7$~m/s."
+          ],
+          "piegeCourant": "Se tromper de signes en factorisant et obtenir $(t-5)(t+2)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E011",
+      "chapitre": 4,
+      "section": "4.2",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Du taux moyen au taux instantané",
+      "motsCles": [
+        "TVM",
+        "TVI",
+        "égalité possible"
+      ],
+      "savoirFaire": [
+        "2a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Le taux de variation moyen d'une fonction sur un intervalle ne peut jamais être égal à son taux de variation instantané en un point de cet intervalle.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pense à une fonction dont le taux de variation est le même partout. Que vaut alors chacune des deux mesures ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Rien n'interdit aux deux mesures de coïncider — c'est même systématique pour certaines fonctions.",
+            "<strong>Contre-exemple simple.</strong> Soit la fonction affine $f(x) = 3x + 1$.",
+            "Son TVM sur n'importe quel intervalle $[a,b]$ vaut\\[ \\dfrac{(3b+1)-(3a+1)}{b-a} = \\dfrac{3(b-a)}{b-a} = 3. \\]",
+            "Son TVI en n'importe quel point vaut également $3$, puisque la tangente à une droite est la droite elle-même.",
+            "Les deux mesures coïncident donc partout : l'énoncé est <strong>faux</strong>.",
+            "<strong>Autre exemple.</strong> Pour $f(x) = x^{2}$ sur $[0, 2]$, le TVM vaut $\\dfrac{4-0}{2} = 2$. Or le TVI en $x = 1$ vaut aussi $2$.",
+            "Ici l'égalité ne tient qu'en un point bien précis de l'intervalle, mais elle existe bel et bien."
+          ],
+          "piegeCourant": "Croire que la distinction entre TVM et TVI implique qu'ils soient toujours différents."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E013",
+      "chapitre": 4,
+      "section": "4.3",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivée : définition et notations",
+      "motsCles": [
+        "notation de Leibniz",
+        "fraction"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? La notation $\\dfrac{dy}{dx}$ désigne une véritable fraction, dont on peut séparer le numérateur $dy$ et le dénominateur $dx$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Relis l'encadré « Attention » de la section 4.3. Que dit-il du statut de cette notation ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La notation $\\dfrac{dy}{dx}$ est un <strong>symbole global</strong> qui signifie « dérivée de $y$ par rapport à $x$ ». Les éléments $dy$ et $dx$ ne sont pas des nombres qu'on peut isoler.",
+            "L'énoncé est donc <strong>faux</strong>.",
+            "<strong>D'où vient alors cette forme de fraction ?</strong> Elle rappelle son origine : le quotient $\\dfrac{\\Delta y}{\\Delta x}$ du taux de variation moyen, dont la dérivée est la limite quand $\\Delta x \\to 0$.",
+            "Cette parenté rend la notation très commode. Elle indique immédiatement les <em>unités</em> — si $y$ est en mètres et $x$ en secondes, $\\frac{dy}{dx}$ est en m/s.",
+            "Elle rend aussi la dérivation en chaîne très lisible :\\[ \\dfrac{dy}{dx} = \\dfrac{dy}{du}\\cdot\\dfrac{du}{dx}, \\]où les $du$ semblent se simplifier. Mais ce n'est qu'un <em>moyen mnémotechnique</em>, pas une simplification de fraction au sens algébrique."
+          ],
+          "piegeCourant": "Manipuler $dy$ et $dx$ comme des quantités algébriques indépendantes."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E024",
+      "chapitre": 4,
+      "section": "4.4",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Calculer une dérivée à partir de la définition",
+      "motsCles": [
+        "définition",
+        "fonction constante"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $f(x) = 7$, une fonction constante. Calcule sa dérivée à partir de la définition et interprète le résultat."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Que vaut $f(x+h)$ pour une fonction constante ? La réponse est plus simple qu'il n'y paraît."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$f'(x) = 0$ : le graphique est une droite horizontale, de pente nulle"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Calculer $f(x+h)$.</strong> La fonction vaut $7$ <em>quelle que soit</em> la valeur d'entrée :\\[ f(x+h) = 7. \\]",
+            "<strong>Étape 2 — Former la différence.</strong>\\[ f(x+h) - f(x) = 7 - 7 = 0. \\]",
+            "<strong>Étape 3 — Diviser par $h$.</strong>\\[ \\dfrac{0}{h} = 0, \\qquad h \\neq 0. \\]",
+            "Noter que $\\dfrac{0}{h}$ vaut bien $0$ tant que $h \\neq 0$ : il n'y a aucune indétermination ici.",
+            "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0} 0 = 0. \\]",
+            "<strong>Interprétation.</strong> Le graphique de $f$ est une droite <em>horizontale</em>, dont la pente est nulle en tout point. La fonction ne varie jamais, donc son taux de variation est nul partout.",
+            "Ce résultat se généralise : la dérivée de toute fonction constante est $0$."
+          ],
+          "piegeCourant": "Croire que $f(x+h) = 7 + h$, en appliquant le décalage à la valeur de sortie plutôt qu'à l'entrée."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E025",
+      "chapitre": 4,
+      "section": "4.5",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivée en un point et son interprétation",
+      "motsCles": [
+        "interprétation",
+        "trois lectures",
+        "dérivée en un point"
+      ],
+      "savoirFaire": [
+        "2d",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le nombre $f'(3) = 5$ peut s'interpréter de plusieurs façons. Laquelle des affirmations suivantes est <em>incorrecte</em> ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "La tangente à la courbe au point d'abscisse $3$ a une pente de $5$"
+            },
+            {
+              "cle": "b",
+              "texte": "Le taux de variation instantané de $f$ en $x=3$ vaut $5$"
+            },
+            {
+              "cle": "c",
+              "texte": "La valeur de la fonction en $x=3$ est $5$"
+            },
+            {
+              "cle": "d",
+              "texte": "Au moment où $x$ vaut $3$, $y$ augmente $5$ fois plus vite que $x$"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois de ces lectures figurent dans l'encadré du cours. La quatrième confond deux quantités bien distinctes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "La valeur de la fonction en $x=3$ est $5$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le cours énonce <strong>trois</strong> lectures équivalentes du nombre $f'(a)$ :",
+            "<strong>(1) Géométrique.</strong> C'est la pente de la tangente à la courbe au point $\\bigl(a, f(a)\\bigr)$.",
+            "<strong>(2) En termes de variation.</strong> C'est le taux de variation instantané de $f$ en $x = a$.",
+            "<strong>(3) En termes de vitesse.</strong> C'est la vitesse à laquelle $y$ varie par rapport à $x$ au moment où $x = a$.",
+            "Appliquées à $f'(3) = 5$, ces trois lectures donnent : la tangente au point d'abscisse $3$ a une pente de $5$ ; le TVI en $x=3$ vaut $5$ ; au moment où $x$ vaut $3$, $y$ augmente $5$ fois plus vite que $x$.",
+            "L'affirmation (c) n'en fait pas partie : elle prétend que la valeur de la fonction en $x=3$ est $5$, ce qui confond $f'(3)$ avec $f(3)$.",
+            "Ce sont deux quantités sans rapport. Une fonction peut valoir $100$ en $x=3$ tout en y ayant une dérivée nulle, ou valoir $0$ tout en y croissant très vite."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "C'est la lecture géométrique, parfaitement correcte."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "C'est la lecture en termes de variation, également correcte : la dérivée en un point <em>est</em> le TVI en ce point."
+            },
+            {
+              "cle": "c",
+              "correct": true,
+              "explication": "C'est confondre $f'(3)$ avec $f(3)$. La dérivée mesure une <em>vitesse de changement</em>, jamais une valeur de la fonction."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "C'est la lecture en termes de vitesse relative, correcte elle aussi."
+            }
+          ],
+          "piegeCourant": "Confondre la valeur de la fonction et la valeur de sa dérivée en un même point."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E032",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 6,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivabilité",
+      "motsCles": [
+        "dérivabilité",
+        "valeur absolue",
+        "point anguleux",
+        "limites latérales"
+      ],
+      "savoirFaire": [
+        "2b",
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Montre que $f(x) = |x|$ n'est pas dérivable en $x = 0$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Écris le quotient différentiel en $0$, puis calcule ses deux limites latérales séparément. Comment s'écrit $|h|$ selon le signe de $h$ ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Les limites latérales du quotient valent $1$ et $-1$ : elles diffèrent, donc $f'(0)$ n'existe pas"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Écrire le quotient différentiel en $0$.</strong> Comme $f(0) = |0| = 0$ :\\[ \\dfrac{f(0+h) - f(0)}{h} = \\dfrac{|h| - 0}{h} = \\dfrac{|h|}{h}. \\]",
+            "<strong>Étape 2 — Limite à droite.</strong> Si $h > 0$, alors $|h| = h$ :\\[ \\lim_{h \\to 0^{+}}\\dfrac{|h|}{h} = \\lim_{h \\to 0^{+}}\\dfrac{h}{h} = 1. \\]",
+            "<strong>Étape 3 — Limite à gauche.</strong> Si $h < 0$, alors $|h| = -h$ :\\[ \\lim_{h \\to 0^{-}}\\dfrac{|h|}{h} = \\lim_{h \\to 0^{-}}\\dfrac{-h}{h} = -1. \\]",
+            "<strong>Étape 4 — Conclure.</strong> Les deux limites latérales existent mais diffèrent :\\[ 1 \\neq -1. \\]",
+            "La limite $\\displaystyle\\lim_{h\\to 0}\\dfrac{|h|}{h}$ n'existe donc pas, et $f$ n'est <strong>pas dérivable</strong> en $x = 0$.",
+            "<strong>Lecture graphique.</strong> À droite de $0$, la courbe a une pente de $1$ ; à gauche, une pente de $-1$. Il y a un <em>point anguleux</em> : aucune tangente unique ne peut y être tracée.",
+            "<strong>Remarque importante.</strong> La fonction est pourtant <em>continue</em> en $0$ : on peut tracer son graphique sans lever le crayon. C'est le contre-exemple classique montrant que la continuité n'entraîne pas la dérivabilité."
+          ],
+          "piegeCourant": "Simplifier $\\frac{|h|}{h}$ en $1$ sans distinguer le signe de $h$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E033",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivabilité",
+      "motsCles": [
+        "dérivabilité",
+        "continuité",
+        "implication",
+        "réciproque"
+      ],
+      "savoirFaire": [
+        "2b",
+        "1d",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Si une fonction est continue en un point, alors elle y est dérivable.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le théorème du cours énonce une implication. Va-t-elle dans ce sens-là, ou dans l'autre ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le théorème du cours énonce l'implication dans le sens <strong>inverse</strong> :\\[ \\text{dérivable en } a \\quad \\Longrightarrow \\quad \\text{continue en } a. \\]",
+            "L'énoncé propose la <em>réciproque</em>, qui est <strong>fausse</strong>.",
+            "<strong>Contre-exemple.</strong> Soit $f(x) = |x|$ en $x = 0$.",
+            "Cette fonction est <em>continue</em> en $0$ : on vérifie les trois conditions du chapitre 3, et $\\displaystyle\\lim_{x\\to 0}|x| = 0 = f(0)$.",
+            "Mais elle n'y est <em>pas dérivable</em> : les limites latérales du quotient différentiel valent $1$ et $-1$.",
+            "La continuité ne suffit donc pas à garantir la dérivabilité. L'énoncé est faux.",
+            "<strong>La hiérarchie correcte</strong> est la suivante :\\[ \\text{dérivable} \\implies \\text{continue}, \\qquad \\text{mais} \\qquad \\text{continue} \\;\\not\\!\\!\\implies \\text{dérivable}. \\]",
+            "Autrement dit, la dérivabilité est une condition <em>plus forte</em> que la continuité : elle exige non seulement l'absence de coupure, mais aussi l'absence de coin ou de tangente verticale."
+          ],
+          "piegeCourant": "Inverser le sens de l'implication du théorème."
+        }
+      ]
+    },
+    {
+      "id": "CD-C04-E034",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivabilité",
+      "motsCles": [
+        "dérivabilité",
+        "fonction par parties",
+        "continuité",
+        "point de jonction"
+      ],
+      "savoirFaire": [
+        "2b",
+        "1d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $f(x) = \\begin{cases} x^{2} & \\text{si } x \\leq 1, \\\\ x & \\text{si } x > 1. \\end{cases}$\\\\[0.3em] (a) Montre que $f$ est continue en $x = 1$. \\\\[0.2em] (b) Calcule les deux limites latérales du quotient différentiel en $x = 1$. \\\\[0.2em] (c) La fonction est-elle dérivable en $x = 1$ ? Que peut-on en conclure ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (b), la branche à utiliser dépend du signe de $h$ : si $h < 0$ alors $1+h < 1$, et c'est la branche $x^{2}$ qui s'applique."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) continue \\qquad (b) limite à gauche $= 2$, limite à droite $= 1$ \\qquad (c) non dérivable : la continuité n'entraîne pas la dérivabilité"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Continuité en $x=1$.</strong> On vérifie les trois conditions du chapitre 3.",
+            "<em>C1.</em> Le symbole $\\leq$ place $x=1$ dans la première branche :\\[ f(1) = 1^{2} = 1. \\quad \\checkmark \\]",
+            "<em>C2.</em> Les deux limites latérales :\\begin{align*} \\lim_{x \\to 1^{-}} f(x) &= \\lim_{x \\to 1^{-}} x^{2} = 1, \\\\ \\lim_{x \\to 1^{+}} f(x) &= \\lim_{x \\to 1^{+}} x = 1. \\end{align*}",
+            "Elles sont égales, donc $\\displaystyle\\lim_{x\\to 1} f(x) = 1$ existe. $\\checkmark$",
+            "<em>C3.</em> $\\displaystyle\\lim_{x\\to 1} f(x) = 1 = f(1)$. $\\checkmark$",
+            "Les trois conditions sont remplies : $f$ est <strong>continue</strong> en $x = 1$.",
+            "<strong>(b) Quotient différentiel.</strong> Comme $f(1) = 1$, le quotient s'écrit\\[ \\dfrac{f(1+h) - f(1)}{h} = \\dfrac{f(1+h) - 1}{h}. \\]",
+            "<em>Limite à gauche.</em> Si $h < 0$, alors $1+h < 1$ et c'est la branche $x^{2}$ qui s'applique :\\begin{align*} \\lim_{h \\to 0^{-}}\\dfrac{(1+h)^{2} - 1}{h} &= \\lim_{h \\to 0^{-}}\\dfrac{1 + 2h + h^{2} - 1}{h} \\\\ &= \\lim_{h \\to 0^{-}}\\dfrac{h(2+h)}{h} \\\\ &= \\lim_{h \\to 0^{-}}(2+h) = 2. \\end{align*}",
+            "<em>Limite à droite.</em> Si $h > 0$, alors $1+h > 1$ et c'est la branche $x$ qui s'applique :\\[ \\lim_{h \\to 0^{+}}\\dfrac{(1+h) - 1}{h} = \\lim_{h \\to 0^{+}}\\dfrac{h}{h} = 1. \\]",
+            "<strong>(c) Conclusion.</strong> Les deux limites latérales existent mais diffèrent :\\[ 2 \\neq 1. \\]",
+            "La limite du quotient différentiel n'existe donc pas : $f$ n'est <strong>pas dérivable</strong> en $x = 1$.",
+            "<strong>Ce que cet exemple montre.</strong> La fonction est continue en $1$ sans y être dérivable. C'est une nouvelle illustration du fait que la continuité est une condition <em>nécessaire mais non suffisante</em> de la dérivabilité.",
+            "Graphiquement, les deux branches se raccordent sans coupure, mais avec des pentes différentes ($2$ et $1$) : la courbe présente un <em>point anguleux</em> en $(1,1)$."
+          ],
+          "piegeCourant": "Utiliser la même branche pour les deux limites latérales, en oubliant que le signe de $h$ détermine de quel côté de $1$ on se trouve."
+        }
+      ]
+    }
+  ]
+}

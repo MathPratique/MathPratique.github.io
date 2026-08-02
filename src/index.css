@@ -96,3 +96,33 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Tableaux et listes issus du LaTeX de la banque d'exercices.
+   Les largeurs fixes en centimètres du PDF n'ont pas de sens ici : le tableau
+   prend la largeur de son contenu et défile dans son propre conteneur plutôt
+   que de pousser la page entière — un tableau de variation à sept colonnes ne
+   tient pas dans 375 px.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .tableau-latex {
+    @apply my-3 max-w-full overflow-x-auto;
+  }
+
+  .tableau-latex table {
+    @apply w-auto min-w-full border-collapse text-sm;
+  }
+
+  .tableau-latex th,
+  .tableau-latex td {
+    @apply whitespace-nowrap border border-brand-100 px-3 py-1.5 text-center;
+  }
+
+  .tableau-latex th {
+    @apply bg-brand-50 font-semibold text-brand-900;
+  }
+
+  .liste-latex {
+    @apply my-2 list-disc space-y-1 pl-5;
+  }
+}

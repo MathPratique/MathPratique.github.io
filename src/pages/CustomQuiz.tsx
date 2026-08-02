@@ -179,7 +179,7 @@ export default function CustomQuiz() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.1} className="mt-10">
-          <TopicPicker onTopicSelect={handleTopicSelect} />
+          <TopicPicker onTopicSelect={handleTopicSelect} resterSurPlace />
         </AnimatedSection>
       </div>
     );

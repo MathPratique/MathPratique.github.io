@@ -1,8 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { deciderTelechargement, VALIDITE_LIEN_MINUTES } from "../.tmp-test/telechargement.js";
-import { DOCUMENTS, trouverDocument } from "../.tmp-test/documents.js";
-import { creerAcces } from "../.tmp-test/regles.js";
+import { deciderTelechargement, VALIDITE_LIEN_MINUTES } from "../.tmp-test/acces/telechargement.js";
+import { DOCUMENTS, trouverDocument } from "../.tmp-test/acces/documents.js";
+import { creerAcces } from "../.tmp-test/acces/regles.js";
 
 const DEBUT = new Date("2026-09-01T12:00:00Z").getTime();
 const acces = (surcharge = {}) => ({

@@ -1,0 +1,455 @@
+{
+  "chapitre": 3,
+  "titre": "Continuité",
+  "heuresEnseignement": 4,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C03-E003",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "La continuité en un point",
+      "motsCles": [
+        "condition C1",
+        "discontinuité par trou",
+        "forme 0/0"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Étudie la continuité de $\\displaystyle f(x) = \\dfrac{x^{2}-1}{x-1}$ en $x = 1$, et précise le type de discontinuité s'il y a lieu."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par C1. Si elle échoue, inutile de poursuivre — mais calcule tout de même la limite pour classer la discontinuité."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Discontinue en $x = 1$ (C1 échoue) ; discontinuité par trou, la limite valant $2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Condition C1.</strong> On tente d'évaluer :\\[ f(1) = \\dfrac{1-1}{1-1} = \\dfrac{0}{0}. \\]Cette expression n'a aucun sens : $f(1)$ <strong>n'existe pas</strong>. La condition C1 échoue.",
+            "<strong>Conclusion immédiate.</strong> $f$ est <strong>discontinue</strong> en $x = 1$.",
+            "<strong>De quel type ?</strong> Pour classer la discontinuité, on calcule la limite. L'évaluation directe donne $\\frac{0}{0}$ : on factorise.",
+            "\\[ \\dfrac{x^{2}-1}{x-1} = \\dfrac{(x-1)(x+1)}{x-1} = x+1, \\qquad x \\neq 1. \\]",
+            "\\[ \\lim_{x \\to 1} f(x) = \\lim_{x \\to 1}(x+1) = 2. \\]",
+            "La limite existe et vaut $2$, mais $f(1)$ n'existe pas : c'est une <strong>discontinuité par trou</strong>.",
+            "Elle est <em>réparable</em> : en posant $f(1) = 2$, la fonction deviendrait continue. Graphiquement, il suffirait de « boucher le trou »."
+          ],
+          "piegeCourant": "S'arrêter à « C1 échoue donc discontinue » sans calculer la limite, ce qui empêche de classer la discontinuité."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E004",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "La continuité en un point",
+      "motsCles": [
+        "condition C3",
+        "valeur mal placée",
+        "discontinuité par trou"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $g(x) = \\begin{cases} \\dfrac{x^{2}-9}{x-3} & \\text{si } x \\neq 3, \\\\[0.6em] 2 & \\text{si } x = 3. \\end{cases}$\\\\[0.3em] Étudie la continuité de $g$ en $x = 3$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Ici $g(3)$ est défini par l'énoncé : C1 passe. Le problème se situe ailleurs."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Discontinue en $x = 3$ : C3 échoue, car la limite vaut $6$ alors que $g(3) = 2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Condition C1.</strong> La définition par parties impose directement $g(3) = 2$. La valeur existe : C1 est <strong>satisfaite</strong>.",
+            "<strong>Condition C2.</strong> Pour $x \\neq 3$, on utilise la première branche. L'évaluation directe donne $\\frac{0}{0}$, alors on factorise :\\[ \\dfrac{x^{2}-9}{x-3} = \\dfrac{(x-3)(x+3)}{x-3} = x+3, \\qquad x \\neq 3. \\]",
+            "\\[ \\lim_{x \\to 3} g(x) = \\lim_{x \\to 3}(x+3) = 6. \\]La limite existe : C2 est <strong>satisfaite</strong>.",
+            "<strong>Condition C3.</strong> On compare :\\[ \\lim_{x \\to 3} g(x) = 6 \\qquad \\text{mais} \\qquad g(3) = 2. \\]",
+            "Comme $6 \\neq 2$, la condition C3 <strong>échoue</strong>.",
+            "<strong>Conclusion.</strong> $g$ est <strong>discontinue</strong> en $x = 3$. C'est une discontinuité <em>par trou</em> : la valeur $g(3) = 2$ est mal placée.",
+            "En posant plutôt $g(3) = 6$, la fonction deviendrait continue. Graphiquement, le point isolé en $(3,2)$ devrait être déplacé en $(3,6)$."
+          ],
+          "piegeCourant": "Conclure à la continuité parce que C1 et C2 passent, sans effectuer la comparaison de C3."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E011",
+      "chapitre": 3,
+      "section": "3.2",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "La continuité sur un intervalle ouvert",
+      "motsCles": [
+        "intervalle de continuité",
+        "radical",
+        "domaine"
+      ],
+      "savoirFaire": [
+        "1d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Sur quel intervalle ouvert la fonction $f(x) = \\sqrt{x-2}$ est-elle continue ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Détermine d'abord le domaine. L'intervalle ouvert de continuité s'en déduit directement."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Sur $]2, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Domaine.</strong> La racine est d'indice pair, donc le radicande doit être positif ou nul :\\[ x - 2 \\geq 0 \\iff x \\geq 2. \\]",
+            "\\[ \\mathrm{dom}\\,f = [2, +\\infty[. \\]",
+            "<strong>Continuité.</strong> Les fonctions avec radicaux sont continues sur tout leur domaine, par le théorème du cours.",
+            "<strong>Intervalle ouvert.</strong> La question demande un intervalle <em>ouvert</em>, ce qui exclut la borne $2$ :\\[ ]2, +\\infty[. \\]",
+            "<strong>Pourquoi exclure $2$ ?</strong> En $x = 2$, la fonction est bien définie ($f(2) = 0$), mais on ne peut l'approcher que par la <em>droite</em> : à gauche, elle n'existe pas.",
+            "La continuité sur un intervalle ouvert, telle que définie dans le cours, évite précisément ce genre de situation aux bornes."
+          ],
+          "piegeCourant": "Donner $[2, +\\infty[$ alors que la question demande explicitement un intervalle ouvert."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E016",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "fonction par parties",
+        "discontinue",
+        "saut"
+      ],
+      "savoirFaire": [
+        "1d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $g(x) = \\begin{cases} x+2 & \\text{si } x < 1, \\\\ 3x-1 & \\text{si } x \\geq 1. \\end{cases}$\\\\[0.3em] Étudie la continuité de $g$ en $x = 1$ et précise le type de discontinuité s'il y a lieu."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Calcule les deux limites latérales avant de conclure. Si elles diffèrent, quelle condition échoue ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Discontinue en $x = 1$ : C2 échoue (limite à gauche $= 3$, limite à droite $= 2$) ; discontinuité par saut"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Calcul de $g(1)$.</strong> Le symbole $\\geq$ place $x=1$ dans la seconde branche :\\[ g(1) = 3(1) - 1 = 2. \\]C1 est satisfaite.",
+            "<strong>Étape 2 — Limite à gauche.</strong> Pour $x < 1$, on utilise $x+2$ :\\[ \\lim_{x \\to 1^{-}} g(x) = 1 + 2 = 3. \\]",
+            "<strong>Étape 3 — Limite à droite.</strong> Pour $x > 1$, on utilise $3x-1$ :\\[ \\lim_{x \\to 1^{+}} g(x) = 3 - 1 = 2. \\]",
+            "<strong>Étape 4 — Comparaison.</strong> Les deux limites latérales existent mais diffèrent :\\[ 3 \\neq 2. \\]",
+            "La limite globale n'existe donc pas : la condition <strong>C2 échoue</strong>.",
+            "<strong>Conclusion.</strong> $g$ est <strong>discontinue</strong> en $x = 1$. Comme les deux limites latérales sont finies mais différentes, il s'agit d'une <strong>discontinuité par saut</strong>.",
+            "L'amplitude du saut vaut $|3 - 2| = 1$ unité. Contrairement à une discontinuité par trou, elle n'est <em>pas réparable</em> : aucune redéfinition de $g(1)$ ne pourrait rendre la fonction continue."
+          ],
+          "piegeCourant": "Conclure à la continuité parce que $g(1)$ coïncide avec l'une des deux limites latérales."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E021",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 6,
+      "acces": "gratuit",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "valeur absolue",
+        "point de jonction",
+        "saut"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $f(x) = \\begin{cases} \\dfrac{|x|}{x} & \\text{si } x \\neq 0, \\\\[0.6em] 1 & \\text{si } x = 0. \\end{cases}$\\\\[0.3em] Étudie la continuité de $f$ en $x = 0$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Comment s'écrit $|x|$ sans les barres, selon le signe de $x$ ? Cela te donnera deux expressions différentes de chaque côté."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Discontinue en $x = 0$ : C2 échoue (limite à gauche $= -1$, limite à droite $= 1$) ; discontinuité par saut"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Condition C1.</strong> La définition impose $f(0) = 1$. La valeur existe : C1 est satisfaite.",
+            "<strong>Condition C2.</strong> Il faut lever la valeur absolue, qui se comporte différemment selon le signe de $x$ :\\[ |x| = \\begin{cases} x & \\text{si } x > 0, \\\\ -x & \\text{si } x < 0. \\end{cases} \\]",
+            "<em>Limite à droite.</em> Si $x > 0$, alors $|x| = x$ :\\[ \\lim_{x \\to 0^{+}}\\dfrac{|x|}{x} = \\lim_{x \\to 0^{+}}\\dfrac{x}{x} = 1. \\]",
+            "<em>Limite à gauche.</em> Si $x < 0$, alors $|x| = -x$ :\\[ \\lim_{x \\to 0^{-}}\\dfrac{|x|}{x} = \\lim_{x \\to 0^{-}}\\dfrac{-x}{x} = -1. \\]",
+            "Les deux limites latérales existent mais diffèrent ($-1 \\neq 1$) : la condition <strong>C2 échoue</strong>.",
+            "<strong>Conclusion.</strong> $f$ est <strong>discontinue</strong> en $x = 0$, par <em>saut</em> d'amplitude $2$.",
+            "Cette fonction vaut $-1$ pour tout $x$ négatif et $1$ pour tout $x$ positif. Le choix de poser $f(0) = 1$ ne change rien : aucune valeur ponctuelle ne pourrait réconcilier deux limites latérales opposées."
+          ],
+          "piegeCourant": "Simplifier $\\frac{|x|}{x}$ en $1$ sans distinguer le signe de $x$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E023",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "fonction par parties",
+        "continuité ailleurs qu'au point de jonction"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Pour une fonction définie par parties dont chaque branche est un polynôme, il suffit de vérifier la continuité aux points de jonction.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Que sait-on de la continuité d'un polynôme ? Où pourrait-il y avoir un problème ailleurs qu'aux jonctions ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Une fonction définie par parties se comporte, à l'intérieur de chaque morceau, exactement comme la branche correspondante.",
+            "Or les fonctions <strong>polynomiales sont continues sur $\\mathbb{R}$ tout entier</strong>, par le théorème du cours.",
+            "En tout point <em>strictement intérieur</em> à un morceau, la fonction coïncide donc avec un polynôme sur tout un voisinage : elle y est continue.",
+            "Les seuls endroits où un problème peut survenir sont les <strong>points de jonction</strong>, là où l'on passe d'une branche à l'autre.",
+            "L'énoncé est donc <strong>vrai</strong>.",
+            "<strong>Nuance importante.</strong> Cette conclusion dépend du fait que les branches sont des <em>polynômes</em>. Si l'une d'elles était par exemple $\\frac{1}{x-5}$, il faudrait aussi vérifier $x = 5$, au cas où cette valeur tomberait à l'intérieur du morceau concerné.",
+            "C'est ce qui justifie la méthode du cours : on se concentre sur les points de jonction, après s'être assuré que chaque branche est continue sur son propre morceau."
+          ],
+          "piegeCourant": "Généraliser la règle à des branches non polynomiales, sans vérifier leur propre domaine."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E027",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Théorèmes sur la continuité",
+      "motsCles": [
+        "composition",
+        "radical",
+        "inéquation"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine où la fonction $f(x) = \\sqrt{x^{2}-9}$ est continue."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "C'est une composée. Il faut que l'expression intérieure appartienne au domaine de la racine carrée. Cela donne une inéquation à résoudre par tableau de signes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Sur $]-\\infty, -3]$ et $[3, +\\infty[$ ; en intervalles ouverts : $]-\\infty, -3[$ et $]3, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Décomposer.</strong> On peut voir $f$ comme la composée de\\[ u(x) = x^{2}-9 \\qquad \\text{et} \\qquad r(t) = \\sqrt{t}. \\]",
+            "<strong>Étape 2 — Continuité de chaque morceau.</strong> La fonction $u$ est polynomiale, donc continue sur $\\mathbb{R}$. La fonction $r$ est continue sur son domaine $[0, +\\infty[$.",
+            "<strong>Étape 3 — Appliquer le théorème de composition.</strong> La composée est continue partout où $u(x)$ appartient au domaine de $r$, c'est-à-dire là où\\[ x^{2}-9 \\geq 0. \\]",
+            "<strong>Étape 4 — Résoudre l'inéquation.</strong> On factorise :\\[ (x-3)(x+3) \\geq 0. \\]",
+            "Un produit de deux facteurs est positif quand ils sont de <em>même signe</em>. On dresse le tableau de signes autour de $-3$ et $3$ :",
+            "\\begin{center}\\renewcommand{\\arraystretch}{1.3}\\begin{tabular}{>{\\centering\\arraybackslash}p{2.6cm}|>{\\centering\\arraybackslash}p{2.4cm}|>{\\centering\\arraybackslash}p{2.4cm}|>{\\centering\\arraybackslash}p{2.4cm}}\\toprule & $x < -3$ & $-3 < x < 3$ & $x > 3$ \\\\ \\midrule $x-3$ & $-$ & $-$ & $+$ \\\\ $x+3$ & $-$ & $+$ & $+$ \\\\ \\midrule $(x-3)(x+3)$ & $+$ & $-$ & $+$ \\\\ \\bottomrule \\end{tabular}\\end{center}",
+            "<strong>Étape 5 — Conclure.</strong> Le domaine est $]-\\infty, -3] \\cup [3, +\\infty[$, et $f$ est continue sur tout ce domaine.",
+            "Exprimé en intervalles <em>ouverts</em>, comme le fait le cours :\\[ ]-\\infty, -3[ \\qquad \\text{et} \\qquad ]3, +\\infty[. \\]",
+            "Aux bornes $x = \\pm 3$, la fonction est définie ($f(\\pm 3) = 0$), mais on ne peut l'approcher que d'un seul côté."
+          ],
+          "piegeCourant": "Résoudre $x^{2} \\geq 9$ en écrivant $x \\geq 3$ et oublier la branche négative."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E030",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Théorèmes sur la continuité",
+      "motsCles": [
+        "composition",
+        "théorème",
+        "condition"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le théorème sur la continuité d'une composée $f \\circ g$ en $x = a$ exige que :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$g$ soit continue en $a$ et $f$ continue en $g(a)$"
+            },
+            {
+              "cle": "b",
+              "texte": "$f$ et $g$ soient toutes deux continues en $a$"
+            },
+            {
+              "cle": "c",
+              "texte": "$f$ soit continue en $a$ et $g$ continue en $f(a)$"
+            },
+            {
+              "cle": "d",
+              "texte": "$f$ et $g$ soient continues sur $\\mathbb{R}$"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Dans $f\\bigl(g(x)\\bigr)$, quelle fonction s'applique en premier ? Et à quelle valeur la seconde s'applique-t-elle ensuite ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$g$ soit continue en $a$ et $f$ continue en $g(a)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Dans la composée $(f \\circ g)(x) = f\\bigl(g(x)\\bigr)$, c'est la fonction <strong>intérieure $g$</strong> qui s'applique en premier.",
+            "Le théorème du cours exige donc :\\begin{itemize}\\item que $g$ soit continue en $a$ ; \\item que $f$ soit continue en $g(a)$, c'est-à-dire au point <em>où $g$ aboutit</em>.\\end{itemize}",
+            "Le point d'évaluation de $f$ est $g(a)$, pas $a$ — c'est la subtilité de l'énoncé.",
+            "<strong>Exemple.</strong> Pour $f(x) = \\sqrt{x-1}$ en $a = 5$ : la fonction intérieure $u(x) = x-1$ est continue en $5$, et $u(5) = 4$.",
+            "Il faut alors que la racine carrée soit continue en $4$ — ce qui est le cas, puisque $4 \\geq 0$.",
+            "En revanche, en $a = 0$ : $u(0) = -1$, et la racine carrée n'est pas définie en $-1$. La composée n'est donc pas continue en $0$ — elle n'y est même pas définie."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": true,
+              "explication": "C'est l'énoncé du cours. La fonction extérieure doit être continue là où la fonction intérieure <em>aboutit</em>, soit au point $g(a)$."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "La continuité de $f$ doit être évaluée en $g(a)$, et non en $a$. Ces deux points n'ont aucune raison de coïncider."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Les rôles des deux fonctions sont inversés. Dans $f \\circ g$, c'est $g$ qui s'applique en premier."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Beaucoup trop fort. Le théorème est local : il suffit d'une continuité aux deux points concernés."
+            }
+          ],
+          "piegeCourant": "Évaluer la continuité de la fonction extérieure en $a$ plutôt qu'en $g(a)$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "chapitre": 1,
+  "titre": "Fonctions et domaines",
+  "heuresEnseignement": 3,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C01-E003",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Rappel : les fonctions de base et leurs graphiques",
+      "motsCles": [
+        "lecture graphique",
+        "domaine",
+        "image",
+        "notation d'intervalles"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine et l'image de la fonction représentée ci-dessous, en notation d'intervalles.",
+          "figure": "figures/CD-C01-E003.svg"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le domaine se lit sur l'axe horizontal (de gauche à droite), l'image sur l'axe vertical (de bas en haut). Les points pleins indiquent que les extrémités sont incluses."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = [-1, 8]$ \\qquad et \\qquad $\\mathrm{ima}\\,f = [0, 3]$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Domaine — on projette sur l'axe horizontal.</strong> La courbe commence au point $(-1, 0)$ et se termine au point $(8, 3)$.",
+            "Les deux extrémités sont marquées par des points <em>pleins</em> : elles sont donc incluses.",
+            "\\[ \\mathrm{dom}\\,f = [-1, 8]. \\]",
+            "<strong>Image — on projette sur l'axe vertical.</strong> La courbe est croissante : sa plus basse valeur est $0$ (atteinte en $x=-1$) et sa plus haute est $3$ (atteinte en $x=8$).",
+            "\\[ \\mathrm{ima}\\,f = [0, 3]. \\]",
+            "<strong>Vérification algébrique.</strong> La courbe est celle de $f(x) = \\sqrt{x+1}$ restreinte à $[-1, 8]$. On confirme :\\[ f(-1) = \\sqrt{0} = 0 \\qquad \\text{et} \\qquad f(8) = \\sqrt{9} = 3. \\]",
+            "<strong>Le réflexe à garder.</strong> Domaine $\\to$ axe horizontal, image $\\to$ axe vertical. Un point plein donne un crochet fermé, un point vide un crochet ouvert."
+          ],
+          "piegeCourant": "Inverser les deux axes et donner l'image à la place du domaine."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E005",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Rappel : lois des exposants et propriétés des logarithmes",
+      "motsCles": [
+        "lois des exposants",
+        "simplification"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Simplifie $\\dfrac{x^{4} \\cdot x^{-1}}{x^{2}}$ et exprime le résultat sans exposant négatif."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Traite d'abord le numérateur : deux puissances d'une même base qui se multiplient."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x$ \\quad (pour $x \\neq 0$)"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Numérateur.</strong> Pour un produit de puissances de même base, on <em>additionne</em> les exposants :\\[ x^{4} \\cdot x^{-1} = x^{4 + (-1)} = x^{3}. \\]",
+            "<strong>Étape 2 — Quotient.</strong> Pour un quotient de puissances de même base, on <em>soustrait</em> les exposants :\\[ \\dfrac{x^{3}}{x^{2}} = x^{3-2} = x^{1} = x. \\]",
+            "<strong>Réponse.</strong>\\[ \\dfrac{x^{4}\\cdot x^{-1}}{x^{2}} = x. \\]",
+            "<strong>La restriction.</strong> L'expression de départ contient $x^{-1} = \\dfrac{1}{x}$ et une division par $x^{2}$ : elle exige $x \\neq 0$.",
+            "Le résultat simplifié $x$, lui, est défini partout. C'est exactement le genre de subtilité que formalise la section 1.5 : simplifier ne fait pas disparaître les restrictions de l'expression d'origine."
+          ],
+          "piegeCourant": "Multiplier les exposants au lieu de les additionner dans le produit."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E011",
+      "chapitre": 1,
+      "section": "1.3",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Les fonctions arcsinus et arctangente",
+      "motsCles": [
+        "arcsinus",
+        "arctangente",
+        "valeurs exactes"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\arcsin\\!\\left(\\dfrac{\\sqrt{2}}{2}\\right)$ et $\\arctan\\bigl(\\sqrt{3}\\bigr)$ sans calculatrice."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Dans chaque cas, cherche l'angle de la table des valeurs exactes qui donne le nombre voulu — en respectant l'intervalle image."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\arcsin\\!\\left(\\dfrac{\\sqrt{2}}{2}\\right) = \\dfrac{\\pi}{4}$ \\qquad et \\qquad $\\arctan\\bigl(\\sqrt{3}\\bigr) = \\dfrac{\\pi}{3}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Premier calcul.</strong> On cherche l'angle $\\theta \\in \\left[-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right]$ tel que $\\sin\\theta = \\dfrac{\\sqrt{2}}{2}$.",
+            "La table des valeurs exactes donne $\\sin\\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, et $\\dfrac{\\pi}{4}$ appartient bien à l'intervalle image de l'arcsinus.",
+            "\\[ \\arcsin\\!\\left(\\dfrac{\\sqrt{2}}{2}\\right) = \\dfrac{\\pi}{4}. \\]",
+            "<strong>Second calcul.</strong> On cherche l'angle $\\theta \\in \\left]-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right[$ tel que $\\tan\\theta = \\sqrt{3}$.",
+            "La table donne $\\tan\\dfrac{\\pi}{3} = \\sqrt{3}$, et $\\dfrac{\\pi}{3}$ appartient à l'intervalle image de l'arctangente.",
+            "\\[ \\arctan\\bigl(\\sqrt{3}\\bigr) = \\dfrac{\\pi}{3}. \\]",
+            "<strong>Pourquoi l'intervalle image compte.</strong> L'angle $\\dfrac{3\\pi}{4}$ a lui aussi un sinus égal à $\\dfrac{\\sqrt{2}}{2}$, mais il n'appartient pas à $\\left[-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right]$ : ce n'est donc pas la valeur de l'arcsinus.",
+            "C'est précisément cette restriction qui rend l'arcsinus bien défini — sans elle, il y aurait une infinité de réponses."
+          ],
+          "piegeCourant": "Donner un angle correct pour le sinus mais situé hors de l'intervalle image, comme $\\dfrac{3\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E013",
+      "chapitre": 1,
+      "section": "1.3",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Les fonctions arcsinus et arctangente",
+      "motsCles": [
+        "arcsinus",
+        "arctangente",
+        "domaine borné"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Comme $\\arctan x$ est définie pour tout réel $x$, il en va de même de $\\arcsin x$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Existe-t-il un angle dont le sinus vaut $2$ ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Les deux fonctions inverses n'ont pas du tout le même domaine.",
+            "<strong>Arctangente.</strong> La tangente prend toutes les valeurs réelles sur $\\left]-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right[$ — son graphique monte de $-\\infty$ à $+\\infty$. Tout réel est donc atteint :\\[ \\mathrm{dom}(\\arctan) = \\mathbb{R}. \\]",
+            "<strong>Arcsinus.</strong> Le sinus, lui, reste toujours compris entre $-1$ et $1$. Aucun angle n'a un sinus égal à $2$ :\\[ \\mathrm{dom}(\\arcsin) = [-1, 1]. \\]",
+            "L'énoncé est donc <strong>faux</strong>.",
+            "<strong>Conséquence pratique.</strong> $\\arcsin 2$ n'existe pas, alors que $\\arctan 2$ existe (et vaut environ $1{,}107$ rad).",
+            "C'est une source d'erreur fréquente en détermination de domaine : dès qu'un arcsinus apparaît, il faut ajouter la condition $-1 \\leq \\text{argument} \\leq 1$. L'arctangente, elle, n'impose jamais rien."
+          ],
+          "piegeCourant": "Supposer que toutes les fonctions trigonométriques inverses ont le même domaine."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E018",
+      "chapitre": 1,
+      "section": "1.4",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Rappel : cercle trigonométrique et identités",
+      "motsCles": [
+        "angle double",
+        "identité",
+        "cosinus"
+      ],
+      "savoirFaire": [
+        "0b",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Laquelle de ces expressions est égale à $\\cos(2\\theta)$ pour tout $\\theta$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$2\\cos\\theta$"
+            },
+            {
+              "cle": "b",
+              "texte": "$\\cos^{2}\\theta - \\sin^{2}\\theta$"
+            },
+            {
+              "cle": "c",
+              "texte": "$2\\sin\\theta\\cos\\theta$"
+            },
+            {
+              "cle": "d",
+              "texte": "$\\cos^{2}\\theta + \\sin^{2}\\theta$"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Teste chaque candidat en $\\theta = 0$, où $\\cos(2\\theta) = \\cos 0 = 1$. Cela élimine déjà plusieurs options."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\cos^{2}\\theta - \\sin^{2}\\theta$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Les deux identités d'angle double du cours sont\\[ \\sin(2\\theta) = 2\\sin\\theta\\cos\\theta \\qquad \\text{et} \\qquad \\cos(2\\theta) = \\cos^{2}\\theta - \\sin^{2}\\theta. \\]",
+            "La bonne réponse est donc <strong>(b)</strong>.",
+            "<strong>Éliminer les autres par un test rapide.</strong> On prend $\\theta = 0$, où $\\cos(2\\theta) = \\cos 0 = 1$.",
+            "(a) $2\\cos 0 = 2 \\neq 1$. Éliminé.",
+            "(c) $2\\sin 0 \\cos 0 = 0 \\neq 1$. Éliminé.",
+            "(d) $\\cos^{2}0 + \\sin^{2}0 = 1$ : le test passe ! Mais cette expression vaut $1$ pour <em>tout</em> $\\theta$, alors que $\\cos(2\\theta)$ varie. Un second test en $\\theta = \\dfrac{\\pi}{2}$ le confirme : elle donne $1$, alors que $\\cos\\pi = -1$.",
+            "(b) $\\cos^{2}0 - \\sin^{2}0 = 1 - 0 = 1$. $\\checkmark$ Et en $\\theta = \\dfrac{\\pi}{2}$ : $0 - 1 = -1 = \\cos\\pi$. $\\checkmark$",
+            "<strong>Ce que la méthode enseigne.</strong> Un test numérique élimine vite les mauvaises réponses, mais il ne <em>prouve</em> rien : il faut parfois deux valeurs pour départager, comme entre (b) et (d)."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Le cosinus n'est pas linéaire : on ne peut pas « sortir » le $2$. En $\\theta = 0$, cette expression donnerait $2$, alors que $\\cos 0 = 1$."
+            },
+            {
+              "cle": "b",
+              "correct": true,
+              "explication": "C'est l'identité de l'angle double du cours. On peut la vérifier en $\\theta = 0$ : $1 - 0 = 1 = \\cos 0$."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "C'est l'identité de $\\sin(2\\theta)$, pas de $\\cos(2\\theta)$. Les deux formules se confondent facilement."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Cette expression vaut $1$ pour tout $\\theta$ — c'est l'identité fondamentale, pas l'angle double."
+            }
+          ],
+          "piegeCourant": "Confondre la formule de $\\cos(2\\theta)$ avec celle de $\\sin(2\\theta)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E021",
+      "chapitre": 1,
+      "section": "1.5",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "racine paire",
+        "inéquation",
+        "coefficient négatif"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\sqrt{5-2x}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La racine est d'indice pair. Attention au sens de l'inégalité quand tu divises par un nombre négatif."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\;\\left]-\\infty, \\dfrac{5}{2}\\right]$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Repérer la restriction.</strong> Une racine d'indice <em>pair</em> exige un radicande positif ou nul.",
+            "<strong>Étape 2 — Écrire la condition.</strong>\\[ 5 - 2x \\geq 0. \\]",
+            "<strong>Étape 3 — Résoudre.</strong>\\[ -2x \\geq -5. \\]",
+            "On divise par $-2$. Comme il s'agit d'un nombre <strong>négatif</strong>, le sens de l'inégalité s'inverse :\\[ x \\leq \\dfrac{-5}{-2} = \\dfrac{5}{2}. \\]",
+            "<strong>Étape 4 — Conclure.</strong>\\[ \\mathrm{dom}\\,f = \\;\\left]-\\infty, \\dfrac{5}{2}\\right]. \\]",
+            "Le crochet est <em>fermé</em> en $\\dfrac{5}{2}$ : la condition est $\\geq 0$, et $\\sqrt{0} = 0$ existe bien.",
+            "<strong>Contrôle.</strong> En $x = 0$ : $\\sqrt{5-0} = \\sqrt{5}$, qui existe, et $0 \\leq \\dfrac{5}{2}$. $\\checkmark$",
+            "En $x = 3$ : $\\sqrt{5-6} = \\sqrt{-1}$, qui n'existe pas, et $3 > \\dfrac{5}{2}$. $\\checkmark$",
+            "<strong>Une autre façon d'éviter l'inversion.</strong> On peut isoler autrement : $5 \\geq 2x$, puis $\\dfrac{5}{2} \\geq x$. Aucune division par un négatif, donc aucun risque d'erreur de sens."
+          ],
+          "piegeCourant": "Oublier d'inverser le sens de l'inégalité en divisant par $-2$, ce qui donnerait $\\left[\\dfrac{5}{2}, +\\infty\\right[$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E022",
+      "chapitre": 1,
+      "section": "1.5",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "gratuit",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "racine impaire",
+        "aucune restriction",
+        "piège"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $\\displaystyle f(x) = \\dfrac{\\sqrt[3]{x-1}}{x^{2}-9}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Combien de sources de restriction y a-t-il vraiment ici ? Regarde bien l'\\emph{indice} de la racine."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\mathbb{R}\\setminus\\{-3, 3\\} = \\;]-\\infty,-3[\\;\\cup\\;]-3,3[\\;\\cup\\;]3,+\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Repérer les restrictions.</strong> L'expression contient deux éléments suspects : une racine et un dénominateur. Il faut les examiner séparément.",
+            "<strong>La racine cubique n'impose rien.</strong> Son indice est <em>impair</em> : on peut extraire la racine cubique d'un nombre négatif. Par exemple $\\sqrt[3]{-8} = -2$.",
+            "Seules les racines d'indice <strong>pair</strong> ($\\sqrt{\\ }$, $\\sqrt[4]{\\ }$, …) exigent un radicande positif ou nul. Ici, <em>aucune</em> condition ne vient de la racine.",
+            "<strong>Étape 2 — Le dénominateur.</strong> C'est la seule vraie source de restriction :\\[ x^{2}-9 \\neq 0. \\]",
+            "<strong>Étape 3 — Résoudre.</strong>\\[ x^{2}-9 = (x-3)(x+3) = 0 \\iff x = 3 \\ \\text{ ou } \\ x = -3. \\]",
+            "<strong>Étape 4 — Conclure.</strong>\\[ \\mathrm{dom}\\,f = \\mathbb{R}\\setminus\\{-3, 3\\} = \\;]-\\infty,-3[\\;\\cup\\;]-3,3[\\;\\cup\\;]3,+\\infty[. \\]",
+            "<strong>Contrôle en une valeur négative.</strong> En $x = -1$ :\\[ f(-1) = \\dfrac{\\sqrt[3]{-2}}{1-9} = \\dfrac{\\sqrt[3]{-2}}{-8}, \\]une valeur parfaitement définie. Cela confirme que la racine cubique n'exclut rien.",
+            "<strong>L'erreur classique.</strong> Écrire par réflexe $x - 1 \\geq 0$ et répondre $[1, 3[\\;\\cup\\;]3, +\\infty[$. On aurait alors amputé le domaine de tout l'intervalle $]-\\infty, 1[$, où la fonction est pourtant bien définie.",
+            "<strong>Le réflexe à installer :</strong> avant d'écrire une condition de radicande, toujours vérifier l'<em>indice</em> de la racine."
+          ],
+          "piegeCourant": "Appliquer la condition $A \\geq 0$ à une racine d'indice impair."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E025",
+      "chapitre": 1,
+      "section": "1.5",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "gratuit",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "trois restrictions",
+        "intersection",
+        "logarithme au dénominateur"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $\\displaystyle f(x) = \\dfrac{\\sqrt{x+2}}{\\ln x}$.\\\\[0.3em] Procède par la méthode en 5 étapes : repère chaque source de restriction, écris et résous chaque condition, puis fais l'intersection."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Il y a trois sources de restriction, pas deux. Le logarithme est au dénominateur : sa simple existence ne suffit pas."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\;]0, 1[\\;\\cup\\;]1, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Repérer toutes les sources de restriction.</strong> Il y en a <em>trois</em> :",
+            "<strong>(i)</strong> la racine carrée du numérateur, d'indice pair ;",
+            "<strong>(ii)</strong> le logarithme du dénominateur, qui exige un argument strictement positif ;",
+            "<strong>(iii)</strong> le fait que ce logarithme soit au <strong>dénominateur</strong> : il ne doit pas s'annuler.",
+            "C'est la troisième que l'on oublie presque toujours.",
+            "<strong>Étape 2 — Écrire les conditions.</strong>\\[ x + 2 \\geq 0, \\qquad x > 0, \\qquad \\ln x \\neq 0. \\]",
+            "<strong>Étape 3 — Résoudre chacune.</strong>",
+            "<strong>(i)</strong> $x + 2 \\geq 0 \\iff x \\geq -2$, soit $[-2, +\\infty[$.",
+            "<strong>(ii)</strong> $x > 0$, soit $]0, +\\infty[$.",
+            "<strong>(iii)</strong> $\\ln x = 0$ lorsque $x = 1$, puisque $\\ln 1 = 0$. Il faut donc $x \\neq 1$.",
+            "<strong>Étape 4 — Faire l'intersection.</strong> Les trois conditions doivent être satisfaites <em>en même temps</em>.",
+            "L'intersection de $[-2, +\\infty[$ et de $]0, +\\infty[$ est $]0, +\\infty[$ : la seconde condition est plus restrictive et absorbe la première.",
+            "Il reste à retirer la valeur $1$ :\\[ ]0, +\\infty[\\;\\setminus\\{1\\} = \\;]0, 1[\\;\\cup\\;]1, +\\infty[. \\]",
+            "<strong>Étape 5 — Réponse.</strong>\\[ \\mathrm{dom}\\,f = \\;]0, 1[\\;\\cup\\;]1, +\\infty[. \\]",
+            "<strong>Contrôles.</strong> En $x = 1$ : $f(1) = \\dfrac{\\sqrt{3}}{\\ln 1} = \\dfrac{\\sqrt{3}}{0}$, qui n'existe pas. $\\checkmark$",
+            "En $x = \\dfrac{1}{2}$ : $f\\!\\left(\\dfrac{1}{2}\\right) = \\dfrac{\\sqrt{5/2}}{\\ln(1/2)}$, avec $\\ln(1/2) \\approx -0{,}693 \\neq 0$. La valeur existe, ce qui confirme que $]0,1[$ fait bien partie du domaine. $\\checkmark$",
+            "En $x = -1$ : la racine $\\sqrt{1}$ irait, mais $\\ln(-1)$ n'existe pas. Rejeté. $\\checkmark$",
+            "<strong>Ce que l'exercice enseigne.</strong> Une même expression peut porter <em>deux</em> conditions à la fois — ici, $\\ln x$ doit exister <em>et</em> être non nul. La méthode en 5 étapes n'est pas une formalité : c'est ce qui empêche d'en oublier une."
+          ],
+          "piegeCourant": "S'arrêter à $x > 0$ et oublier d'exclure $x = 1$, où le logarithme du dénominateur s'annule."
+        }
+      ]
+    }
+  ]
+}

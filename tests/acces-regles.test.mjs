@@ -6,7 +6,7 @@ import {
   verifierAcces,
   remboursementPossible,
   DUREE_ACCES_MOIS,
-} from "../.tmp-test/regles.js";
+} from "../.tmp-test/acces/regles.js";
 
 const JOUR = 24 * 60 * 60 * 1000;
 const t = (s) => new Date(s).getTime();

@@ -1,0 +1,547 @@
+{
+  "chapitre": 6,
+  "titre": "Applications mathématiques de la dérivée",
+  "heuresEnseignement": 7,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C06-E006",
+      "chapitre": 6,
+      "section": "6.1",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La droite tangente",
+      "motsCles": [
+        "droite tangente",
+        "intersection"
+      ],
+      "savoirFaire": [
+        "3a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? La tangente à une courbe en un point ne peut toucher cette courbe qu'en ce seul point.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La tangence est une propriété <em>locale</em>. Rien n'empêche la droite de recroiser la courbe plus loin. Cherche un exemple avec une cubique."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La tangence est une propriété <strong>locale</strong> : elle décrit le comportement de la courbe au voisinage immédiat du point de contact. Elle ne dit rien de ce qui se passe ailleurs.",
+            "<strong>Contre-exemple.</strong> Soit $f(x) = x^{3}$ et cherchons la tangente en $x = 0$.",
+            "On a $f(0) = 0$ et $f'(x) = 3x^{2}$, donc $f'(0) = 0$. La tangente est la droite horizontale\\[ y = 0. \\]",
+            "Or cette droite coupe la courbe exactement là où $x^{3} = 0$, c'est-à-dire en $x = 0$ seulement. Prenons alors un autre exemple.",
+            "<strong>Meilleur contre-exemple.</strong> Soit $f(x) = x^{3} - 3x$, dont la tangente au point $(0,0)$ a pour pente $f'(0) = -3$, soit la droite $y = -3x$.",
+            "Cherchons les intersections :\\[ x^{3} - 3x = -3x \\iff x^{3} = 0 \\iff x = 0. \\]Encore un seul point.",
+            "<strong>Contre-exemple concluant.</strong> Prenons la tangente à $f(x) = x^{3}-3x$ au point $(1,-2)$, qui est horizontale : $y = -2$.",
+            "Intersections :\\[ x^{3} - 3x = -2 \\iff x^{3}-3x+2 = 0 \\iff (x-1)^{2}(x+2) = 0, \\]d'où $x = 1$ (point de tangence) et $x = -2$.",
+            "La tangente touche donc la courbe en $(1,-2)$ <em>et</em> la recoupe en $(-2,-2)$. L'énoncé est <strong>faux</strong>."
+          ],
+          "piegeCourant": "Confondre tangence (propriété locale) et intersection unique (propriété globale)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E015",
+      "chapitre": 6,
+      "section": "6.2",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La règle de L'Hospital",
+      "motsCles": [
+        "règle de L'Hospital",
+        "condition d'application"
+      ],
+      "savoirFaire": [
+        "3b",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? On peut appliquer la règle de L'Hospital à $\\displaystyle\\lim_{x \\to 1}\\dfrac{x^{2}+3}{x+1}$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par évaluer directement. Obtiens-tu vraiment une forme indéterminée ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérification de la forme.</strong> C'est toujours la première chose à faire :\\[ \\dfrac{1^{2}+3}{1+1} = \\dfrac{4}{2} = 2. \\]",
+            "La limite s'évalue directement et vaut $2$ : il n'y a <strong>aucune indétermination</strong>.",
+            "La règle de L'Hospital ne s'applique donc pas. L'énoncé est <strong>faux</strong>.",
+            "<strong>Ce qui arriverait si on l'appliquait quand même.</strong> En dérivant séparément :\\[ \\lim_{x \\to 1}\\dfrac{2x}{1} = 2. \\]",
+            "Ici le résultat coïncide par coïncidence, mais ce n'est pas une règle. Prenons $\\displaystyle\\lim_{x\\to 1}\\dfrac{x^{2}}{x+1} = \\dfrac{1}{2}$ : une application abusive donnerait $\\displaystyle\\lim_{x\\to 1}\\dfrac{2x}{1} = 2$, ce qui est <strong>faux</strong>.",
+            "Morale : la vérification de la forme n'est pas une formalité, c'est ce qui rend la règle valide."
+          ],
+          "piegeCourant": "Appliquer la règle par réflexe dès qu'on voit un quotient, sans vérifier la forme."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E018",
+      "chapitre": 6,
+      "section": "6.3",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Les nombres critiques",
+      "motsCles": [
+        "nombres critiques",
+        "factorisation"
+      ],
+      "savoirFaire": [
+        "3c",
+        "2c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trouve les nombres critiques de $f(x) = x^{3} - 3x^{2} - 9x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Après avoir dérivé, mets le facteur commun en évidence avant de factoriser le trinôme restant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$c = 3$ et $c = -1$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Domaine.</strong> Polynôme : $\\mathrm{dom}\\,f = \\mathbb{R}$.",
+            "<strong>Dérivée.</strong>\\[ f'(x) = 3x^{2} - 6x - 9. \\]",
+            "<strong>Résoudre $f'(x) = 0$.</strong> On met $3$ en évidence :\\[ 3\\left(x^{2} - 2x - 3\\right) = 0. \\]",
+            "On factorise le trinôme : deux nombres de produit $-3$ et de somme $-2$, soit $-3$ et $+1$ :\\[ 3(x-3)(x+1) = 0. \\]",
+            "D'où\\[ x = 3 \\quad \\text{ou} \\quad x = -1. \\]",
+            "<strong>Où $f'$ n'existe-t-elle pas ?</strong> Nulle part : $f'$ est un polynôme.",
+            "<strong>Appartenance au domaine.</strong> Les deux valeurs sont réelles. $\\checkmark$",
+            "Les nombres critiques sont donc $c = 3$ et $c = -1$."
+          ],
+          "piegeCourant": "Se tromper de signes en factorisant et obtenir $(x+3)(x-1)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E026",
+      "chapitre": 6,
+      "section": "6.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Croissance, décroissance et extremums",
+      "motsCles": [
+        "test de la dérivée première",
+        "extremums relatifs"
+      ],
+      "savoirFaire": [
+        "3c",
+        "2c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trouve les extremums relatifs de $f(x) = 2x^{3} - 9x^{2} + 12x$ à l'aide du test de la dérivée première."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Après avoir trouvé les nombres critiques, c'est le <em>changement de signe</em> de $f'$ qui décide de la nature de chacun."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Maximum relatif de $5$ en $x = 1$ ; minimum relatif de $4$ en $x = 2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Dérivée.</strong>\\[ f'(x) = 6x^{2} - 18x + 12 = 6\\left(x^{2}-3x+2\\right) = 6(x-1)(x-2). \\]",
+            "<strong>Nombres critiques.</strong>\\[ x = 1 \\quad \\text{et} \\quad x = 2. \\]",
+            "<strong>Étude du signe de $f'$.</strong>\\begin{align*} f'(0) &= 6(-1)(-2) = 12 > 0, \\\\ f'(1{,}5) &= 6(0{,}5)(-0{,}5) = -1{,}5 < 0, \\\\ f'(3) &= 6(2)(1) = 12 > 0. \\end{align*}",
+            "<strong>Application du test.</strong>",
+            "En $x = 1$ : $f'$ passe de $+$ à $-$, donc <strong>maximum relatif</strong>. Sa valeur est\\[ f(1) = 2 - 9 + 12 = 5. \\]",
+            "En $x = 2$ : $f'$ passe de $-$ à $+$, donc <strong>minimum relatif</strong>. Sa valeur est\\[ f(2) = 16 - 36 + 24 = 4. \\]",
+            "<strong>Conclusion.</strong> Maximum relatif de $5$ en $x=1$, minimum relatif de $4$ en $x=2$.",
+            "Remarque : ici le maximum relatif ($5$) est supérieur au minimum relatif ($4$), ce qui est normal puisque ces extremums sont <em>locaux</em>."
+          ],
+          "piegeCourant": "Donner les abscisses $1$ et $2$ comme réponse au lieu des valeurs $f(1)$ et $f(2)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E030",
+      "chapitre": 6,
+      "section": "6.4",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Croissance, décroissance et extremums",
+      "motsCles": [
+        "extremum",
+        "condition nécessaire"
+      ],
+      "savoirFaire": [
+        "3c",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Si $f$ admet un maximum relatif en $c$ et que $f$ est dérivable en $c$, alors $f'(c) = 0$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "À un sommet de courbe où la tangente existe, quelle est nécessairement son inclinaison ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Attention au sens de l'implication : ici on part de l'extremum pour conclure sur la dérivée, et non l'inverse.",
+            "Si $f$ admet un maximum relatif en $c$, la courbe monte avant $c$ et descend après. La dérivée passe donc de positive à négative.",
+            "Comme $f$ est <strong>dérivable</strong> en $c$, la dérivée existe en ce point. Une quantité qui passe du positif au négatif en existant partout doit s'annuler au passage :\\[ f'(c) = 0. \\]",
+            "Géométriquement : au sommet d'une courbe lisse, la tangente est nécessairement <em>horizontale</em>.",
+            "L'énoncé est donc <strong>vrai</strong>.",
+            "<strong>Mais la réciproque est fausse</strong> : $f(x)=x^{3}$ vérifie $f'(0)=0$ sans avoir d'extremum en $0$.",
+            "L'hypothèse de dérivabilité est également essentielle : $f(x)=|x|$ admet un minimum en $0$, mais $f'(0)$ n'existe pas — on ne peut donc pas écrire $f'(0)=0$."
+          ],
+          "piegeCourant": "Confondre cette implication avec sa réciproque, qui est fausse."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E037",
+      "chapitre": 6,
+      "section": "6.5",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Concavité et points d'inflexion",
+      "motsCles": [
+        "test de la dérivée seconde",
+        "cas non concluant"
+      ],
+      "savoirFaire": [
+        "3c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $c$ un nombre critique de $f$ tel que $f'(c) = 0$ et $f''(c) = 0$. Que peut-on conclure ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$c$ est un point d'inflexion"
+            },
+            {
+              "cle": "b",
+              "texte": "Le test de la dérivée seconde est non concluant ; il faut utiliser celui de la dérivée première"
+            },
+            {
+              "cle": "c",
+              "texte": "$c$ n'est ni un maximum ni un minimum"
+            },
+            {
+              "cle": "d",
+              "texte": "$f$ admet un minimum en $c$"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Compare trois fonctions : $x^{4}$, $-x^{4}$ et $x^{3}$. Elles vérifient toutes $f'(0)=f''(0)=0$. Ont-elles le même comportement en $0$ ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Le test de la dérivée seconde est non concluant ; il faut utiliser celui de la dérivée première"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le théorème du cours prévoit trois cas, dont le troisième est explicitement un échec :\\[ f''(c) < 0 \\Rightarrow \\text{maximum}, \\qquad f''(c) > 0 \\Rightarrow \\text{minimum}, \\qquad f''(c) = 0 \\Rightarrow \\text{non concluant}. \\]",
+            "Trois exemples montrent pourquoi aucune conclusion n'est possible. Tous vérifient $f'(0) = f''(0) = 0$ :",
+            "<strong>$f(x) = x^{4}$</strong> : $f'(x)=4x^{3}$ passe de $-$ à $+$ en $0$, donc <em>minimum</em>.",
+            "<strong>$f(x) = -x^{4}$</strong> : $f'(x)=-4x^{3}$ passe de $+$ à $-$, donc <em>maximum</em>.",
+            "<strong>$f(x) = x^{3}$</strong> : $f'(x)=3x^{2}$ reste positive des deux côtés, donc <em>ni l'un ni l'autre</em>.",
+            "Trois comportements différents pour une même information $f''(c)=0$ : le test ne peut donc rien trancher.",
+            "Dans ce cas, on revient au test de la dérivée première, qui, lui, conclut toujours."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Pas nécessairement. Pour $f(x)=x^{4}$, on a $f''(0)=0$ mais la concavité ne change pas : il n'y a pas d'inflexion."
+            },
+            {
+              "cle": "b",
+              "correct": true,
+              "explication": "C'est exactement ce que dit le théorème. Le cas $f''(c)=0$ ne permet aucune conclusion, et il faut revenir à l'étude de signe de $f'$."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "On ne peut pas l'affirmer. Pour $f(x)=x^{4}$, le point $x=0$ est bel et bien un minimum, malgré $f''(0)=0$."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Pas davantage : pour $f(x)=-x^{4}$, le point $x=0$ est un maximum, et pour $f(x)=x^{3}$ il n'est ni l'un ni l'autre."
+            }
+          ],
+          "piegeCourant": "Conclure à un point d'inflexion dès que $f''(c)=0$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E038",
+      "chapitre": 6,
+      "section": "6.5",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Concavité et points d'inflexion",
+      "motsCles": [
+        "point d'inflexion",
+        "condition suffisante"
+      ],
+      "savoirFaire": [
+        "3c",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Si $f''(c) = 0$ et que $c$ appartient au domaine de $f$, alors la courbe admet un point d'inflexion en $c$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Que faut-il de plus que l'annulation de $f''$ pour qu'il y ait inflexion ? Teste avec $f(x) = x^{4}$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'annulation de $f''$ ne suffit pas : il faut de plus que la concavité <strong>change effectivement</strong> de part et d'autre de $c$.",
+            "<strong>Contre-exemple.</strong> Soit $f(x) = x^{4}$.",
+            "\\[ f'(x) = 4x^{3}, \\qquad f''(x) = 12x^{2}. \\]",
+            "On a bien $f''(0) = 0$, et $0$ appartient au domaine.",
+            "Mais étudions le signe de $f''$ :\\[ f''(x) = 12x^{2} \\geq 0 \\qquad \\text{pour tout } x \\text{ réel}. \\]",
+            "La dérivée seconde est positive des deux côtés de $0$ : la courbe est concave vers le haut partout. La concavité <strong>ne change pas</strong>.",
+            "Il n'y a donc <em>aucun</em> point d'inflexion en $x=0$, bien que $f''(0)=0$. L'énoncé est <strong>faux</strong>.",
+            "L'annulation de $f''$ fournit seulement une liste de <em>candidats</em> ; l'étude de signe est indispensable pour trancher."
+          ],
+          "piegeCourant": "Traiter $f''(c)=0$ comme une condition suffisante d'inflexion."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E043",
+      "chapitre": 6,
+      "section": "6.6",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Le tableau de variation combiné",
+      "motsCles": [
+        "tableau de variation",
+        "lecture",
+        "extremums",
+        "inflexion"
+      ],
+      "savoirFaire": [
+        "3c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "À partir du tableau de variation combiné suivant, identifie tous les extremums relatifs et tous les points d'inflexion de $f$.\\\\[0.4em] \\begin{center}\\renewcommand{\\arraystretch}{1.5}\\begin{tabular}{|>{\\centering\\arraybackslash}p{1.1cm}|>{\\centering\\arraybackslash}p{0.85cm}|>{\\centering\\arraybackslash}p{1.2cm}|>{\\centering\\arraybackslash}p{0.85cm}|>{\\centering\\arraybackslash}p{1.2cm}|>{\\centering\\arraybackslash}p{0.85cm}|>{\\centering\\arraybackslash}p{1.2cm}|>{\\centering\\arraybackslash}p{0.85cm}|>{\\centering\\arraybackslash}p{1.2cm}|>{\\centering\\arraybackslash}p{0.85cm}|}\\hline $x$ & $-\\infty$ & & $-1$ & & $0$ & & $2$ & & $+\\infty$ \\\\ \\hline $f'(x)$ & & $-$ & $0$ & $+$ & $+$ & $+$ & $0$ & $-$ & \\\\ \\hline $f''(x)$ & & $+$ & $+$ & $+$ & $0$ & $-$ & $-$ & $-$ & \\\\ \\hline $f(x)$ & & $\\searrow\\cup$ & $-4$ & $\\nearrow\\cup$ & $1$ & $\\nearrow\\cap$ & $6$ & $\\searrow\\cap$ & \\\\ \\hline \\end{tabular}\\end{center}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Examine chaque colonne où apparaît un $0$. Sur quelle ligne se trouve-t-il, et y a-t-il changement de signe ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Minimum relatif $-4$ en $x=-1$ ; maximum relatif $6$ en $x=2$ ; point d'inflexion $(0, 1)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On examine chaque colonne contenant un $0$, en repérant sur quelle ligne il se trouve.",
+            "<strong>En $x = -1$.</strong> Le $0$ est sur la ligne $f'$, qui passe de $-$ à $+$. C'est un changement de signe, donc un <strong>minimum relatif</strong> de valeur $f(-1) = -4$.",
+            "La ligne $f(x)$ le confirme : la flèche passe de $\\searrow$ à $\\nearrow$.",
+            "<strong>En $x = 0$.</strong> Le $0$ est sur la ligne $f''$, qui passe de $+$ à $-$. La concavité change de $\\cup$ à $\\cap$ : c'est un <strong>point d'inflexion</strong>, soit le point $(0, 1)$.",
+            "Noter que $f'$ reste positive en $x=0$ : la fonction continue de croître, il n'y a donc pas d'extremum.",
+            "<strong>En $x = 2$.</strong> Le $0$ est sur la ligne $f'$, qui passe de $+$ à $-$. C'est un <strong>maximum relatif</strong> de valeur $f(2) = 6$.",
+            "<strong>Conclusion.</strong> Minimum relatif de $-4$ en $x=-1$ ; point d'inflexion $(0,1)$ ; maximum relatif de $6$ en $x=2$."
+          ],
+          "piegeCourant": "Traiter tous les $0$ du tableau comme des extremums, sans regarder sur quelle ligne ils se trouvent."
+        }
+      ]
+    },
+    {
+      "id": "CD-C06-E053",
+      "chapitre": 6,
+      "section": "6.7",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 15,
+      "acces": "gratuit",
+      "sectionNotes": "L'étude complète d'une fonction",
+      "motsCles": [
+        "étude complète",
+        "fonction rationnelle",
+        "fonction impaire",
+        "asymptote horizontale"
+      ],
+      "savoirFaire": [
+        "3c",
+        "1b",
+        "2c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $\\displaystyle f(x) = \\dfrac{4x}{x^{2}+1}$.\\\\[0.3em] \\textit{On donne} : $f'(x) = \\dfrac{4\\left(1-x^{2}\\right)}{\\left(x^{2}+1\\right)^{2}}$ \\; et \\; $f''(x) = \\dfrac{8x\\left(x^{2}-3\\right)}{\\left(x^{2}+1\\right)^{3}}$.\\\\[0.3em] Effectue l'étude complète de $f$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le dénominateur $x^{2}+1$ ne s'annule jamais : cela élimine d'emblée toute asymptote verticale. Concentre-toi sur les numérateurs de $f'$ et $f''$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Domaine $\\mathbb{R}$ ; ordonnée $0$ ; zéro $x=0$ ; aucune AV, AH $y=0$ ; minimum relatif $-2$ en $x=-1$, maximum relatif $2$ en $x=1$ ; points d'inflexion $\\left(-\\sqrt{3}, -\\sqrt{3}\\right)$, $(0,0)$ et $\\left(\\sqrt{3}, \\sqrt{3}\\right)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>1. Domaine.</strong> Le dénominateur vérifie $x^{2}+1 \\geq 1 > 0$ : il ne s'annule jamais.\\[ \\mathrm{dom}\\,f = \\mathbb{R}. \\]",
+            "<strong>2. Ordonnée à l'origine et zéros.</strong>\\[ f(0) = \\dfrac{0}{1} = 0. \\]Le seul zéro est $x = 0$, puisque $4x = 0 \\iff x = 0$.",
+            "<strong>3. Asymptotes.</strong> Aucune asymptote verticale, le domaine étant $\\mathbb{R}$ tout entier.",
+            "À l'infini, on divise par $x^{2}$ :\\[ \\dfrac{4x}{x^{2}+1} = \\dfrac{\\tfrac{4}{x}}{1+\\tfrac{1}{x^{2}}} \\ \\longrightarrow \\ \\dfrac{0}{1} = 0. \\]",
+            "La droite $y = 0$ est <strong>asymptote horizontale</strong> des deux côtés.",
+            "<strong>4. Nombres critiques.</strong> Le dénominateur de $f'$ ne s'annule jamais, donc on résout son numérateur :\\[ 4\\left(1-x^{2}\\right) = 0 \\iff x = \\pm 1. \\]",
+            "<strong>Zéros de $f''$.</strong> De même :\\[ 8x\\left(x^{2}-3\\right) = 0 \\iff x = 0 \\ \\text{ ou } \\ x = \\pm\\sqrt{3}. \\]",
+            "<strong>Valeurs de $f$.</strong>\\begin{align*} f(-1) &= \\dfrac{-4}{2} = -2, \\\\ f(0) &= 0, \\\\ f(1) &= \\dfrac{4}{2} = 2, \\\\ f\\left(\\pm\\sqrt{3}\\right) &= \\dfrac{\\pm 4\\sqrt{3}}{4} = \\pm\\sqrt{3}. \\end{align*}",
+            "<strong>Signes de $f'$.</strong> Le signe est celui de $\\left(1-x^{2}\\right)$ : négatif si $|x|>1$, positif si $|x|<1$.",
+            "<strong>Signes de $f''$.</strong> Le signe est celui de $x\\left(x^{2}-3\\right)$ :\\begin{align*} x < -\\sqrt{3} &: (-)(+) = - \\\\ -\\sqrt{3} < x < 0 &: (-)(-) = + \\\\ 0 < x < \\sqrt{3} &: (+)(-) = - \\\\ x > \\sqrt{3} &: (+)(+) = + \\end{align*}",
+            "<strong>5. Tableau de variation combiné.</strong> Cinq valeurs remarquables en ordre croissant : $-\\sqrt{3}$, $-1$, $0$, $1$, $\\sqrt{3}$.",
+            "\\begin{center}\\footnotesize\\renewcommand{\\arraystretch}{1.5}\\begin{tabular}{|>{\\centering\\arraybackslash}p{0.8cm}|>{\\centering\\arraybackslash}p{0.6cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.6cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.6cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.75cm}|>{\\centering\\arraybackslash}p{0.6cm}|}\\hline $x$ & $-\\infty$ & & $-\\sqrt{3}$ & & $-1$ & & $0$ & & $1$ & $\\sqrt{3}$ & $+\\infty$ \\\\ \\hline $f'$ & & $-$ & $-$ & $-$ & $0$ & $+$ & $+$ & $+$ & $0$ & $-$ & \\\\ \\hline $f''$ & & $-$ & $0$ & $+$ & $+$ & $+$ & $0$ & $-$ & $-$ & $0$ & \\\\ \\hline $f$ & & $\\searrow\\cap$ & $-\\sqrt{3}$ & $\\searrow\\cup$ & $-2$ & $\\nearrow\\cup$ & $0$ & $\\nearrow\\cap$ & $2$ & $\\sqrt{3}$ & \\\\ \\hline \\end{tabular}\\end{center}",
+            "<strong>6. Extremums et inflexions.</strong>",
+            "En $x=-1$ : $f'$ passe de $-$ à $+$, donc <strong>minimum relatif</strong> de $-2$.",
+            "En $x=1$ : $f'$ passe de $+$ à $-$, donc <strong>maximum relatif</strong> de $2$.",
+            "En $x=-\\sqrt{3}$, $x=0$ et $x=\\sqrt{3}$ : $f''$ change de signe à chaque fois, donc <strong>trois points d'inflexion</strong> :\\[ \\left(-\\sqrt{3}, -\\sqrt{3}\\right), \\qquad (0,0), \\qquad \\left(\\sqrt{3}, \\sqrt{3}\\right). \\]",
+            "<strong>7. Esquisse.</strong> La courbe monte de $0$ (venant de $-\\infty$) jusqu'au sommet $(1,2)$ après être passée par le creux $(-1,-2)$, puis redescend vers $0$. Elle est symétrique par rapport à l'origine.",
+            "Vérification : $f$ est <em>impaire</em>, ce qui explique la symétrie complète du tableau."
+          ],
+          "piegeCourant": "Chercher une asymptote verticale alors que le dénominateur $x^{2}+1$ ne s'annule jamais."
+        }
+      ]
+    }
+  ]
+}

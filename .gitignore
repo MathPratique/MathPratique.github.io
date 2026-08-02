@@ -52,3 +52,6 @@ functions/lib
 .firebase
 firebase-debug.log
 firestore-debug.log
+
+# Paquet de rendu hors navigateur, produit à chaque build.
+dist-ssr

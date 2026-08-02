@@ -1,0 +1,692 @@
+{
+  "chapitre": 2,
+  "titre": "Limites",
+  "heuresEnseignement": 9,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C02-E002",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Notation et approche intuitive",
+      "motsCles": [
+        "tableau de valeurs",
+        "approche numérique"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Estime $\\displaystyle\\lim_{x \\to 2}\\dfrac{x^{2}-4}{x-2}$ en complétant un tableau de valeurs de part et d'autre de $2$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Choisis des valeurs de $x$ de plus en plus proches de $2$, à gauche <em>et</em> à droite. Que peux-tu dire de $f(2)$ lui-même ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 2}\\dfrac{x^{2}-4}{x-2} = 4$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La fonction n'est pas définie en $x = 2$ : l'évaluation directe donnerait $\\dfrac{0}{0}$. Cela n'empêche pas d'étudier son comportement <em>autour</em> de $2$.",
+            "On calcule $f(x)$ pour des valeurs de plus en plus proches de $2$, des deux côtés :",
+            "\\begin{center}\\renewcommand{\\arraystretch}{1.25}\\begin{tabular}{c|ccc|c|ccc}\\toprule $x$ & $1{,}9$ & $1{,}99$ & $1{,}999$ & $2$ & $2{,}001$ & $2{,}01$ & $2{,}1$ \\\\ \\midrule $f(x)$ & $3{,}9$ & $3{,}99$ & $3{,}999$ & \\textbf{indéf.} & $4{,}001$ & $4{,}01$ & $4{,}1$ \\\\ \\bottomrule \\end{tabular}\\end{center}",
+            "Les valeurs s'approchent de $4$ par la gauche comme par la droite.",
+            "On conclut :\\[ \\lim_{x \\to 2}\\dfrac{x^{2}-4}{x-2} = 4. \\]",
+            "Vérification algébrique : pour $x \\neq 2$, on peut factoriser et simplifier,\\[ \\dfrac{x^{2}-4}{x-2} = \\dfrac{(x-2)(x+2)}{x-2} = x+2, \\]qui vaut bien $4$ quand $x$ tend vers $2$."
+          ],
+          "piegeCourant": "Conclure que la limite n'existe pas parce que $f(2)$ n'existe pas."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E003",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 2,
+      "acces": "gratuit",
+      "sectionNotes": "Notation et approche intuitive",
+      "motsCles": [
+        "existence de la limite",
+        "domaine"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Si $f(a)$ n'existe pas, alors $\\displaystyle\\lim_{x \\to a} f(x)$ n'existe pas non plus.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Cherche une fonction qui n'est pas définie en un point mais dont on peut tout de même décrire le comportement autour de ce point."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'existence de la limite et l'existence de $f(a)$ sont deux questions <strong>indépendantes</strong>.",
+            "<strong>Contre-exemple.</strong> Considérons\\[ f(x) = \\dfrac{x^{2}-4}{x-2}. \\]",
+            "Cette fonction n'est pas définie en $x = 2$, puisque le dénominateur s'y annule : $f(2)$ n'existe pas.",
+            "Pourtant, pour tout $x \\neq 2$, on a\\[ f(x) = \\dfrac{(x-2)(x+2)}{x-2} = x+2, \\]et donc\\[ \\lim_{x \\to 2} f(x) = 4. \\]",
+            "La limite existe bel et bien : l'énoncé est <strong>faux</strong>.",
+            "C'est même la situation la plus intéressante du chapitre : c'est parce que la limite peut exister là où la fonction n'est pas définie qu'elle permettra, au chapitre 4, de définir la dérivée."
+          ],
+          "piegeCourant": "Croire qu'il faut que la fonction soit définie en $a$ pour que la limite existe."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E005",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Notation et approche intuitive",
+      "motsCles": [
+        "lecture graphique",
+        "limite en un point"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $g$. Que vaut $\\displaystyle\\lim_{x \\to 2} g(x)$ ?",
+          "figure": "figures/CD-C02-E005.svg",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$1$"
+            },
+            {
+              "cle": "b",
+              "texte": "$3$"
+            },
+            {
+              "cle": "c",
+              "texte": "La limite n'existe pas"
+            },
+            {
+              "cle": "d",
+              "texte": "$2$"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Suis la courbe avec ton doigt en approchant $x = 2$ par la gauche, puis par la droite. Vers quelle hauteur te diriges-tu ? Ignore le point isolé."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$3$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Pour lire une limite sur un graphique, on suit la courbe en approchant l'abscisse visée, sans tenir compte de la valeur ponctuelle.",
+            "<strong>À gauche de $2$ :</strong> la courbe monte le long de la droite et se dirige vers la hauteur $3$, marquée par le point vide.",
+            "<strong>À droite de $2$ :</strong> la courbe repart de cette même hauteur $3$.",
+            "Les deux limites latérales existent et sont égales :\\[ \\lim_{x \\to 2^{-}} g(x) = \\lim_{x \\to 2^{+}} g(x) = 3, \\]donc la limite existe et vaut $3$.",
+            "Le point plein en $(2,1)$ indique que $g(2) = 1$. Cette valeur n'intervient pas dans le calcul de la limite : on a ici\\[ \\lim_{x \\to 2} g(x) = 3 \\neq 1 = g(2). \\]"
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "C'est la valeur $g(2)$, indiquée par le point plein. Mais la limite décrit ce vers quoi tend la courbe, pas la valeur isolée en ce point."
+            },
+            {
+              "cle": "b",
+              "correct": true,
+              "explication": "En suivant la courbe des deux côtés, elle tend vers $3$ — la position du point vide."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Les deux limites latérales valent toutes deux $3$ : elles existent et coïncident, donc la limite existe."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "C'est l'abscisse du point étudié, pas la valeur vers laquelle tend la fonction."
+            }
+          ],
+          "piegeCourant": "Lire la valeur du point plein au lieu de suivre la courbe."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E009",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 2,
+      "acces": "gratuit",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "limites latérales",
+        "existence"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Les deux limites latérales d'une fonction en un point peuvent exister sans que la limite globale existe.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Que manque-t-il au théorème d'existence en plus de l'existence des deux limites latérales ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le théorème d'existence exige <strong>deux</strong> conditions : que les limites latérales existent, <em>et</em> qu'elles soient égales.",
+            "Si la seconde condition échoue, la limite globale n'existe pas, même si les deux limites latérales sont parfaitement définies.",
+            "<strong>Contre-exemple.</strong> Soit\\[ g(x) = \\begin{cases} x^{2} & \\text{si } x < 2, \\\\ 3x-1 & \\text{si } x \\geq 2. \\end{cases} \\]",
+            "On a $\\displaystyle\\lim_{x\\to 2^{-}} g(x) = 4$ et $\\displaystyle\\lim_{x\\to 2^{+}} g(x) = 5$ : les deux existent.",
+            "Mais $4 \\neq 5$, donc $\\displaystyle\\lim_{x\\to 2} g(x)$ n'existe pas.",
+            "L'énoncé est donc <strong>vrai</strong>. C'est exactement la situation d'une discontinuité par saut."
+          ],
+          "piegeCourant": "Croire que l'existence des deux limites latérales entraîne celle de la limite globale."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E011",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "valeur absolue",
+        "limites latérales"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Étudie l'existence de $\\displaystyle\\lim_{x \\to 0}\\dfrac{|x|}{x}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La valeur absolue se comporte différemment selon le signe de $x$. Écris $|x|$ sans les barres pour chaque côté."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "La limite n'existe pas (limite à gauche $= -1$, limite à droite $= 1$)"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La valeur absolue se définit par parties :\\[ |x| = \\begin{cases} x & \\text{si } x \\geq 0, \\\\ -x & \\text{si } x < 0. \\end{cases} \\]",
+            "<strong>Limite à droite.</strong> Si $x > 0$, alors $|x| = x$, donc\\[ \\lim_{x \\to 0^{+}}\\dfrac{|x|}{x} = \\lim_{x \\to 0^{+}}\\dfrac{x}{x} = 1. \\]",
+            "<strong>Limite à gauche.</strong> Si $x < 0$, alors $|x| = -x$, donc\\[ \\lim_{x \\to 0^{-}}\\dfrac{|x|}{x} = \\lim_{x \\to 0^{-}}\\dfrac{-x}{x} = -1. \\]",
+            "Les deux limites latérales existent mais diffèrent :\\[ -1 \\neq 1. \\]",
+            "Donc $\\displaystyle\\lim_{x \\to 0}\\dfrac{|x|}{x}$ <strong>n'existe pas</strong>.",
+            "Cette fonction vaut $-1$ pour tout $x$ négatif et $1$ pour tout $x$ positif : son graphique présente un saut en $0$."
+          ],
+          "piegeCourant": "Simplifier $\\frac{|x|}{x}$ en $1$ sans distinguer le signe de $x$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E015",
+      "chapitre": 2,
+      "section": "2.3",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Propriétés des limites",
+      "motsCles": [
+        "propriétés des limites",
+        "quotient",
+        "condition d'application"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Pour toutes fonctions $f$ et $g$ dont les limites existent en $a$, on a $\\displaystyle\\lim_{x \\to a}\\dfrac{f(x)}{g(x)} = \\dfrac{\\displaystyle\\lim_{x\\to a} f(x)}{\\displaystyle\\lim_{x\\to a} g(x)}$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'énoncé dit « pour toutes fonctions ». Peux-tu trouver un cas où le membre de droite n'a aucun sens ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'énoncé omet la condition essentielle : la limite du dénominateur doit être <strong>non nulle</strong>.",
+            "<strong>Contre-exemple.</strong> Prenons $f(x) = x^{2}-4$ et $g(x) = x-2$, en $a = 2$.",
+            "Les deux limites existent :\\[ \\lim_{x\\to 2}\\left(x^{2}-4\\right) = 0 \\qquad \\text{et} \\qquad \\lim_{x\\to 2}(x-2) = 0. \\]",
+            "Le membre de droite donnerait $\\dfrac{0}{0}$, qui n'a aucun sens.",
+            "Pourtant le membre de gauche existe : pour $x \\neq 2$,\\[ \\dfrac{x^{2}-4}{x-2} = x+2 \\quad \\Longrightarrow \\quad \\lim_{x\\to 2}\\dfrac{x^{2}-4}{x-2} = 4. \\]",
+            "L'égalité de l'énoncé est donc <strong>fausse</strong> en toute généralité : elle n'est valide que si $\\displaystyle\\lim_{x\\to a} g(x) \\neq 0$.",
+            "Ce contre-exemple est exactement le genre de situation qui mènera aux techniques de levée de la section 2.7."
+          ],
+          "piegeCourant": "Retenir la propriété du quotient sans sa condition d'application."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E024",
+      "chapitre": 2,
+      "section": "2.4",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 2,
+      "acces": "gratuit",
+      "sectionNotes": "Calcul algébrique de limites de fonctions élémentaires",
+      "motsCles": [
+        "évaluation directe",
+        "domaine"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Si $f$ est une fonction algébrique, exponentielle, logarithmique, trigonométrique ou trigonométrique inverse, et si $a$ appartient au domaine de $f$, alors $\\displaystyle\\lim_{x \\to a} f(x) = f(a)$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "C'est exactement l'énoncé de l'encadré « À mémoriser » de la section 2.4. Quelle condition y figure-t-il ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "C'est la propriété d'évaluation directe énoncée dans le cours :\\[ \\lim_{x \\to a} f(x) = f(a) \\qquad \\text{si } a \\in \\mathrm{dom}\\,f. \\]",
+            "Elle vaut pour toutes les familles de fonctions élémentaires citées.",
+            "L'énoncé est donc <strong>vrai</strong>.",
+            "La condition $a \\in \\mathrm{dom}\\,f$ est indispensable : sans elle, l'écriture $f(a)$ n'aurait aucun sens. C'est justement quand elle échoue qu'apparaissent les formes indéterminées et les limites infinies.",
+            "Au chapitre 3, on donnera un nom à cette propriété : elle exprime que ces fonctions sont <em>continues</em> sur tout leur domaine."
+          ],
+          "piegeCourant": "Croire que la propriété vaut sans condition sur le domaine."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E027",
+      "chapitre": 2,
+      "section": "2.5",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "gratuit",
+      "sectionNotes": "Limites infinies et asymptotes verticales",
+      "motsCles": [
+        "asymptotes verticales",
+        "analyse de signe",
+        "factorisation"
+      ],
+      "savoirFaire": [
+        "1b",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $\\displaystyle h(x) = \\dfrac{x+1}{x^{2}-4}$.\\\\[0.3em] (a) Détermine le domaine de $h$. \\\\[0.2em] (b) Trouve toutes les asymptotes verticales. \\\\[0.2em] (c) Calcule les quatre limites latérales correspondantes."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise le dénominateur : l'analyse de signe devient beaucoup plus simple. Attention, le signe du numérateur compte lui aussi."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $\\mathbb{R}\\setminus\\{-2, 2\\}$ \\qquad (b) $x = -2$ et $x = 2$ \\qquad (c) en $2^{+}$ : $+\\infty$, en $2^{-}$ : $-\\infty$, en $-2^{+}$ : $+\\infty$, en $-2^{-}$ : $-\\infty$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a)</strong> On cherche où le dénominateur s'annule :\\[ x^{2}-4 = 0 \\iff (x-2)(x+2) = 0 \\iff x = 2 \\ \\text{ ou } \\ x = -2. \\]",
+            "Donc\\[ \\mathrm{dom}\\,h = \\mathbb{R}\\setminus\\{-2, 2\\}. \\]",
+            "<strong>(b)</strong> En $x = 2$, le numérateur vaut $3 \\neq 0$ ; en $x = -2$, il vaut $-1 \\neq 0$. Dans les deux cas on obtient une forme $\\dfrac{k}{0}$ avec $k \\neq 0$, donc une limite infinie.",
+            "Les deux droites $x = 2$ et $x = -2$ sont des <strong>asymptotes verticales</strong>.",
+            "<strong>(c)</strong> On travaille avec la forme factorisée $h(x) = \\dfrac{x+1}{(x-2)(x+2)}$.",
+            "<strong>En $x = 2$.</strong> Le numérateur tend vers $3$ (positif). Pour le dénominateur : le facteur $(x+2)$ tend vers $4 > 0$, donc c'est le signe de $(x-2)$ qui décide.",
+            "Si $x \\to 2^{+}$ : $(x-2) \\to 0^{+}$, donc le dénominateur tend vers $0^{+}$ :\\[ \\lim_{x \\to 2^{+}} h(x) = \\dfrac{3}{0^{+}} = +\\infty. \\]",
+            "Si $x \\to 2^{-}$ : $(x-2) \\to 0^{-}$, donc le dénominateur tend vers $0^{-}$ :\\[ \\lim_{x \\to 2^{-}} h(x) = \\dfrac{3}{0^{-}} = -\\infty. \\]",
+            "<strong>En $x = -2$.</strong> Le numérateur tend vers $-1$ (<em>négatif</em> — c'est ce qui change tout). Le facteur $(x-2)$ tend vers $-4 < 0$, donc c'est le signe de $(x+2)$ combiné à celui de $(x-2)$ qui décide.",
+            "Si $x \\to -2^{+}$ : $(x+2) \\to 0^{+}$ et $(x-2) < 0$, donc le dénominateur tend vers $0^{-}$ :\\[ \\lim_{x \\to -2^{+}} h(x) = \\dfrac{-1}{0^{-}} = +\\infty. \\]",
+            "Si $x \\to -2^{-}$ : $(x+2) \\to 0^{-}$ et $(x-2) < 0$, donc le dénominateur tend vers $0^{+}$ :\\[ \\lim_{x \\to -2^{-}} h(x) = \\dfrac{-1}{0^{+}} = -\\infty. \\]",
+            "Remarque : en $x=-2$, les signes obtenus sont l'inverse de ce à quoi on s'attendrait intuitivement, précisément parce que le numérateur y est négatif."
+          ],
+          "piegeCourant": "Négliger le signe du numérateur et supposer que le comportement en $x=-2$ reproduit celui en $x=2$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E039",
+      "chapitre": 2,
+      "section": "2.6",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Limites à l'infini et asymptotes horizontales",
+      "motsCles": [
+        "asymptote horizontale",
+        "nombre d'asymptotes"
+      ],
+      "savoirFaire": [
+        "1b",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Le graphique d'une fonction peut posséder deux asymptotes horizontales différentes.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Combien de limites à l'infini peut-on calculer pour une même fonction ? Pense à une fonction du chapitre 1."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Une asymptote horizontale provient d'une limite à l'infini. Or il y en a <strong>deux</strong> à examiner :\\[ \\lim_{x \\to +\\infty} f(x) \\qquad \\text{et} \\qquad \\lim_{x \\to -\\infty} f(x). \\]",
+            "Rien n'oblige ces deux limites à coïncider.",
+            "<strong>Exemple.</strong> La fonction arctangente, vue au chapitre 1, vérifie\\[ \\lim_{x \\to +\\infty}\\arctan x = \\dfrac{\\pi}{2} \\qquad \\text{et} \\qquad \\lim_{x \\to -\\infty}\\arctan x = -\\dfrac{\\pi}{2}. \\]",
+            "Son graphique possède donc <em>deux</em> asymptotes horizontales distinctes : $y = \\dfrac{\\pi}{2}$ et $y = -\\dfrac{\\pi}{2}$.",
+            "L'énoncé est <strong>vrai</strong>. Une fonction peut avoir zéro, une ou deux asymptotes horizontales — jamais plus.",
+            "Contrairement aux asymptotes verticales, dont le nombre n'est pas limité : une fonction comme $\\tan x$ en possède une infinité."
+          ],
+          "piegeCourant": "Ne calculer que la limite en $+\\infty$ et manquer une seconde asymptote du côté négatif."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E044",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Formes indéterminées — conjugué",
+      "motsCles": [
+        "forme 0/0",
+        "conjugué",
+        "radical"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 0}\\dfrac{\\sqrt{x+9}-3}{x}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La factorisation ne mène nulle part avec un radical. Quelle autre technique fait disparaître une racine ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{1}{6}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Évaluation directe.</strong>\\[ \\dfrac{\\sqrt{9}-3}{0} = \\dfrac{3-3}{0} = \\dfrac{0}{0}. \\]Forme indéterminée.",
+            "<strong>Multiplication par le conjugué.</strong> Le conjugué de $\\sqrt{x+9}-3$ est $\\sqrt{x+9}+3$. On multiplie en haut et en bas :\\[ \\dfrac{\\sqrt{x+9}-3}{x} \\cdot \\dfrac{\\sqrt{x+9}+3}{\\sqrt{x+9}+3}. \\]",
+            "<strong>Développement du numérateur</strong>, par $(\\alpha-\\beta)(\\alpha+\\beta) = \\alpha^{2}-\\beta^{2}$ :\\[ \\left(\\sqrt{x+9}\\right)^{2} - 3^{2} = (x+9) - 9 = x. \\]",
+            "On ne développe surtout pas le dénominateur : c'est là qu'on veut garder la forme factorisée.",
+            "<strong>Simplification.</strong>\\[ \\dfrac{x}{x\\left(\\sqrt{x+9}+3\\right)} = \\dfrac{1}{\\sqrt{x+9}+3}, \\qquad x \\neq 0. \\]",
+            "<strong>Évaluation.</strong>\\[ \\lim_{x \\to 0}\\dfrac{\\sqrt{x+9}-3}{x} = \\dfrac{1}{\\sqrt{9}+3} = \\dfrac{1}{6}. \\]"
+          ],
+          "piegeCourant": "Développer aussi le dénominateur, ce qui fait disparaître le facteur $x$ qu'on cherchait à simplifier."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E058",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Formes indéterminées",
+      "motsCles": [
+        "forme indéterminée",
+        "moins infini plus infini"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Une limite de la forme $\\infty - \\infty$ vaut toujours $0$, puisque les deux infinis se compensent.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Si le résultat était toujours le même, la forme ne serait pas dite « indéterminée ». Cherche deux exemples aux résultats différents."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le mot <strong>indéterminée</strong> signifie précisément que la forme ne détermine pas le résultat : celui-ci dépend des fonctions en présence.",
+            "Trois exemples suffisent à le montrer, tous de la forme $+\\infty - \\infty$ :",
+            "<strong>Résultat infini.</strong>\\[ \\lim_{x \\to +\\infty}\\left(2x^{3}-5x^{2}\\right) = \\lim_{x \\to +\\infty} x^{3}\\left(2 - \\dfrac{5}{x}\\right) = +\\infty. \\]",
+            "<strong>Résultat fini non nul.</strong>\\[ \\lim_{x \\to +\\infty}\\left(\\sqrt{x^{2}+4x}-x\\right) = 2. \\]",
+            "<strong>Résultat nul.</strong>\\[ \\lim_{x \\to +\\infty}\\left[(x+1) - x\\right] = \\lim_{x \\to +\\infty} 1 = 1. \\]Ou encore, plus directement :\\[ \\lim_{x \\to +\\infty}(x - x) = 0. \\]",
+            "Trois expressions de même forme, trois résultats différents : $+\\infty$, $2$ et $0$.",
+            "L'énoncé est donc <strong>faux</strong>. Il n'existe aucun raccourci : chaque cas exige une manipulation algébrique."
+          ],
+          "piegeCourant": "Traiter les symboles $\\infty$ comme des nombres qu'on peut soustraire l'un de l'autre."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E060",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Formes indéterminées — produit zéro fois l'infini",
+      "motsCles": [
+        "forme zéro fois l'infini",
+        "factorisation"
+      ],
+      "savoirFaire": [
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 3}\\;(x-3)\\cdot\\dfrac{1}{x^{2}-9}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Effectue le produit, puis regarde si le dénominateur se factorise. Un facteur devrait se simplifier."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{1}{6}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Évaluation directe.</strong> Le premier facteur $(x-3)$ tend vers $0$. Pour le second, le dénominateur $x^{2}-9$ tend vers $0$ et le numérateur vaut $1$, donc il tend vers l'infini.",
+            "La forme est $0 \\times \\infty$ : indéterminée.",
+            "<strong>Réécriture en quotient.</strong> On effectue le produit :\\[ (x-3)\\cdot\\dfrac{1}{x^{2}-9} = \\dfrac{x-3}{x^{2}-9}. \\]",
+            "L'évaluation donne maintenant $\\dfrac{0}{0}$ : on est ramené à une forme qu'on traite par factorisation.",
+            "<strong>Factorisation du dénominateur.</strong>\\[ x^{2}-9 = (x-3)(x+3). \\]",
+            "<strong>Simplification.</strong>\\[ \\dfrac{x-3}{(x-3)(x+3)} = \\dfrac{1}{x+3}, \\qquad x \\neq 3. \\]",
+            "<strong>Évaluation.</strong>\\[ \\lim_{x \\to 3}\\;(x-3)\\cdot\\dfrac{1}{x^{2}-9} = \\dfrac{1}{3+3} = \\dfrac{1}{6}. \\]"
+          ],
+          "piegeCourant": "Conclure que la limite vaut $0$ parce que le facteur $(x-3)$ tend vers $0$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "chapitre": 7,
+  "titre": "Analyse de problèmes en sciences de la nature",
+  "heuresEnseignement": 5,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C07-E001",
+      "chapitre": 7,
+      "section": "7.2",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 2,
+      "acces": "gratuit",
+      "sectionNotes": "Problèmes de taux de variation en contexte",
+      "motsCles": [
+        "unités",
+        "taux de variation",
+        "interprétation"
+      ],
+      "savoirFaire": [
+        "4e",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le volume $V$ d'eau dans un réservoir est mesuré en litres, et le temps $t$ en minutes. Quelles sont les unités de $\\dfrac{dV}{dt}$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "L/min"
+            },
+            {
+              "cle": "b",
+              "texte": "min/L"
+            },
+            {
+              "cle": "c",
+              "texte": "L"
+            },
+            {
+              "cle": "d",
+              "texte": "L$\\cdot$min"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Relis la notation de Leibniz à voix haute : $\\frac{dV}{dt}$ se lit « $dV$ sur $dt$ ». Que suggère cette lecture ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "L/min"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Les unités d'une dérivée s'obtiennent directement de sa structure :\\[ \\dfrac{\\text{unités de la grandeur}}{\\text{unité de la variable}}. \\]",
+            "Ici la grandeur $V$ est en litres et la variable $t$ en minutes, donc\\[ \\dfrac{dV}{dt} \\ \\text{est en} \\ \\dfrac{\\text{L}}{\\text{min}} = \\text{L/min}. \\]",
+            "La notation de Leibniz est particulièrement commode pour cela : sa forme de quotient rappelle immédiatement comment composer les unités.",
+            "Concrètement, une valeur de $\\dfrac{dV}{dt} = 8$ signifie que le volume augmente de $8$ litres à chaque minute qui passe."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": true,
+              "explication": "Les unités d'une dérivée sont toujours celles de la grandeur du haut divisées par celles de la variable du bas."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "Le rapport est inversé. La notation $\\frac{dV}{dt}$ indique bien « $V$ par unité de $t$ », donc des litres par minute."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Ce sont les unités de $V$ lui-même, pas de son taux de variation. Une dérivée mesure une <em>vitesse</em> de changement, jamais une quantité."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Un taux de variation est un quotient, jamais un produit."
+            }
+          ],
+          "piegeCourant": "Inverser le rapport et donner min/L."
+        }
+      ]
+    },
+    {
+      "id": "CD-C07-E011",
+      "chapitre": 7,
+      "section": "7.3",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La tendance à long terme",
+      "motsCles": [
+        "tendance à long terme",
+        "asymptote horizontale"
+      ],
+      "savoirFaire": [
+        "4e",
+        "1b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Si la tendance à long terme d'une quantité $Q(t)$ est un nombre fini $L$, alors le graphique de $Q$ admet la droite $Q = L$ comme asymptote horizontale.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Quelle est la définition d'une asymptote horizontale, et comment se calcule une tendance à long terme ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La tendance à long terme d'une quantité se calcule par\\[ \\lim_{t \\to +\\infty} Q(t). \\]",
+            "Or c'est exactement la définition d'une asymptote horizontale : la droite $y = L$ est asymptote horizontale du graphique de $Q$ lorsque cette limite vaut $L$, avec $L$ réel.",
+            "Les deux notions décrivent donc le même phénomène, dans deux langages différents : celui du contexte appliqué et celui de l'analyse graphique.",
+            "L'énoncé est <strong>vrai</strong>.",
+            "<strong>Exemple.</strong> Pour $T(t) = 20 + 60e^{-0{,}05t}$, on a $\\displaystyle\\lim_{t\\to+\\infty} T(t) = 20$. La température se stabilise à $20$~\\up{o}C, et la droite $T = 20$ est asymptote horizontale.",
+            "<strong>Nuance importante.</strong> La réciproque n'est pas garantie dans l'autre sens du temps : une fonction peut avoir une asymptote horizontale du côté $-\\infty$ sans que cela concerne la tendance à long terme, qui ne s'intéresse qu'à $t \\to +\\infty$."
+          ],
+          "piegeCourant": "Croire que la quantité finit par atteindre exactement la valeur $L$, alors qu'elle s'en approche sans jamais l'atteindre."
+        }
+      ]
+    },
+    {
+      "id": "CD-C07-E016",
+      "chapitre": 7,
+      "section": "7.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "gratuit",
+      "sectionNotes": "La tendance à long terme",
+      "motsCles": [
+        "modèle logistique",
+        "capacité limite",
+        "population"
+      ],
+      "savoirFaire": [
+        "4a",
+        "4e",
+        "1b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une population animale suit le modèle $\\displaystyle P(t) = \\dfrac{800}{1 + 3\\,e^{-0{,}4t}}$, où $t$ est en années.\\\\[0.3em] (a) Quelle est la population initiale ? \\\\[0.2em] (b) Détermine la tendance à long terme. \\\\[0.2em] (c) Interprète cette valeur dans le contexte. \\\\[0.2em] (d) La population peut-elle dépasser cette valeur ? Justifie."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (b), concentre-toi sur ce que devient le terme exponentiel du dénominateur. Pour (d), examine le signe du dénominateur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $200$ individus \\qquad (b) $800$ individus \\qquad (c) la capacité limite du milieu \\qquad (d) non, car le dénominateur reste toujours supérieur à $1$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Population initiale.</strong>\\[ P(0) = \\dfrac{800}{1 + 3\\,e^{0}} = \\dfrac{800}{1+3} = \\dfrac{800}{4} = 200. \\]",
+            "La population compte donc $200$ individus au départ.",
+            "<strong>(b) Tendance à long terme.</strong> Quand $t \\to +\\infty$, l'exposant $-0{,}4t \\to -\\infty$, donc\\[ e^{-0{,}4t} \\longrightarrow 0, \\qquad \\text{et donc} \\qquad 3\\,e^{-0{,}4t} \\longrightarrow 0. \\]",
+            "Le dénominateur tend vers $1 + 0 = 1$, d'où\\[ \\lim_{t \\to +\\infty} P(t) = \\dfrac{800}{1} = 800. \\]",
+            "<strong>(c) Interprétation.</strong> À long terme, la population se stabilise autour de $800$ individus. Cette valeur est la <strong>capacité limite</strong> du milieu : le nombre maximal d'individus que l'environnement peut soutenir durablement.",
+            "<strong>(d) Dépassement possible ?</strong> Examinons le dénominateur. Comme $e^{-0{,}4t} > 0$ pour tout $t$, on a\\[ 3\\,e^{-0{,}4t} > 0 \\qquad \\Longrightarrow \\qquad 1 + 3\\,e^{-0{,}4t} > 1. \\]",
+            "Le dénominateur est donc <em>toujours strictement supérieur à $1$</em>, ce qui entraîne\\[ P(t) = \\dfrac{800}{1 + 3e^{-0{,}4t}} < \\dfrac{800}{1} = 800. \\]",
+            "La population ne peut donc <strong>jamais</strong> atteindre ni dépasser $800$ individus : elle s'en approche asymptotiquement par le bas.",
+            "C'est exactement le comportement attendu d'un modèle logistique, où la croissance ralentit à mesure qu'on approche de la capacité limite."
+          ],
+          "piegeCourant": "Croire que $e^{-0{,}4t} \\to 0$ rend le dénominateur nul, et conclure à une limite infinie."
+        }
+      ]
+    },
+    {
+      "id": "CD-C07-E018",
+      "chapitre": 7,
+      "section": "7.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Les taux liés",
+      "motsCles": [
+        "taux liés",
+        "mise en équation",
+        "modélisation"
+      ],
+      "savoirFaire": [
+        "4a",
+        "4c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le côté d'un carré augmente à raison de $3$~cm/s. On cherche à quelle vitesse son aire augmente lorsque le côté mesure $8$~cm.\\\\[0.3em] Sans résoudre le problème, écris (a) l'équation de liaison, (b) le taux connu et (c) le taux cherché, avec leurs unités."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Quelle formule relie l'aire d'un carré à son côté ? Nomme d'abord tes variables avant d'écrire quoi que ce soit."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $A = c^{2}$ \\qquad (b) $\\dfrac{dc}{dt} = 3$ cm/s \\qquad (c) $\\dfrac{dA}{dt} = \\;?$ en cm$^{2}$/s lorsque $c = 8$ cm"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Variables.</strong> Soit $c$ le côté du carré (en cm), $A$ son aire (en cm$^{2}$) et $t$ le temps (en s). Les deux grandeurs $c$ et $A$ dépendent du temps.",
+            "<strong>(a) Équation de liaison.</strong> La formule qui relie les deux variables est\\[ A = c^{2}. \\]",
+            "<strong>(b) Taux connu.</strong> L'énoncé dit que le côté augmente de $3$~cm/s :\\[ \\dfrac{dc}{dt} = 3 \\ \\text{cm/s}. \\]",
+            "<strong>(c) Taux cherché.</strong> On veut la vitesse d'augmentation de l'aire :\\[ \\dfrac{dA}{dt} = \\;? \\ \\text{en cm}^{2}\\text{/s}, \\qquad \\text{lorsque } c = 8 \\ \\text{cm}. \\]",
+            "Noter la distinction essentielle : $c = 8$~cm est une <em>condition ponctuelle</em>, pas un taux. Elle ne servira qu'<strong>après</strong> la dérivation.",
+            "Noter aussi les unités du taux cherché : l'aire est en cm$^{2}$ et le temps en s, donc cm$^{2}$/s — et non cm/s."
+          ],
+          "piegeCourant": "Substituer $c = 8$ dans l'équation de liaison avant de dériver, ce qui la transformerait en constante."
+        }
+      ]
+    },
+    {
+      "id": "CD-C07-E021",
+      "chapitre": 7,
+      "section": "7.4",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "tempsEstime": 10,
+      "acces": "gratuit",
+      "sectionNotes": "Les taux liés",
+      "motsCles": [
+        "taux liés",
+        "Pythagore",
+        "échelle",
+        "signe négatif"
+      ],
+      "savoirFaire": [
+        "4a",
+        "4c",
+        "4e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une échelle de $13$~m est appuyée contre un mur vertical. Son pied s'éloigne du mur à $2$~m/s. À quelle vitesse le haut de l'échelle descend-il lorsque le pied est à $5$~m du mur ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'échelle, le mur et le sol forment un triangle rectangle dont l'hypoténuse est <em>constante</em>. C'est cette constance qui rend la relation utilisable."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{dy}{dt} = -\\dfrac{5}{6} \\approx -0{,}833$ m/s : le haut descend à environ $0{,}83$ m/s"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Variables.</strong> Soit $x$ la distance du pied au mur (m) et $y$ la hauteur du haut de l'échelle (m), toutes deux dépendant du temps $t$ (s).",
+            "<strong>Étape 2 — Taux.</strong>\\[ \\dfrac{dx}{dt} = 2 \\ \\text{m/s (connu)}, \\qquad \\dfrac{dy}{dt} = \\;? \\quad \\text{lorsque } x = 5 \\ \\text{m}. \\]",
+            "<strong>Étape 3 — Équation de liaison.</strong> Par le théorème de Pythagore, l'échelle étant de longueur <em>constante</em> :\\[ x^{2} + y^{2} = 13^{2} = 169. \\]",
+            "<strong>Étape 4 — Dériver par rapport à $t$.</strong>\\[ 2x\\,\\dfrac{dx}{dt} + 2y\\,\\dfrac{dy}{dt} = 0. \\]",
+            "<strong>Étape 5 — Trouver $y$ puis substituer.</strong> Lorsque $x = 5$ :\\[ 25 + y^{2} = 169 \\iff y^{2} = 144 \\iff y = 12 \\ \\text{m}. \\]",
+            "On retient la valeur positive, puisque $y$ est une hauteur.",
+            "\\[ 2(5)(2) + 2(12)\\,\\dfrac{dy}{dt} = 0. \\]",
+            "<strong>Étape 6 — Résoudre.</strong>\\[ 20 + 24\\,\\dfrac{dy}{dt} = 0 \\iff \\dfrac{dy}{dt} = -\\dfrac{20}{24} = -\\dfrac{5}{6} \\approx -0{,}833. \\]",
+            "<strong>Interprétation.</strong> Lorsque le pied est à $5$~m du mur, le haut de l'échelle descend à environ $0{,}83$~m/s.",
+            "Le signe <strong>négatif</strong> est essentiel : il indique que la hauteur $y$ <em>diminue</em>, ce qui est bien le comportement attendu d'une échelle qui glisse."
+          ],
+          "piegeCourant": "Donner la réponse sans commenter le signe négatif, ou pire, le supprimer en le jugeant aberrant."
+        }
+      ]
+    },
+    {
+      "id": "CD-C07-E029",
+      "chapitre": 7,
+      "section": "7.5",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "tempsEstime": 10,
+      "acces": "gratuit",
+      "sectionNotes": "Les problèmes d'optimisation",
+      "motsCles": [
+        "optimisation",
+        "aire maximale",
+        "clôture",
+        "rivière"
+      ],
+      "savoirFaire": [
+        "4a",
+        "4d",
+        "4e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un agriculteur dispose de $200$~m de clôture pour délimiter un enclos rectangulaire le long d'une rivière rectiligne. Le côté longeant la rivière n'a pas besoin d'être clôturé. Quelles dimensions maximisent l'aire, et quelle est cette aire ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Combien de côtés faut-il clôturer ? C'est ce qui distingue ce problème de celui d'un enclos complet."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$50$ m $\\times$ $100$ m, pour une aire maximale de $5000$ m$^{2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 — Variables.</strong> Soit $x$ la largeur (perpendiculaire à la rivière) et $y$ la longueur (parallèle à la rivière), en mètres.",
+            "<strong>Étape 2 — Quantité à optimiser.</strong>\\[ A = xy. \\]",
+            "<strong>Étape 3 — Contrainte.</strong> Seuls <em>trois</em> côtés sont clôturés : les deux largeurs et une longueur.\\[ 2x + y = 200 \\qquad \\Longrightarrow \\qquad y = 200 - 2x. \\]",
+            "On substitue :\\[ A(x) = x(200-2x) = 200x - 2x^{2}. \\]",
+            "<strong>Étape 4 — Domaine réaliste.</strong> Il faut $x > 0$ et $y = 200-2x > 0$, donc\\[ x \\in \\;]0, 100[. \\]",
+            "<strong>Étape 5 — Nombres critiques.</strong>\\[ A'(x) = 200 - 4x = 0 \\iff x = 50. \\]",
+            "Cette valeur appartient bien au domaine réaliste.",
+            "<strong>Étape 6 — Valider.</strong> Par le test de la dérivée seconde :\\[ A''(x) = -4 < 0, \\]donc $x = 50$ donne bien un <strong>maximum</strong>.",
+            "<strong>Étape 7 — Interpréter.</strong>\\[ y = 200 - 2(50) = 100 \\ \\text{m}, \\qquad A = 50 \\times 100 = 5000 \\ \\text{m}^{2}. \\]",
+            "L'enclos optimal mesure donc $50$~m sur $100$~m, pour une aire maximale de $5000$~m$^{2}$.",
+            "Remarque : le côté parallèle à la rivière ($100$~m) vaut exactement le double de chaque largeur. Ce rapport de $2$ est caractéristique de ce type de problème à trois côtés."
+          ],
+          "piegeCourant": "Utiliser la contrainte $2x + 2y = 200$ d'un enclos complet, en oubliant que la rivière remplace un côté."
+        }
+      ]
+    },
+    {
+      "id": "CD-C07-E038",
+      "chapitre": 7,
+      "section": "7.6",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Interpréter un résultat",
+      "motsCles": [
+        "interprétation",
+        "unités",
+        "signe"
+      ],
+      "savoirFaire": [
+        "4e",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La masse d'un échantillon radioactif est $m(t)$, en grammes, où $t$ est en années. On a calculé $\\left.\\dfrac{dm}{dt}\\right|_{t=5} = -0{,}8$.\\\\[0.3em] Donne les unités de ce résultat et rédige une phrase d'interprétation complète."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Une interprétation complète comporte trois éléments : la valeur, les unités et une phrase. N'oublie pas de commenter le signe."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-0{,}8$ g/an : après $5$ ans, la masse de l'échantillon diminue au rythme de $0{,}8$ gramme par année"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Unités.</strong> La masse est en grammes et le temps en années, donc\\[ \\dfrac{\\text{gramme}}{\\text{année}} = \\text{g/an}. \\]",
+            "<strong>Valeur et signe.</strong> Le résultat est $-0{,}8$~g/an. Le signe <strong>négatif</strong> indique que la masse <em>diminue</em>.",
+            "<strong>Phrase d'interprétation.</strong> Après $5$~ans, la masse de l'échantillon radioactif diminue au rythme de $0{,}8$~gramme par année.",
+            "<strong>Cohérence physique.</strong> Le signe négatif est attendu : un échantillon radioactif se désintègre, donc sa masse ne peut que décroître. Un résultat positif aurait signalé une erreur de calcul.",
+            "Rappel des trois éléments exigés : la <em>valeur</em> ($0{,}8$), les <em>unités</em> (g/an) et une <em>phrase</em> répondant à la question posée. Un nombre seul ne vaut pas la totalité des points."
+          ],
+          "piegeCourant": "Écrire « la masse diminue de $-0{,}8$ g/an », ce qui revient à compter le signe négatif deux fois."
+        }
+      ]
+    }
+  ]
+}

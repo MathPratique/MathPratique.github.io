@@ -1,0 +1,696 @@
+{
+  "chapitre": 5,
+  "titre": "Règles et formules de dérivation",
+  "heuresEnseignement": 7,
+  "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
+  "exercices": [
+    {
+      "id": "CD-C05-E002",
+      "chapitre": 5,
+      "section": "5.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "motsCles": [
+        "règle de la puissance",
+        "exposant négatif",
+        "radical"
+      ],
+      "savoirFaire": [
+        "2c",
+        "2e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dérive les fonctions suivantes en réécrivant d'abord chaque expression sous forme de puissance.\\\\[0.3em] (a) $g(x) = \\dfrac{1}{x^{4}}$ \\qquad (b) $h(x) = \\sqrt[3]{x}$"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La règle de la puissance $\\frac{d}{dx}(x^r) = r\\,x^{r-1}$ vaut pour <em>tout</em> exposant réel. Quel exposant correspond à $\\frac{1}{x^4}$ ? Et à une racine cubique ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $g'(x) = -\\dfrac{4}{x^{5}}$ \\qquad (b) $h'(x) = \\dfrac{1}{3\\sqrt[3]{x^{2}}}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a)</strong> On réécrit sous forme de puissance : $g(x) = \\dfrac{1}{x^{4}} = x^{-4}$.",
+            "On applique la règle de la puissance avec $r = -4$ :\\[ g'(x) = -4\\,x^{-4-1} = -4x^{-5}. \\]",
+            "On revient à la notation fractionnaire :\\[ g'(x) = -\\dfrac{4}{x^{5}}. \\]",
+            "<strong>(b)</strong> On réécrit le radical : $h(x) = \\sqrt[3]{x} = x^{1/3}$.",
+            "On applique la règle avec $r = \\dfrac{1}{3}$ :\\[ h'(x) = \\dfrac{1}{3}\\,x^{\\frac{1}{3}-1} = \\dfrac{1}{3}\\,x^{-2/3}. \\]",
+            "On revient à la notation avec radical :\\[ h'(x) = \\dfrac{1}{3\\,x^{2/3}} = \\dfrac{1}{3\\sqrt[3]{x^{2}}}. \\]"
+          ],
+          "piegeCourant": "Dériver sans avoir réécrit sous forme de puissance, et appliquer la règle de la puissance à un dénominateur."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E005",
+      "chapitre": 5,
+      "section": "5.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "La règle du produit et la règle du quotient",
+      "motsCles": [
+        "règle du quotient"
+      ],
+      "savoirFaire": [
+        "2c",
+        "2e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine $f'(x)$ si $f(x) = \\dfrac{2x - 3}{x^{2} + 1}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Identifie clairement le « haut » et le « bas » avant de commencer. Dans quel ordre les deux termes du numérateur apparaissent-ils, et où se place le signe moins ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$f'(x) = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On identifie le haut et le bas :\\[ u(x) = 2x - 3 \\qquad \\text{et} \\qquad v(x) = x^{2} + 1. \\]",
+            "On dérive chacun :\\[ u'(x) = 2 \\qquad \\text{et} \\qquad v'(x) = 2x. \\]",
+            "On applique la règle du quotient $\\dfrac{u'v - uv'}{v^{2}}$ :\\[ f'(x) = \\dfrac{2\\left(x^{2}+1\\right) - (2x-3)(2x)}{\\left(x^{2}+1\\right)^{2}}. \\]",
+            "On développe le numérateur, en faisant attention au signe devant la parenthèse :\\begin{align*} 2\\left(x^{2}+1\\right) - (2x-3)(2x) &= 2x^{2} + 2 - \\left(4x^{2} - 6x\\right) \\\\ &= 2x^{2} + 2 - 4x^{2} + 6x \\\\ &= -2x^{2} + 6x + 2. \\end{align*}",
+            "D'où\\[ f'(x) = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}. \\]",
+            "Le domaine ne pose aucun problème ici : $x^{2}+1 > 0$ pour tout $x$ réel."
+          ],
+          "piegeCourant": "Oublier de distribuer le signe moins sur les deux termes du produit $(2x-3)(2x)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E008",
+      "chapitre": 5,
+      "section": "5.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivation en chaîne",
+      "motsCles": [
+        "dérivation en chaîne",
+        "puissance d'un polynôme"
+      ],
+      "savoirFaire": [
+        "2c",
+        "2e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = \\left(3x^{2} - 5\\right)^{4}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Développer la puissance quatrième serait absurde. Quelle est la fonction intérieure, et que vaut sa dérivée ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{dy}{dx} = 24x\\left(3x^{2}-5\\right)^{3}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On identifie la fonction intérieure :\\[ u(x) = 3x^{2} - 5. \\]",
+            "L'extérieure est la puissance quatrième : $y = u^{4}$.",
+            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 4u^{3} = 4\\left(3x^{2}-5\\right)^{3}. \\]",
+            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 6x. \\]",
+            "On multiplie les deux :\\[ \\dfrac{dy}{dx} = \\dfrac{dy}{du} \\cdot \\dfrac{du}{dx} = 4\\left(3x^{2}-5\\right)^{3} \\cdot 6x. \\]",
+            "On simplifie le coefficient :\\[ \\dfrac{dy}{dx} = 24x\\left(3x^{2}-5\\right)^{3}. \\]"
+          ],
+          "piegeCourant": "Écrire $4\\left(3x^{2}-5\\right)^{3}$ et oublier de multiplier par la dérivée de l'intérieure."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E014",
+      "chapitre": 5,
+      "section": "5.7",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Démonstrations",
+      "motsCles": [
+        "démonstration",
+        "règle du produit",
+        "continuité"
+      ],
+      "savoirFaire": [
+        "2b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? La démonstration de la règle du produit s'appuie sur le fait qu'une fonction dérivable est nécessairement continue.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Dans la démonstration, on doit évaluer $\\lim_{h \\to 0} f(x+h)$. Quelle propriété de $f$ permet d'affirmer que cette limite vaut $f(x)$ ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La démonstration part de la définition et introduit l'astuce d'ajouter et de soustraire le terme $f(x+h)g(x)$, ce qui mène à\\[ P'(x) = \\lim_{h \\to 0}\\left[ f(x+h)\\cdot\\dfrac{g(x+h)-g(x)}{h} + g(x)\\cdot\\dfrac{f(x+h)-f(x)}{h} \\right]. \\]",
+            "Les deux quotients tendent respectivement vers $g'(x)$ et $f'(x)$, par définition de la dérivée.",
+            "Mais il reste le facteur $f(x+h)$ du premier terme. Pour conclure, il faut savoir que\\[ \\lim_{h \\to 0} f(x+h) = f(x). \\]",
+            "Or c'est exactement la <strong>continuité</strong> de $f$ en $x$. On l'obtient grâce au théorème du chapitre 4 : <em>si $f$ est dérivable en un point, alors $f$ y est continue</em>. Comme l'énoncé de la règle du produit suppose $f$ dérivable, $f$ est bien continue.",
+            "L'énoncé est donc <strong>vrai</strong>.",
+            "Sans cette étape, on ne pourrait pas remplacer $f(x+h)$ par $f(x)$ et la démonstration serait incomplète."
+          ],
+          "piegeCourant": "Croire que $\\lim_{h\\to 0} f(x+h) = f(x)$ va de soi, sans justification."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E027",
+      "chapitre": 5,
+      "section": "5.2",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Les règles usuelles",
+      "motsCles": [
+        "règle du produit",
+        "développement préalable"
+      ],
+      "savoirFaire": [
+        "2e",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Pour dériver le produit $(x+2)(x-5)$, on peut soit appliquer la règle du produit, soit développer d'abord l'expression puis dériver terme à terme : les deux méthodes donnent le même résultat.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Essaie les deux chemins sur cet exemple précis et compare les résultats. Y a-t-il une raison pour qu'ils diffèrent ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Par la règle du produit.</strong> Avec $u = x+2$ et $v = x-5$, on a $u' = 1$ et $v' = 1$, donc\\[ \\left[(x+2)(x-5)\\right]' = 1(x-5) + (x+2)(1) = x - 5 + x + 2 = 2x - 3. \\]",
+            "<strong>En développant d'abord.</strong>\\[ (x+2)(x-5) = x^{2} - 5x + 2x - 10 = x^{2} - 3x - 10. \\]",
+            "On dérive ce polynôme terme à terme :\\[ \\left(x^{2} - 3x - 10\\right)' = 2x - 3. \\]",
+            "Les deux méthodes donnent bien $2x - 3$ : l'énoncé est <strong>vrai</strong>.",
+            "C'est normal : les deux expressions désignent la <em>même fonction</em>, et une fonction n'a qu'une seule dérivée. Le choix de la méthode est une question d'efficacité, pas de justesse.",
+            "En pratique, développer est plus rapide pour un produit de deux binômes, mais devient impraticable pour un produit du type $x^{2}\\sin x$, où la règle du produit s'impose."
+          ],
+          "piegeCourant": "Croire que la règle du produit est obligatoire dès qu'il y a un produit, même quand le développement est trivial."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E035",
+      "chapitre": 5,
+      "section": "5.3",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La règle du produit et la règle du quotient",
+      "motsCles": [
+        "règle du quotient",
+        "ordre des termes",
+        "symétrie"
+      ],
+      "savoirFaire": [
+        "2e",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Dans la règle du quotient, on peut intervertir les deux termes du numérateur sans changer le résultat, comme on le fait dans la règle du produit.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La règle du produit est une somme, celle du quotient est une différence. Que se passe-t-il quand on intervertit les termes d'une soustraction ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La règle du produit est une <strong>somme</strong> :\\[ (fg)' = f'g + fg'. \\]",
+            "Comme l'addition est commutative, écrire $fg' + f'g$ donne exactement le même résultat. L'ordre y est effectivement indifférent.",
+            "La règle du quotient est une <strong>différence</strong> :\\[ \\left(\\dfrac{f}{g}\\right)' = \\dfrac{f'g - fg'}{g^{2}}. \\]",
+            "Or la soustraction n'est pas commutative : intervertir les deux termes change le signe du numérateur, donc le signe de toute la dérivée.",
+            "<strong>Contre-exemple.</strong> Prenons $f(x) = \\dfrac{x}{x+1}$, avec $u = x$ et $v = x+1$.",
+            "Le bon ordre donne\\[ f'(x) = \\dfrac{(1)(x+1) - (x)(1)}{(x+1)^{2}} = \\dfrac{1}{(x+1)^{2}}, \\]qui est <em>positive</em>.",
+            "L'ordre inversé donnerait\\[ \\dfrac{(x)(1) - (1)(x+1)}{(x+1)^{2}} = \\dfrac{-1}{(x+1)^{2}}, \\]qui est <em>négative</em>. Les deux résultats sont opposés.",
+            "L'énoncé est donc <strong>faux</strong>."
+          ],
+          "piegeCourant": "Transposer à la règle du quotient la souplesse d'ordre qu'autorise la règle du produit."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E049",
+      "chapitre": 5,
+      "section": "5.5",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivation implicite",
+      "motsCles": [
+        "dérivation implicite",
+        "règle du produit"
+      ],
+      "savoirFaire": [
+        "2c",
+        "2e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $xy = 4$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le membre de gauche est un produit de deux fonctions de $x$. Quelle règle faut-il appliquer avant même de penser à l'implicite ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{dy}{dx} = -\\dfrac{y}{x}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le membre de gauche est un <strong>produit</strong> : il faut la règle du produit, avec les facteurs $x$ et $y$.",
+            "On dérive les deux membres par rapport à $x$ :\\[ (1)(y) + (x)\\dfrac{dy}{dx} = 0. \\]",
+            "Le premier terme vient de la dérivée de $x$ (qui vaut $1$) multipliée par $y$ ; le second, de $x$ multiplié par la dérivée de $y$.",
+            "On isole :\\[ x\\,\\dfrac{dy}{dx} = -y. \\]",
+            "On divise par $x$ :\\[ \\dfrac{dy}{dx} = -\\dfrac{y}{x}, \\qquad x \\neq 0. \\]",
+            "Vérification possible : en isolant $y = \\dfrac{4}{x} = 4x^{-1}$, on obtient $\\dfrac{dy}{dx} = -4x^{-2} = -\\dfrac{4}{x^{2}}$. Et comme $y = \\dfrac{4}{x}$, on a bien $-\\dfrac{y}{x} = -\\dfrac{4}{x^{2}}$."
+          ],
+          "piegeCourant": "Traiter $xy$ comme un seul bloc et écrire directement $\\frac{dy}{dx}$, en oubliant la règle du produit."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E052",
+      "chapitre": 5,
+      "section": "5.5",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivation implicite",
+      "motsCles": [
+        "dérivation implicite",
+        "règle du produit",
+        "folium",
+        "pente"
+      ],
+      "savoirFaire": [
+        "2c",
+        "2e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit la courbe d'équation $x^{3} + y^{3} = 6xy$.\\\\[0.3em] (a) Vérifie que le point $(3, 3)$ appartient à la courbe. \\\\[0.2em] (b) Détermine $\\dfrac{dy}{dx}$ et simplifie le résultat. \\\\[0.2em] (c) Calcule la pente de la tangente au point $(3, 3)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les deux membres contiennent des termes à dériver : à gauche deux cubes, à droite un produit. N'oublie pas de dériver le membre de droite aussi."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $27 + 27 = 54 = 6(9)$ \\qquad (b) $\\dfrac{dy}{dx} = \\dfrac{2y - x^{2}}{y^{2} - 2x}$ \\qquad (c) $-1$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a)</strong> On substitue $x = 3$ et $y = 3$ dans chaque membre.",
+            "Membre de gauche :\\[ 3^{3} + 3^{3} = 27 + 27 = 54. \\]",
+            "Membre de droite :\\[ 6(3)(3) = 54. \\]",
+            "Les deux membres coïncident : le point $(3,3)$ appartient bien à la courbe.",
+            "<strong>(b)</strong> On dérive les deux membres par rapport à $x$.",
+            "À gauche, chaque cube se dérive selon sa variable :\\[ \\dfrac{d}{dx}\\left(x^{3} + y^{3}\\right) = 3x^{2} + 3y^{2}\\dfrac{dy}{dx}. \\]",
+            "À droite, $6xy$ est un produit :\\[ \\dfrac{d}{dx}(6xy) = 6\\left[(1)(y) + (x)\\dfrac{dy}{dx}\\right] = 6y + 6x\\dfrac{dy}{dx}. \\]",
+            "On assemble l'équation dérivée :\\[ 3x^{2} + 3y^{2}\\dfrac{dy}{dx} = 6y + 6x\\dfrac{dy}{dx}. \\]",
+            "On regroupe les termes en $\\dfrac{dy}{dx}$ à gauche et les autres à droite :\\[ 3y^{2}\\dfrac{dy}{dx} - 6x\\dfrac{dy}{dx} = 6y - 3x^{2}. \\]",
+            "On met $\\dfrac{dy}{dx}$ en évidence :\\[ \\dfrac{dy}{dx}\\left(3y^{2} - 6x\\right) = 6y - 3x^{2}. \\]",
+            "On isole, puis on simplifie par $3$ :\\[ \\dfrac{dy}{dx} = \\dfrac{6y - 3x^{2}}{3y^{2} - 6x} = \\dfrac{2y - x^{2}}{y^{2} - 2x}. \\]",
+            "<strong>(c)</strong> On évalue au point $(3,3)$ :\\[ \\left.\\dfrac{dy}{dx}\\right|_{(3,3)} = \\dfrac{2(3) - 3^{2}}{3^{2} - 2(3)} = \\dfrac{6 - 9}{9 - 6} = \\dfrac{-3}{3} = -1. \\]",
+            "La tangente au point $(3,3)$ a donc une pente de $-1$ : elle fait un angle de $45^{\\circ}$ avec l'horizontale, en descendant."
+          ],
+          "piegeCourant": "Oublier de dériver le membre de droite $6xy$, ou le dériver sans la règle du produit."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E053",
+      "chapitre": 5,
+      "section": "5.5",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 2,
+      "acces": "gratuit",
+      "sectionNotes": "La dérivation implicite",
+      "motsCles": [
+        "dérivation implicite",
+        "forme du résultat"
+      ],
+      "savoirFaire": [
+        "2e",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? L'expression de $\\dfrac{dy}{dx}$ obtenue par dérivation implicite dépend généralement à la fois de $x$ et de $y$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Repense aux exemples : celui du cercle, ou celui de $x^{2}y + y^{3} = 4$. Que contenaient les réponses ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "En dérivation explicite, on part de $y = f(x)$ et la dérivée s'exprime uniquement en fonction de $x$.",
+            "En dérivation implicite, $y$ n'est jamais isolé. Quand on résout pour $\\dfrac{dy}{dx}$, les deux variables restent présentes dans l'expression obtenue.",
+            "<strong>Exemple du cercle</strong> $x^{2}+y^{2}=25$ :\\[ \\dfrac{dy}{dx} = -\\dfrac{x}{y}. \\]",
+            "L'expression dépend bien des deux variables. C'est d'ailleurs nécessaire : au point $(3,4)$ la pente vaut $-\\frac{3}{4}$, alors qu'au point $(3,-4)$ elle vaut $+\\frac{3}{4}$. Une même abscisse peut correspondre à deux pentes différentes.",
+            "L'énoncé est donc <strong>vrai</strong>.",
+            "Conséquence pratique : pour évaluer une pente, il faut connaître les <em>deux</em> coordonnées du point, pas seulement son abscisse."
+          ],
+          "piegeCourant": "Croire qu'il faut absolument éliminer $y$ de la réponse pour qu'elle soit correcte."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E058",
+      "chapitre": 5,
+      "section": "5.6",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 2,
+      "acces": "gratuit",
+      "sectionNotes": "Les dérivées successives",
+      "motsCles": [
+        "dérivées successives",
+        "polynôme",
+        "degré"
+      ],
+      "savoirFaire": [
+        "2c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? La dérivée cinquième d'un polynôme de degré $4$ est nulle.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Que devient le degré d'un polynôme à chaque dérivation ? Après combien d'étapes atteint-on une constante ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Chaque dérivation fait <strong>baisser le degré de un</strong>.",
+            "Prenons un polynôme de degré $4$, par exemple $P(x) = x^{4}$ :\\begin{align*} P'(x) &= 4x^{3} && \\text{(degré 3)} \\\\ P''(x) &= 12x^{2} && \\text{(degré 2)} \\\\ P'''(x) &= 24x && \\text{(degré 1)} \\\\ P^{(4)}(x) &= 24 && \\text{(constante)} \\\\ P^{(5)}(x) &= 0. \\end{align*}",
+            "Après $4$ dérivations, il ne reste qu'une constante ; la cinquième dérivation l'annule.",
+            "L'énoncé est donc <strong>vrai</strong>. Plus généralement, la dérivée d'ordre $n+1$ d'un polynôme de degré $n$ est toujours nulle.",
+            "Cela vaut pour n'importe quel polynôme de degré $4$, pas seulement $x^{4}$ : les termes de degré inférieur s'annulent encore plus tôt."
+          ],
+          "piegeCourant": "Confondre l'ordre à partir duquel la dérivée devient constante ($n$) et celui à partir duquel elle devient nulle ($n+1$)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E059",
+      "chapitre": 5,
+      "section": "5.7",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Démonstrations",
+      "motsCles": [
+        "démonstration",
+        "dérivée du sinus",
+        "identité trigonométrique"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans la démonstration de $\\dfrac{d}{dx}(\\sin x) = \\cos x$ à partir de la définition, quelle identité trigonométrique est utilisée pour développer $\\sin(x+h)$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "L'identité fondamentale $\\sin^{2}\\theta + \\cos^{2}\\theta = 1$"
+            },
+            {
+              "cle": "b",
+              "texte": "La formule d'addition $\\sin(a+b) = \\sin a\\cos b + \\cos a\\sin b$"
+            },
+            {
+              "cle": "c",
+              "texte": "L'identité de l'angle double $\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$"
+            },
+            {
+              "cle": "d",
+              "texte": "La définition $\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta}$"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le quotient différentiel contient $\\sin(x+h)$, soit le sinus d'une <em>somme</em> de deux angles. Quelle identité décompose cela ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "La formule d'addition $\\sin(a+b) = \\sin a\\cos b + \\cos a\\sin b$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La démonstration part de la définition :\\[ \\dfrac{d}{dx}(\\sin x) = \\lim_{h \\to 0}\\dfrac{\\sin(x+h) - \\sin x}{h}. \\]",
+            "Le numérateur contient $\\sin(x+h)$ : le sinus d'une <strong>somme</strong> de deux angles. C'est la formule d'addition qui permet de le décomposer :\\[ \\sin(x+h) = \\sin x\\cos h + \\cos x\\sin h. \\]",
+            "Le numérateur devient alors\\[ \\sin x\\cos h + \\cos x\\sin h - \\sin x = \\sin x(\\cos h - 1) + \\cos x\\sin h. \\]",
+            "Ce regroupement fait apparaître les deux limites trigonométriques admises,\\[ \\lim_{h\\to 0}\\dfrac{\\cos h - 1}{h} = 0 \\qquad \\text{et} \\qquad \\lim_{h\\to 0}\\dfrac{\\sin h}{h} = 1, \\]qui permettent de conclure.",
+            "C'est pour cette raison que la formule d'addition figure parmi les identités du chapitre 1 : elle sert précisément ici."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Cette identité relie sinus et cosinus d'un <em>même</em> angle. Elle ne permet pas de décomposer le sinus d'une <em>somme</em> d'angles."
+            },
+            {
+              "cle": "b",
+              "correct": true,
+              "explication": "C'est exactement ce qu'il faut pour développer $\\sin(x+h)$ et faire apparaître les deux limites trigonométriques."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Elle ne s'applique qu'au cas particulier où les deux angles sont égaux. Ici $x$ et $h$ sont indépendants."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "La tangente n'intervient nulle part dans cette démonstration."
+            }
+          ],
+          "piegeCourant": "Choisir l'identité de l'angle double, qui ne s'applique qu'à deux angles égaux."
+        }
+      ]
+    },
+    {
+      "id": "CD-C05-E060",
+      "chapitre": 5,
+      "section": "5.7",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Démonstrations",
+      "motsCles": [
+        "démonstration",
+        "limites trigonométriques",
+        "résultat admis"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Vrai ou faux ? Les deux limites $\\displaystyle\\lim_{h\\to 0}\\dfrac{\\sin h}{h} = 1$ et $\\displaystyle\\lim_{h\\to 0}\\dfrac{\\cos h - 1}{h} = 0$ sont démontrées dans le cours avant d'être utilisées.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Relis l'encadré qui les introduit au chapitre 5. Quel mot y est employé pour décrire leur statut ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Ces deux limites sont <strong>admises</strong>, et non démontrées. Le cours les introduit explicitement comme des résultats acceptés sans preuve, servant uniquement d'outil à la démonstration de $(\\sin x)' = \\cos x$.",
+            "La première est rendue plausible par une vérification <em>numérique</em>, avec $h$ exprimé en radians :\\[ \\dfrac{\\sin(0{,}1)}{0{,}1} \\approx 0{,}9983, \\qquad \\dfrac{\\sin(0{,}01)}{0{,}01} \\approx 0{,}99998. \\]",
+            "Mais un tableau de valeurs n'est pas une démonstration : il suggère le résultat sans l'établir.",
+            "L'énoncé est donc <strong>faux</strong>.",
+            "Ces limites ne font d'ailleurs pas partie des formules à mémoriser du cours : elles n'apparaissent qu'au service de cette démonstration.",
+            "Note aussi qu'on ne peut pas les établir à l'aide de la règle de L'Hospital : cette règle exige de connaître la dérivée du sinus, qui est précisément ce qu'on cherche à démontrer. Le raisonnement serait circulaire."
+          ],
+          "piegeCourant": "Confondre une vérification numérique convaincante avec une démonstration."
+        }
+      ]
+    }
+  ]
+}

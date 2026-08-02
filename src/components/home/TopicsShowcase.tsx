@@ -52,12 +52,14 @@ export default function TopicsShowcase() {
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2">
         {topics.map((topic, i) => {
-          const count = exercises.filter((e) => e.topicId === topic.id).length;
+          // Le compte publié prime : `exercises` ne contient plus qu'un
+          // exercice de calcul différentiel, vestige d'avant la banque.
+          const count = topic.nbExercicesPublies ?? exercises.filter((e) => e.topicId === topic.id).length;
           const style = TOPIC_STYLES[topic.id];
           return (
             <AnimatedSection key={topic.id} delay={i * 0.08}>
               <Link
-                to={`/practice?topic=${topic.id}`}
+                to={topic.pageDediee ?? `/practice?topic=${topic.id}`}
                 className={`group relative flex h-full w-full cursor-pointer flex-col gap-4 overflow-hidden rounded-3xl p-7 text-white shadow-lg shadow-black/5 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-4 sm:p-8 ${style.bg} ${style.hoverBg} ${style.ring}`}
                 aria-label={`Pratiquer la matière ${topic.name}`}
               >

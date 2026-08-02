@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import clsx from "clsx";
 import type { Exercise } from "../data/exercises";
 import { exercises } from "../data/exercises";
@@ -75,6 +75,19 @@ export default function Practice() {
     if (!activeLesson) return lessonAll;
     return lessonAll.filter((ex) => getExerciseKind(ex) === activeKind);
   }, [lessonAll, activeLesson, activeKind]);
+
+  // Une matière qui a sa propre vitrine ne s'affiche plus ici. Sans cette
+  // redirection, un ancien signet — ou le simple fait de recharger la page
+  // avec `?topic=differential-calculus` — ramenait à l'unique exercice écrit
+  // en dur, en donnant l'impression que le site n'en contient qu'un.
+  //
+  // Le retour anticipé vient APRÈS tous les `useMemo`, jamais avant : un hook
+  // sauté change l'ordre des hooks entre deux rendus, et React ne le pardonne
+  // pas. Placé plus haut, ça marchait par chance — la redirection étant
+  // stable, le rendu suivant n'avait pas lieu.
+  if (currentTopic?.pageDediee) {
+    return <Navigate to={currentTopic.pageDediee} replace />;
+  }
 
   function handleTopicSelect(topicId: string) {
     searchParams.set("topic", topicId);

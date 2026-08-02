@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { deciderWebhook, TYPE_TRAITE } from "../.tmp-test/webhook.js";
-import { DUREE_ACCES_MOIS } from "../.tmp-test/regles.js";
+import { deciderWebhook, TYPE_TRAITE } from "../.tmp-test/acces/webhook.js";
+import { DUREE_ACCES_MOIS } from "../.tmp-test/acces/regles.js";
 
 const MAINTENANT = new Date("2026-09-01T14:00:00Z").getTime();
 
