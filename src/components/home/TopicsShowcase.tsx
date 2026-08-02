@@ -42,7 +42,7 @@ export default function TopicsShowcase() {
     <section id="topics" className="container-page scroll-mt-28 py-20 sm:py-24">
       <AnimatedSection className="mx-auto max-w-2xl text-center">
         <h2 className="text-balance text-3xl font-bold sm:text-4xl">
-          Choisissez une matière et avancez à votre rythme
+          Choisis une matière et avance à ton rythme
         </h2>
         <p className="mt-4 text-balance text-lg text-ink-600">
           Quatre matières clés du parcours universitaire, chaque problème

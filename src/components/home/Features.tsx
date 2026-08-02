@@ -4,13 +4,13 @@ const features = [
   {
     title: "Raisonnement étape par étape",
     description:
-      "Chaque solution se déroule une étape logique à la fois, pour que vous puissiez vous arrêter exactement où votre compréhension bloque.",
+      "Chaque solution se déroule une étape logique à la fois, pour que tu puisses t'arrêter exactement où ta compréhension bloque.",
     icon: "M9 5l7 7-7 7",
   },
   {
     title: "Aucun compte, aucune friction",
     description:
-      "Ouvrez un problème et commencez à travailler. Rien à créer, rien à configurer — juste vous et les maths.",
+      "Ouvre un problème et commence à travailler. Rien à créer, rien à configurer — juste toi et les maths.",
     icon: "M5 13l4 4L19 7",
   },
   {

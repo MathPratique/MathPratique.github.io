@@ -65,7 +65,7 @@ function LiveWorkedExample() {
           ))}
         </AnimatePresence>
         {!shouldReduceMotion && visibleSteps.length === 0 && (
-          <p className="text-sm italic text-ink-600/70">Regardez les étapes se dévoiler…</p>
+          <p className="text-sm italic text-ink-600/70">Regarde les étapes se dévoiler…</p>
         )}
       </div>
 

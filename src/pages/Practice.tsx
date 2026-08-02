@@ -125,8 +125,8 @@ export default function Practice() {
         <AnimatedSection className="max-w-2xl">
           <h1 className="text-balance text-4xl font-bold sm:text-5xl">Exercices</h1>
           <p className="mt-4 text-balance text-lg text-ink-600">
-            Choisissez une matière pour commencer. Chaque parcours vous guide à
-            travers les leçons à votre rythme, avec des solutions détaillées
+            Choisis une matière pour commencer. Chaque parcours te guide à
+            travers les leçons à ton rythme, avec des solutions détaillées
             étape par étape.
           </p>
         </AnimatedSection>
@@ -291,7 +291,7 @@ export default function Practice() {
               <p>
                 {activeLesson
                   ? `Aucune question de ce type dans la leçon « ${lesson?.name} » pour l'instant.`
-                  : "Aucun exercice dans cette matière pour l'instant — revenez bientôt."}
+                  : "Aucun exercice dans cette matière pour l'instant — reviens bientôt."}
               </p>
             </AnimatedSection>
           )}
@@ -300,6 +300,10 @@ export default function Practice() {
 
       {currentTopic?.teacherContentReady && (
         <AnimatedSection delay={0.2} className="mt-16 border-t border-brand-100 pt-8 text-center text-sm text-ink-600">
+          {/* vouvoiement-assume — cette invitation s'adresse à un enseignant,
+              même si elle apparaît au bas d'une page destinée aux étudiants.
+              C'est le public visé qui commande le registre, pas l'emplacement.
+              Le marqueur ci-dessus est reconnu par scripts/verifier-textes.sh. */}
           <p>
             Vous êtes enseignant?{" "}
             <Link

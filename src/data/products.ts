@@ -1,9 +1,12 @@
 // Boutique — un seul package par cours.
 //
-// Chaque package donne 12 MOIS d'accès : consultation en ligne et
-// téléchargement, mises à jour incluses, sans abonnement ni renouvellement
-// automatique. Le modèle « accès à vie » qui figurait ici a été abandonné ;
-// aucune mention ne doit en subsister sur le site.
+// Un seul paiement. 12 mois d'accès. Aucun abonnement.
+//
+// L'accès couvre la consultation en ligne et le téléchargement, mises à jour
+// incluses, sans renouvellement automatique. Le modèle illimité qui figurait
+// ici a été abandonné, et aucune formulation le laissant entendre ne doit
+// revenir : elle serait fausse, et suffirait à justifier un remboursement.
+// scripts/verifier-textes.sh échoue le build si une telle mention réapparaît.
 //
 // Contenu identique pour tous les packages → dans ProductCard.
 // Ici, seuls varient : nom, description, prix, activation.

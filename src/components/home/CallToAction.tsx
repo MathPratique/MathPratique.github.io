@@ -19,11 +19,11 @@ export default function CallToAction() {
 
         <div className="relative">
           <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl">
-            Votre prochaine série d'exercices est à un clic
+            Ta prochaine série d'exercices est à un clic
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-brand-100">
-            Pas d'inscription, pas de paywall — ouvrez une matière et
-            avancez sur les problèmes avec le raisonnement complet à chaque étape.
+            Pas d'inscription, pas de paywall — ouvre une matière et
+            avance sur les problèmes avec le raisonnement complet à chaque étape.
           </p>
           <div className="mt-8 flex justify-center">
             <Link
