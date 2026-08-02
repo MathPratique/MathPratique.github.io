@@ -30,6 +30,11 @@ dist-ssr
 # Sortie de compilation des tests
 .tmp-test
 
+# Rapport réécrit à chaque build par scripts/verifier-textes.sh. Le versionner
+# salissait l'arbre de travail au moindre `npm run build`. Pour le consulter :
+#     bash scripts/verifier-textes.sh
+RAPPORT-TEXTES.md
+
 # Configuration locale. `.env.example` est versionné, les vrais fichiers non.
 # Les clés Firebase du client ne sont pas des secrets, mais un fichier .env
 # finit toujours par accueillir autre chose : clé de service, jeton Stripe.
