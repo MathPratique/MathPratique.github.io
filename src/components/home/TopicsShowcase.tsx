@@ -45,7 +45,7 @@ export default function TopicsShowcase() {
           Choisis une matière et avance à ton rythme
         </h2>
         <p className="mt-4 text-balance text-lg text-ink-600">
-          Quatre matières clés du parcours universitaire, chaque problème
+          Quatre matières clés du parcours collégial, chaque problème
           accompagné de sa solution complète prête à être consultée.
         </p>
       </AnimatedSection>

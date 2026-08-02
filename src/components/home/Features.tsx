@@ -14,9 +14,9 @@ const features = [
     icon: "M5 13l4 4L19 7",
   },
   {
-    title: "Niveau collégial et universitaire",
+    title: "Niveau collégial",
     description:
-      "Les problèmes sont rédigés pour les étudiants qui ont dépassé les bases et veulent du contenu à la hauteur de leur niveau.",
+      "Conçu pour les cours de maths du cégep, par un enseignant du collégial.",
     icon: "M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4",
   },
   {
