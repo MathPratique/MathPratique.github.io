@@ -1,0 +1,33 @@
+rules_version = '2';
+
+// ===========================================================================
+//  Règles de sécurité Cloud Storage
+// ===========================================================================
+//
+//  Tout est refusé, sans exception et sans condition.
+//
+//  Ce n'est pas une précaution excessive : c'est le fonctionnement voulu.
+//  Aucun navigateur ne doit accéder au seau, même authentifié, même avec un
+//  accès valide. Les téléchargements passent par la Cloud Function
+//  `obtenirLienTelechargement`, qui vérifie l'accès et la date avec l'horloge
+//  du serveur, puis émet une URL signée de quinze minutes. Le SDK Admin
+//  n'est pas soumis à ces règles.
+//
+//  Pourquoi ne pas simplement autoriser « utilisateur avec accès actif » ici ?
+//  Parce que ces règles ne savent pas expirer proprement : elles liraient une
+//  date dans Firestore, mais ne pourraient ni journaliser la demande, ni
+//  poser le drapeau `aTelecharge` dont dépend la politique de remboursement.
+//  Un seul chemin d'accès, contrôlé et tracé, vaut mieux que deux.
+//
+//  Déploiement :
+//      firebase deploy --only storage
+//
+// ===========================================================================
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{tousLesFichiers=**} {
+      allow read, write: if false;
+    }
+  }
+}

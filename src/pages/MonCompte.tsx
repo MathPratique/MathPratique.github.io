@@ -11,6 +11,8 @@ import {
   DELAI_REMBOURSEMENT_JOURS,
   type Acces,
 } from "../acces/regles";
+import { DOCUMENTS, LIBELLES_CATEGORIES } from "../acces/documents";
+import { telecharger, messageTelechargement } from "../firebase/telechargement";
 import { EMAIL_CONTACT } from "../data/site";
 import { getProductById } from "../data/products";
 
@@ -112,6 +114,78 @@ export default function MonCompte() {
   );
 }
 
+/**
+ * Les documents téléchargeables, groupés par catégorie.
+ *
+ * Cinquante-huit fichiers : une liste à plat serait illisible, et les
+ * catégories repliées évitent d'écraser la page. Aucun contrôle d'accès
+ * ici — la liste s'affiche dès que l'accès est actif, et c'est la Cloud
+ * Function qui refuse si elle ne l'est plus au moment du clic.
+ */
+function ListeDocuments({ coursId }: { coursId: string }) {
+  const [enCours, setEnCours] = useState<string | null>(null);
+  const [erreur, setErreur] = useState<string | null>(null);
+
+  const documents = DOCUMENTS.filter((d) => d.coursId === coursId);
+  const categories = [...new Set(documents.map((d) => d.categorie))];
+
+  async function obtenir(id: string) {
+    setErreur(null);
+    setEnCours(id);
+    try {
+      await telecharger(id);
+    } catch (err) {
+      setErreur(messageTelechargement(err));
+    } finally {
+      setEnCours(null);
+    }
+  }
+
+  return (
+    <div className="mt-5 border-t border-brand-100 pt-5">
+      <h4 className="font-display text-sm font-bold text-brand-900">
+        Tes documents ({documents.length})
+      </h4>
+
+      {erreur && (
+        <p role="alert" className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">
+          {erreur}
+        </p>
+      )}
+
+      {categories.map((categorie) => (
+        <details key={categorie} className="mt-3">
+          <summary className="cursor-pointer text-sm font-semibold text-brand-700">
+            {LIBELLES_CATEGORIES[categorie]}{" "}
+            <span className="font-normal text-ink-600">
+              ({documents.filter((d) => d.categorie === categorie).length})
+            </span>
+          </summary>
+          <ul className="mt-2 space-y-1">
+            {documents
+              .filter((d) => d.categorie === categorie)
+              .map((d) => (
+                <li key={d.id}>
+                  <button
+                    type="button"
+                    onClick={() => obtenir(d.id)}
+                    disabled={enCours !== null}
+                    className="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-ink-700 transition-colors hover:bg-brand-50 disabled:cursor-wait disabled:opacity-60"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="flex-shrink-0 text-brand-600">
+                      <path d="M12 3v12M7 11l5 5 5-5M4 20h16" />
+                    </svg>
+                    {enCours === d.id ? "Préparation du lien…" : d.titre}
+                  </button>
+                </li>
+              ))}
+          </ul>
+        </details>
+      ))}
+    </div>
+  );
+}
+
 function CarteAcces({ acces }: { acces: Acces }) {
   const etat = verifierAcces(acces);
   const remboursable = remboursementPossible(acces);
@@ -164,6 +238,8 @@ function CarteAcces({ acces }: { acces: Acces }) {
           après la fin de l'accès.
         </p>
       )}
+
+      {etat.actif && <ListeDocuments coursId={acces.coursId} />}
 
       {remboursable && (
         <p className="mt-3 text-xs text-ink-600">

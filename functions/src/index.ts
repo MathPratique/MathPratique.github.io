@@ -19,10 +19,19 @@ import { onCall, onRequest, HttpsError } from "firebase-functions/v2/https";
 import { defineSecret, defineString } from "firebase-functions/params";
 import { logger } from "firebase-functions/v2";
 import { initializeApp } from "firebase-admin/app";
-import { getFirestore, Timestamp } from "firebase-admin/firestore";
+import { getFirestore, Timestamp, FieldValue } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 import Stripe from "stripe";
 
 import { deciderWebhook, journaliser } from "../../src/acces/webhook.js";
+import {
+  deciderTelechargement,
+  MESSAGES_REFUS,
+  VALIDITE_LIEN_MINUTES,
+} from "../../src/acces/telechargement.js";
+import { trouverDocument } from "../../src/acces/documents.js";
+import { DUREE_ACCES_MOIS } from "../../src/acces/regles.js";
+import { versAccesDepuisDonnees } from "./lecture.js";
 
 initializeApp();
 const db = getFirestore();
@@ -145,6 +154,19 @@ export const creerSessionCheckout = onCall(
       success_url: `${URL_SITE.value()}/achat-confirme?produit=package-${coursId}`,
       cancel_url: `${URL_SITE.value()}/boutique?achat=annule`,
 
+      // Les modalités sous les yeux de l'acheteur au moment de payer, et non
+      // seulement sur la page produit qu'il a peut-être survolée. Stripe les
+      // reprend sur le reçu envoyé par courriel — c'est là que se trouvera la
+      // politique de remboursement le jour où quelqu'un la cherchera.
+      custom_text: {
+        submit: {
+          message:
+            `Un seul paiement. ${DUREE_ACCES_MOIS} mois d'accès à partir d'aujourd'hui. ` +
+            "Aucun abonnement, aucun renouvellement automatique. " +
+            "Remboursement complet dans les 7 jours, tant qu'aucun document n'a été téléchargé.",
+        },
+      },
+
       locale: "fr-CA",
     });
 
@@ -243,5 +265,75 @@ export const webhookStripe = onRequest(
     // 200 même pour un événement ignoré : il a bien été reçu et compris.
     // Répondre en erreur ferait réessayer Stripe indéfiniment pour rien.
     reponse.status(200).send("ok");
+  }
+);
+
+// ---------------------------------------------------------------------------
+//  3. Le téléchargement — la vraie barrière
+// ---------------------------------------------------------------------------
+//
+// Tout le contrôle d'accès du site est ici. Ce que le navigateur affiche —
+// bouton actif ou grisé, bandeau d'expiration — n'est qu'un confort ; un
+// utilisateur peut modifier le code qu'il exécute. Cette fonction refait la
+// vérification à chaque demande, avec l'horloge du serveur, juste avant de
+// signer une URL.
+//
+// Les fichiers ne sont JAMAIS servis par cette fonction : elle rend une URL
+// signée que le navigateur suit ensuite directement vers Cloud Storage. Faire
+// transiter cinquante-huit PDF par une Cloud Function coûterait cher et
+// serait lent, pour aucun gain de sécurité.
+
+export const obtenirLienTelechargement = onCall(
+  { region: "northamerica-northeast1", cors: true },
+  async (requete) => {
+    const uid = requete.auth?.uid;
+    if (!uid) {
+      throw new HttpsError("unauthenticated", "Connecte-toi pour télécharger.");
+    }
+
+    const documentId = String(requete.data?.documentId ?? "");
+    const document = trouverDocument(documentId);
+
+    // On lit l'accès seulement si le document existe : inutile d'interroger
+    // Firestore pour un identifiant inventé.
+    let acces = null;
+    if (document) {
+      const snap = await db.doc(`utilisateurs/${uid}/acces/${document.coursId}`).get();
+      acces = versAccesDepuisDonnees(document.coursId, snap.data());
+    }
+
+    // L'horloge du serveur. Celle du navigateur ne décide de rien.
+    const decision = deciderTelechargement(document, acces, Date.now());
+
+    if (!decision.autorise) {
+      logger.info(`[telechargement] ${uid} → ${documentId} refusé (${decision.raison})`);
+      // « not-found » pour un document inconnu, « permission-denied » sinon :
+      // on ne laisse pas deviner quels identifiants existent.
+      const code = decision.raison === "document-inconnu" ? "not-found" : "permission-denied";
+      throw new HttpsError(code, MESSAGES_REFUS[decision.raison]);
+    }
+
+    const fichier = getStorage().bucket().file(decision.chemin);
+
+    // Une URL signée échappe à tout contrôle une fois émise. Sa brièveté est
+    // la seule protection : quinze minutes suffisent à lancer un
+    // téléchargement, pas à alimenter un lien partagé sur un forum.
+    const [url] = await fichier.getSignedUrl({
+      action: "read",
+      expires: Date.now() + VALIDITE_LIEN_MINUTES * 60_000,
+    });
+
+    // Marque le premier téléchargement. C'est ce drapeau, et lui seul, qui
+    // ferme le droit au remboursement — d'où l'importance qu'il soit posé
+    // ici, par le serveur, et jamais par le navigateur.
+    if (!acces?.aTelecharge) {
+      await db.doc(`utilisateurs/${uid}/acces/${document!.coursId}`).update({
+        aTelecharge: true,
+        premierTelechargementLe: FieldValue.serverTimestamp(),
+      });
+    }
+
+    logger.info(`[telechargement] ${uid} → ${documentId} autorisé`);
+    return { url, titre: document!.titre };
   }
 );

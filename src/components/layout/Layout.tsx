@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import BandeauExpiration from "../acces/BandeauExpiration";
 
 export default function Layout() {
   const location = useLocation();
@@ -10,7 +11,12 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1 pt-24">
+      {/* Sous la barre fixe, au-dessus du contenu : le rappel doit se voir
+          sur toutes les pages, pas seulement dans le compte. */}
+      <div className="pt-24">
+        <BandeauExpiration />
+      </div>
+      <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

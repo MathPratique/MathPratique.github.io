@@ -275,6 +275,61 @@ la rejettera — c'est le comportement voulu, et ça teste précisément ce
 chemin-là. Pour éprouver le cas nominal, il faut un vrai passage en caisse
 depuis la boutique avec un compte de test.
 
+---
+
+## Les documents protégés
+
+### Le seau est fermé, sans exception
+
+[`storage.rules`](storage.rules) refuse **toute** lecture depuis un
+navigateur, même authentifié, même avec un accès valide. Le seul chemin est
+la Cloud Function `obtenirLienTelechargement`, qui revérifie l'accès et la
+date avec l'horloge du serveur, puis émet une URL signée de 15 minutes.
+
+Pourquoi ne pas autoriser « utilisateur avec accès actif » directement dans
+les règles ? Parce qu'elles ne pourraient ni journaliser la demande, ni poser
+le drapeau `aTelecharge` dont dépend la politique de remboursement. Un seul
+chemin contrôlé et tracé vaut mieux que deux.
+
+Une URL signée échappe à tout contrôle une fois émise — c'est sa nature. Sa
+brièveté est la seule protection : assez pour lancer un téléchargement, trop
+peu pour alimenter un lien partagé sur un forum.
+
+### Structure à respecter dans le seau
+
+Le catalogue ([`src/acces/documents.ts`](src/acces/documents.ts)) attend
+exactement cette arborescence. Un chemin qui ne correspond pas se traduit par
+un fichier introuvable pour quelqu'un qui a payé.
+
+```
+calcul-differentiel/
+  notes/       calcul-differentiel-{ETUDIANT,PROF}.pdf
+               ch01-fonctions-{ETUDIANT,PROF}.pdf   … ch07-applications-sn-*
+  exercices/   ch01-recueil.pdf, ch01-solutions.pdf … ch07-*
+  revision/    melimelo-{A..E}.pdf, melimelo-{A..E}-solutions.pdf
+  examens/     intra{1..4}.pdf, -corrige.pdf, -grille.pdf
+               finalA.pdf, finalB.pdf, et leurs -corrige / -grille
+```
+
+58 fichiers au total. Le test `npm run test` vérifie qu'aucun identifiant ni
+chemin n'est en double, et qu'aucun ne sort du dossier du cours.
+
+**Rien de tout cela ne va dans `public/`.** Un PDF déposé là serait servi à
+tout le monde, quelles que soient les règles écrites par ailleurs.
+
+### Les rappels d'expiration
+
+[`BandeauExpiration`](src/components/acces/BandeauExpiration.tsx) s'affiche
+sur toutes les pages à 30 jours puis à 7 jours de la fin, en reprenant les
+seuils de `src/acces/regles.ts`. Fermer le rappel des 30 jours ne fait pas
+taire celui des 7, qui est plus urgent ; et le rejet ne tient que le temps de
+la session, parce qu'un accès qui expire mérite qu'on insiste.
+
+**Pas de rappel par courriel** : aucun mécanisme d'envoi n'existe, et en
+ajouter un pour deux rappels par an serait disproportionné. Quelqu'un qui
+utilise encore son matériel verra le bandeau ; quelqu'un qui ne l'utilise plus
+n'a rien à télécharger.
+
 ### Les tests à passer avant d'ouvrir la vente
 
 Ceux-ci demandent un projet Firebase et des clés Stripe ; ils ne sont **pas**
@@ -290,6 +345,10 @@ couverts par `npm run test`.
 | Accès actif, retour sur la page | voit son accès, pas de bouton d'achat |
 | Accès expiré | contenu et téléchargements bloqués, message clair |
 | Coupon de lancement | rabais appliqué, montant conforme |
+| Téléchargement avec accès actif | URL signée, fichier livré, `aTelecharge` passe à `true` |
+| Téléchargement après expiration | refusé, message explicite |
+| Accès direct au seau depuis le navigateur | refusé par `storage.rules` |
+| Bandeaux à 30 et 7 jours | apparaissent, se ferment, reviennent à la session suivante |
 | Parcours complet sur téléphone | lisible et utilisable |
 
 ---
