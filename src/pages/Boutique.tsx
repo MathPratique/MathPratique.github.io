@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AnimatedSection from "../components/ui/AnimatedSection";
 import { EMAIL_CONTACT } from "../data/site";
+import { useAuth } from "../firebase/useAuth";
+import { useAcces } from "../firebase/useAcces";
+import { COURS_EN_VENTE } from "../firebase/acces";
+import { demarrerAchat, messagePaiement } from "../firebase/paiement";
 
 // ===========================================================================
 //  TOUT CE QUI SE MODIFIE SANS TOUCHER AU RESTE DE LA PAGE
@@ -206,9 +211,7 @@ export default function Boutique() {
           </div>
 
           {PAIEMENT_ACTIF ? (
-            <p className="mt-6 text-sm text-ink-600">
-              {/* Le bouton d'achat arrive avec le parcours de paiement. */}
-            </p>
+            <BoutonAchat />
           ) : (
             <div className="mt-6">
               <button
@@ -428,6 +431,81 @@ export default function Boutique() {
           </Link>
         </p>
       </AnimatedSection>
+    </div>
+  );
+}
+
+/**
+ * Le bouton d'achat, et les trois états qu'un étudiant peut rencontrer.
+ *
+ * Aucun contrôle d'accès n'est fait ici : ce composant choisit seulement quoi
+ * afficher. C'est la Cloud Function qui refuse un achat en double ou un
+ * utilisateur non connecté — un bouton peut être contourné, pas elle.
+ */
+function BoutonAchat() {
+  const { utilisateur, chargement } = useAuth();
+  const { etat } = useAcces(COURS_EN_VENTE);
+  const navigate = useNavigate();
+  const [envoi, setEnvoi] = useState(false);
+  const [erreur, setErreur] = useState<string | null>(null);
+
+  if (chargement) {
+    return <p className="mt-6 text-sm text-ink-600">Un instant…</p>;
+  }
+
+  // Quelqu'un qui a déjà payé ne doit pas revoir un bouton « Acheter ».
+  if (etat.actif) {
+    return (
+      <div className="mt-6">
+        <Link
+          to="/mon-compte"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-brand-700 sm:w-auto"
+        >
+          Tu as déjà accès — voir ton matériel
+        </Link>
+        <p className="mt-3 text-sm text-ink-600">
+          Il te reste {etat.joursRestants} jours d'accès.
+        </p>
+      </div>
+    );
+  }
+
+  async function acheter() {
+    setErreur(null);
+    // On envoie vers la connexion plutôt que d'échouer : le compte est
+    // nécessaire, et l'étudiant revient ici une fois connecté.
+    if (!utilisateur) {
+      navigate("/connexion", { state: { retour: "/boutique" } });
+      return;
+    }
+    setEnvoi(true);
+    try {
+      await demarrerAchat(COURS_EN_VENTE);
+    } catch (err) {
+      setErreur(messagePaiement(err));
+      setEnvoi(false);
+    }
+  }
+
+  return (
+    <div className="mt-6">
+      <button
+        type="button"
+        onClick={acheter}
+        disabled={envoi}
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-brand-700 disabled:cursor-not-allowed disabled:bg-brand-600/50 sm:w-auto"
+      >
+        {envoi ? "Redirection vers le paiement…" : `Acheter — ${TARIFS.prixLancement} $`}
+      </button>
+      {erreur && (
+        <p role="alert" className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">
+          {erreur}
+        </p>
+      )}
+      <p className="mt-3 text-xs text-ink-600">
+        Paiement traité par Stripe. Aucune donnée de carte ne transite par ce
+        site.
+      </p>
     </div>
   );
 }

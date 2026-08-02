@@ -45,3 +45,10 @@ RAPPORT-TEXTES.md
 # Clés de compte de service Firebase — ne doivent jamais être versionnées.
 *-firebase-adminsdk-*.json
 serviceAccountKey.json
+
+# Cloud Functions : dépendances et sortie de compilation.
+functions/node_modules
+functions/lib
+.firebase
+firebase-debug.log
+firestore-debug.log

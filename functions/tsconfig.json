@@ -1,0 +1,22 @@
+{
+  // Les fonctions réutilisent la règle d'accès du site plutôt que d'en garder
+  // une copie : `rootDir` remonte d'un cran pour englober `../src/acces`, et
+  // la sortie se retrouve donc dans `lib/functions/` et `lib/src/`. C'est le
+  // prix à payer pour qu'il n'existe QU'UNE seule définition de « 12 mois »
+  // dans tout le projet. Deux copies finiraient par diverger, et la
+  // divergence porterait sur la date d'expiration d'un accès payant.
+  "compilerOptions": {
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "rootDir": "..",
+    "sourceMap": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*.ts", "../src/acces/**/*.ts"]
+}

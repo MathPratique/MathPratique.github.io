@@ -1,0 +1,25 @@
+{
+  "name": "mathpratique-functions",
+  "description": "Cloud Functions : création de session Stripe Checkout et octroi d'accès par webhook.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "20"
+  },
+  "_note_main": "rootDir remonte à la racine du dépôt pour partager src/acces/, donc la sortie se retrouve dans lib/functions/src/ et non lib/. Ce chemin doit suivre.",
+  "main": "lib/functions/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "deploy": "npm run build && firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.7.0",
+    "firebase-functions": "^6.6.0",
+    "stripe": "^19.2.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}

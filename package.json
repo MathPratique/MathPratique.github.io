@@ -10,7 +10,7 @@
     "postbuild": "node scripts/verifier-fichiers-statiques.mjs dist",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "tsc src/acces/regles.ts --ignoreConfig --outDir .tmp-test --target es2022 --module es2022 --strict && node --test \"tests/**/*.test.mjs\""
+    "test": "tsc src/acces/regles.ts src/acces/webhook.ts --ignoreConfig --outDir .tmp-test --target es2022 --module es2022 --moduleResolution bundler --strict && node --test \"tests/**/*.test.mjs\""
   },
   "dependencies": {
     "clsx": "^2.1.1",
