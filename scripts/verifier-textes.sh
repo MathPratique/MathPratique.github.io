@@ -67,7 +67,15 @@ A_VIE="(""accès à vi""e|""accès a vi""e|à ""vie""\\b|a ""vie""\\b|pour ""tou
 COURRIEL="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
 # Classe de caractères plutôt qu'antislash : awk avertit sur `\.` dans une
 # chaîne, et l'avertissement pollue la sortie à chaque exécution.
-ADRESSES_DU_SITE='@mathpratique[.]ca$'
+#
+# Deux formes admises, sans nom de personne :
+#   - `infomathpratique@gmail.com` : la boîte transitoire, décrite dans
+#     src/data/site.ts. Sera retirée le jour où l'alias du domaine sera
+#     branché.
+#   - `<local>@mathpratique.ca` : l'alias du domaine, quand il existera.
+# Toute autre adresse est signalée — en particulier celles qui contiennent
+# un prénom ou un nom.
+ADRESSES_DU_SITE='(^infomathpratique@gmail[.]com$|@mathpratique[.]ca$)'
 
 # ---------------------------------------------------------------------------
 
