@@ -9,10 +9,12 @@
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/verifier-fichiers-statiques.mjs dist",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "tsc src/acces/regles.ts --ignoreConfig --outDir .tmp-test --target es2022 --module es2022 --strict && node --test \"tests/**/*.test.mjs\""
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "firebase": "^12.17.0",
     "framer-motion": "^12.40.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

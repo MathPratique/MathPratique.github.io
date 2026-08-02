@@ -1,0 +1,71 @@
+rules_version = '2';
+
+// ===========================================================================
+//  Règles de sécurité Firestore
+// ===========================================================================
+//
+//  Principe directeur : le client LIT ses propres accès, il n'en ÉCRIT
+//  jamais. Toute écriture d'accès passe par le webhook Stripe, qui utilise le
+//  SDK Admin et contourne ces règles. Si le navigateur pouvait écrire ici,
+//  n'importe qui s'accorderait douze mois gratuits depuis la console du
+//  navigateur — c'est le premier endroit qu'un curieux essaie.
+//
+//  Déploiement :
+//      firebase deploy --only firestore:rules
+//
+//  Test des règles (émulateur, sans toucher à la production) :
+//      firebase emulators:start --only firestore
+//
+// ===========================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Par défaut, tout est refusé ---------------------------------------
+    // Les règles qui suivent n'ouvrent que ce qui est nécessaire. Toute
+    // collection non mentionnée reste inaccessible depuis le navigateur.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function estLeProprietaire(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    // --- Profil utilisateur ------------------------------------------------
+    match /utilisateurs/{uid} {
+      allow read: if estLeProprietaire(uid);
+
+      // L'utilisateur peut créer et modifier son profil, mais uniquement des
+      // champs anodins. La liste est blanche, pas noire : un champ inconnu
+      // fait échouer l'écriture au lieu de passer par défaut.
+      allow create, update: if estLeProprietaire(uid)
+        && request.resource.data.keys().hasOnly(['courriel', 'nomAffiche', 'creeLe']);
+
+      allow delete: if false;
+
+      // --- Accès à un cours ------------------------------------------------
+      match /acces/{coursId} {
+        // Lecture seule, et seulement les siens. Personne ne consulte les
+        // achats de quelqu'un d'autre.
+        allow read: if estLeProprietaire(uid);
+
+        // Aucune écriture depuis le navigateur, sans exception. Ni création
+        // (s'accorder un accès), ni mise à jour (repousser dateFin), ni
+        // suppression (effacer aTelecharge pour redevenir remboursable).
+        //
+        // Le webhook Stripe et la fonction de téléchargement écrivent avec le
+        // SDK Admin, qui n'est pas soumis à ces règles.
+        allow write: if false;
+      }
+    }
+
+    // --- Journal des événements Stripe -------------------------------------
+    // Sert à l'idempotence du webhook : un identifiant de session déjà
+    // présent signifie « déjà traité ». Écrit et lu par le serveur seulement ;
+    // le navigateur n'a aucune raison d'y toucher.
+    match /evenementsStripe/{sessionId} {
+      allow read, write: if false;
+    }
+  }
+}

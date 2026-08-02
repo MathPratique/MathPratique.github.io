@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "../ui/Logo";
 import clsx from "clsx";
+import { useAuth } from "../../firebase/useAuth";
 
-const links = [
+const liensDeBase = [
   { to: "/", label: "Accueil" },
   { to: "/practice", label: "Exercices" },
   { to: "/custom-quiz", label: "Quiz personnalisé" },
@@ -14,6 +15,15 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { utilisateur, disponible } = useAuth();
+
+  // Le lien de compte n'apparaît que si les comptes existent réellement.
+  // Tant que Firebase n'est pas configuré, la barre reste telle quelle —
+  // inutile d'offrir une porte qui ne mène nulle part, et la barre est déjà
+  // serrée à cinq entrées.
+  const links = disponible
+    ? [...liensDeBase, { to: utilisateur ? "/mon-compte" : "/connexion", label: utilisateur ? "Mon compte" : "Connexion" }]
+    : liensDeBase;
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">

@@ -1,0 +1,82 @@
+// ===========================================================================
+//  Initialisation de Firebase — facultative, et chargée à la demande.
+// ===========================================================================
+//
+// Le site est déployé sur GitHub Pages et fonctionnait sans compte avant ce
+// chantier. Il doit continuer à fonctionner tant que le projet Firebase
+// n'existe pas : les exercices gratuits, la boutique, l'aperçu et la page
+// enseignants ne dépendent d'aucune authentification.
+//
+// Deux conséquences, toutes deux appliquées ici :
+//
+//   1. **Si la configuration est absente, on ne plante pas, on désactive.**
+//      `firebaseEstConfigure` vaut false, les écrans de compte affichent un
+//      message honnête, et rien d'autre ne bouge.
+//
+//   2. **Le SDK n'est jamais dans le bundle principal.** Importé
+//      statiquement, il ajoutait 511 ko à chaque visite — pour une
+//      fonctionnalité que personne ne peut utiliser tant que les comptes ne
+//      sont pas ouverts. Tous les imports sont donc dynamiques, et seuls les
+//      types sont importés statiquement : `import type` disparaît à la
+//      compilation, il ne coûte rien.
+//
+// Les clés d'un projet Firebase côté client ne sont PAS des secrets : elles
+// partent dans le bundle, c'est prévu. Ce qui protège les données, ce sont
+// les règles Firestore (voir firestore.rules) et les vérifications faites
+// dans les Cloud Functions. La clé secrète Stripe, elle, ne doit jamais
+// approcher ce fichier.
+
+import type { Auth } from "firebase/auth";
+import type { Firestore } from "firebase/firestore";
+
+const config = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
+
+/**
+ * Vrai seulement si toutes les variables sont présentes. Une configuration
+ * à moitié remplie est plus dangereuse qu'une absente : elle laisserait
+ * croire que l'authentification marche.
+ */
+export const firebaseEstConfigure = Object.values(config).every(
+  (v) => typeof v === "string" && v.length > 0
+);
+
+export type ServicesFirebase = { auth: Auth; db: Firestore };
+
+let promesse: Promise<ServicesFirebase | null> | null = null;
+
+/**
+ * Charge le SDK et initialise l'application, une seule fois.
+ *
+ * Renvoie null si la configuration est absente — les appelants doivent
+ * traiter ce cas, jamais supposer que Firebase est là.
+ */
+export function chargerFirebase(): Promise<ServicesFirebase | null> {
+  if (!firebaseEstConfigure) return Promise.resolve(null);
+  if (!promesse) {
+    promesse = (async () => {
+      const [{ initializeApp }, { getAuth }, { getFirestore }] = await Promise.all([
+        import("firebase/app"),
+        import("firebase/auth"),
+        import("firebase/firestore"),
+      ]);
+      const app = initializeApp(config as Required<typeof config>);
+      return { auth: getAuth(app), db: getFirestore(app) };
+    })();
+  }
+  return promesse;
+}
+
+/**
+ * Message unique affiché partout où l'authentification est requise mais
+ * indisponible. Une seule formulation, pour ne pas dire trois choses
+ * différentes selon l'écran.
+ */
+export const MESSAGE_NON_CONFIGURE =
+  "Les comptes ne sont pas encore ouverts. Le matériel reste consultable en aperçu gratuit, sans inscription.";
