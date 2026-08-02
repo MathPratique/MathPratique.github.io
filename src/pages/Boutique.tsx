@@ -31,7 +31,7 @@ const DUREE_ACCES_MOIS = 12;
  */
 const PAIEMENT_ACTIF = false;
 
-/** Chapitre en version étudiant + dix exercices. Aucune inscription. */
+/** Chapitre en version enseignant + dix exercices. Aucune inscription. */
 const PDF_APERCU = "/boutique/echantillon.pdf";
 const NOM_TELECHARGEMENT_APERCU = "calcul-differentiel-apercu.pdf";
 
@@ -335,7 +335,7 @@ export default function Boutique() {
             Regarde avant d'acheter
           </h2>
           <p className="mt-3 text-balance text-base text-ink-600">
-            Un chapitre complet en version étudiant, plus dix exercices avec
+            Un chapitre complet en version enseignant, plus dix exercices avec
             leurs indices, leurs réponses et leurs démarches détaillées. Aucune
             inscription, aucun courriel à laisser.
           </p>
