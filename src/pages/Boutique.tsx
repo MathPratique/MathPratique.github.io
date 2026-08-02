@@ -335,9 +335,13 @@ export default function Boutique() {
             Regarde avant d'acheter
           </h2>
           <p className="mt-3 text-balance text-base text-ink-600">
-            Un chapitre complet en version enseignant, plus dix exercices avec
-            leurs indices, leurs réponses et leurs démarches détaillées. Aucune
-            inscription, aucun courriel à laisser.
+            {/* Pas de nombre écrit ici : l'échantillon reprend les exercices
+                ouverts du chapitre, et ce compte suit la vitrine gratuite. Il
+                est passé de dix à neuf sans que cette phrase ne bouge. Mieux
+                vaut ne rien promettre qu'on ne puisse tenir tout seul. */}
+            Un chapitre complet en version enseignant, plus les exercices
+            ouverts de ce chapitre avec leurs indices, leurs réponses et leurs
+            démarches détaillées. Aucune inscription, aucun courriel à laisser.
           </p>
           <a
             href={PDF_APERCU}
