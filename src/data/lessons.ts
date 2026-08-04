@@ -25,6 +25,10 @@ export const chapters: Chapter[] = [
   { id: "probabilites", name: "Probabilités", topicId: "probability" },
   { id: "inference", name: "Inférence statistique", topicId: "probability" },
   { id: "correlation-regression", name: "Corrélation, régression et χ²", topicId: "probability" },
+
+  // Calcul différentiel — un chapitre unique, subdivisé en 7 leçons-chapitres
+  // qui correspondent aux 7 chapitres de la banque src/data/calcul-differentiel/.
+  { id: "calcul-differentiel", name: "Calcul différentiel", topicId: "differential-calculus" },
 ];
 
 export const lessons: Lesson[] = [
@@ -105,6 +109,17 @@ export const lessons: Lesson[] = [
 
   // Probabilités et statistiques — Corrélation, régression et χ² (Ch.4 201-SN1-RE)
   { id: "PSD4", number: 4, name: "Chapitre 4 — Corrélation, régression et χ²", chapterId: "correlation-regression" },
+
+  // Calcul différentiel — 7 chapitres tirés directement des titres de la banque
+  // src/data/calcul-differentiel/chNN.json. Les IDs CD1..CD7 sont ce que le
+  // quiz personnalisé cherche via CUSTOM_QUIZ_LESSONS.
+  { id: "CD1", number: 1, name: "Chapitre 1 — Fonctions et domaines", chapterId: "calcul-differentiel" },
+  { id: "CD2", number: 2, name: "Chapitre 2 — Limites", chapterId: "calcul-differentiel" },
+  { id: "CD3", number: 3, name: "Chapitre 3 — Continuité", chapterId: "calcul-differentiel" },
+  { id: "CD4", number: 4, name: "Chapitre 4 — La dérivée : définition et interprétation", chapterId: "calcul-differentiel" },
+  { id: "CD5", number: 5, name: "Chapitre 5 — Règles et formules de dérivation", chapterId: "calcul-differentiel" },
+  { id: "CD6", number: 6, name: "Chapitre 6 — Applications mathématiques de la dérivée", chapterId: "calcul-differentiel" },
+  { id: "CD7", number: 7, name: "Chapitre 7 — Analyse de problèmes en sciences de la nature", chapterId: "calcul-differentiel" },
 ];
 
 export function getChapterById(id: string): Chapter | undefined {

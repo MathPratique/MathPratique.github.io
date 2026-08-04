@@ -3,40 +3,6 @@ import { topics } from "../../data/topics";
 import { exercises } from "../../data/exercises";
 import AnimatedSection from "../ui/AnimatedSection";
 
-type TopicStyle = {
-  bg: string;
-  hoverBg: string;
-  ring: string;
-  iconBg: string;
-};
-
-const TOPIC_STYLES: Record<string, TopicStyle> = {
-  "differential-calculus": {
-    bg: "bg-indigo-500",
-    hoverBg: "hover:bg-indigo-600",
-    ring: "ring-indigo-200",
-    iconBg: "bg-indigo-400/40",
-  },
-  "integral-calculus": {
-    bg: "bg-emerald-500",
-    hoverBg: "hover:bg-emerald-600",
-    ring: "ring-emerald-200",
-    iconBg: "bg-emerald-400/40",
-  },
-  "linear-algebra": {
-    bg: "bg-fuchsia-500",
-    hoverBg: "hover:bg-fuchsia-600",
-    ring: "ring-fuchsia-200",
-    iconBg: "bg-fuchsia-400/40",
-  },
-  probability: {
-    bg: "bg-amber-500",
-    hoverBg: "hover:bg-amber-600",
-    ring: "ring-amber-200",
-    iconBg: "bg-amber-400/40",
-  },
-};
-
 export default function TopicsShowcase() {
   return (
     <section id="topics" className="container-page scroll-mt-28 py-20 sm:py-24">
@@ -55,7 +21,7 @@ export default function TopicsShowcase() {
           // Le compte publié prime : `exercises` ne contient plus qu'un
           // exercice de calcul différentiel, vestige d'avant la banque.
           const count = topic.nbExercicesPublies ?? exercises.filter((e) => e.topicId === topic.id).length;
-          const style = TOPIC_STYLES[topic.id];
+          const style = topic.couleur;
           return (
             <AnimatedSection key={topic.id} delay={i * 0.08}>
               <Link

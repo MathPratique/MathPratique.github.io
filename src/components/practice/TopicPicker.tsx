@@ -15,48 +15,22 @@ type TopicPickerProps = {
   resterSurPlace?: boolean;
 };
 
-type TopicStyle = {
-  bg: string;
-  hoverBg: string;
-  ring: string;
-  iconBg: string;
-};
-
-const TOPIC_STYLES: Record<string, TopicStyle> = {
-  "differential-calculus": {
-    bg: "bg-indigo-500",
-    hoverBg: "hover:bg-indigo-600",
-    ring: "ring-indigo-200",
-    iconBg: "bg-indigo-400/40",
-  },
-  "integral-calculus": {
-    bg: "bg-emerald-500",
-    hoverBg: "hover:bg-emerald-600",
-    ring: "ring-emerald-200",
-    iconBg: "bg-emerald-400/40",
-  },
-  "linear-algebra": {
-    bg: "bg-fuchsia-500",
-    hoverBg: "hover:bg-fuchsia-600",
-    ring: "ring-fuchsia-200",
-    iconBg: "bg-fuchsia-400/40",
-  },
-  probability: {
-    bg: "bg-amber-500",
-    hoverBg: "hover:bg-amber-600",
-    ring: "ring-amber-200",
-    iconBg: "bg-amber-400/40",
-  },
-};
-
 export default function TopicPicker({ onTopicSelect, resterSurPlace = false }: TopicPickerProps) {
   return (
     <div className="grid gap-6 sm:grid-cols-2">
       {topics.map((topic, i) => {
-        const style = TOPIC_STYLES[topic.id];
+        const style = topic.couleur;
         // Le compte publié prime : le tableau `exercises` ne contient plus
         // qu'un exercice de calcul différentiel, vestige d'avant la banque.
         const count = topic.nbExercicesPublies ?? exercises.filter((e) => e.topicId === topic.id).length;
+        // Quand la banque a une portion payante, on affiche « X sur Y »
+        // — le total réel plutôt que la seule portion accessible, pour
+        // qu'un acheteur potentiel voie ce qu'il obtient avec le package.
+        const totalBanque = topic.nbExercicesTotal;
+        const compteurTexte =
+          totalBanque && totalBanque > count
+            ? `${count} sur ${totalBanque}`
+            : `${count} exercice${count > 1 ? "s" : ""}`;
         const vitrine = resterSurPlace ? undefined : topic.pageDediee;
         const classes =
           "group relative flex w-full cursor-pointer flex-col items-start gap-4 " +
@@ -95,7 +69,7 @@ export default function TopicPicker({ onTopicSelect, resterSurPlace = false }: T
 
             <div className="mt-2 flex w-full items-center justify-between">
               <span className="rounded-full bg-black/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                {count} exercice{count > 1 ? "s" : ""}
+                {compteurTexte}
               </span>
               <span className="inline-flex items-center gap-1 text-sm font-semibold transition-transform duration-300 group-hover:translate-x-1">
                 Commencer

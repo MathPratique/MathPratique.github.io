@@ -6,6 +6,7 @@ import Practice from "./pages/Practice";
 import Quiz from "./pages/Quiz";
 import CustomQuiz from "./pages/CustomQuiz";
 import Boutique from "./pages/Boutique";
+import BoutiqueCalculDifferentiel from "./pages/BoutiqueCalculDifferentiel";
 import AchatConfirme from "./pages/AchatConfirme";
 import Enseignants from "./pages/Enseignants";
 import Connexion from "./pages/Connexion";
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/custom-quiz" element={<CustomQuiz />} />
         <Route path="/boutique" element={<Boutique />} />
+        <Route path="/boutique/calcul-differentiel" element={<BoutiqueCalculDifferentiel />} />
         <Route path="/achat-confirme" element={<AchatConfirme />} />
         <Route path="/enseignants" element={<Enseignants />} />
         <Route path="/connexion" element={<Connexion />} />

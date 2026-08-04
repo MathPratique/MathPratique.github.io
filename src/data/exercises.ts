@@ -42,6 +42,13 @@ export type Exercise = {
   options?: MCQOption[];        // for type === "mcq"
   isTrue?: boolean;             // for type === "tf" — correct answer
   explanation?: RichContent;    // shown after the user answers
+  // Rendering hint : when set to "latex", prompt/steps/answer/options are
+  // strings of raw LaTeX+HTML rendered by <Mathematiques>. Left undefined,
+  // content is rendered by <RichContent> (Unicode + RichPart array).
+  format?: "latex";
+  // URL vers une figure d'accompagnement (SVG). Résolue par Vite au build
+  // via import.meta.glob dans le picker. Affichée juste sous l'énoncé.
+  figure?: string;
 };
 
 // Inline rich-content helpers for vectors. Lets us write

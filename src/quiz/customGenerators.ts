@@ -7,6 +7,12 @@ import {
   ProbStatPicker,
   type ProbStatLessonId,
 } from "./probStatPicker";
+import {
+  isCalcDiffLesson,
+  hasAny as calcDiffHasAny,
+  CalcDiffPicker,
+  type CalcDiffLessonId,
+} from "./calcDiffPicker";
 
 // Inline rich-content helpers (same shape as the manualExercises).
 const t = (s: string): RichPart => ({ type: "text", content: s });
@@ -24,6 +30,8 @@ export const CUSTOM_QUIZ_LESSONS = [
   "L50", "L51", "L52", "L53", "L54", "L55", "L56", "L57", "L58",
   // Probabilités et statistique (banque figée de 388 exercices — voir probStatPicker.ts)
   "PSD1", "PSD2", "PSD3", "PSD4",
+  // Calcul différentiel (banque figée gratuits — voir calcDiffPicker.ts)
+  "CD1", "CD2", "CD3", "CD4", "CD5", "CD6", "CD7",
 ];
 
 // ════════════════════════════════════════════════════════════════════════
@@ -1880,9 +1888,10 @@ export type CustomQuizSpec = {
 
 export function buildCustomQuiz(specs: CustomQuizSpec[]): Exercise[] {
   const out: Exercise[] = [];
-  // One picker per quiz so PSD draws are unique within the quiz but the
-  // pool resets on the next tirage.
+  // Un picker par quiz, pour chaque banque figée : tirage sans remise au
+  // sein du quiz, pool réinitialisé au prochain tirage.
   const psdPicker = new ProbStatPicker();
+  const cdPicker = new CalcDiffPicker();
   for (const spec of specs) {
     if (isProbStatLesson(spec.lessonId)) {
       for (let i = 0; i < spec.exerciseCount; i++) {
@@ -1895,6 +1904,21 @@ export function buildCustomQuiz(specs: CustomQuizSpec[]): Exercise[] {
       }
       for (let i = 0; i < spec.tfCount; i++) {
         const ex = psdPicker.draw(spec.lessonId, "tf", spec.difficulty);
+        if (ex) out.push(ex);
+      }
+      continue;
+    }
+    if (isCalcDiffLesson(spec.lessonId)) {
+      for (let i = 0; i < spec.exerciseCount; i++) {
+        const ex = cdPicker.draw(spec.lessonId, "exercise", spec.difficulty);
+        if (ex) out.push(ex);
+      }
+      for (let i = 0; i < spec.mcqCount; i++) {
+        const ex = cdPicker.draw(spec.lessonId, "mcq", spec.difficulty);
+        if (ex) out.push(ex);
+      }
+      for (let i = 0; i < spec.tfCount; i++) {
+        const ex = cdPicker.draw(spec.lessonId, "tf", spec.difficulty);
         if (ex) out.push(ex);
       }
       continue;
@@ -1960,7 +1984,8 @@ export function decodeCustomQuiz(str: string): CustomQuizSpec[] {
 }
 
 // Which lesson-type combos have a generator (used to enable/disable inputs in the UI).
-// For Prob-Stat lessons, availability depends on the (optional) difficulty filter.
+// For bank-backed lessons (Prob-Stat, Calcul différentiel), availability depends
+// on the (optional) difficulty filter.
 export function getAvailableTypes(
   lessonId: string,
   difficulty?: Difficulty,
@@ -1975,6 +2000,14 @@ export function getAvailableTypes(
       exercise: probStatHasAny(id, "exercise", difficulty),
       mcq: probStatHasAny(id, "mcq", difficulty),
       tf: probStatHasAny(id, "tf", difficulty),
+    };
+  }
+  if (isCalcDiffLesson(lessonId)) {
+    const id = lessonId as CalcDiffLessonId;
+    return {
+      exercise: calcDiffHasAny(id, "exercise", difficulty),
+      mcq: calcDiffHasAny(id, "mcq", difficulty),
+      tf: calcDiffHasAny(id, "tf", difficulty),
     };
   }
   const lessonNum = parseInt(lessonId.slice(1), 10);

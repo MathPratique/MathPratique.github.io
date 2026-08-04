@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import clsx from "clsx";
 import { getLessonById, getChapterById } from "../data/lessons";
@@ -13,6 +13,15 @@ import {
   type CustomQuizSpec,
 } from "../quiz/customGenerators";
 import { isProbStatLesson } from "../quiz/probStatPicker";
+import { isCalcDiffLesson } from "../quiz/calcDiffPicker";
+
+// Une leçon « de banque figée » (Prob-Stat ou Calcul différentiel) accepte
+// le filtre de difficulté et s'affiche avec un badge « Chapitre » plutôt
+// que « Leçon ». Les leçons procédurales d'algèbre linéaire (L*) restent
+// hors périmètre — leur difficulté est câblée dans les générateurs.
+function isBankLesson(lessonId: string): boolean {
+  return isProbStatLesson(lessonId) || isCalcDiffLesson(lessonId);
+}
 
 type RowState = {
   exercise: number;
@@ -86,29 +95,44 @@ export default function CustomQuiz() {
     [activeTopic]
   );
 
-  // Difficulty filter — only meaningful for Prob-Stat (bank-of-388 pool).
-  // For linear-algebra procedural generators this is ignored.
+  // Filtre de difficulté — significatif pour les leçons de banque figée
+  // (Prob-Stat, Calcul différentiel). Les générateurs procéduraux (L*)
+  // ont leur difficulté câblée et l'ignorent.
   const [difficulty, setDifficulty] = useState<Difficulty | undefined>(undefined);
-  const isProbStatTopic = activeTopic === "probability";
+  const isBankTopic = activeTopic === "probability" || activeTopic === "differential-calculus";
 
   const lessonMeta = useMemo(() => {
     if (!activeTopic) return [];
     const ids = lessonsByTopic[activeTopic] ?? [];
     return ids.map((id) => {
       const lesson = getLessonById(id);
-      const available = getAvailableTypes(
-        id,
-        isProbStatLesson(id) ? difficulty : undefined,
-      );
+      const bank = isBankLesson(id);
+      const available = getAvailableTypes(id, bank ? difficulty : undefined);
       return {
         id,
         number: lesson?.number ?? 0,
         name: lesson?.name ?? id,
         available,
-        isProbStat: isProbStatLesson(id),
+        isBank: bank,
       };
     });
   }, [activeTopic, lessonsByTopic, difficulty]);
+
+  // Protection : si la carte du topic annonce des exercices mais qu'aucune
+  // leçon exploitable n'existe côté quiz, on avertit dans la console plutôt
+  // que d'afficher silencieusement un écran vide. Détecte les décalages
+  // futurs entre topics.ts et CUSTOM_QUIZ_LESSONS.
+  useEffect(() => {
+    if (!activeTopic || !currentTopic) return;
+    const annonce = currentTopic.nbExercicesPublies ?? 0;
+    if (annonce > 0 && lessonMeta.length === 0) {
+      console.warn(
+        `[quiz personnalisé] La matière « ${currentTopic.name} » annonce ${annonce} exercices ` +
+          "mais aucune leçon n'est branchée dans CUSTOM_QUIZ_LESSONS. " +
+          "Vérifie src/data/lessons.ts et src/quiz/customGenerators.ts.",
+      );
+    }
+  }, [activeTopic, currentTopic, lessonMeta.length]);
 
   const [rows, setRows] = useState<Record<string, RowState>>(() => {
     const init: Record<string, RowState> = {};
@@ -142,7 +166,7 @@ export default function CustomQuiz() {
             mcqCount: rows[m.id].mcq,
             tfCount: rows[m.id].tf,
           };
-          if (m.isProbStat && difficulty) spec.difficulty = difficulty;
+          if (m.isBank && difficulty) spec.difficulty = difficulty;
           return spec;
         })
         .filter(
@@ -228,7 +252,7 @@ export default function CustomQuiz() {
         </AnimatedSection>
       ) : (
         <>
-          {isProbStatTopic && (
+          {isBankTopic && (
             <AnimatedSection delay={0.08} className="mt-8">
               <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-brand-100 bg-white p-4">
                 <span className="text-sm font-semibold text-brand-900">
@@ -270,7 +294,7 @@ export default function CustomQuiz() {
           <AnimatedSection delay={0.1} className="mt-6">
             <div className="overflow-x-auto rounded-2xl border border-brand-100 bg-white">
               <div className="grid min-w-[640px] grid-cols-[1.4fr_auto_auto_auto] items-center gap-x-6 gap-y-1 border-b border-brand-100 bg-brand-50/60 px-5 py-3 text-xs font-semibold uppercase tracking-wide text-brand-700">
-                <span>{isProbStatTopic ? "Chapitre" : "Leçon"}</span>
+                <span>{isBankTopic ? "Chapitre" : "Leçon"}</span>
                 <span className="w-16 text-center">Calc</span>
                 <span className="w-16 text-center">QCM</span>
                 <span className="w-16 text-center">V/F</span>
@@ -281,7 +305,7 @@ export default function CustomQuiz() {
                   const state = rows[m.id];
                   const hasAny =
                     m.available.exercise || m.available.mcq || m.available.tf;
-                  const badgeLabel = m.isProbStat ? "Chapitre" : "Leçon";
+                  const badgeLabel = m.isBank ? "Chapitre" : "Leçon";
                   return (
                     <li
                       key={m.id}
@@ -296,7 +320,7 @@ export default function CustomQuiz() {
                             {badgeLabel} {m.number}
                           </span>
                           <span className="text-sm font-semibold text-brand-900">
-                            {m.isProbStat ? m.name.replace(/^Chapitre \d+ — /, "") : m.name}
+                            {m.isBank ? m.name.replace(/^Chapitre \d+ — /, "") : m.name}
                           </span>
                         </div>
                       </div>

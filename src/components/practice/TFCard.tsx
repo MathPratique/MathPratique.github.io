@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import clsx from "clsx";
 import type { Exercise } from "../../data/exercises";
 import { topics } from "../../data/topics";
-import RichContent from "../ui/RichContent";
+import ContenuExercice from "./ContenuExercice";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
   Facile: "bg-accent-500/10 text-accent-600",
@@ -60,8 +60,17 @@ export default function TFCard({ exercise, displayIndex }: TFCardProps) {
         {exercise.title}
       </h3>
       <div className="mt-2 font-mono text-sm leading-relaxed text-ink-700">
-        <RichContent content={exercise.prompt} />
+        <ContenuExercice content={exercise.prompt} format={exercise.format} />
       </div>
+
+      {exercise.figure && (
+        <img
+          src={exercise.figure}
+          alt="Figure de l'exercice"
+          className="mx-auto mt-4 block max-w-full"
+          loading="lazy"
+        />
+      )}
 
       <div className="mt-5 grid grid-cols-2 gap-3">
         <button
@@ -119,7 +128,7 @@ export default function TFCard({ exercise, displayIndex }: TFCardProps) {
             </p>
             {exercise.explanation && (
               <div className="mt-1.5 leading-relaxed">
-                <RichContent content={exercise.explanation} />
+                <ContenuExercice content={exercise.explanation} format={exercise.format} html />
               </div>
             )}
             <button

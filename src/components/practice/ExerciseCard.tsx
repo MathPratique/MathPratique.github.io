@@ -4,7 +4,7 @@ import clsx from "clsx";
 import type { Exercise, RichContent as RichContentValue } from "../../data/exercises";
 import { topics } from "../../data/topics";
 import Matrix from "../ui/Matrix";
-import RichContent from "../ui/RichContent";
+import ContenuExercice from "./ContenuExercice";
 import MCQCard from "./MCQCard";
 import TFCard from "./TFCard";
 
@@ -68,7 +68,11 @@ export default function ExerciseCard({ exercise, displayIndex }: ExerciseCardPro
   const topic = topics.find((t) => t.id === exercise.topicId);
   const contextLabel =
     displayIndex != null ? `Exercice #${displayIndex}` : topic?.name ?? "Exercice";
-  const answerLines = splitAnswerLines(exercise.answer);
+  // splitAnswerLines coupe la réponse sur chaque `;` — parfait pour une réponse
+  // multi-sous-questions type « (a) x ; (b) y », désastreux pour du LaTeX où
+  // `\;` est un espace fin qui contient un `;`. En format LaTeX, on laisse la
+  // réponse en un seul bloc rendu par Mathematiques.
+  const answerLines = exercise.format === "latex" ? null : splitAnswerLines(exercise.answer);
 
   return (
     <div className="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm shadow-brand-900/5 transition-shadow duration-200 hover:shadow-md hover:shadow-brand-900/10">
@@ -90,8 +94,17 @@ export default function ExerciseCard({ exercise, displayIndex }: ExerciseCardPro
         {exercise.title}
       </h3>
       <div className="mt-2 font-mono text-sm leading-relaxed text-ink-700">
-        <RichContent content={exercise.prompt} />
+        <ContenuExercice content={exercise.prompt} format={exercise.format} />
       </div>
+
+      {exercise.figure && (
+        <img
+          src={exercise.figure}
+          alt="Figure de l'exercice"
+          className="mx-auto mt-4 block max-w-full"
+          loading="lazy"
+        />
+      )}
 
       {exercise.matrix && (
         <Matrix data={exercise.matrix.data} label={exercise.matrix.label} />
@@ -159,7 +172,11 @@ export default function ExerciseCard({ exercise, displayIndex }: ExerciseCardPro
                       {sub ? sub.letter : i + 1}
                     </span>
                     <span className="leading-relaxed">
-                      <RichContent content={sub ? sub.rest : step} />
+                      <ContenuExercice
+                        content={sub ? sub.rest : step}
+                        format={exercise.format}
+                        html
+                      />
                     </span>
                   </motion.li>
                 );
@@ -183,7 +200,7 @@ export default function ExerciseCard({ exercise, displayIndex }: ExerciseCardPro
                   </ul>
                 </>
               ) : (
-                <>Réponse : <RichContent content={exercise.answer} /></>
+                <>Réponse : <ContenuExercice content={exercise.answer} format={exercise.format} /></>
               )}
             </motion.div>
           </motion.div>
