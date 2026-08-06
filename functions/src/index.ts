@@ -141,7 +141,17 @@ export const creerSessionCheckout = onCall(
       metadata: { uid, coursId },
       // Répété sur le paiement lui-même : les métadonnées de session ne
       // suivent pas jusqu'au remboursement, celles du payment_intent si.
-      payment_intent_data: { metadata: { uid, coursId } },
+      //
+      // `description` de ce payment_intent apparaît sur le reçu Stripe
+      // envoyé par courriel. Sans elle, le reçu ne montre que le nom du
+      // produit et l'acheteur ne voit pas la durée à laquelle il a droit.
+      // On NE PAS calculer de date de fin ici : la session peut être créée
+      // longtemps avant que le paiement se finalise ; seule la date fixée
+      // par le webhook au moment du paiement fait autorité.
+      payment_intent_data: {
+        metadata: { uid, coursId },
+        description: `Package — Calcul différentiel — accès de ${DUREE_ACCES_MOIS} mois à partir de la date d'achat`,
+      },
 
       client_reference_id: uid,
       customer_email: requete.auth?.token?.email ?? undefined,

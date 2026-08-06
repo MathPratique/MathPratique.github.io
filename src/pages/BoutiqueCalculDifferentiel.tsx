@@ -29,7 +29,7 @@ const DUREE_ACCES_MOIS = 12;
  * Tant que c'est `false`, la page annonce le produit sans prétendre le vendre.
  * Passer à `true` uniquement quand le parcours d'achat complet est en place.
  */
-const PAIEMENT_ACTIF = false;
+const PAIEMENT_ACTIF = true;
 
 /** Chapitre en version enseignant + dix exercices. Aucune inscription. */
 const PDF_APERCU = "/boutique/echantillon.pdf";
