@@ -64,15 +64,13 @@ export async function demarrerAchat(coursId: string): Promise<never | void> {
   const services = await chargerFirebase();
   if (!services) throw new ErreurPaiement("non-configure");
 
-  const { getAuth } = await import("firebase/auth");
-  if (!getAuth().currentUser) throw new ErreurPaiement("non-connecte");
+  if (!services.auth.currentUser) throw new ErreurPaiement("non-connecte");
 
-  const { getFunctions, httpsCallable } = await import("firebase/functions");
-  const fonctions = getFunctions(undefined, "northamerica-northeast1");
+  const { httpsCallable } = await import("firebase/functions");
 
   try {
     const appeler = httpsCallable<{ coursId: string }, { url: string }>(
-      fonctions,
+      services.functions,
       "creerSessionCheckout"
     );
     const { data } = await appeler({ coursId });

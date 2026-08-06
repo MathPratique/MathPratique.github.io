@@ -47,15 +47,13 @@ export async function telecharger(documentId: string): Promise<void> {
   const services = await chargerFirebase();
   if (!services) throw new ErreurTelechargement("non-configure");
 
-  const { getAuth } = await import("firebase/auth");
-  if (!getAuth().currentUser) throw new ErreurTelechargement("non-connecte");
+  if (!services.auth.currentUser) throw new ErreurTelechargement("non-connecte");
 
-  const { getFunctions, httpsCallable } = await import("firebase/functions");
-  const fonctions = getFunctions(undefined, "northamerica-northeast1");
+  const { httpsCallable } = await import("firebase/functions");
 
   try {
     const appeler = httpsCallable<{ documentId: string }, { url: string; titre: string }>(
-      fonctions,
+      services.functions,
       "obtenirLienTelechargement"
     );
     const { data } = await appeler({ documentId });

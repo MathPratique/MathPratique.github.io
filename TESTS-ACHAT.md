@@ -10,11 +10,19 @@ tester pour valider le parcours complet.
 
 ## 1.1 Créer le projet Firebase (si pas déjà fait)
 
+**Un seul projet Firebase** — nom d'affichage `mathpratique`, ID
+`mathpratique-8dea1` (suffixe généré par Firebase) — sert à la fois aux
+tests et à la production. C'est **Stripe** qui bascule entre mode test et
+mode live, pas Firebase.
+
 1. [console.firebase.google.com](https://console.firebase.google.com/) → **Ajouter un projet**
-2. Nommer le projet (ex. `mathpratique-test` ou `mathpratique-prod`)
-3. Activer **Firestore**, **Authentication** (avec le fournisseur « Courriel + mot de passe »),
+2. Nom d'affichage : `mathpratique` (Firebase peut y ajouter un suffixe
+   dans l'ID technique — dans ce projet, l'ID est `mathpratique-8dea1`).
+3. Activer **Firestore**, **Authentication** (fournisseur « Courriel + mot de passe »),
    **Storage**, **Functions**
-4. **⚠️ Passer au forfait Blaze** (Utilisation et facturation → mettre à niveau).
+4. Pour Firestore et Storage, choisir l'emplacement **`northamerica-northeast1`** (Montréal) —
+   même région que celle codée dans les Cloud Functions (`functions/src/index.ts`)
+5. **⚠️ Passer au forfait Blaze** (Utilisation et facturation → mettre à niveau).
    Sans lui, les Cloud Functions ne peuvent pas appeler Stripe.
    Coût réel : quasi nul sous 2 M d'invocations/mois.
 
@@ -52,26 +60,46 @@ Note le courriel et le mot de passe — tu t'en serviras pour tous les tests.
    - Copier l'**identifiant du prix** (commence par `price_...`)
 3. **Coupons** → **Créer un coupon** (pour le prix de lancement) :
    - Type : montant fixe
-   - Réduction : `1500` (15,00 $ pour tomber à 34 $) — ou pourcentage
-   - Copier l'**identifiant du coupon** (commence par `PROMO...`)
+   - Réduction : `1500` (15,00 $ pour tomber à 34 $)
+   - Copier l'**identifiant du coupon** — l'ID est libre (Stripe génère un
+     court identifiant aléatoire, tu peux aussi en choisir un lisible comme
+     `LANCEMENT2026`). C'est l'ID, PAS un « code promotionnel » — les codes
+     promos activables par le client sont un autre objet Stripe qu'on
+     n'utilise pas ici.
 4. **Clés API** → **Clés de développement** :
    - Copier la clé secrète `sk_test_...` (⚠️ jamais dans le repo)
 
-## 1.5 Configurer les secrets Firebase Functions
+## 1.5 Configurer les paramètres et secrets — pour l'émulateur local
 
-Depuis le terminal, à la racine du dépôt :
+Les fonctions déclarent `STRIPE_SECRET_KEY` et `STRIPE_WEBHOOK_SECRET` via
+`defineSecret` (voir `functions/src/index.ts`). En production, ces secrets
+vivent dans **Google Secret Manager**. Dans l'émulateur, Firebase les lit
+depuis un fichier local **`functions/.secret.local`**.
+
+Se connecter à Firebase (une seule fois) :
 
 ```bash
-# Se connecter à Firebase (une seule fois)
 npx firebase login
-npx firebase use --add   # sélectionner le projet créé en 1.1
+npx firebase use --add   # sélectionner mathpratique-8dea1
+```
 
-# Poser les secrets (interactif — colle la valeur quand demandé)
-npx firebase functions:secrets:set STRIPE_SECRET_KEY
-# → colle la valeur sk_test_... récupérée en 1.4
+Créer le fichier des secrets, à la racine du dossier `functions/` :
 
-# Poser les paramètres non secrets (via .env dans functions/)
-cat > functions/.env <<EOF
+```bash
+cat > functions/.secret.local <<'EOF'
+STRIPE_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXX
+# STRIPE_WEBHOOK_SECRET sera ajouté en §1.7 (une fois stripe listen lancé)
+EOF
+```
+
+Colle la valeur `sk_test_...` récupérée en §1.4. `STRIPE_WEBHOOK_SECRET`
+reste vide pour l'instant — on l'ajoutera en §1.7 quand Stripe CLI l'aura
+généré.
+
+Créer aussi le fichier des paramètres non secrets :
+
+```bash
+cat > functions/.env <<'EOF'
 STRIPE_PRICE_ID=price_XXXXXXXXXXXX
 STRIPE_COUPON_LANCEMENT=PROMOXXXXXXXX
 URL_SITE=http://localhost:5173
@@ -79,8 +107,20 @@ STRIPE_TAXES_ACTIVES=non
 EOF
 ```
 
-Le fichier `functions/.env` est également ignoré par Git (couvert par
-`.env.*` dans `.gitignore`).
+**Vérification que Git ignore bien ces fichiers** :
+
+```bash
+git status --short | grep -E "\.secret\.local|functions/\.env"
+# doit ne rien afficher
+```
+
+`.secret.local` est couvert par le pattern `*.local` (section « Dependencies »
+de `.gitignore`), `functions/.env` par le pattern `.env`. Si l'un ou l'autre
+apparaît dans `git status`, arrête tout et corrige le `.gitignore` avant de
+continuer.
+
+> **Pour la production**, ces mêmes secrets seront posés dans Secret Manager
+> avec `firebase functions:secrets:set` — voir **Partie 4**.
 
 ## 1.6 Installer Stripe CLI (pour tester les webhooks localement)
 
@@ -93,24 +133,54 @@ Puis :
 stripe login    # ouvre le navigateur pour lier ton compte Stripe
 ```
 
-## 1.7 Récupérer le secret webhook
+## 1.7 Récupérer le secret webhook — une fois, pour l'émulateur local
 
-Dans un terminal séparé (à laisser tourner pendant les tests) :
+Étape en trois temps qui n'est faite qu'une fois. À la session suivante, on
+suit directement §1.9.
 
-```bash
-stripe listen --forward-to http://localhost:5001/PROJET_ID/northamerica-northeast1/webhookStripe
-```
+**Étape 1 — démarrer temporairement l'émulateur des fonctions**
 
-Remplace `PROJET_ID` par l'id de ton projet Firebase (celui de la variable
-`VITE_FIREBASE_PROJECT_ID`).
-
-Cette commande affiche : `Your webhook signing secret is whsec_...`.
-Copier cette valeur et la poser en secret :
+Dans un premier terminal, à la racine du dépôt :
 
 ```bash
-npx firebase functions:secrets:set STRIPE_WEBHOOK_SECRET
-# → colle la valeur whsec_...
+npm --prefix functions run build
+npx firebase emulators:start --only functions
 ```
+
+**Étape 2 — lancer `stripe listen` dans un second terminal**
+
+```bash
+stripe listen --forward-to http://localhost:5001/mathpratique-8dea1/northamerica-northeast1/webhookStripe
+```
+
+La commande affiche au démarrage :
+
+```
+Your webhook signing secret is whsec_XXXXXXXXXXXXXXXXXXXX (^C to quit)
+```
+
+**Étape 3 — ajouter le secret à `.secret.local`**
+
+Ouvre `functions/.secret.local` et **ajoute** la ligne
+`STRIPE_WEBHOOK_SECRET=...` (retire la ligne commentée créée en §1.5). Le
+fichier doit avoir cette forme :
+
+```
+STRIPE_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXX
+STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXX
+```
+
+**Étape 4 — arrêter tout**
+
+Ctrl+C dans les deux terminaux. Ils seront relancés proprement en §1.9,
+avec les valeurs bien chargées.
+
+⚠️ **Le secret webhook change à chaque nouvelle exécution de `stripe listen`.**
+Si tu redémarres cette commande demain, il faudra recopier la nouvelle valeur
+dans `.secret.local` et relancer les émulateurs.
+
+> **Pour la production**, un webhook permanent sera créé dans le dashboard
+> Stripe pointant vers l'URL déployée — voir **Partie 4**.
 
 ## 1.8 Télécharger la clé de service (pour le script d'admin)
 
@@ -126,7 +196,7 @@ git status | grep serviceAccountKey    # doit ne rien afficher — il est ignor�
 
 ## 1.9 Démarrer les émulateurs (à chaque session de test)
 
-Dans deux terminaux distincts :
+Dans trois terminaux distincts :
 
 ```bash
 # Terminal 1 — les émulateurs Firebase
@@ -134,11 +204,37 @@ npm --prefix functions run build
 npx firebase emulators:start --only functions,firestore,auth
 
 # Terminal 2 — le forward Stripe → webhook local
-stripe listen --forward-to http://localhost:5001/PROJET_ID/northamerica-northeast1/webhookStripe
+stripe listen --forward-to http://localhost:5001/mathpratique-8dea1/northamerica-northeast1/webhookStripe
 
 # Terminal 3 — le site (dev)
 npm run dev
 ```
+
+Si `stripe listen` affiche un `whsec_...` **différent** de celui déjà dans
+`functions/.secret.local`, mets à jour ce fichier et redémarre le terminal 1
+— sinon les tests échoueront tous avec « signature invalide ».
+
+### Le site se connecte automatiquement aux émulateurs
+
+Le site en mode `npm run dev` détecte `import.meta.env.DEV` et branche
+`Auth`, `Firestore` et `Functions` sur les émulateurs locaux
+(`127.0.0.1:9099`, `:8080`, `:5001`) — voir `src/firebase/config.ts`.
+
+**Aucune action de ta part.** Aucune variable d'environnement à changer,
+aucun mode spécial à activer. Tant que tu utilises `npm run dev`, tu es
+sur les émulateurs. Tant que tu utilises `npm run build`, tu es sur
+Firebase en production.
+
+Comment vérifier que ça a bien branché :
+- Onglet **Console** des DevTools navigateur — aucune erreur de connexion
+- Terminal 1 (émulateurs) — les requêtes apparaissent en direct dès qu'un
+  bouton est cliqué (auth, création session, webhook…)
+- Terminal 2 (`stripe listen`) — les événements apparaissent quand un
+  paiement se termine
+- **Signe qu'il y a un problème** : le bouton « Acheter » affiche « Le
+  paiement est momentanément indisponible » sans qu'aucune ligne
+  n'apparaisse dans le terminal 1 → le site parle à Firebase en prod
+  au lieu de l'émulateur. Redémarre `npm run dev`.
 
 ---
 
@@ -237,8 +333,14 @@ chiffres. Code postal : n'importe lequel.
 
 ### Test I — Webhook rejoué 3 fois
 **Actions** :
+
+1. Récupère l'ID d'un événement récent — dans le terminal qui fait tourner
+   `stripe listen`, chaque événement est affiché avec sa ligne :
+   `--> checkout.session.completed [evt_1QXXXXXXXXXXXX]`.
+   Copie la partie `evt_...`.
+2. Rejoue-le 3 fois de suite :
+
 ```bash
-# Depuis Stripe CLI, replay le dernier événement 3 fois
 stripe events resend evt_XXXXXXXXXXXX
 stripe events resend evt_XXXXXXXXXXXX
 stripe events resend evt_XXXXXXXXXXXX
@@ -251,18 +353,44 @@ stripe events resend evt_XXXXXXXXXXXX
 - Un seul document dans `evenementsStripe/{sessionId}`
 
 ### Test J — Signature invalide
-**Actions** :
+
+⚠️ **Fais ce test EN DERNIER de ta session.** Il modifie temporairement
+`.secret.local` — si tu enchaînes d'autres tests sans restaurer, ils
+échoueront tous avec la même erreur « signature invalide » et tu perdras du
+temps à chercher le vrai coupable.
+
+**Étape 1 — noter le vrai secret**
+Ouvre `functions/.secret.local` et copie la valeur actuelle de
+`STRIPE_WEBHOOK_SECRET` (commence par `whsec_...`) quelque part —
+Notepad, un post-it, peu importe.
+
+**Étape 2 — poser une valeur invalide**
 ```bash
-# Poser un mauvais secret temporairement
-npx firebase functions:secrets:set STRIPE_WEBHOOK_SECRET
-# → coller « whsec_INVALIDE »
-# puis relancer le forward stripe listen — il enverra avec l'ancienne signature
+# Édite functions/.secret.local et remplace la ligne par :
+STRIPE_WEBHOOK_SECRET=whsec_INVALIDE
+```
+
+Puis redémarre les émulateurs (Ctrl+C dans le terminal Functions, relance
+`npx firebase emulators:start`).
+
+**Étape 3 — provoquer un événement**
+```bash
+stripe trigger checkout.session.completed
 ```
 
 **Résultat attendu** :
-- Réponse 400 « signature invalide »
-- Aucune écriture Firestore
-- Log : `[webhook] signature invalide`
+- Le terminal Stripe CLI affiche : `POST … → [400] signature invalide`
+- Logs de l'émulateur Functions : `[webhook] signature invalide`
+- Aucune écriture dans Firestore
+
+**Étape 4 — RESTAURER le vrai secret**
+```bash
+# Édite functions/.secret.local et remets la valeur notée à l'étape 1
+STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXX
+```
+
+Puis redémarre les émulateurs une dernière fois. **Vérifie que ça marche**
+avec un `stripe trigger checkout.session.completed` — tu dois voir un 200.
 
 ### Test K — Utilisateur avec accès valide qui tente de racheter
 **Actions** :
@@ -344,11 +472,130 @@ Le script :
 
 # Partie 4 — Activation en production
 
-Une fois tous les tests validés :
+Une fois tous les tests de la Partie 2 validés, voici l'ordre exact pour
+passer du mode test au mode live. **Prends ton temps** — chaque erreur ici
+coûte un vrai paiement à quelqu'un.
 
-1. Passer `PAIEMENT_ACTIF = true` dans `src/pages/BoutiqueCalculDifferentiel.tsx`
-2. Refaire la config §1.5 avec les clés **live** de Stripe (`sk_live_...`)
-3. Créer un nouveau webhook dans le dashboard Stripe pointant vers l'URL
-   de Cloud Function déployée (au lieu de `stripe listen`)
-4. `npx firebase deploy --only functions`
-5. Refaire le test B avec une vraie carte (ou une petite somme sur ta propre carte pour valider)
+## 4.1 Recréer les objets Stripe en mode live
+
+**Les objets créés en mode test n'existent pas en mode live** — Stripe les
+sépare complètement. Tout est à refaire.
+
+Bascule le dashboard Stripe en **mode live** (interrupteur en haut à droite :
+désactiver « Afficher les données de test »).
+
+1. **Produits** → **Ajouter un produit** :
+   - Nom : `Package — Calcul différentiel`
+   - Prix : `49,00 CAD`, paiement unique
+   - Copier le nouvel identifiant `price_...` (**différent** de celui du mode test)
+2. **Coupons** → **Créer un coupon** :
+   - Type : montant fixe
+   - Réduction : `1500` (pour arriver à 34 $)
+   - Copier le nouvel identifiant (comme en §1.4, c'est un ID libre — peut
+     être personnalisé, ex. `LANCEMENT2026-LIVE`)
+3. **Clés API** → **Clés de production** :
+   - Copier la clé secrète `sk_live_...`
+   - ⚠️ Cette clé donne accès à ton compte en production — jamais dans le
+     repo, jamais partagée, jamais dans un courriel
+
+## 4.2 Poser les secrets et paramètres pour la production
+
+Les secrets de production vivent dans **Google Secret Manager** (pas dans
+`.secret.local`) :
+
+```bash
+# Depuis la racine du dépôt
+npx firebase functions:secrets:set STRIPE_SECRET_KEY
+# → colle la valeur sk_live_... récupérée en 4.1
+```
+
+Pour `STRIPE_WEBHOOK_SECRET`, il faut d'abord créer l'endpoint webhook
+(§4.3) — reviens ici après.
+
+Mettre à jour `functions/.env` avec les identifiants **live** :
+
+```bash
+cat > functions/.env <<'EOF'
+STRIPE_PRICE_ID=price_XXXXXXXXXXXX_LIVE
+STRIPE_COUPON_LANCEMENT=PROMOXXXXXXXX_LIVE
+URL_SITE=https://mathpratique.ca
+STRIPE_TAXES_ACTIVES=non
+EOF
+```
+
+⚠️ **`URL_SITE` doit passer à `https://mathpratique.ca`** — sinon Stripe
+renvoie les acheteurs sur `http://localhost:5173/achat-confirme` qui n'existe
+nulle part. C'est l'erreur qui gâche l'expérience de tes premiers acheteurs.
+
+## 4.3 Créer le webhook Stripe en mode live
+
+En mode test, `stripe listen` faisait le relais. En production, Stripe
+appelle directement l'URL déployée de la Cloud Function.
+
+**L'URL exacte** de la fonction `webhookStripe` déployée est affichée à la
+fin de `firebase deploy --only functions` (§4.4), et visible dans le
+dashboard Firebase → **Fonctions** → cliquer sur `webhookStripe`. Elle a la
+forme :
+
+```
+https://northamerica-northeast1-mathpratique-8dea1.cloudfunctions.net/webhookStripe
+```
+
+**Il vaut mieux faire §4.4 (déploiement) AVANT §4.3, pour copier l'URL
+exacte** — la deviner mène souvent à un webhook qui pointe dans le vide.
+
+Une fois l'URL en main :
+
+1. Dashboard Stripe (mode live) → **Développeurs** → **Webhooks** → **Ajouter un endpoint**
+2. URL d'écoute : coller l'URL copiée du dashboard Firebase
+3. Événement à écouter : `checkout.session.completed`
+4. Créer, puis **révéler et copier le secret de signature** (`whsec_...`)
+
+Poser ce secret dans Secret Manager :
+
+```bash
+npx firebase functions:secrets:set STRIPE_WEBHOOK_SECRET
+# → colle la valeur whsec_... récupérée à l'étape 4
+```
+
+## 4.4 Déployer les Cloud Functions
+
+```bash
+npx firebase deploy --only functions
+```
+
+Vérifie dans le dashboard Firebase (Fonctions) que les 3 fonctions
+apparaissent, en région `northamerica-northeast1`.
+
+## 4.5 Activer le paiement côté site
+
+Dans `src/pages/BoutiqueCalculDifferentiel.tsx`, ligne du haut :
+
+```ts
+const PAIEMENT_ACTIF = true;  // était false
+```
+
+Commit et push. Le site en prod (GitHub Pages) prendra la nouvelle version
+au prochain build.
+
+## 4.6 Validation en live
+
+**Fais un vrai achat avec ta propre carte** (test B, mais avec `sk_live_...`
+et le vrai formulaire de paiement) :
+
+- Vérifie que tu es facturé de `34,00 $` (le coupon de lancement s'applique)
+- Vérifie que ton accès apparaît sur `/mon-compte` avec la bonne date de fin
+- Rembourse-toi via le dashboard Stripe (Paiements → ton paiement → Rembourser)
+
+Ce test coûte 34 $ pendant quelques jours (délai de remboursement Stripe),
+et te confirme que la chaîne complète fonctionne — bien moins cher qu'un
+premier client qui ne reçoit rien.
+
+## 4.7 Rester vigilant les premiers jours
+
+- Surveille les logs Firebase Functions (`npx firebase functions:log`) après
+  chaque achat pendant la première semaine
+- Vérifie qu'aucun événement Stripe n'échoue (dashboard → Webhooks → ton
+  endpoint → onglet « Tentatives »)
+- Sois disponible sur ton adresse de contact — les premiers acheteurs
+  peuvent tomber sur des cas non anticipés

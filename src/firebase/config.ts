@@ -28,6 +28,7 @@
 
 import type { Auth } from "firebase/auth";
 import type { Firestore } from "firebase/firestore";
+import type { Functions } from "firebase/functions";
 
 const config = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -47,12 +48,22 @@ export const firebaseEstConfigure = Object.values(config).every(
   (v) => typeof v === "string" && v.length > 0
 );
 
-export type ServicesFirebase = { auth: Auth; db: Firestore };
+export type ServicesFirebase = { auth: Auth; db: Firestore; functions: Functions };
 
 let promesse: Promise<ServicesFirebase | null> | null = null;
 
+// La région doit correspondre à celle codée dans functions/src/index.ts
+// (`onCall({ region: "northamerica-northeast1" })`). Sans ça, `httpsCallable`
+// pointerait sur `us-central1` par défaut et ne trouverait rien.
+const REGION_FONCTIONS = "northamerica-northeast1";
+
 /**
  * Charge le SDK et initialise l'application, une seule fois.
+ *
+ * En mode `npm run dev` (`import.meta.env.DEV`), les trois services se
+ * branchent automatiquement sur les émulateurs locaux — sinon le site
+ * appellerait Firebase en production, ce qui court-circuite complètement
+ * l'infrastructure de test.
  *
  * Renvoie null si la configuration est absente — les appelants doivent
  * traiter ce cas, jamais supposer que Firebase est là.
@@ -61,13 +72,34 @@ export function chargerFirebase(): Promise<ServicesFirebase | null> {
   if (!firebaseEstConfigure) return Promise.resolve(null);
   if (!promesse) {
     promesse = (async () => {
-      const [{ initializeApp }, { getAuth }, { getFirestore }] = await Promise.all([
+      const [
+        { initializeApp },
+        { getAuth, connectAuthEmulator },
+        { getFirestore, connectFirestoreEmulator },
+        { getFunctions, connectFunctionsEmulator },
+      ] = await Promise.all([
         import("firebase/app"),
         import("firebase/auth"),
         import("firebase/firestore"),
+        import("firebase/functions"),
       ]);
       const app = initializeApp(config as Required<typeof config>);
-      return { auth: getAuth(app), db: getFirestore(app) };
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+      const functions = getFunctions(app, REGION_FONCTIONS);
+
+      if (import.meta.env.DEV) {
+        // Adresses des émulateurs Firebase (voir firebase.json). Le drapeau
+        // `disableWarnings` retire la bannière rouge « Running in emulator
+        // mode » sur Auth — elle est utile pour signaler qu'on n'est pas en
+        // prod, mais son affichage n'est pas configurable en français et
+        // brise la mise en page. Le mode dev est déjà signalé par l'URL.
+        connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
+        connectFirestoreEmulator(db, "127.0.0.1", 8080);
+        connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+      }
+
+      return { auth, db, functions };
     })();
   }
   return promesse;
