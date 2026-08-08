@@ -18,6 +18,7 @@
 //      corrects sans qu'on ait à câbler `aria-expanded` à la main.
 
 import Mathematiques from "./Mathematiques";
+import QcmInteractif from "./QcmInteractif";
 import {
   etape,
   LIB_DIFFICULTE,
@@ -69,6 +70,10 @@ export default function CarteExerciceCD({
         <span className="text-ink-600">· {exercice.tempsEstime} min</span>
       </div>
 
+      {exercice.sectionNotes && (
+        <p className="mt-2 text-xs italic text-ink-600">{exercice.sectionNotes}</p>
+      )}
+
       {enonce && "texte" in enonce && (
         <div className="mt-3 text-[15px] leading-relaxed text-ink-900">
           <Mathematiques source={enonce.texte} html />
@@ -91,6 +96,24 @@ export default function CarteExerciceCD({
           </figure>
         ) : null;
       })()}
+
+      {/* QCM interactif — les vrai/faux ont `choix: null` volontairement
+          et ne sont donc pas concernés (voir la note dans les JSON). */}
+      {exercice.type === "qcm" &&
+        enonce &&
+        enonce.etape === "enonce" &&
+        enonce.choix &&
+        enonce.choix.length > 0 && (
+          <QcmInteractif
+            choix={enonce.choix}
+            analyseChoix={
+              (() => {
+                const d = etape(exercice, "demarche");
+                return d && d.etape === "demarche" ? d.analyseChoix : undefined;
+              })()
+            }
+          />
+        )}
 
       <div className="mt-4 space-y-2">
         {PALIERS.map(({ palier, bouton }) => {
@@ -124,13 +147,21 @@ export default function CarteExerciceCD({
                     <Mathematiques source={contenu.texte} html />
                   </div>
                 ) : (
-                  <ol className="mt-2 space-y-3 text-[15px] leading-relaxed text-ink-700">
-                    {contenu.lignes.map((ligne, i) => (
-                      <li key={i}>
-                        <Mathematiques source={ligne} html />
-                      </li>
-                    ))}
-                  </ol>
+                  <>
+                    <ol className="mt-2 space-y-3 text-[15px] leading-relaxed text-ink-700">
+                      {contenu.lignes.map((ligne, i) => (
+                        <li key={i}>
+                          <Mathematiques source={ligne} html />
+                        </li>
+                      ))}
+                    </ol>
+                    {contenu.piegeCourant && (
+                      <div className="mt-4 rounded-lg border-l-4 border-amber-400 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+                        <span className="font-semibold">Piège fréquent — </span>
+                        <Mathematiques source={contenu.piegeCourant} html />
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </details>

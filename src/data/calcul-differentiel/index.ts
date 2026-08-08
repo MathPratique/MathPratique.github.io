@@ -31,6 +31,14 @@ export type Palier = "enonce" | "indice" | "reponse" | "demarche";
 /** Choix d'un QCM ou d'un vrai/faux, tel qu'écrit dans les JSON. */
 export type Choix = { cle: string; texte: string };
 
+/**
+ * Analyse d'un choix — présente dans l'étape « démarche », séparée des
+ * choix pour que le DOM initial ne révèle pas la bonne réponse. Le JSON
+ * servi au navigateur contient ces données, mais elles ne s'écrivent
+ * dans le HTML rendu qu'après le clic de l'étudiant.
+ */
+export type AnalyseChoix = { cle: string; correct: boolean; explication: string };
+
 export type Etape =
   | {
       etape: "enonce";
@@ -42,7 +50,15 @@ export type Etape =
       choix?: Choix[];
     }
   | { etape: "indice" | "reponse"; titre: string; texte: string }
-  | { etape: "demarche"; titre: string; lignes: string[] };
+  | {
+      etape: "demarche";
+      titre: string;
+      lignes: string[];
+      /** Analyse de chaque choix pour les QCM. Absent pour les autres types. */
+      analyseChoix?: AnalyseChoix[];
+      /** Piège pédagogique classique, à afficher en fin de démarche. */
+      piegeCourant?: string;
+    };
 
 export type Exercice = {
   id: string;
