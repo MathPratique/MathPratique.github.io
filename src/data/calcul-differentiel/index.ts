@@ -28,8 +28,20 @@ export type TypeExercice = "qcm" | "vrai-faux" | "calcul-court" | "calcul-long";
 export type Difficulte = "facile" | "moyen" | "difficile";
 export type Palier = "enonce" | "indice" | "reponse" | "demarche";
 
+/** Choix d'un QCM ou d'un vrai/faux, tel qu'écrit dans les JSON. */
+export type Choix = { cle: string; texte: string };
+
 export type Etape =
-  | { etape: "enonce" | "indice" | "reponse"; titre: string; texte: string }
+  | {
+      etape: "enonce";
+      titre: string;
+      texte: string;
+      /** Chemin relatif au dossier calcul-differentiel/, ex. « figures/CD-C01-E003.svg ». */
+      figure?: string;
+      /** Présent pour les QCM et les vrai/faux. */
+      choix?: Choix[];
+    }
+  | { etape: "indice" | "reponse"; titre: string; texte: string }
   | { etape: "demarche"; titre: string; lignes: string[] };
 
 export type Exercice = {
@@ -119,4 +131,38 @@ export function etape(ex: Exercice, palier: Palier): Etape | null {
 export function enonce(ex: Exercice): string {
   const e = etape(ex, "enonce");
   return e && "texte" in e ? e.texte : "";
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+//  Résolution des figures pré-rendues en SVG.
+//
+//  Le champ `figure` dans un énoncé contient un chemin relatif au JSON
+//  (« figures/CD-C01-E003.svg »). Vite les hache au build via
+//  import.meta.glob et sert des assets versionnés en production.
+// ═══════════════════════════════════════════════════════════════════════
+
+const svgUrls = import.meta.glob("./figures/*.svg", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+/** Table `nom-de-fichier → URL Vite`, dérivée du glob. */
+const FIGURES: Map<string, string> = new Map(
+  Object.entries(svgUrls).map(([chemin, url]) => {
+    const nom = chemin.split("/").pop() ?? chemin;
+    return [nom, url];
+  }),
+);
+
+/**
+ * Traduit une valeur de `enonce.figure` (chemin relatif au JSON) en URL
+ * servable par le navigateur. Renvoie null si le SVG n'existe pas — utile
+ * pour ne pas afficher une image cassée sur un exercice dont la figure n'a
+ * pas encore été rendue.
+ */
+export function resoudreFigureUrl(cheminJson: string | undefined): string | null {
+  if (!cheminJson) return null;
+  const nom = cheminJson.split("/").pop() ?? cheminJson;
+  return FIGURES.get(nom) ?? null;
 }

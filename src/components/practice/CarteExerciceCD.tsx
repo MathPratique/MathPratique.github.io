@@ -22,6 +22,7 @@ import {
   etape,
   LIB_DIFFICULTE,
   LIB_TYPE,
+  resoudreFigureUrl,
   type Exercice,
   type Palier,
 } from "../../data/calcul-differentiel";
@@ -73,6 +74,23 @@ export default function CarteExerciceCD({
           <Mathematiques source={enonce.texte} html />
         </div>
       )}
+
+      {enonce && enonce.etape === "enonce" && enonce.figure && (() => {
+        const url = resoudreFigureUrl(enonce.figure);
+        // Silencieux si le SVG manque : l'énoncé mentionne peut-être une
+        // figure sans qu'elle soit publiée (exo réservé au package).
+        // Éviter d'afficher une image cassée est mieux qu'un placeholder.
+        return url ? (
+          <figure className="mt-4">
+            <img
+              src={url}
+              alt={`Figure pour l'exercice ${exercice.id}`}
+              className="mx-auto block max-w-full"
+              loading="lazy"
+            />
+          </figure>
+        ) : null;
+      })()}
 
       <div className="mt-4 space-y-2">
         {PALIERS.map(({ palier, bouton }) => {
