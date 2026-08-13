@@ -1113,9 +1113,9 @@
       "id": "CD-C03-E028",
       "chapitre": 3,
       "section": "3.4",
-      "type": "calcul-long",
+      "type": "calcul-court",
       "difficulte": "moyen",
-      "tempsEstime": 7,
+      "tempsEstime": 4,
       "acces": "payant",
       "verrouille": true
     },

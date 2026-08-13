@@ -58,6 +58,36 @@ service cloud.firestore {
         // SDK Admin, qui n'est pas soumis à ces règles.
         allow write: if false;
       }
+
+      // --- Progression personnelle ----------------------------------------
+      // Un document par cours, réservé aux détenteurs d'un accès valide.
+      // Contient les exercices complétés et marqués, sous forme de deux
+      // dictionnaires plats {idExo: timestamp}. La règle d'accès valide est
+      // la MÊME que celle du téléchargement : `dateFin > request.time`,
+      // horloge du serveur Firestore. Un accès expiré rend la progression
+      // inaccessible SANS la supprimer — l'étudiant retrouve son historique
+      // s'il rachète.
+      match /progression/{coursId} {
+        function accesValide() {
+          let doc = /databases/$(database)/documents/utilisateurs/$(uid)/acces/$(coursId);
+          return exists(doc) && get(doc).data.dateFin > request.time;
+        }
+        // Liste blanche des clés autorisées : empêche un client bavard de
+        // gonfler le document avec des champs inconnus. Le format des
+        // valeurs (timestamps dans completes/marques) n'est pas audité —
+        // du contenu bidon ne pollue que le propre affichage du fauteur.
+        function formeValide() {
+          return request.resource.data.keys().hasOnly(
+            ['completes', 'marques', 'dateMaj', 'version']
+          );
+        }
+        allow read:   if estLeProprietaire(uid) && accesValide();
+        allow create: if estLeProprietaire(uid) && accesValide() && formeValide();
+        allow update: if estLeProprietaire(uid) && accesValide() && formeValide();
+        // Jamais de delete : l'expiration ne doit pas effacer, pour que le
+        // rachat restaure l'historique intact.
+        allow delete: if false;
+      }
     }
 
     // --- Journal des événements Stripe -------------------------------------

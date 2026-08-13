@@ -4,6 +4,7 @@ import clsx from "clsx";
 import type { Exercise } from "../../data/exercises";
 import { topics } from "../../data/topics";
 import ContenuExercice from "./ContenuExercice";
+import BoutonsProgression from "../../progression/BoutonsProgression";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
   Facile: "bg-accent-500/10 text-accent-600",
@@ -54,6 +55,11 @@ export default function TFCard({ exercise, displayIndex }: TFCardProps) {
         <span className="rounded-full bg-accent-500 px-3 py-1 text-xs font-semibold text-white">
           Vrai/Faux
         </span>
+        {exercise.id.startsWith("CD-") && (
+          <span className="ml-auto">
+            <BoutonsProgression id={exercise.id} />
+          </span>
+        )}
       </div>
 
       <h3 className="mt-4 font-display text-lg font-semibold text-brand-900">

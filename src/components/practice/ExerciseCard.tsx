@@ -7,6 +7,7 @@ import Matrix from "../ui/Matrix";
 import ContenuExercice from "./ContenuExercice";
 import MCQCard from "./MCQCard";
 import TFCard from "./TFCard";
+import BoutonsProgression from "../../progression/BoutonsProgression";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
   Facile: "bg-accent-500/10 text-accent-600",
@@ -88,6 +89,11 @@ export default function ExerciseCard({ exercise, displayIndex }: ExerciseCardPro
         >
           {exercise.difficulty}
         </span>
+        {exercise.id.startsWith("CD-") && (
+          <span className="ml-auto">
+            <BoutonsProgression id={exercise.id} />
+          </span>
+        )}
       </div>
 
       <h3 className="mt-4 font-display text-lg font-semibold text-brand-900">

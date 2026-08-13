@@ -19,6 +19,7 @@
 
 import Mathematiques from "./Mathematiques";
 import QcmInteractif from "./QcmInteractif";
+import BoutonsProgression from "../../progression/BoutonsProgression";
 import {
   etape,
   LIB_DIFFICULTE,
@@ -68,6 +69,9 @@ export default function CarteExerciceCD({
         </span>
         <span className="text-ink-600">§{exercice.section}</span>
         <span className="text-ink-600">· {exercice.tempsEstime} min</span>
+        <span className="ml-auto">
+          <BoutonsProgression id={exercice.id} />
+        </span>
       </div>
 
       {exercice.sectionNotes && (

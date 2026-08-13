@@ -5,10 +5,17 @@
 // des fiches signalétiques — jamais à partir du contenu, qui n'est pas dans
 // les fichiers servis.
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import AnimatedSection from "../components/ui/AnimatedSection";
 import CarteExerciceCD from "../components/practice/CarteExerciceCD";
+import FiltreProgressionBarre from "../progression/FiltreProgression";
+import { useProgression } from "../progression/ProgressionContext";
+import {
+  compteAvecPrefixe,
+  filtrerIds,
+  type FiltreProgression,
+} from "../progression/regles";
 import {
   CHAPITRES,
   LIB_DIFFICULTE,
@@ -34,6 +41,11 @@ export default function ExercicesCalculDifferentiel() {
   const typeActif = params.get("type") as TypeExercice | null;
   const difficulteActive = params.get("difficulte") as Difficulte | null;
 
+  // Filtre de progression : local, non persisté dans l'URL. Les URLs
+  // partageables restent stables et ne portent pas un état personnel.
+  const [filtreProg, setFiltreProg] = useState<FiltreProgression>("tous");
+  const { progression } = useProgression();
+
   useEffect(() => {
     document.title = TITRE_PAGE;
     document
@@ -43,15 +55,27 @@ export default function ExercicesCalculDifferentiel() {
 
   const groupes = useMemo(
     () =>
-      CHAPITRES.filter((c) => !chapitreActif || String(c.numero) === chapitreActif).map((c) => ({
-        ...c,
-        visibles: c.exercices.filter(
+      CHAPITRES.filter((c) => !chapitreActif || String(c.numero) === chapitreActif).map((c) => {
+        // On filtre en deux temps : d'abord type + difficulté (critères
+        // publics), puis progression (critère personnel). L'ordre importe
+        // peu sauf pour le compteur : celui-ci porte sur les exercices
+        // AVEC les filtres publics, mais SANS le filtre progression, pour
+        // afficher « X / Y complétés » où Y = ce que voit ce visiteur.
+        const filtresPublics = c.exercices.filter(
           (e) =>
             (!typeActif || e.type === typeActif) &&
-            (!difficulteActive || e.difficulte === difficulteActive)
-        ),
-      })),
-    [chapitreActif, typeActif, difficulteActive]
+            (!difficulteActive || e.difficulte === difficulteActive),
+        );
+        const idsAffichables = new Set(
+          filtrerIds(progression, filtresPublics.map((e) => e.id), filtreProg),
+        );
+        return {
+          ...c,
+          filtresPublics,
+          visibles: filtresPublics.filter((e) => idsAffichables.has(e.id)),
+        };
+      }),
+    [chapitreActif, typeActif, difficulteActive, filtreProg, progression],
   );
 
   const nbVisibles = groupes.reduce((n, g) => n + g.visibles.length, 0);
@@ -99,6 +123,14 @@ export default function ExercicesCalculDifferentiel() {
             actif={difficulteActive}
             surChoix={(v) => filtre("difficulte", v)}
           />
+          {/* Filtre progression — n'apparaît que pour les détenteurs d'un
+              accès valide. Rendu conditionnel géré dans le composant. */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="w-full text-xs font-semibold uppercase tracking-wide text-ink-600 sm:w-20">
+              Progression
+            </span>
+            <FiltreProgressionBarre valeur={filtreProg} onChange={setFiltreProg} />
+          </div>
         </div>
         {nbVisibles === 0 && (
           <p className="mt-8 text-center text-sm text-ink-600">
@@ -125,6 +157,7 @@ export default function ExercicesCalculDifferentiel() {
                   ` sur ${g.exercices.length} gratuits dans ce chapitre`}
                 .
               </p>
+              <CompteurChapitre chapitre={g.numero} nbTotal={g.filtresPublics.length} />
             </header>
 
             <div className="mx-auto mt-5 max-w-4xl space-y-4">
@@ -168,6 +201,33 @@ export default function ExercicesCalculDifferentiel() {
         </p>
       </AnimatedSection>
     </div>
+  );
+}
+
+/**
+ * « X / Y complétés » sous l'entête d'un chapitre. Discret, une seule
+ * ligne, visible uniquement pour les détenteurs d'un accès valide. On
+ * ne l'affiche pas en état de chargement pour éviter le passage de
+ * « 0 / 30 » à « 12 / 30 » à la volée qui donnerait une impression
+ * (fausse) de perte de données.
+ */
+function CompteurChapitre({ chapitre, nbTotal }: { chapitre: number; nbTotal: number }) {
+  const { statut, progression } = useProgression();
+  if (statut !== "actif") return null;
+  const prefixe = `CD-C${String(chapitre).padStart(2, "0")}-`;
+  const completes = compteAvecPrefixe(progression, "completes", prefixe);
+  const marques = compteAvecPrefixe(progression, "marques", prefixe);
+  return (
+    <p className="mt-1 text-sm text-ink-600">
+      <span className="font-semibold text-emerald-700">{completes} / {nbTotal}</span>{" "}
+      complétés
+      {marques > 0 && (
+        <>
+          {" "}·{" "}
+          <span className="font-semibold text-amber-700">{marques}</span> à revoir
+        </>
+      )}
+    </p>
   );
 }
 

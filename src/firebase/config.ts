@@ -75,7 +75,12 @@ export function chargerFirebase(): Promise<ServicesFirebase | null> {
       const [
         { initializeApp },
         { getAuth, connectAuthEmulator },
-        { getFirestore, connectFirestoreEmulator },
+        {
+          initializeFirestore,
+          persistentLocalCache,
+          persistentMultipleTabManager,
+          connectFirestoreEmulator,
+        },
         { getFunctions, connectFunctionsEmulator },
       ] = await Promise.all([
         import("firebase/app"),
@@ -85,7 +90,16 @@ export function chargerFirebase(): Promise<ServicesFirebase | null> {
       ]);
       const app = initializeApp(config as Required<typeof config>);
       const auth = getAuth(app);
-      const db = getFirestore(app);
+      // Cache persistant IndexedDB, avec un gestionnaire multi-onglets. Utile
+      // pour la progression : navigation entre pages sans re-lecture, et les
+      // writes hors-ligne sont mises en file d'attente pour partir à la
+      // reconnexion. Le multi-tab manager gère le cas où l'étudiant a la page
+      // Exercices ouverte dans un onglet et le quiz dans un autre.
+      const db = initializeFirestore(app, {
+        localCache: persistentLocalCache({
+          tabManager: persistentMultipleTabManager(),
+        }),
+      });
       const functions = getFunctions(app, REGION_FONCTIONS);
 
       if (import.meta.env.DEV) {

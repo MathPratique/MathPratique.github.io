@@ -15,14 +15,20 @@ export type ContenuExerciceProps = {
   content: RichContentValue;
   format?: "latex";
   /**
-   * Autorise les balises simples (`<strong>`, `<em>`, `<br>`) dans le rendu
-   * LaTeX — utile pour les démarches détaillées de la banque calc-diff.
-   * Ignoré en dehors du format LaTeX.
+   * Traite les balises simples (`<strong>`, `<em>`, `<br>`) et les commandes
+   * de mise en forme LaTeX hors mode math (`\qquad`, `\textbf`, `\up`…).
+   * Activé par défaut — indispensable pour la banque calc-diff où
+   * énoncés, options et démarches en contiennent partout. Ignoré en dehors
+   * du format LaTeX (RichContent fait son propre rendu).
+   *
+   * On le laisse en prop pour permettre à un futur cas de le désactiver,
+   * mais aucun appel actuel ne devrait le mettre à `false` sur du contenu
+   * de la banque.
    */
   html?: boolean;
 };
 
-export default function ContenuExercice({ content, format, html = false }: ContenuExerciceProps) {
+export default function ContenuExercice({ content, format, html = true }: ContenuExerciceProps) {
   if (format === "latex" && typeof content === "string") {
     return <Mathematiques source={content} html={html} />;
   }

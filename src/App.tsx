@@ -11,6 +11,7 @@ import AchatConfirme from "./pages/AchatConfirme";
 import Enseignants from "./pages/Enseignants";
 import Connexion from "./pages/Connexion";
 import MonCompte from "./pages/MonCompte";
+import { ProgressionProvider } from "./progression/ProgressionContext";
 // Chargée à la demande : cette page tire KaTeX et les 65 exercices avec
 // leurs démarches, soit environ 430 ko. Les inclure dans le bundle principal
 // les imposait à chaque visiteur de l'accueil, qui n'en a aucun usage.
@@ -19,7 +20,13 @@ const ExercicesCalculDifferentiel = lazy(
 );
 
 export default function App() {
+  // Un seul provider pour tout le site. La progression n'active son
+  // abonnement Firestore qu'une fois qu'un utilisateur est connecté et a un
+  // accès valide au cours — sans quoi il reste inerte et gratuit.
+  // Aujourd'hui un seul cours a des exercices en ligne (calcul-differentiel) ;
+  // le jour où un autre en aura, on instancie un provider par cours.
   return (
+    <ProgressionProvider coursId="calcul-differentiel">
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
@@ -49,5 +56,6 @@ export default function App() {
         <Route path="/mon-compte" element={<MonCompte />} />
       </Route>
     </Routes>
+    </ProgressionProvider>
   );
 }

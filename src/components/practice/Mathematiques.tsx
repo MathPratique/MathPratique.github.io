@@ -54,13 +54,17 @@ function rendre(latex: string, bloc: boolean): string {
 /**
  * Affiche une chaîne mêlant français et LaTeX.
  *
- * `html` autorise en plus les balises simples que la banque insère dans les
- * démarches — `<strong>`, `<em>`, `<br>`. Elles viennent du même endroit que
- * le LaTeX, et sont soumises à la même remarque de confiance ci-dessus.
+ * `html` (activé par défaut) traite les balises simples de la banque —
+ * `<strong>`, `<em>`, `<br>` — et les commandes de mise en forme LaTeX
+ * hors mode math (`\qquad`, `\textbf`, `\up`, `\begin{tabular}`…). Sans
+ * lui, tous les segments non mathématiques s'affichent verbatim et le
+ * HTML produit par `preparer()` (tableaux, listes, alignements) est
+ * échappé à l'écran. Elles viennent du même endroit que le LaTeX, et
+ * sont soumises à la même remarque de confiance ci-dessus.
  */
 export default function Mathematiques({
   source,
-  html = false,
+  html = true,
   className,
 }: {
   source: string;

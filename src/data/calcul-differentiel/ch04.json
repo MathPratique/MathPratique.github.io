@@ -397,7 +397,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Écris le quotient différentiel en $0$, puis calcule ses deux limites latérales séparément. Comment s'écrit $|h|$ selon le signe de $h$ ?"
+          "texte": "Écris le taux de variation moyen en $0$, puis calcule ses deux limites latérales séparément. Comment s'écrit $|h|$ selon le signe de $h$ ?"
         },
         {
           "etape": "reponse",
@@ -408,7 +408,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Étape 1 — Écrire le quotient différentiel en $0$.</strong> Comme $f(0) = |0| = 0$ :\\[ \\dfrac{f(0+h) - f(0)}{h} = \\dfrac{|h| - 0}{h} = \\dfrac{|h|}{h}. \\]",
+            "<strong>Étape 1 — Écrire le taux de variation moyen en $0$.</strong> Comme $f(0) = |0| = 0$ :\\[ \\dfrac{f(0+h) - f(0)}{h} = \\dfrac{|h| - 0}{h} = \\dfrac{|h|}{h}. \\]",
             "<strong>Étape 2 — Limite à droite.</strong> Si $h > 0$, alors $|h| = h$ :\\[ \\lim_{h \\to 0^{+}}\\dfrac{|h|}{h} = \\lim_{h \\to 0^{+}}\\dfrac{h}{h} = 1. \\]",
             "<strong>Étape 3 — Limite à gauche.</strong> Si $h < 0$, alors $|h| = -h$ :\\[ \\lim_{h \\to 0^{-}}\\dfrac{|h|}{h} = \\lim_{h \\to 0^{-}}\\dfrac{-h}{h} = -1. \\]",
             "<strong>Étape 4 — Conclure.</strong> Les deux limites latérales existent mais diffèrent :\\[ 1 \\neq -1. \\]",
@@ -474,7 +474,7 @@
             "L'énoncé propose la <em>réciproque</em>, qui est <strong>fausse</strong>.",
             "<strong>Contre-exemple.</strong> Soit $f(x) = |x|$ en $x = 0$.",
             "Cette fonction est <em>continue</em> en $0$ : on vérifie les trois conditions du chapitre 3, et $\\displaystyle\\lim_{x\\to 0}|x| = 0 = f(0)$.",
-            "Mais elle n'y est <em>pas dérivable</em> : les limites latérales du quotient différentiel valent $1$ et $-1$.",
+            "Mais elle n'y est <em>pas dérivable</em> : les limites latérales du taux de variation moyen valent $1$ et $-1$.",
             "La continuité ne suffit donc pas à garantir la dérivabilité. L'énoncé est faux.",
             "<strong>La hiérarchie correcte</strong> est la suivante :\\[ \\text{dérivable} \\implies \\text{continue}, \\qquad \\text{mais} \\qquad \\text{continue} \\;\\not\\!\\!\\implies \\text{dérivable}. \\]",
             "Autrement dit, la dérivabilité est une condition <em>plus forte</em> que la continuité : elle exige non seulement l'absence de coupure, mais aussi l'absence de coin ou de tangente verticale."
@@ -506,7 +506,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = \\begin{cases} x^{2} & \\text{si } x \\leq 1, \\\\ x & \\text{si } x > 1. \\end{cases}$\\\\[0.3em] (a) Montre que $f$ est continue en $x = 1$. \\\\[0.2em] (b) Calcule les deux limites latérales du quotient différentiel en $x = 1$. \\\\[0.2em] (c) La fonction est-elle dérivable en $x = 1$ ? Que peut-on en conclure ?"
+          "texte": "Soit $f(x) = \\begin{cases} x^{2} & \\text{si } x \\leq 1, \\\\ x & \\text{si } x > 1. \\end{cases}$\\\\[0.3em] (a) Montre que $f$ est continue en $x = 1$. \\\\[0.2em] (b) Calcule $\\displaystyle\\lim_{h \\to 0^{-}} \\dfrac{f(1+h) - f(1)}{h}$ et $\\displaystyle\\lim_{h \\to 0^{+}} \\dfrac{f(1+h) - f(1)}{h}$. \\\\[0.2em] (c) La fonction est-elle dérivable en $x = 1$ ? Que peut-on en conclure ?"
         },
         {
           "etape": "indice",
@@ -528,11 +528,11 @@
             "Elles sont égales, donc $\\displaystyle\\lim_{x\\to 1} f(x) = 1$ existe. $\\checkmark$",
             "<em>C3.</em> $\\displaystyle\\lim_{x\\to 1} f(x) = 1 = f(1)$. $\\checkmark$",
             "Les trois conditions sont remplies : $f$ est <strong>continue</strong> en $x = 1$.",
-            "<strong>(b) Quotient différentiel.</strong> Comme $f(1) = 1$, le quotient s'écrit\\[ \\dfrac{f(1+h) - f(1)}{h} = \\dfrac{f(1+h) - 1}{h}. \\]",
+            "<strong>(b) Les deux limites latérales.</strong> Comme $f(1) = 1$, le quotient s'écrit\\[ \\dfrac{f(1+h) - f(1)}{h} = \\dfrac{f(1+h) - 1}{h}. \\]",
             "<em>Limite à gauche.</em> Si $h < 0$, alors $1+h < 1$ et c'est la branche $x^{2}$ qui s'applique :\\begin{align*} \\lim_{h \\to 0^{-}}\\dfrac{(1+h)^{2} - 1}{h} &= \\lim_{h \\to 0^{-}}\\dfrac{1 + 2h + h^{2} - 1}{h} \\\\ &= \\lim_{h \\to 0^{-}}\\dfrac{h(2+h)}{h} \\\\ &= \\lim_{h \\to 0^{-}}(2+h) = 2. \\end{align*}",
             "<em>Limite à droite.</em> Si $h > 0$, alors $1+h > 1$ et c'est la branche $x$ qui s'applique :\\[ \\lim_{h \\to 0^{+}}\\dfrac{(1+h) - 1}{h} = \\lim_{h \\to 0^{+}}\\dfrac{h}{h} = 1. \\]",
             "<strong>(c) Conclusion.</strong> Les deux limites latérales existent mais diffèrent :\\[ 2 \\neq 1. \\]",
-            "La limite du quotient différentiel n'existe donc pas : $f$ n'est <strong>pas dérivable</strong> en $x = 1$.",
+            "La limite du taux de variation moyen n'existe donc pas : $f$ n'est <strong>pas dérivable</strong> en $x = 1$.",
             "<strong>Ce que cet exemple montre.</strong> La fonction est continue en $1$ sans y être dérivable. C'est une nouvelle illustration du fait que la continuité est une condition <em>nécessaire mais non suffisante</em> de la dérivabilité.",
             "Graphiquement, les deux branches se raccordent sans coupure, mais avec des pentes différentes ($2$ et $1$) : la courbe présente un <em>point anguleux</em> en $(1,1)$."
           ],

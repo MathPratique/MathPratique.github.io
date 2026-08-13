@@ -342,7 +342,7 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "Sur $]-\\infty, -3]$ et $[3, +\\infty[$ ; en intervalles ouverts : $]-\\infty, -3[$ et $]3, +\\infty[$"
+          "texte": "Sur $]-\\infty, -3]$ et $[3, +\\infty[$"
         },
         {
           "etape": "demarche",
@@ -355,8 +355,7 @@
             "Un produit de deux facteurs est positif quand ils sont de <em>même signe</em>. On dresse le tableau de signes autour de $-3$ et $3$ :",
             "\\begin{center}\\renewcommand{\\arraystretch}{1.3}\\begin{tabular}{>{\\centering\\arraybackslash}p{2.6cm}|>{\\centering\\arraybackslash}p{2.4cm}|>{\\centering\\arraybackslash}p{2.4cm}|>{\\centering\\arraybackslash}p{2.4cm}}\\toprule & $x < -3$ & $-3 < x < 3$ & $x > 3$ \\\\ \\midrule $x-3$ & $-$ & $-$ & $+$ \\\\ $x+3$ & $-$ & $+$ & $+$ \\\\ \\midrule $(x-3)(x+3)$ & $+$ & $-$ & $+$ \\\\ \\bottomrule \\end{tabular}\\end{center}",
             "<strong>Étape 5 — Conclure.</strong> Le domaine est $]-\\infty, -3] \\cup [3, +\\infty[$, et $f$ est continue sur tout ce domaine.",
-            "Exprimé en intervalles <em>ouverts</em>, comme le fait le cours :\\[ ]-\\infty, -3[ \\qquad \\text{et} \\qquad ]3, +\\infty[. \\]",
-            "Aux bornes $x = \\pm 3$, la fonction est définie ($f(\\pm 3) = 0$), mais on ne peut l'approcher que d'un seul côté."
+            "Aux bornes $x = \\pm 3$, la fonction est définie ($f(\\pm 3) = 0$) et continue : comme le domaine s'arrête là, la continuité s'y entend d'un seul côté (continuité unilatérale)."
           ],
           "piegeCourant": "Résoudre $x^{2} \\geq 9$ en écrivant $x \\geq 3$ et oublier la branche négative."
         }
@@ -388,19 +387,19 @@
           "choix": [
             {
               "cle": "a",
-              "texte": "$g$ soit continue en $a$ et $f$ continue en $g(a)$"
-            },
-            {
-              "cle": "b",
               "texte": "$f$ et $g$ soient toutes deux continues en $a$"
             },
             {
-              "cle": "c",
+              "cle": "b",
               "texte": "$f$ soit continue en $a$ et $g$ continue en $f(a)$"
             },
             {
-              "cle": "d",
+              "cle": "c",
               "texte": "$f$ et $g$ soient continues sur $\\mathbb{R}$"
+            },
+            {
+              "cle": "d",
+              "texte": "$g$ soit continue en $a$ et $f$ continue en $g(a)$"
             }
           ]
         },
@@ -428,23 +427,23 @@
           "analyseChoix": [
             {
               "cle": "a",
-              "correct": true,
-              "explication": "C'est l'énoncé du cours. La fonction extérieure doit être continue là où la fonction intérieure <em>aboutit</em>, soit au point $g(a)$."
-            },
-            {
-              "cle": "b",
               "correct": false,
               "explication": "La continuité de $f$ doit être évaluée en $g(a)$, et non en $a$. Ces deux points n'ont aucune raison de coïncider."
             },
             {
-              "cle": "c",
+              "cle": "b",
               "correct": false,
               "explication": "Les rôles des deux fonctions sont inversés. Dans $f \\circ g$, c'est $g$ qui s'applique en premier."
             },
             {
-              "cle": "d",
+              "cle": "c",
               "correct": false,
               "explication": "Beaucoup trop fort. Le théorème est local : il suffit d'une continuité aux deux points concernés."
+            },
+            {
+              "cle": "d",
+              "correct": true,
+              "explication": "C'est l'énoncé du cours. La fonction extérieure doit être continue là où la fonction intérieure <em>aboutit</em>, soit au point $g(a)$."
             }
           ],
           "piegeCourant": "Évaluer la continuité de la fonction extérieure en $a$ plutôt qu'en $g(a)$."

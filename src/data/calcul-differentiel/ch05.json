@@ -571,11 +571,11 @@
           "choix": [
             {
               "cle": "a",
-              "texte": "L'identité fondamentale $\\sin^{2}\\theta + \\cos^{2}\\theta = 1$"
+              "texte": "La formule d'addition $\\sin(a+b) = \\sin a\\cos b + \\cos a\\sin b$"
             },
             {
               "cle": "b",
-              "texte": "La formule d'addition $\\sin(a+b) = \\sin a\\cos b + \\cos a\\sin b$"
+              "texte": "L'identité fondamentale $\\sin^{2}\\theta + \\cos^{2}\\theta = 1$"
             },
             {
               "cle": "c",
@@ -590,7 +590,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Le quotient différentiel contient $\\sin(x+h)$, soit le sinus d'une <em>somme</em> de deux angles. Quelle identité décompose cela ?"
+          "texte": "Le taux de variation moyen contient $\\sin(x+h)$, soit le sinus d'une <em>somme</em> de deux angles. Quelle identité décompose cela ?"
         },
         {
           "etape": "reponse",
@@ -610,13 +610,13 @@
           "analyseChoix": [
             {
               "cle": "a",
-              "correct": false,
-              "explication": "Cette identité relie sinus et cosinus d'un <em>même</em> angle. Elle ne permet pas de décomposer le sinus d'une <em>somme</em> d'angles."
+              "correct": true,
+              "explication": "C'est exactement ce qu'il faut pour développer $\\sin(x+h)$ et faire apparaître les deux limites trigonométriques."
             },
             {
               "cle": "b",
-              "correct": true,
-              "explication": "C'est exactement ce qu'il faut pour développer $\\sin(x+h)$ et faire apparaître les deux limites trigonométriques."
+              "correct": false,
+              "explication": "Cette identité relie sinus et cosinus d'un <em>même</em> angle. Elle ne permet pas de décomposer le sinus d'une <em>somme</em> d'angles."
             },
             {
               "cle": "c",

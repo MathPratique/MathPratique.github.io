@@ -4,6 +4,7 @@ import clsx from "clsx";
 import type { Exercise, MCQOption } from "../../data/exercises";
 import { topics } from "../../data/topics";
 import ContenuExercice from "./ContenuExercice";
+import BoutonsProgression from "../../progression/BoutonsProgression";
 
 const difficultyStyles: Record<Exercise["difficulty"], string> = {
   Facile: "bg-accent-500/10 text-accent-600",
@@ -65,6 +66,14 @@ export default function MCQCard({ exercise, displayIndex }: MCQCardProps) {
         <span className="rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
           QCM
         </span>
+        {/* Progression réservée aux exos de la banque calc-diff, seuls
+            connus du contexte progression. Les autres bancs (Prob-Stat,
+            Algèbre lin) n'ont pas encore de progression persistée. */}
+        {exercise.id.startsWith("CD-") && (
+          <span className="ml-auto">
+            <BoutonsProgression id={exercise.id} />
+          </span>
+        )}
       </div>
 
       <h3 className="mt-4 font-display text-lg font-semibold text-brand-900">
