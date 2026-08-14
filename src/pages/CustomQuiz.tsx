@@ -14,6 +14,7 @@ import {
 } from "../quiz/customGenerators";
 import { isProbStatLesson } from "../quiz/probStatPicker";
 import { isCalcDiffLesson } from "../quiz/calcDiffPicker";
+import { useExercicesComplets } from "../banque/useExercicesComplets";
 
 // Une leçon « de banque figée » (Prob-Stat ou Calcul différentiel) accepte
 // le filtre de difficulté et s'affiche avec un badge « Chapitre » plutôt
@@ -101,13 +102,22 @@ export default function CustomQuiz() {
   const [difficulty, setDifficulty] = useState<Difficulty | undefined>(undefined);
   const isBankTopic = activeTopic === "probability" || activeTopic === "differential-calculus";
 
+  // Banque calc-diff : 65 gratuits pour un visiteur, 305 pour un détenteur.
+  // Passée au générateur pour que les disponibilités par leçon reflètent
+  // vraiment ce que le quiz pourra piocher.
+  const banqueCd = useExercicesComplets("calcul-differentiel");
+
   const lessonMeta = useMemo(() => {
     if (!activeTopic) return [];
     const ids = lessonsByTopic[activeTopic] ?? [];
     return ids.map((id) => {
       const lesson = getLessonById(id);
       const bank = isBankLesson(id);
-      const available = getAvailableTypes(id, bank ? difficulty : undefined);
+      const available = getAvailableTypes(
+        id,
+        bank ? difficulty : undefined,
+        banqueCd.exercices,
+      );
       return {
         id,
         number: lesson?.number ?? 0,
@@ -116,7 +126,7 @@ export default function CustomQuiz() {
         isBank: bank,
       };
     });
-  }, [activeTopic, lessonsByTopic, difficulty]);
+  }, [activeTopic, lessonsByTopic, difficulty, banqueCd.exercices]);
 
   // Protection : si la carte du topic annonce des exercices mais qu'aucune
   // leçon exploitable n'existe côté quiz, on avertit dans la console plutôt

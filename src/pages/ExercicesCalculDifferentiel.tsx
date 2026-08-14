@@ -21,14 +21,15 @@ import {
   LIB_DIFFICULTE,
   LIB_TYPE,
   TOTAL_BANQUE,
-  TOTAL_GRATUITS,
   type Difficulte,
+  type Exercice,
   type TypeExercice,
 } from "../data/calcul-differentiel";
+import { useExercicesComplets } from "../banque/useExercicesComplets";
 
 const TITRE_PAGE = "Exercices de calcul différentiel corrigés — MathPratique";
 const DESCRIPTION_PAGE =
-  `${TOTAL_GRATUITS} exercices de calcul différentiel corrigés et gratuits : limites, ` +
+  "65 exercices de calcul différentiel corrigés et gratuits : limites, " +
   "formes indéterminées, dérivation en chaîne, taux liés, optimisation. " +
   "Chaque exercice avec son indice, sa réponse finale et sa démarche détaillée.";
 
@@ -46,6 +47,16 @@ export default function ExercicesCalculDifferentiel() {
   const [filtreProg, setFiltreProg] = useState<FiltreProgression>("tous");
   const { progression } = useProgression();
 
+  // La banque servie dépend de l'accès : 65 pour un visiteur, 305 pour un
+  // détenteur. L'appel bascule automatiquement — la page n'a pas à vérifier
+  // l'auth, juste à consommer.
+  const banque = useExercicesComplets("calcul-differentiel");
+  const total = banque.exercices.length;
+  // Les 65 gratuits (bundle) ont toujours un chemin `figure` de SVG ; les
+  // 305 payants portent `figureTikzBrut` pour les 4 qui ont une figure —
+  // les cartes gèrent l'absence de SVG en montrant un placeholder.
+  const provenance = banque.provenance;
+
   useEffect(() => {
     document.title = TITRE_PAGE;
     document
@@ -53,29 +64,47 @@ export default function ExercicesCalculDifferentiel() {
       ?.setAttribute("content", DESCRIPTION_PAGE);
   }, []);
 
+  // Reconstitue les chapitres en gardant la métadonnée (titre, intitule,
+  // total) du bundle statique CHAPITRES, mais avec les exercices venant du
+  // hook (65 ou 305 selon accès).
+  const chapitresLive = useMemo(() => {
+    const parNumero = new Map<number, Exercice[]>();
+    banque.exercices.forEach((e) => {
+      if (!parNumero.has(e.chapitre)) parNumero.set(e.chapitre, []);
+      parNumero.get(e.chapitre)!.push(e);
+    });
+    return CHAPITRES.map((c) => {
+      const exos = parNumero.get(c.numero) ?? [];
+      return {
+        ...c,
+        exercices: exos,
+        // Reste-t-il des exos payants à débloquer ? Uniquement pertinent
+        // pour un visiteur sans accès (provenance === "bundle").
+        autres: Math.max(0, c.total - exos.length),
+      };
+    });
+  }, [banque.exercices]);
+
   const groupes = useMemo(
     () =>
-      CHAPITRES.filter((c) => !chapitreActif || String(c.numero) === chapitreActif).map((c) => {
-        // On filtre en deux temps : d'abord type + difficulté (critères
-        // publics), puis progression (critère personnel). L'ordre importe
-        // peu sauf pour le compteur : celui-ci porte sur les exercices
-        // AVEC les filtres publics, mais SANS le filtre progression, pour
-        // afficher « X / Y complétés » où Y = ce que voit ce visiteur.
-        const filtresPublics = c.exercices.filter(
-          (e) =>
-            (!typeActif || e.type === typeActif) &&
-            (!difficulteActive || e.difficulte === difficulteActive),
-        );
-        const idsAffichables = new Set(
-          filtrerIds(progression, filtresPublics.map((e) => e.id), filtreProg),
-        );
-        return {
-          ...c,
-          filtresPublics,
-          visibles: filtresPublics.filter((e) => idsAffichables.has(e.id)),
-        };
-      }),
-    [chapitreActif, typeActif, difficulteActive, filtreProg, progression],
+      chapitresLive
+        .filter((c) => !chapitreActif || String(c.numero) === chapitreActif)
+        .map((c) => {
+          const filtresPublics = c.exercices.filter(
+            (e) =>
+              (!typeActif || e.type === typeActif) &&
+              (!difficulteActive || e.difficulte === difficulteActive),
+          );
+          const idsAffichables = new Set(
+            filtrerIds(progression, filtresPublics.map((e) => e.id), filtreProg),
+          );
+          return {
+            ...c,
+            filtresPublics,
+            visibles: filtresPublics.filter((e) => idsAffichables.has(e.id)),
+          };
+        }),
+    [chapitresLive, chapitreActif, typeActif, difficulteActive, filtreProg, progression],
   );
 
   const nbVisibles = groupes.reduce((n, g) => n + g.visibles.length, 0);
@@ -96,10 +125,16 @@ export default function ExercicesCalculDifferentiel() {
           Calcul différentiel
         </h1>
         <p className="mt-4 text-balance text-lg text-ink-600">
-          {TOTAL_GRATUITS} exercices corrigés, gratuits et sans inscription. Chacun
-          avec son indice, sa réponse finale et sa démarche détaillée — cherche
-          d'abord, dévoile ensuite.
+          <span className="font-semibold text-brand-900">{total} sur {TOTAL_BANQUE}</span>{" "}
+          {provenance === "bundle" ? (
+            <>exercices corrigés, gratuits et sans inscription. Chacun avec son indice,
+            sa réponse finale et sa démarche détaillée — cherche d'abord, dévoile ensuite.</>
+          ) : (
+            <>exercices corrigés — ta banque complète. Chacun avec son indice, sa réponse
+            finale et sa démarche détaillée.</>
+          )}
         </p>
+        {banque.statut === "chargement" && <BandeauChargement />}
       </AnimatedSection>
 
       {/* ---------- Filtres ---------- */}
@@ -154,7 +189,7 @@ export default function ExercicesCalculDifferentiel() {
               <p className="mt-1 text-sm text-ink-600">
                 {g.visibles.length} exercice{g.visibles.length > 1 ? "s" : ""} ici
                 {g.visibles.length !== g.exercices.length &&
-                  ` sur ${g.exercices.length} gratuits dans ce chapitre`}
+                  ` sur ${g.exercices.length}${provenance === "bundle" ? " gratuits" : ""} dans ce chapitre`}
                 .
               </p>
               <CompteurChapitre chapitre={g.numero} nbTotal={g.filtresPublics.length} />
@@ -166,10 +201,10 @@ export default function ExercicesCalculDifferentiel() {
               ))}
             </div>
 
-            {/* Une seule mention du package par chapitre, discrète et sans
-                bouton : les chiffres viennent des fiches signalétiques, jamais
-                du contenu des exercices payants. */}
-            {g.autres > 0 && (
+            {/* Mention du package : seulement pour un visiteur sans accès
+                (provenance === "bundle"). Un détenteur voit déjà tous les
+                exercices de son package, la mention n'a plus de sens. */}
+            {provenance === "bundle" && g.autres > 0 && (
               <p className="mx-auto mt-4 max-w-4xl text-sm text-ink-600">
                 {g.exercices.length} exercices disponibles —{" "}
                 <Link to="/boutique" className="font-semibold text-brand-700 hover:text-brand-800">
@@ -200,6 +235,33 @@ export default function ExercicesCalculDifferentiel() {
           </Link>
         </p>
       </AnimatedSection>
+    </div>
+  );
+}
+
+/**
+ * Message visible pendant que la Cloud Function charge les 305 exos pour
+ * un détenteur d'accès. Passe en mode « ça prend plus long » après 8 s,
+ * pour rassurer sur le comportement de démarrage à froid des Cloud
+ * Functions. Les 65 gratuits restent affichés en dessous et sont
+ * utilisables — le bandeau n'a rien de bloquant.
+ */
+function BandeauChargement() {
+  const [longtemps, setLongtemps] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setLongtemps(true), 8000);
+    return () => clearTimeout(t);
+  }, []);
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="mx-auto mt-6 max-w-md rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm text-brand-800"
+    >
+      <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-brand-500" />
+      {longtemps
+        ? "Ta banque se charge — un peu plus long que d'habitude cette fois. Les prochaines visites seront immédiates."
+        : "Ta banque complète se charge…"}
     </div>
   );
 }

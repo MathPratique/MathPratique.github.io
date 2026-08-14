@@ -13,6 +13,7 @@ import {
   CalcDiffPicker,
   type CalcDiffLessonId,
 } from "./calcDiffPicker";
+import type { Exercice as ExerciceCalcDiff } from "../data/calcul-differentiel";
 
 // Inline rich-content helpers (same shape as the manualExercises).
 const t = (s: string): RichPart => ({ type: "text", content: s });
@@ -1886,12 +1887,19 @@ export type CustomQuizSpec = {
   difficulty?: Difficulty;
 };
 
-export function buildCustomQuiz(specs: CustomQuizSpec[]): Exercise[] {
+export function buildCustomQuiz(
+  specs: CustomQuizSpec[],
+  /**
+   * Pool calc-diff à utiliser — 65 gratuits (défaut, bundle) ou 305 pour
+   * un détenteur d'accès. Passer `banque.exercices` de useExercicesComplets.
+   */
+  banqueCalcDiff?: ExerciceCalcDiff[],
+): Exercise[] {
   const out: Exercise[] = [];
   // Un picker par quiz, pour chaque banque figée : tirage sans remise au
   // sein du quiz, pool réinitialisé au prochain tirage.
   const psdPicker = new ProbStatPicker();
-  const cdPicker = new CalcDiffPicker();
+  const cdPicker = new CalcDiffPicker(banqueCalcDiff);
   for (const spec of specs) {
     if (isProbStatLesson(spec.lessonId)) {
       for (let i = 0; i < spec.exerciseCount; i++) {
@@ -1989,6 +1997,7 @@ export function decodeCustomQuiz(str: string): CustomQuizSpec[] {
 export function getAvailableTypes(
   lessonId: string,
   difficulty?: Difficulty,
+  banqueCalcDiff?: ExerciceCalcDiff[],
 ): {
   exercise: boolean;
   mcq: boolean;
@@ -2005,9 +2014,9 @@ export function getAvailableTypes(
   if (isCalcDiffLesson(lessonId)) {
     const id = lessonId as CalcDiffLessonId;
     return {
-      exercise: calcDiffHasAny(id, "exercise", difficulty),
-      mcq: calcDiffHasAny(id, "mcq", difficulty),
-      tf: calcDiffHasAny(id, "tf", difficulty),
+      exercise: calcDiffHasAny(id, "exercise", difficulty, banqueCalcDiff),
+      mcq: calcDiffHasAny(id, "mcq", difficulty, banqueCalcDiff),
+      tf: calcDiffHasAny(id, "tf", difficulty, banqueCalcDiff),
     };
   }
   const lessonNum = parseInt(lessonId.slice(1), 10);

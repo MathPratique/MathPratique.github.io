@@ -442,6 +442,146 @@ Après le premier téléchargement (test D), inspecter le document Firestore
 Ceci ferme le droit au remboursement (voir `src/acces/regles.ts`
 `remboursementPossible`).
 
+### Test R — Bassin de 305 exercices sur la page Exercices et le quiz
+
+**Objet** : garantir que la Cloud Function `obtenirExercices` refuse tout ce
+qui n'est pas un accès valide côté serveur, et que le contenu payant n'existe
+JAMAIS dans le bundle publié.
+
+**Séquence à respecter** — la sync passe en premier, sinon les émulateurs
+Functions embarquent un blob vide ou périmé et le cas « accès valide » du
+test R.1 échoue.
+
+1. **Sync de la banque** (bundle client + bundle Function) :
+
+   ```powershell
+   $env:BANQUE_CD_PATH = "C:\Users\simon\Documents\Session Automne 2026\Calcul différentiel\exercices-calcul-differentiel"
+   node scripts/sync-banque-cd.js
+   ```
+
+2. **Build des Functions** (compile TypeScript + intègre le nouveau blob) :
+
+   ```powershell
+   npm --prefix functions run build
+   ```
+
+3. **Démarrer les émulateurs — Auth + Firestore + Functions** (dans un
+   terminal dédié, à laisser tourner) :
+
+   ```powershell
+   firebase emulators:start --only auth,firestore,functions
+   ```
+
+   ⚠️ Ne PAS utiliser `npm --prefix functions run serve` : cette commande
+   ne démarre que Functions, sans Auth ni Firestore, et le test R.1 échoue
+   à `creerCompte`.
+
+4. **Contrôle automatisé (R.1)** :
+
+   ```powershell
+   node scripts/test-securite-exercices.js
+   ```
+
+   Le script exécute 4 appels à `obtenirExercices` et compare la réponse
+   au comportement attendu :
+
+   | Configuration               | Attendu                          |
+   |---|---|
+   | Sans authentification       | `functions/unauthenticated`      |
+   | Auth sans doc d'accès       | `functions/permission-denied`    |
+   | Auth + accès EXPIRÉ         | `functions/permission-denied`    |
+   | Auth + accès valide         | 305 exercices                    |
+
+   Exit code 0 = les 4 tests passent. Exit code 1 = au moins un cas ne
+   respecte pas le contrat de sécurité — **ne pas déployer avant
+   correction**. Exit code 2 = le test lui-même est cassé (Function
+   `not-found`, `internal` ou erreur infra) — vérifier les émulateurs
+   et le build avant de tirer une conclusion sur la sécurité.
+
+5. **Vérification manuelle end-to-end (R.3)** — dans le browser, sur le
+   site en `npm run dev` :
+
+   1. Créer un compte test dans Firebase Auth émulateur (Console
+      émulateur `http://127.0.0.1:4000` ou via le formulaire d'inscription
+      du site)
+   2. `node scripts/acces-test.js --courriel test@exemple.com --cours calcul-differentiel --etat valide`
+   3. Se connecter dans le browser au même compte
+   4. Naviguer sur `/exercices/calcul-differentiel` :
+      - Le compteur en tête indique « 305 sur 305 »
+      - Le bandeau « Ta banque complète se charge… » apparaît quelques
+        secondes puis disparaît
+      - Un chapitre affiche tous ses exos (ex. ch2 en montre 60, dont
+        les 12 gratuits)
+      - Les messages « X autres avec le package » ont disparu
+      - Les boutons progression (case + drapeau) sont visibles sur chaque
+        carte
+   5. Naviguer sur `/custom-quiz`, choisir Calcul différentiel :
+      - Tous les inputs sont actifs pour tous les chapitres (les 305
+        couvrent tous les types)
+      - Configurer un quiz de 5 exos, démarrer
+      - Le quiz peut piocher parmi les 305 (constate en rafraîchissant
+        plusieurs fois — des IDs `CD-CXX-EYYY` avec un numéro dépassant
+        le plus grand gratuit du chapitre doivent apparaître au moins une
+        fois)
+   6. Après `--etat expire` puis rafraîchissement :
+      - La page revient à « 65 sur 305 »
+      - Le cache localStorage `mp:banque:calcul-differentiel` est purgé
+        (vérifiable dans DevTools > Application > Local Storage)
+
+6. **Rafraîchissement automatique après sync (R.5)** — vérifie que le
+   cache s'invalide quand le contenu de la banque change, SANS
+   déconnexion. Suppose que l'étape 5 vient d'être exécutée (accès valide,
+   banque en cache). Sans se déconnecter du compte test :
+
+   1. Dans la banque source, modifier un exercice qui apparaît côté site
+      (par ex. reformuler l'énoncé de `CD-C01-E003` — c'est un gratuit,
+      donc visible immédiatement à côté du cache serveur)
+   2. Relancer la sync + le build Functions :
+
+      ```powershell
+      $env:BANQUE_CD_PATH = "C:\Users\simon\Documents\Session Automne 2026\Calcul différentiel\exercices-calcul-differentiel"
+      node scripts/sync-banque-cd.js
+      npm --prefix functions run build
+      ```
+
+      Le hash miroir bundlé côté client (`src/data/calcul-differentiel/version.ts`,
+      export `CONTENT_HASH_CD`) change à chaque sync qui modifie un exo.
+
+   3. Le HMR Vite recharge la page — ou recharger à la main.
+
+   4. Constater dans DevTools > Application > Local Storage que la clé
+      `mp:banque:calcul-differentiel` a été purgée puis réécrite ;
+      son champ `hashClient` correspond maintenant au nouveau
+      `CONTENT_HASH_CD` visible dans le fichier `version.ts`.
+
+   5. Vérifier que l'énoncé modifié apparaît sur la page Exercices sans
+      qu'il ait fallu se déconnecter.
+
+   Ce cycle valide la promesse « mises à jour incluses » : un
+   redéploiement du site suffit à propager le nouveau contenu à tous les
+   étudiants déjà chargés, en un seul refetch par étudiant.
+
+**Contrôle statique post-build (indépendant, à passer avant tout push)** :
+
+```powershell
+npm run build
+node scripts/verifier-synchro-banque.js
+```
+
+Vérifie qu'aucun fragment distinctif d'un exercice payant (≥ 40 caractères,
+absent des 65 gratuits) ne se trouve dans `dist/`. Prévient qu'un ajout de
+code fasse fuiter par inadvertance du contenu payant dans le bundle Vite
+publié sur GitHub Pages.
+
+**⚠️ Node : émulateur ≠ production.** Les émulateurs Firebase tournent sous
+la version de Node installée localement (Node 24 chez Simon), alors que la
+runtime déclarée pour les Cloud Functions déployées est Node 20
+(`firebase.json` → `"runtime": "nodejs20"`). Certains comportements JSON
+imports, syntaxes récentes ou API expérimentales peuvent passer en local
+et échouer en prod. **Le Test R doit être repassé après déploiement**
+(mode Stripe live, contre les vraies Functions déployées) pour valider que
+la Function `obtenirExercices` répond identiquement en prod.
+
 ---
 
 # Partie 3 — Utilisation du script d'admin

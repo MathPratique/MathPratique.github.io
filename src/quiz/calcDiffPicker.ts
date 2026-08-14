@@ -110,17 +110,32 @@ function chapitreDe(lessonId: CalcDiffLessonId): number {
   return parseInt(lessonId.slice(2), 10);
 }
 
+/**
+ * Pool par défaut : les 65 gratuits, à plat. Utilisé quand aucun pool n'est
+ * passé — cas d'un visiteur sans accès valide, où le hook progression
+ * (useExercicesComplets) n'a rien de plus à offrir.
+ */
+const BUNDLE_APLATI: Exercice[] = CHAPITRES.flatMap((c) => c.exercices);
+
+/**
+ * Pool utilisable pour un tirage : filtre par chapitre, par kind, par
+ * difficulté, et écarte les exos avec figure manquante.
+ *
+ * @param pool  Liste à plat des exercices disponibles. Optionnel — sans lui,
+ *              on retombe sur les 65 gratuits du bundle. Les détenteurs
+ *              d'accès passent les 305 via useExercicesComplets.
+ */
 function poolFor(
   lessonId: CalcDiffLessonId,
   kind: Kind,
   difficulty?: Difficulty,
+  pool: Exercice[] = BUNDLE_APLATI,
 ): Exercice[] {
   const num = chapitreDe(lessonId);
-  const chap = CHAPITRES.find((c) => c.numero === num);
-  if (!chap) return [];
   const filtreDiff = difficulty ? DIFF_VERS_BANQUE[difficulty] : null;
-  return chap.exercices.filter(
+  return pool.filter(
     (ex) =>
+      ex.chapitre === num &&
       correspondAuKind(ex.type, kind) &&
       (!filtreDiff || ex.difficulte === filtreDiff) &&
       estUtilisable(ex),
@@ -131,8 +146,9 @@ export function hasAny(
   lessonId: CalcDiffLessonId,
   kind: Kind,
   difficulty?: Difficulty,
+  pool?: Exercice[],
 ): boolean {
-  return poolFor(lessonId, kind, difficulty).length > 0;
+  return poolFor(lessonId, kind, difficulty, pool).length > 0;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -238,6 +254,14 @@ function traduire(ex: Exercice, lessonId: CalcDiffLessonId): Exercise {
 export class CalcDiffPicker {
   // key = `${lessonId}|${kind}|${difficulty ?? "any"}`; value = queue mélangée
   private queues = new Map<string, Exercice[]>();
+  /**
+   * Le pool servant à chaque tirage. Fixé à la construction — un même
+   * quiz doit puiser dans un ensemble cohérent, même si l'accès change
+   * en cours de session (peu probable mais on ne veut pas mélanger).
+   * Par défaut : les 65 gratuits du bundle. Passer `banque.exercices`
+   * (via useExercicesComplets) pour un détenteur d'accès.
+   */
+  constructor(private readonly pool: Exercice[] = BUNDLE_APLATI) {}
 
   draw(
     lessonId: CalcDiffLessonId,
@@ -247,7 +271,7 @@ export class CalcDiffPicker {
     const key = `${lessonId}|${kind}|${difficulty ?? "any"}`;
     let queue = this.queues.get(key);
     if (!queue) {
-      queue = shuffle(poolFor(lessonId, kind, difficulty));
+      queue = shuffle(poolFor(lessonId, kind, difficulty, this.pool));
       this.queues.set(key, queue);
     }
     const brut = queue.shift();

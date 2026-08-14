@@ -7,6 +7,7 @@ import { generateQuiz, hasQuizGenerator } from "../quiz/registry";
 import { buildCustomQuiz, decodeCustomQuiz } from "../quiz/customGenerators";
 import ExerciseCard from "../components/practice/ExerciseCard";
 import AnimatedSection from "../components/ui/AnimatedSection";
+import { useExercicesComplets } from "../banque/useExercicesComplets";
 
 export default function Quiz() {
   const [searchParams] = useSearchParams();
@@ -25,12 +26,16 @@ export default function Quiz() {
   const [seed, setSeed] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Banque calc-diff — 65 gratuits ou 305 selon accès. Passée au picker
+  // quand le quiz personnalisé pioche des leçons CD1..CD7.
+  const banqueCd = useExercicesComplets("calcul-differentiel");
+
   const exercises = useMemo(() => {
-    if (isCustom) return buildCustomQuiz(customSpecs);
+    if (isCustom) return buildCustomQuiz(customSpecs, banqueCd.exercices);
     if (!lessonId) return [];
     return generateQuiz(lessonId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lessonId, seed, isCustom, customSpecs]);
+  }, [lessonId, seed, isCustom, customSpecs, banqueCd.exercices]);
 
   const generatorAvailable = lessonId ? hasQuizGenerator(lessonId) : false;
   const total = exercises.length;
