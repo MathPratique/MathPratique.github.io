@@ -26,6 +26,8 @@ import {
   type TypeExercice,
 } from "../data/calcul-differentiel";
 import { useExercicesComplets } from "../banque/useExercicesComplets";
+import { useAuth } from "../firebase/useAuth";
+import { useAcces } from "../firebase/useAcces";
 
 const TITRE_PAGE = "Exercices de calcul différentiel corrigés — MathPratique";
 const DESCRIPTION_PAGE =
@@ -45,7 +47,12 @@ export default function ExercicesCalculDifferentiel() {
   // Filtre de progression : local, non persisté dans l'URL. Les URLs
   // partageables restent stables et ne portent pas un état personnel.
   const [filtreProg, setFiltreProg] = useState<FiltreProgression>("tous");
-  const { progression } = useProgression();
+  const { progression, statut: statutProg } = useProgression();
+  // Le groupe de filtre « Progression » n'apparaît QUE pour un détenteur
+  // d'accès. Le composant `FiltreProgressionBarre` retourne déjà null
+  // sans accès, mais son libellé vit dans cette page — la condition
+  // doit être posée ici pour ne pas laisser un libellé orphelin.
+  const afficherFiltreProg = statutProg === "actif" || statutProg === "chargement";
 
   // La banque servie dépend de l'accès : 65 pour un visiteur, 305 pour un
   // détenteur. L'appel bascule automatiquement — la page n'a pas à vérifier
@@ -56,6 +63,20 @@ export default function ExercicesCalculDifferentiel() {
   // 305 payants portent `figureTikzBrut` pour les 4 qui ont une figure —
   // les cartes gèrent l'absence de SVG en montrant un placeholder.
   const provenance = banque.provenance;
+
+  // Résolution du statut d'accès — on ne montre aucun compteur ni mention
+  // « gratuits/complète » tant que ce n'est pas connu, pour ne jamais
+  // afficher un chiffre faux à un acheteur pendant la restauration Auth.
+  //
+  //   anonyme confirmé      → statut résolu immédiatement (pas d'attente)
+  //   connecté + accès résolu (avec ou sans) → statut résolu
+  //   tout autre cas        → en cours
+  //
+  // Coût : zéro lecture supplémentaire, les deux hooks sont déjà là
+  // (useAcces est appelé par useProgression, useAuth par les deux).
+  const { utilisateur, chargement: chargementAuth } = useAuth();
+  const acces = useAcces("calcul-differentiel");
+  const accesResolu = !chargementAuth && (!utilisateur || !acces.chargement);
 
   useEffect(() => {
     document.title = TITRE_PAGE;
@@ -125,13 +146,23 @@ export default function ExercicesCalculDifferentiel() {
           Calcul différentiel
         </h1>
         <p className="mt-4 text-balance text-lg text-ink-600">
-          <span className="font-semibold text-brand-900">{total} sur {TOTAL_BANQUE}</span>{" "}
-          {provenance === "bundle" ? (
-            <>exercices corrigés, gratuits et sans inscription. Chacun avec son indice,
-            sa réponse finale et sa démarche détaillée — cherche d'abord, dévoile ensuite.</>
+          {accesResolu ? (
+            <>
+              <span className="font-semibold text-brand-900">{total} sur {TOTAL_BANQUE}</span>{" "}
+              {provenance === "bundle" ? (
+                <>exercices corrigés, gratuits et sans inscription. Chacun avec son indice,
+                sa réponse finale et sa démarche détaillée — cherche d'abord, dévoile ensuite.</>
+              ) : (
+                <>exercices corrigés — ta banque complète. Chacun avec son indice, sa réponse
+                finale et sa démarche détaillée.</>
+              )}
+            </>
           ) : (
-            <>exercices corrigés — ta banque complète. Chacun avec son indice, sa réponse
-            finale et sa démarche détaillée.</>
+            /* État neutre pendant la résolution d'accès : la phrase reste
+               vraie sans jamais afficher un compteur ni le mot « gratuits »
+               qui serait faux pour un acheteur. Aucun clignotement possible. */
+            <>Chaque exercice avec son indice, sa réponse finale et sa démarche détaillée —
+            cherche d'abord, dévoile ensuite.</>
           )}
         </p>
         {banque.statut === "chargement" && <BandeauChargement />}
@@ -158,14 +189,18 @@ export default function ExercicesCalculDifferentiel() {
             actif={difficulteActive}
             surChoix={(v) => filtre("difficulte", v)}
           />
-          {/* Filtre progression — n'apparaît que pour les détenteurs d'un
-              accès valide. Rendu conditionnel géré dans le composant. */}
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="w-full text-xs font-semibold uppercase tracking-wide text-ink-600 sm:w-20">
-              Progression
-            </span>
-            <FiltreProgressionBarre valeur={filtreProg} onChange={setFiltreProg} />
-          </div>
+          {/* Filtre progression — le groupe entier (libellé + boutons)
+              n'apparaît QUE pour un détenteur d'accès. La condition
+              enveloppe TOUT le div, jamais seulement les boutons —
+              sinon le libellé reste orphelin. */}
+          {afficherFiltreProg && (
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="w-full text-xs font-semibold uppercase tracking-wide text-ink-600 sm:w-20">
+                Progression
+              </span>
+              <FiltreProgressionBarre valeur={filtreProg} onChange={setFiltreProg} />
+            </div>
+          )}
         </div>
         {nbVisibles === 0 && (
           <p className="mt-8 text-center text-sm text-ink-600">
@@ -175,10 +210,16 @@ export default function ExercicesCalculDifferentiel() {
         )}
       </AnimatedSection>
 
-      {/* ---------- Les chapitres ---------- */}
-      {groupes.map((g, i) =>
+      {/* ---------- Les chapitres ----------
+          Pas d'AnimatedSection ici : framer-motion garde ces sections
+          à opacity: 0 quand le contexte SSR/hydratation empêche son
+          IntersectionObserver de déclencher — même après filtrage ou
+          après scroll. Le contenu doit être immédiatement visible :
+          c'est la vitrine indexée, et un visiteur qui atterrit ici
+          voit d'abord une page vide sinon. */}
+      {groupes.map((g) =>
         g.visibles.length === 0 ? null : (
-          <AnimatedSection key={g.numero} delay={0.05 * Math.min(i, 4)} className="mt-14">
+          <section key={g.numero} className="mt-14">
             <header className="mx-auto max-w-4xl">
               <h2
                 id={`chapitre-${g.numero}`}
@@ -213,7 +254,7 @@ export default function ExercicesCalculDifferentiel() {
                 .
               </p>
             )}
-          </AnimatedSection>
+          </section>
         )
       )}
 

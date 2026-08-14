@@ -40,10 +40,11 @@
 // N'INVALIDE PAS le cache — 500 étudiants qui refetch à chaque navigation,
 // c'est une facture Blaze. On journalise un avertissement une seule fois.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CHAPITRES, type Exercice } from "../data/calcul-differentiel";
 import { CONTENT_HASH_CD } from "../data/calcul-differentiel/version";
 import { chargerFirebase } from "../firebase/config";
+import { assurerAuthPrete } from "../firebase/authPrete";
 import { useAuth } from "../firebase/useAuth";
 import { useAcces } from "../firebase/useAcces";
 
@@ -69,8 +70,8 @@ type CacheStructure = {
 };
 
 // Journal one-shot par cause. Un `.add()` par avertissement, plus jamais
-// rejournalisé sur la vie de la page — évite la pollution console au fil
-// des re-renders et des navigations SPA.
+// rejournalisé pendant la durée de la page — évite la pollution console
+// au fil des re-renders et des navigations SPA.
 const dejaJournalise = new Set<string>();
 function journaliserUneFois(cle: string, message: string): void {
   if (dejaJournalise.has(cle)) return;
@@ -190,6 +191,11 @@ export function useExercicesComplets(coursId: string): EtatBanque {
       try {
         const services = await chargerFirebase();
         if (annule || !services) return;
+        // Force la propagation du token Auth vers Functions SDK avant
+        // l'appel. Sans ça, un appel juste après restauration de session
+        // peut partir sans token → « unauthenticated ».
+        await assurerAuthPrete(services.auth);
+        if (annule) return;
         const { httpsCallable } = await import("firebase/functions");
         const appel = httpsCallable<{ coursId: string }, { contentHash: string; exercices: Exercice[] }>(
           services.functions,
@@ -233,7 +239,9 @@ export function useExercicesComplets(coursId: string): EtatBanque {
         setEtat({ statut: "actif", exercices, provenance: "reseau" });
       } catch (err) {
         if (annule) return;
-        const code = (err as { code?: string })?.code ?? "";
+        const code = (err as { code?: string })?.code ?? String(err);
+        // eslint-disable-next-line no-console
+        console.warn(`[banque-cd] obtenirExercices a échoué (${code})`);
         if (code.includes("permission-denied") || code.includes("unauthenticated")) {
           // Le serveur refuse — accès expiré ou révoqué depuis la dernière
           // fois. On purge un éventuel cache et on repasse aux 65 du bundle.

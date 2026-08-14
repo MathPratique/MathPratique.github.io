@@ -196,8 +196,19 @@ export default function CustomQuiz() {
     navigate(`/quiz?custom=${code}`);
   }
 
-  // Topic picker view
-  if (!activeTopic) {
+  // Garde technique : une URL /custom-quiz?topic=<enPreparation> construite
+  // à la main ne doit PAS afficher la liste des leçons (qui serait vide) ni
+  // permettre de composer un quiz. On retombe sur la vue picker avec un
+  // bandeau d'info. Le nom du cours vient de `topics.ts`, jamais d'un
+  // id en dur.
+  const topicDemandeInactif =
+    activeTopic !== null &&
+    currentTopic !== null &&
+    currentTopic.enPreparation === true;
+
+  // Topic picker view — sans topic sélectionné, OU topic enPreparation
+  // demandé via URL directe (garde ci-dessus).
+  if (!activeTopic || topicDemandeInactif) {
     return (
       <div className="container-page py-12 sm:py-16">
         <AnimatedSection className="max-w-2xl">
@@ -211,6 +222,19 @@ export default function CustomQuiz() {
             <strong>générées aléatoirement</strong> à chaque tirage !
           </p>
         </AnimatedSection>
+
+        {topicDemandeInactif && currentTopic && (
+          <AnimatedSection delay={0.05} className="mt-6 max-w-2xl">
+            <div
+              role="status"
+              className="rounded-2xl border border-brand-200 bg-brand-50/60 px-5 py-4 text-sm text-brand-900"
+            >
+              <strong>{currentTopic.name}</strong> arrive bientôt — pas encore
+              de banque d'exercices sur laquelle composer un quiz. Choisis une
+              autre matière ci-dessous en attendant.
+            </div>
+          </AnimatedSection>
+        )}
 
         <AnimatedSection delay={0.1} className="mt-10">
           <TopicPicker onTopicSelect={handleTopicSelect} resterSurPlace />

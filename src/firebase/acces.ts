@@ -23,6 +23,7 @@
 // propre horloge avant de signer la moindre URL.
 
 import { chargerFirebase } from "./config";
+import { assurerAuthPrete } from "./authPrete";
 import type { Acces, SourceAcces } from "../acces/regles";
 
 /** Le seul cours en vente pour l'instant. */
@@ -82,18 +83,41 @@ export function versAcces(coursId: string, data: unknown): Acces | null {
 export async function lireAcces(uid: string, coursId: string): Promise<Acces | null> {
   const services = await chargerFirebase();
   if (!services) return null;
+  // Synchronise le token Auth avec Firestore SDK avant la lecture. Sans
+  // ça, une requête juste après restauration de session peut partir sans
+  // token → règles refusent (voir authPrete.ts).
+  await assurerAuthPrete(services.auth);
   const { doc, getDoc } = await import("firebase/firestore");
-  const snap = await getDoc(doc(services.db, "utilisateurs", uid, "acces", coursId));
-  return snap.exists() ? versAcces(coursId, snap.data()) : null;
+  try {
+    const snap = await getDoc(doc(services.db, "utilisateurs", uid, "acces", coursId));
+    return snap.exists() ? versAcces(coursId, snap.data()) : null;
+  } catch (err) {
+    const code = (err as { code?: string })?.code ?? String(err);
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[acces] Lecture refusée (${code}) pour utilisateurs/${uid}/acces/${coursId}`,
+    );
+    throw err;
+  }
 }
 
 /** Tous les accès d'un utilisateur, pour la page « mon compte ». */
 export async function lireTousLesAcces(uid: string): Promise<Acces[]> {
   const services = await chargerFirebase();
   if (!services) return [];
+  await assurerAuthPrete(services.auth);
   const { collection, getDocs } = await import("firebase/firestore");
-  const snap = await getDocs(collection(services.db, "utilisateurs", uid, "acces"));
-  return snap.docs
-    .map((d) => versAcces(d.id, d.data()))
-    .filter((a): a is Acces => a !== null);
+  try {
+    const snap = await getDocs(collection(services.db, "utilisateurs", uid, "acces"));
+    return snap.docs
+      .map((d) => versAcces(d.id, d.data()))
+      .filter((a): a is Acces => a !== null);
+  } catch (err) {
+    const code = (err as { code?: string })?.code ?? String(err);
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[acces] Liste refusée (${code}) pour utilisateurs/${uid}/acces`,
+    );
+    throw err;
+  }
 }

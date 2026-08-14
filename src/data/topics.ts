@@ -54,7 +54,49 @@ export type Topic = {
    * affiché (matières sans package).
    */
   nbExercicesTotal?: number;
+  /**
+   * Cache la carte dans les listes publiques (TopicPicker → page d'accueil
+   * des cours et sélecteur du quiz personnalisé). Utile pour un cours dont
+   * on ne veut aucune trace publique. À retirer quand le contenu est publié.
+   */
+  masquerListe?: boolean;
+  /**
+   * Le cours apparaît dans les listes mais avec la mention « À venir » et
+   * une carte non cliquable — pas de lien, pas de curseur, pas de focus
+   * clavier. Utile pour promettre visuellement un cours à venir sans
+   * exposer une coquille vide.
+   *
+   * Sémantique distincte de `masquerListe` :
+   *   masquerListe   → carte absente
+   *   enPreparation  → carte présente mais inerte
+   *
+   * Le quiz personnalisé filtre les cours `enPreparation` (aucun contenu
+   * à piocher) — voir TopicPicker avec `resterSurPlace = true`.
+   */
+  enPreparation?: boolean;
 };
+
+/**
+ * Texte du badge d'une carte de matière — piloté strictement par les
+ * données de `topics.ts`, aucune condition écrite en dur sur un `id`.
+ *
+ *   enPreparation                          → « À venir »
+ *   nbExercicesTotal > nbExercicesPublies  → « X gratuits · Y avec le package »
+ *   sinon                                   → « X exercices »
+ *
+ * @param gratuitsCalcule  Nombre de gratuits calculé en amont depuis le
+ *   tableau `exercises` — évite d'importer `exercises` ici et le cycle
+ *   potentiel avec des couches qui remonteraient vers topics.ts.
+ */
+export function badgeMatiere(topic: Topic, gratuitsCalcule: number): string {
+  if (topic.enPreparation) return "À venir";
+  const gratuits = topic.nbExercicesPublies ?? gratuitsCalcule;
+  const total = topic.nbExercicesTotal;
+  if (typeof total === "number" && total > gratuits) {
+    return `${gratuits} gratuits · ${total} avec le package`;
+  }
+  return `${gratuits} exercice${gratuits > 1 ? "s" : ""}`;
+}
 
 export const topics: Topic[] = [
   {
@@ -90,6 +132,11 @@ export const topics: Topic[] = [
       accentBadge: "bg-emerald-100 text-emerald-700",
       accentBouton: "bg-emerald-600 hover:bg-emerald-700 text-white",
     },
+    // Contenu à venir (matériel réel prévu pour l'automne 2026). La carte
+    // reste visible dans les listes publiques mais rendue inerte — pas de
+    // lien, pas de curseur, pas de focus clavier. Le quiz personnalisé la
+    // filtre séparément (aucun contenu à piocher).
+    enPreparation: true,
   },
   {
     id: "linear-algebra",

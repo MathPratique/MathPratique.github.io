@@ -24,7 +24,16 @@ import { getProductById } from "../data/products";
 
 const COURS_ID = "calcul-differentiel";
 const POLL_MS = 3000; // toutes les 3 s
-const TIMEOUT_MS = 60_000; // après 60 s, on affiche un message d'aide
+// Un démarrage à froid de Cloud Function peut atteindre 10 s en local, et
+// le webhook Stripe lui-même met parfois plusieurs secondes à propager.
+// 180 s laisse une marge très large avant d'afficher le message d'aide,
+// pour ne pas envoyer un acheteur écrire un courriel alors que son accès
+// arrive dans la seconde suivante.
+const TIMEOUT_MS = 180_000;
+// Après ce seuil, on adoucit le ton du message : « quelques secondes »
+// devient faux à la trentième. On garde le même spinner, mais l'étudiant
+// voit une phrase qui reconnaît l'attente prolongée.
+const SEUIL_LONG_MS = 15_000;
 
 type Etat =
   | { phase: "chargement" }
@@ -61,9 +70,16 @@ export default function AchatConfirme() {
           setEtat({ phase: "actif", acces });
           return true; // stop
         }
-      } catch {
-        // Silencieux : la prochaine tentative retentera. On ne veut pas
-        // afficher une erreur pendant l'attente normale.
+      } catch (err) {
+        // Silencieux côté UI : la prochaine tentative retentera. On ne
+        // veut pas montrer une erreur pendant l'attente normale du webhook.
+        // Mais on journalise le code réel — sans ça, un vrai bogue (règle
+        // Firestore, token pas prêt, permission-denied) se cache 50 s dans
+        // le polling et l'utilisateur atterrit sur EtatTimeout sans qu'on
+        // sache pourquoi.
+        const code = (err as { code?: string })?.code ?? String(err);
+        // eslint-disable-next-line no-console
+        console.warn(`[achat-confirme] lireAcces a échoué (${code}) — polling continue`);
       }
       const ecoule = Date.now() - debut;
       if (ecoule >= TIMEOUT_MS) {
@@ -192,16 +208,25 @@ function InviteConnexion() {
 }
 
 function EtatAttente({ secondes }: { secondes: number }) {
+  // Le ton du message s'adoucit à mesure que l'attente dure. Trois paliers :
+  // court (< 15 s), moyen (15 à 60 s), long (> 60 s). « Quelques secondes »
+  // devient faux à la trentième et casserait la confiance ; il faut
+  // reconnaître le délai plutôt que le nier.
+  const secondesSeuilLong = SEUIL_LONG_MS / 1000;
+  const secondesSeuilMoyen = 60;
+  const phrase =
+    secondes < secondesSeuilLong
+      ? "Ton paiement est reçu. On active ton accès — ça prend quelques secondes. On rafraîchit automatiquement, tu n'as rien à faire."
+      : secondes < secondesSeuilMoyen
+        ? "Ton paiement est bien reçu. L'activation prend un peu plus de temps que d'habitude — c'est normal, on rafraîchit automatiquement. Tu n'as rien à faire, garde juste cet onglet ouvert."
+        : "Ton paiement est confirmé côté Stripe et ton accès s'ouvre. On continue à vérifier — laisse cet onglet ouvert quelques instants de plus, tu vas voir la confirmation apparaître.";
   return (
     <>
       <Spinner />
       <h1 className="mt-6 text-balance text-3xl font-bold sm:text-4xl">
         Merci pour ton achat !
       </h1>
-      <p className="mt-4 text-balance text-base text-ink-600">
-        Ton paiement est reçu. On active ton accès — ça prend quelques
-        secondes. On rafraîchit automatiquement, tu n'as rien à faire.
-      </p>
+      <p className="mt-4 text-balance text-base text-ink-600">{phrase}</p>
       <p className="mt-2 text-xs text-ink-600" aria-live="polite">
         Vérification en cours ({secondes} s)…
       </p>

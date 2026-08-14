@@ -32,7 +32,16 @@ export default function MonCompte() {
     let annule = false;
     lireTousLesAcces(utilisateur.uid)
       .then((a) => !annule && setAcces(a))
-      .catch(() => !annule && setErreur("Impossible de charger tes accès pour le moment."));
+      .catch((err) => {
+        if (annule) return;
+        // Journalise le code Firebase réel (permission-denied,
+        // unauthenticated, network…) pour qu'un bogue similaire ne se
+        // cache pas derrière le message générique servi à l'utilisateur.
+        const code = (err as { code?: string })?.code ?? String(err);
+        // eslint-disable-next-line no-console
+        console.warn(`[mon-compte] lireTousLesAcces a échoué (${code})`);
+        setErreur("Impossible de charger tes accès pour le moment.");
+      });
     return () => {
       annule = true;
     };

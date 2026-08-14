@@ -1,8 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { exercises } from "../../data/exercises";
 import RichContent from "../ui/RichContent";
+
+// Exemple animé de la page d'accueil. Contenu, pas donnée d'exercice — il
+// vit ici directement plutôt que d'occuper une entrée dans `exercises.ts`.
+// Vestige récupéré tel quel de l'ancien `id: "calc-chain-rule"` ; si tu
+// changes cet exemple, garde le badge « Calcul différentiel · Moyen »
+// aligné avec la matière et la difficulté du nouvel exo.
+const EXEMPLE_ANIME = {
+  title: "Dériver avec la règle de la chaîne",
+  prompt: "Trouver f′(x) pour f(x) = (3x² + 1)⁵",
+  steps: [
+    "Reconnaître la composition : fonction extérieure u⁵, fonction intérieure u = 3x² + 1.",
+    "Dériver la fonction extérieure par rapport à u : d/du [u⁵] = 5u⁴.",
+    "Dériver la fonction intérieure par rapport à x : du/dx = 6x.",
+    "Appliquer la règle de la chaîne : f′(x) = 5u⁴ · (du/dx) = 5(3x² + 1)⁴ · 6x.",
+    "Simplifier en combinant les constantes : f′(x) = 30x(3x² + 1)⁴.",
+  ],
+  answer: "f′(x) = 30x(3x² + 1)⁴",
+};
 
 const symbols = [
   { glyph: "∫", className: "left-[6%] top-[18%] text-4xl text-brand-200 animate-float-slow" },
@@ -13,7 +30,7 @@ const symbols = [
 ];
 
 function LiveWorkedExample() {
-  const exercise = exercises.find((e) => e.id === "calc-chain-rule") ?? exercises[0];
+  const exercise = EXEMPLE_ANIME;
   const shouldReduceMotion = useReducedMotion();
   const [stepIndex, setStepIndex] = useState(0);
 
@@ -33,7 +50,7 @@ function LiveWorkedExample() {
     <div className="relative rounded-2xl border border-brand-100 bg-white p-6 shadow-xl shadow-brand-900/10 sm:p-8">
       <div className="flex items-center justify-between">
         <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-          Calcul différentiel · Intermédiaire
+          Calcul différentiel · Moyen
         </span>
         <span className="font-mono text-xs text-ink-600">mathpratique.exemple</span>
       </div>
@@ -115,12 +132,14 @@ export default function Hero() {
 
         <div className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm font-medium text-brand-700">
-              <span className="h-2 w-2 rounded-full bg-accent-500" />
-              {exercises.length} exercice{exercises.length > 1 ? "s" : ""} corrigé{exercises.length > 1 ? "s" : ""}, gratuit{exercises.length > 1 ? "s" : ""} à pratiquer
-            </span>
-
-            <h1 className="mt-6 text-balance text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">
+            {/* Pastille chiffrée retirée : le total agrégé additionnait
+                des cours sans portion payante avec un cours qui en a une,
+                et le mot « gratuits » devenait ambigu dès qu'un package
+                existe. Les cartes de matière (TopicsShowcase plus bas)
+                portent maintenant le détail par cours. Le titre commence
+                donc directement — vérifier au visuel que l'espace au-dessus
+                (`container-page py-16 sm:py-24 lg:py-28`) reste correct. */}
+            <h1 className="text-balance text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">
               Des maths qui construisent une{" "}
               <span className="bg-gradient-to-r from-brand-600 to-accent-500 bg-clip-text text-transparent">
                 vraie compréhension

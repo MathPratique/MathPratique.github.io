@@ -64,36 +64,11 @@ const subVec = (s: string): RichPart => ({
 });
 
 const manualExercises: Exercise[] = [
-  {
-    id: "calc-chain-rule",
-    topicId: "differential-calculus",
-    title: "Dériver avec la règle de la chaîne",
-    difficulty: "Moyen",
-    prompt: "Trouver f′(x) pour f(x) = (3x² + 1)⁵",
-    steps: [
-      "Reconnaître la composition : fonction extérieure u⁵, fonction intérieure u = 3x² + 1.",
-      "Dériver la fonction extérieure par rapport à u : d/du [u⁵] = 5u⁴.",
-      "Dériver la fonction intérieure par rapport à x : du/dx = 6x.",
-      "Appliquer la règle de la chaîne : f′(x) = 5u⁴ · (du/dx) = 5(3x² + 1)⁴ · 6x.",
-      "Simplifier en combinant les constantes : f′(x) = 30x(3x² + 1)⁴.",
-    ],
-    answer: "f′(x) = 30x(3x² + 1)⁴",
-  },
-  {
-    id: "calc-definite-integral",
-    topicId: "integral-calculus",
-    title: "Évaluer une intégrale définie",
-    difficulty: "Moyen",
-    prompt: "Évaluer ∫₀² (3x² − 4x + 1) dx",
-    steps: [
-      "Trouver la primitive terme à terme : ∫3x² dx = x³, ∫−4x dx = −2x², ∫1 dx = x.",
-      "Combiner en une seule primitive : F(x) = x³ − 2x² + x.",
-      "Appliquer le théorème fondamental de l'analyse : ∫₀² = F(2) − F(0).",
-      "Évaluer F(2) = 8 − 8 + 2 = 2, et F(0) = 0.",
-      "Soustraire : F(2) − F(0) = 2 − 0 = 2.",
-    ],
-    answer: "2",
-  },
+  // Deux vestiges retirés le 2026-08-14 : `calc-chain-rule` (differential-
+  // calculus) est passé dans Hero.tsx comme constante `EXEMPLE_ANIME` — son
+  // seul usage —, et `calc-definite-integral` (integral-calculus) qui n'était
+  // référencé nulle part. `exercises.length` baisse de 929 à 927, désormais
+  // composé uniquement de linear-algebra (539) et probability (388).
   // ─────────────────────────────────────────────────────────────────
   // Leçon 15 — QCM + 2 Vrai/Faux
   // ─────────────────────────────────────────────────────────────────

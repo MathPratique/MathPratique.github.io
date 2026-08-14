@@ -6,8 +6,16 @@
   // dans tout le projet. Deux copies finiraient par diverger, et la
   // divergence porterait sur la date d'expiration d'un accès payant.
   "compilerOptions": {
-    "module": "ES2022",
-    "moduleResolution": "bundler",
+    // `nodenext` : matche la runtime déclarée dans firebase.json
+    // (`"runtime": "nodejs20"`) et débloque les import attributes
+    // (`import x from "./f.json" with { type: "json" }`) pour importer
+    // le blob des 305 exos dans obtenirExercices.
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    // Nécessaire pour que TypeScript accepte les imports de .json ET
+    // les copie de src/ vers lib/ au build — sans quoi la banque
+    // manquerait à l'exécution de la Function.
+    "resolveJsonModule": true,
     "target": "ES2022",
     "noImplicitReturns": true,
     "noUnusedLocals": true,

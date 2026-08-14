@@ -26,6 +26,7 @@ import {
 } from "react";
 import type { Firestore, Unsubscribe } from "firebase/firestore";
 import { chargerFirebase } from "../firebase/config";
+import { assurerAuthPrete } from "../firebase/authPrete";
 import { useAuth } from "../firebase/useAuth";
 import { useAcces } from "../firebase/useAcces";
 import { PROGRESSION_VIDE, type Progression } from "./regles";
@@ -90,6 +91,11 @@ export function ProgressionProvider({
       const services = await chargerFirebase();
       if (annule || !services) return;
       dbRef = services.db;
+      // Synchronise le token Auth avec Firestore SDK avant d'ouvrir la
+      // souscription. Sans ça, l'onSnapshot juste après restauration de
+      // session peut partir sans token → règles refusent (voir authPrete.ts).
+      await assurerAuthPrete(services.auth);
+      if (annule) return;
       const off = await abonnerProgression(services.db, uid, coursId, (p) => {
         if (annule) return;
         setProgression(p);

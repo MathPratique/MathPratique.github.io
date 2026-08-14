@@ -260,8 +260,16 @@ export class CalcDiffPicker {
    * en cours de session (peu probable mais on ne veut pas mélanger).
    * Par défaut : les 65 gratuits du bundle. Passer `banque.exercices`
    * (via useExercicesComplets) pour un détenteur d'accès.
+   *
+   * Champ déclaré explicitement plutôt que par `parameter property` :
+   * l'option `erasableSyntaxOnly` du projet interdit le sucre TS qui
+   * génère du code, pour permettre de tourner le TS directement sous
+   * Node sans transpilation.
    */
-  constructor(private readonly pool: Exercice[] = BUNDLE_APLATI) {}
+  private readonly pool: Exercice[];
+  constructor(pool: Exercice[] = BUNDLE_APLATI) {
+    this.pool = pool;
+  }
 
   draw(
     lessonId: CalcDiffLessonId,

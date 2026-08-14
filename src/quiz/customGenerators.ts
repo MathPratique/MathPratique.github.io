@@ -14,6 +14,26 @@ import {
   type CalcDiffLessonId,
 } from "./calcDiffPicker";
 import type { Exercice as ExerciceCalcDiff } from "../data/calcul-differentiel";
+import { topics } from "../data/topics";
+import { getLessonById, getChapterById } from "../data/lessons";
+
+/**
+ * Vrai si la leçon appartient à un cours marqué `enPreparation` — auquel
+ * cas on refuse de piocher sur elle (banque vide par construction).
+ *
+ * Défense en profondeur : la sélection UI (TopicPicker + garde de
+ * CustomQuiz) empêche déjà d'atteindre ce cas par les chemins normaux.
+ * Cette fonction rattrape une URL /quiz?custom=... construite à la main
+ * qui encoderait des specs pointant sur des leçons d'un cours à venir.
+ */
+function estLeconEnPreparation(lessonId: string): boolean {
+  const lesson = getLessonById(lessonId);
+  if (!lesson) return false;
+  const chapter = getChapterById(lesson.chapterId);
+  if (!chapter) return false;
+  const topic = topics.find((t) => t.id === chapter.topicId);
+  return topic?.enPreparation === true;
+}
 
 // Inline rich-content helpers (same shape as the manualExercises).
 const t = (s: string): RichPart => ({ type: "text", content: s });
@@ -1901,6 +1921,9 @@ export function buildCustomQuiz(
   const psdPicker = new ProbStatPicker();
   const cdPicker = new CalcDiffPicker(banqueCalcDiff);
   for (const spec of specs) {
+    // Garde : refuse de piocher sur une leçon d'un cours `enPreparation`
+    // (banque vide, page cassée). Cf. estLeconEnPreparation ci-dessus.
+    if (estLeconEnPreparation(spec.lessonId)) continue;
     if (isProbStatLesson(spec.lessonId)) {
       for (let i = 0; i < spec.exerciseCount; i++) {
         const ex = psdPicker.draw(spec.lessonId, "exercise", spec.difficulty);
