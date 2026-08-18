@@ -14,7 +14,7 @@ type Mode = "connexion" | "inscription";
  * souvent pas répondre après quelques mois.
  */
 export default function Connexion() {
-  const { utilisateur, chargement, disponible, connexionCourriel, inscriptionCourriel, connexionGoogle, reinitialiserMotDePasse } = useAuth();
+  const { utilisateur, chargement, disponible, connexionCourriel, inscriptionCourriel, reinitialiserMotDePasse } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -64,17 +64,6 @@ export default function Connexion() {
     }
   }
 
-  async function avecGoogle() {
-    setErreur(null);
-    setInfo(null);
-    try {
-      await connexionGoogle();
-      navigate(retour, { replace: true });
-    } catch (err) {
-      setErreur(messageErreurAuth(err));
-    }
-  }
-
   async function motDePasseOublie() {
     setErreur(null);
     setInfo(null);
@@ -108,28 +97,6 @@ export default function Connexion() {
         </p>
 
         <div className="mt-8 rounded-3xl border border-brand-100 bg-white p-6 sm:p-8">
-          <button
-            type="button"
-            onClick={avecGoogle}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
-          >
-            {/* Le « G » de Google, dessiné plutôt que chargé depuis un CDN :
-                aucune requête vers un tiers avant que l'usager ait cliqué. */}
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#4285F4" d="M22.5 12.2c0-.7-.06-1.4-.18-2.1H12v4h5.9a5 5 0 01-2.2 3.3v2.7h3.6c2.1-1.9 3.2-4.8 3.2-7.9z" />
-              <path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.2-1.9-6-4.4H2.3v2.8A10.9 10.9 0 0012 23z" />
-              <path fill="#FBBC05" d="M6 14.3a6.6 6.6 0 010-4.2V7.3H2.3a11 11 0 000 9.8L6 14.3z" />
-              <path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.1 1.6l3.1-3.1A10.9 10.9 0 002.3 7.3L6 10.1c.8-2.5 3.2-4.4 6-4.4z" />
-            </svg>
-            Continuer avec Google
-          </button>
-
-          <div className="my-6 flex items-center gap-3 text-xs text-ink-600">
-            <span className="h-px flex-1 bg-brand-100" />
-            ou
-            <span className="h-px flex-1 bg-brand-100" />
-          </div>
-
           <form onSubmit={soumettre} noValidate>
             <label className="block text-sm font-medium text-ink-700">
               Adresse courriel
