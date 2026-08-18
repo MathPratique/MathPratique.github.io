@@ -31,6 +31,21 @@ jobs:
         run: npm ci
 
       - name: Construire le site
+        # Les 6 clés Firebase côté client sont injectées ici. Sans elles,
+        # `firebaseEstConfigure` reste faux au build et l'onglet Connexion
+        # ne s'affiche pas — c'était l'état voulu avant l'ouverture des
+        # comptes. Ces valeurs ne sont pas des secrets : elles partent dans
+        # le bundle, c'est le fonctionnement normal d'un client Firebase.
+        # On les passe par `secrets` seulement pour éviter de les
+        # versionner dans ce fichier. Ce qui protège les données, ce sont
+        # firestore.rules et les vérifications côté Cloud Functions.
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
         run: npm run build
 
       - name: Copier index.html en 404.html pour le routage SPA

@@ -24,6 +24,17 @@ async function exigerServices() {
   return services;
 }
 
+/**
+ * URL de retour après un clic sur un lien envoyé par Firebase Auth
+ * (réinitialisation de mot de passe, vérification d'adresse). Firebase la
+ * met derrière un bouton « Continuer » sur sa page hébergée — sans ce
+ * réglage, l'étudiant termine sa réinitialisation sur `<projectId>.firebaseapp.com`
+ * et ne retrouve jamais le chemin vers `mathpratique.ca`. Le domaine
+ * doit figurer dans les « Authorized domains » de la console Firebase
+ * Authentication, sinon le SDK refuse d'envoyer le courriel.
+ */
+const URL_RETOUR_APRES_ACTION = "https://mathpratique.ca/connexion";
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [utilisateur, setUtilisateur] = useState<User | null>(null);
   // Sans Firebase, on ne charge rien : l'état est connu tout de suite.
@@ -68,8 +79,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
       inscriptionCourriel: async (courriel, motDePasse) => {
         const { auth } = await exigerServices();
-        const { createUserWithEmailAndPassword } = await import("firebase/auth");
-        await createUserWithEmailAndPassword(auth, courriel, motDePasse);
+        const {
+          createUserWithEmailAndPassword,
+          sendEmailVerification,
+        } = await import("firebase/auth");
+        const cred = await createUserWithEmailAndPassword(auth, courriel, motDePasse);
+        // Envoyer le courriel de vérification, sans bloquer si ça échoue :
+        // la création du compte a réussi, l'utilisateur peut se connecter.
+        // Un service temporairement indisponible ne doit pas transformer
+        // l'inscription en erreur. Les comptes non vérifiés sont
+        // récupérables ensuite via `scripts/lister-comptes-non-verifies.js`.
+        try {
+          await sendEmailVerification(cred.user, { url: URL_RETOUR_APRES_ACTION });
+        } catch (err) {
+          const code = (err as { code?: string })?.code ?? String(err);
+          // eslint-disable-next-line no-console
+          console.warn(`[auth] sendEmailVerification a échoué (${code}) — compte créé sans envoi`);
+        }
       },
       connexionGoogle: async () => {
         const { auth } = await exigerServices();
@@ -79,7 +105,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       reinitialiserMotDePasse: async (courriel) => {
         const { auth } = await exigerServices();
         const { sendPasswordResetEmail } = await import("firebase/auth");
-        await sendPasswordResetEmail(auth, courriel);
+        // `actionCodeSettings.url` = destination du bouton « Continuer »
+        // affiché par Firebase après la réinitialisation. Sans ce réglage,
+        // l'étudiant reste bloqué sur la page hébergée Firebase et ne
+        // retrouve plus le chemin vers le site — le scénario d'un dimanche
+        // soir sans aide disponible.
+        await sendPasswordResetEmail(auth, courriel, { url: URL_RETOUR_APRES_ACTION });
       },
       deconnexion: async () => {
         const { auth } = await exigerServices();

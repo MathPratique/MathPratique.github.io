@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "tsc src/acces/regles.ts src/acces/webhook.ts src/acces/telechargement.ts src/acces/documents.ts src/components/practice/decouper-latex.ts src/components/practice/latex-vers-html.ts --ignoreConfig --rootDir src --outDir .tmp-test --target es2022 --module es2022 --moduleResolution bundler --strict && node --test \"tests/**/*.test.mjs\"",
-    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr"
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "deploy:rules": "firebase deploy --only firestore:rules"
   },
   "dependencies": {
     "clsx": "^2.1.1",

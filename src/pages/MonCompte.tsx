@@ -90,8 +90,22 @@ export default function MonCompte() {
 
         {acces?.length === 0 && (
           <div className="mt-4 rounded-2xl border border-brand-100 bg-brand-50/40 p-6">
+            {/*
+              Deux publics passent par ce message :
+                (1) l'étudiant à qui l'enseignant a demandé de créer un
+                    compte pour recevoir un accès par la suite ;
+                (2) le visiteur qui a créé un compte de son propre chef
+                    et n'a pas encore acheté.
+              Le premier ne doit pas être poussé à acheter, le second doit
+              savoir où aller. Une formulation neutre couvre les deux, sans
+              date précise (l'enseignant confirme lui-même quand ça arrive).
+            */}
             <p className="text-sm text-ink-700">
-              Tu n'as pas encore d'accès à un cours.
+              Ton compte est bien créé. Si tu attends qu'un enseignant t'ouvre
+              un accès, il arrive sous peu — tu n'as rien de plus à faire.
+            </p>
+            <p className="mt-3 text-sm text-ink-700">
+              Sinon, tu peux voir le matériel en vente.
             </p>
             <Link
               to="/boutique"
