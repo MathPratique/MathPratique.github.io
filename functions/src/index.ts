@@ -313,6 +313,39 @@ export const webhookStripe = onRequest(
 // transiter cinquante-huit PDF par une Cloud Function coûterait cher et
 // serait lent, pour aucun gain de sécurité.
 
+/**
+ * Rend un titre francophone du catalogue sûr pour l'en-tête
+ * Content-Disposition. La RFC 6266 recommande RFC 5987
+ * (`filename*=UTF-8''<encoded>`) pour les caractères non-ASCII, mais son
+ * support navigateur reste inégal — on choisit un nom ASCII pur, plutôt
+ * qu'un nom joli qui casse chez quelqu'un. Le titre reste visible dans
+ * /mon-compte ; ici c'est seulement le nom du fichier téléchargé.
+ *
+ * Transformations, dans l'ordre :
+ *   1. décomposer les accents (NFD) puis retirer les marques combinantes
+ *      (« é » → « e », « à » → « a », « ç » → « c ») ;
+ *   2. remplacer tout ce qui n'est pas [A-Za-z0-9._-] par « - » — englobe
+ *      les espaces, les tirets cadratins « — », les deux-points, les
+ *      parenthèses et le reste de la ponctuation ;
+ *   3. effondrer les séries de « - » consécutifs en un seul ;
+ *   4. rogner les « - » en début et en fin ;
+ *   5. ajouter .pdf.
+ *
+ * Exemples issus du catalogue :
+ *   « Chapitre 1 — Fonctions et domaines »
+ *     → Chapitre-1-Fonctions-et-domaines.pdf
+ *   « Exercices — chapitre 4 : La dérivée : définition (étudiant) »
+ *     → Exercices-chapitre-4-La-derivee-definition-etudiant.pdf
+ *   « Examen intra 1 — grille de correction »
+ *     → Examen-intra-1-grille-de-correction.pdf
+ */
+function nomFichierPourAttachment(titre: string): string {
+  const sansAccents = titre.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const asciiSeulement = sansAccents.replace(/[^A-Za-z0-9._-]+/g, "-");
+  const compact = asciiSeulement.replace(/-+/g, "-").replace(/^-+|-+$/g, "");
+  return `${compact}.pdf`;
+}
+
 export const obtenirLienTelechargement = onCall(
   { region: "northamerica-northeast1", cors: true },
   async (requete) => {
@@ -348,19 +381,56 @@ export const obtenirLienTelechargement = onCall(
     // Une URL signée échappe à tout contrôle une fois émise. Sa brièveté est
     // la seule protection : quinze minutes suffisent à lancer un
     // téléchargement, pas à alimenter un lien partagé sur un forum.
+    //
+    // `responseDisposition: attachment` force le navigateur à télécharger
+    // le PDF plutôt que de l'ouvrir dans sa visionneuse intégrée —
+    // l'étudiant reste sur /mon-compte au lieu d'être expulsé vers un
+    // onglet PDF, et les autres cartes d'accès restent à un clic.
+    //
+    // Le nom du fichier vient du titre du catalogue, assaini en ASCII
+    // (voir nomFichierPourAttachment ci-dessus). Repli sur "document" si
+    // jamais `document` était nul — situation qui ne peut pas se produire
+    // aujourd'hui (decision.autorise l'exige non-null) mais que TypeScript
+    // ne prouve pas, et qu'un refactor futur de deciderTelechargement
+    // pourrait casser. Coût nul, pas de 500 sur le cas limite.
+    //
+    // Les guillemets doubles autour du nom sont sûrs parce que
+    // nomFichierPourAttachment garantit qu'il ne contient que
+    // [A-Za-z0-9._-] — aucun caractère qui pourrait casser l'échappement.
+    const nomAttachment = nomFichierPourAttachment(document?.titre ?? "document");
     const [url] = await fichier.getSignedUrl({
       action: "read",
       expires: Date.now() + VALIDITE_LIEN_MINUTES * 60_000,
+      responseDisposition: `attachment; filename="${nomAttachment}"`,
     });
 
     // Marque le premier téléchargement. C'est ce drapeau, et lui seul, qui
     // ferme le droit au remboursement — d'où l'importance qu'il soit posé
     // ici, par le serveur, et jamais par le navigateur.
+    //
+    // Garde explicite sur `document` : contrairement à responseDisposition
+    // ci-dessus où un repli sur "document.pdf" est acceptable, ici un
+    // chemin Firestore construit avec un coursId par défaut écrirait au
+    // MAUVAIS endroit en silence — pire qu'une erreur, plus difficile à
+    // trouver après coup. Si l'invariant « decision.autorise implique
+    // document non-null » venait à casser suite à un refactor de
+    // deciderTelechargement, on refuse l'écriture et on journalise en
+    // erreur (visible dans les alertes) plutôt que de corrompre des
+    // données. Le téléchargement lui-même reste accordé — l'URL signée
+    // vient d'être renvoyée à l'étudiant, on ne la retire pas.
     if (!acces?.aTelecharge) {
-      await db.doc(`utilisateurs/${uid}/acces/${document!.coursId}`).update({
-        aTelecharge: true,
-        premierTelechargementLe: FieldValue.serverTimestamp(),
-      });
+      if (!document) {
+        logger.error(
+          `[telechargement] ${uid} → ${documentId} : autorisé, mais document ` +
+            `introuvable au moment de poser aTelecharge. Invariant rompu dans ` +
+            `deciderTelechargement — à investiguer. Aucune écriture Firestore faite.`,
+        );
+      } else {
+        await db.doc(`utilisateurs/${uid}/acces/${document.coursId}`).update({
+          aTelecharge: true,
+          premierTelechargementLe: FieldValue.serverTimestamp(),
+        });
+      }
     }
 
     logger.info(`[telechargement] ${uid} → ${documentId} autorisé`);
