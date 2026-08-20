@@ -62,14 +62,26 @@ export const DOCUMENTS: Document[] = [
         `notes/${c.fichier}-PROF.pdf`, "notes"),
   ]),
 
-  // --- Recueils d'exercices et leurs solutions ------------------------------
+  // --- Recueils d'exercices : énoncés, indices, corrigé ---------------------
+  //
+  // Trois fichiers par chapitre plutôt que deux : le PDF « indices » vit à
+  // côté du corrigé complet, pour que l'étudiant qui bloque puisse recevoir
+  // une piste sans consulter la solution intégrale. L'ordre ci-dessous
+  // (énoncés → indices → corrigé) est aussi l'ordre d'affichage dans
+  // /mon-compte — la progression pédagogique attendue.
+  //
+  // L'ID de l'énoncé garde la forme courte `exercices-chXX`, sans suffixe :
+  // c'est le fichier « principal » du triplet, comme `intra1` l'est pour le
+  // triplet énoncé / corrigé / grille des examens plus bas.
   ...CHAPITRES.flatMap((c) => {
     const num = c.fichier.slice(0, 4); // « ch01 »
     return [
       doc(`exercices-${num}`, `Exercices — chapitre ${c.n} : ${c.titre}`,
-          `exercices/${num}-recueil.pdf`, "exercices"),
-      doc(`exercices-${num}-solutions`, `Solutions — chapitre ${c.n} : ${c.titre}`,
-          `exercices/${num}-solutions.pdf`, "exercices"),
+          `exercices/${num}-1-exercices.pdf`, "exercices"),
+      doc(`exercices-${num}-indices`, `Indices — chapitre ${c.n} : ${c.titre}`,
+          `exercices/${num}-2-indices.pdf`, "exercices"),
+      doc(`exercices-${num}-corrige`, `Corrigé — chapitre ${c.n} : ${c.titre}`,
+          `exercices/${num}-3-corrige.pdf`, "exercices"),
     ];
   }),
 

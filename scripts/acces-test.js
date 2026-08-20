@@ -62,10 +62,16 @@ const etatVoulu = argOpt("etat");
 if (!courriel || !coursId || !etatVoulu) {
   console.error(`
 Usage :
-  node scripts/acces-test.js --courriel <compte> --cours <coursId> --etat <valide|expire|aucun>
+  node scripts/acces-test.js --courriel <compte> --cours <coursId> --etat <valide|expire|aucun> [--heures N]
+
+Options :
+  --heures N   Durée personnalisée en heures (entier positif), UNIQUEMENT
+               avec --etat valide. Sans ce drapeau, l'accès dure 12 mois
+               comme un vrai achat.
 
 Exemple :
   node scripts/acces-test.js --courriel test@exemple.com --cours calcul-differentiel --etat valide
+  node scripts/acces-test.js --courriel test@exemple.com --cours calcul-differentiel --etat valide --heures 24
 `);
   process.exit(2);
 }
@@ -73,6 +79,26 @@ Exemple :
 if (!["valide", "expire", "aucun"].includes(etatVoulu)) {
   console.error(`\n❌ --etat doit valoir « valide », « expire » ou « aucun ». Reçu : « ${etatVoulu} ».\n`);
   process.exit(2);
+}
+
+// --heures : durée personnalisée en heures, pour --etat valide seulement.
+// Absent → comportement d'origine (12 mois). Présent avec un autre --etat
+// → erreur explicite plutôt qu'ignore silencieux — on ne veut pas qu'un
+// « --heures 24 » sur --etat expire soit accepté et fasse croire à un
+// résultat qui n'aura aucun effet.
+const heuresBrut = argOpt("heures");
+let dureeHeures = null;
+if (heuresBrut !== null) {
+  const n = Number(heuresBrut);
+  if (!Number.isFinite(n) || n <= 0 || !Number.isInteger(n)) {
+    console.error(`\n❌ --heures attend un entier positif. Reçu : « ${heuresBrut} ».\n`);
+    process.exit(2);
+  }
+  if (etatVoulu !== "valide") {
+    console.error(`\n❌ --heures ne s'utilise qu'avec --etat valide (reçu --etat ${etatVoulu}).\n`);
+    process.exit(2);
+  }
+  dureeHeures = n;
 }
 
 // L'émulateur accepte des identifiants factices ; le vrai
@@ -198,7 +224,12 @@ let dateDebut, dateFin;
 
 if (etatVoulu === "valide") {
   dateDebut = maintenant;
-  dateFin = ajouterMois(dateDebut, DUREE_ACCES_MOIS);
+  if (dureeHeures !== null) {
+    const HEURE_MS = 60 * 60 * 1000;
+    dateFin = dateDebut + dureeHeures * HEURE_MS;
+  } else {
+    dateFin = ajouterMois(dateDebut, DUREE_ACCES_MOIS);
+  }
 } else {
   // « expire » : accès qui s'est terminé la veille.
   const JOUR_MS = 24 * 60 * 60 * 1000;

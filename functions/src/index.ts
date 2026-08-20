@@ -17,7 +17,14 @@
 
 import { onCall, onRequest, HttpsError } from "firebase-functions/v2/https";
 import { defineSecret, defineString } from "firebase-functions/params";
-import { logger } from "firebase-functions/v2";
+// Import ciblé du logger, PAS depuis "firebase-functions/v2" : le point
+// d'entrée racine v2 charge tous les providers (dont database), qui
+// requièrent @firebase/database-compat, qui requiert @firebase/app. Un seul
+// paquet manquant dans le node_modules déployé faisait crasher les quatre
+// containers au boot avec « Cannot find module '@firebase/app' ». Le
+// sous-chemin dédié évite toute la cascade — le logger n'a rien à voir
+// avec les providers, il ne devrait pas les charger.
+import * as logger from "firebase-functions/logger";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore, Timestamp, FieldValue } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
