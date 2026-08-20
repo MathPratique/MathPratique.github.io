@@ -3,6 +3,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import AnimatedSection from "../components/ui/AnimatedSection";
 import { useAuth, messageErreurAuth } from "../firebase/useAuth";
 import { MESSAGE_NON_CONFIGURE } from "../firebase/config";
+import { EMAIL_CONTACT } from "../data/site";
 
 type Mode = "connexion" | "inscription";
 
@@ -24,6 +25,17 @@ export default function Connexion() {
   const [erreur, setErreur] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [envoi, setEnvoi] = useState(false);
+  // Le bloc « Tes renseignements personnels » est partiellement replié :
+  // titre + 1re phrase toujours visibles (l'information la plus importante,
+  // celle sur l'usage du courriel), les trois paragraphes suivants
+  // (hébergement, droits, responsable) derrière un « En savoir plus ».
+  // Mesuré sur mobile 375×667 : entièrement déplié, le bloc fait 438 px et
+  // pousse le bouton à 357 px sous le pli — 66 % du viewport occupé par du
+  // texte informatif avant que l'action ne soit visible. La version
+  // partielle libère assez d'espace pour que le bouton reste atteignable
+  // par un scroll court, et respecte la hiérarchie visuelle demandée
+  // (l'information reste discrète, le bouton domine).
+  const [confidentialiteOuverte, setConfidentialiteOuverte] = useState(false);
 
   // Où renvoyer après connexion. Par défaut, la boutique : c'est de là que
   // vient la quasi-totalité des gens qui se connectent.
@@ -135,6 +147,58 @@ export default function Connexion() {
               <p role="status" className="mt-4 rounded-xl bg-brand-50 px-4 py-3 text-sm text-brand-800">
                 {info}
               </p>
+            )}
+
+            {mode === "inscription" && (
+              <div className="mt-5 space-y-3 text-xs leading-relaxed text-ink-600">
+                <p className="font-semibold text-ink-700">Tes renseignements personnels</p>
+                <p>
+                  Ton adresse courriel sert uniquement à créer ton compte,
+                  à te donner accès au matériel et à t'envoyer les courriels
+                  liés à ton compte (vérification, mot de passe oublié).
+                  Elle n'est jamais vendue ni utilisée à des fins publicitaires.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setConfidentialiteOuverte((v) => !v)}
+                  aria-expanded={confidentialiteOuverte}
+                  aria-controls="bloc-confidentialite-suite"
+                  className="text-xs font-semibold text-brand-700 hover:text-brand-800"
+                >
+                  {confidentialiteOuverte ? "Masquer les détails" : "En savoir plus"}
+                </button>
+                {confidentialiteOuverte && (
+                  <div id="bloc-confidentialite-suite" className="space-y-3">
+                    <p>
+                      Tes données sont hébergées par Google (Firebase). Le contenu
+                      de ton compte est conservé sur des serveurs situés au Canada;
+                      certains renseignements liés à ton authentification peuvent
+                      être traités à l'extérieur du Québec.
+                    </p>
+                    <p>
+                      Tu peux en tout temps consulter tes renseignements, les
+                      corriger, ou demander la suppression de ton compte en
+                      écrivant à{" "}
+                      <a
+                        href={`mailto:${EMAIL_CONTACT}`}
+                        className="font-semibold text-brand-700 hover:text-brand-800"
+                      >
+                        {EMAIL_CONTACT}
+                      </a>
+                      .
+                    </p>
+                    <p>
+                      Responsable de la protection des renseignements personnels :{" "}
+                      <a
+                        href={`mailto:${EMAIL_CONTACT}`}
+                        className="font-semibold text-brand-700 hover:text-brand-800"
+                      >
+                        {EMAIL_CONTACT}
+                      </a>
+                    </p>
+                  </div>
+                )}
+              </div>
             )}
 
             <button
