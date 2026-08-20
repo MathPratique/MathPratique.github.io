@@ -109,7 +109,37 @@ export function ProgressionProvider({
 
       // Le pousseur est instancié en parallèle. Firebase gère le partage
       // des connexions, donc pas de doublon.
-      pousseurRef.current = await creerPousseur(services.db, uid, coursId);
+      //
+      // `onErreur` : quand un flush Firestore échoue (règles, permission,
+      // réseau), on rollback l'état local optimiste. Sans ça, le bouton
+      // « s'éteint tout seul » sans explication au retour du snapshot
+      // serveur — c'est exactement le symptôme qu'a produit le bogue de
+      // la dot-notation aplatie (cf. commentaire en tête de store.ts).
+      pousseurRef.current = await creerPousseur(services.db, uid, coursId, {
+        onErreur: ({ deltas, code, message }) => {
+          // eslint-disable-next-line no-console
+          console.warn(
+            `[progression] rollback local suite au refus serveur (${code}) — ` +
+              `${deltas.length} toggle(s) annulé(s). Détail : ${message}`,
+          );
+          // Rétablir l'état pré-clic pour chaque delta refusé. L'INVERSE :
+          // un delta « ajouter » refusé → on retire, un delta « retirer »
+          // refusé → on remet. C'est le retour à l'état d'avant le clic
+          // optimiste, cohérent avec ce que le serveur a (ne pas) écrit.
+          setProgression((p) => {
+            const suivant: Progression = {
+              ...p,
+              completes: { ...p.completes },
+              marques: { ...p.marques },
+            };
+            for (const d of deltas) {
+              if (d.ajouter) delete suivant[d.champ][d.id];
+              else suivant[d.champ][d.id] = Date.now();
+            }
+            return suivant;
+          });
+        },
+      });
     })();
 
     return () => {
