@@ -5,7 +5,7 @@
 // des fiches signalétiques — jamais à partir du contenu, qui n'est pas dans
 // les fichiers servis.
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import AnimatedSection from "../components/ui/AnimatedSection";
 import CarteExerciceCD from "../components/practice/CarteExerciceCD";
@@ -106,6 +106,41 @@ export default function ExercicesCalculDifferentiel() {
     });
   }, [banque.exercices]);
 
+  // ── Snapshot Option E : cartes visibles figées pendant qu'un filtre
+  // « Complétés » / « Non complétés » / « À revoir » est actif. ──────
+  //
+  // Sans ça, un exercice « disparaîtrait sous le doigt » au premier clic
+  // sur son bouton progression — un décochage sur le filtre « Complétés »
+  // sortirait l'exo de la liste immédiatement, et l'étudiant ne pourrait
+  // plus annuler une erreur de frappe sans changer de filtre.
+  //
+  // Le snapshot est repris à chaque changement de filtre orthogonal
+  // (chapitre / type / difficulté / filtre progression) ET au chargement
+  // initial de progression (statutProg passant à « actif »). Il est
+  // aussi refait à chaque remount de la page : reload F5, navigation SPA
+  // retour — c'est le mount naturel qui refait tourner ce useMemo, aucune
+  // liste périmée ne survit à une navigation.
+  //
+  // On lit `progression` via une ref pour capturer sa valeur au moment
+  // du snapshot SANS l'inscrire aux dépendances du useMemo — sinon
+  // chaque toggle rebâtirait le snapshot et l'exercice disparaîtrait
+  // quand même. C'est LE point critique d'Option E.
+  //
+  // Le feedback visuel du clic vient d'ailleurs : BoutonsProgression lit
+  // `progression` en direct via useProgression (le bouton change de
+  // couleur), et CompteurChapitre plus bas fait pareil (les compteurs
+  // « X / N complétés · Y à revoir » bougent instantanément). La liste
+  // seule reste figée pour permettre le re-clic.
+  const progressionRef = useRef(progression);
+  progressionRef.current = progression;
+
+  const idsSnapshot = useMemo<Set<string> | null>(() => {
+    if (filtreProg === "tous") return null;
+    if (statutProg !== "actif") return null; // attente du 1er snapshot Firestore
+    const tousLesIds = chapitresLive.flatMap((c) => c.exercices.map((e) => e.id));
+    return new Set(filtrerIds(progressionRef.current, tousLesIds, filtreProg));
+  }, [filtreProg, statutProg, chapitreActif, typeActif, difficulteActive, chapitresLive]);
+
   const groupes = useMemo(
     () =>
       chapitresLive
@@ -116,16 +151,24 @@ export default function ExercicesCalculDifferentiel() {
               (!typeActif || e.type === typeActif) &&
               (!difficulteActive || e.difficulte === difficulteActive),
           );
-          const idsAffichables = new Set(
-            filtrerIds(progression, filtresPublics.map((e) => e.id), filtreProg),
-          );
+          // Si un snapshot est disponible, on l'utilise — Option E, la
+          // liste reste figée jusqu'au prochain changement de filtre.
+          // Sinon (filtre « Tous » où le snapshot est null par design,
+          // ou pendant le chargement initial de progression), on retombe
+          // sur le filtrage direct depuis `progression` — comportement
+          // d'avant, correct par défaut pour ces cas.
+          const idsAffichables = idsSnapshot
+            ? idsSnapshot
+            : new Set(
+                filtrerIds(progression, filtresPublics.map((e) => e.id), filtreProg),
+              );
           return {
             ...c,
             filtresPublics,
             visibles: filtresPublics.filter((e) => idsAffichables.has(e.id)),
           };
         }),
-    [chapitresLive, chapitreActif, typeActif, difficulteActive, filtreProg, progression],
+    [chapitresLive, chapitreActif, typeActif, difficulteActive, filtreProg, idsSnapshot, progression],
   );
 
   const nbVisibles = groupes.reduce((n, g) => n + g.visibles.length, 0);
