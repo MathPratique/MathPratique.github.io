@@ -25,10 +25,18 @@ test("tabular devient un tableau HTML, en-tête compris", () => {
     "$x$ & $0$ & $1$ \\\\ \\hline $f'$ & $+$ & $-$ \\\\" +
     "\\end{tabular}\\end{center}";
   const r = preparer(src);
+  // Structure de tableau
   assert.ok(r.includes("<table>"), r);
-  assert.ok(r.includes("<th>$x$</th>"), r);
-  assert.ok(r.includes("<td>$f'$</td>"), r);
   assert.ok(r.includes('class="tableau-latex"'), "il faut un conteneur qui défile");
+  assert.equal((r.match(/<th>/g) ?? []).length, 3, "trois cellules d'en-tête");
+  assert.equal((r.match(/<td>/g) ?? []).length, 3, "trois cellules de corps");
+  // Le contenu $…$ des cellules est PRÉ-RENDU par KaTeX — cf. rendreCellule
+  // dans latex-vers-html.ts. Sans ce pré-rendu, `decouper` couperait
+  // <td>$x$</td> en trois segments et casserait la structure du <table>.
+  // Donc plus de « $x$ » brut dans la sortie : à la place, du HTML KaTeX.
+  assert.ok(!r.includes("$x$"), "les $…$ ne survivent pas dans les cellules");
+  assert.ok(r.includes('class="katex"'), "KaTeX a bien rendu le contenu math");
+  // Aucun balisage LaTeX ne fuit
   assert.ok(!r.includes("\\begin{tabular}"));
   assert.ok(!r.includes("arraystretch"));
   assert.ok(!r.includes("\\hline"));
