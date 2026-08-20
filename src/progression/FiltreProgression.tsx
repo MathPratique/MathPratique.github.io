@@ -8,6 +8,7 @@ import { useProgression } from "./ProgressionContext";
 
 const OPTIONS: { valeur: FiltreProgression; libelle: string }[] = [
   { valeur: "tous", libelle: "Tous" },
+  { valeur: "completes", libelle: "Complétés" },
   { valeur: "non-completes", libelle: "Non complétés" },
   { valeur: "marques", libelle: "À revoir" },
 ];

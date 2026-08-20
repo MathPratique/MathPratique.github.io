@@ -204,8 +204,13 @@ export default function ExercicesCalculDifferentiel() {
         </div>
         {nbVisibles === 0 && (
           <p className="mt-8 text-center text-sm text-ink-600">
-            Aucun exercice gratuit ne correspond à cette combinaison. Élargis un
-            filtre pour en voir d'autres.
+            {filtreProg === "completes"
+              ? "Aucun exercice complété pour l'instant. Utilise le crochet à côté d'un titre pour en cocher un."
+              : filtreProg === "non-completes"
+                ? "Tout est complété dans cette sélection."
+                : filtreProg === "marques"
+                  ? "Aucun exercice marqué « à revoir ». Utilise l'étoile pour en ajouter."
+                  : "Aucun exercice ne correspond à cette combinaison. Élargis un filtre pour en voir d'autres."}
           </p>
         )}
       </AnimatedSection>

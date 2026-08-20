@@ -70,15 +70,23 @@ export function compteAvecPrefixe(
  * Filtres possibles pour la page Exercices. Une liste fermée pour que
  * l'ajout d'une option demande une modification consciente à cet endroit.
  */
-export type FiltreProgression = "tous" | "non-completes" | "marques";
+export type FiltreProgression = "tous" | "completes" | "non-completes" | "marques";
 
-/** Applique un filtre à une liste d'IDs. Renvoie ceux à afficher. */
+/**
+ * Applique un filtre à une liste d'IDs. Renvoie ceux à afficher.
+ *
+ * « completes » et « marques » sont deux dictionnaires INDÉPENDANTS : un
+ * exercice à la fois coché ET marqué apparaît dans les deux filtres,
+ * jamais dans « non-completes ». Ce n'est pas une hiérarchie à trois
+ * états — chaque filtre regarde son propre dictionnaire.
+ */
 export function filtrerIds(
   p: Progression | null | undefined,
   ids: string[],
   filtre: FiltreProgression,
 ): string[] {
   if (filtre === "tous" || !p) return ids;
+  if (filtre === "completes") return ids.filter((id) => estComplete(p, id));
   if (filtre === "non-completes") return ids.filter((id) => !estComplete(p, id));
   if (filtre === "marques") return ids.filter((id) => estMarque(p, id));
   return ids;
