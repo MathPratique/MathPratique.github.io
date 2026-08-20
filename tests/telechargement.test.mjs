@@ -5,8 +5,16 @@ import { DOCUMENTS, trouverDocument } from "../.tmp-test/acces/documents.js";
 import { creerAcces } from "../.tmp-test/acces/regles.js";
 
 const DEBUT = new Date("2026-09-01T12:00:00Z").getTime();
+// Base d'accès pour les tests — « acheteur » par défaut, ce qui autorise
+// tous les documents utilisés dans les cas de base (exercices, révision).
+// Les tests qui doivent isoler un autre niveau passent une surcharge.
 const acces = (surcharge = {}) => ({
-  ...creerAcces({ coursId: "calcul-differentiel", source: "achat", debut: DEBUT }),
+  ...creerAcces({
+    coursId: "calcul-differentiel",
+    source: "achat",
+    niveau: "acheteur",
+    debut: DEBUT,
+  }),
   ...surcharge,
 });
 const doc = trouverDocument("exercices-ch04");
@@ -15,17 +23,32 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 58 documents payants", () => {
+test("le catalogue couvre les 65 documents", () => {
   // 16 notes (7 chapitres × 2 versions + 2 recueils complets)
-  // 14 exercices (7 recueils + 7 solutions)
+  // 21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
   // 10 révision (5 séries + 5 solutions)
   // 18 examens (6 × énoncé, corrigé, grille)
-  assert.equal(DOCUMENTS.length, 58);
+  assert.equal(DOCUMENTS.length, 65);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 16, exercices: 14, revision: 10, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 16, exercices: 21, revision: 10, examens: 18 });
+});
+
+test("chaque document déclare au moins un niveau autorisé", () => {
+  for (const d of DOCUMENTS) {
+    assert.ok(
+      Array.isArray(d.niveauxAutorises) && d.niveauxAutorises.length > 0,
+      `${d.id} n'a pas de niveauxAutorises`,
+    );
+    for (const n of d.niveauxAutorises) {
+      assert.ok(
+        ["restreint", "acheteur", "enseignant"].includes(n),
+        `${d.id} : niveau inconnu ${n}`,
+      );
+    }
+  }
 });
 
 test("aucun identifiant en double", () => {
@@ -55,7 +78,7 @@ test("un identifiant inconnu ne renvoie rien", () => {
 test("un accès actif ouvre le document", () => {
   const d = deciderTelechargement(doc, acces(), DEBUT + 1000);
   assert.equal(d.autorise, true);
-  assert.equal(d.chemin, "calcul-differentiel/exercices/ch04-recueil.pdf");
+  assert.equal(d.chemin, "calcul-differentiel/exercices/ch04-1-exercices.pdf");
 });
 
 test("sans accès, rien", () => {
@@ -94,6 +117,76 @@ test("un document inconnu est refusé AVANT toute question d'accès", () => {
 test("un code de classe donne les mêmes droits qu'un achat", () => {
   const d = deciderTelechargement(doc, acces({ source: "code-classe" }), DEBUT + 1000);
   assert.equal(d.autorise, true);
+});
+
+// ---------------------------------------------------------------------------
+//  Niveaux d'accès — la garde applique la liste explicite niveauxAutorises
+// ---------------------------------------------------------------------------
+
+test("un document réservé aux acheteurs est refusé à un accès restreint", () => {
+  // Un examen : niveauxAutorises = ["acheteur", "enseignant"], pas de « restreint ».
+  const examen = trouverDocument("intra1");
+  const a = acces({ niveau: "restreint" });
+  const d = deciderTelechargement(examen, a, DEBUT + 1000);
+  assert.equal(d.autorise, false);
+  assert.equal(d.raison, "document-restreint");
+});
+
+test("un accès sans niveau tombe sur « restreint » — défaut le plus restrictif", () => {
+  // niveau absent → niveauDe renvoie « restreint » → examen refusé.
+  const examen = trouverDocument("intra1");
+  const a = acces({ niveau: undefined });
+  const d = deciderTelechargement(examen, a, DEBUT + 1000);
+  assert.equal(d.autorise, false);
+  assert.equal(d.raison, "document-restreint");
+});
+
+test("un accès avec un niveau bidon tombe sur « restreint » aussi", () => {
+  const examen = trouverDocument("intra1");
+  const a = acces({ niveau: "administrateur-tout-puissant" });
+  const d = deciderTelechargement(examen, a, DEBUT + 1000);
+  assert.equal(d.autorise, false);
+  assert.equal(d.raison, "document-restreint");
+});
+
+test("une note version ÉTUDIANT est visible pour un accès restreint", () => {
+  // Notes ETUDIANT : niveauxAutorises = ["restreint", "enseignant"].
+  const noteEtudiant = trouverDocument("notes-complet-etudiant");
+  const a = acces({ niveau: "restreint" });
+  const d = deciderTelechargement(noteEtudiant, a, DEBUT + 1000);
+  assert.equal(d.autorise, true);
+});
+
+test("une note version ÉTUDIANT est refusée à un acheteur (pas d'inclusion implicite)", () => {
+  // Confirme que ce N'EST PAS une hiérarchie : « acheteur » n'a pas droit
+  // à ce que voit « restreint » par défaut.
+  const noteEtudiant = trouverDocument("notes-complet-etudiant");
+  const d = deciderTelechargement(noteEtudiant, acces(), DEBUT + 1000);
+  assert.equal(d.autorise, false);
+  assert.equal(d.raison, "document-restreint");
+});
+
+test("le refus de niveau se déclenche AVANT le refus d'expiration", () => {
+  // Un examen demandé par un accès restreint expiré doit remonter la raison
+  // niveau, pas la raison expiration : le niveau ne varie pas avec le temps,
+  // et informer sur l'expiration d'un document qu'on n'aurait jamais eu le
+  // droit de voir serait une fuite d'information.
+  const examen = trouverDocument("intra1");
+  const a = acces({ niveau: "restreint" });
+  const d = deciderTelechargement(examen, a, a.dateFin + 86400_000);
+  assert.equal(d.autorise, false);
+  assert.equal(d.raison, "document-restreint");
+});
+
+test("le refus de niveau se déclenche APRÈS le refus mauvais-cours", () => {
+  // Symétrique : un accès à un cours étranger doit remonter mauvais-cours
+  // avant de parler de niveau (le niveau est du bon cours, il ne s'applique
+  // pas au document d'un autre cours).
+  const examen = trouverDocument("intra1");
+  const a = acces({ coursId: "calcul-integral", niveau: "restreint" });
+  const d = deciderTelechargement(examen, a, DEBUT + 1000);
+  assert.equal(d.autorise, false);
+  assert.equal(d.raison, "mauvais-cours");
 });
 
 test("INVARIANT — aucun chemin n'est jamais rendu sans autorisation", () => {

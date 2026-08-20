@@ -267,6 +267,12 @@ export const webhookStripe = onRequest(
         tx.set(db.doc(`utilisateurs/${uid}/acces/${acces.coursId}`), {
           coursId: acces.coursId,
           source: acces.source,
+          // `acces.niveau` provient de creerAcces via deciderWebhook, qui
+          // passe explicitement « acheteur » pour tout paiement Stripe
+          // validé. On n'invente rien ici — on écrit ce que la logique
+          // pure a décidé, pour garder la seule source de vérité du
+          // niveau au point de création de l'accès.
+          niveau: acces.niveau,
           dateDebut: Timestamp.fromMillis(acces.dateDebut),
           dateFin: Timestamp.fromMillis(acces.dateFin),
           aTelecharge: acces.aTelecharge,

@@ -25,6 +25,7 @@
 import { chargerFirebase } from "./config";
 import { assurerAuthPrete } from "./authPrete";
 import type { Acces, SourceAcces } from "../acces/regles";
+import type { NiveauAcces } from "../acces/documents";
 
 /** Le seul cours en vente pour l'instant. */
 export const COURS_EN_VENTE = "calcul-differentiel";
@@ -69,9 +70,19 @@ export function versAcces(coursId: string, data: unknown): Acces | null {
 
   const source: SourceAcces = d.source === "code-classe" ? "code-classe" : "achat";
 
+  // Miroir du serveur (functions/src/lecture.ts) : on ne garde que les
+  // trois niveaux connus, `niveauDe` gère le défaut « restreint » au
+  // moment d'appliquer une règle. Cohérence côté client / serveur.
+  const niveauLu = d.niveau;
+  const niveauValide: NiveauAcces | undefined =
+    niveauLu === "restreint" || niveauLu === "acheteur" || niveauLu === "enseignant"
+      ? niveauLu
+      : undefined;
+
   return {
     coursId,
     source,
+    ...(niveauValide ? { niveau: niveauValide } : {}),
     dateDebut,
     dateFin,
     aTelecharge: d.aTelecharge === true,

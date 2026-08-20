@@ -12,16 +12,7 @@
 // à signer une URL, et pas une seconde plus tôt.
 
 import { verifierAcces, type Acces } from "./regles.js";
-
-/** Un document téléchargeable du catalogue. */
-export type Document = {
-  id: string;
-  coursId: string;
-  titre: string;
-  /** Chemin dans le seau privé. Jamais exposé au navigateur. */
-  chemin: string;
-  categorie: "notes" | "exercices" | "revision" | "examens";
-};
+import { documentVisible, type Document, type NiveauAcces } from "./documents.js";
 
 export type Autorisation =
   | { autorise: true; chemin: string }
@@ -31,7 +22,8 @@ export type RefusTelechargement =
   | "document-inconnu"
   | "aucun-acces"
   | "acces-expire"
-  | "mauvais-cours";
+  | "mauvais-cours"
+  | "document-restreint";
 
 export const MESSAGES_REFUS: Record<RefusTelechargement, string> = {
   "document-inconnu": "Ce document n'existe pas.",
@@ -39,7 +31,31 @@ export const MESSAGES_REFUS: Record<RefusTelechargement, string> = {
   "acces-expire":
     "Ta période d'accès est terminée. Les téléchargements sont désactivés, mais les documents que tu as déjà téléchargés restent à toi.",
   "mauvais-cours": "Ce document appartient à un cours auquel tu n'as pas accès.",
+  "document-restreint": "Ce document n'est pas accessible à ton niveau d'accès.",
 };
+
+/**
+ * Lit le niveau d'un accès, avec pour défaut le plus restrictif possible.
+ *
+ * Trois entrées produisent « restreint » :
+ *   - le champ `niveau` absent (accès Firestore antérieur à l'ajout du champ) ;
+ *   - une chaîne vide (mauvaise écriture côté outil admin) ;
+ *   - une valeur inconnue (typo, ancien schéma, champ renommé).
+ *
+ * Un accès mal configuré doit donner TROP PEU, jamais trop — un utilisateur
+ * qui devrait voir un document et ne le voit pas peut le demander ; l'inverse
+ * signifie qu'un document est fuité.
+ */
+export function niveauDe(acces: Acces): NiveauAcces {
+  if (
+    acces.niveau === "restreint" ||
+    acces.niveau === "acheteur" ||
+    acces.niveau === "enseignant"
+  ) {
+    return acces.niveau;
+  }
+  return "restreint";
+}
 
 /**
  * Décide si une demande de téléchargement aboutit.
@@ -48,9 +64,21 @@ export const MESSAGES_REFUS: Record<RefusTelechargement, string> = {
  * @param acces      l'accès de l'utilisateur au cours, ou null
  * @param maintenant l'horloge du SERVEUR
  *
- * L'ordre des refus est délibéré : on répond « ce document n'existe pas »
- * avant de parler d'accès. Un identifiant inventé ne doit pas permettre de
- * découvrir quels documents existent.
+ * L'ordre des refus est délibéré :
+ *
+ *   1. `document-inconnu`   — avant tout. Un identifiant inventé ne doit pas
+ *                             permettre de découvrir quels documents existent.
+ *   2. `aucun-acces`        — même sans accès, on ne dit pas si le document
+ *                             existe (déjà écarté ci-dessus).
+ *   3. `mauvais-cours`      — l'accès concerne un autre cours.
+ *   4. `document-restreint` — le niveau de l'accès ne permet pas ce document
+ *                             précis. Placé APRÈS la vérification de cours
+ *                             (un accès qui ne concerne pas le bon cours doit
+ *                             remonter cette raison-là, pas une histoire de
+ *                             niveau), et AVANT `acces-expire` (le niveau ne
+ *                             change pas selon la date, un document qu'on ne
+ *                             pouvait pas voir hier reste hors de portée).
+ *   5. `acces-expire`       — dernier check : le droit d'usage dans le temps.
  */
 export function deciderTelechargement(
   document: Document | null,
@@ -61,6 +89,10 @@ export function deciderTelechargement(
   if (!acces) return { autorise: false, raison: "aucun-acces" };
   if (acces.coursId !== document.coursId) {
     return { autorise: false, raison: "mauvais-cours" };
+  }
+
+  if (!documentVisible(document, niveauDe(acces))) {
+    return { autorise: false, raison: "document-restreint" };
   }
 
   const etat = verifierAcces(acces, maintenant);

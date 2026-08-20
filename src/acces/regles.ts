@@ -16,6 +16,8 @@
 // barrière est côté serveur, au moment où le fichier est demandé. Ce qu'on
 // calcule ici sert à montrer la bonne interface, pas à protéger le contenu.
 
+import type { NiveauAcces } from "./documents.js";
+
 /** Durée d'un accès acheté, en mois. Une seule définition pour tout le site. */
 export const DUREE_ACCES_MOIS = 12;
 
@@ -36,6 +38,15 @@ export type Acces = {
   /** Identifiant du cours, p. ex. « calcul-differentiel ». */
   coursId: string;
   source: SourceAcces;
+  /**
+   * Niveau d'accès aux documents du catalogue. Chaque document déclare la
+   * liste explicite des niveaux qui y ont droit — voir
+   * `niveauxAutorises` dans documents.ts. Optionnel dans le type pour
+   * supporter les documents Firestore antérieurs à l'ajout du champ ;
+   * `niveauDe(acces)` dans telechargement.ts normalise l'absent, le vide
+   * ou l'inconnu vers « restreint ».
+   */
+  niveau?: NiveauAcces;
   /** Millisecondes depuis l'époque. Neutre vis-à-vis de Firestore. */
   dateDebut: number;
   dateFin: number;
@@ -90,16 +101,22 @@ export function ajouterMois(depuis: number, mois: number): number {
   return cible.getTime();
 }
 
-/** Construit un accès neuf. Utilisé par le webhook et par les codes de classe. */
+/** Construit un accès neuf. Utilisé par le webhook et par les codes de classe.
+ *  `niveau` est requis pour forcer une décision explicite au point de
+ *  création — le webhook Stripe passe « acheteur », un code de classe
+ *  passera « restreint », un compte enseignant « enseignant ». Pas de
+ *  défaut : le point d'entrée qui crée l'accès doit revendiquer le niveau. */
 export function creerAcces(params: {
   coursId: string;
   source: SourceAcces;
+  niveau: NiveauAcces;
   debut: number;
   reference?: string;
 }): Acces {
   return {
     coursId: params.coursId,
     source: params.source,
+    niveau: params.niveau,
     dateDebut: params.debut,
     dateFin: ajouterMois(params.debut, DUREE_ACCES_MOIS),
     aTelecharge: false,

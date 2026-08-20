@@ -7,6 +7,7 @@
 // n'est ici qu'une traduction de format.
 
 import type { Acces, SourceAcces } from "../../src/acces/regles.js";
+import type { NiveauAcces } from "../../src/acces/documents.js";
 
 function versMs(v: unknown): number | null {
   if (typeof v === "number" && Number.isFinite(v)) return v;
@@ -38,9 +39,20 @@ export function versAccesDepuisDonnees(
 
   const source: SourceAcces = donnees.source === "code-classe" ? "code-classe" : "achat";
 
+  // Niveau : on ne garde que les trois valeurs connues. Une chaîne inconnue
+  // (typo dans un vieux doc, champ renommé) est laissée tomber — `niveauDe`
+  // dans telechargement.ts normalisera vers « restreint » au moment
+  // d'appliquer la règle. Défaut le plus restrictif, cohérent partout.
+  const niveauLu = donnees.niveau;
+  const niveauValide: NiveauAcces | undefined =
+    niveauLu === "restreint" || niveauLu === "acheteur" || niveauLu === "enseignant"
+      ? niveauLu
+      : undefined;
+
   return {
     coursId,
     source,
+    ...(niveauValide ? { niveau: niveauValide } : {}),
     dateDebut,
     dateFin,
     aTelecharge: donnees.aTelecharge === true,

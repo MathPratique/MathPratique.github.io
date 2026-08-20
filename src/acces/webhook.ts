@@ -130,6 +130,12 @@ export function deciderWebhook(
     acces: creerAcces({
       coursId: session.coursId,
       source: "achat",
+      // Un paiement Stripe validé ouvre TOUJOURS un accès « acheteur ». Le
+      // niveau est décidé ici — pas dans le tx.set du webhookStripe, pas
+      // par défaut ailleurs. Le jour où on ajoutera d'autres modes d'octroi
+      // (code de classe, invitation enseignant), ce sera dans une autre
+      // fonction qui appellera creerAcces avec son propre niveau.
+      niveau: "acheteur",
       debut: maintenant,
       reference: session.id,
     }),

@@ -62,22 +62,37 @@ const etatVoulu = argOpt("etat");
 if (!courriel || !coursId || !etatVoulu) {
   console.error(`
 Usage :
-  node scripts/acces-test.js --courriel <compte> --cours <coursId> --etat <valide|expire|aucun> [--heures N]
+  node scripts/acces-test.js --courriel <compte> --cours <coursId> --etat <valide|expire|aucun> [--heures N] [--niveau L]
 
 Options :
   --heures N   Durée personnalisée en heures (entier positif), UNIQUEMENT
                avec --etat valide. Sans ce drapeau, l'accès dure 12 mois
                comme un vrai achat.
+  --niveau L   Niveau d'accès aux documents : restreint | acheteur | enseignant.
+               Défaut : « restreint » (le plus restrictif — un accès mal
+               configuré doit donner trop peu, jamais trop). N'a d'effet
+               qu'avec --etat valide ou expire (le doc est alors écrit).
 
 Exemple :
   node scripts/acces-test.js --courriel test@exemple.com --cours calcul-differentiel --etat valide
   node scripts/acces-test.js --courriel test@exemple.com --cours calcul-differentiel --etat valide --heures 24
+  node scripts/acces-test.js --courriel test@exemple.com --cours calcul-differentiel --etat valide --niveau acheteur
 `);
   process.exit(2);
 }
 
 if (!["valide", "expire", "aucun"].includes(etatVoulu)) {
   console.error(`\n❌ --etat doit valoir « valide », « expire » ou « aucun ». Reçu : « ${etatVoulu} ».\n`);
+  process.exit(2);
+}
+
+// --niveau : lu et validé strictement — écrire une valeur inconnue en
+// Firestore laisserait `niveauDe` la ramener à « restreint » côté serveur,
+// mais le doc en base serait faux, ce qui trompe l'admin qui le consulte.
+// Rejet explicite = message d'erreur clair au moment de l'écriture.
+const niveauVoulu = argOpt("niveau") ?? "restreint";
+if (!["restreint", "acheteur", "enseignant"].includes(niveauVoulu)) {
+  console.error(`\n❌ --niveau doit valoir « restreint », « acheteur » ou « enseignant ». Reçu : « ${niveauVoulu} ».\n`);
   process.exit(2);
 }
 
@@ -240,6 +255,7 @@ if (etatVoulu === "valide") {
 await ref.set({
   coursId,
   source: "test",
+  niveau: niveauVoulu,
   dateDebut: Timestamp.fromMillis(dateDebut),
   dateFin: Timestamp.fromMillis(dateFin),
   aTelecharge: false,
@@ -250,6 +266,7 @@ console.log(`✅ Accès écrit.`);
 console.log(`   dateDebut : ${new Date(dateDebut).toISOString()}`);
 console.log(`   dateFin   : ${new Date(dateFin).toISOString()}`);
 console.log(`   source    : test`);
+console.log(`   niveau    : ${niveauVoulu}`);
 console.log(``);
 console.log(`Pour retirer cet accès :`);
 console.log(`   node scripts/acces-test.js --courriel ${courriel} --cours ${coursId} --etat aucun`);

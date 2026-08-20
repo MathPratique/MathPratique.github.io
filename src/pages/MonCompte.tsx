@@ -11,7 +11,8 @@ import {
   DELAI_REMBOURSEMENT_JOURS,
   type Acces,
 } from "../acces/regles";
-import { DOCUMENTS, LIBELLES_CATEGORIES } from "../acces/documents";
+import { documentsVisibles, LIBELLES_CATEGORIES } from "../acces/documents";
+import { niveauDe } from "../acces/telechargement";
 import { telecharger, messageTelechargement } from "../firebase/telechargement";
 import { EMAIL_CONTACT } from "../data/site";
 import { getProductById } from "../data/products";
@@ -140,16 +141,26 @@ export default function MonCompte() {
 /**
  * Les documents téléchargeables, groupés par catégorie.
  *
- * Cinquante-huit fichiers : une liste à plat serait illisible, et les
- * catégories repliées évitent d'écraser la page. Aucun contrôle d'accès
- * ici — la liste s'affiche dès que l'accès est actif, et c'est la Cloud
- * Function qui refuse si elle ne l'est plus au moment du clic.
+ * Jusqu'à soixante-cinq fichiers pour un enseignant ; moins pour un
+ * acheteur, moins encore pour un accès restreint. Une liste à plat serait
+ * illisible, les catégories repliées évitent d'écraser la page. Aucun
+ * contrôle d'accès ici — la liste ne montre que les documents visibles au
+ * niveau de l'accès, et la Cloud Function refait la vérification au clic.
+ *
+ * Ce que le navigateur cache n'est pas une protection : c'est un confort
+ * d'affichage. La vraie barrière est `deciderTelechargement` côté serveur.
  */
-function ListeDocuments({ coursId }: { coursId: string }) {
+function ListeDocuments({ acces }: { acces: Acces }) {
   const [enCours, setEnCours] = useState<string | null>(null);
   const [erreur, setErreur] = useState<string | null>(null);
 
-  const documents = DOCUMENTS.filter((d) => d.coursId === coursId);
+  // Filtrage à deux niveaux : d'abord par NIVEAU (respecte
+  // niveauxAutorises), puis par cours (ce composant en montre un seul).
+  // Une section sans document ne s'affichera pas — le `new Set` sur la
+  // liste filtrée ne contient que les catégories réellement présentes.
+  const documents = documentsVisibles(niveauDe(acces)).filter(
+    (d) => d.coursId === acces.coursId,
+  );
   const categories = [...new Set(documents.map((d) => d.categorie))];
 
   async function obtenir(id: string) {
@@ -262,7 +273,7 @@ function CarteAcces({ acces }: { acces: Acces }) {
         </p>
       )}
 
-      {etat.actif && <ListeDocuments coursId={acces.coursId} />}
+      {etat.actif && <ListeDocuments acces={acces} />}
 
       {remboursable && (
         <p className="mt-3 text-xs text-ink-600">
