@@ -46,6 +46,12 @@ RAPPORT-TEXTES.md
 *-firebase-adminsdk-*.json
 serviceAccountKey.json
 
+# Listes d'adresses courriel d'étudiants — renseignements personnels, ne
+# doivent jamais entrer dans le dépôt. Le vrai fichier vit hors du dépôt ;
+# ce motif est un filet de sécurité si quelqu'un le copie ici par erreur.
+# Voir scripts/accorder-acces-lot.js.
+courriels*.txt
+
 # Cloud Functions : dépendances et sortie de compilation.
 functions/node_modules
 functions/lib

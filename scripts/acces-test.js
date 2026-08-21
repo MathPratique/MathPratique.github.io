@@ -34,19 +34,13 @@
 //               aucun   → supprime l'accès existant
 // ============================================================================
 
-import { readFileSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createInterface } from "node:readline/promises";
-// Imports modulaires (firebase-admin v10+) : le default import ne marche
-// pas en ESM. Chaque sous-module doit être ciblé explicitement.
-import { initializeApp, cert } from "firebase-admin/app";
-import { getFirestore, Timestamp } from "firebase-admin/firestore";
-import { getAuth } from "firebase-admin/auth";
+import { Timestamp } from "firebase-admin/firestore";
 import { ajouterMois, DUREE_ACCES_MOIS } from "../src/acces/regles.ts";
+import { initAdminOuMourir } from "./lib/admin.js";
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const CHEMIN_CLE = resolve(RACINE, "serviceAccountKey.json");
 
 // ---------- Analyse des arguments -------------------------------------------
 
@@ -116,91 +110,17 @@ if (heuresBrut !== null) {
   dureeHeures = n;
 }
 
-// L'émulateur accepte des identifiants factices ; le vrai
-// serviceAccountKey.json n'est nécessaire QUE pour toucher la production.
-// On détecte le mode émulateur par les variables FIRESTORE_EMULATOR_HOST /
-// FIREBASE_AUTH_EMULATOR_HOST — si l'une est posée, on peut se passer de
-// la clé de service. Ce test vaut refus de contact avec la production
-// tant que la clé manque : c'est le comportement voulu.
-const modeEmulateur =
-  !!process.env.FIRESTORE_EMULATOR_HOST || !!process.env.FIREBASE_AUTH_EMULATOR_HOST;
-
-if (!modeEmulateur && !existsSync(CHEMIN_CLE)) {
-  console.error(`
-❌ Clé de service introuvable : ${CHEMIN_CLE}
-
-Ce script écrirait dans le Firestore de PRODUCTION sans les variables
-d'environnement pointant vers l'émulateur, et il ne peut pas s'y
-authentifier sans la clé de service.
-
-Choix :
-
-  A) Cible l'ÉMULATEUR (recommandé pour les tests) — pose les deux
-     variables avant de relancer, en PowerShell :
-       $env:FIRESTORE_EMULATOR_HOST="127.0.0.1:8080"
-       $env:FIREBASE_AUTH_EMULATOR_HOST="127.0.0.1:9099"
-
-  B) Cible la PRODUCTION — télécharge la clé de service :
-     1. Console Firebase → Paramètres du projet → Comptes de service
-     2. « Générer une nouvelle clé privée »
-     3. Enregistrer sous : serviceAccountKey.json  (à la racine du dépôt)
-     4. Vérifier que \`git status\` ne le voit pas (il est dans .gitignore).
-`);
-  process.exit(1);
-}
-
-// ---------- Initialisation Firebase Admin -----------------------------------
-
-if (modeEmulateur) {
-  // En émulateur, aucune clé n'est nécessaire — le SDK détecte les
-  // variables d'environnement et route toutes les requêtes localement.
-  // On lui donne juste un projectId pour éviter l'erreur « no project ID ».
-  initializeApp({ projectId: "mathpratique-8dea1" });
-} else {
-  // Cible la PRODUCTION : on demande une confirmation explicite avant
-  // d'écrire quoi que ce soit. Le cas typique où on arrive ici sans le
-  // vouloir : on a lancé le script en oubliant de poser
-  // FIRESTORE_EMULATOR_HOST et FIREBASE_AUTH_EMULATOR_HOST. Sans ce
-  // garde-fou, la première ligne d'écriture partirait dans le vrai
-  // Firestore, visible par les vrais utilisateurs.
-  await confirmerProduction();
-  const cle = JSON.parse(readFileSync(CHEMIN_CLE, "utf-8"));
-  initializeApp({ credential: cert(cle) });
-}
-
-async function confirmerProduction() {
-  console.error(`
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  ATTENTION — CIBLE : PRODUCTION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Ce script va écrire dans le Firestore de PRODUCTION du projet
-mathpratique-8dea1. Les variables FIRESTORE_EMULATOR_HOST et
-FIREBASE_AUTH_EMULATOR_HOST ne sont PAS posées.
-
-Toute écriture sera immédiatement visible par les vrais utilisateurs.
-
-Si tu voulais tester en local, annule ci-dessous et relance en posant
-d'abord les variables d'émulateur :
-  $env:FIRESTORE_EMULATOR_HOST="127.0.0.1:8080"
-  $env:FIREBASE_AUTH_EMULATOR_HOST="127.0.0.1:9099"
-
-Pour continuer en production, tape PRODUCTION (en majuscules) puis Entrée.
-Toute autre saisie annule l'opération.
-`);
-  const rl = createInterface({ input: process.stdin, output: process.stdout });
-  try {
-    const reponse = (await rl.question("> ")).trim();
-    if (reponse !== "PRODUCTION") {
-      console.error("\nOpération annulée. Rien n'a été écrit.\n");
-      process.exit(0);
-    }
-  } finally {
-    rl.close();
-  }
-}
-const db = getFirestore();
-const auth = getAuth();
+// Init Firebase Admin : détection du mode émulateur, exigence de la clé
+// de service en production, prompt PRODUCTION à taper à la main. Toute
+// la mécanique du garde-fou vit dans lib/admin.js — partagée avec les
+// autres scripts CLI pour ne jamais laisser une version affaiblie.
+const actionDescriptive =
+  etatVoulu === "aucun"
+    ? `Ce script va SUPPRIMER l'accès de « ${courriel} » au cours « ${coursId} ».`
+    : etatVoulu === "expire"
+      ? `Ce script va poser un accès EXPIRÉ pour « ${courriel} » sur le cours « ${coursId} ».`
+      : `Ce script va accorder un accès valide à « ${courriel} » sur le cours « ${coursId} » (niveau ${niveauVoulu}).`;
+const { db, auth } = await initAdminOuMourir({ racineDepot: RACINE, action: actionDescriptive });
 
 // ---------- Résolution du courriel → uid ------------------------------------
 
