@@ -7,7 +7,7 @@
     {
       "id": "CD-C01-E003",
       "chapitre": 1,
-      "section": "1.1",
+      "section": "1.3",
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
@@ -58,7 +58,7 @@
     {
       "id": "CD-C01-E005",
       "chapitre": 1,
-      "section": "1.2",
+      "section": "1.4",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
@@ -95,7 +95,7 @@
             "<strong>Étape 2 — Quotient.</strong> Pour un quotient de puissances de même base, on <em>soustrait</em> les exposants :\\[ \\dfrac{x^{3}}{x^{2}} = x^{3-2} = x^{1} = x. \\]",
             "<strong>Réponse.</strong>\\[ \\dfrac{x^{4}\\cdot x^{-1}}{x^{2}} = x. \\]",
             "<strong>La restriction.</strong> L'expression de départ contient $x^{-1} = \\dfrac{1}{x}$ et une division par $x^{2}$ : elle exige $x \\neq 0$.",
-            "Le résultat simplifié $x$, lui, est défini partout. C'est exactement le genre de subtilité que formalise la section 1.5 : simplifier ne fait pas disparaître les restrictions de l'expression d'origine."
+            "Le résultat simplifié $x$, lui, est défini partout. C'est exactement le genre de subtilité que formalise la section 1.7 : simplifier ne fait pas disparaître les restrictions de l'expression d'origine."
           ],
           "piegeCourant": "Multiplier les exposants au lieu de les additionner dans le produit."
         }
@@ -104,7 +104,7 @@
     {
       "id": "CD-C01-E011",
       "chapitre": 1,
-      "section": "1.3",
+      "section": "1.5",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 4,
@@ -154,7 +154,7 @@
     {
       "id": "CD-C01-E013",
       "chapitre": 1,
-      "section": "1.3",
+      "section": "1.5",
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 3,
@@ -213,7 +213,7 @@
     {
       "id": "CD-C01-E018",
       "chapitre": 1,
-      "section": "1.4",
+      "section": "1.6",
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 3,
@@ -304,7 +304,7 @@
     {
       "id": "CD-C01-E021",
       "chapitre": 1,
-      "section": "1.5",
+      "section": "1.7",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 4,
@@ -356,7 +356,7 @@
     {
       "id": "CD-C01-E022",
       "chapitre": 1,
-      "section": "1.5",
+      "section": "1.7",
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 6,
@@ -409,7 +409,7 @@
     {
       "id": "CD-C01-E025",
       "chapitre": 1,
-      "section": "1.5",
+      "section": "1.7",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 12,
