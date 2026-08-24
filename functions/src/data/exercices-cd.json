@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "d08402c05af1951f",
+  "contentHash": "e4edc8b3815bd725",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -1429,6 +1429,2884 @@
             "<strong>Ce que l'exercice enseigne.</strong> Une même expression peut porter <em>deux</em> conditions à la fois — ici, $\\ln x$ doit exister <em>et</em> être non nul. La méthode en 5 étapes n'est pas une formalité : c'est ce qui empêche d'en oublier une."
           ],
           "piegeCourant": "S'arrêter à $x > 0$ et oublier d'exclure $x = 1$, où le logarithme du dénominateur s'annule."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E026",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "facteur binôme",
+        "puissance"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $(2x-1)^3 - 4(2x-1)^2$ par mise en évidence."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le facteur commun est un binôme : $(2x-1)$ apparaît dans les deux termes, mais à des puissances différentes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$(2x-1)^3 - 4(2x-1)^2 = (2x-1)^2(2x-5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Chaque terme contient une puissance de $(2x-1)$. La plus petite puissance présente est $(2x-1)^2$, c'est donc elle qu'on peut mettre en évidence — même principe que pour un facteur $x$.",
+            "On divise chaque terme par $(2x-1)^2$ :\\[ (2x-1)^3 \\div (2x-1)^2 = 2x-1, \\qquad -4(2x-1)^2 \\div (2x-1)^2 = -4. \\]",
+            "D'où la factorisation :\\[ (2x-1)^3 - 4(2x-1)^2 = (2x-1)^2\\bigl[(2x-1) - 4\\bigr] = (2x-1)^2(2x-5). \\]",
+            "Vérification par distributivité :\\[ (2x-1)^2(2x-5) = (2x-1)^2 \\cdot (2x-1) - 4(2x-1)^2 = (2x-1)^3 - 4(2x-1)^2. \\]"
+          ],
+          "piegeCourant": "Sortir $(2x-1)^3$ au lieu de $(2x-1)^2$. Le facteur commun est toujours la plus petite puissance présente, que le facteur soit un $x$ simple ou un binôme."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E027",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "signes opposés",
+        "binômes conjugués"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $3x(x-4) - 5(4-x)$ par mise en évidence."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Compare $4-x$ et $x-4$. Un des deux est l'opposé de l'autre."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$3x(x-4) - 5(4-x) = (x-4)(3x+5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Les deux termes semblent avoir des binômes différents, $(x-4)$ et $(4-x)$. Mais $(4-x) = -(x-4)$, donc :\\[ -5(4-x) = -5 \\cdot \\bigl[-(x-4)\\bigr] = 5(x-4). \\]",
+            "On réécrit l'expression avec un binôme commun :\\[ 3x(x-4) - 5(4-x) = 3x(x-4) + 5(x-4). \\]",
+            "On met $(x-4)$ en évidence :\\[ 3x(x-4) + 5(x-4) = (x-4)(3x + 5). \\]",
+            "Vérification par distributivité :\\[ (x-4)(3x+5) = 3x^2 + 5x - 12x - 20 = 3x^2 - 7x - 20. \\] On développe l'original : $3x(x-4) - 5(4-x) = 3x^2 - 12x - 20 + 5x = 3x^2 - 7x - 20$."
+          ],
+          "piegeCourant": "Oublier le double signe négatif : $-5 \\cdot -(x-4)$ vaut $+5(x-4)$, pas $-5(x-4)$. Sans cette correction, on ne trouve pas de facteur commun."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E028",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "facteur négatif",
+        "trois termes"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $-4x^4 + 6x^3 - 10x^2$ en mettant en évidence un facteur négatif."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "PGCD des trois coefficients, plus petite puissance de $x$, et signe négatif comme le terme dominant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-4x^4 + 6x^3 - 10x^2 = -2x^2(2x^2 - 3x + 5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Coefficients : $\\gcd(4, 6, 10) = 2$. Puissances de $x$ présentes : $x^4, x^3, x^2$ ; la plus petite est $x^2$. Sans le signe, le facteur commun est $2x^2$.",
+            "Comme le terme dominant $-4x^4$ est négatif, on sort $-2x^2$ pour rendre positif le premier coefficient à l'intérieur des parenthèses.",
+            "On divise chaque terme par $-2x^2$ :\\[ -4x^4 \\div (-2x^2) = 2x^2, \\quad 6x^3 \\div (-2x^2) = -3x, \\quad -10x^2 \\div (-2x^2) = 5. \\]",
+            "D'où la factorisation :\\[ -4x^4 + 6x^3 - 10x^2 = -2x^2(2x^2 - 3x + 5). \\]",
+            "Vérification par distributivité :\\[ -2x^2 \\cdot 2x^2 + (-2x^2)(-3x) + (-2x^2)(5) = -4x^4 + 6x^3 - 10x^2. \\]"
+          ],
+          "piegeCourant": "Oublier d'inverser TOUS les signes en sortant $-2x^2$. Le terme originellement positif ($6x^3$) devient négatif à l'intérieur ($-3x$), et les deux termes négatifs deviennent positifs."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E029",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence double",
+        "regroupement",
+        "quatre termes"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $2x^3 - 4x^2 + 3x - 6$ par mise en évidence double."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Regroupe les quatre termes en deux paires successives et cherche un facteur commun dans chaque paire."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 - 4x^2 + 3x - 6 = (x - 2)(2x^2 + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Quatre termes en ordre décroissant : on essaie un regroupement par paires successives, comme dans le second exemple modèle de la section.",
+            "Regroupement :\\[ (2x^3 - 4x^2) + (3x - 6). \\]",
+            "Mise en évidence dans chaque paire. Premier groupe : le facteur commun est $2x^2$. Second groupe : c'est $3$.\\[ 2x^2(x - 2) + 3(x - 2). \\]",
+            "Les deux morceaux contiennent le même facteur $(x - 2)$. On le met en évidence :\\[ (x - 2)(2x^2 + 3). \\]",
+            "Vérification par distributivité :\\[ (x - 2)(2x^2 + 3) = 2x^3 + 3x - 4x^2 - 6 = 2x^3 - 4x^2 + 3x - 6. \\]",
+            "Le facteur $2x^2 + 3$ est strictement positif pour tout réel $x$ (car $2x^2 \\geq 0$), donc pas de racine réelle. La factorisation est complète dans les réels."
+          ],
+          "piegeCourant": "Choisir un mauvais appariement. Ici $(2x^3 + 3x) + (-4x^2 - 6)$ fonctionne aussi et donne le même résultat, mais dans d'autres cas le premier appariement ne donne rien — l'encadré d'attention de la section rappelle qu'il faut alors en essayer un autre."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E030",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence double",
+        "réordonnancement",
+        "quatre termes"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^3 - 6 + 3x - 2x^2$ par mise en évidence double."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'ordre des termes n'est pas standard. Commence par les réordonner par degré décroissant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 - 6 + 3x - 2x^2 = (x - 2)(x^2 + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Grouper directement dans l'ordre donné, $(x^3 - 6) + (3x - 2x^2)$, ne mène nulle part : le premier morceau n'a pas de facteur commun exploitable en mise en évidence, et les deux morceaux ne partageront pas de binôme.",
+            "On réordonne d'abord par degré décroissant :\\[ x^3 - 2x^2 + 3x - 6. \\]",
+            "Regroupement 2+2 :\\[ (x^3 - 2x^2) + (3x - 6). \\]",
+            "Mise en évidence dans chaque paire :\\[ x^2(x - 2) + 3(x - 2). \\]",
+            "On met $(x - 2)$ en évidence :\\[ (x - 2)(x^2 + 3). \\]",
+            "Vérification par distributivité :\\[ (x - 2)(x^2 + 3) = x^3 + 3x - 2x^2 - 6 = x^3 - 2x^2 + 3x - 6. \\] On retrouve bien l'expression réordonnée, donc l'expression de départ."
+          ],
+          "piegeCourant": "Ne pas réordonner et se contenter d'essayer une seule paire avant d'abandonner. Quand quatre termes ne s'apparient pas d'emblée, la première chose à essayer est de les remettre en ordre."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E031",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "coefficients fractionnaires",
+        "dénominateur commun"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $\\dfrac{2}{3}x^3 - \\dfrac{4}{9}x^2$ par mise en évidence."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Ramène les deux fractions au même dénominateur, puis cherche un facteur numérique commun."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{2}{3}x^3 - \\dfrac{4}{9}x^2 = \\dfrac{2}{9}x^2(3x - 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Pour comparer les deux coefficients fractionnaires, on les ramène au même dénominateur $9$ :\\[ \\dfrac{2}{3}x^3 = \\dfrac{6}{9}x^3. \\] L'expression devient $\\dfrac{6}{9}x^3 - \\dfrac{4}{9}x^2$.",
+            "Facteur numérique commun : $\\dfrac{2}{9}$ (le plus grand qui divise à la fois $\\dfrac{6}{9}$ et $\\dfrac{4}{9}$, puisque $\\gcd(6, 4) = 2$). Plus petite puissance de $x$ : $x^2$.",
+            "Facteur commun total : $\\dfrac{2}{9}x^2$. On divise chaque terme :\\[ \\dfrac{6}{9}x^3 \\div \\dfrac{2}{9}x^2 = 3x, \\qquad \\dfrac{4}{9}x^2 \\div \\dfrac{2}{9}x^2 = 2. \\]",
+            "D'où la factorisation :\\[ \\dfrac{2}{3}x^3 - \\dfrac{4}{9}x^2 = \\dfrac{2}{9}x^2(3x - 2). \\]",
+            "Vérification par distributivité :\\[ \\dfrac{2}{9}x^2 \\cdot 3x - \\dfrac{2}{9}x^2 \\cdot 2 = \\dfrac{6}{9}x^3 - \\dfrac{4}{9}x^2 = \\dfrac{2}{3}x^3 - \\dfrac{4}{9}x^2. \\]"
+          ],
+          "piegeCourant": "Sortir seulement $\\dfrac{1}{9}x^2$ au lieu de $\\dfrac{2}{9}x^2$. Une fois les fractions au même dénominateur, le facteur commun se lit sur les numérateurs comme dans le cas entier : $\\gcd(6, 4) = 2$, pas $1$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E032",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "facteur binôme",
+        "arithmétique interne"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $5x(x+2)^2 - 10(x+2)^3$ par mise en évidence."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Facteur numérique commun, et le binôme $(x+2)$ à sa plus petite puissance. Après extraction, simplifie l'intérieur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$5x(x+2)^2 - 10(x+2)^3 = -5(x+2)^2(x + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Coefficients : $\\gcd(5, 10) = 5$. Binôme : $(x+2)$ apparaît aux puissances $2$ et $3$, la plus petite est $(x+2)^2$.",
+            "Facteur commun total : $5(x+2)^2$. On divise chaque terme :\\[ 5x(x+2)^2 \\div \\bigl[5(x+2)^2\\bigr] = x, \\qquad -10(x+2)^3 \\div \\bigl[5(x+2)^2\\bigr] = -2(x+2). \\]",
+            "L'intérieur devient une expression à simplifier :\\[ x - 2(x + 2) = x - 2x - 4 = -x - 4. \\]",
+            "D'où la factorisation :\\[ 5x(x+2)^2 - 10(x+2)^3 = 5(x+2)^2(-x - 4). \\]",
+            "Enfin, on sort le signe négatif pour présenter la réponse sous forme standard :\\[ 5(x+2)^2(-x - 4) = -5(x+2)^2(x + 4). \\]",
+            "Vérification. En divisant les deux formes par $(x+2)^2$ : la forme factorisée donne $-5(x+4) = -5x - 20$ ; l'original donne $5x - 10(x+2) = 5x - 10x - 20 = -5x - 20$."
+          ],
+          "piegeCourant": "S'arrêter à $5(x+2)^2(-x-4)$ au lieu de faire remonter le signe négatif à l'extérieur. Une factorisation propre écrit chaque binôme sous la forme $(x + c)$, jamais $(-x - c)$ ; le signe global vit devant."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E033",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence double",
+        "six termes",
+        "regroupement en trois paires"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^5 + x^4 + 2x^3 + 2x^2 + 3x + 3$ par mise en évidence."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Six termes, pas quatre : essaie un regroupement en trois paires successives, plutôt que deux."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^5 + x^4 + 2x^3 + 2x^2 + 3x + 3 = (x + 1)(x^4 + 2x^2 + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'expression a six termes, pas quatre : le regroupement classique 2+2 n'est plus la seule option. On essaie 2+2+2, c'est-à-dire trois paires successives.",
+            "Regroupement :\\[ (x^5 + x^4) + (2x^3 + 2x^2) + (3x + 3). \\]",
+            "Mise en évidence dans chaque paire. Facteurs communs successifs : $x^4$, $2x^2$, $3$.\\[ x^4(x + 1) + 2x^2(x + 1) + 3(x + 1). \\]",
+            "Les trois morceaux contiennent le même facteur $(x + 1)$. On le met en évidence — c'est la même idée que dans le cas 2+2, appliquée à trois groupes au lieu de deux :\\[ (x + 1)(x^4 + 2x^2 + 3). \\]",
+            "Vérification par distributivité :\\[ (x+1)(x^4 + 2x^2 + 3) = x^5 + 2x^3 + 3x + x^4 + 2x^2 + 3 = x^5 + x^4 + 2x^3 + 2x^2 + 3x + 3. \\]",
+            "Le facteur $x^4 + 2x^2 + 3$ n'a pas de racine réelle : en posant $y = x^2 \\geq 0$, on obtient $y^2 + 2y + 3$ dont le discriminant vaut $4 - 12 = -8 < 0$. La factorisation est complète dans les réels."
+          ],
+          "piegeCourant": "Regrouper 3+3 ou 4+2 plutôt que 2+2+2. Le regroupement 2+2+2 est celui qui suit le patron $ka + kb$ dans chaque paire, comme pour 2+2 dans les notes ; les autres découpages produisent des morceaux qui ne se factorisent pas de la même manière."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E034",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "facteur binôme",
+        "signe négatif final"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $4(x-3)^2 - 6x(x-3)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Facteur numérique commun et binôme $(x-3)$ à sa plus petite puissance. Ensuite, simplifie l'intérieur puis présente le résultat avec le signe global à l'extérieur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$4(x-3)^2 - 6x(x-3) = -2(x - 3)(x + 6)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Coefficients : $\\gcd(4, 6) = 2$. Binôme : $(x-3)$ apparaît aux puissances $2$ et $1$, la plus petite est $(x-3)^1$.",
+            "Facteur commun total : $2(x-3)$. On divise chaque terme :\\[ 4(x-3)^2 \\div \\bigl[2(x-3)\\bigr] = 2(x-3), \\qquad -6x(x-3) \\div \\bigl[2(x-3)\\bigr] = -3x. \\]",
+            "L'intérieur devient :\\[ 2(x - 3) - 3x = 2x - 6 - 3x = -x - 6. \\]",
+            "D'où :\\[ 4(x-3)^2 - 6x(x-3) = 2(x - 3)(-x - 6). \\]",
+            "On sort le signe négatif pour présenter la réponse sous forme standard :\\[ 2(x - 3)(-x - 6) = -2(x - 3)(x + 6). \\]",
+            "Vérification. La forme factorisée développée donne :\\[ -2(x-3)(x+6) = -2(x^2 + 6x - 3x - 18) = -2(x^2 + 3x - 18) = -2x^2 - 6x + 36. \\] L'original développé donne : $4(x-3)^2 - 6x(x-3) = 4(x^2 - 6x + 9) - 6x^2 + 18x = 4x^2 - 24x + 36 - 6x^2 + 18x = -2x^2 - 6x + 36$."
+          ],
+          "piegeCourant": "Ne pas développer $2(x-3)$ dans l'intérieur avant de simplifier, ou laisser la réponse sous la forme $2(x-3)(-x-6)$. La convention (voir troisième exemple modèle des notes) préfère toujours faire remonter le signe global à l'extérieur."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E035",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence en deux temps",
+        "simple puis double",
+        "aller au bout"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $4x^4 + 8x^3 + 6x^2 + 12x$ par mise en évidence en deux temps."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par sortir un facteur commun à tous les termes. Ensuite, regarde ce qui reste : les quatre termes de l'intérieur invitent à un second traitement."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$4x^4 + 8x^3 + 6x^2 + 12x = 2x(x + 2)(2x^2 + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps : facteur commun aux quatre termes. Coefficients : $\\gcd(4, 8, 6, 12) = 2$. Plus petite puissance de $x$ : $x^1 = x$. Facteur commun : $2x$.",
+            "On sort $2x$ :\\[ 4x^4 + 8x^3 + 6x^2 + 12x = 2x(2x^3 + 4x^2 + 3x + 6). \\]",
+            "Second temps : l'intérieur $2x^3 + 4x^2 + 3x + 6$ a quatre termes et invite au regroupement 2+2.\\[ (2x^3 + 4x^2) + (3x + 6) = 2x^2(x + 2) + 3(x + 2) = (x + 2)(2x^2 + 3). \\]",
+            "En combinant les deux étapes :\\[ 4x^4 + 8x^3 + 6x^2 + 12x = 2x(x + 2)(2x^2 + 3). \\]",
+            "Vérification par distributivité :\\[ 2x(x+2)(2x^2+3) = 2x\\bigl[(x+2)(2x^2+3)\\bigr] = 2x\\bigl[2x^3 + 3x + 4x^2 + 6\\bigr] = 4x^4 + 8x^3 + 6x^2 + 12x. \\]"
+          ],
+          "piegeCourant": "S'arrêter après le premier temps et présenter $2x(2x^3 + 4x^2 + 3x + 6)$ comme réponse finale. Comme le rappelle le piège du premier exemple modèle, il faut aller au bout : dès qu'un facteur reste factorisable, on continue."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E036",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence en deux temps",
+        "facteur négatif",
+        "regroupement interne"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $-3x^4 + 6x^3 + 15x^2 - 30x$ en commençant par sortir un facteur négatif."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Facteur négatif au premier temps, puis regroupement 2+2 sur ce qui reste à l'intérieur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-3x^4 + 6x^3 + 15x^2 - 30x = -3x(x - 2)(x^2 - 5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps : facteur commun aux quatre termes. Coefficients : $\\gcd(3, 6, 15, 30) = 3$. Plus petite puissance de $x$ : $x$. Signe : le terme dominant $-3x^4$ est négatif, on sort $-3x$.",
+            "On divise chaque terme par $-3x$ :\\[ -3x^4 \\div (-3x) = x^3, \\; 6x^3 \\div (-3x) = -2x^2, \\; 15x^2 \\div (-3x) = -5x, \\; -30x \\div (-3x) = 10. \\]",
+            "Après le premier temps :\\[ -3x^4 + 6x^3 + 15x^2 - 30x = -3x(x^3 - 2x^2 - 5x + 10). \\]",
+            "Second temps : regroupement 2+2 à l'intérieur.\\[ (x^3 - 2x^2) + (-5x + 10) = x^2(x - 2) - 5(x - 2) = (x - 2)(x^2 - 5). \\]",
+            "En combinant :\\[ -3x^4 + 6x^3 + 15x^2 - 30x = -3x(x - 2)(x^2 - 5). \\]",
+            "Vérification par distributivité :\\[ -3x(x-2)(x^2-5) = -3x\\bigl[(x-2)(x^2-5)\\bigr] = -3x\\bigl[x^3 - 5x - 2x^2 + 10\\bigr] = -3x^4 + 6x^3 + 15x^2 - 30x. \\]"
+          ],
+          "piegeCourant": "Se tromper de signe en divisant par $-3x$ : par exemple écrire $-3x(x^3 + 2x^2 - 5x - 10)$. Seul le terme originellement de signe opposé au facteur sorti change de signe à l'intérieur ; les termes de même signe le gardent. Ici, seul $-3x^4$ (négatif comme le facteur) donne un intérieur positif ($x^3$)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E037",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "facteur binôme puissance",
+        "arithmétique interne"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $-8x^2(2x+1)^3 + 12x(2x+1)^4$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le facteur commun combine trois éléments : un coefficient numérique, une puissance de $x$, et une puissance du binôme $(2x+1)$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-8x^2(2x+1)^3 + 12x(2x+1)^4 = 4x(2x+1)^3(4x + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On identifie le facteur commun en trois volets. Coefficients : $\\gcd(8, 12) = 4$. Puissance de $x$ : $x^2$ et $x^1$, la plus petite est $x$. Puissance du binôme $(2x+1)$ : $3$ et $4$, la plus petite est $(2x+1)^3$.",
+            "Facteur commun total : $4x(2x+1)^3$.",
+            "On divise chaque terme par $4x(2x+1)^3$ :\\[ -8x^2(2x+1)^3 \\div \\bigl[4x(2x+1)^3\\bigr] = -2x, \\qquad 12x(2x+1)^4 \\div \\bigl[4x(2x+1)^3\\bigr] = 3(2x+1). \\]",
+            "L'intérieur devient une expression à simplifier :\\[ -2x + 3(2x + 1) = -2x + 6x + 3 = 4x + 3. \\]",
+            "D'où la factorisation :\\[ -8x^2(2x+1)^3 + 12x(2x+1)^4 = 4x(2x+1)^3(4x + 3). \\]",
+            "Vérification en factorisant l'original directement :\\[ -8x^2(2x+1)^3 + 12x(2x+1)^4 = 4x(2x+1)^3\\bigl[-2x + 3(2x+1)\\bigr] = 4x(2x+1)^3(4x+3). \\]"
+          ],
+          "piegeCourant": "Oublier de développer $3(2x+1)$ à l'intérieur du crochet, ou faire une erreur de signe en combinant $-2x$ et $6x$. Dans ce genre d'exercice, l'arithmétique interne est aussi importante que l'identification correcte du facteur commun."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E038",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "carré parfait",
+        "trinôme",
+        "test du double produit"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^2 + 14x + 49$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Repère deux carrés parfaits dans l'expression et vérifie que le terme du milieu est le double produit."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 + 14x + 49 = (x + 7)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Test du carré parfait, comme dans le quatrième exemple modèle de la section. Deux carrés visibles : $x^2$ et $49 = 7^2$.",
+            "Vérification du terme du milieu : est-ce que $14x$ vaut $2 \\cdot x \\cdot 7$ ? On calcule $2 \\cdot x \\cdot 7 = 14x$. $\\checkmark$",
+            "L'identité $(a+b)^2 = a^2 + 2ab + b^2$ s'applique avec $a = x$ et $b = 7$. Le signe du terme du milieu est positif :\\[ x^2 + 14x + 49 = (x + 7)^2. \\]",
+            "Vérification par distributivité :\\[ (x+7)^2 = (x+7)(x+7) = x^2 + 7x + 7x + 49 = x^2 + 14x + 49. \\]"
+          ],
+          "piegeCourant": "Vérifier seulement que les deux extrémités sont des carrés sans tester le terme du milieu. $x^2 + 15x + 49$ a aussi deux carrés aux extrémités, mais $2 \\cdot x \\cdot 7 = 14 \\neq 15$ : ce n'est pas un carré parfait."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E039",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "différence de carrés",
+        "coefficient devant x",
+        "identification de a"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $9x^2 - 16$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les deux termes sont des carrés parfaits ; identifie $a$ et $b$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$9x^2 - 16 = (3x - 4)(3x + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'expression a la forme $a^2 - b^2$. On identifie : $9x^2 = (3x)^2$ (donc $a = 3x$), et $16 = 4^2$ (donc $b = 4$).",
+            "L'identité $(a+b)(a-b) = a^2 - b^2$ donne :\\[ 9x^2 - 16 = (3x)^2 - 4^2 = (3x - 4)(3x + 4). \\]",
+            "Vérification par distributivité :\\[ (3x-4)(3x+4) = 9x^2 + 12x - 12x - 16 = 9x^2 - 16. \\]"
+          ],
+          "piegeCourant": "Écrire $(x-4)(x+4)$ en oubliant que le carré porte sur tout, coefficient inclus : $\\sqrt{9x^2} = 3x$, pas $x$. Même vigilance que dans le second exemple modèle de la section (côté développement)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E040",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "carré parfait",
+        "coefficient devant x",
+        "test du double produit"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $4x^2 - 20x + 25$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Repère les carrés parfaits, puis vérifie le double produit avec la valeur choisie pour $a$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$4x^2 - 20x + 25 = (2x - 5)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Deux carrés visibles : $4x^2 = (2x)^2$ et $25 = 5^2$. On teste donc $a = 2x$ et $b = 5$.",
+            "Le double produit attendu est $2ab = 2 \\cdot 2x \\cdot 5 = 20x$. Le terme du milieu de l'expression est $-20x$ : même valeur absolue, signe négatif — c'est donc $(a-b)^2$.",
+            "L'identité $(a-b)^2 = a^2 - 2ab + b^2$ donne :\\[ 4x^2 - 20x + 25 = (2x - 5)^2. \\]",
+            "Vérification par distributivité :\\[ (2x-5)^2 = (2x)^2 - 2(2x)(5) + 5^2 = 4x^2 - 20x + 25. \\]"
+          ],
+          "piegeCourant": "Oublier que le carré porte aussi sur le coefficient : $\\sqrt{4x^2} = 2x$, pas $x$. Erreur qui vient droit du second exemple modèle de la section."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E041",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "carré parfait",
+        "réordonnancement",
+        "reconnaissance déguisée"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $9 + 6x + x^2$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'ordre des termes n'est pas celui de l'identité. Réordonne par degré décroissant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$9 + 6x + x^2 = (x + 3)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'expression est un trinôme, mais présenté en ordre croissant des puissances de $x$. On le réécrit en ordre décroissant, qui est celui de l'identité $(a+b)^2 = a^2 + 2ab + b^2$ :\\[ 9 + 6x + x^2 = x^2 + 6x + 9. \\]",
+            "Test du carré parfait : $x^2$ et $9 = 3^2$. Double produit attendu : $2 \\cdot x \\cdot 3 = 6x$. $\\checkmark$",
+            "D'où la factorisation :\\[ x^2 + 6x + 9 = (x + 3)^2. \\]",
+            "Vérification par distributivité :\\[ (x+3)^2 = x^2 + 6x + 9 = 9 + 6x + x^2. \\]"
+          ],
+          "piegeCourant": "Ne pas réordonner et chercher une identité qui commencerait par un terme constant, comme si $9$ jouait le rôle de $a^2$. La formule $(a+b)^2$ suppose un ordre précis ; commencer par mettre l'expression dans la bonne forme évite l'erreur."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E042",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "différence de carrés",
+        "racine irrationnelle",
+        "reconnaissance dans les réels"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^2 - 7$ dans les nombres réels."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "$7$ est le carré de quel nombre réel ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 - 7 = (x - \\sqrt{7})(x + \\sqrt{7})$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'expression a la forme $a^2 - b^2$ avec $a = x$. Pour identifier $b$, on cherche un nombre dont le carré vaut $7$ : $b = \\sqrt{7}$.",
+            "Comme $b^2 = (\\sqrt{7})^2 = 7$, l'identité s'applique dans les réels :\\[ x^2 - 7 = x^2 - (\\sqrt{7})^2 = (x - \\sqrt{7})(x + \\sqrt{7}). \\]",
+            "Vérification par distributivité :\\[ (x - \\sqrt{7})(x + \\sqrt{7}) = x^2 + x\\sqrt{7} - x\\sqrt{7} - (\\sqrt{7})^2 = x^2 - 7. \\]"
+          ],
+          "piegeCourant": "Dire que $x^2 - 7$ n'est pas factorisable parce que $7$ n'est pas un carré parfait entier. Il l'est bien dans les réels : $7 = (\\sqrt{7})^2$. La différence de carrés fonctionne dès que le second terme est positif — c'est la SOMME de carrés qui reste irréductible (encadré d'attention de la section)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E043",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "différence de carrés",
+        "binôme au carré",
+        "simplification interne"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $(x + 3)^2 - 25$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux carrés à identifier : le premier est déjà écrit comme un carré, le second est $25 = 5^2$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$(x + 3)^2 - 25 = (x - 2)(x + 8)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'expression a la forme $a^2 - b^2$ avec $a = x + 3$ et $b = 5$.",
+            "L'identité $(a+b)(a-b) = a^2 - b^2$ donne :\\[ (x+3)^2 - 25 = \\bigl[(x+3) - 5\\bigr] \\bigl[(x+3) + 5\\bigr]. \\]",
+            "On simplifie chaque parenthèse :\\[ (x + 3 - 5)(x + 3 + 5) = (x - 2)(x + 8). \\]",
+            "Vérification par distributivité :\\[ (x-2)(x+8) = x^2 + 8x - 2x - 16 = x^2 + 6x - 16. \\] On développe l'original : $(x+3)^2 - 25 = x^2 + 6x + 9 - 25 = x^2 + 6x - 16$. $\\checkmark$"
+          ],
+          "piegeCourant": "Vouloir développer $(x+3)^2$ d'abord et repartir de zéro. C'est possible mais long ; reconnaître directement la différence de carrés fait gagner du temps et évite les erreurs."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E044",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "différence de carrés",
+        "deux binômes",
+        "distribution du signe"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $(2x + 1)^2 - (x - 3)^2$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Différence de carrés où $a$ et $b$ sont tous les deux des binômes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$(2x + 1)^2 - (x - 3)^2 = (x + 4)(3x - 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Différence de carrés avec $a = 2x + 1$ et $b = x - 3$. On applique $(a+b)(a-b) = a^2 - b^2$ :\\[ (2x+1)^2 - (x-3)^2 = \\bigl[(2x+1) - (x-3)\\bigr] \\bigl[(2x+1) + (x-3)\\bigr]. \\]",
+            "On simplifie chaque parenthèse en distribuant le signe et en regroupant les termes semblables :\\[ (2x + 1 - x + 3)(2x + 1 + x - 3) = (x + 4)(3x - 2). \\]",
+            "Vérification par distributivité :\\[ (x+4)(3x-2) = 3x^2 - 2x + 12x - 8 = 3x^2 + 10x - 8. \\] On développe l'original : $(2x+1)^2 - (x-3)^2 = (4x^2 + 4x + 1) - (x^2 - 6x + 9) = 4x^2 + 4x + 1 - x^2 + 6x - 9 = 3x^2 + 10x - 8$. $\\checkmark$"
+          ],
+          "piegeCourant": "Oublier de distribuer le signe négatif à travers $(x-3)$ dans la première parenthèse et écrire $(2x+1-x-3) = (x-2)$ au lieu de $(x+4)$. Le signe négatif change le signe de CHAQUE terme du binôme."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E045",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "différence de carrés",
+        "identités imbriquées",
+        "somme de carrés irréductible"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^4 - 16$ dans les nombres réels."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'expression est une différence de carrés. Le premier facteur obtenu l'est aussi."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^4 - 16 = (x - 2)(x + 2)(x^2 + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Première application. On reconnaît $a^2 - b^2$ avec $a = x^2$ et $b = 4$ (car $x^4 = (x^2)^2$ et $16 = 4^2$) :\\[ x^4 - 16 = (x^2)^2 - 4^2 = (x^2 - 4)(x^2 + 4). \\]",
+            "Le facteur $x^2 - 4$ est encore une différence de carrés, avec $a = x$ et $b = 2$ :\\[ x^2 - 4 = (x - 2)(x + 2). \\]",
+            "Le facteur $x^2 + 4$ est une SOMME de carrés. L'encadré d'attention de la section rappelle qu'il n'existe aucune identité pour une somme de carrés dans les réels : ce facteur est irréductible.",
+            "En combinant :\\[ x^4 - 16 = (x - 2)(x + 2)(x^2 + 4). \\]",
+            "Vérification par distributivité :\\[ (x-2)(x+2)(x^2+4) = (x^2 - 4)(x^2 + 4) = x^4 + 4x^2 - 4x^2 - 16 = x^4 - 16. \\]"
+          ],
+          "piegeCourant": "Croire que $x^2 + 4$ est aussi factorisable comme différence de carrés. Non : la formule ne fonctionne QUE pour la différence $a^2 - b^2$, jamais pour la somme $a^2 + b^2$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E046",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "mise en évidence",
+        "différence de carrés",
+        "factorisation en deux temps"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $2x^3 - 8x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par une mise en évidence (section 1.1.1), puis regarde si le facteur restant est une identité remarquable."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 - 8x = 2x(x - 2)(x + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps — mise en évidence. Le facteur commun est $2x$ (PGCD des coefficients : $\\gcd(2, 8) = 2$ ; plus petite puissance de $x$ : $x$).\\[ 2x^3 - 8x = 2x(x^2 - 4). \\]",
+            "Second temps — le facteur $x^2 - 4$ est une différence de carrés, avec $a = x$ et $b = 2$ :\\[ x^2 - 4 = (x - 2)(x + 2). \\]",
+            "En combinant les deux étapes :\\[ 2x^3 - 8x = 2x(x - 2)(x + 2). \\]",
+            "Vérification par distributivité :\\[ 2x(x-2)(x+2) = 2x(x^2 - 4) = 2x^3 - 8x. \\]"
+          ],
+          "piegeCourant": "S'arrêter à $2x(x^2 - 4)$ en oubliant que $x^2 - 4$ se factorise encore. Le piège du premier exemple modèle de la section 1.1.1 s'applique ici : quand un facteur reste factorisable, on continue."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E047",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "mise en évidence",
+        "carré parfait",
+        "factorisation en deux temps"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $3x^3 + 12x^2 + 12x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Un facteur commun aux trois termes, puis un trinôme à tester comme carré parfait."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$3x^3 + 12x^2 + 12x = 3x(x + 2)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps — mise en évidence. Coefficients : $\\gcd(3, 12, 12) = 3$. Plus petite puissance de $x$ : $x$. Facteur commun : $3x$.\\[ 3x^3 + 12x^2 + 12x = 3x(x^2 + 4x + 4). \\]",
+            "Second temps — le facteur $x^2 + 4x + 4$ ressemble à un carré parfait. Test : $x^2$ et $4 = 2^2$, double produit attendu $2 \\cdot x \\cdot 2 = 4x$. $\\checkmark$",
+            "L'identité $(a+b)^2 = a^2 + 2ab + b^2$ s'applique avec $a = x$ et $b = 2$ :\\[ x^2 + 4x + 4 = (x + 2)^2. \\]",
+            "En combinant les deux étapes :\\[ 3x^3 + 12x^2 + 12x = 3x(x + 2)^2. \\]",
+            "Vérification par distributivité :\\[ 3x(x+2)^2 = 3x(x^2 + 4x + 4) = 3x^3 + 12x^2 + 12x. \\]"
+          ],
+          "piegeCourant": "S'arrêter à $3x(x^2 + 4x + 4)$ en manquant le carré parfait à l'intérieur. Le réflexe du quatrième exemple modèle de la section — tester dès qu'on voit un trinôme avec deux carrés — s'applique ici aussi."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E048",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "regroupement",
+        "différence de carrés cachée",
+        "factorisation en deux temps"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 + 2x^2 - 9x - 18$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Quatre termes : commence par une mise en évidence double (regroupement 2+2). Le facteur qui en ressort est une identité remarquable."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 + 2x^2 - 9x - 18 = (x + 2)(x - 3)(x + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps — mise en évidence double (section 1.1.1). Regroupement 2+2 :\\[ (x^3 + 2x^2) + (-9x - 18) = x^2(x + 2) - 9(x + 2) = (x + 2)(x^2 - 9). \\]",
+            "Second temps — le facteur $x^2 - 9$ est une différence de carrés, avec $a = x$ et $b = 3$ (car $9 = 3^2$) :\\[ x^2 - 9 = (x - 3)(x + 3). \\]",
+            "En combinant :\\[ x^3 + 2x^2 - 9x - 18 = (x + 2)(x - 3)(x + 3). \\]",
+            "Vérification par distributivité :\\[ (x+2)(x-3)(x+3) = (x+2)(x^2 - 9) = x^3 - 9x + 2x^2 - 18 = x^3 + 2x^2 - 9x - 18. \\]"
+          ],
+          "piegeCourant": "Arrêter au premier temps sur $(x+2)(x^2 - 9)$ sans reconnaître la différence de carrés à l'intérieur. Chaque fois qu'un facteur laisse voir deux carrés parfaits séparés par un signe moins, on continue avec l'identité."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E049",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "différence de carrés",
+        "deux binômes",
+        "mise en évidence numérique finale"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $(3x + 2)^2 - (x - 4)^2$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Différence de carrés avec deux binômes. Attention au signe négatif à distribuer, puis regarde s'il reste des facteurs communs numériques."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$(3x + 2)^2 - (x - 4)^2 = 4(x + 3)(2x - 1)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Différence de carrés avec $a = 3x + 2$ et $b = x - 4$. On applique $(a+b)(a-b) = a^2 - b^2$ :\\[ (3x+2)^2 - (x-4)^2 = \\bigl[(3x+2) - (x-4)\\bigr] \\bigl[(3x+2) + (x-4)\\bigr]. \\]",
+            "On simplifie chaque parenthèse. Attention au signe négatif à distribuer à travers $(x-4)$ dans la première parenthèse :\\[ (3x + 2 - x + 4)(3x + 2 + x - 4) = (2x + 6)(4x - 2). \\]",
+            "Chaque parenthèse admet encore une mise en évidence numérique (section 1.1.1). On sort $2$ de chaque :\\[ (2x + 6)(4x - 2) = 2(x + 3) \\cdot 2(2x - 1) = 4(x + 3)(2x - 1). \\]",
+            "Vérification par distributivité. Facteur factorisé développé : $4(x+3)(2x-1) = 4(2x^2 + 5x - 3) = 8x^2 + 20x - 12$. Original développé : $(9x^2 + 12x + 4) - (x^2 - 8x + 16) = 9x^2 + 12x + 4 - x^2 + 8x - 16 = 8x^2 + 20x - 12$. $\\checkmark$"
+          ],
+          "piegeCourant": "S'arrêter à $(2x+6)(4x-2)$ sans faire la mise en évidence numérique finale. Une factorisation propre exige que chaque facteur soit débarrassé de ses coefficients communs — c'est encore une application du piège 'aller au bout' du premier exemple modèle de la section 1.1.1."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E050",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "formule quadratique",
+        "discriminant carré parfait",
+        "racines entières"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^2 + 7x + 12$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois étapes : discriminant, racines, factorisation. Ici $a = 1$, donc pas de coefficient à replacer devant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 + 7x + 12 = (x + 3)(x + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 1$, $b = 7$, $c = 12$ :\\[ \\Delta = b^2 - 4ac = 7^2 - 4(1)(12) = 49 - 48 = 1. \\]",
+            "Étape 2 — Racines. $\\Delta > 0$, donc deux racines réelles :\\[ x = \\dfrac{-b \\pm \\sqrt{\\Delta}}{2a} = \\dfrac{-7 \\pm 1}{2} \\implies x_1 = -3, \\; x_2 = -4. \\]",
+            "Étape 3 — Factorisation. Comme $a = 1$, on applique $a(x - x_1)(x - x_2)$ sans facteur supplémentaire :\\[ x^2 + 7x + 12 = (x - (-3))(x - (-4)) = (x + 3)(x + 4). \\]",
+            "Vérification par distributivité :\\[ (x+3)(x+4) = x^2 + 4x + 3x + 12 = x^2 + 7x + 12. \\]"
+          ],
+          "piegeCourant": "Se tromper de signe en substituant les racines : $x = -3$ donne le facteur $(x - (-3)) = (x + 3)$, pas $(x - 3)$. Le signe du facteur est TOUJOURS l'opposé du signe de la racine."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E051",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "formule quadratique",
+        "coefficient a différent de 1",
+        "absorption du coefficient"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $3x^2 - 11x + 6$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois étapes. Attention à replacer le coefficient $a$ devant la factorisation, puis à l'absorber pour éliminer la fraction."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$3x^2 - 11x + 6 = (3x - 2)(x - 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 3$, $b = -11$, $c = 6$ :\\[ \\Delta = (-11)^2 - 4(3)(6) = 121 - 72 = 49. \\]",
+            "Étape 2 — Racines. $\\Delta > 0$, deux racines :\\[ x = \\dfrac{11 \\pm 7}{6} \\implies x_1 = 3, \\; x_2 = \\dfrac{2}{3}. \\]",
+            "Étape 3 — Factorisation. Comme $a = 3 \\neq 1$, il faut le mettre devant :\\[ 3x^2 - 11x + 6 = 3(x - 3)\\left(x - \\dfrac{2}{3}\\right). \\]",
+            "On absorbe le $3$ dans le second facteur pour éliminer la fraction, comme dans le second exemple modèle de la section :\\[ = (x - 3)(3x - 2). \\]",
+            "Vérification par distributivité :\\[ (x-3)(3x-2) = 3x^2 - 2x - 9x + 6 = 3x^2 - 11x + 6. \\]"
+          ],
+          "piegeCourant": "Oublier le coefficient $a = 3$ devant la factorisation et écrire $(x-3)(x-2/3)$. C'est l'erreur explicitement listée dans l'encadré d'attention de la section — vérifie toujours en développant."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E052",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "discriminant nul",
+        "racine double",
+        "carré parfait revisité"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $4x^2 + 4x + 1$ à l'aide de la formule quadratique."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Calcule le discriminant. Un $\\Delta$ particulier signale un cas particulier de factorisation."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$4x^2 + 4x + 1 = (2x + 1)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 4$, $b = 4$, $c = 1$ :\\[ \\Delta = 4^2 - 4(4)(1) = 16 - 16 = 0. \\]",
+            "Étape 2 — Racines. $\\Delta = 0$ signale une racine double, comme mentionné dans le troisième cas de la formule :\\[ x = \\dfrac{-b}{2a} = \\dfrac{-4}{8} = -\\dfrac{1}{2}. \\]",
+            "Étape 3 — Factorisation. Le cas $\\Delta = 0$ donne $a(x - x_1)^2$ :\\[ 4x^2 + 4x + 1 = 4\\left(x + \\dfrac{1}{2}\\right)^2. \\]",
+            "On absorbe le $4$ dans le carré ($4 = 2^2$) :\\[ 4\\left(x + \\dfrac{1}{2}\\right)^2 = \\left[2\\left(x + \\dfrac{1}{2}\\right)\\right]^2 = (2x + 1)^2. \\]",
+            "Vérification par distributivité :\\[ (2x+1)^2 = (2x)^2 + 2(2x)(1) + 1^2 = 4x^2 + 4x + 1. \\]",
+            "Note : ce trinôme aurait aussi pu être identifié comme carré parfait via le test de la section 1.1.2 ($\\sqrt{4x^2} = 2x$, $\\sqrt{1} = 1$, double produit $2 \\cdot 2x \\cdot 1 = 4x$). La formule quadratique donne le même résultat par un chemin systématique."
+          ],
+          "piegeCourant": "Écrire $(2x+1)(2x+1)$ comme deux facteurs distincts sans réaliser qu'il s'agit d'un carré : la factorisation propre est $(2x+1)^2$. Le cas $\\Delta = 0$ donne toujours un carré."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E053",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "discriminant négatif",
+        "irréductible dans les réels",
+        "somme de carrés"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Montre que $x^2 + 4x + 7$ ne se factorise pas dans les nombres réels."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Calcule le discriminant. Un $\\Delta$ particulier conclut immédiatement."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 + 4x + 7$ est irréductible dans $\\mathbb{R}$ (car $\\Delta = -12 < 0$)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 1$, $b = 4$, $c = 7$ :\\[ \\Delta = 4^2 - 4(1)(7) = 16 - 28 = -12. \\]",
+            "Étape 2 — Conclusion. $\\Delta < 0$ : aucune racine réelle, donc aucune factorisation dans $\\mathbb{R}$, comme le rappelle le troisième cas de la formule et le troisième exemple modèle de la section.",
+            "Vérification : le trinôme peut se réécrire $x^2 + 4x + 7 = (x + 2)^2 + 3$, qui est strictement positif pour tout $x$ (somme d'un carré et de $3$). C'est cohérent avec le fait qu'il n'a pas de racine réelle."
+          ],
+          "piegeCourant": "Tenter d'appliquer la formule des racines même avec $\\Delta < 0$ : $\\sqrt{-12}$ n'est pas un nombre réel, donc pas de racines réelles à extraire. Dans le contexte du cours (chapitre 1), la seule bonne réponse est « irréductible dans $\\mathbb{R}$ »."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E054",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "coefficient a négatif",
+        "mise en évidence du signe",
+        "formule quadratique"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $-x^2 + 5x - 6$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux stratégies équivalentes : appliquer la formule directement avec $a = -1$, ou sortir $-1$ pour retomber sur un trinôme à coefficient dominant positif."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-x^2 + 5x - 6 = -(x - 2)(x - 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Sortir le facteur $-1$. Pour se ramener au cas standard $a > 0$ (levier de la section 1.1.1 sur le facteur négatif) :\\[ -x^2 + 5x - 6 = -(x^2 - 5x + 6). \\]",
+            "Étape 2 — Discriminant du trinôme à l'intérieur. Avec $a = 1$, $b = -5$, $c = 6$ :\\[ \\Delta = (-5)^2 - 4(1)(6) = 25 - 24 = 1. \\]",
+            "Étape 3 — Racines.\\[ x = \\dfrac{5 \\pm 1}{2} \\implies x_1 = 3, \\; x_2 = 2. \\]",
+            "Étape 4 — Factorisation. Le trinôme intérieur se factorise en $(x-2)(x-3)$. En remettant le signe :\\[ -x^2 + 5x - 6 = -(x - 2)(x - 3). \\]",
+            "Vérification par distributivité :\\[ -(x-2)(x-3) = -(x^2 - 5x + 6) = -x^2 + 5x - 6. \\]"
+          ],
+          "piegeCourant": "Appliquer la formule directement avec $a = -1$ sans faire attention au signe : $\\Delta = 25 - 4(-1)(-6) = 25 - 24 = 1$ (bon), puis $x = \\dfrac{-5 \\pm 1}{-2} = 2$ ou $3$ — les racines sont les mêmes. Sortir le $-1$ en premier temps évite l'arithmétique négative dans la formule."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E055",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "ordre non standard",
+        "coefficient a négatif",
+        "réordonnancement"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $6 - 5x - x^2$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux difficultés à traiter avant la formule quadratique : réordonner par degré décroissant, puis sortir un facteur négatif."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$6 - 5x - x^2 = -(x + 6)(x - 1)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Réordonner par degré décroissant :\\[ 6 - 5x - x^2 = -x^2 - 5x + 6. \\]",
+            "Étape 2 — Sortir le facteur $-1$ pour se ramener à $a > 0$ :\\[ -x^2 - 5x + 6 = -(x^2 + 5x - 6). \\]",
+            "Étape 3 — Discriminant. Avec $a = 1$, $b = 5$, $c = -6$ :\\[ \\Delta = 5^2 - 4(1)(-6) = 25 + 24 = 49. \\]",
+            "Étape 4 — Racines.\\[ x = \\dfrac{-5 \\pm 7}{2} \\implies x_1 = 1, \\; x_2 = -6. \\]",
+            "Étape 5 — Factorisation. Le trinôme intérieur : $(x - 1)(x + 6)$. En remettant le signe :\\[ 6 - 5x - x^2 = -(x + 6)(x - 1). \\]",
+            "Vérification par distributivité :\\[ -(x+6)(x-1) = -(x^2 + 5x - 6) = -x^2 - 5x + 6 = 6 - 5x - x^2. \\]"
+          ],
+          "piegeCourant": "Sauter l'étape de réordonnancement et appliquer la formule avec $a$ associé à un terme constant. Le rôle de $a$ est celui du coefficient de $x^2$, jamais celui d'une constante ; mettre l'expression dans la bonne forme avant tout."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E056",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "formule quadratique",
+        "coefficient a différent de 1",
+        "racines mixtes"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $5x^2 + 13x + 6$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois étapes standard : discriminant, racines, factorisation avec absorption du coefficient dominant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$5x^2 + 13x + 6 = (5x + 3)(x + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 5$, $b = 13$, $c = 6$ :\\[ \\Delta = 13^2 - 4(5)(6) = 169 - 120 = 49. \\]",
+            "Étape 2 — Racines. $\\Delta > 0$ :\\[ x = \\dfrac{-13 \\pm 7}{10} \\implies x_1 = \\dfrac{-6}{10} = -\\dfrac{3}{5}, \\; x_2 = \\dfrac{-20}{10} = -2. \\]",
+            "Étape 3 — Factorisation. Comme $a = 5 \\neq 1$ :\\[ 5x^2 + 13x + 6 = 5\\left(x + \\dfrac{3}{5}\\right)(x + 2). \\]",
+            "On absorbe le $5$ dans le premier facteur (celui qui a la fraction) :\\[ 5\\left(x + \\dfrac{3}{5}\\right) = 5x + 3, \\qquad \\text{donc} \\qquad 5x^2 + 13x + 6 = (5x + 3)(x + 2). \\]",
+            "Vérification par distributivité :\\[ (5x+3)(x+2) = 5x^2 + 10x + 3x + 6 = 5x^2 + 13x + 6. \\]"
+          ],
+          "piegeCourant": "Répartir le coefficient $5$ arbitrairement entre les deux facteurs (par exemple écrire $(5x+3)(5x+10)$). Le $a$ s'absorbe dans UN SEUL des deux facteurs — celui qui a la fraction — pour la faire disparaître."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E057",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "mise en évidence",
+        "formule quadratique",
+        "factorisation en deux temps"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $2x^3 - 14x^2 + 12x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par une mise en évidence (section 1.1.1). Le trinôme qui en ressort n'est ni un carré parfait ni une différence de carrés — la formule quadratique s'impose."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 - 14x^2 + 12x = 2x(x - 1)(x - 6)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps — mise en évidence. Coefficients : $\\gcd(2, 14, 12) = 2$. Plus petite puissance de $x$ : $x$. Facteur commun : $2x$.\\[ 2x^3 - 14x^2 + 12x = 2x(x^2 - 7x + 6). \\]",
+            "Second temps — formule quadratique sur $x^2 - 7x + 6$. Avec $a = 1$, $b = -7$, $c = 6$ :\\[ \\Delta = (-7)^2 - 4(1)(6) = 49 - 24 = 25. \\]",
+            "Racines :\\[ x = \\dfrac{7 \\pm 5}{2} \\implies x_1 = 6, \\; x_2 = 1. \\]",
+            "Factorisation du trinôme :\\[ x^2 - 7x + 6 = (x - 1)(x - 6). \\]",
+            "En combinant les deux étapes :\\[ 2x^3 - 14x^2 + 12x = 2x(x - 1)(x - 6). \\]",
+            "Vérification par distributivité :\\[ 2x(x-1)(x-6) = 2x(x^2 - 7x + 6) = 2x^3 - 14x^2 + 12x. \\]"
+          ],
+          "piegeCourant": "Appliquer la formule quadratique directement sur $2x^3 - 14x^2 + 12x$ comme s'il s'agissait d'un trinôme du second degré. La formule ne s'applique qu'à $ax^2 + bx + c$ ; il faut d'abord sortir le facteur commun pour faire apparaître un trinôme du second degré."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E058",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "discriminant non carré parfait",
+        "racines irrationnelles",
+        "simplification de racine"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^2 - 6x + 4$ dans les nombres réels."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Calcule le discriminant. Il n'est pas un carré parfait, mais la formule des racines fonctionne quand même — les racines seront irrationnelles."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 - 6x + 4 = (x - 3 - \\sqrt{5})(x - 3 + \\sqrt{5})$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 1$, $b = -6$, $c = 4$ :\\[ \\Delta = (-6)^2 - 4(1)(4) = 36 - 16 = 20. \\]",
+            "Étape 2 — Racines. $\\Delta > 0$ (donc deux racines réelles), mais $\\Delta = 20$ n'est pas un carré parfait. On simplifie $\\sqrt{20} = \\sqrt{4 \\cdot 5} = 2\\sqrt{5}$ :\\[ x = \\dfrac{6 \\pm 2\\sqrt{5}}{2} = 3 \\pm \\sqrt{5}. \\]",
+            "Donc $x_1 = 3 + \\sqrt{5}$ et $x_2 = 3 - \\sqrt{5}$.",
+            "Étape 3 — Factorisation. Comme $a = 1$ :\\[ x^2 - 6x + 4 = (x - x_1)(x - x_2) = (x - 3 - \\sqrt{5})(x - 3 + \\sqrt{5}). \\]",
+            "Vérification. Le produit se lit comme une différence de carrés déguisée : $[(x-3) - \\sqrt{5}][(x-3) + \\sqrt{5}] = (x-3)^2 - (\\sqrt{5})^2 = (x^2 - 6x + 9) - 5 = x^2 - 6x + 4$. $\\checkmark$"
+          ],
+          "piegeCourant": "Conclure « pas factorisable » parce que $\\Delta = 20$ n'est pas un carré parfait. La condition d'irréductibilité est $\\Delta < 0$, pas $\\Delta$ non carré parfait. Dès que $\\Delta > 0$, il y a deux racines réelles et deux facteurs — même s'ils contiennent des radicaux."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E059",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "coefficient a différent de 1",
+        "deux racines fractionnaires",
+        "absorption double"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $6x^2 - x - 12$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le coefficient $a$ n'est pas $1$ et les deux racines sont des fractions. Absorbe le coefficient en le répartissant sur les deux facteurs."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$6x^2 - x - 12 = (2x - 3)(3x + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 6$, $b = -1$, $c = -12$ :\\[ \\Delta = (-1)^2 - 4(6)(-12) = 1 + 288 = 289. \\]",
+            "Étape 2 — Racines. $\\sqrt{289} = 17$ :\\[ x = \\dfrac{1 \\pm 17}{12} \\implies x_1 = \\dfrac{18}{12} = \\dfrac{3}{2}, \\; x_2 = \\dfrac{-16}{12} = -\\dfrac{4}{3}. \\]",
+            "Étape 3 — Factorisation. Comme $a = 6 \\neq 1$ :\\[ 6x^2 - x - 12 = 6\\left(x - \\dfrac{3}{2}\\right)\\left(x + \\dfrac{4}{3}\\right). \\]",
+            "Cette fois les deux facteurs contiennent une fraction. On décompose $6 = 2 \\cdot 3$ pour absorber $2$ dans le premier (dénominateur $2$) et $3$ dans le second (dénominateur $3$) :\\[ 2\\left(x - \\dfrac{3}{2}\\right) = 2x - 3, \\qquad 3\\left(x + \\dfrac{4}{3}\\right) = 3x + 4. \\]",
+            "D'où :\\[ 6x^2 - x - 12 = (2x - 3)(3x + 4). \\]",
+            "Vérification par distributivité :\\[ (2x-3)(3x+4) = 6x^2 + 8x - 9x - 12 = 6x^2 - x - 12. \\]"
+          ],
+          "piegeCourant": "Absorber tout le coefficient $6$ dans un seul des deux facteurs quand les deux ont une fraction. Il faut décomposer $a$ en facteurs qui correspondent aux dénominateurs, ici $6 = 2 \\cdot 3$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E060",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "mise en évidence négative",
+        "formule quadratique",
+        "factorisation en deux temps"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement l'expression $-3x^3 + 3x^2 + 18x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Sors un facteur commun négatif au premier temps, puis applique la formule quadratique au trinôme qui reste."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-3x^3 + 3x^2 + 18x = -3x(x - 3)(x + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Premier temps — mise en évidence. Coefficients : $\\gcd(3, 3, 18) = 3$. Plus petite puissance de $x$ : $x$. Signe : le terme dominant $-3x^3$ est négatif, on sort $-3x$.\\[ -3x^3 + 3x^2 + 18x = -3x(x^2 - x - 6). \\]",
+            "(Vérification rapide des signes intérieurs : $-3x^3 \\div (-3x) = x^2$ $\\checkmark$, $3x^2 \\div (-3x) = -x$ $\\checkmark$, $18x \\div (-3x) = -6$ $\\checkmark$.)",
+            "Second temps — formule quadratique sur $x^2 - x - 6$. Avec $a = 1$, $b = -1$, $c = -6$ :\\[ \\Delta = (-1)^2 - 4(1)(-6) = 1 + 24 = 25. \\]",
+            "Racines :\\[ x = \\dfrac{1 \\pm 5}{2} \\implies x_1 = 3, \\; x_2 = -2. \\]",
+            "Factorisation du trinôme :\\[ x^2 - x - 6 = (x - 3)(x + 2). \\]",
+            "En combinant :\\[ -3x^3 + 3x^2 + 18x = -3x(x - 3)(x + 2). \\]",
+            "Vérification par distributivité :\\[ -3x(x-3)(x+2) = -3x(x^2 - x - 6) = -3x^3 + 3x^2 + 18x. \\]"
+          ],
+          "piegeCourant": "Combiner les deux erreurs habituelles : oublier la mise en évidence (piège de 1.1.1) OU se tromper de signe à l'intérieur après avoir sorti $-3x$. La double vérification (une pour la mise en évidence, une pour la formule quadratique) évite l'accumulation."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E061",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "coefficients fractionnaires",
+        "multiplication par le dénominateur",
+        "réintroduction du facteur"
+      ],
+      "savoirFaire": [
+        "0c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $\\dfrac{1}{2}x^2 + \\dfrac{3}{2}x - 5$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Multiplie par $2$ pour éliminer les dénominateurs, factorise le trinôme obtenu, puis n'oublie pas de réintroduire le facteur $\\dfrac{1}{2}$ à la fin."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{1}{2}x^2 + \\dfrac{3}{2}x - 5 = \\dfrac{1}{2}(x - 2)(x + 5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Ramener à des coefficients entiers. On met en évidence $\\dfrac{1}{2}$ dans les deux premiers termes ; pour que ça marche partout, on préfère écrire :\\[ \\dfrac{1}{2}x^2 + \\dfrac{3}{2}x - 5 = \\dfrac{1}{2}\\bigl(x^2 + 3x - 10\\bigr). \\] Vérification rapide : $\\dfrac{1}{2}(x^2 + 3x - 10) = \\dfrac{1}{2}x^2 + \\dfrac{3}{2}x - 5$. $\\checkmark$",
+            "Étape 2 — Discriminant du trinôme entier. Avec $a = 1$, $b = 3$, $c = -10$ :\\[ \\Delta = 3^2 - 4(1)(-10) = 9 + 40 = 49. \\]",
+            "Étape 3 — Racines :\\[ x = \\dfrac{-3 \\pm 7}{2} \\implies x_1 = 2, \\; x_2 = -5. \\]",
+            "Étape 4 — Factorisation du trinôme intérieur :\\[ x^2 + 3x - 10 = (x - 2)(x + 5). \\]",
+            "Étape 5 — Réintroduire le facteur $\\dfrac{1}{2}$ :\\[ \\dfrac{1}{2}x^2 + \\dfrac{3}{2}x - 5 = \\dfrac{1}{2}(x - 2)(x + 5). \\]",
+            "Vérification par distributivité :\\[ \\dfrac{1}{2}(x-2)(x+5) = \\dfrac{1}{2}(x^2 + 3x - 10) = \\dfrac{1}{2}x^2 + \\dfrac{3}{2}x - 5. \\]"
+          ],
+          "piegeCourant": "Oublier de réintroduire le facteur $\\dfrac{1}{2}$ à la fin et présenter $(x-2)(x+5)$ comme réponse : ce serait la factorisation de $x^2 + 3x - 10$, pas de l'original. Le facteur numérique global fait partie de la réponse."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E062",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "combinaison d'outils",
+        "mise en évidence",
+        "différence de carrés"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $2x^3 - 18x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Suis l'ordre des outils : mise en évidence d'abord, puis regarde ce qui reste."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 - 18x = 2x(x - 3)(x + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — mise en évidence (section 1.1.1). Facteur commun : $2x$ (PGCD $\\gcd(2, 18) = 2$, plus petite puissance $x$).\\[ 2x^3 - 18x = 2x(x^2 - 9). \\]",
+            "Étape 2 — le facteur $x^2 - 9$ est une différence de carrés (section 1.1.2), avec $a = x$ et $b = 3$ :\\[ x^2 - 9 = (x - 3)(x + 3). \\]",
+            "En combinant :\\[ 2x^3 - 18x = 2x(x - 3)(x + 3). \\]",
+            "Vérification par distributivité :\\[ 2x(x-3)(x+3) = 2x(x^2 - 9) = 2x^3 - 18x. \\]"
+          ],
+          "piegeCourant": "S'arrêter à $2x(x^2 - 9)$ sans reconnaître la différence de carrés à l'intérieur. Comme le rappelle le premier exemple modèle de la section 1.1.1 (piège 'aller au bout'), quand un facteur reste factorisable, on continue."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E063",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "combinaison d'outils",
+        "mise en évidence",
+        "carré parfait"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 + 6x^2 + 9x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Mise en évidence, puis test du carré parfait sur le trinôme obtenu."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 + 6x^2 + 9x = x(x + 3)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — mise en évidence. Facteur commun : $x$.\\[ x^3 + 6x^2 + 9x = x(x^2 + 6x + 9). \\]",
+            "Étape 2 — le trinôme $x^2 + 6x + 9$ ressemble à un carré parfait. Test (section 1.1.2) : $x^2$ et $9 = 3^2$, double produit $2 \\cdot x \\cdot 3 = 6x$. $\\checkmark$",
+            "L'identité $(a+b)^2 = a^2 + 2ab + b^2$ s'applique avec $a = x$ et $b = 3$ :\\[ x^2 + 6x + 9 = (x + 3)^2. \\]",
+            "En combinant :\\[ x^3 + 6x^2 + 9x = x(x + 3)^2. \\]",
+            "Vérification par distributivité :\\[ x(x+3)^2 = x(x^2 + 6x + 9) = x^3 + 6x^2 + 9x. \\]"
+          ],
+          "piegeCourant": "Manquer le carré parfait à l'intérieur après la mise en évidence et se lancer dans la formule quadratique sur $x^2 + 6x + 9$. Le test du carré parfait est plus rapide et évite le calcul du discriminant."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E064",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente",
+        "racine négative",
+        "division polynomiale"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 - 4x^2 + x + 6$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Racine évidente : teste les diviseurs du terme constant $6$ (avec leurs signes) jusqu'à en trouver un qui annule le polynôme."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 - 4x^2 + x + 6 = (x + 1)(x - 2)(x - 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — chercher une racine évidente. Diviseurs du terme constant $6$ : $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.",
+            "Test : $P(1) = 1 - 4 + 1 + 6 = 4 \\neq 0$.",
+            "Test : $P(-1) = -1 - 4 - 1 + 6 = 0$. $\\checkmark$ Donc $(x - (-1)) = (x + 1)$ divise $P(x)$.",
+            "Étape 2 — division polynomiale de $x^3 - 4x^2 + x + 6$ par $(x + 1)$ (méthode en colonne, étape par étape).",
+            "Terme dominant : $x^3 \\div x = x^2$. Produit : $x^2(x+1) = x^3 + x^2$. Soustraction : $(x^3 - 4x^2 + x + 6) - (x^3 + x^2) = -5x^2 + x + 6$.",
+            "Terme dominant : $-5x^2 \\div x = -5x$. Produit : $-5x(x+1) = -5x^2 - 5x$. Soustraction : $(-5x^2 + x + 6) - (-5x^2 - 5x) = 6x + 6$.",
+            "Terme dominant : $6x \\div x = 6$. Produit : $6(x+1) = 6x + 6$. Soustraction : $(6x + 6) - (6x + 6) = 0$.",
+            "Quotient : $x^2 - 5x + 6$. Donc :\\[ x^3 - 4x^2 + x + 6 = (x + 1)(x^2 - 5x + 6). \\]",
+            "Étape 3 — factoriser le quotient. Deux nombres dont la somme est $-5$ et le produit $6$ : $-2$ et $-3$. Donc $x^2 - 5x + 6 = (x - 2)(x - 3)$.",
+            "En combinant :\\[ x^3 - 4x^2 + x + 6 = (x + 1)(x - 2)(x - 3). \\]",
+            "Vérification par distributivité : $(x-2)(x-3) = x^2 - 5x + 6$, puis $(x+1)(x^2 - 5x + 6) = x^3 - 5x^2 + 6x + x^2 - 5x + 6 = x^3 - 4x^2 + x + 6$. $\\checkmark$"
+          ],
+          "piegeCourant": "Oublier de tester les valeurs NÉGATIVES (par exemple $-1, -2, -3$) et abandonner en pensant qu'il n'y a pas de racine évidente. La consigne de la méthode est claire : diviseurs du terme constant AVEC leurs signes."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E065",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "combinaison d'outils",
+        "mise en évidence",
+        "formule quadratique"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $2x^3 + x^2 - 6x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Mise en évidence d'abord. Le trinôme obtenu n'est ni un carré parfait ni une différence de carrés : la formule quadratique s'impose."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 + x^2 - 6x = x(2x - 3)(x + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — mise en évidence. Facteur commun : $x$.\\[ 2x^3 + x^2 - 6x = x(2x^2 + x - 6). \\]",
+            "Étape 2 — le trinôme $2x^2 + x - 6$ ne se lit pas comme une identité remarquable. Formule quadratique (section 1.1.3) avec $a = 2$, $b = 1$, $c = -6$ :\\[ \\Delta = 1^2 - 4(2)(-6) = 1 + 48 = 49. \\]",
+            "Racines :\\[ x = \\dfrac{-1 \\pm 7}{4} \\implies x_1 = \\dfrac{3}{2}, \\; x_2 = -2. \\]",
+            "Factorisation du trinôme (avec absorption du coefficient $a = 2$ dans le premier facteur pour éliminer la fraction) :\\[ 2x^2 + x - 6 = 2\\left(x - \\dfrac{3}{2}\\right)(x + 2) = (2x - 3)(x + 2). \\]",
+            "En combinant :\\[ 2x^3 + x^2 - 6x = x(2x - 3)(x + 2). \\]",
+            "Vérification par distributivité : $(2x-3)(x+2) = 2x^2 + 4x - 3x - 6 = 2x^2 + x - 6$, puis $x(2x^2 + x - 6) = 2x^3 + x^2 - 6x$. $\\checkmark$"
+          ],
+          "piegeCourant": "Vouloir appliquer la formule quadratique directement sur $2x^3 + x^2 - 6x$. La formule ne s'applique qu'à $ax^2 + bx + c$ (degré 2). Il faut d'abord se ramener à un trinôme du second degré par la mise en évidence."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E066",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente",
+        "quotient carré parfait",
+        "racine double"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 - 3x^2 - 9x - 5$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Cherche une racine parmi les diviseurs de $-5$. Le quotient de degré 2 est un carré parfait — donc racine double au final."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 - 3x^2 - 9x - 5 = (x + 1)^2 (x - 5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — racine évidente. Diviseurs du terme constant $-5$ : $\\pm 1, \\pm 5$.",
+            "Test : $P(1) = 1 - 3 - 9 - 5 = -16 \\neq 0$.",
+            "Test : $P(-1) = -1 - 3 + 9 - 5 = 0$. $\\checkmark$ Donc $(x + 1)$ divise.",
+            "Étape 2 — division polynomiale de $x^3 - 3x^2 - 9x - 5$ par $(x + 1)$.",
+            "$x^3 \\div x = x^2$. Produit : $x^2(x+1) = x^3 + x^2$. Reste : $-4x^2 - 9x - 5$.",
+            "$-4x^2 \\div x = -4x$. Produit : $-4x(x+1) = -4x^2 - 4x$. Reste : $-5x - 5$.",
+            "$-5x \\div x = -5$. Produit : $-5(x+1) = -5x - 5$. Reste : $0$.",
+            "Quotient : $x^2 - 4x - 5$. Donc :\\[ x^3 - 3x^2 - 9x - 5 = (x + 1)(x^2 - 4x - 5). \\]",
+            "Étape 3 — factoriser le quotient. Deux nombres dont la somme est $-4$ et le produit $-5$ : $-5$ et $1$. Donc $x^2 - 4x - 5 = (x - 5)(x + 1)$.",
+            "En combinant :\\[ x^3 - 3x^2 - 9x - 5 = (x + 1)(x - 5)(x + 1) = (x + 1)^2 (x - 5). \\]",
+            "Vérification par distributivité : $(x+1)^2 = x^2 + 2x + 1$, puis $(x^2 + 2x + 1)(x - 5) = x^3 - 5x^2 + 2x^2 - 10x + x - 5 = x^3 - 3x^2 - 9x - 5$. $\\checkmark$"
+          ],
+          "piegeCourant": "Laisser la réponse sous la forme $(x+1)(x-5)(x+1)$ au lieu de $(x+1)^2(x-5)$. La forme compacte signale explicitement la racine double $x = -1$, information utile pour l'étude des signes plus tard dans le cours."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E067",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "combinaison d'outils",
+        "facteur négatif",
+        "carré parfait"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $-x^3 - 4x^2 - 4x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Sors un facteur commun négatif d'abord (pour rendre le trinôme intérieur à coefficient dominant positif), puis test du carré parfait."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$-x^3 - 4x^2 - 4x = -x(x + 2)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — mise en évidence avec facteur négatif. Facteur commun : $x$. Le terme dominant $-x^3$ étant négatif, on sort $-x$.\\[ -x^3 - 4x^2 - 4x = -x(x^2 + 4x + 4). \\]",
+            "Vérification rapide des signes à l'intérieur : $-x^3 \\div (-x) = x^2$ $\\checkmark$, $-4x^2 \\div (-x) = 4x$ $\\checkmark$, $-4x \\div (-x) = 4$ $\\checkmark$.",
+            "Étape 2 — le trinôme $x^2 + 4x + 4$ est un carré parfait. Test : $x^2$ et $4 = 2^2$, double produit $2 \\cdot x \\cdot 2 = 4x$. $\\checkmark$",
+            "L'identité $(a+b)^2$ s'applique avec $a = x$ et $b = 2$ :\\[ x^2 + 4x + 4 = (x + 2)^2. \\]",
+            "En combinant :\\[ -x^3 - 4x^2 - 4x = -x(x + 2)^2. \\]",
+            "Vérification par distributivité :\\[ -x(x+2)^2 = -x(x^2 + 4x + 4) = -x^3 - 4x^2 - 4x. \\]"
+          ],
+          "piegeCourant": "Se tromper de signe à l'intérieur en sortant $-x$ : écrire $-x(x^2 - 4x + 4) = -x(x-2)^2$. La vérification rapide des trois signes (comme rappelée dans les exemples des sections 1.1.1 et 1.1.3 sur les facteurs négatifs) évite l'erreur."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E068",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente",
+        "quotient somme-produit",
+        "division polynomiale"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 + 4x^2 - x - 4$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Racine évidente, puis le quotient de degré 2 se factorise 'de tête' par somme-produit."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 + 4x^2 - x - 4 = (x - 1)(x + 1)(x + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — racine évidente. Diviseurs de $-4$ : $\\pm 1, \\pm 2, \\pm 4$.",
+            "Test : $P(1) = 1 + 4 - 1 - 4 = 0$. $\\checkmark$ Donc $(x - 1)$ divise.",
+            "Étape 2 — division polynomiale de $x^3 + 4x^2 - x - 4$ par $(x - 1)$.",
+            "$x^3 \\div x = x^2$. Produit : $x^2(x-1) = x^3 - x^2$. Reste : $5x^2 - x - 4$.",
+            "$5x^2 \\div x = 5x$. Produit : $5x(x-1) = 5x^2 - 5x$. Reste : $4x - 4$.",
+            "$4x \\div x = 4$. Produit : $4(x-1) = 4x - 4$. Reste : $0$.",
+            "Quotient : $x^2 + 5x + 4$. Donc :\\[ x^3 + 4x^2 - x - 4 = (x - 1)(x^2 + 5x + 4). \\]",
+            "Étape 3 — factoriser le quotient par somme-produit. Deux nombres dont la somme est $5$ et le produit $4$ : $1$ et $4$. Donc $x^2 + 5x + 4 = (x + 1)(x + 4)$.",
+            "En combinant :\\[ x^3 + 4x^2 - x - 4 = (x - 1)(x + 1)(x + 4). \\]",
+            "Vérification par distributivité : $(x-1)(x+1) = x^2 - 1$, puis $(x^2 - 1)(x + 4) = x^3 + 4x^2 - x - 4$. $\\checkmark$"
+          ],
+          "piegeCourant": "Lancer la formule quadratique complète sur $x^2 + 5x + 4$ alors que la reconnaissance somme-produit est immédiate. La méthode 'ordre des outils' recommande de tenter le cas simple avant de sortir la formule systématique."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E069",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente",
+        "quotient irréductible",
+        "somme de carrés"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 - x^2 + 2x - 2$ dans les nombres réels."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Racine évidente, puis analyse du quotient : s'il n'a pas de racine réelle, la factorisation s'arrête là."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 - x^2 + 2x - 2 = (x - 1)(x^2 + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — racine évidente. Diviseurs de $-2$ : $\\pm 1, \\pm 2$.",
+            "Test : $P(1) = 1 - 1 + 2 - 2 = 0$. $\\checkmark$ Donc $(x - 1)$ divise.",
+            "Étape 2 — division polynomiale de $x^3 - x^2 + 2x - 2$ par $(x - 1)$.",
+            "$x^3 \\div x = x^2$. Produit : $x^2(x-1) = x^3 - x^2$. Reste : $2x - 2$ (le terme en $x^2$ s'annule).",
+            "$2x \\div x = 2$. Produit : $2(x-1) = 2x - 2$. Reste : $0$.",
+            "Quotient : $x^2 + 2$. Donc :\\[ x^3 - x^2 + 2x - 2 = (x - 1)(x^2 + 2). \\]",
+            "Étape 3 — analyser le quotient. $x^2 + 2$ est une SOMME (pas une différence) de carrés. L'encadré d'attention de la section 1.1.2 rappelle qu'il n'existe aucune identité pour la somme de carrés dans les réels.",
+            "Confirmation par le discriminant. Pour $x^2 + 0x + 2$ : $\\Delta = 0 - 8 = -8 < 0$, donc pas de racine réelle.",
+            "La factorisation s'arrête là :\\[ x^3 - x^2 + 2x - 2 = (x - 1)(x^2 + 2). \\]",
+            "Vérification par distributivité : $(x - 1)(x^2 + 2) = x^3 + 2x - x^2 - 2 = x^3 - x^2 + 2x - 2$. $\\checkmark$"
+          ],
+          "piegeCourant": "Vouloir absolument aller plus loin sur $x^2 + 2$ en écrivant $(x - \\sqrt{2}i)(x + \\sqrt{2}i)$ ou en cherchant à le forcer comme une différence. Dans les réels, $\\Delta < 0$ signe la fin de la factorisation."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E070",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente",
+        "coefficient a différent de 1",
+        "racines rationnelles"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $2x^3 - 3x^2 - 8x - 3$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Comme le coefficient dominant $a = 2 \\neq 1$, les racines rationnelles candidates sont les rapports $\\dfrac{p}{q}$ où $p$ divise le terme constant et $q$ divise $a$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 - 3x^2 - 8x - 3 = (x + 1)(x - 3)(2x + 1)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — racine évidente. Le coefficient dominant $a = 2 \\neq 1$, donc les candidats sont les $\\dfrac{p}{q}$ avec $p \\in \\{\\pm 1, \\pm 3\\}$ (diviseurs de $-3$) et $q \\in \\{1, 2\\}$ (diviseurs de $2$) : $\\pm 1, \\pm 3, \\pm \\dfrac{1}{2}, \\pm \\dfrac{3}{2}$.",
+            "Test : $P(1) = 2 - 3 - 8 - 3 = -12 \\neq 0$.",
+            "Test : $P(-1) = -2 - 3 + 8 - 3 = 0$. $\\checkmark$ Donc $(x + 1)$ divise.",
+            "Étape 2 — division polynomiale de $2x^3 - 3x^2 - 8x - 3$ par $(x + 1)$.",
+            "$2x^3 \\div x = 2x^2$. Produit : $2x^2(x+1) = 2x^3 + 2x^2$. Reste : $-5x^2 - 8x - 3$.",
+            "$-5x^2 \\div x = -5x$. Produit : $-5x(x+1) = -5x^2 - 5x$. Reste : $-3x - 3$.",
+            "$-3x \\div x = -3$. Produit : $-3(x+1) = -3x - 3$. Reste : $0$.",
+            "Quotient : $2x^2 - 5x - 3$. Donc :\\[ 2x^3 - 3x^2 - 8x - 3 = (x + 1)(2x^2 - 5x - 3). \\]",
+            "Étape 3 — factoriser le quotient par formule quadratique. $a = 2$, $b = -5$, $c = -3$ :\\[ \\Delta = 25 + 24 = 49. \\]",
+            "Racines :\\[ x = \\dfrac{5 \\pm 7}{4} \\implies x_1 = 3, \\; x_2 = -\\dfrac{1}{2}. \\]",
+            "Factorisation du quotient (avec absorption du coefficient $2$ dans le second facteur) :\\[ 2x^2 - 5x - 3 = 2(x - 3)\\left(x + \\dfrac{1}{2}\\right) = (x - 3)(2x + 1). \\]",
+            "En combinant :\\[ 2x^3 - 3x^2 - 8x - 3 = (x + 1)(x - 3)(2x + 1). \\]",
+            "Vérification par distributivité : $(x+1)(x-3) = x^2 - 2x - 3$, puis $(x^2 - 2x - 3)(2x + 1) = 2x^3 + x^2 - 4x^2 - 2x - 6x - 3 = 2x^3 - 3x^2 - 8x - 3$. $\\checkmark$"
+          ],
+          "piegeCourant": "Ne tester que les diviseurs entiers du terme constant et conclure hâtivement qu'il n'y a pas de racine évidente. Ici, le hasard fait que $-1$ (entier) fonctionne, mais quand $a \\neq 1$ il faut aussi tester les rapports $\\dfrac{p}{q}$ avec $q \\mid a$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E071",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "polynôme degré 4",
+        "mise en évidence",
+        "racine évidente"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $2x^4 - 4x^3 - 10x^2 + 12x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Applique la méthode 'ordre des outils' : mise en évidence d'abord, puis racine évidente sur le polynôme de degré 3 qui reste."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^4 - 4x^3 - 10x^2 + 12x = 2x(x - 1)(x - 3)(x + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — mise en évidence. Facteur commun : $2x$ ($\\gcd(2, 4, 10, 12) = 2$, plus petite puissance $x$).\\[ 2x^4 - 4x^3 - 10x^2 + 12x = 2x(x^3 - 2x^2 - 5x + 6). \\]",
+            "Le polynôme intérieur $Q(x) = x^3 - 2x^2 - 5x + 6$ est de degré 3 : on applique la méthode de racine évidente.",
+            "Étape 2 — racine évidente sur $Q$. Diviseurs de $6$ : $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.",
+            "Test : $Q(1) = 1 - 2 - 5 + 6 = 0$. $\\checkmark$ Donc $(x - 1)$ divise $Q$.",
+            "Étape 3 — division polynomiale de $x^3 - 2x^2 - 5x + 6$ par $(x - 1)$.",
+            "$x^3 \\div x = x^2$. Produit : $x^2(x-1) = x^3 - x^2$. Reste : $-x^2 - 5x + 6$.",
+            "$-x^2 \\div x = -x$. Produit : $-x(x-1) = -x^2 + x$. Reste : $-6x + 6$.",
+            "$-6x \\div x = -6$. Produit : $-6(x-1) = -6x + 6$. Reste : $0$.",
+            "Quotient : $x^2 - x - 6$. Donc $Q(x) = (x - 1)(x^2 - x - 6)$.",
+            "Étape 4 — factoriser le quotient. Deux nombres dont la somme est $-1$ et le produit $-6$ : $-3$ et $2$. Donc $x^2 - x - 6 = (x - 3)(x + 2)$.",
+            "En combinant :\\[ 2x^4 - 4x^3 - 10x^2 + 12x = 2x(x - 1)(x - 3)(x + 2). \\]",
+            "Vérification par distributivité : $(x-1)(x-3)(x+2) = x^3 - 2x^2 - 5x + 6$ (c'est exactement le troisième exemple modèle de la section). Puis $2x \\cdot (x^3 - 2x^2 - 5x + 6) = 2x^4 - 4x^3 - 10x^2 + 12x$. $\\checkmark$"
+          ],
+          "piegeCourant": "Chercher directement une racine évidente sur le polynôme de degré 4 sans passer par la mise en évidence. Sans le $x$ mis en évidence, le calcul de $P(1), P(-1), \\ldots$ deviendrait plus lourd, et $x = 0$ (racine évidente triviale) resterait cachée dans le polynôme."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E072",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente",
+        "quotient différence de carrés",
+        "identité remarquable après division"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $x^3 - x^2 - 4x + 4$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Racine évidente parmi les diviseurs de $4$. Le quotient de degré 2 sera une identité remarquable, plus rapide que la formule quadratique."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^3 - x^2 - 4x + 4 = (x - 1)(x - 2)(x + 2)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — racine évidente. Diviseurs de $4$ : $\\pm 1, \\pm 2, \\pm 4$.",
+            "Test : $P(1) = 1 - 1 - 4 + 4 = 0$. $\\checkmark$ Donc $(x - 1)$ divise.",
+            "Étape 2 — division polynomiale de $x^3 - x^2 - 4x + 4$ par $(x - 1)$.",
+            "$x^3 \\div x = x^2$. Produit : $x^2(x-1) = x^3 - x^2$. Reste : $-4x + 4$ (le terme en $x^2$ s'annule).",
+            "$-4x \\div x = -4$. Produit : $-4(x-1) = -4x + 4$. Reste : $0$.",
+            "Quotient : $x^2 - 4$. Donc :\\[ x^3 - x^2 - 4x + 4 = (x - 1)(x^2 - 4). \\]",
+            "Étape 3 — factoriser le quotient. $x^2 - 4$ est une différence de carrés (section 1.1.2), avec $a = x$ et $b = 2$ :\\[ x^2 - 4 = (x - 2)(x + 2). \\]",
+            "En combinant :\\[ x^3 - x^2 - 4x + 4 = (x - 1)(x - 2)(x + 2). \\]",
+            "Vérification par distributivité : $(x-2)(x+2) = x^2 - 4$, puis $(x-1)(x^2 - 4) = x^3 - 4x - x^2 + 4 = x^3 - x^2 - 4x + 4$. $\\checkmark$"
+          ],
+          "piegeCourant": "Appliquer la formule quadratique sur $x^2 - 4$ alors qu'une identité remarquable est immédiate. La méthode 'ordre des outils' de la section rappelle : identités remarquables AVANT la formule quadratique."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E073",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "racine évidente négative",
+        "coefficient a différent de 1",
+        "quotient formule quadratique"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $3x^3 - 7x^2 - 22x + 8$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Comme $a = 3 \\neq 1$, teste les rapports $\\dfrac{p}{q}$ avec $p \\mid 8$ et $q \\mid 3$. La racine évidente est un entier négatif, puis quadratique sur le quotient."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$3x^3 - 7x^2 - 22x + 8 = (x + 2)(x - 4)(3x - 1)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — racine évidente. Candidats : $\\dfrac{p}{q}$ avec $p \\in \\{\\pm 1, \\pm 2, \\pm 4, \\pm 8\\}$ et $q \\in \\{1, 3\\}$. Cela donne $\\pm 1, \\pm 2, \\pm 4, \\pm 8, \\pm \\dfrac{1}{3}, \\pm \\dfrac{2}{3}, \\pm \\dfrac{4}{3}, \\pm \\dfrac{8}{3}$.",
+            "Test : $P(1) = 3 - 7 - 22 + 8 = -18 \\neq 0$.",
+            "Test : $P(-1) = -3 - 7 + 22 + 8 = 20 \\neq 0$.",
+            "Test : $P(2) = 24 - 28 - 44 + 8 = -40 \\neq 0$.",
+            "Test : $P(-2) = -24 - 28 + 44 + 8 = 0$. $\\checkmark$ Donc $(x + 2)$ divise.",
+            "Étape 2 — division polynomiale de $3x^3 - 7x^2 - 22x + 8$ par $(x + 2)$.",
+            "$3x^3 \\div x = 3x^2$. Produit : $3x^2(x+2) = 3x^3 + 6x^2$. Reste : $-13x^2 - 22x + 8$.",
+            "$-13x^2 \\div x = -13x$. Produit : $-13x(x+2) = -13x^2 - 26x$. Reste : $4x + 8$.",
+            "$4x \\div x = 4$. Produit : $4(x+2) = 4x + 8$. Reste : $0$.",
+            "Quotient : $3x^2 - 13x + 4$. Donc :\\[ 3x^3 - 7x^2 - 22x + 8 = (x + 2)(3x^2 - 13x + 4). \\]",
+            "Étape 3 — factoriser le quotient par formule quadratique. $a = 3$, $b = -13$, $c = 4$ :\\[ \\Delta = 169 - 48 = 121. \\]",
+            "Racines :\\[ x = \\dfrac{13 \\pm 11}{6} \\implies x_1 = 4, \\; x_2 = \\dfrac{1}{3}. \\]",
+            "Factorisation du quotient (avec absorption du $3$ dans le second facteur) :\\[ 3x^2 - 13x + 4 = 3(x - 4)\\left(x - \\dfrac{1}{3}\\right) = (x - 4)(3x - 1). \\]",
+            "En combinant :\\[ 3x^3 - 7x^2 - 22x + 8 = (x + 2)(x - 4)(3x - 1). \\]",
+            "Vérification par distributivité : $(x+2)(x-4) = x^2 - 2x - 8$, puis $(x^2 - 2x - 8)(3x - 1) = 3x^3 - x^2 - 6x^2 + 2x - 24x + 8 = 3x^3 - 7x^2 - 22x + 8$. $\\checkmark$"
+          ],
+          "piegeCourant": "Abandonner après avoir testé seulement $\\pm 1, \\pm 2, \\pm 4, \\pm 8$ sans passer aux rapports. Dans cet exercice précis, $-2$ (entier) fonctionne — mais dans d'autres cas la seule racine évidente peut être un $\\dfrac{p}{q}$ non entier, et l'oubli conduit à conclure faussement 'pas de racine évidente'."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E074",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "simplification",
+        "différence de carrés",
+        "restriction de domaine"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Simplifie $\\dfrac{x^2 - 4y^2}{x - 2y}$, en précisant la restriction."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise le numérateur (différence de carrés avec coefficient), puis biffe le facteur commun."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 - 4y^2}{x - 2y} = x + 2y$ \\quad pour \\quad $x \\neq 2y$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser le numérateur. On reconnaît une différence de carrés (section 1.1.2), avec $a = x$ et $b = 2y$ :\\[ x^2 - 4y^2 = (x - 2y)(x + 2y). \\]",
+            "Étape 2 — biffer le facteur commun.\\[ \\dfrac{(x - 2y)(x + 2y)}{x - 2y} = x + 2y. \\]",
+            "Étape 3 — énoncer la restriction. Le dénominateur de la forme initiale s'annule pour $x = 2y$, donc :\\[ \\dfrac{x^2 - 4y^2}{x - 2y} = x + 2y \\quad \\text{pour} \\quad x \\neq 2y. \\]",
+            "Vérification par distributivité (sans la restriction) : $(x - 2y)(x + 2y) = x^2 - 4y^2$, donc le quotient par $(x - 2y)$ donne bien $x + 2y$."
+          ],
+          "piegeCourant": "Oublier la restriction $x \\neq 2y$. La forme simplifiée $x + 2y$ prend une valeur bien définie même en $x = 2y$ (elle vaut $4y$ à cet endroit), alors que la forme initiale est indéfinie — exactement le piège de l'encadré d'attention de la section."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E075",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "simplification",
+        "trinôme bivarié",
+        "somme-produit"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Simplifie $\\dfrac{x^2 + 3xy + 2y^2}{x + y}$, en précisant la restriction."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise le numérateur par somme-produit : cherche deux expressions dont la somme est $3y$ et le produit $2y^2$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 + 3xy + 2y^2}{x + y} = x + 2y$ \\quad pour \\quad $x \\neq -y$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser le numérateur. Le trinôme est de la forme $x^2 + (\\text{somme})x + (\\text{produit})$ avec somme $= 3y$ et produit $= 2y^2$. Deux expressions qui conviennent : $y$ et $2y$ (car $y + 2y = 3y$ et $y \\cdot 2y = 2y^2$).\\[ x^2 + 3xy + 2y^2 = (x + y)(x + 2y). \\]",
+            "Étape 2 — biffer le facteur commun.\\[ \\dfrac{(x + y)(x + 2y)}{x + y} = x + 2y. \\]",
+            "Étape 3 — énoncer la restriction. Le dénominateur initial s'annule pour $x = -y$, donc :\\[ \\dfrac{x^2 + 3xy + 2y^2}{x + y} = x + 2y \\quad \\text{pour} \\quad x \\neq -y. \\]",
+            "Vérification par distributivité : $(x + y)(x + 2y) = x^2 + 2xy + xy + 2y^2 = x^2 + 3xy + 2y^2$. $\\checkmark$"
+          ],
+          "piegeCourant": "Sauter la factorisation et biffer directement des $x$ ou des $y$ isolés entre numérateur et dénominateur (ex. écrire que $\\dfrac{x^2}{x} = x$ 'simplifie' la fraction). On ne biffe QUE des facteurs entiers, jamais des termes d'une somme."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E076",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "multiplication de fractions",
+        "différence de carrés",
+        "biffage croisé"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{x^2 - y^2}{x + 3y} \\cdot \\dfrac{x + 3y}{x - y}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise ce qui peut l'être, puis multiplie et biffe les facteurs communs entre numérateur et dénominateur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 - y^2}{x + 3y} \\cdot \\dfrac{x + 3y}{x - y} = x + y$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser. Le numérateur $x^2 - y^2$ est une différence de carrés :\\[ x^2 - y^2 = (x - y)(x + y). \\] Les autres facteurs sont déjà sous forme simple.",
+            "Étape 2 — multiplier et biffer les facteurs communs.\\[ \\dfrac{(x - y)(x + y)}{x + 3y} \\cdot \\dfrac{x + 3y}{x - y} = \\dfrac{(x - y)(x + y)(x + 3y)}{(x + 3y)(x - y)}. \\]",
+            "Le facteur $(x + 3y)$ apparaît en haut et en bas ; on le biffe. Le facteur $(x - y)$ aussi.\\[ = x + y. \\]",
+            "Vérification par distributivité : on peut développer sans biffer les mêmes facteurs : $\\dfrac{(x-y)(x+y)(x+3y)}{(x+3y)(x-y)} = \\dfrac{(x^2-y^2)(x+3y)}{(x+3y)(x-y)}$, puis $\\dfrac{x^2-y^2}{x-y} = \\dfrac{(x-y)(x+y)}{x-y} = x + y$."
+          ],
+          "piegeCourant": "Développer les produits du numérateur ET du dénominateur avant de biffer — on obtient un gros polynôme au numérateur et un autre au dénominateur, et on ne voit plus les facteurs communs. La méthode des notes est claire : factoriser puis biffer, dans cet ordre."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E077",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "division de fractions",
+        "multiplier par l'inverse",
+        "factorisation multiple"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{x - y}{x^2 - 4y^2} \\div \\dfrac{x^2 - y^2}{x + 2y}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Diviser par une fraction, c'est multiplier par sa réciproque. Puis factorise tout ce qui se factorise avant de biffer."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x - y}{x^2 - 4y^2} \\div \\dfrac{x^2 - y^2}{x + 2y} = \\dfrac{1}{(x - 2y)(x + y)}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — multiplier par l'inverse de la seconde fraction (méthode de l'Ex 1.16) :\\[ \\dfrac{x - y}{x^2 - 4y^2} \\cdot \\dfrac{x + 2y}{x^2 - y^2}. \\]",
+            "Étape 2 — factoriser les différences de carrés. $x^2 - 4y^2 = (x - 2y)(x + 2y)$ et $x^2 - y^2 = (x - y)(x + y)$.\\[ = \\dfrac{x - y}{(x - 2y)(x + 2y)} \\cdot \\dfrac{x + 2y}{(x - y)(x + y)}. \\]",
+            "Étape 3 — multiplier et biffer les facteurs communs. $(x - y)$ apparaît en haut et en bas ; on le biffe. $(x + 2y)$ aussi.\\[ = \\dfrac{(x - y)(x + 2y)}{(x - 2y)(x + 2y)(x - y)(x + y)} = \\dfrac{1}{(x - 2y)(x + y)}. \\]",
+            "Vérification par distributivité (approximative) : on peut développer le dénominateur final $(x-2y)(x+y) = x^2 + xy - 2xy - 2y^2 = x^2 - xy - 2y^2$. L'égalité avec la forme initiale se vérifie en multipliant à nouveau au brouillon."
+          ],
+          "piegeCourant": "Inverser la mauvaise fraction : c'est la SECONDE fraction (celle après le signe $\\div$) qu'on retourne. Un test rapide : $\\dfrac{a}{b} \\div \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E078",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "addition",
+        "dénominateurs simples",
+        "dénominateur commun xy"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{2}{x} + \\dfrac{3}{y}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les deux dénominateurs $x$ et $y$ n'ont aucun facteur commun. Le dénominateur commun est leur produit."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{2}{x} + \\dfrac{3}{y} = \\dfrac{2y + 3x}{xy}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — dénominateur commun. $x$ et $y$ n'ont aucun facteur commun ; le dénominateur commun est $xy$ (patron de l'Ex 1.17).",
+            "Étape 2 — réécrire chaque terme avec ce dénominateur.\\[ \\dfrac{2}{x} = \\dfrac{2y}{xy}, \\qquad \\dfrac{3}{y} = \\dfrac{3x}{xy}. \\]",
+            "Étape 3 — additionner les numérateurs, garder le dénominateur commun.\\[ \\dfrac{2y}{xy} + \\dfrac{3x}{xy} = \\dfrac{2y + 3x}{xy}. \\]",
+            "Vérification par distributivité : on peut vérifier en développant l'égalité $\\dfrac{2y + 3x}{xy} = \\dfrac{2y}{xy} + \\dfrac{3x}{xy} = \\dfrac{2}{x} + \\dfrac{3}{y}$."
+          ],
+          "piegeCourant": "Additionner numérateurs et dénominateurs séparément : $\\dfrac{2}{x} + \\dfrac{3}{y} = \\dfrac{5}{x + y}$. C'est l'erreur classique du secondaire, sans rapport avec la méthode correcte. Une fraction commune est obligatoire."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E079",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "soustraction",
+        "binômes conjugués",
+        "différence de carrés au dénominateur"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{1}{x - y} - \\dfrac{1}{x + y}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les deux dénominateurs sont des binômes conjugués. Leur produit est une différence de carrés."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{1}{x - y} - \\dfrac{1}{x + y} = \\dfrac{2y}{x^2 - y^2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — dénominateur commun. $(x - y)$ et $(x + y)$ n'ont aucun facteur commun ; leur produit est le dénominateur commun :\\[ (x - y)(x + y) = x^2 - y^2. \\]",
+            "Étape 2 — réécrire chaque terme.\\[ \\dfrac{1}{x - y} = \\dfrac{x + y}{x^2 - y^2}, \\qquad \\dfrac{1}{x + y} = \\dfrac{x - y}{x^2 - y^2}. \\]",
+            "Étape 3 — soustraire les numérateurs (attention au signe négatif à distribuer).\\[ \\dfrac{x + y}{x^2 - y^2} - \\dfrac{x - y}{x^2 - y^2} = \\dfrac{(x + y) - (x - y)}{x^2 - y^2} = \\dfrac{x + y - x + y}{x^2 - y^2} = \\dfrac{2y}{x^2 - y^2}. \\]",
+            "Vérification par distributivité (on remonte l'égalité) : $\\dfrac{2y}{(x-y)(x+y)}$ peut aussi s'écrire $\\dfrac{(x+y) - (x-y)}{(x-y)(x+y)} = \\dfrac{1}{x-y} - \\dfrac{1}{x+y}$. $\\checkmark$"
+          ],
+          "piegeCourant": "Oublier de distribuer le signe négatif à travers $(x - y)$ à l'étape 3 et écrire $\\dfrac{x + y - x - y}{x^2 - y^2} = \\dfrac{0}{x^2 - y^2} = 0$. C'est le même piège que dans les différences de carrés avec deux binômes (section 1.1.2)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E080",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "simplification",
+        "facteur négatif",
+        "binômes opposés"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Simplifie $\\dfrac{x^2 - y^2}{y - x}$, en précisant la restriction."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le dénominateur $(y - x)$ est l'opposé de $(x - y)$. Réécris-le pour faire apparaître un facteur commun avec le numérateur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 - y^2}{y - x} = -(x + y)$ \\quad pour \\quad $x \\neq y$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser le numérateur. Différence de carrés :\\[ x^2 - y^2 = (x - y)(x + y). \\]",
+            "Étape 2 — réécrire le dénominateur pour faire apparaître un facteur commun. Comme $y - x = -(x - y)$ :\\[ \\dfrac{(x - y)(x + y)}{y - x} = \\dfrac{(x - y)(x + y)}{-(x - y)}. \\]",
+            "Étape 3 — biffer le facteur commun $(x - y)$ et faire remonter le signe négatif :\\[ = \\dfrac{x + y}{-1} = -(x + y). \\]",
+            "Étape 4 — énoncer la restriction. Le dénominateur initial $y - x$ s'annule pour $y = x$, donc :\\[ \\dfrac{x^2 - y^2}{y - x} = -(x + y) \\quad \\text{pour} \\quad x \\neq y. \\]",
+            "Vérification par distributivité : $-(x + y) \\cdot (y - x) = -(xy - x^2 + y^2 - xy) = -(-x^2 + y^2) = x^2 - y^2$. $\\checkmark$"
+          ],
+          "piegeCourant": "Dire que $(y - x)$ et $(x - y)$ sont 'incompatibles' et conclure qu'aucun facteur commun n'existe. C'est exactement le piège de reconnaissance des binômes opposés déjà vu en 1.1.1 (E027 sur la mise en évidence avec signes opposés) : $b - a = -(a - b)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E081",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "simplification",
+        "trinôme bivarié",
+        "formule quadratique paramétrée"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Simplifie $\\dfrac{2x^2 + 5xy - 3y^2}{x^2 - 9y^2}$, en précisant les restrictions."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Traite le numérateur comme un trinôme du second degré en $x$ avec $y$ comme paramètre : la formule quadratique donne les racines en fonction de $y$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{2x^2 + 5xy - 3y^2}{x^2 - 9y^2} = \\dfrac{2x - y}{x - 3y}$ \\quad pour \\quad $x \\neq 3y$ et $x \\neq -3y$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser le dénominateur. Différence de carrés :\\[ x^2 - 9y^2 = (x - 3y)(x + 3y). \\]",
+            "Étape 2 — factoriser le numérateur par formule quadratique (section 1.1.3), en traitant $y$ comme un paramètre. Avec $a = 2$, $b = 5y$, $c = -3y^2$ :\\[ \\Delta = (5y)^2 - 4(2)(-3y^2) = 25y^2 + 24y^2 = 49y^2. \\]",
+            "Racines (en $x$) :\\[ x = \\dfrac{-5y \\pm 7y}{4} \\implies x_1 = \\dfrac{y}{2}, \\; x_2 = -3y. \\]",
+            "Factorisation du numérateur (avec absorption du coefficient $2$ dans le premier facteur pour éliminer la fraction) :\\[ 2x^2 + 5xy - 3y^2 = 2\\left(x - \\tfrac{y}{2}\\right)(x + 3y) = (2x - y)(x + 3y). \\]",
+            "Étape 3 — biffer le facteur commun $(x + 3y)$ :\\[ \\dfrac{(2x - y)(x + 3y)}{(x - 3y)(x + 3y)} = \\dfrac{2x - y}{x - 3y}. \\]",
+            "Étape 4 — énoncer les restrictions. Le dénominateur initial $x^2 - 9y^2$ s'annule pour $x = \\pm 3y$, donc :\\[ \\dfrac{2x^2 + 5xy - 3y^2}{x^2 - 9y^2} = \\dfrac{2x - y}{x - 3y} \\quad \\text{pour} \\quad x \\neq 3y \\text{ et } x \\neq -3y. \\]",
+            "Vérification par distributivité : $(2x - y)(x + 3y) = 2x^2 + 6xy - xy - 3y^2 = 2x^2 + 5xy - 3y^2$. $\\checkmark$"
+          ],
+          "piegeCourant": "Ne conserver que la restriction $x \\neq 3y$ (celle qui reste après simplification) en oubliant $x \\neq -3y$ (celle qui disparaît avec le biffage). Les DEUX restrictions de la forme initiale doivent être conservées, comme le rappelle l'encadré d'attention de la section."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E082",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "multiplication de fractions",
+        "factorisation multiple",
+        "biffages en cascade"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{x^2 - y^2}{x^2 + xy} \\cdot \\dfrac{x^2}{x - y}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise les deux fractions séparément (différence de carrés pour l'une, mise en évidence pour l'autre), puis multiplie et biffe."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 - y^2}{x^2 + xy} \\cdot \\dfrac{x^2}{x - y} = x$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser la première fraction.\\[ x^2 - y^2 = (x - y)(x + y), \\qquad x^2 + xy = x(x + y). \\]",
+            "Donc :\\[ \\dfrac{x^2 - y^2}{x^2 + xy} = \\dfrac{(x - y)(x + y)}{x(x + y)}. \\]",
+            "Étape 2 — écrire le produit factorisé et biffer les facteurs communs entre haut et bas.\\[ \\dfrac{(x - y)(x + y)}{x(x + y)} \\cdot \\dfrac{x^2}{x - y} = \\dfrac{(x - y)(x + y) \\cdot x^2}{x(x + y)(x - y)}. \\]",
+            "Le facteur $(x + y)$ apparaît en haut et en bas : on le biffe. Le facteur $(x - y)$ aussi. Reste $\\dfrac{x^2}{x}$.",
+            "Étape 3 — simplifier $\\dfrac{x^2}{x} = x$.",
+            "En combinant :\\[ \\dfrac{x^2 - y^2}{x^2 + xy} \\cdot \\dfrac{x^2}{x - y} = x. \\]",
+            "Vérification par distributivité : on peut développer $x \\cdot (x^2 + xy)(x - y) = x(x - y)(x + y) \\cdot x = x^2(x^2 - y^2)$. On compare avec le produit croisé de la forme initiale, $(x^2 - y^2) \\cdot x^2 = x^2(x^2 - y^2)$. Égalité. $\\checkmark$"
+          ],
+          "piegeCourant": "Manquer la mise en évidence du $x$ dans $x^2 + xy = x(x + y)$ et laisser le second dénominateur non factorisé. Sans cette étape, le facteur $(x + y)$ à biffer reste caché."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E083",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "division de fractions",
+        "différence de carrés avec coefficient",
+        "simplification totale"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{x^2 - 4y^2}{x - 2y} \\div \\dfrac{x + 2y}{2xy}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Multiplie par l'inverse de la seconde fraction, factorise la différence de carrés, puis biffe."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 - 4y^2}{x - 2y} \\div \\dfrac{x + 2y}{2xy} = 2xy$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — multiplier par l'inverse de la seconde fraction :\\[ \\dfrac{x^2 - 4y^2}{x - 2y} \\cdot \\dfrac{2xy}{x + 2y}. \\]",
+            "Étape 2 — factoriser la différence de carrés au numérateur de la première fraction :\\[ x^2 - 4y^2 = (x - 2y)(x + 2y). \\]",
+            "\\[ \\dfrac{(x - 2y)(x + 2y)}{x - 2y} \\cdot \\dfrac{2xy}{x + 2y}. \\]",
+            "Étape 3 — multiplier et biffer les facteurs communs. $(x - 2y)$ apparaît en haut et en bas : on le biffe. $(x + 2y)$ aussi.\\[ = \\dfrac{(x - 2y)(x + 2y) \\cdot 2xy}{(x - 2y)(x + 2y)} = 2xy. \\]",
+            "Vérification par distributivité : on remonte l'égalité en multipliant $2xy \\cdot \\dfrac{x + 2y}{2xy} = x + 2y$, ce qui doit égaler $\\dfrac{x^2 - 4y^2}{x - 2y}$. Or $\\dfrac{(x - 2y)(x + 2y)}{x - 2y} = x + 2y$. $\\checkmark$"
+          ],
+          "piegeCourant": "Inverser la mauvaise fraction (la première au lieu de la seconde) ou multiplier au lieu de diviser. Le test $\\dfrac{a}{b} \\div \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$ garde l'ordre en tête : on retourne seulement la fraction après le signe $\\div$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E084",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "addition",
+        "dénominateur commun à factoriser",
+        "LCM non trivial"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{1}{x^2 - y^2} + \\dfrac{1}{x - y}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise le premier dénominateur avant de chercher le dénominateur commun. Suis la méthode 'Additionner ou soustraire des expressions rationnelles' de la section."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{1}{x^2 - y^2} + \\dfrac{1}{x - y} = \\dfrac{x + y + 1}{x^2 - y^2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser chaque dénominateur (méthode l. 583). Le premier :\\[ x^2 - y^2 = (x - y)(x + y). \\] Le second $(x - y)$ est déjà simple.",
+            "Étape 2 — déterminer le dénominateur commun le plus petit qui contient tous les facteurs :\\[ (x - y)(x + y). \\] C'est déjà le premier dénominateur ; le second $(x - y)$ y est contenu.",
+            "Étape 3 — réécrire chaque fraction avec ce dénominateur commun :\\[ \\dfrac{1}{(x - y)(x + y)}, \\qquad \\dfrac{1}{x - y} = \\dfrac{x + y}{(x - y)(x + y)}. \\]",
+            "Étape 4 — additionner les numérateurs, garder le dénominateur commun :\\[ \\dfrac{1}{(x - y)(x + y)} + \\dfrac{x + y}{(x - y)(x + y)} = \\dfrac{1 + x + y}{(x - y)(x + y)} = \\dfrac{x + y + 1}{x^2 - y^2}. \\]",
+            "Étape 5 — factoriser et simplifier la fraction obtenue si possible. Le numérateur $x + y + 1$ n'a pas de facteur commun avec $(x - y)(x + y)$, on s'arrête là.",
+            "Vérification par distributivité (approximative) : on développe $\\dfrac{x + y + 1}{x^2 - y^2}$ en séparant le numérateur : $\\dfrac{x + y}{x^2 - y^2} + \\dfrac{1}{x^2 - y^2} = \\dfrac{1}{x - y} + \\dfrac{1}{x^2 - y^2}$ (la première fraction se simplifie car $\\dfrac{x + y}{(x - y)(x + y)} = \\dfrac{1}{x - y}$). $\\checkmark$"
+          ],
+          "piegeCourant": "Prendre comme dénominateur commun le PRODUIT des dénominateurs $(x^2 - y^2)(x - y)$ sans avoir factorisé d'abord. Résultat : un dénominateur inutilement gros, plus difficile à simplifier ensuite. La méthode des notes insiste à raison sur 'le plus petit' dénominateur commun."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E085",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "soustraction",
+        "LCM à construire",
+        "simplification finale"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Effectue $\\dfrac{2}{x^2 - y^2} - \\dfrac{1}{x(x - y)}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise chaque dénominateur, construis le LCM, réécris, soustrais — et surtout n'oublie pas l'étape 5 de la méthode (simplifier la fraction obtenue)."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{2}{x^2 - y^2} - \\dfrac{1}{x(x - y)} = \\dfrac{1}{x(x + y)}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser chaque dénominateur. Le premier :\\[ x^2 - y^2 = (x - y)(x + y). \\] Le second $x(x - y)$ est déjà factorisé.",
+            "Étape 2 — LCM. Facteurs présents : $(x - y)$, $(x + y)$, $x$. Le LCM le plus petit qui les contient tous :\\[ x(x - y)(x + y). \\]",
+            "Étape 3 — réécrire chaque fraction avec ce LCM.\\[ \\dfrac{2}{(x - y)(x + y)} = \\dfrac{2x}{x(x - y)(x + y)}, \\]",
+            "\\[ \\dfrac{1}{x(x - y)} = \\dfrac{x + y}{x(x - y)(x + y)}. \\]",
+            "Étape 4 — soustraire les numérateurs (attention au signe négatif à distribuer) :\\[ \\dfrac{2x}{x(x - y)(x + y)} - \\dfrac{x + y}{x(x - y)(x + y)} = \\dfrac{2x - (x + y)}{x(x - y)(x + y)} = \\dfrac{x - y}{x(x - y)(x + y)}. \\]",
+            "Étape 5 — simplifier la fraction obtenue. Le facteur $(x - y)$ apparaît en haut et en bas ; on le biffe.\\[ \\dfrac{x - y}{x(x - y)(x + y)} = \\dfrac{1}{x(x + y)}. \\]",
+            "Vérification par distributivité (approximative) : on remonte à la fraction avant simplification $\\dfrac{x - y}{x(x - y)(x + y)}$ ; le produit du dénominateur $x(x - y)(x + y) = x(x^2 - y^2)$. En développant l'égalité on retrouve la soustraction initiale."
+          ],
+          "piegeCourant": "S'arrêter à $\\dfrac{x - y}{x(x - y)(x + y)}$ sans simplifier. L'étape 5 de la méthode des notes est explicite : après avoir opéré, il faut TOUJOURS regarder si la fraction obtenue peut être simplifiée. C'est le même piège que 'aller au bout' des sections précédentes."
         }
       ]
     },

@@ -467,6 +467,236 @@
           "piegeCourant": "S'arrêter à $x > 0$ et oublier d'exclure $x = 1$, où le logarithme du dénominateur s'annule."
         }
       ]
+    },
+    {
+      "id": "CD-C01-E026",
+      "chapitre": 1,
+      "section": "1.1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "La mise en évidence",
+      "motsCles": [
+        "mise en évidence simple",
+        "facteur binôme",
+        "puissance"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $(2x-1)^3 - 4(2x-1)^2$ par mise en évidence."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le facteur commun est un binôme : $(2x-1)$ apparaît dans les deux termes, mais à des puissances différentes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$(2x-1)^3 - 4(2x-1)^2 = (2x-1)^2(2x-5)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Chaque terme contient une puissance de $(2x-1)$. La plus petite puissance présente est $(2x-1)^2$, c'est donc elle qu'on peut mettre en évidence — même principe que pour un facteur $x$.",
+            "On divise chaque terme par $(2x-1)^2$ :\\[ (2x-1)^3 \\div (2x-1)^2 = 2x-1, \\qquad -4(2x-1)^2 \\div (2x-1)^2 = -4. \\]",
+            "D'où la factorisation :\\[ (2x-1)^3 - 4(2x-1)^2 = (2x-1)^2\\bigl[(2x-1) - 4\\bigr] = (2x-1)^2(2x-5). \\]",
+            "Vérification par distributivité :\\[ (2x-1)^2(2x-5) = (2x-1)^2 \\cdot (2x-1) - 4(2x-1)^2 = (2x-1)^3 - 4(2x-1)^2. \\]"
+          ],
+          "piegeCourant": "Sortir $(2x-1)^3$ au lieu de $(2x-1)^2$. Le facteur commun est toujours la plus petite puissance présente, que le facteur soit un $x$ simple ou un binôme."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E038",
+      "chapitre": 1,
+      "section": "1.1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Les identités remarquables",
+      "motsCles": [
+        "carré parfait",
+        "trinôme",
+        "test du double produit"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^2 + 14x + 49$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Repère deux carrés parfaits dans l'expression et vérifie que le terme du milieu est le double produit."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 + 14x + 49 = (x + 7)^2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Test du carré parfait, comme dans le quatrième exemple modèle de la section. Deux carrés visibles : $x^2$ et $49 = 7^2$.",
+            "Vérification du terme du milieu : est-ce que $14x$ vaut $2 \\cdot x \\cdot 7$ ? On calcule $2 \\cdot x \\cdot 7 = 14x$. $\\checkmark$",
+            "L'identité $(a+b)^2 = a^2 + 2ab + b^2$ s'applique avec $a = x$ et $b = 7$. Le signe du terme du milieu est positif :\\[ x^2 + 14x + 49 = (x + 7)^2. \\]",
+            "Vérification par distributivité :\\[ (x+7)^2 = (x+7)(x+7) = x^2 + 7x + 7x + 49 = x^2 + 14x + 49. \\]"
+          ],
+          "piegeCourant": "Vérifier seulement que les deux extrémités sont des carrés sans tester le terme du milieu. $x^2 + 15x + 49$ a aussi deux carrés aux extrémités, mais $2 \\cdot x \\cdot 7 = 14 \\neq 15$ : ce n'est pas un carré parfait."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E050",
+      "chapitre": 1,
+      "section": "1.1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "La formule quadratique",
+      "motsCles": [
+        "formule quadratique",
+        "discriminant carré parfait",
+        "racines entières"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise l'expression $x^2 + 7x + 12$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois étapes : discriminant, racines, factorisation. Ici $a = 1$, donc pas de coefficient à replacer devant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x^2 + 7x + 12 = (x + 3)(x + 4)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — Discriminant. Avec $a = 1$, $b = 7$, $c = 12$ :\\[ \\Delta = b^2 - 4ac = 7^2 - 4(1)(12) = 49 - 48 = 1. \\]",
+            "Étape 2 — Racines. $\\Delta > 0$, donc deux racines réelles :\\[ x = \\dfrac{-b \\pm \\sqrt{\\Delta}}{2a} = \\dfrac{-7 \\pm 1}{2} \\implies x_1 = -3, \\; x_2 = -4. \\]",
+            "Étape 3 — Factorisation. Comme $a = 1$, on applique $a(x - x_1)(x - x_2)$ sans facteur supplémentaire :\\[ x^2 + 7x + 12 = (x - (-3))(x - (-4)) = (x + 3)(x + 4). \\]",
+            "Vérification par distributivité :\\[ (x+3)(x+4) = x^2 + 4x + 3x + 12 = x^2 + 7x + 12. \\]"
+          ],
+          "piegeCourant": "Se tromper de signe en substituant les racines : $x = -3$ donne le facteur $(x - (-3)) = (x + 3)$, pas $(x - 3)$. Le signe du facteur est TOUJOURS l'opposé du signe de la racine."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E062",
+      "chapitre": 1,
+      "section": "1.1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "gratuit",
+      "sectionNotes": "Les polynômes de degré 3",
+      "motsCles": [
+        "combinaison d'outils",
+        "mise en évidence",
+        "différence de carrés"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Factorise complètement $2x^3 - 18x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Suis l'ordre des outils : mise en évidence d'abord, puis regarde ce qui reste."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$2x^3 - 18x = 2x(x - 3)(x + 3)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — mise en évidence (section 1.1.1). Facteur commun : $2x$ (PGCD $\\gcd(2, 18) = 2$, plus petite puissance $x$).\\[ 2x^3 - 18x = 2x(x^2 - 9). \\]",
+            "Étape 2 — le facteur $x^2 - 9$ est une différence de carrés (section 1.1.2), avec $a = x$ et $b = 3$ :\\[ x^2 - 9 = (x - 3)(x + 3). \\]",
+            "En combinant :\\[ 2x^3 - 18x = 2x(x - 3)(x + 3). \\]",
+            "Vérification par distributivité :\\[ 2x(x-3)(x+3) = 2x(x^2 - 9) = 2x^3 - 18x. \\]"
+          ],
+          "piegeCourant": "S'arrêter à $2x(x^2 - 9)$ sans reconnaître la différence de carrés à l'intérieur. Comme le rappelle le premier exemple modèle de la section 1.1.1 (piège 'aller au bout'), quand un facteur reste factorisable, on continue."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E074",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Rappel : simplification d'expressions rationnelles",
+      "motsCles": [
+        "simplification",
+        "différence de carrés",
+        "restriction de domaine"
+      ],
+      "savoirFaire": [
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Simplifie $\\dfrac{x^2 - 4y^2}{x - 2y}$, en précisant la restriction."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise le numérateur (différence de carrés avec coefficient), puis biffe le facteur commun."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\dfrac{x^2 - 4y^2}{x - 2y} = x + 2y$ \\quad pour \\quad $x \\neq 2y$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Étape 1 — factoriser le numérateur. On reconnaît une différence de carrés (section 1.1.2), avec $a = x$ et $b = 2y$ :\\[ x^2 - 4y^2 = (x - 2y)(x + 2y). \\]",
+            "Étape 2 — biffer le facteur commun.\\[ \\dfrac{(x - 2y)(x + 2y)}{x - 2y} = x + 2y. \\]",
+            "Étape 3 — énoncer la restriction. Le dénominateur de la forme initiale s'annule pour $x = 2y$, donc :\\[ \\dfrac{x^2 - 4y^2}{x - 2y} = x + 2y \\quad \\text{pour} \\quad x \\neq 2y. \\]",
+            "Vérification par distributivité (sans la restriction) : $(x - 2y)(x + 2y) = x^2 - 4y^2$, donc le quotient par $(x - 2y)$ donne bien $x + 2y$."
+          ],
+          "piegeCourant": "Oublier la restriction $x \\neq 2y$. La forme simplifiée $x + 2y$ prend une valeur bien définie même en $x = 2y$ (elle vaut $4y$ à cet endroit), alors que la forme initiale est indéfinie — exactement le piège de l'encadré d'attention de la section."
+        }
+      ]
     }
   ]
 }
