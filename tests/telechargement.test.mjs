@@ -23,21 +23,21 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 73 documents", () => {
+test("le catalogue couvre les 75 documents", () => {
   // Calcul différentiel — 65 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
   //   10 révision (5 séries + 5 solutions)
   //   18 examens (6 × énoncé, corrigé, grille)
-  // Probabilités et statistique — 8 :
-  //    8 notes (4 chapitres × 2 versions ; pas de recueil complet, pas
-  //      encore d'exercices, de révision ni d'examens)
-  assert.equal(DOCUMENTS.length, 73);
+  // Probabilités et statistique — 10 :
+  //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
+  //    2 exercices (chapitre 2 seulement : énoncés + corrigé, sans indices)
+  assert.equal(DOCUMENTS.length, 75);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 24, exercices: 21, revision: 10, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 24, exercices: 23, revision: 10, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -45,8 +45,48 @@ test("le catalogue couvre les 73 documents", () => {
   }, {});
   assert.deepEqual(parCours, {
     "calcul-differentiel": 65,
-    "probabilites-statistique": 8,
+    "probabilites-statistique": 10,
   });
+});
+
+test("aucune entrée ne pointe vers un cahier d'indices inexistant", () => {
+  // Le cahier d'indices de prob-stat n'est pas produit : 97 des 160 exercices
+  // du chapitre 2 n'ont pas d'indice. Déclarer l'entrée quand même donnerait
+  // une carte visible dont le bouton échoue — pour quelqu'un qui a payé.
+  //
+  // Ce test verrouille la règle générale : le catalogue ne connaît que les
+  // cahiers réellement produits. Il tombera le jour où les indices seront
+  // écrits ET déclarés, ce qui est le bon moment pour le mettre à jour.
+  const indicesProbStat = DOCUMENTS.filter(
+    (d) => d.coursId === "probabilites-statistique" && d.chemin.includes("-2-indices"),
+  );
+  assert.deepEqual(indicesProbStat, []);
+
+  // Et les chapitres sans cahiers du tout n'en déclarent aucun.
+  const cahiersProbStat = DOCUMENTS.filter(
+    (d) => d.coursId === "probabilites-statistique" && d.categorie === "exercices",
+  ).map((d) => d.chemin);
+  assert.deepEqual(cahiersProbStat, [
+    "probabilites-statistique/exercices/ch02-1-exercices.pdf",
+    "probabilites-statistique/exercices/ch02-3-corrige.pdf",
+  ]);
+});
+
+test("le calcul différentiel garde ses trois cahiers par chapitre", () => {
+  // Garde-fou de non-régression : le passage à une déclaration explicite des
+  // cahiers ne doit rien retirer au cours déjà en production.
+  const cd = DOCUMENTS.filter(
+    (d) => d.coursId === "calcul-differentiel" && d.categorie === "exercices",
+  );
+  assert.equal(cd.length, 21);
+  for (const n of ["ch01", "ch02", "ch03", "ch04", "ch05", "ch06", "ch07"]) {
+    for (const suffixe of ["1-exercices", "2-indices", "3-corrige"]) {
+      assert.ok(
+        cd.some((d) => d.chemin === `calcul-differentiel/exercices/${n}-${suffixe}.pdf`),
+        `manque ${n}-${suffixe}`,
+      );
+    }
+  }
 });
 
 test("chaque document déclare au moins un niveau autorisé", () => {

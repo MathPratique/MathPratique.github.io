@@ -130,16 +130,61 @@ const NIVEAUX_EXERCICES_REVISION: NiveauAcces[] = [
 /** Examens : réservés aux acheteurs (et enseignants). */
 const NIVEAUX_EXAMENS: NiveauAcces[] = ["acheteur", "enseignant"];
 
-type Chapitre = { n: string; titre: string; fichier: string };
+/**
+ * Les trois cahiers qu'un chapitre peut avoir : les énoncés, les indices, le
+ * corrigé.
+ *
+ * Un chapitre déclare EXPLICITEMENT lesquels existent. Il n'y a pas de
+ * valeur par défaut « les trois » : un chapitre qui ne déclare rien ne publie
+ * aucun cahier. C'est délibéré — le défaut doit être le silence, parce
+ * qu'une entrée de catalogue sans fichier dans le seau produit une carte
+ * visible dont le bouton échoue, pour quelqu'un qui a payé.
+ *
+ * Le chapitre 2 de prob-stat en est l'illustration : ses indices ne sont pas
+ * écrits (97 exercices sur 160 n'en ont pas), donc il ne déclare que
+ * `exercices` et `corrige`. Le jour où ils le seront, on ajoute `indices` à
+ * sa liste et l'entrée apparaît — sans toucher à rien d'autre.
+ */
+type Cahier = "exercices" | "indices" | "corrige";
+
+/**
+ * Ce qui distingue les trois cahiers dans le nom du fichier, l'identifiant et
+ * le titre affiché. Le suffixe d'identifiant des énoncés est vide : leur id
+ * garde la forme courte `exercices-chXX`, parce que c'est le fichier
+ * « principal » du triplet — comme `intra1` l'est pour son triplet d'examen.
+ */
+const CAHIERS: Record<Cahier, { fichier: string; suffixeId: string; libelle: string }> = {
+  exercices: { fichier: "1-exercices", suffixeId: "", libelle: "Exercices" },
+  indices: { fichier: "2-indices", suffixeId: "-indices", libelle: "Indices" },
+  corrige: { fichier: "3-corrige", suffixeId: "-corrige", libelle: "Corrigé" },
+};
+
+/**
+ * L'ordre d'émission, qui est aussi l'ordre d'affichage dans /mon-compte :
+ * énoncés → indices → corrigé, la progression pédagogique attendue. Il ne
+ * dépend pas de l'ordre dans lequel un chapitre déclare ses cahiers.
+ */
+const ORDRE_CAHIERS: Cahier[] = ["exercices", "indices", "corrige"];
+
+/** Les trois cahiers — le cas courant, celui du calcul différentiel. */
+const CAHIERS_COMPLETS: Cahier[] = ["exercices", "indices", "corrige"];
+
+type Chapitre = {
+  n: string;
+  titre: string;
+  fichier: string;
+  /** Les cahiers publiés pour ce chapitre. Absent ou vide : aucun. */
+  cahiers?: Cahier[];
+};
 
 const CHAPITRES_CALCUL: Chapitre[] = [
-  { n: "1", titre: "Fonctions et domaines", fichier: "ch01-fonctions" },
-  { n: "2", titre: "Limites", fichier: "ch02-limites" },
-  { n: "3", titre: "Continuité", fichier: "ch03-continuite" },
-  { n: "4", titre: "La dérivée : définition", fichier: "ch04-derivee-definition" },
-  { n: "5", titre: "Règles de dérivation", fichier: "ch05-regles-derivation" },
-  { n: "6", titre: "Étude de fonction", fichier: "ch06-etude-fonction" },
-  { n: "7", titre: "Applications", fichier: "ch07-applications-sn" },
+  { n: "1", titre: "Fonctions et domaines", fichier: "ch01-fonctions", cahiers: CAHIERS_COMPLETS },
+  { n: "2", titre: "Limites", fichier: "ch02-limites", cahiers: CAHIERS_COMPLETS },
+  { n: "3", titre: "Continuité", fichier: "ch03-continuite", cahiers: CAHIERS_COMPLETS },
+  { n: "4", titre: "La dérivée : définition", fichier: "ch04-derivee-definition", cahiers: CAHIERS_COMPLETS },
+  { n: "5", titre: "Règles de dérivation", fichier: "ch05-regles-derivation", cahiers: CAHIERS_COMPLETS },
+  { n: "6", titre: "Étude de fonction", fichier: "ch06-etude-fonction", cahiers: CAHIERS_COMPLETS },
+  { n: "7", titre: "Applications", fichier: "ch07-applications-sn", cahiers: CAHIERS_COMPLETS },
 ];
 
 /**
@@ -150,8 +195,16 @@ const CHAPITRES_CALCUL: Chapitre[] = [
  * pour quelqu'un qui y a droit.
  */
 const CHAPITRES_PROBSTAT: Chapitre[] = [
+  // Seul le chapitre 2 a des cahiers produits à ce jour, et seulement deux
+  // des trois : les 97 indices manquants n'ont pas été écrits. Les chapitres
+  // 1, 3 et 4 n'en déclarent aucun — leurs cahiers ne sont pas générés.
   { n: "1", titre: "Statistiques descriptives", fichier: "ch01-statistiques-descriptives" },
-  { n: "2", titre: "Probabilités", fichier: "ch02-probabilites" },
+  {
+    n: "2",
+    titre: "Probabilités",
+    fichier: "ch02-probabilites",
+    cahiers: ["exercices", "corrige"],
+  },
   { n: "3", titre: "Inférence statistique", fichier: "ch03-inference-statistique" },
   {
     n: "4",
@@ -192,6 +245,29 @@ function doc(
     categorie,
     niveauxAutorises,
   };
+}
+
+/**
+ * Les cahiers d'exercices d'un chapitre — ceux qu'il déclare, dans l'ordre
+ * canonique et pas dans l'ordre de déclaration.
+ *
+ * Un chapitre sans `cahiers` n'en produit aucun : c'est le cas des chapitres
+ * 1, 3 et 4 de prob-stat, dont les cahiers ne sont pas encore générés. Rien
+ * n'apparaît au catalogue tant que le PDF n'est pas dans le seau.
+ */
+function cahiersDeChapitre(cours: Cours, c: Chapitre): Document[] {
+  const num = c.fichier.slice(0, 4); // « ch01 »
+  return ORDRE_CAHIERS.filter((k) => (c.cahiers ?? []).includes(k)).map((k) => {
+    const { fichier, suffixeId, libelle } = CAHIERS[k];
+    return doc(
+      cours,
+      `exercices-${num}${suffixeId}`,
+      `${libelle} — chapitre ${c.n} : ${c.titre}`,
+      `exercices/${num}-${fichier}.pdf`,
+      "exercices",
+      NIVEAUX_EXERCICES_REVISION,
+    );
+  });
 }
 
 /**
@@ -252,35 +328,7 @@ export const DOCUMENTS: Document[] = [
   // L'ID de l'énoncé garde la forme courte `exercices-chXX`, sans suffixe :
   // c'est le fichier « principal » du triplet, comme `intra1` l'est pour le
   // triplet énoncé / corrigé / grille des examens plus bas.
-  ...CHAPITRES_CALCUL.flatMap((c) => {
-    const num = c.fichier.slice(0, 4); // « ch01 »
-    return [
-      doc(
-        CALCUL_DIFFERENTIEL,
-        `exercices-${num}`,
-        `Exercices — chapitre ${c.n} : ${c.titre}`,
-        `exercices/${num}-1-exercices.pdf`,
-        "exercices",
-        NIVEAUX_EXERCICES_REVISION,
-      ),
-      doc(
-        CALCUL_DIFFERENTIEL,
-        `exercices-${num}-indices`,
-        `Indices — chapitre ${c.n} : ${c.titre}`,
-        `exercices/${num}-2-indices.pdf`,
-        "exercices",
-        NIVEAUX_EXERCICES_REVISION,
-      ),
-      doc(
-        CALCUL_DIFFERENTIEL,
-        `exercices-${num}-corrige`,
-        `Corrigé — chapitre ${c.n} : ${c.titre}`,
-        `exercices/${num}-3-corrige.pdf`,
-        "exercices",
-        NIVEAUX_EXERCICES_REVISION,
-      ),
-    ];
-  }),
+  ...CHAPITRES_CALCUL.flatMap((c) => cahiersDeChapitre(CALCUL_DIFFERENTIEL, c)),
 
   // --- Séries de révision mélangées -----------------------------------------
   ...SERIES.flatMap((s) => [
@@ -341,15 +389,22 @@ export const DOCUMENTS: Document[] = [
   //     a un `main.tex` qui assemble ses chapitres ; les notes SN1 sont
   //     quatre documents autonomes, sans document maître. Le recueil
   //     viendra quand ce main existera.
-  //   - Pas d'exercices. La banque SN1 est au format d'origine, sans les
-  //     champs `acces`, `indice` ni `choix` dont dépend la production des
-  //     cahiers — voir exercices-prob-stat/README.md.
   //   - Ni révision ni examens : rien n'est encore écrit.
   //
   // Ces catégories s'ajouteront ici sans rien changer à ce qui précède : un
   // document absent du catalogue est simplement un document que personne ne
   // peut demander.
   ...CHAPITRES_PROBSTAT.flatMap((c) => notesDeChapitre(PROBABILITES_STATISTIQUE, c)),
+
+  // --- Cahiers d'exercices : chapitre 2 seulement ---------------------------
+  //
+  // Deux cahiers sur trois : les énoncés et le corrigé. Le cahier d'indices
+  // n'existe pas — 97 des 160 exercices du chapitre n'ont pas d'indice, et
+  // le générateur le saute plutôt que de produire 160 entrées vides.
+  //
+  // Les chapitres 1, 3 et 4 ne déclarent aucun cahier : ils ne sont pas
+  // générés. Le catalogue ne connaît que ce qui est réellement dans le seau.
+  ...CHAPITRES_PROBSTAT.flatMap((c) => cahiersDeChapitre(PROBABILITES_STATISTIQUE, c)),
 ];
 
 /** Recherche par identifiant. Renvoie null plutôt que undefined : la règle
