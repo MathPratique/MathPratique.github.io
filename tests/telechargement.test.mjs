@@ -23,17 +23,30 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 65 documents", () => {
-  // 16 notes (7 chapitres × 2 versions + 2 recueils complets)
-  // 21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
-  // 10 révision (5 séries + 5 solutions)
-  // 18 examens (6 × énoncé, corrigé, grille)
-  assert.equal(DOCUMENTS.length, 65);
+test("le catalogue couvre les 73 documents", () => {
+  // Calcul différentiel — 65 :
+  //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
+  //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
+  //   10 révision (5 séries + 5 solutions)
+  //   18 examens (6 × énoncé, corrigé, grille)
+  // Probabilités et statistique — 8 :
+  //    8 notes (4 chapitres × 2 versions ; pas de recueil complet, pas
+  //      encore d'exercices, de révision ni d'examens)
+  assert.equal(DOCUMENTS.length, 73);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 16, exercices: 21, revision: 10, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 24, exercices: 21, revision: 10, examens: 18 });
+
+  const parCours = DOCUMENTS.reduce((acc, d) => {
+    acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
+    return acc;
+  }, {});
+  assert.deepEqual(parCours, {
+    "calcul-differentiel": 65,
+    "probabilites-statistique": 8,
+  });
 });
 
 test("chaque document déclare au moins un niveau autorisé", () => {
@@ -56,13 +69,35 @@ test("aucun identifiant en double", () => {
   assert.equal(new Set(ids).size, ids.length);
 });
 
-test("aucun chemin en double, et aucun ne sort du dossier du cours", () => {
+test("aucun chemin en double, et aucun ne sort du dossier de SON cours", () => {
   const chemins = DOCUMENTS.map((d) => d.chemin);
   assert.equal(new Set(chemins).size, chemins.length);
-  for (const c of chemins) {
-    assert.ok(c.startsWith("calcul-differentiel/"), c);
-    assert.ok(!c.includes(".."), `traversée de répertoire : ${c}`);
-    assert.ok(c.endsWith(".pdf"), c);
+  for (const d of DOCUMENTS) {
+    // Le dossier attendu est celui du cours du document, pas un cours codé
+    // en dur : un document de prob-stat rangé sous calcul-differentiel/
+    // serait servi à la mauvaise cohorte.
+    assert.ok(d.chemin.startsWith(`${d.coursId}/`), `${d.id} : ${d.chemin}`);
+    assert.ok(!d.chemin.includes(".."), `traversée de répertoire : ${d.chemin}`);
+    assert.ok(d.chemin.endsWith(".pdf"), d.chemin);
+  }
+});
+
+test("tout chemin tient dans un jeu de caractères sûr pour Cloud Storage", () => {
+  // Un accent dans un nom de fichier se traduit par un téléchargement qui
+  // échoue pour quelqu'un qui a payé : le nom du PDF sur le disque, le
+  // chemin dans le seau et l'URL signée doivent être la même chaîne, et
+  // l'encodage d'un « é » ne survit pas au trajet. Les notes SN1
+  // s'appelaient Chapitre_1_ÉTUDIANT.pdf avant d'entrer au catalogue.
+  //
+  // Les majuscules restent admises : le suffixe -ETUDIANT / -PROF, mais
+  // aussi melimelo-A.pdf et finalB.pdf, qui sont au catalogue depuis le
+  // début. Ce qui est proscrit, c'est le non-ASCII, l'espace et
+  // l'underscore.
+  for (const d of DOCUMENTS) {
+    assert.ok(
+      /^[A-Za-z0-9/.-]+$/.test(d.chemin),
+      `${d.id} : caractère interdit dans « ${d.chemin} »`,
+    );
   }
 });
 
