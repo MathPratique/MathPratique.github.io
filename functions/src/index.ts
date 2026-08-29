@@ -40,6 +40,7 @@ import { trouverDocument } from "../../src/acces/documents.js";
 import { DUREE_ACCES_MOIS, verifierAcces } from "../../src/acces/regles.js";
 import { versAccesDepuisDonnees } from "./lecture.js";
 import { CONTENT_HASH_CD } from "./data/exercices-cd-version.js";
+import { CONTENT_HASH_PS } from "./data/exercices-ps-version.js";
 // La banque calc-diff complète (305 exos AVEC contenu) — bundlée avec la
 // Function. Ne quitte jamais le serveur sans passer par verifierAcces()
 // dans obtenirExercices() ci-dessous.
@@ -52,6 +53,7 @@ import { CONTENT_HASH_CD } from "./data/exercices-cd-version.js";
 // novembre 2026 : migration vers un doc Firestore admin lu par la Function
 // (A2, cf. DIAGNOSTIC-ACHAT.md §5).
 import banqueCd from "./data/exercices-cd.json" with { type: "json" };
+import banquePs from "./data/exercices-ps.json" with { type: "json" };
 
 initializeApp();
 const db = getFirestore();
@@ -445,16 +447,32 @@ export const obtenirLienTelechargement = onCall(
 );
 
 // ---------------------------------------------------------------------------
-//  obtenirExercices — sert les 305 exos calc-diff aux détenteurs d'accès
+//  obtenirExercices — sert la banque complète aux détenteurs d'accès
 // ---------------------------------------------------------------------------
 //
-// Le bassin complet vit dans le bundle de cette Function (voir import de
-// banqueCd ci-dessus). Il n'est renvoyé qu'après vérification de l'accès
-// avec l'horloge du serveur — la MÊME règle que pour les téléchargements.
+// Le bassin complet de chaque cours vit dans le bundle de cette Function
+// (voir les imports de banqueCd et banquePs ci-dessus). Il n'est renvoyé
+// qu'après vérification de l'accès avec l'horloge du serveur — la MÊME règle
+// que pour les téléchargements.
 //
 // Un utilisateur sans compte, sans accès ou avec accès expiré reçoit un
 // « permission-denied » et rien d'autre. Le contenu ne quitte jamais le
 // serveur dans ce cas.
+
+/**
+ * Les cours dont la banque complète est servie par cette fonction.
+ *
+ * Chaque entrée porte son blob ET son hash : le contrôle de cohérence est
+ * fait par cours, pas globalement. Une banque désynchronisée n'empêche donc
+ * pas de servir l'autre — et le message d'erreur nomme la bonne.
+ *
+ * Un cours absent de cette table est traité comme un accès refusé, jamais
+ * comme une erreur : on ne divulgue pas quels cours ont une banque en ligne.
+ */
+const BANQUES: Record<string, { blob: unknown; hash: string }> = {
+  "calcul-differentiel": { blob: banqueCd, hash: CONTENT_HASH_CD },
+  "probabilites-statistique": { blob: banquePs, hash: CONTENT_HASH_PS },
+};
 
 export const obtenirExercices = onCall(
   { region: "northamerica-northeast1", cors: true },
@@ -465,11 +483,8 @@ export const obtenirExercices = onCall(
     }
 
     const coursId = String(requete.data?.coursId ?? "calcul-differentiel");
-    if (coursId !== "calcul-differentiel") {
-      // Aujourd'hui un seul cours a une banque complète en ligne. Le jour où
-      // d'autres cours l'auront, on switch sur coursId. Une valeur inconnue
-      // se traite comme un accès refusé, pas comme une erreur — on ne
-      // divulgue rien sur les cours disponibles.
+    const banque = BANQUES[coursId];
+    if (!banque) {
       throw new HttpsError("permission-denied", "Aucun accès pour ce cours.");
     }
 
@@ -485,18 +500,19 @@ export const obtenirExercices = onCall(
       );
     }
 
-    // Contrôle de cohérence — le hash figé dans exercices-cd-version.ts
+    // Contrôle de cohérence — le hash figé dans exercices-<cours>-version.ts
     // doit correspondre à celui du blob. Si la personne qui a déployé a
     // édité le JSON à la main sans passer par le script de sync, on
     // refuse plutôt que de servir un contenu incohérent.
-    if ((banqueCd as { contentHash: string }).contentHash !== CONTENT_HASH_CD) {
+    const hashBlob = (banque.blob as { contentHash: string }).contentHash;
+    if (hashBlob !== banque.hash) {
       logger.error(
-        `[exercices] hash divergent : blob=${(banqueCd as { contentHash: string }).contentHash} constante=${CONTENT_HASH_CD}`,
+        `[exercices] hash divergent pour ${coursId} : blob=${hashBlob} constante=${banque.hash}`,
       );
       throw new HttpsError("internal", "Erreur de cohérence de la banque.");
     }
 
     logger.info(`[exercices] ${uid} → ${coursId} autorisé`);
-    return banqueCd;
+    return banque.blob;
   },
 );

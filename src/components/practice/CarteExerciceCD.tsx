@@ -68,7 +68,12 @@ export default function CarteExerciceCD({
           {LIB_DIFFICULTE[exercice.difficulte]}
         </span>
         <span className="text-ink-600">§{exercice.section}</span>
-        <span className="text-ink-600">· {exercice.tempsEstime} min</span>
+        {/* Absent sur les exercices dont l'auteur n'a pas fixé de durée —
+            les 63 ajouts difficiles de prob-stat, notamment. On omet la
+            mention plutôt que d'afficher « · undefined min ». */}
+        {typeof exercice.tempsEstime === "number" && (
+          <span className="text-ink-600">· {exercice.tempsEstime} min</span>
+        )}
         <span className="ml-auto">
           <BoutonsProgression id={exercice.id} />
         </span>

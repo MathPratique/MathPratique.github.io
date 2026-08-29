@@ -24,65 +24,22 @@ import ch05 from "./ch05.json";
 import ch06 from "./ch06.json";
 import ch07 from "./ch07.json";
 
-export type TypeExercice = "qcm" | "vrai-faux" | "calcul-court" | "calcul-long";
-export type Difficulte = "facile" | "moyen" | "difficile";
-export type Palier = "enonce" | "indice" | "reponse" | "demarche";
+// Les types sont communs à toutes les banques : ils vivent dans
+// ../banque-types.ts depuis l'arrivée d'un second cours, et sont réexportés
+// ici pour que les composants du calcul différentiel gardent leurs imports.
+export type {
+  TypeExercice,
+  Difficulte,
+  Palier,
+  Choix,
+  AnalyseChoix,
+  Etape,
+  Exercice,
+  Chapitre,
+} from "../banque-types";
+export { LIB_TYPE, LIB_DIFFICULTE, etape, enonce } from "../banque-types";
 
-/** Choix d'un QCM ou d'un vrai/faux, tel qu'écrit dans les JSON. */
-export type Choix = { cle: string; texte: string };
-
-/**
- * Analyse d'un choix — présente dans l'étape « démarche », séparée des
- * choix pour que le DOM initial ne révèle pas la bonne réponse. Le JSON
- * servi au navigateur contient ces données, mais elles ne s'écrivent
- * dans le HTML rendu qu'après le clic de l'étudiant.
- */
-export type AnalyseChoix = { cle: string; correct: boolean; explication: string };
-
-export type Etape =
-  | {
-      etape: "enonce";
-      titre: string;
-      texte: string;
-      /** Chemin relatif au dossier calcul-differentiel/, ex. « figures/CD-C01-E003.svg ». */
-      figure?: string;
-      /** Présent pour les QCM et les vrai/faux. */
-      choix?: Choix[];
-    }
-  | { etape: "indice" | "reponse"; titre: string; texte: string }
-  | {
-      etape: "demarche";
-      titre: string;
-      lignes: string[];
-      /** Analyse de chaque choix pour les QCM. Absent pour les autres types. */
-      analyseChoix?: AnalyseChoix[];
-      /** Piège pédagogique classique, à afficher en fin de démarche. */
-      piegeCourant?: string;
-    };
-
-export type Exercice = {
-  id: string;
-  chapitre: number;
-  section: string;
-  type: TypeExercice;
-  difficulte: Difficulte;
-  tempsEstime: number;
-  sectionNotes?: string;
-  motsCles?: string[];
-  savoirFaire?: string;
-  etapes: Etape[];
-};
-
-export type Chapitre = {
-  numero: number;
-  titre: string;
-  /** Titre riche en notions, pour les en-têtes et le référencement. */
-  intitule: string;
-  exercices: Exercice[];
-  /** Ce qui existe au-delà, compté sur les fiches — jamais sur le contenu. */
-  autres: number;
-  total: number;
-};
+import type { Chapitre, Exercice } from "../banque-types";
 
 const BRUTS = [ch01, ch02, ch03, ch04, ch05, ch06, ch07] as unknown as {
   chapitre: number;
@@ -125,29 +82,6 @@ export const CHAPITRES: Chapitre[] = BRUTS.map((c) => {
 
 export const TOTAL_GRATUITS = CHAPITRES.reduce((n, c) => n + c.exercices.length, 0);
 export const TOTAL_BANQUE = FICHES.length;
-
-export const LIB_TYPE: Record<TypeExercice, string> = {
-  qcm: "Choix multiple",
-  "vrai-faux": "Vrai ou faux",
-  "calcul-court": "Courte démarche",
-  "calcul-long": "Problème complet",
-};
-
-export const LIB_DIFFICULTE: Record<Difficulte, string> = {
-  facile: "Facile",
-  moyen: "Moyen",
-  difficile: "Difficile",
-};
-
-/** Le palier d'une étape, ou null si l'étape est absente. */
-export function etape(ex: Exercice, palier: Palier): Etape | null {
-  return ex.etapes.find((e) => e.etape === palier) ?? null;
-}
-
-export function enonce(ex: Exercice): string {
-  const e = etape(ex, "enonce");
-  return e && "texte" in e ? e.texte : "";
-}
 
 // ═══════════════════════════════════════════════════════════════════════
 //  Résolution des figures pré-rendues en SVG.

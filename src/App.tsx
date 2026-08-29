@@ -18,15 +18,19 @@ import { ProgressionProvider } from "./progression/ProgressionContext";
 const ExercicesCalculDifferentiel = lazy(
   () => import("./pages/ExercicesCalculDifferentiel")
 );
+const ExercicesProbabilitesStatistique = lazy(
+  () => import("./pages/ExercicesProbabilitesStatistique")
+);
 
 export default function App() {
-  // Un seul provider pour tout le site. La progression n'active son
-  // abonnement Firestore qu'une fois qu'un utilisateur est connecté et a un
-  // accès valide au cours — sans quoi il reste inerte et gratuit.
-  // Aujourd'hui un seul cours a des exercices en ligne (calcul-differentiel) ;
-  // le jour où un autre en aura, on instancie un provider par cours.
+  // Un provider PAR COURS, posé sur la route du cours et non à la racine.
+  //
+  // La progression vit dans `utilisateurs/{uid}/progression/{coursId}` : un
+  // provider unique à la racine ferait écrire la progression de prob-stat
+  // dans le document du calcul différentiel. Seules les deux pages de cours
+  // consomment la progression, donc la porter par route suffit — et le
+  // provider reste inerte tant que l'utilisateur n'a pas d'accès valide.
   return (
-    <ProgressionProvider coursId="calcul-differentiel">
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
@@ -35,15 +39,33 @@ export default function App() {
         <Route
           path="/exercices/calcul-differentiel"
           element={
-            <Suspense
-              fallback={
-                <div className="container-page py-16 text-center text-sm text-ink-600">
-                  Chargement des exercices…
-                </div>
-              }
-            >
-              <ExercicesCalculDifferentiel />
-            </Suspense>
+            <ProgressionProvider coursId="calcul-differentiel">
+              <Suspense
+                fallback={
+                  <div className="container-page py-16 text-center text-sm text-ink-600">
+                    Chargement des exercices…
+                  </div>
+                }
+              >
+                <ExercicesCalculDifferentiel />
+              </Suspense>
+            </ProgressionProvider>
+          }
+        />
+        <Route
+          path="/exercices/probabilites-statistique"
+          element={
+            <ProgressionProvider coursId="probabilites-statistique">
+              <Suspense
+                fallback={
+                  <div className="container-page py-16 text-center text-sm text-ink-600">
+                    Chargement des exercices…
+                  </div>
+                }
+              >
+                <ExercicesProbabilitesStatistique />
+              </Suspense>
+            </ProgressionProvider>
           }
         />
         <Route path="/quiz" element={<Quiz />} />
@@ -56,6 +78,5 @@ export default function App() {
         <Route path="/mon-compte" element={<MonCompte />} />
       </Route>
     </Routes>
-    </ProgressionProvider>
   );
 }

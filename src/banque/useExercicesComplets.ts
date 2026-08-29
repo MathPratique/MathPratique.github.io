@@ -25,7 +25,7 @@
 //      l'utilisateur courant, au cas où l'invalidation par événement échoue.
 //
 // L'invalidation gère aussi la FRAÎCHEUR par comparaison avec le hash
-// MIROIR CLIENT — `CONTENT_HASH_CD` posé par sync-banque-cd.js à côté de la
+// MIROIR CLIENT — le hash posé par le script de sync du cours à côté de la
 // banque, inliné au build Vite. À la lecture du cache, on compare le hash
 // miroir stocké avec le miroir courant : différence = nouveau bundle
 // déployé = purge + refetch. Un seul refetch par déploiement site.
@@ -41,8 +41,11 @@
 // c'est une facture Blaze. On journalise un avertissement une seule fois.
 
 import { useEffect, useRef, useState } from "react";
-import { CHAPITRES, type Exercice } from "../data/calcul-differentiel";
+import { CHAPITRES as CHAPITRES_CD } from "../data/calcul-differentiel";
 import { CONTENT_HASH_CD } from "../data/calcul-differentiel/version";
+import { CHAPITRES as CHAPITRES_PS } from "../data/probabilites-statistique";
+import { CONTENT_HASH_PS } from "../data/probabilites-statistique/version";
+import type { Exercice } from "../data/banque-types";
 import { chargerFirebase } from "../firebase/config";
 import { assurerAuthPrete } from "../firebase/authPrete";
 import { useAuth } from "../firebase/useAuth";
@@ -54,7 +57,26 @@ export type EtatBanque =
   | { statut: "chargement"; exercices: Exercice[]; provenance: "bundle" }
   | { statut: "actif"; exercices: Exercice[]; provenance: Provenance };
 
-const BUNDLE_APLATI: Exercice[] = CHAPITRES.flatMap((c) => c.exercices);
+/**
+ * Les cours servis par ce hook : leur vitrine bundlée et leur hash miroir.
+ *
+ * Le hash est propre à chaque cours — un redéploiement qui ne touche qu'une
+ * banque n'invalide que son cache. Un cours absent de cette table n'a pas de
+ * vitrine et le hook rend un tableau vide plutôt que d'échouer : c'est le cas
+ * légitime d'une matière encore sans banque.
+ */
+const SOURCES: Record<string, { bundle: Exercice[]; hashClient: string }> = {
+  "calcul-differentiel": {
+    bundle: CHAPITRES_CD.flatMap((c) => c.exercices),
+    hashClient: CONTENT_HASH_CD,
+  },
+  "probabilites-statistique": {
+    bundle: CHAPITRES_PS.flatMap((c) => c.exercices),
+    hashClient: CONTENT_HASH_PS,
+  },
+};
+
+const AUCUN: Exercice[] = [];
 
 const cleCache = (coursId: string) => `mp:banque:${coursId}`;
 
@@ -63,7 +85,7 @@ type CacheStructure = {
   coursId: string;
   /** Hash retourné par la Function au moment du dernier fetch. */
   contentHashFonction: string;
-  /** Hash miroir bundlé (`CONTENT_HASH_CD`) au moment de l'écriture. */
+  /** Hash miroir bundlé du cours au moment de l'écriture. */
   hashClient: string;
   exercices: Exercice[];
   dateMs: number;
@@ -95,20 +117,21 @@ function lireCache(coursId: string, uidCourant: string): CacheStructure | null {
     }
     // Invalidation par fraîcheur du bundle client : le hash miroir bundlé au
     // build a-t-il changé depuis la dernière écriture de ce cache ?
-    if (typeof CONTENT_HASH_CD !== "string" || CONTENT_HASH_CD.length === 0) {
+    const hashClient = SOURCES[coursId]?.hashClient;
+    if (typeof hashClient !== "string" || hashClient.length === 0) {
       // Miroir absent — ne pas purger (éviterait une facture Blaze si un
       // build cassé livrait un version.ts vide sur 500 étudiants). On sert
-      // le cache tel quel et on avertit une seule fois.
+      // le cache tel quel et on avertit une seule fois, par cours.
       journaliserUneFois(
-        "mp:banque:miroir-absent",
-        "[banque-cd] Miroir de hash CONTENT_HASH_CD absent ou vide — le " +
-          "cache client ne s'invalide plus automatiquement au redéploiement " +
-          "du site. Relancer scripts/sync-banque-cd.js pour régénérer " +
-          "src/data/calcul-differentiel/version.ts.",
+        `mp:banque:miroir-absent:${coursId}`,
+        `[banque:${coursId}] Miroir de hash absent ou vide — le cache client ` +
+          `ne s'invalide plus automatiquement au redéploiement du site. ` +
+          `Relancer le script de synchronisation du cours pour régénérer ` +
+          `src/data/${coursId}/version.ts.`,
       );
       return parse;
     }
-    if (parse.hashClient !== CONTENT_HASH_CD) {
+    if (parse.hashClient !== hashClient) {
       // Le bundle client a été redéployé depuis la dernière écriture de ce
       // cache — le contenu a peut-être changé. Purge pour forcer un refetch.
       localStorage.removeItem(cleCache(coursId));
@@ -143,9 +166,15 @@ export function useExercicesComplets(coursId: string): EtatBanque {
   const acces = useAcces(coursId);
   const uid = utilisateur?.uid ?? null;
 
+  // La vitrine du cours demandé. Un cours sans banque rend un tableau vide
+  // plutôt qu'une erreur : c'est le cas légitime d'une matière à venir.
+  const source = SOURCES[coursId];
+  const bundle = source?.bundle ?? AUCUN;
+  const hashClient = source?.hashClient ?? "";
+
   const [etat, setEtat] = useState<EtatBanque>({
     statut: "actif",
-    exercices: BUNDLE_APLATI,
+    exercices: bundle,
     provenance: "bundle",
   });
 
@@ -158,7 +187,7 @@ export function useExercicesComplets(coursId: string): EtatBanque {
       purgerCache(coursId);
       // Fallback au bundle tant que l'accès du nouveau uid n'est pas
       // encore chargé — évite d'afficher les 305 de l'ancien compte.
-      setEtat({ statut: "actif", exercices: BUNDLE_APLATI, provenance: "bundle" });
+      setEtat({ statut: "actif", exercices: bundle, provenance: "bundle" });
     }
     uidPrecedent.current = uid;
   }, [uid, coursId]);
@@ -184,7 +213,7 @@ export function useExercicesComplets(coursId: string): EtatBanque {
     // Priorité 2 : fetch réseau. On passe en "chargement" mais on garde
     // les 65 du bundle sous la main — l'UI peut décider d'afficher un
     // squelette OU les 65 en attendant, selon son goût.
-    setEtat({ statut: "chargement", exercices: BUNDLE_APLATI, provenance: "bundle" });
+    setEtat({ statut: "chargement", exercices: bundle, provenance: "bundle" });
 
     let annule = false;
     (async () => {
@@ -215,7 +244,7 @@ export function useExercicesComplets(coursId: string): EtatBanque {
           uid,
           coursId,
           contentHashFonction: contentHash,
-          hashClient: CONTENT_HASH_CD,
+          hashClient,
           exercices,
           dateMs: Date.now(),
         });
@@ -225,14 +254,14 @@ export function useExercicesComplets(coursId: string): EtatBanque {
         // fois par uid pour informer un développeur qui inspecte, sans
         // polluer la console.
         if (
-          typeof CONTENT_HASH_CD === "string" &&
-          CONTENT_HASH_CD.length > 0 &&
-          contentHash !== CONTENT_HASH_CD
+          typeof hashClient === "string" &&
+          hashClient.length > 0 &&
+          contentHash !== hashClient
         ) {
           journaliserUneFois(
             `mp:banque:ecart-fn-miroir:${uid}`,
-            `[banque-cd] La Cloud Function renvoie contentHash="${contentHash}", ` +
-              `le bundle client a hashClient="${CONTENT_HASH_CD}". ` +
+            `[banque:${coursId}] La Cloud Function renvoie contentHash="${contentHash}", ` +
+              `le bundle client a hashClient="${hashClient}". ` +
               `Déploiement partiel probable — cache stable, pas de refetch.`,
           );
         }
@@ -246,12 +275,12 @@ export function useExercicesComplets(coursId: string): EtatBanque {
           // Le serveur refuse — accès expiré ou révoqué depuis la dernière
           // fois. On purge un éventuel cache et on repasse aux 65 du bundle.
           purgerCache(coursId);
-          setEtat({ statut: "actif", exercices: BUNDLE_APLATI, provenance: "bundle" });
+          setEtat({ statut: "actif", exercices: bundle, provenance: "bundle" });
         } else {
           // Réseau, cold start dépassé, autre : on retombe sur le bundle
           // avec le statut actif — mieux que rien, l'utilisateur peut
           // travailler les 65 en attendant que ça remarche.
-          setEtat({ statut: "actif", exercices: BUNDLE_APLATI, provenance: "bundle" });
+          setEtat({ statut: "actif", exercices: bundle, provenance: "bundle" });
         }
       }
     })();
