@@ -106,6 +106,9 @@ export default function CustomQuiz() {
   // Passée au générateur pour que les disponibilités par leçon reflètent
   // vraiment ce que le quiz pourra piocher.
   const banqueCd = useExercicesComplets("calcul-differentiel");
+  // Banque prob-stat : vide pour un visiteur (tout est réservé aujourd'hui),
+  // 451 pour un détenteur d'accès. Même rôle que banqueCd juste au-dessus.
+  const banquePs = useExercicesComplets("probabilites-statistique");
 
   const lessonMeta = useMemo(() => {
     if (!activeTopic) return [];
@@ -117,6 +120,7 @@ export default function CustomQuiz() {
         id,
         bank ? difficulty : undefined,
         banqueCd.exercices,
+        banquePs.exercices,
       );
       return {
         id,
@@ -126,7 +130,7 @@ export default function CustomQuiz() {
         isBank: bank,
       };
     });
-  }, [activeTopic, lessonsByTopic, difficulty, banqueCd.exercices]);
+  }, [activeTopic, lessonsByTopic, difficulty, banqueCd.exercices, banquePs.exercices]);
 
   // Protection : si la carte du topic annonce des exercices mais qu'aucune
   // leçon exploitable n'existe côté quiz, on avertit dans la console plutôt

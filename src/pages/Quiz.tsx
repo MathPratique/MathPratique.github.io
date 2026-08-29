@@ -29,13 +29,15 @@ export default function Quiz() {
   // Banque calc-diff — 65 gratuits ou 305 selon accès. Passée au picker
   // quand le quiz personnalisé pioche des leçons CD1..CD7.
   const banqueCd = useExercicesComplets("calcul-differentiel");
+  // Idem pour prob-stat quand le quiz pioche des leçons PSD1..PSD4.
+  const banquePs = useExercicesComplets("probabilites-statistique");
 
   const exercises = useMemo(() => {
-    if (isCustom) return buildCustomQuiz(customSpecs, banqueCd.exercices);
+    if (isCustom) return buildCustomQuiz(customSpecs, banqueCd.exercices, banquePs.exercices);
     if (!lessonId) return [];
     return generateQuiz(lessonId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lessonId, seed, isCustom, customSpecs, banqueCd.exercices]);
+  }, [lessonId, seed, isCustom, customSpecs, banqueCd.exercices, banquePs.exercices]);
 
   const generatorAvailable = lessonId ? hasQuizGenerator(lessonId) : false;
   const total = exercises.length;

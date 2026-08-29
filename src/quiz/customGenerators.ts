@@ -13,7 +13,7 @@ import {
   CalcDiffPicker,
   type CalcDiffLessonId,
 } from "./calcDiffPicker";
-import type { Exercice as ExerciceCalcDiff } from "../data/calcul-differentiel";
+import type { Exercice as ExerciceBanque } from "../data/banque-types";
 import { topics } from "../data/topics";
 import { getLessonById, getChapterById } from "../data/lessons";
 
@@ -49,9 +49,9 @@ export const CUSTOM_QUIZ_LESSONS = [
   "L34", "L35", "L36", "L37",
   "L43", "L44", "L45", "L46", "L47", "L48", "L49",
   "L50", "L51", "L52", "L53", "L54", "L55", "L56", "L57", "L58",
-  // Probabilités et statistique (banque figée de 388 exercices — voir probStatPicker.ts)
+  // Probabilités et statistique (banque synchronisée — voir probStatPicker.ts)
   "PSD1", "PSD2", "PSD3", "PSD4",
-  // Calcul différentiel (banque figée gratuits — voir calcDiffPicker.ts)
+  // Calcul différentiel (banque synchronisée — voir calcDiffPicker.ts)
   "CD1", "CD2", "CD3", "CD4", "CD5", "CD6", "CD7",
 ];
 
@@ -1913,12 +1913,17 @@ export function buildCustomQuiz(
    * Pool calc-diff à utiliser — 65 gratuits (défaut, bundle) ou 305 pour
    * un détenteur d'accès. Passer `banque.exercices` de useExercicesComplets.
    */
-  banqueCalcDiff?: ExerciceCalcDiff[],
+  banqueCalcDiff?: ExerciceBanque[],
+  /**
+   * Pool prob-stat — vide par défaut aujourd'hui (tout est réservé), 451
+   * pour un détenteur d'accès. Même mécanique que ci-dessus.
+   */
+  banqueProbStat?: ExerciceBanque[],
 ): Exercise[] {
   const out: Exercise[] = [];
-  // Un picker par quiz, pour chaque banque figée : tirage sans remise au
-  // sein du quiz, pool réinitialisé au prochain tirage.
-  const psdPicker = new ProbStatPicker();
+  // Un picker par quiz, pour chaque banque : tirage sans remise au sein du
+  // quiz, pool réinitialisé au prochain tirage.
+  const psdPicker = new ProbStatPicker(banqueProbStat);
   const cdPicker = new CalcDiffPicker(banqueCalcDiff);
   for (const spec of specs) {
     // Garde : refuse de piocher sur une leçon d'un cours `enPreparation`
@@ -2020,7 +2025,8 @@ export function decodeCustomQuiz(str: string): CustomQuizSpec[] {
 export function getAvailableTypes(
   lessonId: string,
   difficulty?: Difficulty,
-  banqueCalcDiff?: ExerciceCalcDiff[],
+  banqueCalcDiff?: ExerciceBanque[],
+  banqueProbStat?: ExerciceBanque[],
 ): {
   exercise: boolean;
   mcq: boolean;
@@ -2029,9 +2035,9 @@ export function getAvailableTypes(
   if (isProbStatLesson(lessonId)) {
     const id = lessonId as ProbStatLessonId;
     return {
-      exercise: probStatHasAny(id, "exercise", difficulty),
-      mcq: probStatHasAny(id, "mcq", difficulty),
-      tf: probStatHasAny(id, "tf", difficulty),
+      exercise: probStatHasAny(id, "exercise", difficulty, banqueProbStat),
+      mcq: probStatHasAny(id, "mcq", difficulty, banqueProbStat),
+      tf: probStatHasAny(id, "tf", difficulty, banqueProbStat),
     };
   }
   if (isCalcDiffLesson(lessonId)) {

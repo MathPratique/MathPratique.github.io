@@ -168,5 +168,15 @@ export const topics: Topic[] = [
       accentBouton: "bg-amber-600 hover:bg-amber-700 text-white",
     },
     teacherContentReady: true,
+    pageDediee: "/exercices/probabilites-statistique",
+    // Zéro exercice ouvert : la sélection éditoriale n'a pas eu lieu et tout
+    // est réservé en attendant. Le badge annonce donc « 0 gratuit · 451 avec
+    // le package », ce qui est exact.
+    //
+    // Ces deux nombres sont écrits à la main — importer le catalogue ferait
+    // entrer 97 ko dans le bundle de l'accueil pour afficher deux entiers.
+    // C'est tests/vitrine.test.mjs qui les empêche de dériver.
+    nbExercicesPublies: 0,
+    nbExercicesTotal: 451,
   },
 ];
