@@ -38,9 +38,14 @@ import { createHash } from "node:crypto";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const SITE = resolve(__dirname, "..");
+// Quatre niveaux, pas trois : le dépôt vit dans OneDrive\Documents\GitHub,
+// alors que les projets de matériel sont dans Documents\ tout court. Remonter
+// de trois aboutissait à OneDrive\Documents\Session Automne 2026, qui
+// n'existe pas — le chemin par défaut ne servait donc jamais, et le script
+// exigeait en pratique BANQUE_CD_PATH.
 const BANQUE_PROJET =
   process.env.BANQUE_CD_PATH ||
-  resolve(SITE, "..", "..", "..", "Documents", "Session Automne 2026", "Calcul différentiel", "exercices-calcul-differentiel");
+  resolve(SITE, "..", "..", "..", "..", "Documents", "Session Automne 2026", "Calcul différentiel", "exercices-calcul-differentiel");
 
 if (!existsSync(BANQUE_PROJET)) {
   console.error(
