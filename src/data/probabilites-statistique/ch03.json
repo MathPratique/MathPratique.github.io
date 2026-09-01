@@ -2,5 +2,1033 @@
   "chapitre": 3,
   "titre": "Inférence statistique",
   "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
-  "exercices": []
+  "exercices": [
+    {
+      "id": "ch03-fac-009",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Formule de l'intervalle de confiance (moyenne, grand échantillon)",
+      "motsCles": [
+        "valeur-critique",
+        "z"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Donne la valeur critique $z_{\\alpha/2}$ pour un intervalle de confiance à 90 %, 95 % et 99 %."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "90 % → 1,645 ; 95 % → 1,96 ; 99 % → 2,576."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "À 90 % : $\\alpha/2 = 0{,}05 \\Rightarrow z = 1{,}645$.",
+            "À 95 % : $\\alpha/2 = 0{,}025 \\Rightarrow z = 1{,}96$.",
+            "À 99 % : $\\alpha/2 = 0{,}005 \\Rightarrow z = 2{,}576$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-fac-012",
+      "chapitre": 3,
+      "section": "3.8",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Formule de l'IC (moyenne, petit échantillon)",
+      "motsCles": [
+        "ic-moyenne",
+        "student",
+        "petit-echantillon"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un échantillon de $n = 16$ donne $\\bar{x} = 20$ et $s = 4$. Sachant que $t_{0{,}025\\,;15} = 2{,}131$, construis l'IC à 95 % pour $\\mu$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{IC}_{95\\,\\%} \\approx [17{,}87\\,; 22{,}13]$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\nu = n - 1 = 15$ ddl.",
+            "$E = t_{\\alpha/2\\,;n-1} \\cdot s/\\sqrt{n} = 2{,}131 \\times 4/\\sqrt{16} = 2{,}131 \\times 1 = 2{,}131$.",
+            "IC = $[20 - 2{,}131\\,; 20 + 2{,}131] \\approx [17{,}87\\,; 22{,}13]$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-fac-019",
+      "chapitre": 3,
+      "section": "3.13",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Exemples résolus (test moyenne, grand échantillon)",
+      "motsCles": [
+        "statistique-test",
+        "moyenne"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un échantillon de $n = 100$ donne $\\bar{x} = 105$ et $s = 20$. On teste $H_0 : \\mu = 100$ vs $H_1 : \\mu \\neq 100$. Calcule la statistique de test $z$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$z = 2{,}5$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$z = (\\bar{x} - \\mu_0)/(s/\\sqrt{n}) = (105 - 100)/(20/\\sqrt{100}) = 5/2 = 2{,}5$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-fac-023",
+      "chapitre": 3,
+      "section": "3.14",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Test d'hypothèse pour la moyenne — petit échantillon",
+      "motsCles": [
+        "test-moyenne",
+        "student",
+        "petit-echantillon"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Quelle est la formule de la statistique de test pour tester $H_0 : \\mu = \\mu_0$ avec un petit échantillon ($n < 30$) ? Précise la loi de référence."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$t = (\\bar{x} - \\mu_0)/(s/\\sqrt{n})$, qui suit une loi de Student à $n - 1$ ddl."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Sous $H_0$ et si la population est approximativement normale, la statistique $t = (\\bar{x} - \\mu_0)/(s/\\sqrt{n})$ suit une loi de Student à $n - 1$ degrés de liberté."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-003",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "tcl",
+        "probabilite",
+        "standardisation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une population a $\\mu = 500$ et $\\sigma = 60$. On prélève un échantillon de $n = 36$. Quelle est la probabilité que $\\overline{X}$ soit supérieure à 520 ? ($\\Phi(2) = 0{,}9772$.)"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$P(\\overline{X} > 520) \\approx 2{,}28\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Par le TCL : $\\overline{X} \\sim \\mathcal{N}(\\mu, \\sigma/\\sqrt{n})$.",
+            "$\\sigma_{\\overline{X}} = 60/\\sqrt{36} = 10$.",
+            "Standardiser : $z = (520 - 500)/10 = 2$.",
+            "$P(\\overline{X} > 520) = 1 - \\Phi(2) = 1 - 0{,}9772 = 0{,}0228$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-008",
+      "chapitre": 3,
+      "section": "3.5",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Interprétation rigoureuse d'un IC",
+      "motsCles": [
+        "interpretation",
+        "ic",
+        "piege"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un journal titre : « Le taux de chômage réel est entre 4,5 % et 5,5 % avec 95 % de probabilité. » Cette formulation est-elle correcte ? Corrige si nécessaire."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Non. Corriger : « Nous sommes confiants à 95 % que le taux réel se trouve entre 4,5 % et 5,5 %. »"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le taux réel $\\mu$ est fixe (pas aléatoire) — il est dans l'intervalle ou non.",
+            "La probabilité 95 % porte sur la procédure d'échantillonnage, pas sur $\\mu$.",
+            "Formulation correcte : « Si l'échantillonnage était répété, ~95 % des intervalles ainsi construits contiendraient le vrai taux. »"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-014",
+      "chapitre": 3,
+      "section": "3.10",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire des tests d'hypothèse",
+      "motsCles": [
+        "test-hypothese",
+        "bilateral"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un professeur veut tester si la moyenne d'une classe de mathématiques diffère de la moyenne provinciale de 75 %. Formule $H_0$ et $H_1$, et indique le type de test."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$H_0 : \\mu = 75$ ; $H_1 : \\mu \\neq 75$ (test bilatéral)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$H_0$ (aucune différence) : $\\mu = 75$.",
+            "$H_1$ (ce qu'on cherche à établir) : $\\mu \\neq 75$ (différence dans un sens ou l'autre).",
+            "Type : bilatéral (rejet possible des deux côtés)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-021",
+      "chapitre": 3,
+      "section": "3.15",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Test d'hypothèse pour une proportion",
+      "motsCles": [
+        "test-proportion",
+        "unilateral"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une usine annonce un taux de défauts $p_0 = 2\\,\\%$. Un contrôleur prélève $n = 400$ pièces et trouve 14 défectueuses. Teste au seuil 5 % si le vrai taux dépasse 2 %."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$z \\approx 2{,}14$ ; rejeter $H_0$. Taux réel significativement supérieur à 2 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$H_0 : p = 0{,}02$ ; $H_1 : p > 0{,}02$.",
+            "Conditions : $np_0 = 8 \\geq 5$ ✓ ; $n(1 - p_0) = 392 \\geq 5$ ✓.",
+            "$\\hat{p} = 14/400 = 0{,}035$.",
+            "$z = (0{,}035 - 0{,}02)/\\sqrt{0{,}02 \\times 0{,}98/400} = 0{,}015/0{,}007 \\approx 2{,}14$.",
+            "$z_{0{,}05} = 1{,}645$.",
+            "$2{,}14 > 1{,}645$ → rejeter $H_0$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-003",
+      "chapitre": 3,
+      "section": "3.8",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Formule de l'IC (moyenne, petit échantillon)",
+      "motsCles": [
+        "ic-student",
+        "limites",
+        "discussion"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un biochimiste mesure la concentration d'une enzyme chez $n = 12$ lapins d'une nouvelle lignée : $\\bar{x} = 4{,}80$ µg/mL, $s = 0{,}45$ µg/mL. Construis l'IC à 95 % pour $\\mu$ ($t_{0{,}025\\,;11} = 2{,}201$) et discute des limites de validité."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{IC}_{95\\,\\%} \\approx [4{,}51\\,; 5{,}09]$ µg/mL. Limites : hypothèse de normalité, petit $n$, généralisation restreinte."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\nu = 11$ ddl.",
+            "$E = 2{,}201 \\times 0{,}45/\\sqrt{12} \\approx 0{,}286$.",
+            "IC = $[4{,}514\\,; 5{,}086]$.",
+            "Limites : (1) hypothèse de normalité de la population à vérifier ; (2) petit échantillon → intervalle assez large ; (3) résultat valable seulement pour cette lignée particulière."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-004",
+      "chapitre": 3,
+      "section": "3.9",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Intervalle de confiance pour une proportion",
+      "motsCles": [
+        "ic-proportion",
+        "taille-echantillon",
+        "cas-defavorable"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On veut estimer par IC à 95 % la proportion d'électeurs favorables à un référendum avec une marge d'erreur d'au plus 2 %. Sans idée préalable de $\\hat{p}$, quelle taille minimale d'échantillon faut-il ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$n \\geq 2\\,401$ personnes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Sans information sur $p$, on utilise le cas défavorable $p = 0{,}5$ qui maximise $p(1-p) = 0{,}25$.",
+            "$n = (z/E)^2 \\cdot p(1-p) = (1{,}96/0{,}02)^2 \\times 0{,}25 = 9\\,604 \\times 0{,}25 = 2\\,401$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-002",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "tcl",
+        "seuil"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Selon le théorème central limite, à quelle taille d'échantillon la moyenne $\\overline{X}$ devient-elle approximativement normale, même pour une population non normale ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$n \\geq 5$"
+            },
+            {
+              "cle": "b",
+              "texte": "$n \\geq 15$"
+            },
+            {
+              "cle": "c",
+              "texte": "$n \\geq 30$"
+            },
+            {
+              "cle": "d",
+              "texte": "$n \\geq 100$"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$n \\geq 30$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Seuil pratique : $n \\geq 30$.",
+            "En deçà, il faut soit une population déjà normale, soit un outil différent (Student)."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-005",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Formule de l'intervalle de confiance (moyenne, grand échantillon)",
+      "motsCles": [
+        "valeur-critique",
+        "z"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour un IC à 95 %, quelle est la valeur critique $z_{\\alpha/2}$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "1,645"
+            },
+            {
+              "cle": "b",
+              "texte": "1,96"
+            },
+            {
+              "cle": "c",
+              "texte": "2,33"
+            },
+            {
+              "cle": "d",
+              "texte": "2,576"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "1,96"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "À 95 %, $\\alpha/2 = 0{,}025 \\Rightarrow z_{0{,}025} = 1{,}96$.",
+            "Autres : 90 % → 1,645 ; 99 % → 2,576."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-006",
+      "chapitre": 3,
+      "section": "3.10",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire des tests d'hypothèse",
+      "motsCles": [
+        "test-hypothese",
+        "H0"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un fabricant prétend que la masse moyenne de sa population de boîtes vaut 500 g. On veut tester cette prétention. Quelle est l'hypothèse nulle $H_0$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$H_0 : \\mu \\neq 500$"
+            },
+            {
+              "cle": "b",
+              "texte": "$H_0 : \\mu = 500$"
+            },
+            {
+              "cle": "c",
+              "texte": "$H_0 : \\mu < 500$"
+            },
+            {
+              "cle": "d",
+              "texte": "$H_0 : \\mu > 500$"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$H_0 : \\mu = 500$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$H_0$ contient toujours l'égalité et représente la « situation par défaut » à réfuter.",
+            "Les inégalités appartiennent à $H_1$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-007",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "tcl",
+        "probabilite"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une population a $\\mu = 100$ et $\\sigma = 20$. On prélève $n = 64$. Quelle est $P(\\overline{X} < 95)$ ? ($\\Phi(2) = 0{,}9772$.)",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "0,0228"
+            },
+            {
+              "cle": "b",
+              "texte": "0,4013"
+            },
+            {
+              "cle": "c",
+              "texte": "0,5987"
+            },
+            {
+              "cle": "d",
+              "texte": "0,9772"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "0,0228"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\sigma_{\\overline{X}} = 20/\\sqrt{64} = 2{,}5$.",
+            "$z = (95-100)/2{,}5 = -2$.",
+            "$P(\\overline{X} < 95) = P(Z < -2) = 1 - \\Phi(2) = 0{,}0228$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": true
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-010",
+      "chapitre": 3,
+      "section": "3.9",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Intervalle de confiance pour une proportion",
+      "motsCles": [
+        "ic-proportion",
+        "erreur-type"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Sur $n = 400$ personnes interrogées, on observe $\\hat{p} = 0{,}30$. Quelle est l'erreur type $\\sigma_{\\hat{P}}$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "0,0023"
+            },
+            {
+              "cle": "b",
+              "texte": "0,023"
+            },
+            {
+              "cle": "c",
+              "texte": "0,046"
+            },
+            {
+              "cle": "d",
+              "texte": "0,21"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "0,023"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\sigma_{\\hat{P}} = \\sqrt{\\hat{p}(1-\\hat{p})/n} = \\sqrt{0{,}3 \\times 0{,}7/400} = \\sqrt{0{,}000525} \\approx 0{,}023$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-011",
+      "chapitre": 3,
+      "section": "3.10",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire des tests d'hypothèse",
+      "motsCles": [
+        "type-test",
+        "unilateral"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un chercheur veut prouver qu'un nouveau médicament AUGMENTE la performance moyenne d'un test cognitif. Quel type de test faut-il utiliser ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Bilatéral"
+            },
+            {
+              "cle": "b",
+              "texte": "Unilatéral à droite"
+            },
+            {
+              "cle": "c",
+              "texte": "Unilatéral à gauche"
+            },
+            {
+              "cle": "d",
+              "texte": "Test de Student uniquement"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Unilatéral à droite"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$H_1 : \\mu > \\mu_0$ (amélioration) → unilatéral à droite.",
+            "Bilatéral pour $\\neq$, gauche pour $<$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-qcm-014",
+      "chapitre": 3,
+      "section": "3.13",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Exemples résolus (test moyenne, grand échantillon)",
+      "motsCles": [
+        "test-moyenne",
+        "statistique-test"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On teste $H_0 : \\mu = 50$ vs $H_1 : \\mu \\neq 50$ avec $n = 64$, $\\bar{x} = 52$, $s = 8$. Quelle est la statistique $z$ observée ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "0,25"
+            },
+            {
+              "cle": "b",
+              "texte": "2,00"
+            },
+            {
+              "cle": "c",
+              "texte": "4,00"
+            },
+            {
+              "cle": "d",
+              "texte": "16,00"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "2,00"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$z = (\\bar{x} - \\mu_0)/(s/\\sqrt{n}) = (52 - 50)/(8/\\sqrt{64}) = 2/1 = 2$.",
+            "L'option (c) oublie la division par $\\sqrt{n}$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-vf-005",
+      "chapitre": 3,
+      "section": "3.10",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire des tests d'hypothèse",
+      "motsCles": [
+        "H1",
+        "H0"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "L'hypothèse alternative $H_1$ contient toujours un signe d'égalité.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "C'est $H_0$ qui contient toujours l'égalité ($\\mu = \\mu_0$).",
+            "$H_1$ contient un signe de $\\neq$, $<$ ou $>$ (test bilatéral ou unilatéral)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-vf-011",
+      "chapitre": 3,
+      "section": "3.12",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Approche par la valeur p",
+      "motsCles": [
+        "valeur-p",
+        "interpretation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une petite valeur $p$ (par exemple 0,001) signifie qu'il y a une grande probabilité que $H_1$ soit vraie.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "La valeur $p$ est $P(\\text{observer aussi extrême} \\mid H_0 \\text{ vraie})$, et non $P(H_1 \\text{ vraie})$.",
+            "Une petite valeur $p$ indique une forte incompatibilité entre les données et $H_0$, mais ne quantifie pas directement la probabilité de $H_1$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-vf-014",
+      "chapitre": 3,
+      "section": "3.12",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Approche par la valeur p",
+      "motsCles": [
+        "signification-pratique",
+        "piege"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une différence statistiquement significative est toujours importante en pratique.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "Avec un très grand échantillon, on peut détecter des différences infimes et statistiquement significatives, mais cliniquement ou pratiquement négligeables (ex. 0,05 mm Hg de tension).",
+            "Toujours distinguer signification statistique et importance pratique."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch03-vf-016",
+      "chapitre": 3,
+      "section": "3.13",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Exemples résolus (test moyenne, grand échantillon)",
+      "motsCles": [
+        "cote-z",
+        "probabilite"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une cote $z$ observée de 3 dans un test correspond à une probabilité unilatérale d'environ 0,15 % sous $H_0$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "$P(Z > 3) \\approx 0{,}00135 \\approx 0{,}15\\,\\%$.",
+            "C'est un résultat très rare sous $H_0$ (moins d'une chance sur 700).",
+            "Un tel $z$ conduit à rejeter $H_0$ à tous les seuils usuels."
+          ]
+        }
+      ]
+    }
+  ]
 }

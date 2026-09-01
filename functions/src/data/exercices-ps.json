@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "c1ca6b1d8f92a506",
+  "contentHash": "260ad350d63962b0",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -156,7 +156,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Types de variables",
       "motsCles": [
         "types-variables",
@@ -196,7 +196,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire de base",
       "motsCles": [
         "vocabulaire",
@@ -336,7 +336,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Distribution de fréquences",
       "motsCles": [
         "frequences",
@@ -404,7 +404,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Regroupement en classes (variables continues)",
       "motsCles": [
         "regroupement-classes",
@@ -474,7 +474,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Tableau à double entrée",
       "motsCles": [
         "tableau-double-entree",
@@ -1067,7 +1067,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Distribution de fréquences",
       "motsCles": [
         "frequences",
@@ -1173,7 +1173,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Regroupement en classes (variables continues)",
       "motsCles": [
         "regroupement-classes",
@@ -1209,7 +1209,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Regroupement en classes (variables continues)",
       "motsCles": [
         "regroupement-classes",
@@ -1565,7 +1565,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Étendue",
       "motsCles": [
         "dispersion",
@@ -1599,7 +1599,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Écart-type (données brutes, échantillon)",
       "motsCles": [
         "dispersion",
@@ -1713,7 +1713,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Mesure de position : la cote z",
       "motsCles": [
         "cote-z",
@@ -1750,7 +1750,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Mesure de position : la cote z",
       "motsCles": [
         "cote-z",
@@ -1933,7 +1933,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Mesures de tendance centrale",
       "motsCles": [
         "tendance-centrale",
@@ -2042,7 +2042,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Choisir le bon graphique",
       "motsCles": [
         "choix-graphique",
@@ -2410,7 +2410,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Types de variables",
       "motsCles": [
         "types-variables",
@@ -2551,7 +2551,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Regroupement en classes (variables continues)",
       "motsCles": [
         "regroupement-classes",
@@ -2763,7 +2763,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire de base",
       "motsCles": [
         "vocabulaire",
@@ -2974,7 +2974,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Tableau à double entrée",
       "motsCles": [
         "tableau-double-entree",
@@ -3190,7 +3190,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Types de variables",
       "motsCles": [
         "types-variables",
@@ -3335,7 +3335,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Écart-type (données brutes, échantillon)",
       "motsCles": [
         "dispersion",
@@ -3480,7 +3480,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire de base",
       "motsCles": [
         "vocabulaire",
@@ -3665,7 +3665,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Mesures de tendance centrale",
       "motsCles": [
         "tendance-centrale",
@@ -4034,7 +4034,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Mesures de tendance centrale",
       "motsCles": [
         "tendance-centrale",
@@ -4222,7 +4222,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Expériences aléatoires et vocabulaire",
       "motsCles": [
         "vocabulaire",
@@ -4558,7 +4558,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche classique : équiprobabilité",
       "motsCles": [
         "equiprobabilite",
@@ -4593,7 +4593,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche classique : équiprobabilité",
       "motsCles": [
         "equiprobabilite",
@@ -4728,7 +4728,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Probabilité conditionnelle",
       "motsCles": [
         "probabilite-conditionnelle",
@@ -4862,7 +4862,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Espérance, variance, écart-type",
       "motsCles": [
         "esperance",
@@ -5379,7 +5379,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Choix de la bonne formule",
       "motsCles": [
         "choix-formule",
@@ -5448,7 +5448,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche classique : équiprobabilité",
       "motsCles": [
         "equiprobabilite",
@@ -5517,7 +5517,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Probabilité conditionnelle",
       "motsCles": [
         "probabilite-conditionnelle",
@@ -5948,7 +5948,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Expériences aléatoires et vocabulaire",
       "motsCles": [
         "arrangement",
@@ -6312,7 +6312,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
       "motsCles": [
         "loi-normale",
@@ -6426,7 +6426,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche classique : équiprobabilité",
       "motsCles": [
         "equiprobabilite",
@@ -6777,7 +6777,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche classique : équiprobabilité",
       "motsCles": [
         "equiprobabilite",
@@ -6847,7 +6847,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Événements indépendants",
       "motsCles": [
         "independance",
@@ -6918,7 +6918,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Expériences aléatoires et vocabulaire",
       "motsCles": [
         "vocabulaire",
@@ -6988,7 +6988,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Arrangements (permutations partielles)",
       "motsCles": [
         "arrangement"
@@ -7204,7 +7204,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Axiomes de Kolmogorov",
       "motsCles": [
         "kolmogorov",
@@ -7848,7 +7848,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Densité et propriétés (loi normale)",
       "motsCles": [
         "loi-normale",
@@ -8031,7 +8031,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Exemples résolus (loi binomiale)",
       "motsCles": [
         "binomiale",
@@ -8076,7 +8076,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Densité et propriétés (loi normale)",
       "motsCles": [
         "loi-normale",
@@ -8257,7 +8257,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
       "motsCles": [
         "cote-z",
@@ -8493,7 +8493,7 @@
       "section": "2.1",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Expériences aléatoires et vocabulaire",
       "motsCles": [
         "univers",
@@ -8781,7 +8781,7 @@
       "section": "2.3",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Principe d'addition",
       "motsCles": [
         "inclusion-exclusion",
@@ -8827,7 +8827,7 @@
       "section": "2.3",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Principe d'addition",
       "motsCles": [
         "inclusion-exclusion",
@@ -9338,7 +9338,7 @@
       "section": "2.6",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Arrangements (permutations partielles)",
       "motsCles": [
         "arrangements",
@@ -9589,7 +9589,7 @@
       "section": "2.8",
       "type": "qcm",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Choix de la bonne formule",
       "motsCles": [
         "reconnaissance d'outil",
@@ -9775,7 +9775,7 @@
       "section": "2.9",
       "type": "qcm",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche classique : équiprobabilité",
       "motsCles": [
         "équiprobabilité",
@@ -10301,7 +10301,7 @@
       "section": "2.11",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Probabilité conditionnelle",
       "motsCles": [
         "probabilité conditionnelle",
@@ -10354,7 +10354,7 @@
       "section": "2.12",
       "type": "vrai-faux",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Événements indépendants",
       "motsCles": [
         "indépendance",
@@ -10499,7 +10499,7 @@
       "section": "2.12",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Événements indépendants",
       "motsCles": [
         "indépendance",
@@ -10868,7 +10868,7 @@
       "section": "2.14",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Loi (fonction de masse) d'une v.a. discrète",
       "motsCles": [
         "variable aléatoire",
@@ -11115,7 +11115,7 @@
       "section": "2.16",
       "type": "vrai-faux",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Conditions d'application (loi binomiale)",
       "motsCles": [
         "loi binomiale",
@@ -11644,7 +11644,7 @@
       "section": "2.18",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Densité et propriétés (loi normale)",
       "motsCles": [
         "loi normale",
@@ -11829,7 +11829,7 @@
       "section": "2.19",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Loi normale centrée réduite",
       "motsCles": [
         "standardisation",
@@ -11880,7 +11880,7 @@
       "section": "2.20",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
       "motsCles": [
         "table",
@@ -12163,7 +12163,7 @@
       "section": "2.21",
       "type": "qcm",
       "difficulte": "difficile",
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Valeurs critiques : problème inverse",
       "motsCles": [
         "problème inverse",
@@ -12527,7 +12527,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Formule de l'intervalle de confiance (moyenne, grand échantillon)",
       "motsCles": [
         "valeur-critique",
@@ -12631,7 +12631,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Formule de l'IC (moyenne, petit échantillon)",
       "motsCles": [
         "ic-moyenne",
@@ -12871,7 +12871,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Exemples résolus (test moyenne, grand échantillon)",
       "motsCles": [
         "statistique-test",
@@ -13007,7 +13007,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test d'hypothèse pour la moyenne — petit échantillon",
       "motsCles": [
         "test-moyenne",
@@ -13178,7 +13178,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Théorème central limite",
       "motsCles": [
         "tcl",
@@ -13359,7 +13359,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Interprétation rigoureuse d'un IC",
       "motsCles": [
         "interpretation",
@@ -13578,7 +13578,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire des tests d'hypothèse",
       "motsCles": [
         "test-hypothese",
@@ -13834,7 +13834,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test d'hypothèse pour une proportion",
       "motsCles": [
         "test-proportion",
@@ -14088,7 +14088,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Formule de l'IC (moyenne, petit échantillon)",
       "motsCles": [
         "ic-student",
@@ -14125,7 +14125,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Intervalle de confiance pour une proportion",
       "motsCles": [
         "ic-proportion",
@@ -14640,7 +14640,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Théorème central limite",
       "motsCles": [
         "tcl",
@@ -14849,7 +14849,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Formule de l'intervalle de confiance (moyenne, grand échantillon)",
       "motsCles": [
         "valeur-critique",
@@ -14919,7 +14919,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire des tests d'hypothèse",
       "motsCles": [
         "test-hypothese",
@@ -14989,7 +14989,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Théorème central limite",
       "motsCles": [
         "tcl",
@@ -15200,7 +15200,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Intervalle de confiance pour une proportion",
       "motsCles": [
         "ic-proportion",
@@ -15269,7 +15269,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire des tests d'hypothèse",
       "motsCles": [
         "type-test",
@@ -15481,7 +15481,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Exemples résolus (test moyenne, grand échantillon)",
       "motsCles": [
         "test-moyenne",
@@ -15870,7 +15870,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Vocabulaire des tests d'hypothèse",
       "motsCles": [
         "H1",
@@ -16140,7 +16140,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche par la valeur p",
       "motsCles": [
         "valeur-p",
@@ -16276,7 +16276,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Approche par la valeur p",
       "motsCles": [
         "signification-pratique",
@@ -16366,7 +16366,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Exemples résolus (test moyenne, grand échantillon)",
       "motsCles": [
         "cote-z",
@@ -16582,7 +16582,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Corrélation linéaire",
       "motsCles": [
         "correlation",
@@ -16717,7 +16717,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -16855,7 +16855,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -17094,7 +17094,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -17128,7 +17128,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -17303,7 +17303,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Corrélation linéaire",
       "motsCles": [
         "correlation",
@@ -17689,7 +17689,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -17864,7 +17864,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -17968,7 +17968,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -18004,7 +18004,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -18253,7 +18253,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Corrélation linéaire",
       "motsCles": [
         "correlation",
@@ -18431,7 +18431,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -18469,7 +18469,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -18895,7 +18895,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -19244,7 +19244,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -19382,7 +19382,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Test du khi-carré",
       "motsCles": [
         "khi-carre",
@@ -19592,7 +19592,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -19804,7 +19804,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Corrélation linéaire",
       "motsCles": [
         "correlation",
@@ -20029,7 +20029,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Corrélation linéaire",
       "motsCles": [
         "correlation",
@@ -20119,7 +20119,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",
@@ -20346,7 +20346,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
+      "acces": "gratuit",
       "sectionNotes": "Régression linéaire",
       "motsCles": [
         "regression",

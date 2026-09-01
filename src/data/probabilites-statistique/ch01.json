@@ -2,5 +2,1076 @@
   "chapitre": 1,
   "titre": "Statistiques descriptives",
   "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
-  "exercices": []
+  "exercices": [
+    {
+      "id": "ch01-fac-005",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "qualitative",
+        "nominale",
+        "code-numerique",
+        "piege"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans un marathon, chaque coureur porte un dossard numéroté de 1 à 500. Cette variable (le numéro de dossard) est-elle qualitative ou quantitative ? Justifie ta réponse."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Qualitative nominale. Même si les dossards sont représentés par des chiffres, ce ne sont que des étiquettes : additionner ou moyenner deux numéros de dossards n'a aucun sens."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Un code numérique n'est pas automatiquement une variable quantitative.",
+            "Le test à se rappeler : « est-ce que faire la moyenne aurait du sens ? ».",
+            "Ici, la moyenne du dossard n°42 et du dossard n°318 (soit 180) ne représente rien de significatif.",
+            "Les dossards servent uniquement à identifier les coureurs, sans ordre ni relation arithmétique.",
+            "C'est donc une variable qualitative nominale."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-006",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "population",
+        "echantillon",
+        "variable"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un climatologue veut connaître la profondeur moyenne des 320 lacs de plus de 1 km² du parc national de la Mauricie. Il en visite 40 choisis au hasard et mesure la profondeur maximale de chacun. Identifie la population, l'échantillon et la variable étudiée."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Population : les 320 lacs de plus de 1 km² du parc. Échantillon : les 40 lacs visités. Variable : la profondeur maximale."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La population regroupe tous les individus visés par l'étude (les 320 lacs concernés).",
+            "L'échantillon est le sous-ensemble effectivement observé (les 40 lacs visités).",
+            "La variable est la caractéristique mesurée sur chaque unité, soit la profondeur maximale."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-010",
+      "chapitre": 1,
+      "section": "1.3",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Distribution de fréquences",
+      "motsCles": [
+        "frequences",
+        "frequence-cumulee"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une étude sur les revenus annuels d'un groupe, les fréquences relatives des 4 premières classes de revenus sont 12 %, 25 %, 30 % et 20 %. Quelle est la fréquence relative cumulée jusqu'à la 4ᵉ classe (incluse) ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "87 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La fréquence relative cumulée est la somme des fréquences relatives des classes précédentes et de la classe considérée : 12 + 25 + 30 + 20 = 87 %."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-012",
+      "chapitre": 1,
+      "section": "1.4",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Regroupement en classes (variables continues)",
+      "motsCles": [
+        "regroupement-classes",
+        "amplitude",
+        "etendue"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un chercheur veut regrouper en 5 classes d'amplitude égale les tailles de 80 plants d'épinette, qui varient de 15 cm à 65 cm. Quelle amplitude minimale doit avoir chaque classe ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "10 cm."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'étendue est $E = x_{\\max} - x_{\\min} = 65 - 15 = 50$ cm.",
+            "L'amplitude minimale par classe est $A = E/k = 50/5 = 10$ cm.",
+            "Ici, 10 cm est déjà un nombre commode, on peut le garder tel quel."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-014",
+      "chapitre": 1,
+      "section": "1.5",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Tableau à double entrée",
+      "motsCles": [
+        "tableau-double-entree",
+        "lecture"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un sondage auprès de 100 étudiants croise le sexe et le programme d'études. On relève : 22 femmes en biologie, 18 femmes en chimie, 15 hommes en biologie et 45 hommes en chimie. Combien d'étudiants au total sont inscrits en biologie ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "37 étudiants."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le total en biologie s'obtient en additionnant les femmes en biologie et les hommes en biologie : 22 + 15 = 37 étudiants."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-006",
+      "chapitre": 1,
+      "section": "1.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Distribution de fréquences",
+      "motsCles": [
+        "frequences",
+        "frequence-cumulee",
+        "effectifs",
+        "ordinale"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Sur 100 étudiants, la répartition des mentions à un examen est : Échec 5 %, Passable 25 %, Bien 45 %, Très bien 25 %. (a) Calcule les effectifs absolus. (b) Calcule les fréquences relatives cumulées (dans l'ordre Échec → Très bien). (c) Quelle proportion d'étudiants a obtenu au moins « Bien » ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Échec : 5, Passable : 25, Bien : 45, Très bien : 25. (b) 5 %, 30 %, 75 %, 100 %. (c) 70 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "(a) L'effectif absolu se calcule par $n_i = f_i \\times n$ : 0,05 × 100 = 5 ; 0,25 × 100 = 25 ; 0,45 × 100 = 45 ; 0,25 × 100 = 25. (b) La fréquence cumulée s'obtient par sommes successives : 5, 5+25=30, 30+45=75, 75+25=100. (c) « Au moins Bien » = Bien + Très bien = 45 % + 25 % = 70 %."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-009",
+      "chapitre": 1,
+      "section": "1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Regroupement en classes (variables continues)",
+      "motsCles": [
+        "regroupement-classes",
+        "construction",
+        "amplitude"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Les longueurs (en mm) de 20 fossiles sont : 12, 18, 25, 30, 14, 22, 28, 16, 20, 35, 27, 33, 15, 21, 26, 29, 32, 19, 24, 31. Détermine l'étendue et propose 5 classes d'amplitude égale."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Étendue = 23 mm ; amplitude par classe = 5 mm ; classes : [12 ; 17), [17 ; 22), [22 ; 27), [27 ; 32), [32 ; 37)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$x_{\\max} = 35$ et $x_{\\min} = 12$, donc $E = 35 - 12 = 23$ mm.",
+            "Amplitude minimale : $A = E/k = 23/5 = 4{,}6$ mm, qu'on arrondit vers le haut à 5 mm (nombre commode).",
+            "Les classes commencent à 12 : [12 ; 17), [17 ; 22), [22 ; 27), [27 ; 32), [32 ; 37)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-010",
+      "chapitre": 1,
+      "section": "1.4",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Regroupement en classes (variables continues)",
+      "motsCles": [
+        "regroupement-classes",
+        "frequence-relative",
+        "frequence-cumulee"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un tableau donne les effectifs de 60 échantillons de sol répartis par pH : [6,0 ; 6,5) : 8 ; [6,5 ; 7,0) : 15 ; [7,0 ; 7,5) : 22 ; [7,5 ; 8,0) : 10 ; [8,0 ; 8,5) : 5. Calcule les fréquences relatives et les fréquences relatives cumulées (arrondies au dixième de %)."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Fréquences relatives : 13,3 %, 25,0 %, 36,7 %, 16,7 %, 8,3 %. Cumulées : 13,3 %, 38,3 %, 75,0 %, 91,7 %, 100,0 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Fréquences relatives : chaque effectif divisé par 60. 8/60 ≈ 13,3 %, 15/60 = 25,0 %, 22/60 ≈ 36,7 %, 10/60 ≈ 16,7 %, 5/60 ≈ 8,3 %.",
+            "Cumulées : sommes successives : 13,3 ; 13,3+25,0=38,3 ; 38,3+36,7=75,0 ; 75,0+16,7=91,7 ; 91,7+8,3=100,0."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-020",
+      "chapitre": 1,
+      "section": "1.8",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Étendue",
+      "motsCles": [
+        "dispersion",
+        "etendue",
+        "conversion-unites"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Les températures relevées chez 5 patients sont : 37,2 °C ; 38,5 °C ; 36,8 °C ; 39,1 °C ; 37,5 °C. (a) Quelle est l'étendue en °C ? (b) Exprime cette étendue en degrés Fahrenheit (formule de conversion d'un écart : $\\Delta F = \\dfrac{9}{5} \\Delta C$)."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) 2,3 °C. (b) 4,14 °F."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "(a) $E = x_{\\max} - x_{\\min} = 39{,}1 - 36{,}8 = 2{,}3$ °C. (b) On convertit un écart de température (pas d'ajout de 32) : $2{,}3 \\times 9/5 = 4{,}14$ °F."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-021",
+      "chapitre": 1,
+      "section": "1.9",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Écart-type (données brutes, échantillon)",
+      "motsCles": [
+        "dispersion",
+        "ecart-type",
+        "interpretation",
+        "comparaison"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Deux groupes d'étudiants ont la même moyenne $\\bar{x} = 74$ mais des écarts-types différents : groupe A avec $s = 5$, groupe B avec $s = 15$. Compare les deux groupes en une ou deux phrases."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Le groupe A est plus régulier : ses valeurs s'écartent en moyenne de 5 unités de la moyenne, contre 15 pour le groupe B. Le groupe B est trois fois plus dispersé."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'écart-type mesure la dispersion autour de la moyenne.",
+            "Un petit écart-type signifie que les valeurs sont regroupées autour de la moyenne (groupe A), tandis qu'un grand écart-type indique une forte dispersion (groupe B).",
+            "Avec la même moyenne, on peut dire que le groupe A est plus « prévisible » et le groupe B plus « variable »."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-024",
+      "chapitre": 1,
+      "section": "1.10",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Mesure de position : la cote z",
+      "motsCles": [
+        "cote-z",
+        "comparaison",
+        "standardisation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Marie a obtenu 78 % à un test de biologie dont la moyenne du groupe est 65 et l'écart-type 10. Jean a obtenu 82 % à un test de chimie dont la moyenne du groupe est 75 et l'écart-type 6. Qui a mieux performé par rapport à son groupe ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Marie a mieux performé (cote z ≈ 1,30 contre 1,17 pour Jean)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Cote $z$ de Marie : $z_M = (78-65)/10 = 1{,}3$.",
+            "Cote $z$ de Jean : $z_J = (82-75)/6 \\approx 1{,}17$.",
+            "Marie se situe à 1,30 écart-type au-dessus de la moyenne de son groupe, alors que Jean n'est qu'à 1,17 écart-type au-dessus.",
+            "Marie a donc mieux performé par rapport à son groupe, même si Jean a une note brute plus élevée."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-025",
+      "chapitre": 1,
+      "section": "1.10",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Mesure de position : la cote z",
+      "motsCles": [
+        "cote-z",
+        "conversion-inverse",
+        "interpretation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans un groupe où la moyenne des notes est 68 et l'écart-type 8, quel score brut correspond à une cote $z = -1{,}5$ ? Interprète ce que cela signifie pour l'étudiant."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$x = 56$. L'étudiant est à 1,5 écart-type sous la moyenne (résultat en dessous, mais pas encore dans la zone atypique)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On isole $x$ dans la formule : $z = (x - \\bar{x})/s$ donne $x = \\bar{x} + z \\cdot s = 68 + (-1{,}5)(8) = 68 - 12 = 56$.",
+            "L'étudiant a obtenu 56, soit 1,5 écart-type sous la moyenne du groupe.",
+            "Comme $|z| < 2$, ce n'est pas considéré comme atypique, mais il se situe clairement dans la partie basse de la distribution."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-dif-005",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Mesures de tendance centrale",
+      "motsCles": [
+        "tendance-centrale",
+        "asymetrie",
+        "distribution",
+        "choix-mesure"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "L'histogramme des revenus annuels d'une population montre une distribution très asymétrique à droite (longue queue à droite). (a) La moyenne sera-t-elle plus grande, plus petite ou égale à la médiane ? (b) Quelle mesure privilégier pour représenter le « revenu typique » ? Justifie."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Moyenne > médiane. (b) La médiane est plus représentative du revenu typique car elle est robuste aux valeurs extrêmes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "(a) Dans une distribution asymétrique à droite, la queue tire la moyenne vers les grandes valeurs, alors que la médiane reste au milieu de la distribution.",
+            "On a donc systématiquement $\\bar{x} > \\text{Me}$. (b) La médiane représente mieux le revenu typique parce qu'elle n'est pas influencée par une minorité de très hauts revenus."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-dif-008",
+      "chapitre": 1,
+      "section": "1.6",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Choisir le bon graphique",
+      "motsCles": [
+        "choix-graphique",
+        "graphique-trompeur",
+        "axe-tronque"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un magazine publie un graphique à bandes comparant les ventes 2022 (500 000 $) et 2023 (550 000 $) d'une entreprise. La barre de 2023 paraît environ deux fois plus grande que celle de 2022. Quel est le problème et comment le corriger ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "L'axe des Y est tronqué (il ne part pas de 0), ce qui exagère visuellement une croissance réelle de seulement 10 %. Correction : étendre l'axe Y à 0 pour rendre les hauteurs proportionnelles."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La croissance réelle est de $\\dfrac{550\\,000 - 500\\,000}{500\\,000} = 10\\,\\%$, mais un axe tronqué (par exemple, commençant à 480 000 $) rend la différence proportionnellement énorme.",
+            "Cette pratique est trompeuse.",
+            "Correction : commencer l'axe Y à 0.",
+            "Sinon, indiquer explicitement la troncature et l'échelle utilisée."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-002",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "quantitative",
+        "continue"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le poids d'un colis (en kg) est une variable :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Qualitative nominale"
+            },
+            {
+              "cle": "b",
+              "texte": "Qualitative ordinale"
+            },
+            {
+              "cle": "c",
+              "texte": "Quantitative discrète"
+            },
+            {
+              "cle": "d",
+              "texte": "Quantitative continue"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Quantitative continue"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le poids est un nombre → quantitatif.",
+            "Il provient d'une mesure sur un intervalle continu (2,3 kg, 2,315 kg…) → continu."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-004",
+      "chapitre": 1,
+      "section": "1.4",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Regroupement en classes (variables continues)",
+      "motsCles": [
+        "regroupement-classes",
+        "amplitude"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour construire une distribution en 5 classes d'amplitude égale à partir de données allant de 0 à 100, quelle amplitude minimale doit avoir chaque classe ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "5"
+            },
+            {
+              "cle": "b",
+              "texte": "10"
+            },
+            {
+              "cle": "c",
+              "texte": "20"
+            },
+            {
+              "cle": "d",
+              "texte": "25"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "20"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$E = 100 - 0 = 100$.",
+            "$A = E/k = 100/5 = 20$.",
+            "Une amplitude plus petite ne couvre pas toute l'étendue en 5 classes."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-007",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "biais-selection",
+        "representativite"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un sondage en ligne diffusé sur Instagram récolte 5000 réponses de jeunes de 15 à 25 ans sur leur usage des écrans. Ce sondage souffre principalement de :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Une taille d'échantillon insuffisante"
+            },
+            {
+              "cle": "b",
+              "texte": "Un biais de sélection (auto-sélection)"
+            },
+            {
+              "cle": "c",
+              "texte": "Une variable mal définie"
+            },
+            {
+              "cle": "d",
+              "texte": "Aucun problème, l'échantillon est représentatif"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Un biais de sélection (auto-sélection)"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'échantillon est auto-sélectionné : seuls les jeunes actifs sur Instagram et intéressés par le sujet répondent, ce qui surreprésente les grands utilisateurs d'écrans. 5000 n'est pas insuffisant — c'est la méthode qui pose problème."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-010",
+      "chapitre": 1,
+      "section": "1.5",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Tableau à double entrée",
+      "motsCles": [
+        "tableau-double-entree",
+        "proportion-conditionnelle"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans un groupe de 200 personnes : 80 femmes (dont 30 fument) et 120 hommes (dont 45 fument). La proportion de fumeurs parmi les hommes est :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "22,5 %"
+            },
+            {
+              "cle": "b",
+              "texte": "37,5 %"
+            },
+            {
+              "cle": "c",
+              "texte": "45 %"
+            },
+            {
+              "cle": "d",
+              "texte": "60 %"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "37,5 %"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On conditionne sur les hommes : 45 fumeurs / 120 hommes = 0,375 = 37,5 %.",
+            "L'option (a) confond avec 45/200 (proportion des hommes fumeurs dans le total)."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-013",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "code-numerique",
+        "piege"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un chercheur numérote ses échantillons de 1 à 100 pour les identifier. Il calcule la « moyenne des numéros d'échantillons ». Ce calcul :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Est valide, car les numéros sont quantitatifs"
+            },
+            {
+              "cle": "b",
+              "texte": "Est valide et donne 50, la médiane des identifiants"
+            },
+            {
+              "cle": "c",
+              "texte": "N'est pas valide : les numéros sont des étiquettes (qualitative nominale)"
+            },
+            {
+              "cle": "d",
+              "texte": "N'est valide que si les échantillons sont ordonnés chronologiquement"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "N'est pas valide : les numéros sont des étiquettes (qualitative nominale)"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Un code numérique n'est pas automatiquement quantitatif.",
+            "Les numéros servent d'identifiants — leur moyenne (50,5) n'a aucune signification.",
+            "Test à retenir : « Est-ce que la moyenne aurait du sens ? » → non, donc pas quantitatif."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-015",
+      "chapitre": 1,
+      "section": "1.9",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Écart-type (données brutes, échantillon)",
+      "motsCles": [
+        "dispersion",
+        "ecart-type",
+        "translation",
+        "invariance"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une variable X a $\\bar{x} = 50$ et $s = 10$. Si on ajoute 5 à chaque valeur, quelle est la nouvelle valeur de l'écart-type ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "5"
+            },
+            {
+              "cle": "b",
+              "texte": "10"
+            },
+            {
+              "cle": "c",
+              "texte": "15"
+            },
+            {
+              "cle": "d",
+              "texte": "55"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "10"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Une translation (ajouter la même constante) déplace la moyenne mais ne change pas la dispersion.",
+            "Chaque écart reste identique : $(x_i + 5) - (\\bar{x} + 5) = x_i - \\bar{x}$.",
+            "Donc $s = 10$ reste inchangé.",
+            "Seule la moyenne passe de 50 à 55."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-001",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "sondage",
+        "definition"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un sondage n'observe qu'une partie de la population.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "Par définition, un sondage observe seulement un échantillon.",
+            "C'est ce qui le distingue d'un recensement (qui observe toute la population)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-005",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Mesures de tendance centrale",
+      "motsCles": [
+        "tendance-centrale",
+        "moyenne",
+        "mediane",
+        "symetrie"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La médiane d'une série de données est toujours différente de la moyenne.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "Dans une distribution symétrique, la moyenne et la médiane sont égales.",
+            "Elles ne diffèrent typiquement que lorsque la distribution est asymétrique ou contient des valeurs extrêmes."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-013",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Mesures de tendance centrale",
+      "motsCles": [
+        "tendance-centrale",
+        "asymetrie",
+        "forme-distribution"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Si la distribution est asymétrique à droite (longue queue vers les grandes valeurs), la moyenne est plus grande que la médiane.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "La longue queue à droite tire la moyenne vers les grandes valeurs, alors que la médiane reste au centre de la majorité des observations.",
+            "On observe donc systématiquement moyenne > médiane.",
+            "L'inverse (moyenne < médiane) caractérise une asymétrie à gauche."
+          ]
+        }
+      ]
+    }
+  ]
 }

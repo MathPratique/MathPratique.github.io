@@ -2,5 +2,1786 @@
   "chapitre": 2,
   "titre": "Probabilités",
   "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
-  "exercices": []
+  "exercices": [
+    {
+      "id": "ch02-fac-001",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Expériences aléatoires et vocabulaire",
+      "motsCles": [
+        "vocabulaire",
+        "univers",
+        "de"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance un dé équilibré à 6 faces et on note le résultat. Quel est l'univers Ω de cette expérience aléatoire ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Ω = {1, 2, 3, 4, 5, 6}."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'univers Ω est l'ensemble de tous les résultats possibles.",
+            "Pour un dé à 6 faces : Ω = {1, 2, 3, 4, 5, 6}."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-fac-011",
+      "chapitre": 2,
+      "section": "2.9",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Approche classique : équiprobabilité",
+      "motsCles": [
+        "equiprobabilite",
+        "de"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un nombre strictement supérieur à 4 ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$P(A) = 1/3 \\approx 33{,}3\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Cas favorables : {5, 6}, soit 2 résultats.",
+            "$|\\Omega| = 6$.",
+            "Par équiprobabilité : $P(A) = 2/6 = 1/3$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-fac-012",
+      "chapitre": 2,
+      "section": "2.9",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Approche classique : équiprobabilité",
+      "motsCles": [
+        "equiprobabilite",
+        "cartes"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On tire une carte au hasard d'un jeu de 52 cartes. Quelle est la probabilité que ce soit un roi ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$P = 4/52 = 1/13 \\approx 7{,}7\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Il y a 4 rois sur 52 cartes.",
+            "$P(\\text{roi}) = 4/52 = 1/13$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-fac-016",
+      "chapitre": 2,
+      "section": "2.11",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Probabilité conditionnelle",
+      "motsCles": [
+        "probabilite-conditionnelle",
+        "intersection"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une classe, 60 % des étudiants ont une bonne note ; parmi eux, 30 % participent activement en classe. Quelle est la probabilité qu'un étudiant tiré au hasard ait à la fois une bonne note ET participe activement ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$0{,}18 = 18\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "On applique $P(A \\cap B) = P(A) \\times P(B \\mid A) = 0{,}60 \\times 0{,}30 = 0{,}18$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-fac-020",
+      "chapitre": 2,
+      "section": "2.15",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Espérance, variance, écart-type",
+      "motsCles": [
+        "esperance",
+        "calcul-direct"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une variable aléatoire X prend les valeurs 1, 2, 3 avec les probabilités 0,2, 0,5 et 0,3. Calcule $E(X)$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$E(X) = 2{,}1$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$E(X) = \\sum x_i \\cdot P(X = x_i) = 1(0{,}2) + 2(0{,}5) + 3(0{,}3) = 0{,}2 + 1{,}0 + 0{,}9 = 2{,}1$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-010",
+      "chapitre": 2,
+      "section": "2.8",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Choix de la bonne formule",
+      "motsCles": [
+        "choix-formule",
+        "scenarios"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour chaque scénario, dis si on utilise permutation, arrangement ou combinaison, et calcule : (a) former un mot de passe de 4 lettres distinctes parmi 26 ; (b) choisir 5 chansons parmi 10 pour une liste sans ordre ; (c) créer une playlist ordonnée de 5 chansons parmi 10."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Arrangement, $A^4_{26} = 358\\,800$ ; (b) combinaison, $C^5_{10} = 252$ ; (c) arrangement, $A^5_{10} = 30\\,240$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "(a) Ordre compte, sans répétition → arrangement. (b) Ordre ne compte pas → combinaison. (c) Ordre compte → arrangement."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-012",
+      "chapitre": 2,
+      "section": "2.9",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Approche classique : équiprobabilité",
+      "motsCles": [
+        "equiprobabilite",
+        "au-moins-un",
+        "complement"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance 3 dés équilibrés. Quelle est la probabilité d'obtenir au moins un 6 ? (Indice : passer par l'événement contraire.)"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$91/216 \\approx 42{,}1\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Événement contraire : « aucun 6 sur les 3 dés ».",
+            "Par indépendance : $P(\\text{aucun 6}) = (5/6)^3 = 125/216$.",
+            "Donc $P(\\text{au moins un 6}) = 1 - 125/216 = 91/216 \\approx 42{,}13\\,\\%$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-014",
+      "chapitre": 2,
+      "section": "2.11",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Probabilité conditionnelle",
+      "motsCles": [
+        "probabilite-conditionnelle",
+        "tableau-croise"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une école, on croise sexe et pratique d'un sport : 80 filles (dont 45 sportives) et 70 garçons (dont 55 sportifs). Calcule : (a) $P(\\text{sport})$ ; (b) $P(\\text{sport} \\mid \\text{fille})$ ; (c) $P(\\text{fille} \\mid \\text{sport})$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $2/3 \\approx 66{,}7\\,\\%$ ; (b) $56{,}25\\,\\%$ ; (c) $45\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Total = 150 personnes.",
+            "Sportifs = $45 + 55 = 100$. (a) $P(\\text{sport}) = 100/150 = 2/3$. (b) $P(\\text{sport} \\mid \\text{fille}) = 45/80 = 0{,}5625$. (c) $P(\\text{fille} \\mid \\text{sport}) = 45/100 = 0{,}45$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-001",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Expériences aléatoires et vocabulaire",
+      "motsCles": [
+        "arrangement",
+        "contre-intuitif",
+        "paradoxe-anniversaires"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une classe de 30 étudiants (sans jumeaux, chaque jour de l'année étant équiprobable), (a) écris l'expression exacte de la probabilité que tous les anniversaires soient distincts. (b) Discute du résultat surprenant qu'on obtient."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $P = A^{30}_{365} / 365^{30} \\approx 0{,}294$ ; (b) $P(\\text{au moins 2 mêmes}) \\approx 70{,}6\\,\\%$ — bien plus grand que l'intuition (paradoxe des anniversaires)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "(a) Le 1er anniversaire peut être n'importe quel jour (365/365), le 2ᵉ doit éviter le 1er (364/365), … le 30ᵉ doit éviter les 29 précédents (336/365).",
+            "$P = \\dfrac{365 \\times 364 \\times \\ldots \\times 336}{365^{30}} = \\dfrac{A^{30}_{365}}{365^{30}} \\approx 0{,}294$. (b) $P(\\text{au moins 2 mêmes}) = 1 - 0{,}294 \\approx 0{,}706$.",
+            "Il suffit de 23 personnes pour dépasser 50 % — c'est le célèbre « paradoxe des anniversaires »."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-011",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "loi-normale",
+        "standardisation",
+        "table",
+        "intervalle"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le poids des bébés à la naissance suit approximativement $\\Nor(3400\\,;400)$ g. Quelle proportion des bébés naissent avec un poids entre 2800 g et 3800 g ? (La table donne $A(1{,}00) = 0{,}3413$ et $A(1{,}50) = 0{,}4332$.)"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\approx 77{,}45~\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Standardisation : $z_1 = \\dfrac{2800 - 3400}{400} = -1{,}50$ et $z_2 = \\dfrac{3800 - 3400}{400} = 1{,}00$.",
+            "Les deux bornes encadrent $0$ : l'intervalle se compose de deux morceaux, de part et d'autre de la moyenne. Les aires s'additionnent.",
+            "Par symétrie, l'aire entre $-1{,}50$ et $0$ égale $A(1{,}50) = 0{,}4332$.",
+            "$\\prob(2800 \\leq X \\leq 3800) = A(1{,}50) + A(1{,}00) = 0{,}4332 + 0{,}3413 = 0{,}7745$, soit $77{,}45~\\%$.",
+            "Contrôle : l'intervalle s'étend sur $1{,}5$ écart-type d'un côté et $1$ de l'autre. Un résultat entre 68 % et 95 % est attendu."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-014",
+      "chapitre": 2,
+      "section": "2.9",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Approche classique : équiprobabilité",
+      "motsCles": [
+        "equiprobabilite",
+        "union",
+        "complement"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance un dé équilibré à 6 faces 3 fois de suite. Quelle est la probabilité d'obtenir au moins un 6 OU au moins un 1 (parmi les 3 lancers) ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$19/27 \\approx 70{,}4\\,\\%$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Événement contraire : les 3 lancers évitent à la fois 6 et 1 → chaque lancer dans {2, 3, 4, 5}.",
+            "$P = (4/6)^3 = 64/216$.",
+            "$P(\\text{au moins un 6 OU un 1}) = 1 - 64/216 = 152/216 = 19/27$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-qcm-005",
+      "chapitre": 2,
+      "section": "2.9",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Approche classique : équiprobabilité",
+      "motsCles": [
+        "equiprobabilite",
+        "nombre-premier"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un nombre premier ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "1/6"
+            },
+            {
+              "cle": "b",
+              "texte": "2/6"
+            },
+            {
+              "cle": "c",
+              "texte": "3/6 (= 1/2)"
+            },
+            {
+              "cle": "d",
+              "texte": "4/6"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "3/6 (= 1/2)"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Les nombres premiers de {1..6} sont 2, 3 et 5 → 3 cas favorables sur 6.",
+            "$P = 3/6 = 1/2$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-qcm-006",
+      "chapitre": 2,
+      "section": "2.12",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Événements indépendants",
+      "motsCles": [
+        "independance",
+        "definition"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Deux événements A et B sont indépendants si et seulement si :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$P(A \\cap B) = 0$"
+            },
+            {
+              "cle": "b",
+              "texte": "$P(A \\cup B) = 1$"
+            },
+            {
+              "cle": "c",
+              "texte": "$P(A \\cap B) = P(A) \\times P(B)$"
+            },
+            {
+              "cle": "d",
+              "texte": "$P(A \\mid B) = 0$"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$P(A \\cap B) = P(A) \\times P(B)$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Définition classique d'indépendance : $P(A \\cap B) = P(A) \\times P(B)$.",
+            "Équivalent : $P(A \\mid B) = P(A)$.",
+            "L'option (a) définit l'incompatibilité, pas l'indépendance."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-qcm-007",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Expériences aléatoires et vocabulaire",
+      "motsCles": [
+        "vocabulaire",
+        "de-morgan"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le contraire (complément) de « A ou B » est :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$\\overline{A}$ ou $\\overline{B}$"
+            },
+            {
+              "cle": "b",
+              "texte": "$\\overline{A} \\cap \\overline{B}$ (« ni A ni B »)"
+            },
+            {
+              "cle": "c",
+              "texte": "$\\overline{A} \\cup B$"
+            },
+            {
+              "cle": "d",
+              "texte": "$A \\cap B$"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\overline{A} \\cap \\overline{B}$ (« ni A ni B »)"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Loi de De Morgan : le contraire de « A ou B » est « ni A ni B », soit $\\overline{A} \\cap \\overline{B}$.",
+            "Autrement dit, $\\overline{A \\cup B} = \\overline{A} \\cap \\overline{B}$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-qcm-008",
+      "chapitre": 2,
+      "section": "2.6",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Arrangements (permutations partielles)",
+      "motsCles": [
+        "arrangement"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "De combien de façons peut-on former un mot de 3 lettres distinctes parmi les 26 lettres de l'alphabet ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "78"
+            },
+            {
+              "cle": "b",
+              "texte": "15 600"
+            },
+            {
+              "cle": "c",
+              "texte": "17 576"
+            },
+            {
+              "cle": "d",
+              "texte": "3 276 000"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "15 600"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'ordre compte (BAC ≠ CAB), sans répétition → arrangement.",
+            "$A^3_{26} = 26 \\times 25 \\times 24 = 15\\,600$.",
+            "L'option (c) est $26^3$ = mots AVEC répétition."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-qcm-011",
+      "chapitre": 2,
+      "section": "2.10",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Axiomes de Kolmogorov",
+      "motsCles": [
+        "kolmogorov",
+        "inclusion-exclusion"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Si $P(A) = 0{,}5$, $P(B) = 0{,}4$ et $P(A \\cap B) = 0{,}2$, alors $P(A \\cup B)$ vaut :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "0,1"
+            },
+            {
+              "cle": "b",
+              "texte": "0,7"
+            },
+            {
+              "cle": "c",
+              "texte": "0,9"
+            },
+            {
+              "cle": "d",
+              "texte": "1,1"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "0,7"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Formule d'inclusion-exclusion : $P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{,}5 + 0{,}4 - 0{,}2 = 0{,}7$.",
+            "L'option (c) oublie de soustraire l'intersection."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": true
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-vf-006",
+      "chapitre": 2,
+      "section": "2.18",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Densité et propriétés (loi normale)",
+      "motsCles": [
+        "loi-normale",
+        "tendance-centrale",
+        "symetrie"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une distribution normale, la moyenne, la médiane et le mode sont toujours différents.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "La distribution normale est symétrique et unimodale : moyenne = médiane = mode, tous en $x = \\mu$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-vf-010",
+      "chapitre": 2,
+      "section": "2.17",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Exemples résolus (loi binomiale)",
+      "motsCles": [
+        "binomiale",
+        "esperance",
+        "formule"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour une loi binomiale $\\mathrm{Bin}(n, p)$, l'espérance est $E(X) = np$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "Formule à connaître : $E(X) = np$ et $\\mathrm{Var}(X) = np(1-p)$ pour une loi binomiale."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-vf-011",
+      "chapitre": 2,
+      "section": "2.18",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Densité et propriétés (loi normale)",
+      "motsCles": [
+        "loi-normale",
+        "regle-empirique"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Environ 95 % des valeurs d'une loi normale se trouvent à moins de 2 écarts-types de la moyenne.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "Règle empirique 68-95-99,7 : ~68 % dans $\\pm 1\\sigma$, ~95 % dans $\\pm 2\\sigma$, ~99,7 % dans $\\pm 3\\sigma$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-vf-015",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "cote-z",
+        "atypique",
+        "interpretation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une valeur avec cote $z = 3$ est nécessairement une erreur de mesure.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "Une cote $z = 3$ est atypique (~0,15 % des observations dans une loi normale) mais peut être une valeur légitime — juste rare.",
+            "Il faut investiguer avant de conclure à une erreur."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-106",
+      "chapitre": 2,
+      "section": "2.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Expériences aléatoires et vocabulaire",
+      "motsCles": [
+        "univers",
+        "tirage sans remise",
+        "événement",
+        "dénombrement"
+      ],
+      "savoirFaire": [
+        "2a",
+        "2b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une urne contient 3 boules rouges et 2 boules vertes, toutes distinguables (numérotées). On tire <strong>successivement et sans remise</strong> 2 boules, en notant l'ordre.\n\n(a) Combien l'univers contient-il d'issues ?\n\n(b) Décris en mots l'événement $A$ = « les deux boules sont rouges » et donne son cardinal.\n\n(c) Calcule $\\prob(A)$.\n\n(d) Un étudiant propose de prendre pour univers l'ensemble des <em>couleurs</em> obtenues, soit $\\{RR, RV, VR, VV\\}$, et conclut $\\prob(A) = 1/4$. Explique pourquoi c'est faux."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (a), le tirage est ordonné et sans remise : la deuxième boule n'a plus que 4 possibilités. Pour (d), compare le nombre d'issues qui composent chacun des quatre résultats de couleur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) 20 issues ; (b) $|A| = 6$ ; (c) $\\prob(A) = 6/20 = 3/10$ ; (d) les quatre résultats de couleur ne sont pas équiprobables."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Compter les issues.</strong> Les boules sont numérotées, donc toutes distinguables. Pour la première, 5 choix ; pour la seconde, 4 restants. L'ordre étant noté : $5 \\times 4 = 20$ issues.",
+            "<strong>(b) Décrire l'événement.</strong> $A$ est l'ensemble des couples ordonnés de boules toutes deux rouges. Il y a 3 rouges : $3 \\times 2 = 6$ couples ordonnés.",
+            "<strong>(c) Calculer.</strong> Les 20 issues sont équiprobables (tirage au hasard sans remise, boules distinguables), donc $\\prob(A) = \\dfrac{6}{20} = \\dfrac{3}{10} = 0{,}3$.",
+            "<strong>(d) Examiner l'univers proposé.</strong> Comptons les issues derrière chaque résultat de couleur : $RR$ en compte 6 ($3 \\times 2$), $RV$ en compte 6 ($3 \\times 2$), $VR$ en compte 6 ($2 \\times 3$), et $VV$ seulement 2 ($2 \\times 1$).",
+            "<strong>(d) Conclure.</strong> Total $6 + 6 + 6 + 2 = 20$, ce qui confirme le compte. Mais $VV$ ne pèse que $2/20$ alors que les trois autres pèsent $6/20$ : les quatre résultats ne sont pas équiprobables, et diviser par 4 est sans fondement.",
+            "<strong>Ce qu'il fallait retenir.</strong> L'univers $\\{RR, RV, VR, VV\\}$ n'est pas interdit — il est même commode. Ce qui est faux, c'est de lui appliquer la formule des cas favorables sur cas possibles, qui exige l'équiprobabilité."
+          ],
+          "piegeCourant": "Regrouper des issues en catégories, puis appliquer « cas favorables / cas possibles » aux catégories. Le regroupement écrase des issues de poids différents ; la formule ne vaut plus."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-111",
+      "chapitre": 2,
+      "section": "2.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Principe d'addition",
+      "motsCles": [
+        "inclusion-exclusion",
+        "complémentaire",
+        "probabilité"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans un groupe de 120 étudiants, 70 suivent un cours de mathématiques, 50 un cours de physique, et 30 suivent les deux. On choisit un étudiant au hasard. Quelle est la probabilité qu'il ne suive <strong>ni</strong> mathématiques <strong>ni</strong> physique ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par compter ceux qui suivent au moins un des deux cours — attention à ne pas compter deux fois ceux qui suivent les deux."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob = 30/120 = 1/4 = 0{,}25$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Compter ceux qui suivent au moins un cours.</strong> Additionner 70 et 50 compte deux fois les 30 étudiants inscrits aux deux. On retranche donc l'intersection : $|M \\cup P| = 70 + 50 - 30 = 90$.",
+            "<strong>Passer au complémentaire.</strong> « Ni l'un ni l'autre » est le contraire de « au moins un des deux » : $120 - 90 = 30$ étudiants.",
+            "<strong>Calculer la probabilité.</strong> $\\prob = \\dfrac{30}{120} = \\dfrac{1}{4} = 0{,}25$.",
+            "<strong>Vérifier par les quatre catégories.</strong> Maths seulement : $70 - 30 = 40$. Physique seulement : $50 - 30 = 20$. Les deux : 30. Ni l'un ni l'autre : 30. Total $40 + 20 + 30 + 30 = 120$. Le compte est bon."
+          ],
+          "piegeCourant": "Écrire $120 - 70 - 50 = 0$ et conclure que tout le monde suit au moins un cours. Cette soustraction retire deux fois les 30 étudiants comptés dans les deux groupes."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-112",
+      "chapitre": 2,
+      "section": "2.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Principe d'addition",
+      "motsCles": [
+        "inclusion-exclusion",
+        "trois ensembles",
+        "diagramme de Venn"
+      ],
+      "savoirFaire": [
+        "2a",
+        "2b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un sondage auprès de 150 personnes porte sur trois applications. On relève : 60 utilisent $A$, 45 utilisent $B$, 35 utilisent $C$ ; 20 utilisent $A$ et $B$, 15 utilisent $A$ et $C$, 12 utilisent $B$ et $C$ ; et 5 utilisent les trois.\n\n(a) Combien de personnes utilisent au moins une des trois applications ?\n\n(b) Combien n'en utilisent aucune ?\n\n(c) Combien utilisent <strong>exactement une</strong> des trois ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (c), attention : les 60 utilisateurs de $A$ incluent ceux qui utilisent aussi $B$ ou $C$. Il faut retirer les chevauchements — et faire attention à ceux qui utilisent les trois, retirés deux fois."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) 98 personnes ; (b) 52 personnes ; (c) 61 personnes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Inclusion-exclusion à trois ensembles.</strong> $|A \\cup B \\cup C| = |A| + |B| + |C| - |A \\cap B| - |A \\cap C| - |B \\cap C| + |A \\cap B \\cap C|$.",
+            "<strong>(a) Application.</strong> $60 + 45 + 35 - 20 - 15 - 12 + 5 = 140 - 47 + 5 = 98$.",
+            "<strong>(b) Complémentaire.</strong> $150 - 98 = 52$ personnes n'utilisent aucune des trois.",
+            "<strong>(c) Utilisateurs de $A$ seulement.</strong> On retire de 60 ceux qui utilisent aussi $B$ (20) et ceux qui utilisent aussi $C$ (15). Mais les 5 qui utilisent les trois viennent d'être retirés deux fois : on les remet une fois. Soit $60 - 20 - 15 + 5 = 30$.",
+            "<strong>(c) Les deux autres, de la même façon.</strong> $B$ seulement : $45 - 20 - 12 + 5 = 18$. $C$ seulement : $35 - 15 - 12 + 5 = 13$.",
+            "<strong>(c) Total.</strong> $30 + 18 + 13 = 61$ personnes utilisent exactement une application.",
+            "<strong>Contrôle par les sept régions.</strong> Exactement deux applications : $A \\cap B$ sans $C$ vaut $20 - 5 = 15$ ; $A \\cap C$ sans $B$ vaut $15 - 5 = 10$ ; $B \\cap C$ sans $A$ vaut $12 - 5 = 7$. Somme de toutes les régions : $30 + 18 + 13 + 15 + 10 + 7 + 5 = 98$, ce qui redonne exactement le résultat de (a).",
+            "<strong>Le point de méthode.</strong> Chaque région du diagramme se calcule séparément, puis on additionne. Soustraire « à la volée » les intersections d'un total conduit presque toujours à retirer deux fois l'intersection triple."
+          ],
+          "piegeCourant": "Oublier de remettre l'intersection triple en calculant « $A$ seulement ». Retirer $|A \\cap B|$ puis $|A \\cap C|$ élimine deux fois les personnes présentes dans les trois ensembles."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-120",
+      "chapitre": 2,
+      "section": "2.6",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Arrangements (permutations partielles)",
+      "motsCles": [
+        "arrangements",
+        "sans répétition",
+        "postes distincts"
+      ],
+      "savoirFaire": [
+        "2a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un conseil étudiant de 10 membres doit désigner un président, un vice-président, un secrétaire et un trésorier. Une même personne ne peut occuper qu'un seul poste. De combien de façons le conseil peut-il être formé ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les quatre postes sont-ils interchangeables ? Si non, chaque attribution différente compte séparément."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$A^4_{10} = 5\\,040$ façons."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Identifier la structure.</strong> Quatre postes <em>distincts</em>, pas de cumul possible : c'est un arrangement de 4 personnes parmi 10.",
+            "<strong>Compter poste par poste.</strong> Président : 10 choix. Vice-président : 9. Secrétaire : 8. Trésorier : 7.",
+            "<strong>Multiplier.</strong> $10 \\times 9 \\times 8 \\times 7 = 5\\,040$, soit $A^4_{10} = \\dfrac{10!}{6!}$.",
+            "<strong>Contrôler par la formule alternative.</strong> Choisir d'abord les 4 personnes, $\\binom{10}{4} = 210$, puis leur répartir les postes, $4! = 24$ : $210 \\times 24 = 5\\,040$. ✓"
+          ],
+          "piegeCourant": "Répondre $\\binom{10}{4} = 210$. Ce nombre compte les équipes de quatre personnes sans dire qui fait quoi — il ignore la moitié de la question."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-125",
+      "chapitre": 2,
+      "section": "2.8",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Choix de la bonne formule",
+      "motsCles": [
+        "reconnaissance d'outil",
+        "arrangement",
+        "combinaison",
+        "énoncés jumeaux"
+      ],
+      "savoirFaire": [
+        "2a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Voici quatre situations portant toutes sur 12 personnes. Dans <strong>laquelle</strong> le nombre de possibilités vaut-il $\\binom{12}{3} = 220$ et non $A^3_{12} = 1\\,320$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "On désigne un président, un secrétaire et un trésorier."
+            },
+            {
+              "cle": "b",
+              "texte": "On attribue trois prix différents : premier, deuxième et troisième."
+            },
+            {
+              "cle": "c",
+              "texte": "On forme une délégation de 3 personnes qui iront ensemble au congrès."
+            },
+            {
+              "cle": "d",
+              "texte": "On fait asseoir 3 des 12 personnes sur trois chaises numérotées."
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque situation, prends deux personnes de la sélection et échange-les. Si le résultat est une configuration <em>différente</em>, l'ordre compte."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "La délégation de 3 personnes (c) : $\\binom{12}{3} = 220$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le test décisif.</strong> Sélectionner trois personnes puis en échanger deux : si la configuration obtenue est différente, l'ordre compte et il faut un arrangement ; si elle est identique, c'est une combinaison.",
+            "<strong>Appliquer le test.</strong> Échanger le président et le trésorier change le bureau (a). Échanger deux membres d'une délégation ne change rien (c). Échanger deux prix change le palmarès (b). Échanger deux chaises numérotées change le plan de salle (d).",
+            "<strong>Conclure.</strong> Seul (c) décrit un sous-ensemble sans structure interne : $\\binom{12}{3} = 220$.",
+            "<strong>Le lien entre les deux nombres.</strong> $A^3_{12} = \\binom{12}{3} \\times 3! = 220 \\times 6 = 1\\,320$. Chaque délégation peut se voir attribuer les trois rôles de 6 façons — c'est exactement le facteur qui sépare les deux formules."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Trois rôles distincts : échanger deux personnes de poste donne une autre configuration. C'est un arrangement, $1\\,320$."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "Les prix sont distincts, donc l'attribution est ordonnée : $1\\,320$ possibilités."
+            },
+            {
+              "cle": "c",
+              "correct": true,
+              "explication": "La délégation est un simple sous-ensemble : aucun rôle ne distingue ses membres. Permuter les trois ne change pas la délégation, d'où $\\binom{12}{3} = 220$."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Les chaises portent des numéros : elles jouent le rôle de positions distinctes. C'est encore un arrangement, $1\\,320$."
+            }
+          ],
+          "piegeCourant": "Se fier au vocabulaire de l'énoncé plutôt qu'à la structure. « Choisir » apparaît dans les quatre situations ; c'est l'existence de rôles ou de positions distinctes qui tranche, jamais le verbe employé."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-128",
+      "chapitre": 2,
+      "section": "2.9",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Approche classique : équiprobabilité",
+      "motsCles": [
+        "équiprobabilité",
+        "cas favorables",
+        "univers",
+        "dés"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance deux dés équilibrés. Quelle affirmation est <strong>correcte</strong> ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "$\\prob(\\text{somme} = 7) = \\prob(\\text{somme} = 8)$, car 7 et 8 sont deux sommes possibles parmi les 11."
+            },
+            {
+              "cle": "b",
+              "texte": "$\\prob(\\text{produit pair}) = 1/2$, car un produit est pair ou impair."
+            },
+            {
+              "cle": "c",
+              "texte": "$\\prob(\\text{somme} = 2) = \\prob(\\text{somme} = 12) = 1/11$."
+            },
+            {
+              "cle": "d",
+              "texte": "$\\prob(\\text{somme} = 7) = 1/6$, car 6 des 36 couples donnent 7."
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Chaque fois qu'on t'annonce une probabilité, demande-toi sur quel univers l'équiprobabilité est supposée. Est-ce celui que le dispositif justifie ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(d) $\\prob(\\text{somme} = 7) = 6/36 = 1/6$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Fixer l'univers équiprobable.</strong> Deux dés équilibrés produisent 36 couples $(d_1, d_2)$, tous de probabilité $1/36$. C'est le seul univers sur lequel « cas favorables sur cas possibles » s'applique.",
+            "<strong>Tester (a).</strong> Somme 7 : six couples. Somme 8 : cinq couples, soit $(2,6), (3,5), (4,4), (5,3), (6,2)$. Les probabilités diffèrent, l'affirmation est fausse.",
+            "<strong>Tester (b).</strong> Le produit est impair uniquement si les deux dés sont impairs : $3 \\times 3 = 9$ couples, soit $9/36 = 1/4$. Donc le produit est pair dans $3/4$ des cas, pas $1/2$.",
+            "<strong>Tester (c).</strong> Les sommes 2 et 12 viennent chacune d'un seul couple : $1/36$ et non $1/11$.",
+            "<strong>Tester (d).</strong> $\\prob(\\text{somme} = 7) = 6/36 = 1/6$. Correct.",
+            "<strong>Le fil commun des erreurs.</strong> Trois des quatre affirmations comptent des <em>catégories</em> (sommes possibles, pair ou impair) comme si elles étaient équiprobables. L'équiprobabilité vient du dispositif, jamais du fait d'avoir dressé une liste."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Les onze sommes ne sont pas équiprobables. La somme 7 s'obtient de 6 façons, la somme 8 seulement de 5 : $1/6$ contre $5/36$."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "« Pair ou impair » ne rend pas les deux cas équiprobables. Le produit est impair seulement si les <em>deux</em> dés sont impairs : $9/36 = 1/4$. Le produit est donc pair avec probabilité $3/4$."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Ces deux sommes sont bien également probables — elles s'obtiennent chacune d'une seule façon — mais leur probabilité est $1/36$, pas $1/11$."
+            },
+            {
+              "cle": "d",
+              "correct": true,
+              "explication": "C'est le bon raisonnement : l'équiprobabilité porte sur les 36 couples, et six d'entre eux donnent une somme de 7. $6/36 = 1/6$."
+            }
+          ],
+          "piegeCourant": "Compter les résultats possibles d'une grandeur dérivée (somme, produit, parité) et diviser par leur nombre. Il faut redescendre aux issues du dispositif — ici, les 36 couples."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-103",
+      "chapitre": 2,
+      "section": "2.11",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Probabilité conditionnelle",
+      "motsCles": [
+        "probabilité conditionnelle",
+        "combinaisons",
+        "information partielle",
+        "univers réduit",
+        "cartes"
+      ],
+      "savoirFaire": [
+        "2a",
+        "2b",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On tire simultanément 2 cartes d'un jeu ordinaire de 52 cartes, qui contient 4 as.\n\n(a) Sachant qu'<strong>au moins une</strong> des deux cartes est un as, quelle est la probabilité que les <strong>deux</strong> soient des as ?\n\n(b) Sachant que l'une des deux cartes est <strong>l'as de pique</strong>, quelle est la probabilité que les deux soient des as ?\n\n(c) Les deux réponses sont différentes. Explique pourquoi, alors que dans les deux cas on sait qu'il y a au moins un as."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Dans les deux cas, la condition réduit l'univers : compte combien de mains de 2 cartes satisfont la condition, puis combien d'entre elles contiennent deux as. Pour (b), demande-toi combien de mains contiennent précisément l'as de pique."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $\\dfrac{1}{33} \\approx 0{,}030$ ; (b) $\\dfrac{1}{17} \\approx 0{,}059$ ; (c) préciser <em>quel</em> as est présent restreint davantage l'univers."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Univers de départ.</strong> Le nombre de mains de 2 cartes est $\\binom{52}{2} = 1\\,326$. Le nombre de mains formées de deux as est $\\binom{4}{2} = 6$.",
+            "<strong>(a) Compter les mains avec au moins un as.</strong> Passer par le contraire : les mains <em>sans</em> aucun as sont $\\binom{48}{2} = 1\\,128$. Donc $1\\,326 - 1\\,128 = 198$ mains contiennent au moins un as.",
+            "<strong>(a) Conditionner.</strong> L'univers se réduit à ces 198 mains, dont 6 sont formées de deux as : $\\prob(\\text{2 as} \\mid \\text{au moins un as}) = \\dfrac{6}{198} = \\dfrac{1}{33} \\approx 0{,}030$.",
+            "<strong>(b) Compter les mains contenant l'as de pique.</strong> L'as de pique occupe une place, la seconde carte est n'importe laquelle des 51 restantes : $\\binom{51}{1} = 51$ mains.",
+            "<strong>(b) Compter celles qui sont deux as.</strong> Parmi ces 51 mains, celles formées de deux as contiennent l'as de pique et l'un des 3 autres as : 3 mains.",
+            "<strong>(b) Conditionner.</strong> $\\prob(\\text{2 as} \\mid \\text{as de pique}) = \\dfrac{3}{51} = \\dfrac{1}{17} \\approx 0{,}059$.",
+            "<strong>(c) Comparer.</strong> La seconde probabilité est presque le double de la première ($33/17 \\approx 1{,}94$ fois). Nommer l'as change l'information reçue : « au moins un as » est satisfait par 198 mains, dont beaucoup contiennent un as isolé accompagné d'une carte quelconque ; « l'as de pique est là » n'en laisse que 51. Une condition plus précise découpe un univers plus petit, et la proportion de mains à deux as y est plus grande.",
+            "<strong>Le point à retenir.</strong> Conditionner, ce n'est pas seulement « savoir qu'un événement s'est produit » : c'est remplacer l'univers par l'ensemble des cas compatibles avec l'information reçue. Deux informations qui semblent dire la même chose peuvent définir deux univers très différents."
+          ],
+          "piegeCourant": "Juger que (a) et (b) sont la même question puisque, dans les deux cas, « on sait qu'il y a un as ». L'information de (b) est strictement plus riche : elle identifie la carte."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-134",
+      "chapitre": 2,
+      "section": "2.12",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Événements indépendants",
+      "motsCles": [
+        "indépendance",
+        "incompatibilité",
+        "confusion classique"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Deux événements incompatibles de probabilités non nulles sont toujours indépendants, puisque la réalisation de l'un n'apporte aucune information sur l'autre.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Si $A$ et $B$ sont incompatibles et que $A$ se produit, que peux-tu dire de $B$ ? Est-ce vraiment « aucune information » ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux — c'est même le contraire."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Traduire l'incompatibilité.</strong> $A \\cap B = \\emptyset$, donc $\\prob(A \\cap B) = 0$.",
+            "<strong>Écrire la condition d'indépendance.</strong> $A$ et $B$ sont indépendants si $\\prob(A \\cap B) = \\prob(A)\\prob(B)$.",
+            "<strong>Confronter.</strong> Le membre de gauche vaut 0 ; le membre de droite est un produit de deux nombres strictement positifs, donc strictement positif. L'égalité est impossible.",
+            "<strong>L'intuition remise à l'endroit.</strong> Savoir que $A$ s'est produit apprend au contraire <em>beaucoup</em> sur $B$ : cela garantit que $B$ ne s'est pas produit. C'est une dépendance maximale, pas une absence d'information.",
+            "<strong>En conditionnel.</strong> $\\prob(B \\mid A) = 0$, alors que $\\prob(B) > 0$. La probabilité de $B$ change radicalement quand on apprend $A$ : la définition même de la dépendance."
+          ],
+          "piegeCourant": "Lire « incompatibles » comme « sans rapport ». Les deux mots se ressemblent en français courant et désignent des situations opposées en probabilité : l'incompatibilité est une forme forte de dépendance."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-136",
+      "chapitre": 2,
+      "section": "2.12",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Événements indépendants",
+      "motsCles": [
+        "indépendance",
+        "au moins un",
+        "complémentaire",
+        "systèmes"
+      ],
+      "savoirFaire": [
+        "2b",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trois capteurs surveillent une machine, indépendamment les uns des autres. Leurs probabilités de tomber en panne sur une année sont respectivement $0{,}10$, $0{,}05$ et $0{,}20$. Quelle est la probabilité qu'<strong>au moins un</strong> capteur tombe en panne durant l'année ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "« Au moins un en panne » demanderait d'examiner sept cas. Son contraire n'en demande qu'un — et l'indépendance rend ce cas immédiat."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$1 - 0{,}684 = 0{,}316$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Passer au contraire.</strong> Le contraire de « au moins un tombe en panne » est « aucun ne tombe en panne », c'est-à-dire les trois fonctionnent.",
+            "<strong>Probabilités de bon fonctionnement.</strong> $1 - 0{,}10 = 0{,}90$ ; $1 - 0{,}05 = 0{,}95$ ; $1 - 0{,}20 = 0{,}80$.",
+            "<strong>Utiliser l'indépendance.</strong> Les capteurs étant indépendants, la probabilité qu'ils fonctionnent tous les trois est le produit : $0{,}90 \\times 0{,}95 \\times 0{,}80 = 0{,}684$.",
+            "<strong>Conclure.</strong> $\\prob(\\text{au moins une panne}) = 1 - 0{,}684 = 0{,}316$.",
+            "<strong>Contrôler l'ordre de grandeur.</strong> Le résultat doit dépasser la plus grande probabilité individuelle ($0{,}20$) sans atteindre leur somme ($0{,}35$) : $0{,}316$ se situe bien dans cet intervalle."
+          ],
+          "piegeCourant": "Additionner $0{,}10 + 0{,}05 + 0{,}20 = 0{,}35$. Cette somme compte plusieurs fois les scénarios où deux ou trois capteurs tombent en panne simultanément."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-142",
+      "chapitre": 2,
+      "section": "2.14",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Loi (fonction de masse) d'une v.a. discrète",
+      "motsCles": [
+        "variable aléatoire",
+        "construction de loi",
+        "espérance",
+        "écart absolu"
+      ],
+      "savoirFaire": [
+        "2c",
+        "2b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On lance deux dés équilibrés et on note $D = |d_1 - d_2|$, l'écart entre les deux résultats.\n\n(a) Quelles valeurs $D$ peut-elle prendre ?\n\n(b) Établis la loi de $D$.\n\n(c) Vérifie que la somme des probabilités vaut 1.\n\n(d) Calcule $\\prob(D \\leq 2)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque valeur $d \\geq 1$, compte les couples $(d_1, d_2)$ tels que $|d_1 - d_2| = d$ : il y en a deux fois plus qu'on ne croit, car l'écart peut se faire dans les deux sens."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $D \\in \\{0, 1, 2, 3, 4, 5\\}$ ; (b) $\\prob(D=0) = 6/36$ et $\\prob(D=d) = \\dfrac{2(6-d)}{36}$ pour $d \\geq 1$ ; (d) $\\prob(D \\leq 2) = 24/36 = 2/3$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Valeurs possibles.</strong> L'écart minimal est 0 (les deux dés égaux) et le maximal est $|6-1| = 5$. Donc $D \\in \\{0, 1, 2, 3, 4, 5\\}$.",
+            "<strong>(b) Le cas $D = 0$.</strong> Les couples $(1,1), (2,2), \\ldots, (6,6)$ : 6 couples, d'où $\\prob(D = 0) = \\dfrac{6}{36}$.",
+            "<strong>(b) Le cas $D = d \\geq 1$.</strong> Il faut $d_2 = d_1 + d$ ou $d_1 = d_2 + d$. Pour chaque sens, $d_1$ peut prendre $6 - d$ valeurs. Les deux sens donnent des couples distincts, d'où $2(6-d)$ couples.",
+            "<strong>(b) La loi.</strong> $\\prob(D=1) = \\dfrac{10}{36}$, $\\prob(D=2) = \\dfrac{8}{36}$, $\\prob(D=3) = \\dfrac{6}{36}$, $\\prob(D=4) = \\dfrac{4}{36}$, $\\prob(D=5) = \\dfrac{2}{36}$.",
+            "<strong>(c) Vérifier.</strong> $6 + 10 + 8 + 6 + 4 + 2 = 36$, donc la somme des probabilités vaut 1. ✓",
+            "<strong>(d) Calculer.</strong> $\\prob(D \\leq 2) = \\dfrac{6 + 10 + 8}{36} = \\dfrac{24}{36} = \\dfrac{2}{3} \\approx 0{,}667$.",
+            "<strong>Lire la loi.</strong> Contrairement au maximum, l'écart est <em>décroissant</em> : les petits écarts sont les plus fréquents. Deux dés sur trois diffèrent de 2 ou moins."
+          ],
+          "piegeCourant": "Oublier le facteur 2 pour $d \\geq 1$ et compter $6 - d$ couples au lieu de $2(6-d)$. La somme ne ferait alors que $21/36$, ce qui signale l'erreur — encore faut-il faire la vérification."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-146",
+      "chapitre": 2,
+      "section": "2.16",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Conditions d'application (loi binomiale)",
+      "motsCles": [
+        "loi binomiale",
+        "conditions d'application",
+        "tirage sans remise"
+      ],
+      "savoirFaire": [
+        "2d",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On tire 5 cartes sans remise dans un jeu de 52. Le nombre de cœurs obtenus suit une loi binomiale de paramètres $n = 5$ et $p = 1/4$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'une des quatre conditions de la loi binomiale porte sur la constance de $p$ d'une épreuve à l'autre. Que devient la probabilité de tirer un cœur au deuxième tirage si le premier en était un ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Rappeler les conditions.</strong> Une loi binomiale exige : un nombre fixe $n$ d'épreuves ; deux issues par épreuve ; des épreuves <em>indépendantes</em> ; une probabilité de succès $p$ <em>constante</em>.",
+            "<strong>Tester la constance de $p$.</strong> Au premier tirage, $\\prob(\\text{cœur}) = \\dfrac{13}{52} = \\dfrac{1}{4}$. Si ce tirage donne un cœur, il n'en reste que 12 sur 51 : $\\prob = \\dfrac{12}{51} \\approx 0{,}235$. Sinon, $\\dfrac{13}{51} \\approx 0{,}255$.",
+            "<strong>Conclure sur les conditions.</strong> $p$ change d'un tirage à l'autre, et les tirages ne sont pas indépendants. Deux conditions sur quatre sont violées : la loi n'est pas binomiale.",
+            "<strong>La loi correcte.</strong> Le nombre de cœurs suit une loi <em>hypergéométrique</em>, celle du tirage sans remise. C'est d'ailleurs le calcul de l'exercice sur les mains à deux cœurs : $\\dfrac{\\binom{13}{k}\\binom{39}{5-k}}{\\binom{52}{5}}$.",
+            "<strong>Quand l'approximation serait acceptable.</strong> Si l'on tirait 5 cartes dans un sabot de 10 jeux mélangés (520 cartes), retirer une carte modifierait $p$ de façon négligeable et la binomiale serait une bonne approximation. C'est la règle usuelle : échantillon petit devant la population."
+          ],
+          "piegeCourant": "Repérer « $n$ épreuves à deux issues » et conclure trop vite à la binomiale. Le sans-remise casse à la fois l'indépendance et la constance de $p$ ; seul l'avec-remise garantit les deux."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-154",
+      "chapitre": 2,
+      "section": "2.18",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Densité et propriétés (loi normale)",
+      "motsCles": [
+        "loi normale",
+        "règle empirique",
+        "table",
+        "symétrie"
+      ],
+      "savoirFaire": [
+        "2c",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "En utilisant uniquement la table (aire entre 0 et $z$), retrouve les trois valeurs de la règle empirique : $\\prob(-1 < Z < 1)$, $\\prob(-2 < Z < 2)$ et $\\prob(-3 < Z < 3)$. Les valeurs de table sont $0{,}3413$ pour $z = 1{,}00$, $0{,}4772$ pour $z = 2{,}00$ et $0{,}4987$ pour $z = 3{,}00$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'intervalle $(-z ; z)$ est symétrique autour de 0. Que représente la moitié droite de cet intervalle, et que donne la table pour cette moitié ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$0{,}6826$ ; $0{,}9544$ ; $0{,}9974$ — soit environ 68 %, 95 % et 99,7 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Exploiter la symétrie.</strong> L'intervalle $(-z ; z)$ se compose de deux moitiés de même aire : $(-z ; 0)$ et $(0 ; z)$. La table donne directement la seconde.",
+            "<strong>Écrire la formule.</strong> $\\prob(-z < Z < z) = 2 \\times \\text{table}(z)$.",
+            "<strong>Appliquer trois fois.</strong> $\\prob(-1 < Z < 1) = 2 \\times 0{,}3413 = 0{,}6826$ ; $\\prob(-2 < Z < 2) = 2 \\times 0{,}4772 = 0{,}9544$ ; $\\prob(-3 < Z < 3) = 2 \\times 0{,}4987 = 0{,}9974$.",
+            "<strong>Comparer à la règle empirique.</strong> Les valeurs mémorisées — 68 %, 95 %, 99,7 % — sont les arrondis de $0{,}6826$, $0{,}9544$ et $0{,}9974$. La règle n'est donc pas une approximation grossière : c'est la lecture exacte de la table, arrondie.",
+            "<strong>Vérifier la cohérence.</strong> La table plafonne à $0{,}5000$ pour $z = 3{,}90$, ce qui correspond à $\\prob(-3{,}90 < Z < 3{,}90) \\approx 1$ : toute la masse est contenue dans quatre écarts-types."
+          ],
+          "piegeCourant": "Chercher directement $0{,}6826$ dans la table. Elle ne contient que des aires depuis 0, donc au plus $0{,}5$ : toute valeur supérieure s'obtient par combinaison, jamais par lecture directe."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-157",
+      "chapitre": 2,
+      "section": "2.19",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Loi normale centrée réduite",
+      "motsCles": [
+        "standardisation",
+        "table",
+        "symétrie",
+        "intervalle",
+        "complémentaire"
+      ],
+      "savoirFaire": [
+        "2d",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La masse des pommes d'un verger suit une loi $\\Nor(150 ; 20)$ grammes.\n\n(a) Quelle proportion de pommes pèse plus de 175 g ? (table : $0{,}3944$ pour $z = 1{,}25$)\n\n(b) Quelle proportion pèse moins de 140 g ? (table : $0{,}1915$ pour $z = 0{,}50$)\n\n(c) Quelle proportion pèse entre 140 g et 175 g ?\n\n(d) Vérifie que tes trois réponses sont cohérentes entre elles."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (b), la borne est <em>sous</em> la moyenne : le $z$ est négatif et la table ne contient que des valeurs positives. Utilise la symétrie. Pour (d), les trois régions doivent couvrir toute la courbe."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $0{,}1056$ ; (b) $0{,}3085$ ; (c) $0{,}5859$ ; (d) la somme des trois vaut 1."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Standardiser la borne haute.</strong> $z = \\dfrac{175 - 150}{20} = \\dfrac{25}{20} = 1{,}25$.",
+            "<strong>(a) Passer à la queue droite.</strong> $\\prob(X > 175) = \\prob(Z > 1{,}25) = 0{,}5 - 0{,}3944 = 0{,}1056$.",
+            "<strong>(b) Standardiser la borne basse.</strong> $z = \\dfrac{140 - 150}{20} = \\dfrac{-10}{20} = -0{,}50$. La table ne donne rien pour un $z$ négatif.",
+            "<strong>(b) Utiliser la symétrie.</strong> $\\prob(Z < -0{,}50) = \\prob(Z > 0{,}50) = 0{,}5 - 0{,}1915 = 0{,}3085$.",
+            "<strong>(c) L'intervalle central.</strong> Il s'étend de $z = -0{,}50$ à $z = 1{,}25$, donc à cheval sur 0. On additionne les deux moitiés : $\\prob(-0{,}50 < Z < 1{,}25) = 0{,}1915 + 0{,}3944 = 0{,}5859$.",
+            "<strong>(d) Vérifier.</strong> Les trois régions — sous 140, entre 140 et 175, au-dessus de 175 — sont disjointes et couvrent tout : $0{,}3085 + 0{,}5859 + 0{,}1056 = 1{,}0000$. ✓",
+            "<strong>La règle de découpage.</strong> Quand l'intervalle est à cheval sur 0, on <em>additionne</em> les deux valeurs de table. Quand les deux bornes sont du même côté, on les <em>soustrait</em>. C'est le seul point à ne pas confondre avec cette table."
+          ],
+          "piegeCourant": "Soustraire les deux valeurs de table en (c) parce que l'énoncé demande un intervalle. Ici les bornes encadrent 0 : les deux aires se cumulent au lieu de se retrancher."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-158",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "table",
+        "queue de distribution",
+        "lecture"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "En utilisant la table (aire entre 0 et $z$), calcule $\\prob(Z > 0{,}84)$. La table donne $0{,}2995$ pour $z = 0{,}84$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trace la courbe et repère deux régions à droite de 0 : celle que la table te donne, et celle que tu cherches. Comment se complètent-elles ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(Z > 0{,}84) = 0{,}5 - 0{,}2995 = 0{,}2005$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Situer les deux régions.</strong> À droite de 0, l'aire totale vaut $0{,}5$. Elle se partage en deux : la bande $0 < Z < 0{,}84$, que la table donne, et la queue $Z > 0{,}84$, que l'on cherche.",
+            "<strong>Soustraire.</strong> $\\prob(Z > 0{,}84) = 0{,}5 - 0{,}2995 = 0{,}2005$.",
+            "<strong>Contrôler.</strong> Environ 20 % : cohérent pour une queue commençant un peu au-delà de $0{,}8$ écart-type. Et $0{,}2995 + 0{,}2005 = 0{,}5$, ce qui reconstitue bien la demi-courbe.",
+            "<strong>Le réflexe utile.</strong> Avec cette table, toute queue droite se calcule par $0{,}5 - \\text{table}(z)$, et toute queue gauche pour $z$ négatif par la même formule en vertu de la symétrie."
+          ],
+          "piegeCourant": "Écrire $1 - 0{,}2995 = 0{,}7005$. Cette soustraction conviendrait à une table cumulative depuis $-\\infty$ ; ici la valeur lue ne couvre que la moitié droite, donc c'est $0{,}5$ qu'il faut utiliser."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-163",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "acces": "gratuit",
+      "sectionNotes": "Valeurs critiques : problème inverse",
+      "motsCles": [
+        "problème inverse",
+        "valeur critique",
+        "queue",
+        "conversion"
+      ],
+      "savoirFaire": [
+        "2d",
+        "0b"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On cherche la valeur critique $z$ telle que $\\prob(Z > z) = 0{,}0099$. Quelle aire faut-il repérer dans le corps de la table, et quel $z$ obtient-on ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Chercher $0{,}0099$, ce qui donne $z \\approx 0{,}02$."
+            },
+            {
+              "cle": "b",
+              "texte": "Chercher $0{,}9901$, mais cette valeur est absente de la table."
+            },
+            {
+              "cle": "c",
+              "texte": "Chercher $0{,}4901$, ce qui donne $z = 2{,}33$."
+            },
+            {
+              "cle": "d",
+              "texte": "Chercher $0{,}4950$, ce qui donne $z = 2{,}58$."
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Une probabilité de queue n'est jamais lisible telle quelle dans cette table. Convertis-la en aire depuis 0 avant de chercher."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Chercher $0{,}4901$ dans le corps de la table, ce qui donne $z = 2{,}33$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Convertir la queue en aire depuis 0.</strong> $\\prob(Z > z) = 0{,}0099$ signifie que la bande entre 0 et $z$ vaut $0{,}5 - 0{,}0099 = 0{,}4901$.",
+            "<strong>Chercher dans le corps de la table.</strong> $0{,}4901$ se trouve à la ligne $2{,}3$, colonne $0{,}03$ : $z = 2{,}33$.",
+            "<strong>Vérifier.</strong> La table donne bien $0{,}4901$ pour $z = 2{,}33$, et $0{,}5 - 0{,}4901 = 0{,}0099$. ✓",
+            "<strong>Contrôler la plausibilité.</strong> Une queue inférieure à 1 % doit correspondre à un $z$ nettement supérieur à 2 : $2{,}33$ convient. La réponse $z \\approx 0{,}02$ aurait laissé près de la moitié de la courbe dans la queue.",
+            "<strong>La marche à suivre, une fois pour toutes.</strong> Problème inverse avec cette table : convertir la probabilité en aire depuis 0, la repérer dans le corps de la table, lire $z$ en marge, puis dé-standardiser si nécessaire."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "On a cherché la probabilité de queue directement dans le corps de la table. Or la table contient des aires depuis 0 : $0{,}0099$ y correspond à un $z$ minuscule, sans rapport avec le seuil demandé."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "Le raisonnement viserait une table cumulative. Avec celle-ci, aucune valeur ne dépasse $0{,}5000$ — et le constat d'absence aurait dû mener à convertir, pas à conclure."
+            },
+            {
+              "cle": "c",
+              "correct": true,
+              "explication": "La queue droite vaut $0{,}0099$, donc l'aire entre 0 et $z$ vaut $0{,}5 - 0{,}0099 = 0{,}4901$. Cette valeur figure exactement dans la table à $z = 2{,}33$."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "C'est la conversion de la queue $0{,}005$, correspondant à un seuil de 0,5 % et non de 0,99 %. La lecture de $z$ est juste pour cette aire, mais l'aire ne correspond pas à l'énoncé."
+            }
+          ],
+          "piegeCourant": "Chercher la probabilité de queue directement dans le corps de la table. Elle s'y trouve parfois — comme ici, $0{,}0099$ correspondrait à $z \\approx 0{,}02$ — et donne alors une réponse plausible en apparence, mais complètement fausse."
+        }
+      ]
+    }
+  ]
 }

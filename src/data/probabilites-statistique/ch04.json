@@ -2,5 +2,926 @@
   "chapitre": 4,
   "titre": "Corrélation, régression et test du khi-carré",
   "commentaire": "Exercices gratuits uniquement. Les exercices payants figurent dans index.json sous forme de fiche verrouillée, sans contenu.",
-  "exercices": []
+  "exercices": [
+    {
+      "id": "ch04-fac-006",
+      "chapitre": 4,
+      "section": "4.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Corrélation linéaire",
+      "motsCles": [
+        "correlation",
+        "interpretation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une étude québécoise sur le lien entre le nombre d'heures passées devant un écran et la note en français donne $r = 0{,}18$. Comment qualifies-tu ce résultat ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Corrélation positive faible."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$r > 0$ → positive.",
+            "$|r| = 0{,}18 < 0{,}30$ → faible."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-fac-010",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "correlation",
+        "signe"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Sans faire de calcul, comment se comparent le signe de la pente $b$ et le signe du coefficient de corrélation $r$ pour une même paire $(x, y)$ ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$b$ et $r$ ont toujours le même signe."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Formule : $b = r \\times s_y/s_x$.",
+            "Comme $s_x$ et $s_y$ sont positifs, seul $r$ peut déterminer le signe de $b$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-fac-014",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "residu",
+        "definition"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un point observé vaut $(x, y) = (10, 22)$. La droite de régression prédit $\\hat{y} = 20$ pour $x = 10$. Quel est le résidu associé à ce point ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Résidu = 2."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Résidu $= y - \\hat{y} = 22 - 20 = 2$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-fac-021",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "H0",
+        "independance"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un chercheur veut savoir si le sexe (H/F) et la préférence pour un vaccin (A/B/C) sont indépendants. Formule l'hypothèse nulle $H_0$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$H_0$ : le sexe et la préférence pour un vaccin sont indépendants (pas de lien)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Test du $\\chi^2$ d'indépendance : $H_0$ suppose toujours l'absence de lien entre les deux variables catégorielles."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-fac-022",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "ddl",
+        "adequation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un dé à 6 faces est testé pour vérifier s'il est équilibré. Combien de degrés de liberté un test d'ajustement (adéquation) du $\\chi^2$ utilise-t-il ici ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "ddl = 5."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Pour un test d'ajustement : $\\text{ddl} = k - 1$, où $k$ est le nombre de catégories.",
+            "Ici, $k = 6$ faces, donc ddl = 5."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-moy-002",
+      "chapitre": 4,
+      "section": "4.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Corrélation linéaire",
+      "motsCles": [
+        "correlation",
+        "calcul",
+        "ecarts-moyenne"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un professeur relève 5 paires (heures d'étude $x$, note $y$) : $(1;3), (2;5), (3;4), (4;8), (5;10)$. Calcule $r$ à l'aide des écarts à la moyenne."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$r \\approx 0{,}92$ (corrélation positive très forte)."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\bar{x} = 3$, $\\bar{y} = 6$.",
+            "$\\sum(x-\\bar{x})^2 = 10$, $\\sum(y-\\bar{y})^2 = 34$, $\\sum(x-\\bar{x})(y-\\bar{y}) = 17$.",
+            "$r = 17/\\sqrt{10 \\times 34} = 17/\\sqrt{340} \\approx 0{,}92$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-moy-013",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "r-carre",
+        "interpretation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une étude relie le nombre d'heures d'ensoleillement ($x$) et le rendement d'une culture ($y$) et obtient $r = 0{,}7$. Calcule $r^2$ et rédige une phrase d'interprétation."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$r^2 = 0{,}49$ : environ 49 % de la variation du rendement est expliquée par l'ensoleillement ; le reste (51 %) dépend d'autres facteurs."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$r^2 = (0{,}7)^2 = 0{,}49$.",
+            "C'est la proportion de la variance de $y$ expliquée par la régression linéaire sur $x$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-moy-018",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "effectifs-attendus",
+        "2x3"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Tableau 2 $\\times$ 3 : ligne 1 = $[20, 30, 50]$ (total 100), ligne 2 = $[30, 20, 50]$ (total 100), total général = 200 (colonnes : 50, 50, 100). Calcule les 6 effectifs attendus."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Ligne 1 : 25 ; 25 ; 50. Ligne 2 : 25 ; 25 ; 50."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$E(1,1) = 100 \\times 50/200 = 25$ ; $E(1,2) = 25$ ; $E(1,3) = 100 \\times 100/200 = 50$.",
+            "Idem pour la ligne 2 (totaux ligne = 100)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-moy-021",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "adequation",
+        "decision"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Suite de l'exercice précédent : calcule $\\chi^2_{\\text{obs}}$, précise le nombre de ddl et conclus au seuil 5 % avec $\\chi^2_{\\text{crit}}(3\\,\\text{ddl}\\,;\\,5\\,\\%) = 7{,}81$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\chi^2_{\\text{obs}} \\approx 3{,}31$ ; 3 ddl ; on ne rejette pas $H_0$ : les proportions sont compatibles avec les valeurs théoriques."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Contributions : $(180-168)^2/168 \\approx 0{,}857$ ; $0$ ; $(20-16)^2/16 = 1$ ; $(160-176)^2/176 \\approx 1{,}455$.",
+            "$\\chi^2 \\approx 3{,}31$. ddl $= k - 1 = 3$.",
+            "$3{,}31 < 7{,}81$ $\\Rightarrow$ non-rejet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-moy-022",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "adequation",
+        "presence"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On observe la présence à 4 séances : 25, 30, 20, 25. Sous $H_0$ « présence homogène », calcule les effectifs attendus puis $\\chi^2_{\\text{obs}}$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\chi^2_{\\text{obs}} = 2$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Total = 100 ; $E = 100/4 = 25$ par séance.",
+            "Contributions : $0 + (30-25)^2/25 + (20-25)^2/25 + 0 = 0 + 1 + 1 + 0 = 2$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-dif-004",
+      "chapitre": 4,
+      "section": "4.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Corrélation linéaire",
+      "motsCles": [
+        "correlation",
+        "petit-echantillon",
+        "fiabilite"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un étudiant relève 4 observations et calcule $r = 0{,}99$. Il conclut à « un lien très fort et fiable ». Explique pourquoi cette conclusion est prématurée en deux arguments."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Avec $n = 4$, $r$ fluctue énormément d'un échantillon à l'autre ; un $r \\approx 0{,}99$ peut apparaître par hasard, et un seul point aberrant sur 4 suffit à le gonfler. Il faut plus de données avant de conclure."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Argument 1 : la variance d'échantillonnage de $r$ est très grande à petit $n$ ; on peut obtenir $|r| \\approx 1$ par pur hasard.",
+            "Argument 2 : un seul point aberrant sur 4 peut faire passer $r$ de faible à très élevé.",
+            "Il faut un $n$ plus grand et un test de significativité."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-dif-009",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "domaine-validite",
+        "extrapolation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On modélise le nombre de mots retenus lors d'un test mémoire ($y$) selon l'âge ($x$, en années) chez 200 personnes de 20 à 70 ans. La droite obtenue est $\\hat{y} = 45 - 0{,}4x$. À $x = 0$ (nouveau-né), $\\hat{y} = 45$. À $x = 120$, $\\hat{y} = -3$. Que peux-tu dire de la validité du modèle à ces valeurs ? Formule proprement le domaine de validité."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Le modèle n'est valide que sur son intervalle d'observation, soit $x \\in [20\\,; 70]$. Aux valeurs extrêmes ($x = 0$ ou $x = 120$), l'extrapolation donne des prédictions dépourvues de sens (négatives) — la droite ne « survit » pas hors de son étendue."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Le modèle a été ajusté sur $x \\in [20\\,; 70]$.",
+            "Hors de cet intervalle : extrapolation, peu fiable.",
+            "À $x = 0$, un nouveau-né ne fait pas ce test (artefact).",
+            "À $x = 120$, la prédiction $\\hat{y} = -3$ est absurde (mots retenus $\\geq 0$).",
+            "Domaine de validité : $[20\\,; 70]$."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-dif-010",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "independance",
+        "3x2"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On étudie la préférence pour trois vaccins (A, B, C) selon le sexe. Tableau observé : Hommes $[30, 45, 25]$ (total 100) ; Femmes $[50, 40, 30]$ (total 120). Colonnes : 80, 85, 55 (total 220). Calcule tous les $E$, $\\chi^2_{\\text{obs}}$, les ddl, puis conclus au seuil 5 % avec $\\chi^2_{\\text{crit}}(2\\,\\text{ddl}\\,;\\,5\\,\\%) = 5{,}99$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\chi^2_{\\text{obs}} \\approx 3{,}96$ ; 2 ddl ; $3{,}96 < 5{,}99$ → on ne rejette pas $H_0$. Les préférences ne diffèrent pas significativement entre hommes et femmes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$E$(Hommes) : $36{,}36 ; 38{,}64 ; 25$.",
+            "$E$(Femmes) : $43{,}64 ; 46{,}36 ; 30$.",
+            "Contributions : $\\approx 1{,}113 + 1{,}047 + 0 + 0{,}928 + 0{,}873 + 0 \\approx 3{,}96$. ddl $= (2-1)(3-1) = 2$.",
+            "Non-rejet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-qcm-004",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "qcm",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "r-carre"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Si $r = 0{,}6$, alors $r^2$ vaut :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "1,2"
+            },
+            {
+              "cle": "b",
+              "texte": "0,12"
+            },
+            {
+              "cle": "c",
+              "texte": "0,36"
+            },
+            {
+              "cle": "d",
+              "texte": "3,6"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "0,36"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$r^2 = (0{,}6)^2 = 0{,}36 = 36\\,\\%$ : proportion de la variation de $y$ expliquée par la régression linéaire sur $x$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-qcm-009",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "prediction"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Avec la droite $\\hat{y} = 5 + 3x$, quelle est la prédiction pour $x = 4$ ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "12"
+            },
+            {
+              "cle": "b",
+              "texte": "15"
+            },
+            {
+              "cle": "c",
+              "texte": "17"
+            },
+            {
+              "cle": "d",
+              "texte": "20"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "17"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\hat{y} = 5 + 3 \\cdot 4 = 5 + 12 = 17$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-qcm-011",
+      "chapitre": 4,
+      "section": "4.10",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Test du khi-carré",
+      "motsCles": [
+        "khi-carre",
+        "ddl"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un test d'indépendance $\\chi^2$ porte sur un tableau 3$\\times$4. Combien de degrés de liberté ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "6"
+            },
+            {
+              "cle": "b",
+              "texte": "7"
+            },
+            {
+              "cle": "c",
+              "texte": "12"
+            },
+            {
+              "cle": "d",
+              "texte": "4"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "6"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$\\text{ddl} = (r - 1)(c - 1) = (3 - 1)(4 - 1) = 2 \\cdot 3 = 6$."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": true
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": false
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-qcm-014",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "deux-droites"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour un jeu de données avec $r = 0{,}80$ et $s_x = s_y$, les droites de régression de $y$ sur $x$ et de $x$ sur $y$ sont :",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "toujours identiques quand $s_x = s_y$"
+            },
+            {
+              "cle": "b",
+              "texte": "toujours perpendiculaires"
+            },
+            {
+              "cle": "c",
+              "texte": "distinctes en général ; elles coïncideraient seulement si $|r| = 1$"
+            },
+            {
+              "cle": "d",
+              "texte": "toujours parallèles"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "distinctes en général ; elles coïncideraient seulement si $|r| = 1$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "$b_{y|x} \\cdot b_{x|y} = r^2$.",
+            "Les deux droites coïncident si et seulement si $r^2 = 1$.",
+            "Ici $r = 0{,}80$, $r^2 = 0{,}64 < 1$, elles restent distinctes."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false
+            },
+            {
+              "cle": "b",
+              "correct": false
+            },
+            {
+              "cle": "c",
+              "correct": true
+            },
+            {
+              "cle": "d",
+              "correct": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-vf-001",
+      "chapitre": 4,
+      "section": "4.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Corrélation linéaire",
+      "motsCles": [
+        "correlation",
+        "bornes"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le coefficient de corrélation $r$ est toujours compris entre $-1$ et 1 (inclusivement).",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "Par construction, $-1 \\leq r \\leq 1$.",
+            "Aucune donnée ne peut faire sortir $r$ de cet intervalle."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-vf-006",
+      "chapitre": 4,
+      "section": "4.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "tempsEstime": 3,
+      "acces": "gratuit",
+      "sectionNotes": "Corrélation linéaire",
+      "motsCles": [
+        "correlation",
+        "piege"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une valeur $r = 0$ signifie que les variables $x$ et $y$ sont statistiquement indépendantes.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "$r = 0$ signifie seulement qu'il n'y a pas de lien LINÉAIRE.",
+            "Un lien non linéaire (parabolique, périodique, ...) est parfaitement possible."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-vf-008",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "diagnostic",
+        "r-carre"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un $r^2$ proche de 1 garantit que le modèle linéaire est adéquat pour les données.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Faux.",
+            "Un $r^2$ élevé peut coexister avec des résidus structurés (motif en U, point aberrant), révélant une non-linéarité.",
+            "Il faut toujours examiner le nuage et les résidus (leçon d'Anscombe)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch04-vf-013",
+      "chapitre": 4,
+      "section": "4.6",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "gratuit",
+      "sectionNotes": "Régression linéaire",
+      "motsCles": [
+        "regression",
+        "r-carre",
+        "interpretation"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "$r^2$ représente la proportion de la variation de $y$ expliquée par la régression linéaire sur $x$.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Vrai.",
+            "C'est le coefficient de détermination : $r^2 = $ variation expliquée / variation totale.",
+            "Par ex., $r^2 = 0{,}81 \\Rightarrow 81\\,\\%$ de la variation de $y$ est expliquée par $x$."
+          ]
+        }
+      ]
+    }
+  ]
 }

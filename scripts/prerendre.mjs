@@ -55,6 +55,13 @@ const ROUTES = [
     priorite: "0.9",
   },
   {
+    chemin: "/exercices/probabilites-statistique",
+    titre: "Exercices de probabilités et statistique corrigés — MathPratique",
+    description:
+      "100 exercices de probabilités et statistique corrigés et gratuits (201-SN1-RE) : statistiques descriptives, dénombrement, probabilités conditionnelles, loi binomiale, loi normale, intervalles de confiance et tests d'hypothèse. Chaque exercice avec sa réponse finale et sa démarche détaillée.",
+    priorite: "0.9",
+  },
+  {
     chemin: "/practice",
     titre: "Exercices de maths corrigés — MathPratique",
     description:

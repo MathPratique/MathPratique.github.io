@@ -4,8 +4,8 @@
   "droits": "© 2026 MathPratique.ca. Tous droits réservés.",
   "commentaire": "Catalogue complet. Les exercices marqués `verrouille` n'ont ici que leur fiche signalétique ; leur contenu n'est publié nulle part dans ce dossier.",
   "totaux": {
-    "gratuit": 0,
-    "payant": 451
+    "gratuit": 100,
+    "payant": 351
   },
   "exercices": [
     {
@@ -55,8 +55,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-fac-006",
@@ -65,8 +64,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-fac-007",
@@ -105,8 +103,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-fac-011",
@@ -125,8 +122,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-fac-013",
@@ -145,8 +141,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-fac-015",
@@ -315,8 +310,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-int-007",
@@ -345,8 +339,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-int-010",
@@ -355,8 +348,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-int-011",
@@ -455,8 +447,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-int-021",
@@ -465,8 +456,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-int-022",
@@ -495,8 +485,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-int-025",
@@ -505,8 +494,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-dif-001",
@@ -555,8 +543,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-dif-006",
@@ -585,8 +572,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-dif-009",
@@ -675,8 +661,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-qcm-003",
@@ -695,8 +680,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-qcm-005",
@@ -725,8 +709,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-qcm-008",
@@ -755,8 +738,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-qcm-011",
@@ -785,8 +767,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-qcm-014",
@@ -805,8 +786,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-qcm-016",
@@ -825,8 +805,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-vf-002",
@@ -865,8 +844,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-vf-006",
@@ -945,8 +923,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch01-vf-014",
@@ -985,8 +962,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-fac-002",
@@ -1085,8 +1061,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-fac-012",
@@ -1095,8 +1070,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-fac-013",
@@ -1135,8 +1109,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-fac-017",
@@ -1175,8 +1148,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-fac-021",
@@ -1325,8 +1297,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-int-011",
@@ -1345,8 +1316,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-int-013",
@@ -1365,8 +1335,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-int-015",
@@ -1485,8 +1454,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-002",
@@ -1585,8 +1553,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-012",
@@ -1615,8 +1582,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-015",
@@ -1675,8 +1641,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-qcm-006",
@@ -1685,8 +1650,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-qcm-007",
@@ -1695,8 +1659,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-qcm-008",
@@ -1705,8 +1668,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-qcm-009",
@@ -1735,8 +1697,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-qcm-012",
@@ -1845,8 +1806,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-vf-007",
@@ -1885,8 +1845,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-vf-011",
@@ -1895,8 +1854,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-vf-012",
@@ -1935,8 +1893,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-vf-016",
@@ -1972,8 +1929,7 @@
       "section": "2.1",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-107",
@@ -2017,8 +1973,7 @@
       "section": "2.3",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-112",
@@ -2026,8 +1981,7 @@
       "section": "2.3",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-113",
@@ -2098,8 +2052,7 @@
       "section": "2.6",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-121",
@@ -2143,8 +2096,7 @@
       "section": "2.8",
       "type": "qcm",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-126",
@@ -2170,8 +2122,7 @@
       "section": "2.9",
       "type": "qcm",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-129",
@@ -2242,8 +2193,7 @@
       "section": "2.11",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-134",
@@ -2251,8 +2201,7 @@
       "section": "2.12",
       "type": "vrai-faux",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-135",
@@ -2269,8 +2218,7 @@
       "section": "2.12",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-137",
@@ -2323,8 +2271,7 @@
       "section": "2.14",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-143",
@@ -2359,8 +2306,7 @@
       "section": "2.16",
       "type": "vrai-faux",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-147",
@@ -2431,8 +2377,7 @@
       "section": "2.18",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-155",
@@ -2458,8 +2403,7 @@
       "section": "2.19",
       "type": "calcul-long",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-158",
@@ -2467,8 +2411,7 @@
       "section": "2.20",
       "type": "calcul-court",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch02-dif-159",
@@ -2512,8 +2455,7 @@
       "section": "2.21",
       "type": "qcm",
       "difficulte": "difficile",
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-fac-001",
@@ -2602,8 +2544,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-fac-010",
@@ -2632,8 +2573,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-fac-013",
@@ -2702,8 +2642,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-fac-020",
@@ -2742,8 +2681,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-fac-024",
@@ -2792,8 +2730,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-int-004",
@@ -2842,8 +2779,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-int-009",
@@ -2902,8 +2838,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-int-015",
@@ -2972,8 +2907,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-int-022",
@@ -3042,8 +2976,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-dif-004",
@@ -3052,8 +2985,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-dif-005",
@@ -3182,8 +3114,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-003",
@@ -3212,8 +3143,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-006",
@@ -3222,8 +3152,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-007",
@@ -3232,8 +3161,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-008",
@@ -3262,8 +3190,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-011",
@@ -3272,8 +3199,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-012",
@@ -3302,8 +3228,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-qcm-015",
@@ -3372,8 +3297,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-vf-006",
@@ -3432,8 +3356,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-vf-012",
@@ -3462,8 +3385,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch03-vf-015",
@@ -3482,8 +3404,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-fac-001",
@@ -3542,8 +3463,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-fac-007",
@@ -3582,8 +3502,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-fac-011",
@@ -3622,8 +3541,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-fac-015",
@@ -3692,8 +3610,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-fac-022",
@@ -3702,8 +3619,7 @@
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-fac-023",
@@ -3752,8 +3668,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-moy-003",
@@ -3862,8 +3777,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-moy-014",
@@ -3912,8 +3826,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-moy-019",
@@ -3942,8 +3855,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-moy-022",
@@ -3952,8 +3864,7 @@
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-moy-023",
@@ -4022,8 +3933,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-dif-005",
@@ -4072,8 +3982,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-dif-010",
@@ -4082,8 +3991,7 @@
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-dif-011",
@@ -4172,8 +4080,7 @@
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-qcm-005",
@@ -4222,8 +4129,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-qcm-010",
@@ -4242,8 +4148,7 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-qcm-012",
@@ -4272,8 +4177,7 @@
       "type": "qcm",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-qcm-015",
@@ -4302,8 +4206,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-vf-002",
@@ -4352,8 +4255,7 @@
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-vf-007",
@@ -4372,8 +4274,7 @@
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-vf-009",
@@ -4422,8 +4323,7 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
-      "acces": "payant",
-      "verrouille": true
+      "acces": "gratuit"
     },
     {
       "id": "ch04-vf-014",
