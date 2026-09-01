@@ -25,8 +25,18 @@ export type Choix = { cle: string; texte: string };
 /**
  * Analyse d'un choix — présente dans l'étape « démarche », séparée des choix
  * pour que le DOM initial ne révèle pas la bonne réponse.
+ *
+ * `explication` est OPTIONNELLE, et le déclarer obligatoire a coûté un écran
+ * blanc : 64 des 83 QCM de prob-stat n'en ont pas — leur banque d'origine ne
+ * prévoyait pas d'explication par choix, et la conversion n'en a pas inventé.
+ * Le type promettait une chaîne, l'affichage la passait à un composant qui
+ * appelle des méthodes de chaîne dessus, et le clic sur une option faisait
+ * tomber la page.
+ *
+ * Tout consommateur doit donc gérer son absence : montrer le verdict et la
+ * bonne réponse suffit, l'explication est un bonus quand elle existe.
  */
-export type AnalyseChoix = { cle: string; correct: boolean; explication: string };
+export type AnalyseChoix = { cle: string; correct: boolean; explication?: string };
 
 export type Etape =
   | {

@@ -91,9 +91,15 @@ export default function QcmInteractif({ choix, analyseChoix }: Props) {
               ? "Bonne réponse !"
               : `Mauvaise réponse. La bonne est ${bonneCle(analyseChoix)}.`}
           </p>
-          <div className="mt-1.5 leading-relaxed">
-            <Mathematiques source={analyseChoisie.explication} html />
-          </div>
+          {/* L'explication par choix n'existe pas partout : 64 des 83 QCM de
+              prob-stat n'en ont pas. Le verdict et la bonne réponse suffisent
+              alors — passer `undefined` à <Mathematiques> faisait tomber la
+              page entière au premier clic. */}
+          {analyseChoisie.explication && (
+            <div className="mt-1.5 leading-relaxed">
+              <Mathematiques source={analyseChoisie.explication} html />
+            </div>
+          )}
           <button
             type="button"
             onClick={() => setChoisi(null)}
