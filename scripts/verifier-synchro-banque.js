@@ -29,22 +29,40 @@ const __dirname = dirname(__filename);
 const SITE = resolve(__dirname, "..");
 
 const DIST = join(SITE, "dist");
-const BLOB_PRIVE = join(SITE, "functions", "src", "data", "exercices-cd.json");
+/**
+ * Les banques a controler. Chaque cours a son blob : un cours ajoute sans
+ * etre inscrit ici passerait tout son contenu reserve sans controle, et
+ * c'est precisement ce qui est arrive a prob-stat entre sa mise en ligne et
+ * le 2026-09-01.
+ */
+const BANQUES = [
+  { cours: "calcul-differentiel", blob: join(SITE, "functions", "src", "data", "exercices-cd.json"), script: "sync-banque-cd.js" },
+  { cours: "probabilites-statistique", blob: join(SITE, "functions", "src", "data", "exercices-ps.json"), script: "sync-banque-ps.js" },
+];
 
 if (!existsSync(DIST)) {
   console.error(`✗ Dossier dist/ introuvable. Lance d'abord \`npm run build\`.`);
   process.exit(1);
 }
-if (!existsSync(BLOB_PRIVE)) {
-  console.error(`✗ Blob privé introuvable. Lance d'abord \`node scripts/sync-banque-cd.js\`.`);
-  process.exit(1);
+for (const b of BANQUES) {
+  if (!existsSync(b.blob)) {
+    console.error(`✗ Blob privé de ${b.cours} introuvable. Lance d'abord \`node scripts/${b.script}\`.`);
+    process.exit(1);
+  }
 }
 
 console.log("Contrôle post-build : aucun exo payant dans dist/…");
 
-const banque = JSON.parse(readFileSync(BLOB_PRIVE, "utf8"));
-const gratuits = banque.exercices.filter((e) => e.acces === "gratuit");
-const payants = banque.exercices.filter((e) => e.acces !== "gratuit");
+const gratuits = [];
+const payants = [];
+for (const b of BANQUES) {
+  const banque = JSON.parse(readFileSync(b.blob, "utf8"));
+  const g = banque.exercices.filter((e) => e.acces === "gratuit");
+  const p = banque.exercices.filter((e) => e.acces !== "gratuit");
+  gratuits.push(...g);
+  payants.push(...p);
+  console.log(`   ${b.cours} : ${p.length} payants, ${g.length} gratuits.`);
+}
 
 console.log(`   ${payants.length} exos payants à contrôler contre ${gratuits.length} gratuits.`);
 
