@@ -4,7 +4,7 @@ import {
   filtrerIds,
   estComplete,
   estMarque,
-  compteAvecPrefixe,
+  compteParmi,
   PROGRESSION_VIDE,
 } from "../.tmp-test/progression/regles.js";
 
@@ -119,17 +119,44 @@ test("l'ordre des IDs en entrée est préservé", () => {
 });
 
 // ---------------------------------------------------------------------------
-//  compteAvecPrefixe — bonus, cohérent avec la même modélisation
+//  compteParmi — le compteur « X / N complétés » sous chaque chapitre
 // ---------------------------------------------------------------------------
 
-test("compteAvecPrefixe compte séparément completes et marques sur le même préfixe", () => {
+test("compteParmi compte séparément completes et marques sur la même liste", () => {
   const p = progression({
     completes: ["CD-C01-E001", "CD-C01-E002", "CD-C02-E001"],
     marques: ["CD-C01-E001", "CD-C07-E010"],
   });
+  const ch01 = ["CD-C01-E001", "CD-C01-E002", "CD-C01-E003"];
   // CD-C01-E001 est dans les deux : il compte pour 1 dans chaque total.
-  assert.equal(compteAvecPrefixe(p, "completes", "CD-C01-"), 2);
-  assert.equal(compteAvecPrefixe(p, "marques", "CD-C01-"), 1);
-  assert.equal(compteAvecPrefixe(p, "completes", "CD-C02-"), 1);
-  assert.equal(compteAvecPrefixe(p, "marques", "CD-C07-"), 1);
+  assert.equal(compteParmi(p, "completes", ch01), 2);
+  assert.equal(compteParmi(p, "marques", ch01), 1);
+  assert.equal(compteParmi(p, "completes", ["CD-C02-E001"]), 1);
+  assert.equal(compteParmi(p, "marques", ["CD-C07-E010"]), 1);
+});
+
+test("compteParmi ignore la progression hors de la liste fournie", () => {
+  const p = progression({ completes: ["CD-C01-E001", "CD-C02-E001"] });
+  // Le dénominateur affiché est ids.length : le numérateur ne doit jamais
+  // le dépasser, même quand d'autres chapitres sont cochés. C'est ce qui
+  // pouvait produire « 12 / 9 complétés » sous un filtre de difficulté.
+  assert.equal(compteParmi(p, "completes", ["CD-C01-E001"]), 1);
+  assert.equal(compteParmi(p, "completes", []), 0);
+});
+
+test("compteParmi ne dépend pas du schéma de nommage du cours", () => {
+  // Le défaut réel : la page de probabilités cherchait des « CD-C01- »
+  // parmi des « ch01-fac-001 » et affichait « 0 / 97 » en permanence.
+  const p = progression({
+    completes: ["ch01-fac-001", "ch01-qcm-003"],
+    marques: ["ch02-dif-137"],
+  });
+  assert.equal(compteParmi(p, "completes", ["ch01-fac-001", "ch01-qcm-003", "ch01-fac-002"]), 2);
+  assert.equal(compteParmi(p, "marques", ["ch02-dif-137"]), 1);
+});
+
+test("compteParmi tolère une progression absente", () => {
+  assert.equal(compteParmi(null, "completes", ["A"]), 0);
+  assert.equal(compteParmi(undefined, "marques", ["A"]), 0);
+  assert.equal(compteParmi(PROGRESSION_VIDE, "completes", ["A"]), 0);
 });

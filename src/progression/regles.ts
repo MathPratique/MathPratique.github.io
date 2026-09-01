@@ -48,21 +48,37 @@ export function estMarque(p: Progression | null | undefined, id: string): boolea
 }
 
 /**
- * Compte les exercices complétés dont l'id commence par un préfixe donné.
- * On passe le préfixe plutôt que le numéro de chapitre pour rester
- * indépendant du schéma d'IDs — le jour où un autre cours n'utilise pas
- * `CD-CXX-EYYY`, la fonction fonctionne quand même.
+ * Compte, parmi une liste d'exercices donnée, ceux qui sont cochés (ou
+ * marqués). L'appelant fournit les IDs exacts qu'il affiche.
  *
- *   compteAvecPrefixe(p, 'completes', 'CD-C01-') → nb d'exos ch01 cochés
+ *   compteParmi(p, 'completes', ids du chapitre 1) → nb cochés dans ce chapitre
+ *
+ * Remplace un `compteAvecPrefixe(p, champ, 'CD-C01-')` qui déduisait
+ * l'appartenance à un chapitre de la FORME de l'id. Sa documentation
+ * affirmait rester « indépendant du schéma d'IDs », mais le préfixe était
+ * écrit en dur dans chaque page : la page de probabilités, copiée depuis
+ * celle du calcul différentiel, cherchait des `CD-C01-` parmi des
+ * `ch01-fac-001` et affichait donc « 0 / 97 » en permanence, quel que soit
+ * le nombre de cases cochées.
+ *
+ * Compter par appartenance à une liste supprime la question : rien ici ne
+ * sait comment un cours nomme ses exercices, et un troisième cours ne peut
+ * pas retomber dans le même piège.
+ *
+ * Effet de bord voulu : le numérateur suit désormais les filtres de type et
+ * de difficulté, comme le dénominateur. Avec le préfixe, filtrer sur
+ * « Facile » pouvait afficher « 12 / 9 complétés » — le numérateur comptait
+ * tout le chapitre pendant que le dénominateur ne comptait que les cartes
+ * visibles.
  */
-export function compteAvecPrefixe(
+export function compteParmi(
   p: Progression | null | undefined,
   champ: "completes" | "marques",
-  prefixe: string,
+  ids: readonly string[],
 ): number {
   if (!p) return 0;
   let n = 0;
-  for (const id in p[champ]) if (id.startsWith(prefixe)) n++;
+  for (const id of ids) if (id in p[champ]) n++;
   return n;
 }
 

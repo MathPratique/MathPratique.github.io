@@ -19,7 +19,7 @@ import CarteExerciceCD from "../components/practice/CarteExerciceCD";
 import FiltreProgressionBarre from "../progression/FiltreProgression";
 import { useProgression } from "../progression/ProgressionContext";
 import {
-  compteAvecPrefixe,
+  compteParmi,
   filtrerIds,
   type FiltreProgression,
 } from "../progression/regles";
@@ -302,7 +302,7 @@ export default function ExercicesProbabilitesStatistique() {
                   ` sur ${g.exercices.length}${provenance === "bundle" ? " gratuits" : ""} dans ce chapitre`}
                 .
               </p>
-              <CompteurChapitre chapitre={g.numero} nbTotal={g.filtresPublics.length} />
+              <CompteurChapitre ids={g.filtresPublics.map((e) => e.id)} />
             </header>
 
             <div className="mx-auto mt-5 max-w-4xl space-y-4">
@@ -383,15 +383,17 @@ function BandeauChargement() {
  * « 0 / 30 » à « 12 / 30 » à la volée qui donnerait une impression
  * (fausse) de perte de données.
  */
-function CompteurChapitre({ chapitre, nbTotal }: { chapitre: number; nbTotal: number }) {
+function CompteurChapitre({ ids }: { ids: string[] }) {
   const { statut, progression } = useProgression();
   if (statut !== "actif") return null;
-  const prefixe = `CD-C${String(chapitre).padStart(2, "0")}-`;
-  const completes = compteAvecPrefixe(progression, "completes", prefixe);
-  const marques = compteAvecPrefixe(progression, "marques", prefixe);
+  // On compte sur les IDs réellement affichés, jamais sur la forme des IDs.
+  // Cette page cherchait des « CD-C01- » parmi des « ch01-fac-001 » : le
+  // compteur restait à zéro alors que la progression était bien enregistrée.
+  const completes = compteParmi(progression, "completes", ids);
+  const marques = compteParmi(progression, "marques", ids);
   return (
     <p className="mt-1 text-sm text-ink-600">
-      <span className="font-semibold text-emerald-700">{completes} / {nbTotal}</span>{" "}
+      <span className="font-semibold text-emerald-700">{completes} / {ids.length}</span>{" "}
       complétés
       {marques > 0 && (
         <>
