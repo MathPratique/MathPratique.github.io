@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "e4edc8b3815bd725",
+  "contentHash": "6d562f348286e53b",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -4307,6 +4307,620 @@
             "Vérification par distributivité (approximative) : on remonte à la fraction avant simplification $\\dfrac{x - y}{x(x - y)(x + y)}$ ; le produit du dénominateur $x(x - y)(x + y) = x(x^2 - y^2)$. En développant l'égalité on retrouve la soustraction initiale."
           ],
           "piegeCourant": "S'arrêter à $\\dfrac{x - y}{x(x - y)(x + y)}$ sans simplifier. L'étape 5 de la méthode des notes est explicite : après avoir opéré, il faut TOUJOURS regarder si la fraction obtenue peut être simplifiée. C'est le même piège que 'aller au bout' des sections précédentes."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E086",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "fraction rationnelle",
+        "trinôme au dénominateur",
+        "formule quadratique"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\dfrac{5}{2x^2 - 5x - 3}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le dénominateur est un trinôme du second degré : factorise-le pour trouver les valeurs interdites."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\;]-\\infty, -\\tfrac{1}{2}[\\;\\cup\\;]-\\tfrac{1}{2}, 3[\\;\\cup\\;]3, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Une seule source de restriction : le dénominateur ne doit pas s'annuler.\\[ 2x^2 - 5x - 3 \\neq 0. \\]",
+            "On factorise par la formule quadratique (section 1.1.3). Avec $a = 2$, $b = -5$, $c = -3$ :\\[ \\Delta = 25 + 24 = 49, \\qquad x = \\dfrac{5 \\pm 7}{4} \\implies x_1 = 3, \\; x_2 = -\\dfrac{1}{2}. \\]",
+            "Factorisation (avec absorption du coefficient $a = 2$) :\\[ 2x^2 - 5x - 3 = (x - 3)(2x + 1). \\]",
+            "Les valeurs interdites sont $x = 3$ et $x = -\\tfrac{1}{2}$.\\[ \\mathrm{dom}\\,f = \\mathbb{R} \\setminus \\left\\{-\\tfrac{1}{2},\\, 3\\right\\} = \\;]-\\infty, -\\tfrac{1}{2}[\\;\\cup\\;]-\\tfrac{1}{2}, 3[\\;\\cup\\;]3, +\\infty[. \\]",
+            "Vérification par test de valeurs. En $x = 0$ (dans le domaine) : $f(0) = 5 / (-3) = -\\tfrac{5}{3}$, défini. $\\checkmark$ En $x = 3$ (exclu) : dénominateur $= 18 - 15 - 3 = 0$, indéfini. $\\checkmark$"
+          ],
+          "piegeCourant": "Chercher les zéros du numérateur au lieu du dénominateur. Le numérateur $5$ est constant et non nul : il ne crée AUCUNE restriction. Seuls les zéros du dénominateur sont interdits."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E087",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "racine paire",
+        "inéquation quadratique",
+        "tableau de signes"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $g(x) = \\sqrt{x^2 - x - 6}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Racine paire → radicande $\\geq 0$. Le radicande est un trinôme : factorise, puis tableau de signes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,g = \\;]-\\infty, -2]\\;\\cup\\;[3, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Racine carrée = racine d'indice pair, donc le radicande doit être $\\geq 0$ (tableau du résumé du chapitre) :\\[ x^2 - x - 6 \\geq 0. \\]",
+            "On factorise le trinôme par somme-produit (section 1.1.3). Deux nombres dont la somme est $-1$ et le produit $-6$ : $-3$ et $2$. Donc :\\[ x^2 - x - 6 = (x - 3)(x + 2). \\]",
+            "Un produit de deux facteurs est $\\geq 0$ quand les deux sont de même signe (ou l'un des deux est zéro). Autour de $-2$ et $3$ :",
+            "Pour $x < -2$ : $x - 3 < 0$ et $x + 2 < 0$, produit $> 0$. $\\checkmark$",
+            "Pour $-2 < x < 3$ : $x - 3 < 0$ et $x + 2 > 0$, produit $< 0$.",
+            "Pour $x > 3$ : les deux positifs, produit $> 0$. $\\checkmark$",
+            "En $x = -2$ ou $x = 3$ : produit nul, valide (racine de zéro existe).",
+            "\\[ \\mathrm{dom}\\,g = \\;]-\\infty, -2]\\;\\cup\\;[3, +\\infty[. \\]",
+            "Les crochets sont FERMÉS aux bornes $-2$ et $3$ parce que l'inégalité est LARGE ($\\geq$) : $\\sqrt{0} = 0$ existe (même logique que l'exemple modèle 2 de la section)."
+          ],
+          "piegeCourant": "Écrire $[-2, 3]$ comme réponse. Le radicande y est NÉGATIF (test rapide en $x = 0$ : $0 - 0 - 6 = -6 < 0$), donc la racine n'y existe pas. C'est le complément qu'on cherche."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E088",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 5,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "logarithme",
+        "quotient",
+        "inéquation rationnelle"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $h(x) = \\ln\\left(\\dfrac{x-1}{x+2}\\right)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'argument d'un logarithme doit être strictement positif. Un quotient est positif quand numérateur et dénominateur sont de même signe."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,h = \\;]-\\infty, -2[\\;\\cup\\;]1, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "L'argument du logarithme doit être strictement positif :\\[ \\dfrac{x-1}{x+2} > 0. \\]",
+            "Un quotient est $> 0$ ssi numérateur et dénominateur sont de même signe non nul. Tableau de signes autour des zéros $-2$ (dénom) et $1$ (num) :",
+            "Pour $x < -2$ : $x - 1 < 0$ et $x + 2 < 0$, quotient $> 0$. $\\checkmark$",
+            "Pour $-2 < x < 1$ : $x - 1 < 0$ et $x + 2 > 0$, quotient $< 0$.",
+            "Pour $x > 1$ : les deux positifs, quotient $> 0$. $\\checkmark$",
+            "\\[ \\mathrm{dom}\\,h = \\;]-\\infty, -2[\\;\\cup\\;]1, +\\infty[. \\]",
+            "Les deux bornes sont OUVERTES : en $x = -2$ le dénominateur s'annule (indéfini), et en $x = 1$ le quotient vaut $0$, ce qui rend $\\ln 0$ impossible (comme dans l'exemple modèle 3 de la section : bornes ouvertes pour inégalité stricte)."
+          ],
+          "piegeCourant": "Résoudre $\\dfrac{x-1}{x+2} > 0$ en 'multipliant par $x+2$' sans se soucier du signe de $x+2$. Multiplier une inégalité par une expression de signe inconnu inverse parfois le sens de l'inégalité — le tableau de signes évite ce piège systématiquement."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E089",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "exponentielle",
+        "dénominateur",
+        "aucune restriction sur exp"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\dfrac{1}{e^x - 1}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "$e^x$ existe pour tout $x$ (rappel du résumé du chapitre : $e^x > 0$ toujours). Seul le dénominateur peut créer une restriction."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\mathbb{R} \\setminus \\{0\\} = \\;]-\\infty, 0[\\;\\cup\\;]0, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Deux sources potentielles : l'exponentielle et le dénominateur. Le résumé du chapitre le rappelle : $e^x > 0$ pour tout réel $x$, donc l'exponentielle en elle-même ne crée aucune restriction.",
+            "Seul le dénominateur pose une contrainte :\\[ e^x - 1 \\neq 0 \\iff e^x \\neq 1. \\]",
+            "$e^x = 1$ pour $x = 0$ uniquement (la fonction exponentielle est strictement croissante, elle ne prend chaque valeur qu'une fois). Donc la seule valeur interdite est $x = 0$.",
+            "\\[ \\mathrm{dom}\\,f = \\mathbb{R} \\setminus \\{0\\} = \\;]-\\infty, 0[\\;\\cup\\;]0, +\\infty[. \\]",
+            "Vérification par test de valeurs. En $x = 1$ : $e - 1 \\approx 1{,}72 \\neq 0$, $f(1)$ existe. $\\checkmark$ En $x = 0$ : $e^0 - 1 = 0$, indéfini. $\\checkmark$"
+          ],
+          "piegeCourant": "Écrire une condition sur $e^x$ lui-même (par exemple $e^x > 0$, ou $e^x \\neq 0$). Ces conditions sont trivialement vraies partout et n'ajoutent rien ; il faut chercher où l'exponentielle est UTILISÉE (ici, dans un dénominateur qui peut s'annuler)."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E090",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "arcsinus",
+        "double inégalité",
+        "argument linéaire"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\arcsin(2x - 1)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'argument d'arcsin doit être compris entre $-1$ et $1$ inclusivement (tableau du résumé du chapitre)."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = [0, 1]$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Condition d'existence d'arcsin :\\[ -1 \\leq 2x - 1 \\leq 1. \\]",
+            "On résout la double inégalité en ajoutant $1$ à chaque membre :\\[ 0 \\leq 2x \\leq 2, \\] puis en divisant par $2$ (positif, le sens est conservé) :\\[ 0 \\leq x \\leq 1. \\]",
+            "\\[ \\mathrm{dom}\\,f = [0, 1]. \\]",
+            "Les crochets sont FERMÉS parce que l'inégalité est large : $\\arcsin(-1) = -\\pi/2$ et $\\arcsin(1) = \\pi/2$ existent tous deux (voir tableau des deux nouvelles fonctions dans le résumé, image $[-\\pi/2, \\pi/2]$).",
+            "Vérification. En $x = 0$ : argument $= -1$, $\\arcsin(-1) = -\\pi/2$ défini. $\\checkmark$ En $x = 2$ : argument $= 3$, hors $[-1, 1]$, indéfini. $\\checkmark$"
+          ],
+          "piegeCourant": "Résoudre seulement l'une des deux inégalités (par exemple $-1 \\leq 2x - 1$ tout court) en oubliant l'autre. La double inégalité $-1 \\leq \\ldots \\leq 1$ crée DEUX contraintes — elles doivent toutes deux être satisfaites simultanément."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E091",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "arccosinus",
+        "argument fractionnaire",
+        "condition [-1, 1]"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $g(x) = \\arccos\\left(\\dfrac{x}{3}\\right)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "arccos, comme arcsin, exige un argument compris entre $-1$ et $1$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,g = [-3, 3]$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "La fonction $\\arccos$ obéit à la même condition d'existence que $\\arcsin$ : son argument doit appartenir à $[-1, 1]$.\\[ -1 \\leq \\dfrac{x}{3} \\leq 1. \\]",
+            "On multiplie chaque membre par $3$ (positif, le sens est conservé) :\\[ -3 \\leq x \\leq 3. \\]",
+            "\\[ \\mathrm{dom}\\,g = [-3, 3]. \\]",
+            "Les crochets sont FERMÉS parce que l'inégalité est large et que $\\arccos(\\pm 1)$ existe (respectivement $\\pi$ et $0$).",
+            "Vérification. En $x = 0$ : argument $= 0$, $\\arccos 0 = \\pi/2$ défini. $\\checkmark$ En $x = 4$ : argument $= 4/3 > 1$, indéfini. $\\checkmark$"
+          ],
+          "piegeCourant": "Multiplier par $3$ en inversant le sens de l'inégalité, comme si on multipliait par un nombre négatif. Le sens ne s'inverse QUE quand on multiplie (ou divise) par un nombre strictement négatif."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E092",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 4,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "arctangente",
+        "fraction rationnelle",
+        "aucune restriction sur arctan"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $h(x) = \\dfrac{\\arctan x}{x^2 - 4}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "arctan existe partout. La restriction vient du dénominateur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,h = \\mathbb{R} \\setminus \\{-2, 2\\} = \\;]-\\infty, -2[\\;\\cup\\;]-2, 2[\\;\\cup\\;]2, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Deux sources potentielles : arctan (numérateur) et le dénominateur.",
+            "Rappel du tableau du résumé : $\\arctan(A)$ existe pour tout $A$ réel, donc AUCUNE restriction du côté du numérateur.",
+            "Restriction du dénominateur :\\[ x^2 - 4 \\neq 0 \\iff (x - 2)(x + 2) \\neq 0 \\iff x \\neq \\pm 2. \\]",
+            "\\[ \\mathrm{dom}\\,h = \\mathbb{R} \\setminus \\{-2, 2\\} = \\;]-\\infty, -2[\\;\\cup\\;]-2, 2[\\;\\cup\\;]2, +\\infty[. \\]",
+            "Vérification. En $x = 0$ : $\\arctan 0 / (-4) = 0$, défini. $\\checkmark$ En $x = 2$ : dénominateur $= 0$, indéfini. $\\checkmark$"
+          ],
+          "piegeCourant": "Écrire une contrainte sur $\\arctan x$ elle-même (par exemple $-\\pi/2 < \\arctan x < \\pi/2$). C'est vrai — mais c'est l'IMAGE d'arctan, pas une restriction sur son DOMAINE. Le domaine de $h$ ne dépend pas de ça."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E093",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "composition racine et log",
+        "conditions absorbées",
+        "intersection"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\sqrt{\\ln(x - 2)}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux conditions à satisfaire simultanément : l'argument du log doit être $> 0$, ET le radicande doit être $\\geq 0$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = [3, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Deux restrictions à identifier :",
+            "Condition 1 (le log doit exister) : $x - 2 > 0 \\iff x > 2$.",
+            "Condition 2 (le radicande de la racine paire doit être $\\geq 0$) : $\\ln(x - 2) \\geq 0$. On résout : $\\ln(x - 2) \\geq 0 \\iff x - 2 \\geq e^0 = 1 \\iff x \\geq 3$.",
+            "Intersection : $x > 2$ ET $x \\geq 3$. La deuxième contrainte est plus restrictive et ABSORBE la première (tout $x \\geq 3$ satisfait déjà $x > 2$).",
+            "\\[ \\mathrm{dom}\\,f = [3, +\\infty[. \\]",
+            "Le crochet est FERMÉ en $3$ : en $x = 3$, $\\ln 1 = 0$ et $\\sqrt{0} = 0$ existent tous deux.",
+            "Vérification. En $x = 3$ : $\\sqrt{\\ln 1} = \\sqrt{0} = 0$, défini. $\\checkmark$ En $x = 2{,}5$ : $\\ln 0{,}5 < 0$, la racine n'existe pas. $\\checkmark$ En $x = 2$ : $\\ln 0$ n'existe pas. $\\checkmark$"
+          ],
+          "piegeCourant": "Conserver artificiellement la condition 1 dans la réponse finale sous forme d'union $]2, 3[\\;\\cup\\;[3, +\\infty[$. Quand deux conditions se combinent par intersection et que l'une est plus restrictive, elle absorbe l'autre — c'est la seule qui compte."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E094",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "cosinus au numérateur",
+        "logarithme au dénominateur",
+        "log nul",
+        "deux conditions distinctes"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\dfrac{\\cos(x^2 - 2)}{\\ln(x + 3)}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "cos existe pour tout argument réel. Le log au dénominateur crée en revanche DEUX contraintes : il doit exister ET ne pas s'annuler."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\;]-3, -2[\\;\\cup\\;]-2, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Deux sources potentielles : le numérateur (cos) et le dénominateur (ln).",
+            "\\textbf{Numérateur.} $\\cos u$ existe pour tout $u$ réel. L'argument $u = x^2 - 2$ est un polynôme, défini partout. AUCUNE restriction du côté du numérateur.",
+            "\\textbf{Dénominateur.} $\\ln(x + 3)$ apparaît au dénominateur : cela crée DEUX contraintes distinctes.",
+            "(a) L'argument du log doit être $> 0$ pour que le log existe :\\[ x + 3 > 0 \\iff x > -3. \\]",
+            "(b) La valeur du log ne doit pas être nulle (sinon on divise par zéro) :\\[ \\ln(x + 3) \\neq 0 \\iff x + 3 \\neq 1 \\iff x \\neq -2. \\]",
+            "\\textbf{Intersection.} $x > -3$ ET $x \\neq -2$ :\\[ \\mathrm{dom}\\,f = \\;]-3, -2[\\;\\cup\\;]-2, +\\infty[. \\]",
+            "Les bornes sont OUVERTES : en $x = -3$ le log n'existe pas, en $x = -2$ le dénominateur vaut $\\ln 1 = 0$.",
+            "Vérification. En $x = 0$ : $\\cos(-2) / \\ln 3$, défini. $\\checkmark$ En $x = -2$ : $\\cos 2 / \\ln 1 = \\cos 2 / 0$, indéfini. $\\checkmark$ En $x = -3$ : $\\ln 0$ indéfini. $\\checkmark$ En $x = -4$ : $\\ln(-1)$ indéfini. $\\checkmark$"
+          ],
+          "piegeCourant": "N'imposer qu'une seule condition sur le log ($x + 3 > 0$) en oubliant que le log AU DÉNOMINATEUR doit aussi être non nul. Un log seul crée UNE contrainte (exister) ; un log au dénominateur en crée DEUX (exister ET être non nul), et cette seconde condition ajoute le trou en $x = -2$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E095",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "racine d'un quotient",
+        "condition combinée",
+        "tableau de signes"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $g(x) = \\sqrt{\\dfrac{x-1}{x+3}}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux contraintes combinées : le dénominateur $\\neq 0$, et le quotient (sous la racine paire) doit être $\\geq 0$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,g = \\;]-\\infty, -3[\\;\\cup\\;[1, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Deux restrictions à combiner. Racine paire → radicande $\\geq 0$ : $\\dfrac{x-1}{x+3} \\geq 0$. Dénominateur non nul : $x \\neq -3$.",
+            "La deuxième contrainte est automatiquement respectée par la première : si $x = -3$, le quotient n'est pas défini, donc ne peut pas être $\\geq 0$.",
+            "Résolution de $\\dfrac{x-1}{x+3} \\geq 0$. Un quotient est $\\geq 0$ ssi numérateur et dénominateur sont de même signe, ou si le numérateur est zéro (avec dénom non nul). Tableau de signes autour de $-3$ et $1$ :",
+            "Pour $x < -3$ : $x - 1 < 0$ et $x + 3 < 0$, quotient $> 0$. $\\checkmark$",
+            "Pour $-3 < x < 1$ : $x - 1 < 0$ et $x + 3 > 0$, quotient $< 0$.",
+            "En $x = 1$ : quotient $= 0/4 = 0$, valide (racine de zéro existe). $\\checkmark$",
+            "Pour $x > 1$ : les deux positifs, quotient $> 0$. $\\checkmark$",
+            "En $x = -3$ : dénominateur nul, la fonction est indéfinie — la borne est OUVERTE.",
+            "\\[ \\mathrm{dom}\\,g = \\;]-\\infty, -3[\\;\\cup\\;[1, +\\infty[. \\]",
+            "Vérification. En $x = -4$ : quotient $= -5 / -1 = 5$, $\\sqrt{5}$ existe. $\\checkmark$ En $x = 0$ : quotient $= -1/3 < 0$, racine indéfinie. $\\checkmark$"
+          ],
+          "piegeCourant": "Écrire une borne FERMÉE en $x = -3$ (crochet fermé au lieu d'ouvert). La règle : la borne est fermée quand l'inégalité est large ET que la fonction est bien définie au point. En $x = -3$ le dénominateur s'annule, donc la fonction est indéfinie même si $x^2$ satisfait l'inégalité 'à la limite'."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E096",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "arcsinus",
+        "inéquations rationnelles",
+        "double condition sur l'argument"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\arcsin\\left(\\dfrac{2x-1}{x+2}\\right)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux inéquations rationnelles à résoudre : l'argument d'arcsin doit satisfaire $-1 \\leq \\text{argument} \\leq 1$, et le dénominateur ne doit pas s'annuler."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\left[-\\dfrac{1}{3},\\, 3\\right]$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Trois conditions à combiner : (a) dénominateur $x + 2 \\neq 0$ ; (b) argument $\\geq -1$ ; (c) argument $\\leq 1$.",
+            "Condition (a) : $x \\neq -2$.",
+            "Condition (b) : $\\dfrac{2x - 1}{x + 2} \\geq -1$. On amène tout du même côté et on regroupe :\\[ \\dfrac{2x - 1}{x + 2} + 1 \\geq 0 \\iff \\dfrac{(2x - 1) + (x + 2)}{x + 2} \\geq 0 \\iff \\dfrac{3x + 1}{x + 2} \\geq 0. \\]",
+            "Tableau de signes autour de $x = -2$ (zéro du dénom) et $x = -\\tfrac{1}{3}$ (zéro du num) : le quotient est $\\geq 0$ pour $x < -2$ OU $x \\geq -\\tfrac{1}{3}$ (dénom exclu du domaine).",
+            "Condition (c) : $\\dfrac{2x - 1}{x + 2} \\leq 1$. Même technique :\\[ \\dfrac{2x - 1}{x + 2} - 1 \\leq 0 \\iff \\dfrac{(2x - 1) - (x + 2)}{x + 2} \\leq 0 \\iff \\dfrac{x - 3}{x + 2} \\leq 0. \\]",
+            "Tableau de signes autour de $x = -2$ et $x = 3$ : le quotient est $\\leq 0$ pour $-2 < x \\leq 3$.",
+            "Intersection de (b) et (c) — la condition (a) est déjà incluse dans les tableaux :",
+            "(b) donne $x < -2$ OU $x \\geq -\\tfrac{1}{3}$.",
+            "(c) donne $-2 < x \\leq 3$.",
+            "$x < -2$ ET $-2 < x \\leq 3$ : ensemble VIDE. $x \\geq -\\tfrac{1}{3}$ ET $-2 < x \\leq 3$ : donne $-\\tfrac{1}{3} \\leq x \\leq 3$.",
+            "\\[ \\mathrm{dom}\\,f = \\left[-\\dfrac{1}{3},\\, 3\\right]. \\]",
+            "Vérification. En $x = 0$ : argument $= -1/2 \\in [-1, 1]$. $\\checkmark$ En $x = -\\tfrac{1}{3}$ : argument $= (-\\tfrac{5}{3}) / (\\tfrac{5}{3}) = -1$, dans $[-1, 1]$. $\\checkmark$ En $x = 3$ : argument $= 5/5 = 1$, dans $[-1, 1]$. $\\checkmark$ En $x = -1$ : argument $= -3/1 = -3$, hors $[-1, 1]$, exclu. $\\checkmark$"
+          ],
+          "piegeCourant": "Multiplier une inégalité rationnelle par $x + 2$ SANS distinguer le signe de $x + 2$. Si $x + 2 < 0$, le sens de l'inégalité s'inverse ; si $x + 2 > 0$, il se conserve. Le passage par 'un seul côté puis tableau de signes' évite ce piège systématiquement."
+        }
+      ]
+    },
+    {
+      "id": "CD-C01-E097",
+      "chapitre": 1,
+      "section": "1.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Détermination algébrique du domaine",
+      "motsCles": [
+        "domaine",
+        "logarithme d'un quotient",
+        "racine au numérateur",
+        "conditions absorbées"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le domaine de $f(x) = \\ln\\left(\\dfrac{\\sqrt{x+4}}{x-1}\\right)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois restrictions apparentes : racine paire, dénominateur non nul, argument du log $> 0$. Après analyse, certaines en absorbent d'autres."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\mathrm{dom}\\,f = \\;]1, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "Trois restrictions apparentes :",
+            "(a) Racine paire au numérateur : $x + 4 \\geq 0 \\iff x \\geq -4$.",
+            "(b) Dénominateur non nul : $x - 1 \\neq 0 \\iff x \\neq 1$.",
+            "(c) Argument du logarithme $> 0$ : $\\dfrac{\\sqrt{x+4}}{x-1} > 0$.",
+            "La condition (c) est la plus restrictive. Comme $\\sqrt{x+4} \\geq 0$ toujours (là où défini), un quotient $\\dfrac{\\sqrt{\\ldots}}{x-1} > 0$ exige DEUX choses simultanément :",
+            "Numérateur strictement positif : $\\sqrt{x+4} > 0 \\iff x + 4 > 0 \\iff x > -4$ (strict — sinon $\\sqrt{0} = 0$ et le quotient serait $0$, ce qui rendrait $\\ln 0$ impossible).",
+            "Dénominateur du même signe (donc positif ici, pour un quotient $> 0$ avec numérateur positif) : $x - 1 > 0 \\iff x > 1$.",
+            "Intersection : $x > -4$ ET $x > 1$. La deuxième contrainte absorbe la première ($x > 1 \\Rightarrow x > -4$).",
+            "Les conditions (a) et (b) sont automatiquement satisfaites par $x > 1$ : $x > 1 \\Rightarrow x + 4 > 5 > 0$ (racine ok) et $x \\neq 1$ (dénom ok).",
+            "\\[ \\mathrm{dom}\\,f = \\;]1, +\\infty[. \\]",
+            "Vérification. En $x = 2$ : $\\sqrt{6}/1 = \\sqrt{6} > 0$, $\\ln(\\sqrt{6})$ existe. $\\checkmark$ En $x = 1$ : dénom $= 0$, indéfini. $\\checkmark$ En $x = -2$ : quotient $= \\sqrt{2}/(-3) < 0$, $\\ln$ indéfini. $\\checkmark$ En $x = -5$ : racine indéfinie. $\\checkmark$"
+          ],
+          "piegeCourant": "Écrire la réponse comme union $[-4, 1[\\;\\cup\\;]1, +\\infty[$ en traitant chaque restriction indépendamment sans regarder le signe global du quotient sous le log. La condition (c) tue à elle seule tout l'intervalle $[-4, 1[$ (le quotient y est négatif ou nul)."
         }
       ]
     },
