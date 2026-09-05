@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "282de09f4f33f847",
+  "contentHash": "4dddabc37cf44ccd",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -8634,6 +8634,606 @@
             "Union : $\\{1\\} \\cup \\{3\\} \\cup \\;]0, 2[\\;\\cup\\;\\{1\\} \\cup \\;]0, 2] = \\;]0, 2]\\;\\cup\\;\\{3\\}$ (les valeurs $\\{1\\}$ sont absorbées dans $]0, 2]$ ; $\\{3\\}$ reste isolé).\\[ \\mathrm{ima}\\,H = \\;]0, 2]\\;\\cup\\;\\{3\\}. \\]"
           ],
           "piegeCourant": "Répondre $\\mathrm{ima}\\,H = \\;]0, 3]$ en supposant que le plateau à $y = 3$ « comble » l'écart entre $2$ et $3$. Non : aucune branche ne prend de valeur dans $]2, 3[$. Le plateau à $3$ n'occupe que la valeur exacte $y = 3$, qui reste isolée dans l'image."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E067",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "factorisation",
+        "conjugué",
+        "deux techniques"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 4}\\dfrac{x^2 - 16}{\\sqrt{x-3} - 1}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le numérateur est une différence de carrés (facto simple), le dénominateur contient un radical (conjugué). Applique les DEUX en parallèle avant de simplifier."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 4}\\dfrac{x^2 - 16}{\\sqrt{x-3} - 1} = 16$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\dfrac{16 - 16}{\\sqrt{1} - 1} = \\dfrac{0}{0}$ — indéterminée.",
+            "\\textbf{Technique 1 — factorisation du numérateur.} Différence de carrés :\\[ x^2 - 16 = (x - 4)(x + 4). \\]",
+            "\\textbf{Technique 2 — conjugué du dénominateur.} Le radical est au dénominateur ; on multiplie en haut et en bas par $\\sqrt{x-3} + 1$ :\\[ \\dfrac{(x - 4)(x + 4)}{\\sqrt{x-3} - 1} \\cdot \\dfrac{\\sqrt{x-3} + 1}{\\sqrt{x-3} + 1}. \\]",
+            "Le dénominateur devient $(\\sqrt{x-3})^2 - 1^2 = (x - 3) - 1 = x - 4$. On obtient :\\[ \\dfrac{(x - 4)(x + 4)(\\sqrt{x-3} + 1)}{x - 4}. \\]",
+            "\\textbf{Simplification.} Le facteur $(x - 4)$ apparaît en haut et en bas — on le biffe (permis pour une limite car $x \\neq 4$) :\\[ (x + 4)(\\sqrt{x-3} + 1). \\]",
+            "\\textbf{Évaluation.} En $x = 4$ : $(4 + 4)(\\sqrt{1} + 1) = 8 \\cdot 2 = 16$."
+          ],
+          "piegeCourant": "Appliquer une seule des deux techniques et rester coincé. Le radical au dénominateur ne disparaît qu'avec le conjugué ; la différence de carrés au numérateur ne se voit qu'avec la factorisation. Les deux facteurs $(x-4)$ ne se rencontrent qu'après les deux manipulations."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E068",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "conjugué",
+        "factorisation d'un trinôme",
+        "enchaînement séquentiel"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 4}\\dfrac{\\sqrt{x+5} - 3}{x^2 - 5x + 4}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Lever le radical avec le conjugué du numérateur — puis regarde ce qu'il reste : le facteur $(x - 4)$ va apparaître en haut et se simplifier avec un facteur du dénominateur (factorisation par somme-produit)."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 4}\\dfrac{\\sqrt{x+5} - 3}{x^2 - 5x + 4} = \\dfrac{1}{18}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\dfrac{\\sqrt{9} - 3}{16 - 20 + 4} = \\dfrac{0}{0}$ — indéterminée.",
+            "\\textbf{Technique 1 — conjugué du numérateur.} On multiplie en haut et en bas par $\\sqrt{x+5} + 3$ :\\[ \\dfrac{\\sqrt{x+5} - 3}{x^2 - 5x + 4} \\cdot \\dfrac{\\sqrt{x+5} + 3}{\\sqrt{x+5} + 3}. \\]",
+            "Le numérateur devient $(\\sqrt{x+5})^2 - 3^2 = (x + 5) - 9 = x - 4$. L'expression est maintenant :\\[ \\dfrac{x - 4}{(x^2 - 5x + 4)(\\sqrt{x+5} + 3)}. \\]",
+            "\\textbf{Technique 2 — factorisation du dénominateur.} Le conjugué a fait apparaître $(x - 4)$ au numérateur : il doit se simplifier avec un facteur $(x - 4)$ au dénominateur. On factorise le trinôme $x^2 - 5x + 4$ par somme-produit ($-4$ et $-1$) :\\[ x^2 - 5x + 4 = (x - 4)(x - 1). \\]",
+            "\\textbf{Simplification.} Le facteur $(x - 4)$ se simplifie :\\[ \\dfrac{x - 4}{(x - 4)(x - 1)(\\sqrt{x+5} + 3)} = \\dfrac{1}{(x - 1)(\\sqrt{x+5} + 3)}. \\]",
+            "\\textbf{Évaluation.} En $x = 4$ : $\\dfrac{1}{3 \\cdot 6} = \\dfrac{1}{18}$."
+          ],
+          "piegeCourant": "Développer le dénominateur $(x - 4)(\\sqrt{x+5} + 3)$ après le conjugué en oubliant de factoriser $x^2 - 5x + 4$ d'abord. Sans la factorisation du dénominateur, aucun facteur ne se simplifie — l'exercice bloque. Le conjugué et la factorisation doivent s'enchaîner."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E069",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "dénominateur commun",
+        "factorisation",
+        "différence de carrés"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 2}\\dfrac{\\;\\tfrac{1}{x} - \\tfrac{1}{2}\\;}{x^2 - 4}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Réduire le numérateur à une seule fraction (dénominateur commun), puis factoriser $x^2 - 4$ pour faire apparaître le facteur qui va se simplifier."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 2}\\dfrac{\\;\\tfrac{1}{x} - \\tfrac{1}{2}\\;}{x^2 - 4} = -\\dfrac{1}{16}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} Numérateur : $\\tfrac{1}{2} - \\tfrac{1}{2} = 0$ ; dénominateur : $0$. Forme $\\tfrac{0}{0}$.",
+            "\\textbf{Technique 1 — dénominateur commun au numérateur.} Le dénominateur commun de $\\tfrac{1}{x}$ et $\\tfrac{1}{2}$ est $2x$ :\\[ \\dfrac{1}{x} - \\dfrac{1}{2} = \\dfrac{2}{2x} - \\dfrac{x}{2x} = \\dfrac{2 - x}{2x}. \\]",
+            "L'expression devient :\\[ \\dfrac{\\;\\tfrac{2 - x}{2x}\\;}{x^2 - 4} = \\dfrac{2 - x}{2x\\,(x^2 - 4)}. \\]",
+            "\\textbf{Technique 2 — factorisation.} $x^2 - 4$ est une différence de carrés :\\[ x^2 - 4 = (x - 2)(x + 2). \\] Et $2 - x = -(x - 2)$ (signe opposé) :\\[ \\dfrac{-(x - 2)}{2x\\,(x - 2)(x + 2)}. \\]",
+            "\\textbf{Simplification.} Le facteur $(x - 2)$ se simplifie :\\[ \\dfrac{-1}{2x\\,(x + 2)}. \\]",
+            "\\textbf{Évaluation.} En $x = 2$ : $\\dfrac{-1}{2 \\cdot 2 \\cdot 4} = -\\dfrac{1}{16}$."
+          ],
+          "piegeCourant": "Oublier le signe en simplifiant $2 - x$ avec $x - 2$. Les deux sont opposés : $2 - x = -(x - 2)$. Sans ce changement de signe explicite, la réponse finit avec le mauvais signe."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E070",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "différence de cubes",
+        "conjugué",
+        "deux techniques"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 1}\\dfrac{x^3 - 1}{\\sqrt{x} - 1}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Numérateur : différence de cubes (section 1.1.4). Dénominateur : radical → conjugué."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 1}\\dfrac{x^3 - 1}{\\sqrt{x} - 1} = 6$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\dfrac{1 - 1}{1 - 1} = \\dfrac{0}{0}$ — indéterminée.",
+            "\\textbf{Technique 1 — factorisation du numérateur par différence de cubes} (section 1.1.4). Avec $a = x$ et $b = 1$ :\\[ x^3 - 1 = (x - 1)(x^2 + x + 1). \\]",
+            "\\textbf{Technique 2 — conjugué du dénominateur.} On multiplie en haut et en bas par $\\sqrt{x} + 1$ :\\[ \\dfrac{(x - 1)(x^2 + x + 1)}{\\sqrt{x} - 1} \\cdot \\dfrac{\\sqrt{x} + 1}{\\sqrt{x} + 1}. \\]",
+            "Le dénominateur devient $(\\sqrt{x})^2 - 1^2 = x - 1$. L'expression est :\\[ \\dfrac{(x - 1)(x^2 + x + 1)(\\sqrt{x} + 1)}{x - 1}. \\]",
+            "\\textbf{Simplification.} Le facteur $(x - 1)$ se simplifie :\\[ (x^2 + x + 1)(\\sqrt{x} + 1). \\]",
+            "\\textbf{Évaluation.} En $x = 1$ : $(1 + 1 + 1)(1 + 1) = 3 \\cdot 2 = 6$."
+          ],
+          "piegeCourant": "Écrire $x^3 - 1 = (x - 1)^3$ (confusion avec $(x - 1)^3 = x^3 - 3x^2 + 3x - 1$). La différence de cubes donne un facteur trinôme $(x^2 + x + 1)$, pas une puissance."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E071",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "conjugué",
+        "mise en évidence",
+        "enchaînement"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 0}\\dfrac{\\sqrt{x+1} - 1}{x^2 + x}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Conjugué du numérateur pour éliminer le radical. Le $x$ qui apparaît au numérateur va se simplifier avec un facteur $x$ au dénominateur — à faire ressortir par mise en évidence."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 0}\\dfrac{\\sqrt{x+1} - 1}{x^2 + x} = \\dfrac{1}{2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\dfrac{\\sqrt{1} - 1}{0 + 0} = \\dfrac{0}{0}$ — indéterminée.",
+            "\\textbf{Technique 1 — conjugué du numérateur.}\\[ \\dfrac{\\sqrt{x+1} - 1}{x^2 + x} \\cdot \\dfrac{\\sqrt{x+1} + 1}{\\sqrt{x+1} + 1}. \\] Le numérateur devient $(x+1) - 1 = x$ :\\[ \\dfrac{x}{(x^2 + x)(\\sqrt{x+1} + 1)}. \\]",
+            "\\textbf{Technique 2 — mise en évidence au dénominateur} (section 1.1.1). Le trinôme $x^2 + x$ a un facteur commun $x$ :\\[ x^2 + x = x(x + 1). \\] L'expression :\\[ \\dfrac{x}{x(x + 1)(\\sqrt{x+1} + 1)}. \\]",
+            "\\textbf{Simplification.} Le facteur $x$ se simplifie :\\[ \\dfrac{1}{(x + 1)(\\sqrt{x+1} + 1)}. \\]",
+            "\\textbf{Évaluation.} En $x = 0$ : $\\dfrac{1}{1 \\cdot 2} = \\dfrac{1}{2}$."
+          ],
+          "piegeCourant": "Oublier la mise en évidence de $x^2 + x = x(x+1)$ et essayer de développer $(x^2 + x)(\\sqrt{x+1} + 1)$. Sans le facteur commun visible, l'expression paraît coincée alors que la simplification est immédiate."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E072",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "limite à l'infini",
+        "conjugué",
+        "quotient d'infinis",
+        "division par x"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to +\\infty}\\bigl(\\sqrt{9x^2 + x} - 3x\\bigr)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Forme $+\\infty - \\infty$ avec radical. Multiplier par le conjugué (section 2.7.7) ramène à un quotient $\\tfrac{\\infty}{\\infty}$, à traiter par division par la plus haute puissance de $x$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to +\\infty}\\bigl(\\sqrt{9x^2 + x} - 3x\\bigr) = \\dfrac{1}{6}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\sqrt{9x^2 + x} \\to +\\infty$ et $3x \\to +\\infty$ — forme $+\\infty - \\infty$, indéterminée.",
+            "\\textbf{Technique 1 — conjugué} (section 2.7.7). On écrit la différence comme fraction de dénominateur $1$, puis on multiplie en haut et en bas par $\\sqrt{9x^2 + x} + 3x$ :\\[ \\sqrt{9x^2 + x} - 3x = \\dfrac{(9x^2 + x) - 9x^2}{\\sqrt{9x^2 + x} + 3x} = \\dfrac{x}{\\sqrt{9x^2 + x} + 3x}. \\]",
+            "On est passé de $+\\infty - \\infty$ à $\\dfrac{+\\infty}{+\\infty}$ — la technique 2.7.5 s'applique maintenant.",
+            "\\textbf{Technique 2 — division par la plus haute puissance de $x$.} Comme $x \\to +\\infty$, on a $x > 0$, donc $x = \\sqrt{x^2}$. Cela permet de faire entrer $x$ sous la racine :\\[ \\dfrac{x/x}{\\sqrt{(9x^2 + x)/x^2} + 3x/x} = \\dfrac{1}{\\sqrt{9 + \\tfrac{1}{x}} + 3}. \\]",
+            "\\textbf{Évaluation.} Quand $x \\to +\\infty$, $\\tfrac{1}{x} \\to 0$ et $\\sqrt{9 + \\tfrac{1}{x}} \\to \\sqrt{9} = 3$ :\\[ \\lim_{x \\to +\\infty}\\bigl(\\sqrt{9x^2 + x} - 3x\\bigr) = \\dfrac{1}{3 + 3} = \\dfrac{1}{6}. \\]"
+          ],
+          "piegeCourant": "S'arrêter après le conjugué à $\\dfrac{x}{\\sqrt{9x^2 + x} + 3x}$ et « voir » directement une limite. Non : cette fraction est encore $\\dfrac{\\infty}{\\infty}$ — on doit diviser par $x$ pour conclure."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E073",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "dénominateur commun",
+        "conjugué",
+        "fraction avec radical"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 3}\\dfrac{\\;\\tfrac{1}{\\sqrt{x+1}} - \\tfrac{1}{2}\\;}{x - 3}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Réduire le numérateur à une seule fraction, puis lever le radical qui apparaît dans le nouveau numérateur avec le conjugué."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 3}\\dfrac{\\;\\tfrac{1}{\\sqrt{x+1}} - \\tfrac{1}{2}\\;}{x - 3} = -\\dfrac{1}{16}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\tfrac{1}{\\sqrt{4}} - \\tfrac{1}{2} = \\tfrac{1}{2} - \\tfrac{1}{2} = 0$ ; dénominateur $= 0$. Forme $\\tfrac{0}{0}$.",
+            "\\textbf{Technique 1 — dénominateur commun au numérateur.} Le dénominateur commun est $2\\sqrt{x+1}$ :\\[ \\dfrac{1}{\\sqrt{x+1}} - \\dfrac{1}{2} = \\dfrac{2}{2\\sqrt{x+1}} - \\dfrac{\\sqrt{x+1}}{2\\sqrt{x+1}} = \\dfrac{2 - \\sqrt{x+1}}{2\\sqrt{x+1}}. \\]",
+            "L'expression devient :\\[ \\dfrac{2 - \\sqrt{x+1}}{2\\sqrt{x+1}\\,(x - 3)}. \\]",
+            "\\textbf{Technique 2 — conjugué.} Le numérateur $2 - \\sqrt{x+1}$ contient un radical. Son conjugué est $2 + \\sqrt{x+1}$ ; on multiplie en haut et en bas :\\[ \\dfrac{(2 - \\sqrt{x+1})(2 + \\sqrt{x+1})}{2\\sqrt{x+1}\\,(x - 3)(2 + \\sqrt{x+1})} = \\dfrac{4 - (x + 1)}{2\\sqrt{x+1}\\,(x - 3)(2 + \\sqrt{x+1})}. \\]",
+            "Simplification du numérateur : $4 - (x + 1) = 3 - x = -(x - 3)$. On obtient :\\[ \\dfrac{-(x - 3)}{2\\sqrt{x+1}\\,(x - 3)(2 + \\sqrt{x+1})} = \\dfrac{-1}{2\\sqrt{x+1}\\,(2 + \\sqrt{x+1})}. \\]",
+            "\\textbf{Évaluation.} En $x = 3$ : $\\sqrt{4} = 2$, donc $\\dfrac{-1}{2 \\cdot 2 \\cdot (2 + 2)} = \\dfrac{-1}{16}$."
+          ],
+          "piegeCourant": "Multiplier tout de suite par le conjugué de $\\sqrt{x+1}$ sans d'abord réduire le numérateur à une seule fraction. Une expression comme $\\tfrac{1}{\\sqrt{x+1}} - \\tfrac{1}{2}$ n'a pas de conjugué évident : c'est une différence de fractions, à unifier d'abord."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E074",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "conjugué",
+        "différence de cubes",
+        "trois manipulations"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 1}\\dfrac{\\sqrt{x^2 + 3} - 2}{x^3 - 1}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Conjugué du numérateur pour lever le radical. Le nouveau numérateur va se factoriser (différence de carrés) et se simplifier avec un facteur du dénominateur factorisé par différence de cubes."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 1}\\dfrac{\\sqrt{x^2 + 3} - 2}{x^3 - 1} = \\dfrac{1}{6}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\dfrac{\\sqrt{4} - 2}{1 - 1} = \\dfrac{0}{0}$ — indéterminée.",
+            "\\textbf{Technique 1 — conjugué du numérateur.}\\[ \\dfrac{\\sqrt{x^2 + 3} - 2}{x^3 - 1} \\cdot \\dfrac{\\sqrt{x^2 + 3} + 2}{\\sqrt{x^2 + 3} + 2}. \\]",
+            "Le numérateur devient $(x^2 + 3) - 4 = x^2 - 1$, qui est une différence de carrés :\\[ x^2 - 1 = (x - 1)(x + 1). \\]",
+            "L'expression devient :\\[ \\dfrac{(x - 1)(x + 1)}{(x^3 - 1)(\\sqrt{x^2 + 3} + 2)}. \\]",
+            "\\textbf{Technique 2 — factorisation du dénominateur par différence de cubes} (section 1.1.4) :\\[ x^3 - 1 = (x - 1)(x^2 + x + 1). \\]",
+            "L'expression :\\[ \\dfrac{(x - 1)(x + 1)}{(x - 1)(x^2 + x + 1)(\\sqrt{x^2 + 3} + 2)}. \\]",
+            "\\textbf{Simplification.} Le facteur $(x - 1)$ se simplifie :\\[ \\dfrac{x + 1}{(x^2 + x + 1)(\\sqrt{x^2 + 3} + 2)}. \\]",
+            "\\textbf{Évaluation.} En $x = 1$ : $\\dfrac{2}{3 \\cdot 4} = \\dfrac{2}{12} = \\dfrac{1}{6}$."
+          ],
+          "piegeCourant": "Faire uniquement le conjugué (qui donne $x^2 - 1$) et évaluer sans factoriser $x^3 - 1$. Ou l'inverse : factoriser $x^3 - 1$ d'abord et bloquer devant le radical. Il faut ENCHAÎNER les deux : le conjugué révèle la différence de carrés, qui doit se simplifier avec la différence de cubes."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E075",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 6,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "différence de cubes",
+        "différence de carrés",
+        "deux factorisations"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 1}\\dfrac{x^3 - 1}{x^2 - 1}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux factorisations à faire : une pour le numérateur (différence de cubes), une pour le dénominateur (différence de carrés). Elles partagent un facteur commun."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 1}\\dfrac{x^3 - 1}{x^2 - 1} = \\dfrac{3}{2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $\\dfrac{1 - 1}{1 - 1} = \\dfrac{0}{0}$ — indéterminée.",
+            "\\textbf{Technique 1 — factorisation du numérateur par différence de cubes} (section 1.1.4) :\\[ x^3 - 1 = (x - 1)(x^2 + x + 1). \\]",
+            "\\textbf{Technique 2 — factorisation du dénominateur par différence de carrés} (section 1.1.2) :\\[ x^2 - 1 = (x - 1)(x + 1). \\]",
+            "Le facteur commun $(x - 1)$ apparaît dans les deux — c'était garanti par la forme $\\tfrac{0}{0}$ en $x = 1$.",
+            "\\textbf{Simplification.}\\[ \\dfrac{(x - 1)(x^2 + x + 1)}{(x - 1)(x + 1)} = \\dfrac{x^2 + x + 1}{x + 1}. \\]",
+            "\\textbf{Évaluation.} En $x = 1$ : $\\dfrac{1 + 1 + 1}{1 + 1} = \\dfrac{3}{2}$."
+          ],
+          "piegeCourant": "Écrire $\\dfrac{x^3 - 1}{x^2 - 1} = \\dfrac{x^3}{x^2} - \\dfrac{1}{1} = x - 1$ (fausse simplification en distribuant termes à termes). Un quotient ne se simplifie qu'en identifiant des FACTEURS communs entre numérateur et dénominateur, pas des termes."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E076",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "limite à l'infini négative",
+        "conjugué",
+        "quotient d'infinis",
+        "signe du radical"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to -\\infty}\\bigl(x + \\sqrt{x^2 + 3x}\\bigr)$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Attention au signe : cette fois $x \\to -\\infty$, donc $x < 0$ et $x = -\\sqrt{x^2}$ (pas $+\\sqrt{x^2}$). Le reste de la stratégie ressemble à celle de la section 2.7.7 : conjugué puis division."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to -\\infty}\\bigl(x + \\sqrt{x^2 + 3x}\\bigr) = -\\dfrac{3}{2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} Quand $x \\to -\\infty$ : $x \\to -\\infty$ et $\\sqrt{x^2 + 3x} \\to +\\infty$ (racine d'un carré qui domine). Forme $-\\infty + \\infty$, indéterminée.",
+            "\\textbf{Technique 1 — conjugué.} On multiplie par $\\dfrac{x - \\sqrt{x^2 + 3x}}{x - \\sqrt{x^2 + 3x}}$ (le conjugué de $x + \\sqrt{\\cdot}$ est $x - \\sqrt{\\cdot}$) :\\[ x + \\sqrt{x^2 + 3x} = \\dfrac{x^2 - (x^2 + 3x)}{x - \\sqrt{x^2 + 3x}} = \\dfrac{-3x}{x - \\sqrt{x^2 + 3x}}. \\]",
+            "\\textbf{Technique 2 — division par $x$.} On est passé à une forme $\\tfrac{\\infty}{-\\infty}$ (les deux termes du dénominateur tendent vers $-\\infty$ car $x < 0$ et $-\\sqrt{\\cdot} \\to -\\infty$). Comme $x < 0$, $x = -\\sqrt{x^2}$ (signe négatif), donc on doit être prudent en faisant entrer $x$ sous la racine :\\[ \\dfrac{\\sqrt{x^2 + 3x}}{x} = \\dfrac{\\sqrt{x^2 + 3x}}{-\\sqrt{x^2}} = -\\sqrt{\\dfrac{x^2 + 3x}{x^2}} = -\\sqrt{1 + \\dfrac{3}{x}}. \\]",
+            "En divisant numérateur et dénominateur par $x$ :\\[ \\dfrac{-3x/x}{x/x - \\sqrt{x^2 + 3x}/x} = \\dfrac{-3}{1 - \\left(-\\sqrt{1 + \\tfrac{3}{x}}\\right)} = \\dfrac{-3}{1 + \\sqrt{1 + \\tfrac{3}{x}}}. \\]",
+            "\\textbf{Évaluation.} Quand $x \\to -\\infty$, $\\tfrac{3}{x} \\to 0$ et $\\sqrt{1 + \\tfrac{3}{x}} \\to 1$ :\\[ \\lim_{x \\to -\\infty}\\bigl(x + \\sqrt{x^2 + 3x}\\bigr) = \\dfrac{-3}{1 + 1} = -\\dfrac{3}{2}. \\]"
+          ],
+          "piegeCourant": "Appliquer $x = \\sqrt{x^2}$ (formule valide seulement pour $x \\geq 0$) et obtenir un signe positif au dénominateur. Résultat faux : la limite ne serait pas $-\\tfrac{3}{2}$. La règle est stricte — quand $x < 0$, $x = -\\sqrt{x^2}$, jamais l'inverse."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E077",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "produit 0 fois infini",
+        "dénominateur commun",
+        "factorisation",
+        "trois étapes"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 2}\\,(x^2 - 4) \\cdot \\dfrac{1}{\\;\\tfrac{1}{x} - \\tfrac{1}{2}\\;}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Forme $0 \\times \\infty$ (section 2.7.8). Réécrire en quotient, puis unifier le dénominateur, et enfin factoriser."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 2}\\,(x^2 - 4) \\cdot \\dfrac{1}{\\;\\tfrac{1}{x} - \\tfrac{1}{2}\\;} = -16$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} $x^2 - 4 \\to 0$ ; $\\tfrac{1}{x} - \\tfrac{1}{2} \\to 0$, donc $\\dfrac{1}{\\tfrac{1}{x} - \\tfrac{1}{2}} \\to \\infty$. Forme $0 \\times \\infty$, indéterminée.",
+            "\\textbf{Réécriture en quotient} (section 2.7.8) :\\[ (x^2 - 4) \\cdot \\dfrac{1}{\\;\\tfrac{1}{x} - \\tfrac{1}{2}\\;} = \\dfrac{x^2 - 4}{\\;\\tfrac{1}{x} - \\tfrac{1}{2}\\;}. \\] On tombe sur la forme $\\tfrac{0}{0}$.",
+            "\\textbf{Technique 1 — dénominateur commun au dénominateur.} $\\tfrac{1}{x} - \\tfrac{1}{2} = \\dfrac{2 - x}{2x}$ :\\[ \\dfrac{x^2 - 4}{\\;\\tfrac{2 - x}{2x}\\;} = (x^2 - 4) \\cdot \\dfrac{2x}{2 - x} = \\dfrac{2x(x^2 - 4)}{2 - x}. \\]",
+            "\\textbf{Technique 2 — factorisation.} $x^2 - 4 = (x - 2)(x + 2)$ et $2 - x = -(x - 2)$ :\\[ \\dfrac{2x(x - 2)(x + 2)}{-(x - 2)}. \\]",
+            "\\textbf{Simplification.} Le facteur $(x - 2)$ se simplifie :\\[ \\dfrac{2x(x + 2)}{-1} = -2x(x + 2). \\]",
+            "\\textbf{Évaluation.} En $x = 2$ : $-2 \\cdot 2 \\cdot 4 = -16$."
+          ],
+          "piegeCourant": "Rester bloqué sur la forme $0 \\times \\infty$ sans réécrire en quotient. Le principe de 2.7.8 est explicite : ramener au $\\tfrac{0}{0}$ (ou $\\tfrac{\\infty}{\\infty}$) pour appliquer les techniques connues. Ici, la réécriture + le dénominateur commun ouvrent la porte à la factorisation."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E078",
+      "chapitre": 2,
+      "section": "2.7",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Formes indéterminées — choix de la technique",
+      "motsCles": [
+        "forme 0/0",
+        "fractions à deux étages",
+        "dénominateur commun",
+        "factorisation"
+      ],
+      "savoirFaire": [
+        "1c",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Calcule $\\displaystyle\\lim_{x \\to 1}\\dfrac{\\;\\tfrac{1}{x} - 1\\;}{\\;\\tfrac{1}{x^2} - 1\\;}$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux dénominateurs communs à établir (un pour le numérateur, un pour le dénominateur de la grande fraction), puis factorisation d'une différence de carrés."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\displaystyle\\lim_{x \\to 1}\\dfrac{\\;\\tfrac{1}{x} - 1\\;}{\\;\\tfrac{1}{x^2} - 1\\;} = \\dfrac{1}{2}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Évaluation directe.} Numérateur : $1 - 1 = 0$ ; dénominateur : $1 - 1 = 0$. Forme $\\tfrac{0}{0}$.",
+            "\\textbf{Technique 1 — dénominateur commun (deux fois).} Numérateur :\\[ \\dfrac{1}{x} - 1 = \\dfrac{1 - x}{x}. \\] Dénominateur :\\[ \\dfrac{1}{x^2} - 1 = \\dfrac{1 - x^2}{x^2}. \\]",
+            "L'expression devient une division de fractions :\\[ \\dfrac{\\;\\tfrac{1 - x}{x}\\;}{\\;\\tfrac{1 - x^2}{x^2}\\;} = \\dfrac{1 - x}{x} \\cdot \\dfrac{x^2}{1 - x^2}. \\]",
+            "\\textbf{Technique 2 — factorisation de $1 - x^2$ par différence de carrés.}\\[ 1 - x^2 = (1 - x)(1 + x). \\]",
+            "L'expression :\\[ \\dfrac{(1 - x) \\cdot x^2}{x \\cdot (1 - x)(1 + x)}. \\]",
+            "\\textbf{Simplification.} Les facteurs $(1 - x)$ et un $x$ se simplifient :\\[ \\dfrac{x}{1 + x}. \\]",
+            "\\textbf{Évaluation.} En $x = 1$ : $\\dfrac{1}{2}$."
+          ],
+          "piegeCourant": "Essayer de simplifier $\\tfrac{1/x - 1}{1/x^2 - 1}$ en distribuant les inverses ($\\tfrac{x^2}{x} \\cdot \\ldots$), en mélangeant plusieurs étapes. La méthode systématique est : unifier chaque étage EN une seule fraction, puis appliquer la règle « diviser = multiplier par l'inverse »."
         }
       ]
     },
