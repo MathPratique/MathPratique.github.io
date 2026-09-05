@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "6d562f348286e53b",
+  "contentHash": "282de09f4f33f847",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -8303,6 +8303,337 @@
             "<strong>Évaluation.</strong>\\[ \\lim_{x \\to 3}\\;(x-3)\\cdot\\dfrac{1}{x^{2}-9} = \\dfrac{1}{3+3} = \\dfrac{1}{6}. \\]"
           ],
           "piegeCourant": "Conclure que la limite vaut $0$ parce que le facteur $(x-3)$ tend vers $0$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E061",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "payant",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "lecture graphique",
+        "fonction par parties",
+        "limites latérales",
+        "existence de la limite",
+        "domaine",
+        "image",
+        "trois types de discontinuité"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $f$ définie par parties. Réponds à chacune des questions en te basant sur le graphique.\\\\[0.4em] \\textbf{(a)} Détermine $\\displaystyle\\lim_{x \\to 1^{-}} f(x)$ et $\\displaystyle\\lim_{x \\to 1^{+}} f(x)$. La limite $\\displaystyle\\lim_{x \\to 1} f(x)$ existe-t-elle ? Justifie.\\\\[0.3em] \\textbf{(b)} Détermine $\\displaystyle\\lim_{x \\to 3^{-}} f(x)$ et $\\displaystyle\\lim_{x \\to 3^{+}} f(x)$. La limite $\\displaystyle\\lim_{x \\to 3} f(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(c)} Détermine $\\displaystyle\\lim_{x \\to 5^{-}} f(x)$ et $\\displaystyle\\lim_{x \\to 5^{+}} f(x)$. La limite $\\displaystyle\\lim_{x \\to 5} f(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(d)} Donne la valeur de $f(1)$, $f(3)$ et $f(5)$.\\\\[0.3em] \\textbf{(e)} Détermine le domaine de $f$, en notation d'intervalles.\\\\[0.3em] \\textbf{(f)} Détermine l'image de $f$, en notation d'intervalles.",
+          "figureTikzBrut": "\\begin{tikzpicture}\\begin{axis}[ndcaxis, width=11cm, height=6.5cm, xmin=-1.5, xmax=6.5, ymin=-0.5, ymax=5, xtick={-1,0,1,2,3,4,5,6}, ytick={0,1,2,3,4}, samples=100]\\addplot[thick, blue, domain=-1:1] {x+1};\\addplot[thick, blue, domain=1.02:2.98] {5-x};\\addplot[thick, blue, domain=3.02:4.98] {x-1};\\addplot[thick, blue, domain=5.02:6] {-x+9};\\addplot[only marks, mark=*, mark size=1.6pt, fill=white, draw=blue] coordinates {(1,4) (3,2) (5,4)};\\addplot[only marks, mark=*, mark size=1.6pt, fill=blue] coordinates {(-1,0) (1,2) (3,3) (6,3)};\\end{axis}\\end{tikzpicture}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque point-clé, lis d'abord la limite à gauche (approche par des $x$ plus petits), puis la limite à droite (approche par des $x$ plus grands). Un point plein donne la valeur de $f$ au point ; un cercle ouvert indique une valeur limite non atteinte. La limite en $a$ existe si et seulement si les deux latérales sont égales."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "\\textbf{(a)} $\\displaystyle\\lim_{x \\to 1^{-}} f(x) = 2$, $\\displaystyle\\lim_{x \\to 1^{+}} f(x) = 4$. La limite $\\displaystyle\\lim_{x \\to 1} f(x)$ \\textbf{n'existe pas} (limites latérales différentes).\\\\[0.2em] \\textbf{(b)} $\\displaystyle\\lim_{x \\to 3^{-}} f(x) = 2$, $\\displaystyle\\lim_{x \\to 3^{+}} f(x) = 2$. Donc $\\displaystyle\\lim_{x \\to 3} f(x) = 2$.\\\\[0.2em] \\textbf{(c)} $\\displaystyle\\lim_{x \\to 5^{-}} f(x) = 4$, $\\displaystyle\\lim_{x \\to 5^{+}} f(x) = 4$. Donc $\\displaystyle\\lim_{x \\to 5} f(x) = 4$.\\\\[0.2em] \\textbf{(d)} $f(1) = 2$, $f(3) = 3$, $f(5)$ n'existe pas ($5$ n'est pas dans le domaine).\\\\[0.2em] \\textbf{(e)} $\\mathrm{dom}\\,f = [-1, 5[\\;\\cup\\;]5, 6]$.\\\\[0.2em] \\textbf{(f)} $\\mathrm{ima}\\,f = [0, 4[$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{(a) Comportement en $x = 1$.} On lit sur le graphique le comportement de chaque côté du point.",
+            "À gauche de $1$ : la fonction suit la première branche et son ordonnée s'approche du point plein $(1, 2)$. Donc $\\displaystyle\\lim_{x \\to 1^{-}} f(x) = 2$.",
+            "À droite de $1$ : la fonction reprend en $(1, 4)$ (cercle ouvert) et descend. Donc $\\displaystyle\\lim_{x \\to 1^{+}} f(x) = 4$.",
+            "Les deux limites latérales existent mais sont différentes ($2 \\neq 4$) : par le théorème d'existence et d'unicité (section 2.2), la limite $\\displaystyle\\lim_{x \\to 1} f(x)$ \\textbf{n'existe pas}. Il s'agit d'une discontinuité par \\emph{saut}.",
+            "\\textbf{(b) Comportement en $x = 3$.} À gauche de $3$, la deuxième branche descend et s'approche du cercle ouvert $(3, 2)$. À droite de $3$, la troisième branche part du cercle ouvert $(3, 2)$ et monte. Donc :\\[ \\lim_{x \\to 3^{-}} f(x) = \\lim_{x \\to 3^{+}} f(x) = 2. \\]",
+            "Les deux latérales sont égales à $2$, donc $\\displaystyle\\lim_{x \\to 3} f(x) = 2$ existe. \\emph{Attention} : cette valeur $2$ n'est PAS la valeur $f(3) = 3$ (le point plein isolé). On a ici un exemple où la limite existe mais diffère de l'image — discontinuité par \\emph{point isolé}.",
+            "\\textbf{(c) Comportement en $x = 5$.} À gauche de $5$, la troisième branche monte vers le cercle ouvert $(5, 4)$. À droite de $5$, la quatrième branche part aussi du cercle ouvert $(5, 4)$ et descend. Donc :\\[ \\lim_{x \\to 5^{-}} f(x) = \\lim_{x \\to 5^{+}} f(x) = 4. \\]",
+            "Les deux latérales sont égales à $4$, donc $\\displaystyle\\lim_{x \\to 5} f(x) = 4$ existe. En revanche, il n'y a aucun point plein en $x = 5$ : la fonction n'est pas définie en ce point (voir (d) et (e)). Discontinuité par \\emph{trou}.",
+            "\\textbf{(d) Valeurs de $f$ aux points-clés.} On lit les points pleins : $f(1) = 2$ (point plein sur la première branche), $f(3) = 3$ (point plein isolé, au-dessus des deux branches convergentes). En $x = 5$ il n'y a qu'un cercle ouvert : $f(5)$ \\textbf{n'existe pas} — $5$ n'appartient pas au domaine.",
+            "\\textbf{(e) Domaine.} Sur l'axe des $x$, la fonction est définie de $x = -1$ (point plein $(-1, 0)$) à $x = 6$ (point plein $(6, 3)$), sauf en $x = 5$ où seul un cercle ouvert apparaît. Donc :\\[ \\mathrm{dom}\\,f = [-1, 5[\\;\\cup\\;]5, 6]. \\]",
+            "\\textbf{(f) Image.} On projette la courbe sur l'axe des $y$, branche par branche.",
+            "Branche 1 sur $[-1, 1]$ : $y = x + 1$ va de $0$ à $2$ inclusivement. Image partielle : $[0, 2]$.",
+            "Branche 2 sur $]1, 3[$ : $y = 5 - x$ va de $4$ (exclu) à $2$ (exclu). Image partielle : $]2, 4[$.",
+            "Point isolé $(3, 3)$ : $\\{3\\}$ (déjà inclus dans $]2, 4[$).",
+            "Branche 3 sur $]3, 5[$ : $y = x - 1$ va de $2$ (exclu) à $4$ (exclu). Image partielle : $]2, 4[$.",
+            "Branche 4 sur $]5, 6]$ : $y = -x + 9$ va de $4$ (exclu) à $3$ (inclus). Image partielle : $[3, 4[$.",
+            "Union de toutes les valeurs prises : $[0, 2] \\cup ]2, 4[ = [0, 4[$ (les autres morceaux sont déjà couverts).\\[ \\mathrm{ima}\\,f = [0, 4[. \\]"
+          ],
+          "piegeCourant": "En $x = 3$, conclure « la limite n'existe pas car $\\lim f \\neq f(3)$ » : c'est faux. La limite peut exister sans être égale à $f(a)$ — c'est précisément la définition d'une discontinuité par point isolé. En $x = 5$, conclure « la limite n'existe pas car $f(5)$ n'existe pas » : encore faux. La limite ne dépend PAS de la valeur (ou de l'existence) de $f$ au point ; elle ne dépend que du comportement AUTOUR du point."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E062",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "lecture graphique",
+        "fonction par parties",
+        "saut",
+        "trou",
+        "domaine",
+        "image"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $g$ définie par parties. Réponds aux questions suivantes.\\\\[0.3em] \\textbf{(a)} Détermine $\\displaystyle\\lim_{x \\to 2^{-}} g(x)$ et $\\displaystyle\\lim_{x \\to 2^{+}} g(x)$. La limite $\\displaystyle\\lim_{x \\to 2} g(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(b)} Détermine $\\displaystyle\\lim_{x \\to 4^{-}} g(x)$ et $\\displaystyle\\lim_{x \\to 4^{+}} g(x)$. La limite $\\displaystyle\\lim_{x \\to 4} g(x)$ existe-t-elle ? Si oui, donne sa valeur.\\\\[0.3em] \\textbf{(c)} Donne $g(2)$ et $g(4)$.\\\\[0.3em] \\textbf{(d)} Détermine le domaine de $g$, en notation d'intervalles.\\\\[0.3em] \\textbf{(e)} Détermine l'image de $g$, en notation d'intervalles.",
+          "figureTikzBrut": "\\begin{tikzpicture}\\begin{axis}[ndcaxis, width=11cm, height=6cm, xmin=-1.5, xmax=5.5, ymin=-1.5, ymax=3.5, xtick={-1,0,1,2,3,4,5}, ytick={-1,0,1,2,3}, samples=100]\\addplot[thick, blue, domain=-1:2] {x};\\addplot[thick, blue, domain=2.02:3.98] {5-x};\\addplot[thick, blue, domain=4.02:5] {5-x};\\addplot[only marks, mark=*, mark size=1.6pt, fill=white, draw=blue] coordinates {(2,3) (4,1)};\\addplot[only marks, mark=*, mark size=1.6pt, fill=blue] coordinates {(-1,-1) (2,2) (5,0)};\\end{axis}\\end{tikzpicture}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Un point plein donne la valeur de $g$ au point ; un cercle ouvert indique une valeur limite non atteinte. La limite en $a$ existe si et seulement si les deux latérales sont égales."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "\\textbf{(a)} $\\displaystyle\\lim_{x \\to 2^{-}} g(x) = 2$, $\\displaystyle\\lim_{x \\to 2^{+}} g(x) = 3$. La limite $\\displaystyle\\lim_{x \\to 2} g(x)$ \\textbf{n'existe pas} (latérales différentes).\\\\[0.2em] \\textbf{(b)} $\\displaystyle\\lim_{x \\to 4^{-}} g(x) = \\displaystyle\\lim_{x \\to 4^{+}} g(x) = 1$. Donc $\\displaystyle\\lim_{x \\to 4} g(x) = 1$.\\\\[0.2em] \\textbf{(c)} $g(2) = 2$ ; $g(4)$ n'existe pas (4 n'est pas dans le domaine).\\\\[0.2em] \\textbf{(d)} $\\mathrm{dom}\\,g = [-1, 4[\\;\\cup\\;]4, 5]$.\\\\[0.2em] \\textbf{(e)} $\\mathrm{ima}\\,g = [-1, 3[$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{(a) En $x = 2$.} À gauche, la première branche monte selon $y = x$ jusqu'au point plein $(2, 2)$ : $\\displaystyle\\lim_{x \\to 2^{-}} g(x) = 2$. À droite, la deuxième branche démarre au cercle ouvert $(2, 3)$ : $\\displaystyle\\lim_{x \\to 2^{+}} g(x) = 3$. Latérales différentes → la limite \\textbf{n'existe pas} (discontinuité par saut).",
+            "\\textbf{(b) En $x = 4$.} À gauche, la deuxième branche descend vers le cercle ouvert $(4, 1)$ : $\\displaystyle\\lim_{x \\to 4^{-}} g(x) = 1$. À droite, la troisième branche part aussi du cercle ouvert $(4, 1)$ : $\\displaystyle\\lim_{x \\to 4^{+}} g(x) = 1$. Latérales égales → la limite existe et vaut $1$. Aucun point plein en $x = 4$ : discontinuité par trou.",
+            "\\textbf{(c) Valeurs.} $g(2) = 2$ (point plein sur la première branche). $g(4)$ \\textbf{n'existe pas} : uniquement un cercle ouvert en $(4, 1)$.",
+            "\\textbf{(d) Domaine.} Point plein en $(-1, -1)$ à gauche, point plein en $(5, 0)$ à droite, avec un trou en $x = 4$ :\\[ \\mathrm{dom}\\,g = [-1, 4[\\;\\cup\\;]4, 5]. \\]",
+            "\\textbf{(e) Image.} On projette chaque branche sur l'axe des $y$ :",
+            "Branche 1 sur $[-1, 2]$, $y = x$ : $y \\in [-1, 2]$.",
+            "Branche 2 sur $]2, 4[$, $y = 5-x$ : $y \\in \\;]1, 3[$.",
+            "Branche 3 sur $]4, 5]$, $y = 5-x$ : $y \\in [0, 1[$.",
+            "Union : $[-1, 2] \\cup \\;]1, 3[\\;\\cup\\;[0, 1[\\; = \\;[-1, 3[$ (les intervalles se recouvrent et se rejoignent).\\[ \\mathrm{ima}\\,g = [-1, 3[. \\]"
+          ],
+          "piegeCourant": "Conclure « $g(4)$ n'existe pas donc la limite en $4$ n'existe pas non plus ». La limite en un point ne dépend PAS de la valeur de $g$ au point, seulement du comportement AUTOUR. Ici les deux branches convergent bien vers $1$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E063",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "tempsEstime": 7,
+      "acces": "payant",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "lecture graphique",
+        "fonction par parties",
+        "saut",
+        "point isolé",
+        "constante par morceaux"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $h$. Réponds aux questions suivantes.\\\\[0.3em] \\textbf{(a)} Détermine $\\displaystyle\\lim_{x \\to 1^{-}} h(x)$ et $\\displaystyle\\lim_{x \\to 1^{+}} h(x)$. La limite $\\displaystyle\\lim_{x \\to 1} h(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(b)} Détermine $\\displaystyle\\lim_{x \\to 3^{-}} h(x)$ et $\\displaystyle\\lim_{x \\to 3^{+}} h(x)$. La limite $\\displaystyle\\lim_{x \\to 3} h(x)$ existe-t-elle ? Si oui, donne sa valeur.\\\\[0.3em] \\textbf{(c)} Donne $h(1)$ et $h(3)$.\\\\[0.3em] \\textbf{(d)} Détermine le domaine de $h$.\\\\[0.3em] \\textbf{(e)} Détermine l'image de $h$.",
+          "figureTikzBrut": "\\begin{tikzpicture}\\begin{axis}[ndcaxis, width=11cm, height=6cm, xmin=-1.5, xmax=5.5, ymin=-0.5, ymax=5, xtick={-1,0,1,2,3,4,5}, ytick={0,1,2,3,4}, samples=100]\\addplot[thick, blue, domain=-1:1] {2};\\addplot[thick, blue, domain=1.02:2.98] {x-1};\\addplot[thick, blue, domain=3.02:5] {x-1};\\addplot[only marks, mark=*, mark size=1.6pt, fill=white, draw=blue] coordinates {(1,0) (3,2)};\\addplot[only marks, mark=*, mark size=1.6pt, fill=blue] coordinates {(-1,2) (1,2) (3,4) (5,4)};\\end{axis}\\end{tikzpicture}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "En $x = 1$ la fonction saute d'un plateau constant à une droite oblique. En $x = 3$, la droite est bien continue mais un point plein isolé en modifie la valeur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "\\textbf{(a)} $\\displaystyle\\lim_{x \\to 1^{-}} h(x) = 2$, $\\displaystyle\\lim_{x \\to 1^{+}} h(x) = 0$. La limite $\\displaystyle\\lim_{x \\to 1} h(x)$ \\textbf{n'existe pas}.\\\\[0.2em] \\textbf{(b)} $\\displaystyle\\lim_{x \\to 3^{-}} h(x) = \\displaystyle\\lim_{x \\to 3^{+}} h(x) = 2$. Donc $\\displaystyle\\lim_{x \\to 3} h(x) = 2$.\\\\[0.2em] \\textbf{(c)} $h(1) = 2$ ; $h(3) = 4$.\\\\[0.2em] \\textbf{(d)} $\\mathrm{dom}\\,h = [-1, 5]$.\\\\[0.2em] \\textbf{(e)} $\\mathrm{ima}\\,h = \\;]0, 4]$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{(a) En $x = 1$.} À gauche, la fonction est constante égale à $2$ (plateau) jusqu'au point plein $(1, 2)$ : $\\displaystyle\\lim_{x \\to 1^{-}} h(x) = 2$. À droite, la droite $y = x - 1$ démarre au cercle ouvert $(1, 0)$ : $\\displaystyle\\lim_{x \\to 1^{+}} h(x) = 0$. Latérales différentes → la limite \\textbf{n'existe pas} (saut).",
+            "\\textbf{(b) En $x = 3$.} À gauche et à droite, la même droite $y = x - 1$ converge vers le cercle ouvert $(3, 2)$ : les deux limites latérales valent $2$. Donc $\\displaystyle\\lim_{x \\to 3} h(x) = 2$ existe. \\emph{Attention} : ce n'est PAS la valeur $h(3) = 4$ (point plein isolé). Exemple typique où la limite existe mais diffère de l'image — discontinuité par point isolé.",
+            "\\textbf{(c) Valeurs.} $h(1) = 2$ (point plein à gauche, sur le plateau). $h(3) = 4$ (point plein isolé, hors des branches).",
+            "\\textbf{(d) Domaine.} Points pleins en $(-1, 2)$ et $(5, 4)$, aucune valeur exclue :\\[ \\mathrm{dom}\\,h = [-1, 5]. \\]",
+            "\\textbf{(e) Image.} Plateau sur $[-1, 1]$ : $y = 2$, singleton $\\{2\\}$. Droite $y = x-1$ sur $]1, 3[$ : $y \\in \\;]0, 2[$. Point isolé $(3, 4)$ : $\\{4\\}$. Droite $y = x-1$ sur $]3, 5]$ : $y \\in \\;]2, 4]$. Union : $\\{2\\} \\cup \\;]0, 2[\\;\\cup\\;\\{4\\} \\cup \\;]2, 4] = \\;]0, 4]$ (les morceaux se rejoignent, $\\{4\\}$ absorbé dans $]2, 4]$).\\[ \\mathrm{ima}\\,h = \\;]0, 4]. \\]"
+          ],
+          "piegeCourant": "En $x = 3$, conclure « la limite vaut $4$ » en prenant la valeur du point plein isolé. Le point plein donne $h(3)$, pas la limite. La limite se lit sur les DEUX branches convergentes, ici vers $2$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E064",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "lecture graphique",
+        "fonction par parties",
+        "saut",
+        "point isolé",
+        "trois branches"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $k$. Réponds aux questions suivantes.\\\\[0.3em] \\textbf{(a)} Détermine $\\displaystyle\\lim_{x \\to 0^{-}} k(x)$ et $\\displaystyle\\lim_{x \\to 0^{+}} k(x)$. La limite $\\displaystyle\\lim_{x \\to 0} k(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(b)} Détermine $\\displaystyle\\lim_{x \\to 2^{-}} k(x)$ et $\\displaystyle\\lim_{x \\to 2^{+}} k(x)$. La limite $\\displaystyle\\lim_{x \\to 2} k(x)$ existe-t-elle ? Si oui, donne sa valeur.\\\\[0.3em] \\textbf{(c)} Donne $k(0)$ et $k(2)$.\\\\[0.3em] \\textbf{(d)} Détermine le domaine de $k$.\\\\[0.3em] \\textbf{(e)} Détermine l'image de $k$.",
+          "figureTikzBrut": "\\begin{tikzpicture}\\begin{axis}[ndcaxis, width=11cm, height=6cm, xmin=-2.5, xmax=5.5, ymin=-0.5, ymax=4, xtick={-2,-1,0,1,2,3,4,5}, ytick={0,1,2,3}, samples=100]\\addplot[thick, blue, domain=-2:0] {3};\\addplot[thick, blue, domain=0.02:1.98] {x+1};\\addplot[thick, blue, domain=2.02:5] {5-x};\\addplot[only marks, mark=*, mark size=1.6pt, fill=white, draw=blue] coordinates {(0,1) (2,3)};\\addplot[only marks, mark=*, mark size=1.6pt, fill=blue] coordinates {(-2,3) (0,3) (2,0) (5,0)};\\end{axis}\\end{tikzpicture}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois branches : un plateau à gauche, une droite montante au milieu, une droite descendante à droite. Deux points-clés à examiner."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "\\textbf{(a)} $\\displaystyle\\lim_{x \\to 0^{-}} k(x) = 3$, $\\displaystyle\\lim_{x \\to 0^{+}} k(x) = 1$. La limite $\\displaystyle\\lim_{x \\to 0} k(x)$ \\textbf{n'existe pas}.\\\\[0.2em] \\textbf{(b)} $\\displaystyle\\lim_{x \\to 2^{-}} k(x) = \\displaystyle\\lim_{x \\to 2^{+}} k(x) = 3$. Donc $\\displaystyle\\lim_{x \\to 2} k(x) = 3$.\\\\[0.2em] \\textbf{(c)} $k(0) = 3$ ; $k(2) = 0$.\\\\[0.2em] \\textbf{(d)} $\\mathrm{dom}\\,k = [-2, 5]$.\\\\[0.2em] \\textbf{(e)} $\\mathrm{ima}\\,k = [0, 3]$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{(a) En $x = 0$.} À gauche, plateau constant à $3$ jusqu'au point plein $(0, 3)$ : $\\displaystyle\\lim_{x \\to 0^{-}} k(x) = 3$. À droite, la droite $y = x + 1$ démarre au cercle ouvert $(0, 1)$ : $\\displaystyle\\lim_{x \\to 0^{+}} k(x) = 1$. Latérales différentes → la limite \\textbf{n'existe pas} (saut).",
+            "\\textbf{(b) En $x = 2$.} À gauche, $y = x + 1$ monte vers le cercle ouvert $(2, 3)$ : $\\displaystyle\\lim_{x \\to 2^{-}} k(x) = 3$. À droite, $y = 5 - x$ part aussi du cercle ouvert $(2, 3)$ : $\\displaystyle\\lim_{x \\to 2^{+}} k(x) = 3$. Latérales égales → $\\displaystyle\\lim_{x \\to 2} k(x) = 3$. Mais $k(2) = 0$ (point plein isolé en bas) : discontinuité par point isolé.",
+            "\\textbf{(c) Valeurs.} $k(0) = 3$ (point plein sur le plateau). $k(2) = 0$ (point plein isolé, hors des branches convergentes).",
+            "\\textbf{(d) Domaine.} Points pleins en $(-2, 3)$ et $(5, 0)$, pas de trou :\\[ \\mathrm{dom}\\,k = [-2, 5]. \\]",
+            "\\textbf{(e) Image.} Plateau sur $[-2, 0]$ : $\\{3\\}$. Droite $y = x+1$ sur $]0, 2[$ : $y \\in \\;]1, 3[$. Point isolé $(2, 0)$ : $\\{0\\}$. Droite $y = 5-x$ sur $]2, 5]$ : $y \\in [0, 3[$. Union : $\\{3\\} \\cup \\;]1, 3[\\;\\cup\\;\\{0\\} \\cup [0, 3[\\; = \\;[0, 3]$.\\[ \\mathrm{ima}\\,k = [0, 3]. \\]"
+          ],
+          "piegeCourant": "En $x = 2$, dire « la limite n'existe pas car $k(2) = 0$ diffère de la valeur limite $3$ ». Non : la limite EXISTE (les deux latérales sont égales à $3$), simplement elle diffère de l'image. C'est précisément la définition d'une discontinuité par point isolé, pas un cas de non-existence."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E065",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "payant",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "lecture graphique",
+        "fonction par parties",
+        "trois types de discontinuité",
+        "quatre branches",
+        "domaine avec trou",
+        "image singleton isolé"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $F$ définie par parties (quatre branches). Réponds aux questions suivantes.\\\\[0.3em] \\textbf{(a)} Détermine $\\displaystyle\\lim_{x \\to 2^{-}} F(x)$ et $\\displaystyle\\lim_{x \\to 2^{+}} F(x)$. La limite $\\displaystyle\\lim_{x \\to 2} F(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(b)} Détermine $\\displaystyle\\lim_{x \\to 4^{-}} F(x)$ et $\\displaystyle\\lim_{x \\to 4^{+}} F(x)$. La limite $\\displaystyle\\lim_{x \\to 4} F(x)$ existe-t-elle ? Si oui, donne sa valeur.\\\\[0.3em] \\textbf{(c)} Détermine $\\displaystyle\\lim_{x \\to 6^{-}} F(x)$ et $\\displaystyle\\lim_{x \\to 6^{+}} F(x)$. La limite $\\displaystyle\\lim_{x \\to 6} F(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(d)} Donne $F(2)$, $F(4)$ et $F(6)$.\\\\[0.3em] \\textbf{(e)} Détermine le domaine de $F$.\\\\[0.3em] \\textbf{(f)} Détermine l'image de $F$.",
+          "figureTikzBrut": "\\begin{tikzpicture}\\begin{axis}[ndcaxis, width=12cm, height=6.5cm, xmin=-1.5, xmax=8.5, ymin=-2.5, ymax=5, xtick={-1,0,1,2,3,4,5,6,7,8}, ytick={-2,-1,0,1,2,3,4}, samples=100]\\addplot[thick, blue, domain=-1:2] {x-1};\\addplot[thick, blue, domain=2.02:3.98] {-x+5};\\addplot[thick, blue, domain=4.02:5.98] {x-3};\\addplot[thick, blue, domain=6.02:8] {-x+9};\\addplot[only marks, mark=*, mark size=1.6pt, fill=white, draw=blue] coordinates {(2,3) (4,1) (6,3)};\\addplot[only marks, mark=*, mark size=1.6pt, fill=blue] coordinates {(-1,-2) (2,1) (4,4) (8,1)};\\end{axis}\\end{tikzpicture}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois points-clés à étudier ($x = 2, 4, 6$), un de chaque type : saut, point isolé, trou. Utilise la même méthode pour chacun : latérales, comparaison, verdict d'existence, puis image."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "\\textbf{(a)} $\\displaystyle\\lim_{x \\to 2^{-}} F(x) = 1$, $\\displaystyle\\lim_{x \\to 2^{+}} F(x) = 3$. La limite $\\displaystyle\\lim_{x \\to 2} F(x)$ \\textbf{n'existe pas} (saut).\\\\[0.2em] \\textbf{(b)} $\\displaystyle\\lim_{x \\to 4^{-}} F(x) = \\displaystyle\\lim_{x \\to 4^{+}} F(x) = 1$. Donc $\\displaystyle\\lim_{x \\to 4} F(x) = 1$.\\\\[0.2em] \\textbf{(c)} $\\displaystyle\\lim_{x \\to 6^{-}} F(x) = \\displaystyle\\lim_{x \\to 6^{+}} F(x) = 3$. Donc $\\displaystyle\\lim_{x \\to 6} F(x) = 3$.\\\\[0.2em] \\textbf{(d)} $F(2) = 1$ ; $F(4) = 4$ ; $F(6)$ n'existe pas.\\\\[0.2em] \\textbf{(e)} $\\mathrm{dom}\\,F = [-1, 6[\\;\\cup\\;]6, 8]$.\\\\[0.2em] \\textbf{(f)} $\\mathrm{ima}\\,F = [-2, 3[\\;\\cup\\;\\{4\\}$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{(a) En $x = 2$ — saut.} Branche 1 ($y = x - 1$) va jusqu'au point plein $(2, 1)$ : $\\displaystyle\\lim_{x \\to 2^{-}} F(x) = 1$. Branche 2 ($y = -x + 5$) part du cercle ouvert $(2, 3)$ : $\\displaystyle\\lim_{x \\to 2^{+}} F(x) = 3$. Latérales distinctes ($1 \\neq 3$) → \\textbf{n'existe pas}.",
+            "\\textbf{(b) En $x = 4$ — point isolé.} Branche 2 descend vers le cercle ouvert $(4, 1)$ : $\\displaystyle\\lim_{x \\to 4^{-}} F(x) = 1$. Branche 3 ($y = x - 3$) part aussi du cercle ouvert $(4, 1)$ : $\\displaystyle\\lim_{x \\to 4^{+}} F(x) = 1$. Latérales égales → $\\displaystyle\\lim_{x \\to 4} F(x) = 1$. Mais $F(4) = 4$ (point plein isolé au-dessus) : discontinuité par point isolé.",
+            "\\textbf{(c) En $x = 6$ — trou.} Branche 3 monte vers le cercle ouvert $(6, 3)$ : $\\displaystyle\\lim_{x \\to 6^{-}} F(x) = 3$. Branche 4 ($y = -x + 9$) part aussi du cercle ouvert $(6, 3)$ : $\\displaystyle\\lim_{x \\to 6^{+}} F(x) = 3$. Latérales égales → $\\displaystyle\\lim_{x \\to 6} F(x) = 3$. Aucun point plein en $x = 6$ → $F(6)$ n'existe pas : trou.",
+            "\\textbf{(d) Valeurs.} $F(2) = 1$ (point plein). $F(4) = 4$ (point plein isolé). $F(6)$ \\textbf{n'existe pas} — $6$ n'est pas dans le domaine.",
+            "\\textbf{(e) Domaine.} Points pleins en $(-1, -2)$ et $(8, 1)$, trou en $x = 6$ :\\[ \\mathrm{dom}\\,F = [-1, 6[\\;\\cup\\;]6, 8]. \\]",
+            "\\textbf{(f) Image.} Branche 1 sur $[-1, 2]$ : $y \\in [-2, 1]$. Branche 2 sur $]2, 4[$ : $y \\in \\;]1, 3[$. Point isolé $(4, 4)$ : $\\{4\\}$. Branche 3 sur $]4, 6[$ : $y \\in \\;]1, 3[$. Branche 4 sur $]6, 8]$ : $y \\in [1, 3[$.",
+            "Union : $[-2, 1] \\cup \\;]1, 3[\\;\\cup\\;\\{4\\} \\cup [1, 3[\\; = \\;[-2, 3[\\;\\cup\\;\\{4\\}$ (les segments $[-2, 1]$ et $[1, 3[$ se rejoignent en $1$ ; les autres intervalles y sont inclus ; le singleton $\\{4\\}$ reste isolé au-dessus, hors de $[-2, 3[$).\\[ \\mathrm{ima}\\,F = [-2, 3[\\;\\cup\\;\\{4\\}. \\]"
+          ],
+          "piegeCourant": "Écrire l'image comme $[-2, 4]$ en pensant que le point isolé « remplit le trou » entre $3$ et $4$. Non : aucune branche n'atteint les valeurs de $y$ dans $[3, 4[$, seule la valeur exacte $y = 4$ est prise (une seule fois, en $x = 4$). Le singleton $\\{4\\}$ reste isolé dans l'image."
+        }
+      ]
+    },
+    {
+      "id": "CD-C02-E066",
+      "chapitre": 2,
+      "section": "2.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "payant",
+      "sectionNotes": "Limites à gauche, à droite et existence de la limite",
+      "motsCles": [
+        "lecture graphique",
+        "fonction par parties",
+        "escaliers",
+        "deux sauts",
+        "point isolé",
+        "image singleton"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le graphique ci-dessous représente une fonction $H$ définie par parties. Réponds aux questions suivantes.\\\\[0.3em] \\textbf{(a)} Détermine $\\displaystyle\\lim_{x \\to 0^{-}} H(x)$ et $\\displaystyle\\lim_{x \\to 0^{+}} H(x)$. La limite $\\displaystyle\\lim_{x \\to 0} H(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(b)} Détermine $\\displaystyle\\lim_{x \\to 2^{-}} H(x)$ et $\\displaystyle\\lim_{x \\to 2^{+}} H(x)$. La limite $\\displaystyle\\lim_{x \\to 2} H(x)$ existe-t-elle ?\\\\[0.3em] \\textbf{(c)} Détermine $\\displaystyle\\lim_{x \\to 4^{-}} H(x)$ et $\\displaystyle\\lim_{x \\to 4^{+}} H(x)$. La limite $\\displaystyle\\lim_{x \\to 4} H(x)$ existe-t-elle ? Si oui, donne sa valeur.\\\\[0.3em] \\textbf{(d)} Donne $H(0)$, $H(2)$ et $H(4)$.\\\\[0.3em] \\textbf{(e)} Détermine le domaine de $H$.\\\\[0.3em] \\textbf{(f)} Détermine l'image de $H$.",
+          "figureTikzBrut": "\\begin{tikzpicture}\\begin{axis}[ndcaxis, width=11cm, height=6cm, xmin=-2.5, xmax=6.5, ymin=-0.5, ymax=4, xtick={-2,-1,0,1,2,3,4,5,6}, ytick={0,1,2,3}, samples=100]\\addplot[thick, blue, domain=-2:-0.02] {1};\\addplot[thick, blue, domain=0:2] {3};\\addplot[thick, blue, domain=2.02:3.98] {4-x};\\addplot[thick, blue, domain=4.02:6] {x-4};\\addplot[only marks, mark=*, mark size=1.6pt, fill=white, draw=blue] coordinates {(0,1) (2,2) (4,0)};\\addplot[only marks, mark=*, mark size=1.6pt, fill=blue] coordinates {(-2,1) (0,3) (2,3) (4,1) (6,2)};\\end{axis}\\end{tikzpicture}"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux plateaux et deux droites obliques. Trois points-clés à étudier : $x = 0$, $x = 2$, $x = 4$. Certains sont des sauts, un autre est de nature différente."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "\\textbf{(a)} $\\displaystyle\\lim_{x \\to 0^{-}} H(x) = 1$, $\\displaystyle\\lim_{x \\to 0^{+}} H(x) = 3$. La limite $\\displaystyle\\lim_{x \\to 0} H(x)$ \\textbf{n'existe pas} (saut).\\\\[0.2em] \\textbf{(b)} $\\displaystyle\\lim_{x \\to 2^{-}} H(x) = 3$, $\\displaystyle\\lim_{x \\to 2^{+}} H(x) = 2$. La limite $\\displaystyle\\lim_{x \\to 2} H(x)$ \\textbf{n'existe pas} (saut).\\\\[0.2em] \\textbf{(c)} $\\displaystyle\\lim_{x \\to 4^{-}} H(x) = \\displaystyle\\lim_{x \\to 4^{+}} H(x) = 0$. Donc $\\displaystyle\\lim_{x \\to 4} H(x) = 0$.\\\\[0.2em] \\textbf{(d)} $H(0) = 3$ ; $H(2) = 3$ ; $H(4) = 1$.\\\\[0.2em] \\textbf{(e)} $\\mathrm{dom}\\,H = [-2, 6]$.\\\\[0.2em] \\textbf{(f)} $\\mathrm{ima}\\,H = \\;]0, 2]\\;\\cup\\;\\{3\\}$."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{(a) En $x = 0$ — saut.} À gauche, plateau constant à $1$ jusqu'au cercle ouvert $(0, 1)$ : $\\displaystyle\\lim_{x \\to 0^{-}} H(x) = 1$. À droite, plateau constant à $3$ démarrant au point plein $(0, 3)$ : $\\displaystyle\\lim_{x \\to 0^{+}} H(x) = 3$. Latérales différentes → \\textbf{n'existe pas}.",
+            "\\textbf{(b) En $x = 2$ — saut.} À gauche, plateau à $3$ jusqu'au point plein $(2, 3)$ : $\\displaystyle\\lim_{x \\to 2^{-}} H(x) = 3$. À droite, la droite $y = 4 - x$ part du cercle ouvert $(2, 2)$ : $\\displaystyle\\lim_{x \\to 2^{+}} H(x) = 2$. Latérales différentes → \\textbf{n'existe pas}.",
+            "\\textbf{(c) En $x = 4$ — point isolé.} À gauche, $y = 4 - x$ descend vers le cercle ouvert $(4, 0)$ : $\\displaystyle\\lim_{x \\to 4^{-}} H(x) = 0$. À droite, $y = x - 4$ part aussi du cercle ouvert $(4, 0)$ : $\\displaystyle\\lim_{x \\to 4^{+}} H(x) = 0$. Latérales égales → $\\displaystyle\\lim_{x \\to 4} H(x) = 0$. Mais $H(4) = 1$ (point plein isolé au-dessus) : discontinuité par point isolé.",
+            "\\textbf{(d) Valeurs.} $H(0) = 3$ (point plein sur le plateau de droite, la valeur $y = 1$ à gauche est écartée par le cercle ouvert). $H(2) = 3$ (point plein sur le plateau, avant le saut vers la branche descendante). $H(4) = 1$ (point plein isolé, hors des branches convergentes vers $0$).",
+            "\\textbf{(e) Domaine.} Points pleins en $(-2, 1)$ et $(6, 2)$, pas de trou :\\[ \\mathrm{dom}\\,H = [-2, 6]. \\]",
+            "\\textbf{(f) Image.} Plateau 1 sur $[-2, 0[$ : $\\{1\\}$. Plateau 2 sur $[0, 2]$ : $\\{3\\}$. Droite $y = 4 - x$ sur $]2, 4[$ : $y \\in \\;]0, 2[$. Point isolé $(4, 1)$ : $\\{1\\}$. Droite $y = x - 4$ sur $]4, 6]$ : $y \\in \\;]0, 2]$.",
+            "Union : $\\{1\\} \\cup \\{3\\} \\cup \\;]0, 2[\\;\\cup\\;\\{1\\} \\cup \\;]0, 2] = \\;]0, 2]\\;\\cup\\;\\{3\\}$ (les valeurs $\\{1\\}$ sont absorbées dans $]0, 2]$ ; $\\{3\\}$ reste isolé).\\[ \\mathrm{ima}\\,H = \\;]0, 2]\\;\\cup\\;\\{3\\}. \\]"
+          ],
+          "piegeCourant": "Répondre $\\mathrm{ima}\\,H = \\;]0, 3]$ en supposant que le plateau à $y = 3$ « comble » l'écart entre $2$ et $3$. Non : aucune branche ne prend de valeur dans $]2, 3[$. Le plateau à $3$ n'occupe que la valeur exacte $y = 3$, qui reste isolée dans l'image."
         }
       ]
     },
