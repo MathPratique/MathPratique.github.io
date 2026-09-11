@@ -1,3 +1,11 @@
+// Les compteurs des cartes sont DÉRIVÉS du catalogue de chaque banque, jamais
+// écrits à la main : trois ajouts d'exercices, du 1er au 5 septembre 2026, ont
+// laissé la carte du calcul différentiel annoncer 65 / 305 alors que la banque
+// en comptait 70 / 395. Seul `totaux` est importé — l'import nommé d'un JSON
+// est élagué par Vite, le reste du catalogue n'entre pas par ce chemin.
+import { totaux as totauxCD } from "./calcul-differentiel/catalogue.json";
+import { totaux as totauxPS } from "./probabilites-statistique/catalogue.json";
+
 /**
  * Palette d'un cours — source unique pour toutes les cartes du site.
  *
@@ -40,18 +48,17 @@ export type Topic = {
    */
   pageDediee?: string;
   /**
-   * Nombre d'exercices publiés sur cette vitrine.
-   *
-   * Écrit ici plutôt que déduit de la banque : importer les données ferait
-   * entrer 425 ko dans le bundle de l'accueil, pour afficher un nombre.
-   * Un test vérifie qu'il correspond au contenu réellement publié.
+   * Nombre d'exercices publiés sur cette vitrine — `totaux.gratuit` du
+   * catalogue du cours. Ne jamais l'écrire en dur : tests/vitrine.test.mjs
+   * refuse un nombre littéral ici.
    */
   nbExercicesPublies?: number;
   /**
-   * Taille totale de la banque (gratuits + payants). Utilisé sur la carte
-   * pour afficher « 65 exercices sur 305 » — le total réel, pas seulement
-   * la portion accessible. Sans ce champ, seul `nbExercicesPublies` est
-   * affiché (matières sans package).
+   * Taille totale de la banque (gratuits + payants) — `totaux.gratuit +
+   * totaux.payant` du catalogue. Affiché sur la carte sous la forme
+   * « X gratuits · Y avec le package », le total réel et pas seulement la
+   * portion accessible. Sans ce champ, seul `nbExercicesPublies` est affiché
+   * (matières sans package).
    */
   nbExercicesTotal?: number;
   /**
@@ -115,8 +122,8 @@ export const topics: Topic[] = [
     },
     teacherContentReady: true,
     pageDediee: "/exercices/calcul-differentiel",
-    nbExercicesPublies: 65,
-    nbExercicesTotal: 305,
+    nbExercicesPublies: totauxCD.gratuit,
+    nbExercicesTotal: totauxCD.gratuit + totauxCD.payant,
   },
   {
     id: "integral-calculus",
@@ -169,14 +176,11 @@ export const topics: Topic[] = [
     },
     teacherContentReady: true,
     pageDediee: "/exercices/probabilites-statistique",
-    // Sélection du 2026-09-01 : 100 exercices ouverts sur 451, tirés par
-    // strates (chapitre × difficulté) avec la graine 20260829 — voir
-    // exercices-prob-stat/scripts/selection-gratuite.js.
-    //
-    // Ces deux nombres sont écrits à la main — importer le catalogue ferait
-    // entrer 97 ko dans le bundle de l'accueil pour afficher deux entiers.
-    // C'est tests/vitrine.test.mjs qui les empêche de dériver.
-    nbExercicesPublies: 100,
-    nbExercicesTotal: 451,
+    // Sélection du 2026-09-01 : exercices ouverts tirés par strates
+    // (chapitre × difficulté) avec la graine 20260829 — voir
+    // exercices-prob-stat/scripts/selection-gratuite.js. Les compteurs
+    // suivent le catalogue : une nouvelle sélection les met à jour seule.
+    nbExercicesPublies: totauxPS.gratuit,
+    nbExercicesTotal: totauxPS.gratuit + totauxPS.payant,
   },
 ];

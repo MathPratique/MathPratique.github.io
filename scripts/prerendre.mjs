@@ -33,6 +33,16 @@ const SSR = path.join(RACINE, "dist-ssr", "entry-server.js");
 const DOMAINE = "https://mathpratique.ca";
 
 /**
+ * Nombre d'exercices ouverts d'une banque, lu dans son catalogue. Les
+ * descriptions indexées par les moteurs de recherche citaient des nombres
+ * écrits à la main, qui ont dérivé au premier ajout d'exercices.
+ */
+function nbGratuits(dossier) {
+  const chemin = path.join(RACINE, "src", "data", dossier, "catalogue.json");
+  return JSON.parse(readFileSync(chemin, "utf8")).totaux.gratuit;
+}
+
+/**
  * Les routes pré-rendues, avec leurs métadonnées.
  *
  * Toutes les routes ne le sont pas : `/mon-compte` et `/connexion` n'ont
@@ -51,14 +61,14 @@ const ROUTES = [
     chemin: "/exercices/calcul-differentiel",
     titre: "Exercices de calcul différentiel corrigés — MathPratique",
     description:
-      "65 exercices de calcul différentiel corrigés et gratuits : limites, formes indéterminées, dérivation en chaîne, taux liés, optimisation. Chaque exercice avec son indice, sa réponse finale et sa démarche détaillée.",
+      `${nbGratuits("calcul-differentiel")} exercices de calcul différentiel corrigés et gratuits : limites, formes indéterminées, dérivation en chaîne, taux liés, optimisation. Chaque exercice avec son indice, sa réponse finale et sa démarche détaillée.`,
     priorite: "0.9",
   },
   {
     chemin: "/exercices/probabilites-statistique",
     titre: "Exercices de probabilités et statistique corrigés — MathPratique",
     description:
-      "100 exercices de probabilités et statistique corrigés et gratuits : statistiques descriptives, dénombrement, probabilités conditionnelles, loi binomiale, loi normale, intervalles de confiance et tests d'hypothèse. Chaque exercice avec sa réponse finale et sa démarche détaillée.",
+      `${nbGratuits("probabilites-statistique")} exercices de probabilités et statistique corrigés et gratuits : statistiques descriptives, dénombrement, probabilités conditionnelles, loi binomiale, loi normale, intervalles de confiance et tests d'hypothèse. Chaque exercice avec sa réponse finale et sa démarche détaillée.`,
     priorite: "0.9",
   },
   {

@@ -2,22 +2,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 
-// Les nombres affichés sur les cartes de matière sont écrits à la main dans
-// topics.ts — importer les banques ferait entrer des centaines de ko dans le
-// bundle de l'accueil pour afficher deux entiers. Ces tests empêchent qu'ils
-// dérivent, cours par cours.
+// Les nombres affichés sur les cartes de matière, dans les descriptions de
+// pages et sur la boutique sont DÉRIVÉS de `totaux`, le résumé que chaque
+// catalogue porte. Jusqu'au 2026-09-10 ils étaient écrits à la main, et trois
+// ajouts d'exercices les ont rendus faux en ligne.
 //
-// Le compte est lu dans l'entrée du cours concerné, pas au premier match :
-// avec deux cours dans le fichier, une regex globale renverrait toujours le
-// même nombre et le second compteur pourrait dériver sans que rien ne tombe.
-
-/** Le bloc de `topics.ts` qui décrit un cours, borné à l'entrée suivante. */
-function entreeTopic(topics, id) {
-  const debut = topics.indexOf(`id: "${id}"`);
-  assert.ok(debut > 0, `entrée ${id} absente de topics.ts`);
-  const suivant = topics.indexOf("\n  {", debut);
-  return topics.slice(debut, suivant === -1 ? undefined : suivant);
-}
+// Deux familles de tests :
+//   1. les invariants dont la dérivation dépend : `totaux` doit décrire
+//      exactement le contenu réel de la banque ;
+//   2. la garde : aucun de ces nombres ne doit revenir sous forme littérale.
 
 function comptePublies(dossier) {
   return readdirSync(dossier)
@@ -29,30 +22,46 @@ for (const cours of [
   { topicId: "differential-calculus", dossier: "src/data/calcul-differentiel" },
   { topicId: "probability", dossier: "src/data/probabilites-statistique" },
 ]) {
-  test(`le compte annoncé pour ${cours.topicId} correspond aux exercices publiés`, () => {
-    const topics = readFileSync("src/data/topics.ts", "utf8");
-    const bloc = entreeTopic(topics, cours.topicId);
-    const annonce = Number(/nbExercicesPublies:\s*(\d+)/.exec(bloc)?.[1]);
+  test(`${cours.topicId} : totaux.gratuit égale le nombre d'exercices publiés`, () => {
+    const { totaux } = JSON.parse(readFileSync(`${cours.dossier}/catalogue.json`, "utf8"));
     const publies = comptePublies(cours.dossier);
     assert.equal(
-      annonce,
+      totaux.gratuit,
       publies,
-      `topics.ts annonce ${annonce} pour ${cours.topicId}, la banque en publie ${publies}`,
+      `le catalogue annonce ${totaux.gratuit} gratuits, la banque en publie ${publies}`,
     );
   });
 
-  test(`le total annoncé pour ${cours.topicId} correspond au catalogue`, () => {
-    const topics = readFileSync("src/data/topics.ts", "utf8");
-    const bloc = entreeTopic(topics, cours.topicId);
-    const annonce = Number(/nbExercicesTotal:\s*(\d+)/.exec(bloc)?.[1]);
+  test(`${cours.topicId} : totaux.gratuit + totaux.payant égale le nombre de fiches`, () => {
     const catalogue = JSON.parse(readFileSync(`${cours.dossier}/catalogue.json`, "utf8"));
+    const somme = catalogue.totaux.gratuit + catalogue.totaux.payant;
     assert.equal(
-      annonce,
+      somme,
       catalogue.exercices.length,
-      `topics.ts annonce ${annonce} au total pour ${cours.topicId}, le catalogue en compte ${catalogue.exercices.length}`,
+      `totaux annonce ${somme} exercices, le catalogue porte ${catalogue.exercices.length} fiches`,
     );
   });
 }
+
+test("topics.ts n'écrit aucun compteur d'exercices en dur", () => {
+  const topics = readFileSync("src/data/topics.ts", "utf8");
+  const litteraux = topics.match(/nbExercices(Publies|Total):\s*\d+/g) ?? [];
+  assert.deepEqual(litteraux, [], "compteur littéral trouvé — le dériver de `totaux`");
+});
+
+test("les pages et le pré-rendu n'écrivent aucun nombre d'exercices en dur", () => {
+  // Formes relevées le 2026-09-10 : « "70 exercices de… », « Les 395 exercices ».
+  const motif = /(["'`]\d+ exercices\b|\bLes \d+ exercices\b)/g;
+  for (const fichier of [
+    "scripts/prerendre.mjs",
+    "src/pages/ExercicesCalculDifferentiel.tsx",
+    "src/pages/ExercicesProbabilitesStatistique.tsx",
+    "src/pages/BoutiqueCalculDifferentiel.tsx",
+  ]) {
+    const trouves = readFileSync(fichier, "utf8").match(motif) ?? [];
+    assert.deepEqual(trouves, [], `${fichier} : nombre d'exercices écrit en dur`);
+  }
+});
 
 test("prob-stat pointe vers sa vitrine dédiée", () => {
   const topics = readFileSync("src/data/topics.ts", "utf8");

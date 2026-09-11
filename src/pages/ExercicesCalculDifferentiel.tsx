@@ -21,6 +21,7 @@ import {
   LIB_DIFFICULTE,
   LIB_TYPE,
   TOTAL_BANQUE,
+  TOTAL_GRATUITS,
   type Difficulte,
   type Exercice,
   type TypeExercice,
@@ -30,8 +31,10 @@ import { useAuth } from "../firebase/useAuth";
 import { useAcces } from "../firebase/useAcces";
 
 const TITRE_PAGE = "Exercices de calcul différentiel corrigés — MathPratique";
+// Le nombre vient de la banque publiée, jamais écrit à la main : il suit
+// chaque ajout d'exercices sans qu'on ait à y penser.
 const DESCRIPTION_PAGE =
-  "65 exercices de calcul différentiel corrigés et gratuits : limites, " +
+  `${TOTAL_GRATUITS} exercices de calcul différentiel corrigés et gratuits : limites, ` +
   "formes indéterminées, dérivation en chaîne, taux liés, optimisation. " +
   "Chaque exercice avec son indice, sa réponse finale et sa démarche détaillée.";
 

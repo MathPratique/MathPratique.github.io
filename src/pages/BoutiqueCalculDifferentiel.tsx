@@ -11,6 +11,10 @@ import {
   TARIFS_CALCUL_DIFFERENTIEL as TARIFS,
   PERIODE_LANCEMENT_CALCUL_DIFFERENTIEL as PERIODE_LANCEMENT,
 } from "../data/tarifs";
+// Le nombre d'exercices promis vient du catalogue de la banque, pas d'une
+// chaîne écrite à la main : la page annonçait encore 305 alors que la banque
+// en comptait 395. Import nommé, élagué par Vite : seul `totaux` est inclus.
+import { totaux as totauxBanque } from "../data/calcul-differentiel/catalogue.json";
 
 // Couleur du cours — tirée de la source unique src/data/topics.ts.
 // Le jour où la page servira un autre cours (Calcul intégral, etc.),
@@ -77,7 +81,7 @@ const CONTENU_PACKAGE: { icone: keyof typeof ICONES; titre: string; detail: stri
 const DISPONIBILITE = {
   maintenant: [
     "Les sept chapitres de notes, en version étudiant et en version enseignant",
-    "Les 305 exercices, avec réponses finales et démarches détaillées",
+    `Les ${totauxBanque.gratuit + totauxBanque.payant} exercices, avec réponses finales et démarches détaillées`,
     "Les cinq séries de révision mélangées, avec leurs solutions",
     "Les six examens, avec corrigés détaillés et grilles de correction",
     "Tous ces documents en PDF téléchargeables",
