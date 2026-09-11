@@ -24,11 +24,25 @@ jobs:
       - name: Installer Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          # La même version que le poste de développement, où `npm test` et
+          # `npm run build` sont vérifiés avant chaque poussée. Node 20 est en
+          # fin de vie depuis avril 2026, et il ne sait pas développer le
+          # motif « tests/**/*.test.mjs » que `npm test` passe à `node --test`.
+          # (Sans lien avec la runtime des Cloud Functions, fixée à part dans
+          # firebase.json.)
+          node-version: "24"
           cache: "npm"
 
       - name: Installer les dépendances
         run: npm ci
+
+      - name: Tests
+        # Avant la construction, et bloquant : un test en échec arrête le
+        # workflow, et le job de déploiement, qui dépend de celui-ci, ne
+        # part pas. C'est ce qui manquait le 2026-09-05 : trois ajouts
+        # d'exercices ont rendu faux les compteurs affichés sur le site, les
+        # tests le signalaient, et la mise en ligne s'est faite quand même.
+        run: npm test
 
       - name: Construire le site
         # Les 6 clés Firebase côté client sont injectées ici. Sans elles,

@@ -187,3 +187,52 @@ les caches et les archives tierces gardent de toute façon les anciennes
 versions. Et ces occurrences ne sont ni servies aux visiteurs ni indexées
 comme contenu du site. La règle « aucun sigle, aucun établissement, aucun nom
 de personne » s'applique à l'état courant du dépôt et à ce qui est servi.
+
+---
+
+## 2026-09-10 — six problèmes ESLint dans les deux pages d'exercices
+
+**État : ouverte. `npm run lint` n'est volontairement pas dans le workflow de
+déploiement** — il y bloquerait la mise en ligne dès aujourd'hui.
+
+**Les six problèmes**, identiques dans les deux pages (4 erreurs, 2
+avertissements), relevés par `eslint-plugin-react-hooks` 7 :
+
+| Fichier | Ligne | Règle | Niveau |
+|---|---|---|---|
+| `src/pages/ExercicesCalculDifferentiel.tsx` | 135 | `react-hooks/refs` | erreur |
+| `src/pages/ExercicesCalculDifferentiel.tsx` | 141 | `react-hooks/refs` | erreur |
+| `src/pages/ExercicesCalculDifferentiel.tsx` | 142 | `react-hooks/exhaustive-deps` | avertissement |
+| `src/pages/ExercicesProbabilitesStatistique.tsx` | 141 | `react-hooks/refs` | erreur |
+| `src/pages/ExercicesProbabilitesStatistique.tsx` | 147 | `react-hooks/refs` | erreur |
+| `src/pages/ExercicesProbabilitesStatistique.tsx` | 148 | `react-hooks/exhaustive-deps` | avertissement |
+
+**Ce n'est pas un bogue d'inattention.** Les six viennent d'un même motif,
+délibéré et documenté dans le code (« Option E ») : le filtre par progression
+prend un *instantané* de la progression au moment où il change, pour que
+l'exercice qu'on vient de marquer ne disparaisse pas de la liste sous le
+curseur.
+
+- `progressionRef.current = progression` est écrit pendant le rendu (ligne
+  135 / 141), et lu dans un `useMemo` (ligne 141 / 147) : la règle
+  `react-hooks/refs` interdit les deux.
+- `chapitreActif`, `typeActif` et `difficulteActive` figurent dans les
+  dépendances du `useMemo` sans y être lus : c'est voulu, pour reprendre
+  l'instantané quand le filtre change. `exhaustive-deps` les juge inutiles.
+
+**Effet aujourd'hui : aucun.** Le comportement est correct à l'exécution, et
+le React Compiler n'est pas activé (rien dans `vite.config.ts`). Le risque
+apparaîtrait le jour où on l'activerait : il suppose que le rendu ne touche
+pas aux refs, et pourrait figer ou décaler l'instantané.
+
+**Correctif à planifier**, pour les deux pages à la fois — elles partagent le
+motif :
+- tenir l'instantané dans un `useState`, pris dans un `useEffect` qui dépend
+  des filtres, au lieu d'un `useMemo` qui lit une ref ;
+- ou, à défaut, un `eslint-disable-next-line` par ligne avec la raison écrite
+  en clair — acceptable seulement si on renonce au React Compiler.
+
+**Condition pour mettre `npm run lint` au workflow** : ces six problèmes
+réglés, et une vérification manuelle du filtre par progression (marquer un
+exercice pendant que le filtre « à revoir » est actif : il doit rester visible
+jusqu'au prochain changement de filtre).
