@@ -41,6 +41,7 @@
 
 import { readFileSync, existsSync, statSync } from "node:fs";
 import { resolve, dirname, basename } from "node:path";
+import { homedir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { createInterface } from "node:readline/promises";
 import { initializeApp, cert } from "firebase-admin/app";
@@ -55,9 +56,9 @@ const NOM_SEAU = "mathpratique-8dea1.firebasestorage.app";
 // catalogue (notes / exercices / revision / examens) détermine lequel.
 // Chemins écrits en forward slash — Node accepte les deux sur Windows.
 const RACINE_NOTES_EXOS =
-  "C:/Users/simon/Documents/Session Automne 2026/Calcul différentiel/notes+exercices-calcul-differentiel";
+  resolve(homedir(), "Documents/Session Automne 2026/Calcul différentiel/notes+exercices-calcul-differentiel");
 const RACINE_REVISION_EXAMENS =
-  "C:/Users/simon/Documents/Session Automne 2026/Calcul différentiel/exercices-calcul-differentiel/sorties/build";
+  resolve(homedir(), "Documents/Session Automne 2026/Calcul différentiel/exercices-calcul-differentiel/sorties/build");
 
 const SOURCE_PAR_CATEGORIE = {
   notes: RACINE_NOTES_EXOS,

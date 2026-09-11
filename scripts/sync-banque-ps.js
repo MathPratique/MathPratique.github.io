@@ -42,6 +42,7 @@ import { resolve, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import { catalogueSansFuite } from "./lib/catalogue-public.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -100,7 +101,11 @@ for (const nom of chapitres) {
   writeFileSync(join(DEST_PUBLIC, nom), JSON.stringify(data, null, 2) + "\n", "utf8");
 }
 
-const index = JSON.parse(readFileSync(join(WEB, "index.json"), "utf8"));
+// Le catalogue part dans le bundle public : il passe par le schéma de
+// src/data/banque-types.ts au lieu d'être recopié tel quel. Une clé hors
+// schéma (sigle, établissement, auteur…) arrête ici la synchronisation.
+const cheminIndex = join(WEB, "index.json");
+const index = catalogueSansFuite(JSON.parse(readFileSync(cheminIndex, "utf8")), cheminIndex);
 writeFileSync(join(DEST_PUBLIC, "catalogue.json"), JSON.stringify(index, null, 2) + "\n", "utf8");
 console.log(
   `   ${chapitres.length} chapitres (${totalPublies} exercices publiés) + catalogue.json (${index.exercices.length} fiches)`,

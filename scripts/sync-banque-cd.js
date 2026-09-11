@@ -34,6 +34,7 @@ import { resolve, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import { catalogueSansFuite } from "./lib/catalogue-public.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -75,7 +76,12 @@ console.log("\n2. Copie du contenu public vers le bundle site…");
     console.log(`   ${nom}`);
   },
 );
-copyFileSync(join(WEB, "index.json"), join(DEST_PUBLIC, "catalogue.json"));
+// Le catalogue part dans le bundle public : il passe par le schéma de
+// src/data/banque-types.ts au lieu d'être copié octet pour octet. Une clé
+// hors schéma (sigle, établissement, auteur…) arrête ici la synchronisation.
+const cheminIndex = join(WEB, "index.json");
+const catalogue = catalogueSansFuite(JSON.parse(readFileSync(cheminIndex, "utf8")), cheminIndex);
+writeFileSync(join(DEST_PUBLIC, "catalogue.json"), JSON.stringify(catalogue, null, 2) + "\n", "utf8");
 console.log("   catalogue.json");
 
 const figuresSrc = join(WEB, "figures");

@@ -97,6 +97,76 @@ export const LIB_DIFFICULTE: Record<Difficulte, string> = {
   difficile: "Difficile",
 };
 
+// ---------------------------------------------------------------------------
+//  Le catalogue d'une banque — le schéma, écrit une fois pour toutes
+// ---------------------------------------------------------------------------
+//
+// `catalogue.json` est importé par le site : il part dans le bundle
+// JavaScript que télécharge chaque visiteur, dès la page d'accueil. Tout ce
+// qu'il contient est donc PUBLIC.
+//
+// Il était jusqu'ici recopié tel quel depuis l'export du projet jumeau, sans
+// schéma. C'est ainsi qu'un champ `code` portant le sigle du cours a fini en
+// ligne : personne ne l'avait voulu, rien ne l'arrêtait. Or les fichiers de
+// structure des projets jumeaux contiennent aussi `etablissement` et `auteur`
+// — le prochain générateur qui les recopierait ferait fuir un nom
+// d'établissement et un nom de personne de la même façon.
+//
+// D'où une LISTE BLANCHE, et non une liste noire : une clé absente de la
+// liste est refusée, même inconnue aujourd'hui. Les scripts de
+// synchronisation (`scripts/sync-banque-*.js`) échouent au lieu de publier.
+// Ajouter une clé ici doit rester un geste délibéré, pesé au regard de la
+// règle : aucun sigle de cours, aucun nom d'établissement, aucun nom de
+// personne dans le matériel public.
+
+/** Les seules clés de premier niveau qu'un catalogue public peut porter. */
+export const CLES_CATALOGUE = [
+  "cours",
+  "droits",
+  "commentaire",
+  "heures",
+  "totaux",
+  "exercices",
+] as const;
+
+/**
+ * Clés déjà rencontrées dans les fichiers de structure des projets jumeaux,
+ * et qui ne doivent JAMAIS atteindre le bundle. La liste blanche les refuse
+ * de toute façon ; les nommer ici sert au message d'erreur, qui dit alors
+ * pourquoi la clé est interdite plutôt que simplement « inconnue ».
+ */
+export const CLES_INTERDITES_CATALOGUE: Record<string, string> = {
+  code: "sigle de cours",
+  etablissement: "nom d'établissement",
+  auteur: "nom de personne",
+};
+
+export type CatalogueBanque = {
+  cours: string;
+  droits: string;
+  commentaire?: string;
+  /** Heures de théorie par chapitre — seul le calcul différentiel en a. */
+  heures?: Record<string, number>;
+  totaux: { gratuit: number; payant: number };
+  exercices: unknown[];
+};
+
+/**
+ * Les clés de premier niveau que le schéma refuse, chacune avec sa raison.
+ * Tableau vide : le catalogue est publiable.
+ */
+export function clesRefuseesCatalogue(
+  catalogue: Record<string, unknown>,
+): { cle: string; raison: string }[] {
+  const permises = new Set<string>(CLES_CATALOGUE);
+  return Object.keys(catalogue)
+    .filter((cle) => !permises.has(cle))
+    .map((cle) => ({
+      cle,
+      raison: CLES_INTERDITES_CATALOGUE[cle] ?? "clé absente du schéma",
+    }));
+}
+
 /** Le palier d'une étape, ou null si l'étape est absente. */
 export function etape(ex: Exercice, palier: Palier): Etape | null {
   return ex.etapes.find((e) => e.etape === palier) ?? null;

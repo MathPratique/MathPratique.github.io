@@ -1,4 +1,4 @@
-// La vitrine de Probabilités et statistique (201-SN1-RE).
+// La vitrine de Probabilités et statistique.
 //
 // Jumelle de ExercicesCalculDifferentiel.tsx : même structure, mêmes filtres,
 // même mécanique de dévoilement. Les exercices sont groupés par chapitre, et
@@ -37,7 +37,7 @@ import { useAcces } from "../firebase/useAcces";
 
 const TITRE_PAGE = "Exercices de probabilités et statistique corrigés — MathPratique";
 const DESCRIPTION_PAGE =
-  "Exercices de probabilités et statistique corrigés (201-SN1-RE) : " +
+  "Exercices de probabilités et statistique corrigés : " +
   "statistiques descriptives, dénombrement, probabilités conditionnelles, " +
   "loi binomiale, loi normale, intervalles de confiance et tests d'hypothèse.";
 

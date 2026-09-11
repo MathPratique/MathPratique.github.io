@@ -98,16 +98,16 @@ export const lessons: Lesson[] = [
   { id: "L57", number: 57, name: "Interactions entre droites et plans — partie 1", chapterId: "droites-plans" },
   { id: "L58", number: 58, name: "Interactions entre droites et plans — partie 2", chapterId: "droites-plans" },
 
-  // Probabilités et statistiques — Statistiques descriptives (Ch.1 201-SN1-RE)
+  // Probabilités et statistiques — Statistiques descriptives (ch. 1)
   { id: "PSD1", number: 1, name: "Chapitre 1 — Statistiques descriptives", chapterId: "stat-descriptives" },
 
-  // Probabilités et statistiques — Probabilités (Ch.2 201-SN1-RE)
+  // Probabilités et statistiques — Probabilités (ch. 2)
   { id: "PSD2", number: 2, name: "Chapitre 2 — Probabilités", chapterId: "probabilites" },
 
-  // Probabilités et statistiques — Inférence statistique (Ch.3 201-SN1-RE)
+  // Probabilités et statistiques — Inférence statistique (ch. 3)
   { id: "PSD3", number: 3, name: "Chapitre 3 — Inférence statistique", chapterId: "inference" },
 
-  // Probabilités et statistiques — Corrélation, régression et χ² (Ch.4 201-SN1-RE)
+  // Probabilités et statistiques — Corrélation, régression et χ² (ch. 4)
   { id: "PSD4", number: 4, name: "Chapitre 4 — Corrélation, régression et χ²", chapterId: "correlation-regression" },
 
   // Calcul différentiel — 7 chapitres tirés directement des titres de la banque

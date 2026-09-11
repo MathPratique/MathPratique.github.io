@@ -4137,64 +4137,64 @@ const manualExercises: Exercise[] = [
     answer: "Vrai",
   },
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (25 exercices faciles)
+  // Probabilités et statistique — Chapitre 1 : Statistiques descriptives (25 exercices faciles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (25 exercices intermédiaires)
+  // Probabilités et statistique — Chapitre 1 : Statistiques descriptives (25 exercices intermédiaires)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (15 exercices difficiles)
+  // Probabilités et statistique — Chapitre 1 : Statistiques descriptives (15 exercices difficiles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (16 QCM)
+  // Probabilités et statistique — Chapitre 1 : Statistiques descriptives (16 QCM)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 1 : Statistiques descriptives (16 Vrai ou Faux)
+  // Probabilités et statistique — Chapitre 1 : Statistiques descriptives (16 Vrai ou Faux)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 2 : Probabilités (25 exercices faciles)
+  // Probabilités et statistique — Chapitre 2 : Probabilités (25 exercices faciles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 2 : Probabilités (25 exercices intermédiaires)
+  // Probabilités et statistique — Chapitre 2 : Probabilités (25 exercices intermédiaires)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 2 : Probabilités (15 exercices difficiles)
+  // Probabilités et statistique — Chapitre 2 : Probabilités (15 exercices difficiles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 2 : Probabilités (16 QCM)
+  // Probabilités et statistique — Chapitre 2 : Probabilités (16 QCM)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 2 : Probabilités (16 Vrai ou Faux)
+  // Probabilités et statistique — Chapitre 2 : Probabilités (16 Vrai ou Faux)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 3 : Inférence statistique (25 exercices faciles)
+  // Probabilités et statistique — Chapitre 3 : Inférence statistique (25 exercices faciles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 3 : Inférence statistique (25 exercices intermédiaires)
+  // Probabilités et statistique — Chapitre 3 : Inférence statistique (25 exercices intermédiaires)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 3 : Inférence statistique (15 exercices difficiles)
+  // Probabilités et statistique — Chapitre 3 : Inférence statistique (15 exercices difficiles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 3 : Inférence statistique (16 QCM)
+  // Probabilités et statistique — Chapitre 3 : Inférence statistique (16 QCM)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 3 : Inférence statistique (16 Vrai ou Faux)
+  // Probabilités et statistique — Chapitre 3 : Inférence statistique (16 Vrai ou Faux)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (25 Faciles)
+  // Probabilités et statistique — Chapitre 4 : Corrélation, régression et χ² (25 Faciles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (25 Moyens)
+  // Probabilités et statistique — Chapitre 4 : Corrélation, régression et χ² (25 Moyens)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (15 Difficiles)
+  // Probabilités et statistique — Chapitre 4 : Corrélation, régression et χ² (15 Difficiles)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (16 QCM)
+  // Probabilités et statistique — Chapitre 4 : Corrélation, régression et χ² (16 QCM)
   // ═════════════════════════════════════════════════════════════════
   // ═════════════════════════════════════════════════════════════════
-  // 201-SN1-RE — Chapitre 4 : Corrélation, régression et χ² (16 V/F)
+  // Probabilités et statistique — Chapitre 4 : Corrélation, régression et χ² (16 V/F)
   // ═════════════════════════════════════════════════════════════════
 ];
 

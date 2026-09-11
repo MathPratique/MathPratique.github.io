@@ -42,7 +42,7 @@
 // Exemples :
 //   # Essai à blanc — voir ce qui serait fait, sans rien écrire
 //   node scripts/accorder-acces-lot.js \\
-//     --fichier "C:/Users/simon/Documents/Session Automne 2026/Calcul différentiel/cohorte-a26.txt" \\
+//     --fichier "<dossier-du-cours>/cohorte-a26.txt" \\
 //     --cours calcul-differentiel \\
 //     --niveau restreint \\
 //     --mois 5
@@ -103,7 +103,7 @@ if (!["restreint", "acheteur", "enseignant"].includes(niveauVoulu)) {
 }
 
 // --mois et --heures sont mutuellement exclusifs — refuser explicitement
-// plutôt que d'en choisir un en silence (Simon ne s'en apercevrait qu'en
+// plutôt que d'en choisir un en silence (on ne s'en apercevrait qu'en
 // relisant les dates d'expiration après coup).
 if (moisBrut !== null && heuresBrut !== null) {
   console.error(`\n❌ --mois et --heures ne peuvent pas être combinés. Choisis-en un.\n`);
@@ -177,7 +177,7 @@ if (contenu.includes("\uFFFD")) {
 // La regex email est délibérément simple : elle attrape les typos
 // évidents (espace dans le domaine, arobase manquant) sans prétendre à
 // RFC 5322. Un email techniquement bizarre mais valide passera ; c'est
-// acceptable pour un usage interne où Simon voit ses étudiants.
+// acceptable pour un usage interne où l'enseignant voit ses étudiants.
 
 const RE_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -230,9 +230,9 @@ const dateFinLisible = new Date(dateFin).toISOString().slice(0, 10);
 
 // ---------- Init Firebase Admin --------------------------------------------
 //
-// En essai à blanc, on lit Firebase Auth pour dire à Simon quels
+// En essai à blanc, on lit Firebase Auth pour indiquer quels
 // comptes existent — mais on n'écrit RIEN dans Firestore. Le prompt
-// PRODUCTION est réservé aux runs --confirmer, sinon Simon devrait
+// PRODUCTION est réservé aux runs --confirmer, sinon il faudrait
 // taper PRODUCTION juste pour voir un plan.
 
 const action =
@@ -249,7 +249,7 @@ const { db, auth, modeEmulateur } = await initAdminOuMourir({
 // ---------- Résolution + classification -------------------------------------
 //
 // Pour chaque adresse valide, on résout l'uid via Firebase Auth. Un
-// compte inexistant est un cas d'usage normal (Simon récolte les
+// compte inexistant est un cas d'usage normal (l'enseignant récolte les
 // adresses avant que les étudiants s'inscrivent) — journalisé comme
 // « à re-lancer après leur inscription », pas comme une erreur.
 //

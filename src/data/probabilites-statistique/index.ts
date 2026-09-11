@@ -1,5 +1,5 @@
 // ===========================================================================
-//  La vitrine de Probabilités et statistique (201-SN1-RE).
+//  La vitrine de Probabilités et statistique.
 // ===========================================================================
 //
 // Deux sources, produites par le projet de matériel de cours et recopiées ici

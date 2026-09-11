@@ -189,7 +189,7 @@ il faudra les traiter toutes, y compris sur `/achat-confirme`.
 [Boutique.tsx:113](src/pages/Boutique.tsx),
 [AchatConfirme.tsx:109](src/pages/AchatConfirme.tsx),
 [Enseignants.tsx:27](src/pages/Enseignants.tsx) — sous la forme
-`simonboileauenseignement@gmail.com`. La consigne demande une adresse au nom
+d'une adresse Gmail personnelle. La consigne demande une adresse au nom
 du site. Il faudra en créer une (`info@mathpratique.ca` ou similaire) : je ne
 peux pas la configurer moi-même.
 

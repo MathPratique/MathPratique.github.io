@@ -188,8 +188,8 @@ const CHAPITRES_CALCUL: Chapitre[] = [
 ];
 
 /**
- * Probabilités et statistique (201-SN1-RE). Les `fichier` sont les slugs
- * produits par `notes-201-SN1-RE/build.sh` — ASCII, minuscules, sans
+ * Probabilités et statistique. Les `fichier` sont les slugs
+ * produits par le `build.sh` du projet de notes — ASCII, minuscules, sans
  * underscore. Ils doivent correspondre au nom réel du PDF dans le seau :
  * un accent ou une majuscule de travers ici, et le fichier est introuvable
  * pour quelqu'un qui y a droit.
@@ -378,7 +378,7 @@ export const DOCUMENTS: Document[] = [
     ),
   ]),
 
-  // ═══ Probabilités et statistique (201-SN1-RE) ══════════════════════════
+  // ═══ Probabilités et statistique ═══════════════════════════════════════
   //
   // Quatre chapitres, deux versions chacun : huit documents, tous en
   // catégorie « notes ».
@@ -386,7 +386,7 @@ export const DOCUMENTS: Document[] = [
   // Trois absences, toutes voulues à ce stade :
   //
   //   - Pas de recueil complet. Le calcul différentiel en a un parce qu'il
-  //     a un `main.tex` qui assemble ses chapitres ; les notes SN1 sont
+  //     a un `main.tex` qui assemble ses chapitres ; les notes de probabilités sont
   //     quatre documents autonomes, sans document maître. Le recueil
   //     viendra quand ce main existera.
   //   - Ni révision ni examens : rien n'est encore écrit.

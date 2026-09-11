@@ -49,8 +49,8 @@ du seau touché. Les 5 PDF périmés du ch1 ont été téléversés à 15:19 Mtl
 
 ### Ajout du 2026-08-24 — quatrième défaut : le mapping est mono-cours
 
-Découvert en préparant l'intégration de « Probabilités et statistique »
-(201-SN1-RE). Non listé ci-dessus, et **bloquant dès qu'un deuxième
+Découvert en préparant l'intégration de « Probabilités et statistique ».
+Non listé ci-dessus, et **bloquant dès qu'un deuxième
 cours entre au catalogue**.
 
 `SOURCE_PAR_CATEGORIE` (televerser-documents.js:62) est indexé par
@@ -66,11 +66,11 @@ mapping doit lever une erreur nommée, pas produire un `undefined` qui
 se propage.
 
 **État au 2026-08-24.** Non corrigé — décision de reporter. Le premier
-téléversement SN1 se fait par script ad-hoc, comme le 2026-08-22 : les
+téléversement de probabilités se fait par script ad-hoc, comme le 2026-08-22 : les
 PDF concernés n'existent pas encore dans le seau, donc aucun risque
 d'écraser une bonne version par une périmée. La correction complète
 (les quatre défauts) est à faire **avant** le téléversement des cahiers
-d'exercices SN1, où le risque de la dérive racine / `sorties/build/`
+d'exercices de probabilités, où le risque de la dérive racine / `sorties/build/`
 redevient réel.
 
 **Vérification de la dérive, faite le 2026-08-24** (calcul différentiel,
@@ -94,7 +94,7 @@ pointer les notes vers `build/` pour la rendre vraie sans exception.
 
 ## 2026-08-24 — le catalogue est compilé dans les Cloud Functions
 
-**Contexte.** Vérification faite avant d'intégrer SN1.
+**Contexte.** Vérification faite avant d'intégrer Probabilités et statistique.
 `obtenirLienTelechargement` (functions/src/index.ts:364) appelle
 `trouverDocument(documentId)`. Le `tsconfig.json` de `functions/`
 remonte d'un cran pour inclure `src/acces/` — le catalogue part donc
@@ -133,7 +133,7 @@ deux n'est corrigée** — décision de les noter d'abord.
 total » (section « Structure à respecter dans le seau »). Le catalogue
 en produit **65** : 16 notes + 21 exercices + 10 révision + 18 examens.
 Le chiffre 58 date d'avant l'ajout des indices par chapitre. Le nombre
-va encore changer avec SN1 — un compte écrit à la main dans une prose
+va encore changer avec Probabilités et statistique — un compte écrit à la main dans une prose
 est condamné à dériver ; mieux vaudrait ne pas en donner, ou le
 laisser produire par `npm run test`.
 
@@ -157,3 +157,33 @@ restant à faire. **C'est faux depuis le 2026-08-18.** Vérifié le
 Un README qui décrit la production comme inactive alors qu'elle est
 vivante est plus dangereux qu'un README incomplet : il invite à
 « mettre en service » ce qui tourne déjà.
+
+---
+
+## 2026-09-10 — des sigles de cours restent dans l'historique Git public
+
+**État : close, décision de ne pas corriger. On n'y revient plus.**
+
+**Contexte.** Le balayage du 2026-09-10 a retiré des fichiers suivis tous les
+sigles de cours, noms d'établissement et noms de personnes : code,
+commentaires, métadonnées de pages, documentation. Un sigle avait notamment
+atteint trois endroits servis aux visiteurs — la meta description de la page
+d'exercices de probabilités (indexée), la description de cette même page dans
+son fragment JS, et un champ `code` du catalogue dans le bundle principal. Les
+trois sont corrigés, et le champ `code` est désormais refusé par le schéma
+(`CLES_CATALOGUE` dans `src/data/banque-types.ts`).
+
+**Ce qui reste.** L'historique Git, lui, conserve ces occurrences : le
+message du commit `03ef918`, et les anciennes versions des fichiers corrigés
+(`scripts/prerendre.mjs`, `src/acces/documents.ts`, `src/data/exercises.ts`,
+`src/data/lessons.ts`, `src/data/probabilites-statistique/catalogue.json`,
+entre autres). Le dépôt étant public, ces versions restent consultables.
+
+**Pourquoi on ne corrige pas.** Réécrire l'historique (`git filter-repo`)
+change l'empreinte de chaque commit ultérieur et exige une poussée forcée sur
+`main` — la branche que GitHub Pages déploie. Le risque (déploiement cassé,
+clones désynchronisés) est réel, alors que le gain est incertain : les forks,
+les caches et les archives tierces gardent de toute façon les anciennes
+versions. Et ces occurrences ne sont ni servies aux visiteurs ni indexées
+comme contenu du site. La règle « aucun sigle, aucun établissement, aucun nom
+de personne » s'applique à l'état courant du dépôt et à ce qui est servi.

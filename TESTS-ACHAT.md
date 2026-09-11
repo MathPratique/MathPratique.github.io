@@ -455,7 +455,7 @@ test R.1 échoue.
 1. **Sync de la banque** (bundle client + bundle Function) :
 
    ```powershell
-   $env:BANQUE_CD_PATH = "C:\Users\simon\Documents\Session Automne 2026\Calcul différentiel\exercices-calcul-differentiel"
+   $env:BANQUE_CD_PATH = "$HOME\Documents\Session Automne 2026\Calcul différentiel\exercices-calcul-differentiel"
    node scripts/sync-banque-cd.js
    ```
 
@@ -539,7 +539,7 @@ test R.1 échoue.
    2. Relancer la sync + le build Functions :
 
       ```powershell
-      $env:BANQUE_CD_PATH = "C:\Users\simon\Documents\Session Automne 2026\Calcul différentiel\exercices-calcul-differentiel"
+      $env:BANQUE_CD_PATH = "$HOME\Documents\Session Automne 2026\Calcul différentiel\exercices-calcul-differentiel"
       node scripts/sync-banque-cd.js
       npm --prefix functions run build
       ```
@@ -574,7 +574,7 @@ code fasse fuiter par inadvertance du contenu payant dans le bundle Vite
 publié sur GitHub Pages.
 
 **⚠️ Node : émulateur ≠ production.** Les émulateurs Firebase tournent sous
-la version de Node installée localement (Node 24 chez Simon), alors que la
+la version de Node installée localement (Node 24 sur le poste de développement), alors que la
 runtime déclarée pour les Cloud Functions déployées est Node 20
 (`firebase.json` → `"runtime": "nodejs20"`). Certains comportements JSON
 imports, syntaxes récentes ou API expérimentales peuvent passer en local
