@@ -105,6 +105,11 @@ const PROBABILITES_STATISTIQUE: Cours = {
   prefixeId: "ps-",
 };
 
+const CALCUL_INTEGRAL: Cours = {
+  id: "calcul-integral",
+  prefixeId: "ci-",
+};
+
 // ─── Constantes de politique de niveau ───────────────────────────────────
 //
 // Chaque triplet reflète UNE décision éditoriale, nommée par ce qu'elle
@@ -405,6 +410,48 @@ export const DOCUMENTS: Document[] = [
   // Les chapitres 1, 3 et 4 ne déclarent aucun cahier : ils ne sont pas
   // générés. Le catalogue ne connaît que ce qui est réellement dans le seau.
   ...CHAPITRES_PROBSTAT.flatMap((c) => cahiersDeChapitre(PROBABILITES_STATISTIQUE, c)),
+
+  // ═══ Calcul intégral ════════════════════════════════════════════════════
+  //
+  // Chapitre 1 seulement, trois documents. Le catalogue est un INVENTAIRE :
+  // il ne liste que des fichiers réellement présents dans le seau. Les notes
+  // version enseignant et les examens n'existent pas encore pour ce cours,
+  // donc ils n'ont pas d'entrée — leur politique d'accès, elle, existe déjà
+  // (NIVEAUX_NOTES_ENSEIGNANT, NIVEAUX_EXAMENS) : les publier plus tard ne
+  // demandera aucune modification de la logique d'accès.
+  //
+  // Les noms de fichiers dans le seau reprennent ceux de `build/` du projet
+  // notes-calcul-integral, sans renommage : la comparaison des MD5 entre le
+  // seau et le disque se fait ainsi fichier pour fichier.
+  //
+  // Les deux documents d'exercices partagent les mêmes énoncés : l'un sans
+  // aucune réponse, l'autre avec réponses finales et solutions détaillées
+  // après les énoncés. Tous deux ouverts aux trois niveaux, comme les cahiers
+  // d'exercices des autres cours.
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch01-integrale-indefinie-etudiant",
+    "Chapitre 1 — Intégrale indéfinie et primitives (étudiant)",
+    "notes/ch01-integrale-indefinie-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch01",
+    "Exercices — chapitre 1 : Intégrale indéfinie et primitives",
+    "exercices/ch01-enonces-seul.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch01-complet",
+    "Exercices, réponses et solutions — chapitre 1 : Intégrale indéfinie et primitives",
+    "exercices/ch01-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
 ];
 
 /** Recherche par identifiant. Renvoie null plutôt que undefined : la règle

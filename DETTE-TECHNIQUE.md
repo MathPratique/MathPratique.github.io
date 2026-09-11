@@ -236,3 +236,40 @@ motif :
 réglés, et une vérification manuelle du filtre par progression (marquer un
 exercice pendant que le filtre « à revoir » est actif : il doit rester visible
 jusqu'au prochain changement de filtre).
+
+---
+
+## 2026-09-10 — reporté pour publier le chapitre 1 de Calcul intégral
+
+**État : ouvertes, volontairement mises de côté.** Priorité du jour : publier
+le chapitre 1 de Calcul intégral et ouvrir l'accès aux étudiants. Rien de ce
+qui suit n'a été touché.
+
+**1. `src/data/linalg_exercises.json` est servi dans le bundle principal.**
+974 Ko, importé par `src/data/exercises.ts`, présent dans `index-*.js` que
+charge chaque visiteur dès l'accueil. Il provient de
+`scripts/pdf_extract.txt`, extrait le 17 juin 2026 (commit `42299c6`) d'un
+PDF intitulé « Algèbre linéaire et géométrie vectorielle — Cahier
+d'exercices », portant la mention « © 2026 Vecteur Math, tous droits
+réservés ». L'origine et les droits de ce contenu sont à vérifier avant toute
+décision. `scripts/pdf_extract.txt` et `scripts/explore_p11.txt` restent en
+place en attendant.
+
+**2. Le workflow de déploiement n'a pas encore tourné en CI réelle.** Depuis
+le 2026-09-10, il installe Node 24 et lance `npm test` avant le build (un
+échec bloque la mise en ligne). Vérifié localement sur un clone propre, pas
+dans GitHub Actions. La première exécution réelle sera la prochaine poussée
+sur `main` ; si elle échoue, le site en ligne reste tel quel. La
+vérification sur une branche dédiée (`gh workflow run deploy.yml --ref
+<branche>` — l'environnement `github-pages` n'autorise que `main` à
+déployer) est reportée.
+
+**3. ESLint** — voir l'entrée précédente : six problèmes dans les deux pages
+d'exercices, `npm run lint` hors du workflow.
+
+**4. Garde sur `--cours` dans `scripts/accorder-acces-lot.js`.** Le script
+accepte n'importe quel identifiant de cours : une coquille
+(`calcul-integrale`) créerait un accès fantôme sans erreur. La garde
+(refuser un cours absent du catalogue) avait été approuvée, puis reportée
+avec le reste. En attendant, relire la ligne « Cible : …, cours … » de
+l'essai à blanc avant tout `--confirmer`.
