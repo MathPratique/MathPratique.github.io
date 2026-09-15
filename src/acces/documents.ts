@@ -413,12 +413,13 @@ export const DOCUMENTS: Document[] = [
 
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //
-  // Trois chapitres, complets : les notes dans leurs deux versions et les
-  // exercices en deux documents. Le catalogue est un INVENTAIRE : il ne liste
-  // que des fichiers réellement présents dans le seau. Les examens n'existent
-  // pas encore pour ce cours, donc ils n'ont pas d'entrée — leur politique
-  // d'accès, elle, existe déjà (NIVEAUX_EXAMENS) : les publier plus tard ne
-  // demandera aucune modification de la logique d'accès.
+  // Trois chapitres, complets : les notes dans leurs deux versions et un
+  // document d'exercices par chapitre. Le catalogue est un INVENTAIRE, mais
+  // l'inverse n'est pas vrai : un fichier peut vivre dans le seau sans être
+  // déclaré ici, et il devient alors invisible et intéléchargeable. Les
+  // examens n'existent pas encore pour ce cours, donc ils n'ont pas d'entrée
+  // — leur politique d'accès, elle, existe déjà (NIVEAUX_EXAMENS) : les
+  // publier plus tard ne demandera aucune modification de la logique d'accès.
   //
   // Les noms de fichiers dans le seau reprennent ceux de `build/` du projet
   // notes-calcul-integral, sans renommage : la comparaison des MD5 entre le
@@ -431,10 +432,16 @@ export const DOCUMENTS: Document[] = [
   // exercices du chapitre concerné, jamais avant — un titre qui annonce comme
   // manquant un document déjà offert est aussi trompeur que l'inverse.
   //
-  // Les deux documents d'exercices partagent les mêmes énoncés : l'un sans
-  // aucune réponse, l'autre avec réponses finales et solutions détaillées
-  // après les énoncés. Tous deux ouverts aux trois niveaux, comme les cahiers
-  // d'exercices des autres cours.
+  // Un seul document d'exercices par chapitre : le recueil complet, qui
+  // contient les énoncés, les réponses finales et les solutions détaillées,
+  // ouvert aux trois niveaux comme les cahiers des autres cours.
+  //
+  // La version « énoncés seuls » de chaque chapitre n'est PLUS déclarée
+  // (retirée le 2026-09-15). Les trois PDF restent dans le seau, aux chemins
+  // `exercices/chNN-enonces-seul.pdf` : ils servent à distribuer un devoir
+  // hors du site. Non déclarés, ils sont invisibles dans /mon-compte et
+  // refusés au téléchargement — `trouverDocument` ne les connaît pas. Les
+  // redéclarer un jour ne demandera qu'une entrée ici, sans téléversement.
   doc(
     CALCUL_INTEGRAL,
     "notes-ch01-integrale-indefinie-etudiant",
@@ -485,14 +492,6 @@ export const DOCUMENTS: Document[] = [
   ),
   doc(
     CALCUL_INTEGRAL,
-    "exercices-ch01",
-    "Exercices — chapitre 1 : Intégrale indéfinie et primitives",
-    "exercices/ch01-enonces-seul.pdf",
-    "exercices",
-    NIVEAUX_EXERCICES_REVISION,
-  ),
-  doc(
-    CALCUL_INTEGRAL,
     "exercices-ch01-complet",
     "Exercices, réponses et solutions — chapitre 1 : Intégrale indéfinie et primitives",
     "exercices/ch01-complet.pdf",
@@ -501,25 +500,9 @@ export const DOCUMENTS: Document[] = [
   ),
   doc(
     CALCUL_INTEGRAL,
-    "exercices-ch02",
-    "Exercices — chapitre 2 : Intégrale définie et théorème fondamental",
-    "exercices/ch02-enonces-seul.pdf",
-    "exercices",
-    NIVEAUX_EXERCICES_REVISION,
-  ),
-  doc(
-    CALCUL_INTEGRAL,
     "exercices-ch02-complet",
     "Exercices, réponses et solutions — chapitre 2 : Intégrale définie et théorème fondamental",
     "exercices/ch02-complet.pdf",
-    "exercices",
-    NIVEAUX_EXERCICES_REVISION,
-  ),
-  doc(
-    CALCUL_INTEGRAL,
-    "exercices-ch03",
-    "Exercices — chapitre 3 : Techniques d'intégration",
-    "exercices/ch03-enonces-seul.pdf",
     "exercices",
     NIVEAUX_EXERCICES_REVISION,
   ),
