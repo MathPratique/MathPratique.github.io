@@ -4,7 +4,7 @@
   "commentaire": "Catalogue complet. Les exercices marqués `verrouille` n'ont ici que leur fiche signalétique ; leur contenu n'est publié nulle part dans ce dossier.",
   "totaux": {
     "gratuit": 100,
-    "payant": 351
+    "payant": 357
   },
   "exercices": [
     {
@@ -1447,6 +1447,24 @@
       "verrouille": true
     },
     {
+      "id": "ch02-int-201",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch02-int-202",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
       "id": "ch02-dif-001",
       "chapitre": 2,
       "section": "2.1",
@@ -2455,6 +2473,42 @@
       "type": "qcm",
       "difficulte": "difficile",
       "acces": "gratuit"
+    },
+    {
+      "id": "ch02-dif-201",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch02-dif-202",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch02-dif-203",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch02-dif-204",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
     },
     {
       "id": "ch03-fac-001",

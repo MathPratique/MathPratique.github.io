@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "260ad350d63962b0",
+  "contentHash": "68a3a0e53db52b8c",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -5938,6 +5938,108 @@
             "Dé-standardiser : $x = \\mu + z\\sigma = 100 + 1{,}28 \\times 15 = 119{,}2$.",
             "Contrôle : $0{,}90 > 0{,}5$, donc $x$ doit dépasser la moyenne. $119{,}2 > 100$."
           ]
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-201",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "loi-normale",
+        "table",
+        "cote-z",
+        "symetrie"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une ensacheuse remplit des sachets de café. La masse d'un sachet suit $\\Nor(500\\,;8)$ g. Pour un sachet pris au hasard, calcule la probabilité que sa masse soit :\n\n(a) entre 494 g et 514 g\n\n(b) entre 488 g et 498 g\n\n(c) entre 506 g et 518 g\n\n(d) supérieure à 490 g\n\n(e) supérieure à 522 g\n\n(f) inférieure à 512 g\n\n(g) inférieure à 488 g"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Une seule chose change d'une sous-question à l'autre : la position des bornes par rapport à la moyenne. Trace la courbe et hachure la région demandée avant de calculer quoi que ce soit — c'est le dessin qui dit s'il faut additionner, soustraire, ou partir de $0{,}5$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $0{,}7333$ · (b) $0{,}3345$ · (c) $0{,}2144$ · (d) $0{,}8944$ · (e) $0{,}0030$ · (f) $0{,}9332$ · (g) $0{,}0668$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> Chaque borne se convertit en cote par $z = \\dfrac{x - 500}{8}$. Toutes celles de cet exercice tombent pile sur une entrée de la table, donc aucune interpolation n'est nécessaire. La table donne l'aire <em>entre 0 et z</em> : elle ne répond jamais directement, il faut toujours composer.",
+            "<strong>(a) entre 494 g et 514 g.</strong> $z_1 = -0{,}75$ et $z_2 = 1{,}75$. Les bornes encadrent la moyenne : les deux morceaux sont disjoints, leurs aires s'additionnent. Par symétrie, $\\prob(-0{,}75 < Z < 0) = \\prob(0 < Z < 0{,}75)$, que la table donne à $0{,}2734$ ; et $\\prob(0 < Z < 1{,}75) = 0{,}4599$. Total : $0{,}2734 + 0{,}4599 = 0{,}7333$.",
+            "<strong>(b) entre 488 g et 498 g.</strong> $z_1 = -1{,}5$ et $z_2 = -0{,}25$. Les deux bornes sont du même côté, sous la moyenne : la petite région est contenue dans la grande, on soustrait. La table donne $0{,}4332$ à $z = 1{,}50$ et $0{,}0987$ à $z = 0{,}25$, les deux lus positivement grâce à la symétrie. Résultat : $0{,}4332 - 0{,}0987 = 0{,}3345$.",
+            "<strong>(c) entre 506 g et 518 g.</strong> $z_1 = 0{,}75$ et $z_2 = 2{,}25$. Même configuration qu'en (b), mais à droite. La table donne $0{,}4878$ à $z = 2{,}25$ et $0{,}2734$ à $z = 0{,}75$ : $0{,}4878 - 0{,}2734 = 0{,}2144$.",
+            "<strong>(d) plus de 490 g.</strong> $z = -1{,}25$. La région part d'un point sous la moyenne et s'étend vers la droite sans fin : elle contient donc toute la moitié droite, plus la bande de $-1{,}25$ à $0$. La table donne $0{,}3944$ à $z = 1{,}25$, et l'on ajoute $0{,}5$ : $0{,}3944 + 0{,}5 = 0{,}8944$.",
+            "<strong>(e) plus de 522 g.</strong> $z = 2{,}75$. Cette fois la région est une queue à droite, au-delà d'un point déjà au-dessus de la moyenne. La demi-courbe droite vaut $0{,}5$ et la table en couvre $0{,}4970$ jusqu'à $2{,}75$ : il reste $0{,}5 - 0{,}4970 = 0{,}0030$.",
+            "<strong>(f) moins de 512 g.</strong> $z = 1{,}5$. La région couvre toute la moitié gauche plus la bande de $0$ à $1{,}5$ : $0{,}5 + 0{,}4332 = 0{,}9332$.",
+            "<strong>(g) moins de 488 g.</strong> $z = -1{,}5$. Queue à gauche, symétrique de la queue droite au-delà de $1{,}5$ : $0{,}5 - 0{,}4332 = 0{,}0668$.",
+            "<strong>Contrôler l'ensemble.</strong> Deux vérifications gratuites. D'abord (f) et (g) portent sur la même cote $1{,}5$ et doivent se compléter : $0{,}9332 + 0{,}0668 = 1$. Ensuite les probabilités doivent suivre la taille des régions : (e), une queue lointaine, est la plus petite ; (f), presque toute la courbe, est la plus grande. C'est bien le cas."
+          ],
+          "piegeCourant": "Appliquer machinalement la même opération partout. Les sept sous-questions se ressemblent, mais l'opération dépend entièrement de la position des bornes : on additionne deux lectures quand la région enjambe la moyenne, on les soustrait quand les bornes sont du même côté, et on part de $0{,}5$ dès qu'une région s'étend jusqu'à l'infini. Le dessin tranche à chaque fois ; la formule mémorisée, non."
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-202",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Valeurs critiques : problème inverse",
+      "motsCles": [
+        "loi-normale",
+        "probleme-inverse",
+        "valeur-critique",
+        "table"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Les résultats à un examen de statistique suivent $\\Nor(68\\,;12)$. Détermine dans chaque cas la note $x$ demandée.\n\n(a) 66,5 % des résultats sont supérieurs à $x$.\n\n(b) 11,25 % des résultats sont supérieurs à $x$.\n\n(c) 30 % des résultats se situent entre 65 et $x$.\n\n(d) 18 % des résultats se situent entre 74 et $x$.\n\n(e) 41 % des résultats sont inférieurs à $x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Ici la table se lit à l'envers : on connaît une aire et on cherche la cote. Avant de la parcourir, ramène toujours l'aire demandée à une aire <em>mesurée depuis la moyenne</em> — c'est la seule que la table sait donner."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $x = 62{,}84$ · (b) $x = 82{,}52$ · (c) $x = 74{,}36$ · (d) $x = 81{,}56$ · (e) $x = 65{,}24$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> Chaque sous-question se résout en trois temps : ramener le pourcentage à une aire comptée depuis la moyenne, chercher cette aire <em>dans le corps</em> de la table pour en tirer une cote, puis dé-standardiser par $x = \\mu + z\\sigma = 68 + 12z$. Contrairement aux probabilités directes, l'aire cherchée ne figure presque jamais telle quelle : on retient l'entrée la plus proche.",
+            "<strong>(a) 66,5 % au-dessus de $x$.</strong> Plus de la moitié des résultats dépassent $x$, donc $x$ est <em>sous</em> la moyenne. Entre $x$ et la moyenne se trouvent $0{,}665 - 0{,}5 = 0{,}165$ des données. La valeur la plus proche de $0{,}165$ dans la table est $0{,}1664$, à la ligne $0{,}4$ et à la colonne $0{,}03$, soit $z = 0{,}43$. Comme $x$ est sous la moyenne, on prend $z = -0{,}43$ : $x = 68 - 0{,}43 \\times 12 = 62{,}84$.",
+            "<strong>(b) 11,25 % au-dessus de $x$.</strong> Moins de la moitié, donc $x$ est <em>au-dessus</em> de la moyenne. Entre la moyenne et $x$ : $0{,}5 - 0{,}1125 = 0{,}3875$. La valeur la plus proche est $0{,}3869$, à la ligne $1{,}2$ et à la colonne $0{,}01$, soit $z = 1{,}21$. Donc $x = 68 + 1{,}21 \\times 12 = 82{,}52$.",
+            "<strong>(c) 30 % entre 65 et $x$.</strong> La borne connue donne $z_{65} = \\dfrac{65 - 68}{12} = -0{,}25$ ; la table donne $0{,}0987$, c'est-à-dire la part comprise entre 65 et la moyenne. L'écriture « entre 65 et $x$ » impose $x > 65$, et il reste $0{,}30 - 0{,}0987 = 0{,}2013$ à couvrir au-delà de la moyenne. Ce reste étant positif, $x$ dépasse 68. La valeur la plus proche de $0{,}2013$ est $0{,}2019$, à la ligne $0{,}5$ et à la colonne $0{,}03$ : $z = 0{,}53$, donc $x = 68 + 0{,}53 \\times 12 = 74{,}36$.",
+            "<strong>(d) 18 % entre 74 et $x$.</strong> Cette fois la borne connue est <em>au-dessus</em> de la moyenne : $z_{74} = 0{,}5$, et la table donne $0{,}1915$ entre la moyenne et 74. Puisque $x > 74$, l'aire depuis la moyenne jusqu'à $x$ vaut $0{,}1915 + 0{,}18 = 0{,}3715$ — on <em>ajoute</em> ici, alors qu'on retranchait en (c), parce que la borne et la région cherchée sont du même côté. La valeur la plus proche de $0{,}3715$ est $0{,}3708$, à la ligne $1{,}1$ et à la colonne $0{,}03$ : $z = 1{,}13$, donc $x = 68 + 1{,}13 \\times 12 = 81{,}56$.",
+            "<strong>(e) 41 % en dessous de $x$.</strong> Moins de la moitié, donc $x$ est sous la moyenne. Entre $x$ et la moyenne : $0{,}5 - 0{,}41 = 0{,}09$. La valeur la plus proche est $0{,}0910$, à la ligne $0{,}2$ et à la colonne $0{,}03$ : $z = 0{,}23$, et comme $x$ est sous la moyenne, $x = 68 - 0{,}23 \\times 12 = 65{,}24$.",
+            "<strong>Contrôler l'ensemble.</strong> Chaque réponse doit être du bon côté de 68 : (a) et (e) en dessous, (b), (c) et (d) au-dessus. C'est le cas. Second contrôle : plus le pourcentage au-dessus de $x$ est petit, plus $x$ doit être haut — $11{,}25$ % donne $82{,}52$ alors que $66{,}5$ % donne $62{,}84$, l'ordre est respecté."
+          ],
+          "piegeCourant": "Chercher le pourcentage lui-même dans le corps de la table. En (e) par exemple, chercher $0{,}41$ donnerait $z = 1{,}34$ et une note de $84$, alors que la réponse est sous la moyenne. La table ne connaît que les aires <em>mesurées depuis la moyenne</em> : tout pourcentage qui part d'ailleurs — d'une queue, d'un point quelconque — doit y être ramené avant la lecture."
         }
       ]
     },
@@ -12242,6 +12344,214 @@
             }
           ],
           "piegeCourant": "Chercher la probabilité de queue directement dans le corps de la table. Elle s'y trouve parfois — comme ici, $0{,}0099$ correspondrait à $z \\approx 0{,}02$ — et donne alors une réponse plausible en apparence, mais complètement fausse."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-201",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "loi-normale",
+        "table",
+        "cote-z",
+        "symetrie",
+        "effectif"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Camille fait chaque matin le même trajet entre chez elle et le cégep. La durée du trajet suit $\\Nor(34\\,;5)$ minutes. Elle a fait ce trajet 200 fois cette année.\n\n(a) Quelle proportion des trajets ont duré entre 29 et 42 minutes ?\n\n(b) Quelle proportion ont duré entre 24 et 31 minutes ?\n\n(c) Quelle proportion ont duré entre 36 et 45 minutes ?\n\n(d) Un matin, Camille dispose de 26 minutes avant le début de son cours. Quelle est la probabilité qu'elle arrive en retard ?\n\n(e) Un autre matin, elle part 43 minutes d'avance. Quelle est la probabilité qu'elle soit quand même en retard ?\n\n(f) Quelle proportion des trajets ont duré moins de 40 minutes ?\n\n(g) Sur les 200 trajets, combien ont duré moins de 28 minutes ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les sous-questions (d) et (e) ne donnent pas directement une région : traduis d'abord « arriver en retard » en une inégalité sur la durée du trajet. Pour (g), la probabilité n'est pas la réponse demandée — c'est une étape vers elle."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $0{,}7865$ · (b) $0{,}2515$ · (c) $0{,}3307$ · (d) $0{,}9452$ · (e) $0{,}0359$ · (f) $0{,}8849$ · (g) environ 23 trajets"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> $z = \\dfrac{x - 34}{5}$. Avec un écart-type de 5, toute borne entière donne une cote à deux décimales exactes : aucune interpolation dans tout l'exercice.",
+            "<strong>(a) entre 29 et 42 minutes.</strong> $z_1 = -1$ et $z_2 = 1{,}6$ : les bornes encadrent la moyenne, donc on additionne. Par symétrie $\\prob(-1 < Z < 0) = \\prob(0 < Z < 1)$, que la table donne à $0{,}3413$ ; et $\\prob(0 < Z < 1{,}6) = 0{,}4452$. Total $0{,}3413 + 0{,}4452 = 0{,}7865$.",
+            "<strong>(b) entre 24 et 31 minutes.</strong> $z_1 = -2$ et $z_2 = -0{,}6$, tous deux sous la moyenne : on soustrait. La table donne $0{,}4772$ à $z = 2{,}00$ et $0{,}2257$ à $z = 0{,}60$, lus positivement par symétrie : $0{,}4772 - 0{,}2257 = 0{,}2515$.",
+            "<strong>(c) entre 36 et 45 minutes.</strong> $z_1 = 0{,}4$ et $z_2 = 2{,}2$, tous deux au-dessus : on soustrait encore. La table donne $0{,}4861$ à $z = 2{,}20$ et $0{,}1554$ à $z = 0{,}40$ : $0{,}4861 - 0{,}1554 = 0{,}3307$.",
+            "<strong>(d) retard avec 26 minutes devant soi.</strong> Traduire d'abord : Camille est en retard si le trajet dure <em>plus</em> de 26 minutes, donc on cherche $\\prob(X > 26)$. $z = -1{,}6$ : le seuil est sous la moyenne, la région couvre toute la moitié droite plus la bande de $-1{,}6$ à $0$. La table donne $0{,}4452$ à $z = 1{,}60$ : $0{,}4452 + 0{,}5 = 0{,}9452$. Près de 95 % de risque — partir 26 minutes d'avance quand le trajet en dure 34 en moyenne est manifestement insuffisant.",
+            "<strong>(e) retard avec 43 minutes d'avance.</strong> Même traduction : $\\prob(X > 43)$, avec $z = 1{,}8$. Le seuil est cette fois au-dessus de la moyenne, la région est une queue à droite : $0{,}5 - 0{,}4641 = 0{,}0359$, soit environ 3,6 %.",
+            "<strong>(f) moins de 40 minutes.</strong> $z = 1{,}2$, seuil au-dessus de la moyenne : toute la moitié gauche plus la bande de $0$ à $1{,}2$. La table donne $0{,}3849$ : $0{,}5 + 0{,}3849 = 0{,}8849$.",
+            "<strong>(g) combien sur 200 trajets.</strong> D'abord la probabilité : $z = \\dfrac{28 - 34}{5} = -1{,}2$, queue à gauche, donc $0{,}5 - 0{,}3849 = 0{,}1151$. Ensuite l'effectif : $200 \\times 0{,}1151 = 23{,}02$, soit environ <strong>23 trajets</strong>. Un nombre de trajets est un entier — on arrondit à la fin, jamais la probabilité en cours de route.",
+            "<strong>Contrôler l'ensemble.</strong> (f) et (g) portent sur des cotes opposées, $1{,}2$ et $-1{,}2$ : leurs probabilités doivent se compléter, et $0{,}8849 + 0{,}1151 = 1$. Par ailleurs (d) est très grand et (e) très petit, ce qui est cohérent : 26 minutes est bien en deçà de la moyenne, 43 bien au-delà."
+          ],
+          "piegeCourant": "En (d) et (e), écrire $\\prob(X < 26)$ au lieu de $\\prob(X > 26)$. « Arriver en retard » veut dire que le trajet a été <em>plus long</em> que le temps disponible : l'inégalité va dans le sens contraire de l'intuition, parce qu'on parle du temps écoulé et non du temps restant. En (g), autre piège : arrondir $0{,}1151$ à $0{,}12$ avant de multiplier donnerait 24 trajets au lieu de 23."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-202",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "loi-normale",
+        "table",
+        "cote-z",
+        "garantie",
+        "effectif"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La durée de vie d'une ampoule DEL suit $\\Nor(1200\\,;150)$ heures. Un distributeur en vend un lot de 500.\n\n(a) Quelle proportion des ampoules durent entre 1050 h et 1425 h ?\n\n(b) Quelle proportion durent entre 870 h et 1125 h ?\n\n(c) Quelle proportion durent entre 1275 h et 1425 h ?\n\n(d) Le fabricant garantit ses ampoules 990 heures. Quelle proportion dépasse la durée garantie ?\n\n(e) Une ampoule est dite « exceptionnelle » si elle dépasse 1530 h. Quelle est la probabilité qu'une ampoule prise au hasard le soit ?\n\n(f) Quelle proportion des ampoules durent moins de 1380 h ?\n\n(g) Le distributeur remplace gratuitement toute ampoule qui grille avant 930 h. Sur le lot de 500, combien de remplacements doit-il prévoir ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'écart-type vaut 150 : une borne ne donne une cote à deux décimales que si son écart à la moyenne est un multiple de 1,5 heure. Vérifie-le sur chaque borne avant de chercher dans la table — toutes celles de l'exercice y tombent."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $0{,}7745$ · (b) $0{,}2946$ · (c) $0{,}2417$ · (d) $0{,}9192$ · (e) $0{,}0139$ · (f) $0{,}8849$ · (g) environ 18 ampoules"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> $z = \\dfrac{x - 1200}{150}$. Chaque borne de l'exercice donne une cote à deux décimales exactes, donc toutes se lisent directement dans la table.",
+            "<strong>(a) entre 1050 h et 1425 h.</strong> $z_1 = -1$ et $z_2 = 1{,}5$ : de part et d'autre de la moyenne, on additionne. La table donne $0{,}3413$ à $z = 1{,}00$ et $0{,}4332$ à $z = 1{,}50$ : $0{,}3413 + 0{,}4332 = 0{,}7745$.",
+            "<strong>(b) entre 870 h et 1125 h.</strong> $z_1 = -2{,}2$ et $z_2 = -0{,}5$, du même côté : on soustrait. La table donne $0{,}4861$ à $z = 2{,}20$ et $0{,}1915$ à $z = 0{,}50$ : $0{,}4861 - 0{,}1915 = 0{,}2946$.",
+            "<strong>(c) entre 1275 h et 1425 h.</strong> $z_1 = 0{,}5$ et $z_2 = 1{,}5$, du même côté à droite : $0{,}4332 - 0{,}1915 = 0{,}2417$.",
+            "<strong>(d) au-delà de la garantie, 990 h.</strong> On cherche $\\prob(X > 990)$, avec $z = -1{,}4$. Le seuil est sous la moyenne : toute la moitié droite plus la bande de $-1{,}4$ à $0$. La table donne $0{,}4192$ : $0{,}4192 + 0{,}5 = 0{,}9192$. Environ 92 % des ampoules dépassent la garantie, ce qui est le minimum attendu d'un seuil de garantie commercialement tenable.",
+            "<strong>(e) « exceptionnelle », au-delà de 1530 h.</strong> $z = 2{,}2$, queue à droite : $0{,}5 - 0{,}4861 = 0{,}0139$, soit 1,4 %. Le qualificatif est mérité.",
+            "<strong>(f) moins de 1380 h.</strong> $z = 1{,}2$, seuil au-dessus : $0{,}5 + 0{,}3849 = 0{,}8849$.",
+            "<strong>(g) remplacements sur 500 ampoules.</strong> Probabilité d'abord : $z = \\dfrac{930 - 1200}{150} = -1{,}8$, queue à gauche, donc $0{,}5 - 0{,}4641 = 0{,}0359$. Effectif ensuite : $500 \\times 0{,}0359 = 17{,}95$, soit environ <strong>18 ampoules</strong> à prévoir.",
+            "<strong>Contrôler l'ensemble.</strong> Les régions (b) et (c) sont de largeur très différente en heures — 255 h contre 150 h — mais leurs probabilités sont proches, $0{,}2946$ et $0{,}2417$ : c'est normal, (b) est excentrée là où la courbe est basse, (c) est adossée au sommet. Une largeur en heures ne dit rien de l'aire tant qu'on ne sait pas où elle est placée."
+          ],
+          "piegeCourant": "Confondre la garantie de (d) et le remplacement de (g). La première question porte sur les ampoules qui <em>dépassent</em> un seuil, la seconde sur celles qui <em>n'atteignent pas</em> un autre seuil : même vocabulaire commercial, régions opposées. Autre piège classique en (g) : donner $0{,}0359$ comme réponse alors que la question demande un nombre d'ampoules."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-203",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Valeurs critiques : problème inverse",
+      "motsCles": [
+        "loi-normale",
+        "probleme-inverse",
+        "valeur-critique",
+        "table",
+        "seuil"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le temps d'attente à l'urgence d'un hôpital suit $\\Nor(85\\,;20)$ minutes. La direction veut fixer plusieurs repères de gestion.\n\n(a) Quel temps $x$ est dépassé par 70 % des patients ?\n\n(b) L'hôpital veut afficher un temps d'attente « maximal » que seulement 8 % des patients dépassent. Quel est ce temps ?\n\n(c) Trouve $x$ tel que 35 % des patients attendent entre 75 minutes et $x$.\n\n(d) Trouve $x$ tel que 22 % des patients attendent entre 95 minutes et $x$.\n\n(e) Un patient fait partie du quart le plus rapidement pris en charge si son attente est inférieure à un certain seuil. En réalité la direction vise 36 % plutôt que 25 % : quel est le seuil correspondant ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "En (c) et (d), la borne donnée n'est pas la moyenne. Situe-la d'abord par rapport à 85 : selon qu'elle est en deçà ou au-delà, la part déjà couverte se retranche ou s'ajoute à celle que tu cherches."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $x = 74{,}60$ min · (b) $x = 113{,}20$ min · (c) $x = 93{,}20$ min · (d) $x = 112{,}00$ min · (e) $x = 77{,}80$ min"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> Ramener chaque pourcentage à une aire mesurée depuis la moyenne, lire cette aire dans le corps de la table pour en tirer une cote, puis $x = 85 + 20z$.",
+            "<strong>(a) dépassé par 70 % des patients.</strong> Plus de la moitié dépassent $x$, donc $x$ est sous la moyenne. Entre $x$ et 85 : $0{,}70 - 0{,}5 = 0{,}20$. La valeur la plus proche de $0{,}20$ est $0{,}1985$, à la ligne $0{,}5$ et à la colonne $0{,}02$, soit $z = 0{,}52$ ; l'entrée suivante, $0{,}2019$ à $z = 0{,}53$, s'en écarte de $0{,}0019$ contre $0{,}0015$. On retient donc $z = -0{,}52$ et $x = 85 - 0{,}52 \\times 20 = 74{,}60$ minutes.",
+            "<strong>(b) dépassé par seulement 8 %.</strong> $x$ est cette fois bien au-dessus de la moyenne. Entre 85 et $x$ : $0{,}5 - 0{,}08 = 0{,}42$. La valeur la plus proche est $0{,}4207$, à la ligne $1{,}4$ et à la colonne $0{,}01$ : $z = 1{,}41$, donc $x = 85 + 1{,}41 \\times 20 = 113{,}20$ minutes. Afficher « au plus 1 h 53 » laisserait tout de même 8 % des patients au-delà — un affichage de ce genre n'est jamais une promesse absolue.",
+            "<strong>(c) 35 % entre 75 minutes et $x$.</strong> $z_{75} = \\dfrac{75 - 85}{20} = -0{,}5$, sous la moyenne ; la table donne $0{,}1915$ entre 75 et 85. Comme $x > 75$, il reste $0{,}35 - 0{,}1915 = 0{,}1585$ à couvrir au-delà de la moyenne. La valeur la plus proche est $0{,}1591$, à la ligne $0{,}4$ et à la colonne $0{,}01$ : $z = 0{,}41$, donc $x = 85 + 0{,}41 \\times 20 = 93{,}20$ minutes.",
+            "<strong>(d) 22 % entre 95 minutes et $x$.</strong> Ici $z_{95} = 0{,}5$ : la borne est <em>au-dessus</em> de la moyenne, et la table donne $0{,}1915$ entre 85 et 95. La région cherchée prolonge celle-là vers la droite, donc les aires s'ajoutent : $0{,}1915 + 0{,}22 = 0{,}4115$. Cette valeur figure exactement dans la table, à la ligne $1{,}3$ et à la colonne $0{,}05$ : $z = 1{,}35$, donc $x = 85 + 1{,}35 \\times 20 = 112{,}00$ minutes.",
+            "<strong>(e) les 36 % les plus rapidement pris en charge.</strong> La mention du quart est une fausse piste : la direction vise 36 %, donc on cherche $x$ tel que $\\prob(X < x) = 0{,}36$. Moins de la moitié, donc $x$ est sous la moyenne, et entre $x$ et 85 se trouvent $0{,}5 - 0{,}36 = 0{,}14$ des patients. La valeur la plus proche est $0{,}1406$, à la ligne $0{,}3$ et à la colonne $0{,}06$ : $z = 0{,}36$, donc $x = 85 - 0{,}36 \\times 20 = 77{,}80$ minutes.",
+            "<strong>Contrôler l'ensemble.</strong> (a) et (e) tombent sous 85, (b), (c) et (d) au-dessus : cohérent avec les pourcentages annoncés. Curiosité utile : en (e), l'aire cherchée $0{,}14$ conduit à $z = 0{,}36$, exactement le nombre du pourcentage. Pure coïncidence, mais elle rappelle qu'une cote et une proportion sont deux grandeurs différentes qu'on ne compare jamais directement."
+          ],
+          "piegeCourant": "En (d), retrancher $0{,}1915$ au lieu de l'ajouter, par analogie avec (c). Le sens de l'opération ne dépend pas de l'habitude mais de la position de la borne : en (c) la borne est sous la moyenne et la région cherchée l'enjambe, donc la part déjà couverte se retranche ; en (d) la borne est au-dessus et la région la prolonge, donc elle s'ajoute. Un croquis évite l'erreur à tous les coups."
+        }
+      ]
+    },
+    {
+      "id": "ch02-dif-204",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Valeurs critiques : problème inverse",
+      "motsCles": [
+        "loi-normale",
+        "probleme-inverse",
+        "valeur-critique",
+        "table",
+        "percentile"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La masse corporelle des adultes d'une population suit $\\Nor(72\\,;10)$ kg.\n\n(a) Quelle masse $x$ est dépassée par 62,5 % des adultes ?\n\n(b) Un équipement de sport est conçu pour les 14,5 % les plus lourds. À partir de quelle masse est-on dans ce groupe ?\n\n(c) Trouve $x$ tel que 32 % des adultes aient une masse entre 66 kg et $x$.\n\n(d) Trouve $x$ tel que 16 % des adultes aient une masse entre 78 kg et $x$.\n\n(e) Quelle masse sépare les 44 % les plus légers du reste de la population ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Quatre des cinq réponses demandent d'abord de décider si $x$ tombe au-dessus ou en dessous de 72 kg. Ce choix se fait avant toute lecture, en comparant simplement le pourcentage annoncé à 50 %."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $x = 68{,}80$ kg · (b) $x = 82{,}60$ kg · (c) $x = 74{,}40$ kg · (d) $x = 84{,}00$ kg · (e) $x = 70{,}50$ kg"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> Ramener le pourcentage à une aire comptée depuis la moyenne, la chercher dans le corps de la table, puis $x = 72 + 10z$. Avec un écart-type de 10, chaque centième de cote vaut exactement un dixième de kilogramme, ce qui rend les réponses faciles à contrôler.",
+            "<strong>(a) dépassée par 62,5 % des adultes.</strong> Plus de la moitié, donc $x$ est sous la moyenne. Entre $x$ et 72 : $0{,}625 - 0{,}5 = 0{,}125$. La valeur la plus proche est $0{,}1255$, à la ligne $0{,}3$ et à la colonne $0{,}02$, soit $z = 0{,}32$ — l'entrée voisine, $0{,}1217$ à $z = 0{,}31$, s'en écarte plus de six fois davantage. Donc $x = 72 - 0{,}32 \\times 10 = 68{,}80$ kg.",
+            "<strong>(b) les 14,5 % les plus lourds.</strong> $x$ est au-dessus de la moyenne. Entre 72 et $x$ : $0{,}5 - 0{,}145 = 0{,}355$. La valeur la plus proche est $0{,}3554$, à la ligne $1{,}0$ et à la colonne $0{,}06$ : $z = 1{,}06$, donc $x = 72 + 1{,}06 \\times 10 = 82{,}60$ kg.",
+            "<strong>(c) 32 % entre 66 kg et $x$.</strong> $z_{66} = \\dfrac{66 - 72}{10} = -0{,}6$, sous la moyenne ; la table donne $0{,}2257$ entre 66 et 72. Comme $x > 66$, il reste $0{,}32 - 0{,}2257 = 0{,}0943$ au-delà de la moyenne. La valeur la plus proche est $0{,}0948$, à la ligne $0{,}2$ et à la colonne $0{,}04$ : $z = 0{,}24$, donc $x = 72 + 0{,}24 \\times 10 = 74{,}40$ kg.",
+            "<strong>(d) 16 % entre 78 kg et $x$.</strong> $z_{78} = 0{,}6$ : borne au-dessus de la moyenne, la table donne $0{,}2257$ entre 72 et 78. La région cherchée la prolonge, donc on ajoute : $0{,}2257 + 0{,}16 = 0{,}3857$. La valeur la plus proche est $0{,}3849$, à la ligne $1{,}2$ et à la colonne $0{,}00$ : $z = 1{,}20$, donc $x = 72 + 1{,}20 \\times 10 = 84{,}00$ kg.",
+            "<strong>(e) les 44 % les plus légers.</strong> On cherche $x$ tel que $\\prob(X < x) = 0{,}44$. Moins de la moitié, donc $x$ est sous la moyenne, et entre $x$ et 72 se trouvent $0{,}5 - 0{,}44 = 0{,}06$ des adultes. La valeur la plus proche est $0{,}0596$, à la ligne $0{,}1$ et à la colonne $0{,}05$ : $z = 0{,}15$, donc $x = 72 - 0{,}15 \\times 10 = 70{,}50$ kg.",
+            "<strong>Contrôler l'ensemble.</strong> (a) et (e) sont sous 72, (b), (c) et (d) au-dessus — conforme aux pourcentages. Contrôle plus fin sur (e) : séparer les 44 % les plus légers du reste devrait donner une masse <em>un peu</em> sous la moyenne, puisque 44 % est proche de 50 %. Un écart de $1{,}5$ kg sur un écart-type de 10 est exactement l'ordre de grandeur attendu."
+          ],
+          "piegeCourant": "Traiter (c) et (d) de la même façon parce que les deux énoncés se ressemblent. La différence tient à un seul détail : 66 kg est sous la moyenne et 78 kg au-dessus. Dans le premier cas la région demandée enjambe le sommet et la part déjà couverte se retranche ; dans le second elle prolonge une région existante et s'ajoute. Deux phrases presque identiques, deux opérations opposées."
         }
       ]
     },
