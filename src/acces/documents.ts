@@ -413,12 +413,12 @@ export const DOCUMENTS: Document[] = [
 
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //
-  // Trois chapitres de notes, dans leurs deux versions, et les exercices du
-  // chapitre 1. Le catalogue est un INVENTAIRE : il ne liste que des fichiers
-  // réellement présents dans le seau. Les examens n'existent pas encore pour
-  // ce cours, donc ils n'ont pas d'entrée — leur politique d'accès, elle,
-  // existe déjà (NIVEAUX_EXAMENS) : les publier plus tard ne demandera aucune
-  // modification de la logique d'accès.
+  // Trois chapitres, complets : les notes dans leurs deux versions et les
+  // exercices en deux documents. Le catalogue est un INVENTAIRE : il ne liste
+  // que des fichiers réellement présents dans le seau. Les examens n'existent
+  // pas encore pour ce cours, donc ils n'ont pas d'entrée — leur politique
+  // d'accès, elle, existe déjà (NIVEAUX_EXAMENS) : les publier plus tard ne
+  // demandera aucune modification de la logique d'accès.
   //
   // Les noms de fichiers dans le seau reprennent ceux de `build/` du projet
   // notes-calcul-integral, sans renommage : la comparaison des MD5 entre le
@@ -426,12 +426,10 @@ export const DOCUMENTS: Document[] = [
   // majuscules dans le chemin des notes enseignant, alors que l'identifiant
   // dit « enseignant » comme partout ailleurs dans le catalogue.
   //
-  // Les exercices du chapitre 3 n'existent pas encore : ni PDF ni sources.
-  // Les titres de ses notes le disent — « exercices à venir » — pour qu'un
-  // étudiant ne cherche pas un document absent. À retirer de ces deux titres
-  // le jour où ces exercices paraissent, sinon la mention devient fausse.
-  // C'est ce qui a été fait pour le chapitre 2 le 2026-09-15, dans le commit
-  // même qui a publié ses exercices : jamais avant.
+  // Plus aucune mention « exercices à venir » : les trois chapitres ont leurs
+  // exercices. Chacune a été retirée dans le commit même qui publiait les
+  // exercices du chapitre concerné, jamais avant — un titre qui annonce comme
+  // manquant un document déjà offert est aussi trompeur que l'inverse.
   //
   // Les deux documents d'exercices partagent les mêmes énoncés : l'un sans
   // aucune réponse, l'autre avec réponses finales et solutions détaillées
@@ -472,7 +470,7 @@ export const DOCUMENTS: Document[] = [
   doc(
     CALCUL_INTEGRAL,
     "notes-ch03-techniques-integration-etudiant",
-    "Chapitre 3 — Techniques d'intégration (étudiant) — exercices à venir",
+    "Chapitre 3 — Techniques d'intégration (étudiant)",
     "notes/ch03-techniques-integration-ETUDIANT.pdf",
     "notes",
     NIVEAUX_NOTES_ETUDIANT,
@@ -480,7 +478,7 @@ export const DOCUMENTS: Document[] = [
   doc(
     CALCUL_INTEGRAL,
     "notes-ch03-techniques-integration-enseignant",
-    "Chapitre 3 — Techniques d'intégration (enseignant) — exercices à venir",
+    "Chapitre 3 — Techniques d'intégration (enseignant)",
     "notes/ch03-techniques-integration-PROF.pdf",
     "notes",
     NIVEAUX_NOTES_ENSEIGNANT,
@@ -514,6 +512,22 @@ export const DOCUMENTS: Document[] = [
     "exercices-ch02-complet",
     "Exercices, réponses et solutions — chapitre 2 : Intégrale définie et théorème fondamental",
     "exercices/ch02-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch03",
+    "Exercices — chapitre 3 : Techniques d'intégration",
+    "exercices/ch03-enonces-seul.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch03-complet",
+    "Exercices, réponses et solutions — chapitre 3 : Techniques d'intégration",
+    "exercices/ch03-complet.pdf",
     "exercices",
     NIVEAUX_EXERCICES_REVISION,
   ),
