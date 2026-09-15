@@ -413,16 +413,24 @@ export const DOCUMENTS: Document[] = [
 
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //
-  // Chapitre 1 seulement, trois documents. Le catalogue est un INVENTAIRE :
-  // il ne liste que des fichiers réellement présents dans le seau. Les notes
-  // version enseignant et les examens n'existent pas encore pour ce cours,
-  // donc ils n'ont pas d'entrée — leur politique d'accès, elle, existe déjà
-  // (NIVEAUX_NOTES_ENSEIGNANT, NIVEAUX_EXAMENS) : les publier plus tard ne
-  // demandera aucune modification de la logique d'accès.
+  // Trois chapitres de notes, dans leurs deux versions, et les exercices du
+  // chapitre 1. Le catalogue est un INVENTAIRE : il ne liste que des fichiers
+  // réellement présents dans le seau. Les examens n'existent pas encore pour
+  // ce cours, donc ils n'ont pas d'entrée — leur politique d'accès, elle,
+  // existe déjà (NIVEAUX_EXAMENS) : les publier plus tard ne demandera aucune
+  // modification de la logique d'accès.
   //
   // Les noms de fichiers dans le seau reprennent ceux de `build/` du projet
   // notes-calcul-integral, sans renommage : la comparaison des MD5 entre le
-  // seau et le disque se fait ainsi fichier pour fichier.
+  // seau et le disque se fait ainsi fichier pour fichier. D'où le PROF en
+  // majuscules dans le chemin des notes enseignant, alors que l'identifiant
+  // dit « enseignant » comme partout ailleurs dans le catalogue.
+  //
+  // Les exercices n'existent qu'au chapitre 1 : ni les PDF ni les sources
+  // des chapitres 2 et 3 ne sont écrits (vérifié le 2026-09-15). Les titres
+  // de leurs notes le disent — « exercices à venir » — pour qu'un étudiant
+  // ne cherche pas un document absent. À retirer de ces titres le jour où
+  // ces exercices paraissent, sinon la mention devient fausse.
   //
   // Les deux documents d'exercices partagent les mêmes énoncés : l'un sans
   // aucune réponse, l'autre avec réponses finales et solutions détaillées
@@ -435,6 +443,46 @@ export const DOCUMENTS: Document[] = [
     "notes/ch01-integrale-indefinie-ETUDIANT.pdf",
     "notes",
     NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch01-integrale-indefinie-enseignant",
+    "Chapitre 1 — Intégrale indéfinie et primitives (enseignant)",
+    "notes/ch01-integrale-indefinie-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch02-integrale-definie-etudiant",
+    "Chapitre 2 — Intégrale définie et théorème fondamental (étudiant) — exercices à venir",
+    "notes/ch02-integrale-definie-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch02-integrale-definie-enseignant",
+    "Chapitre 2 — Intégrale définie et théorème fondamental (enseignant) — exercices à venir",
+    "notes/ch02-integrale-definie-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch03-techniques-integration-etudiant",
+    "Chapitre 3 — Techniques d'intégration (étudiant) — exercices à venir",
+    "notes/ch03-techniques-integration-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch03-techniques-integration-enseignant",
+    "Chapitre 3 — Techniques d'intégration (enseignant) — exercices à venir",
+    "notes/ch03-techniques-integration-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
   ),
   doc(
     CALCUL_INTEGRAL,

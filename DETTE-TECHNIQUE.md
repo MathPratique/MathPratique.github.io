@@ -273,3 +273,23 @@ accepte n'importe quel identifiant de cours : une coquille
 (refuser un cours absent du catalogue) avait été approuvée, puis reportée
 avec le reste. En attendant, relire la ligne « Cible : …, cours … » de
 l'essai à blanc avant tout `--confirmer`.
+
+---
+
+## 2026-09-15 — « exercices à venir » est écrit à la main dans quatre titres
+
+**État : ouverte, assumée.** Les notes des chapitres 2 et 3 de Calcul
+intégral sont publiées sans leurs exercices : ni les PDF ni les sources
+n'existent (`exercices/` du projet de notes ne contient que le chapitre 1).
+Pour qu'un étudiant ne cherche pas un document absent, les quatre titres
+concernés portent la mention « — exercices à venir » dans `documents.ts`.
+
+**Le risque.** Rien ne relie cette mention à la réalité : le jour où ces
+exercices seront publiés, il faudra retirer les quatre mentions à la main.
+Oubliées, elles annoncent comme manquant un document offert juste au-dessus.
+
+**Pourquoi on ne fait pas mieux aujourd'hui.** La liste de /mon-compte
+n'affiche que le `titre` d'un document. Une mention dérivée du catalogue
+(« ce chapitre a des notes mais aucun exercice ») demanderait un champ de
+plus et un rendu de plus — un chantier, pas une ligne. Le commentaire
+au-dessus des entrées concernées rappelle le ménage à faire.

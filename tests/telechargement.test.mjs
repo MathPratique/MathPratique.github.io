@@ -23,7 +23,7 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 78 documents", () => {
+test("le catalogue couvre les 83 documents", () => {
   // Calcul différentiel — 65 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
@@ -32,15 +32,16 @@ test("le catalogue couvre les 78 documents", () => {
   // Probabilités et statistique — 10 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
   //    2 exercices (chapitre 2 seulement : énoncés + corrigé, sans indices)
-  // Calcul intégral — 3 :
-  //    1 notes (chapitre 1, version étudiant seulement)
-  //    2 exercices (chapitre 1 : énoncés seuls + complet)
-  assert.equal(DOCUMENTS.length, 78);
+  // Calcul intégral — 8 :
+  //    6 notes (chapitres 1 à 3 × 2 versions ; pas de recueil complet)
+  //    2 exercices (chapitre 1 : énoncés seuls + complet — les chapitres 2
+  //      et 3 n'en ont pas encore, ni PDF ni sources)
+  assert.equal(DOCUMENTS.length, 83);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 25, exercices: 25, revision: 10, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 30, exercices: 25, revision: 10, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -49,7 +50,7 @@ test("le catalogue couvre les 78 documents", () => {
   assert.deepEqual(parCours, {
     "calcul-differentiel": 65,
     "probabilites-statistique": 10,
-    "calcul-integral": 3,
+    "calcul-integral": 8,
   });
 });
 
