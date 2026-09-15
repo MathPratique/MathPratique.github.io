@@ -426,11 +426,12 @@ export const DOCUMENTS: Document[] = [
   // majuscules dans le chemin des notes enseignant, alors que l'identifiant
   // dit « enseignant » comme partout ailleurs dans le catalogue.
   //
-  // Les exercices n'existent qu'au chapitre 1 : ni les PDF ni les sources
-  // des chapitres 2 et 3 ne sont écrits (vérifié le 2026-09-15). Les titres
-  // de leurs notes le disent — « exercices à venir » — pour qu'un étudiant
-  // ne cherche pas un document absent. À retirer de ces titres le jour où
-  // ces exercices paraissent, sinon la mention devient fausse.
+  // Les exercices du chapitre 3 n'existent pas encore : ni PDF ni sources.
+  // Les titres de ses notes le disent — « exercices à venir » — pour qu'un
+  // étudiant ne cherche pas un document absent. À retirer de ces deux titres
+  // le jour où ces exercices paraissent, sinon la mention devient fausse.
+  // C'est ce qui a été fait pour le chapitre 2 le 2026-09-15, dans le commit
+  // même qui a publié ses exercices : jamais avant.
   //
   // Les deux documents d'exercices partagent les mêmes énoncés : l'un sans
   // aucune réponse, l'autre avec réponses finales et solutions détaillées
@@ -455,7 +456,7 @@ export const DOCUMENTS: Document[] = [
   doc(
     CALCUL_INTEGRAL,
     "notes-ch02-integrale-definie-etudiant",
-    "Chapitre 2 — Intégrale définie et théorème fondamental (étudiant) — exercices à venir",
+    "Chapitre 2 — Intégrale définie et théorème fondamental (étudiant)",
     "notes/ch02-integrale-definie-ETUDIANT.pdf",
     "notes",
     NIVEAUX_NOTES_ETUDIANT,
@@ -463,7 +464,7 @@ export const DOCUMENTS: Document[] = [
   doc(
     CALCUL_INTEGRAL,
     "notes-ch02-integrale-definie-enseignant",
-    "Chapitre 2 — Intégrale définie et théorème fondamental (enseignant) — exercices à venir",
+    "Chapitre 2 — Intégrale définie et théorème fondamental (enseignant)",
     "notes/ch02-integrale-definie-PROF.pdf",
     "notes",
     NIVEAUX_NOTES_ENSEIGNANT,
@@ -497,6 +498,22 @@ export const DOCUMENTS: Document[] = [
     "exercices-ch01-complet",
     "Exercices, réponses et solutions — chapitre 1 : Intégrale indéfinie et primitives",
     "exercices/ch01-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch02",
+    "Exercices — chapitre 2 : Intégrale définie et théorème fondamental",
+    "exercices/ch02-enonces-seul.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch02-complet",
+    "Exercices, réponses et solutions — chapitre 2 : Intégrale définie et théorème fondamental",
+    "exercices/ch02-complet.pdf",
     "exercices",
     NIVEAUX_EXERCICES_REVISION,
   ),

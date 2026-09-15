@@ -276,17 +276,23 @@ l'essai à blanc avant tout `--confirmer`.
 
 ---
 
-## 2026-09-15 — « exercices à venir » est écrit à la main dans quatre titres
+## 2026-09-15 — « exercices à venir » est écrit à la main dans les titres
 
-**État : ouverte, assumée.** Les notes des chapitres 2 et 3 de Calcul
-intégral sont publiées sans leurs exercices : ni les PDF ni les sources
-n'existent (`exercices/` du projet de notes ne contient que le chapitre 1).
-Pour qu'un étudiant ne cherche pas un document absent, les quatre titres
-concernés portent la mention « — exercices à venir » dans `documents.ts`.
+**État : ouverte, assumée. Deux titres restants, ceux du chapitre 3.** Les
+notes des chapitres 2 et 3 de Calcul intégral ont été publiées sans leurs
+exercices, qui n'existaient alors ni en PDF ni en source. Pour qu'un
+étudiant ne cherche pas un document absent, les quatre titres concernés
+portaient la mention « — exercices à venir » dans `documents.ts`.
 
-**Le risque.** Rien ne relie cette mention à la réalité : le jour où ces
-exercices seront publiés, il faudra retirer les quatre mentions à la main.
-Oubliées, elles annoncent comme manquant un document offert juste au-dessus.
+**Mise à jour du 2026-09-15.** Les exercices du chapitre 2 sont écrits,
+vérifiés et publiés : ses deux mentions ont été retirées dans le commit
+même qui déclare ses deux documents, jamais avant. Restent celles des deux
+titres du chapitre 3.
+
+**Le risque.** Rien ne relie cette mention à la réalité : le jour où les
+exercices du chapitre 3 paraîtront, il faudra retirer ses deux mentions à
+la main. Oubliées, elles annoncent comme manquant un document offert juste
+au-dessus.
 
 **Pourquoi on ne fait pas mieux aujourd'hui.** La liste de /mon-compte
 n'affiche que le `titre` d'un document. Une mention dérivée du catalogue
