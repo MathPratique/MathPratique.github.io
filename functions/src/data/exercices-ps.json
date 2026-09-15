@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "68a3a0e53db52b8c",
+  "contentHash": "79b5bc998a9527d5",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -8502,7 +8502,7 @@
           "lignes": [
             "<strong>Distinguer l'univers de l'hypothèse d'équiprobabilité.</strong> Ce sont deux choses différentes. Choisir $\\Omega$, c'est décider ce qu'on observe ; supposer l'équiprobabilité, c'est une affirmation sur le mécanisme physique.",
             "<strong>Le mécanisme.</strong> Ce sont les <em>dés</em> qui sont équilibrés. L'équiprobabilité porte donc sur les 36 couples $(d_1, d_2)$, chacun de probabilité $1/36$.",
-            "<strong>Conséquence sur les sommes.</strong> La somme 7 provient de 6 couples : $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$. Donc $\\prob(S = 7) = 6/36 = 1/6$. La somme 2 ne provient que de $(1,1)$ : $\\prob(S = 2) = 1/36$.",
+            "<strong>Conséquence sur les sommes.</strong> La somme 7 provient de 6 couples : $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$, $(6,1)$. Donc $\\prob(S = 7) = 6/36 = 1/6$. La somme 2 ne provient que de $(1,1)$ : $\\prob(S = 2) = 1/36$.",
             "<strong>Vérifier.</strong> Six fois plus probable pour l'une que pour l'autre : les 11 sommes ne peuvent pas se partager équitablement la probabilité 1.",
             "<strong>Le principe.</strong> On peut prendre les sommes comme univers, à condition de leur attribuer les bonnes probabilités — pas $1/11$ chacune."
           ],
