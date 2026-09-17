@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "79b5bc998a9527d5",
+  "contentHash": "2304686047373199",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -5938,108 +5938,6 @@
             "Dé-standardiser : $x = \\mu + z\\sigma = 100 + 1{,}28 \\times 15 = 119{,}2$.",
             "Contrôle : $0{,}90 > 0{,}5$, donc $x$ doit dépasser la moyenne. $119{,}2 > 100$."
           ]
-        }
-      ]
-    },
-    {
-      "id": "ch02-int-201",
-      "chapitre": 2,
-      "section": "2.20",
-      "type": "calcul-long",
-      "difficulte": "moyen",
-      "acces": "payant",
-      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
-      "motsCles": [
-        "loi-normale",
-        "table",
-        "cote-z",
-        "symetrie"
-      ],
-      "savoirFaire": [
-        "0b",
-        "2d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Une ensacheuse remplit des sachets de café. La masse d'un sachet suit $\\Nor(500\\,;8)$ g. Pour un sachet pris au hasard, calcule la probabilité que sa masse soit :\n\n(a) entre 494 g et 514 g\n\n(b) entre 488 g et 498 g\n\n(c) entre 506 g et 518 g\n\n(d) supérieure à 490 g\n\n(e) supérieure à 522 g\n\n(f) inférieure à 512 g\n\n(g) inférieure à 488 g"
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Une seule chose change d'une sous-question à l'autre : la position des bornes par rapport à la moyenne. Trace la courbe et hachure la région demandée avant de calculer quoi que ce soit — c'est le dessin qui dit s'il faut additionner, soustraire, ou partir de $0{,}5$."
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "(a) $0{,}7333$ · (b) $0{,}3345$ · (c) $0{,}2144$ · (d) $0{,}8944$ · (e) $0{,}0030$ · (f) $0{,}9332$ · (g) $0{,}0668$"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Le geste commun.</strong> Chaque borne se convertit en cote par $z = \\dfrac{x - 500}{8}$. Toutes celles de cet exercice tombent pile sur une entrée de la table, donc aucune interpolation n'est nécessaire. La table donne l'aire <em>entre 0 et z</em> : elle ne répond jamais directement, il faut toujours composer.",
-            "<strong>(a) entre 494 g et 514 g.</strong> $z_1 = -0{,}75$ et $z_2 = 1{,}75$. Les bornes encadrent la moyenne : les deux morceaux sont disjoints, leurs aires s'additionnent. Par symétrie, $\\prob(-0{,}75 < Z < 0) = \\prob(0 < Z < 0{,}75)$, que la table donne à $0{,}2734$ ; et $\\prob(0 < Z < 1{,}75) = 0{,}4599$. Total : $0{,}2734 + 0{,}4599 = 0{,}7333$.",
-            "<strong>(b) entre 488 g et 498 g.</strong> $z_1 = -1{,}5$ et $z_2 = -0{,}25$. Les deux bornes sont du même côté, sous la moyenne : la petite région est contenue dans la grande, on soustrait. La table donne $0{,}4332$ à $z = 1{,}50$ et $0{,}0987$ à $z = 0{,}25$, les deux lus positivement grâce à la symétrie. Résultat : $0{,}4332 - 0{,}0987 = 0{,}3345$.",
-            "<strong>(c) entre 506 g et 518 g.</strong> $z_1 = 0{,}75$ et $z_2 = 2{,}25$. Même configuration qu'en (b), mais à droite. La table donne $0{,}4878$ à $z = 2{,}25$ et $0{,}2734$ à $z = 0{,}75$ : $0{,}4878 - 0{,}2734 = 0{,}2144$.",
-            "<strong>(d) plus de 490 g.</strong> $z = -1{,}25$. La région part d'un point sous la moyenne et s'étend vers la droite sans fin : elle contient donc toute la moitié droite, plus la bande de $-1{,}25$ à $0$. La table donne $0{,}3944$ à $z = 1{,}25$, et l'on ajoute $0{,}5$ : $0{,}3944 + 0{,}5 = 0{,}8944$.",
-            "<strong>(e) plus de 522 g.</strong> $z = 2{,}75$. Cette fois la région est une queue à droite, au-delà d'un point déjà au-dessus de la moyenne. La demi-courbe droite vaut $0{,}5$ et la table en couvre $0{,}4970$ jusqu'à $2{,}75$ : il reste $0{,}5 - 0{,}4970 = 0{,}0030$.",
-            "<strong>(f) moins de 512 g.</strong> $z = 1{,}5$. La région couvre toute la moitié gauche plus la bande de $0$ à $1{,}5$ : $0{,}5 + 0{,}4332 = 0{,}9332$.",
-            "<strong>(g) moins de 488 g.</strong> $z = -1{,}5$. Queue à gauche, symétrique de la queue droite au-delà de $1{,}5$ : $0{,}5 - 0{,}4332 = 0{,}0668$.",
-            "<strong>Contrôler l'ensemble.</strong> Deux vérifications gratuites. D'abord (f) et (g) portent sur la même cote $1{,}5$ et doivent se compléter : $0{,}9332 + 0{,}0668 = 1$. Ensuite les probabilités doivent suivre la taille des régions : (e), une queue lointaine, est la plus petite ; (f), presque toute la courbe, est la plus grande. C'est bien le cas."
-          ],
-          "piegeCourant": "Appliquer machinalement la même opération partout. Les sept sous-questions se ressemblent, mais l'opération dépend entièrement de la position des bornes : on additionne deux lectures quand la région enjambe la moyenne, on les soustrait quand les bornes sont du même côté, et on part de $0{,}5$ dès qu'une région s'étend jusqu'à l'infini. Le dessin tranche à chaque fois ; la formule mémorisée, non."
-        }
-      ]
-    },
-    {
-      "id": "ch02-int-202",
-      "chapitre": 2,
-      "section": "2.21",
-      "type": "calcul-long",
-      "difficulte": "moyen",
-      "acces": "payant",
-      "sectionNotes": "Valeurs critiques : problème inverse",
-      "motsCles": [
-        "loi-normale",
-        "probleme-inverse",
-        "valeur-critique",
-        "table"
-      ],
-      "savoirFaire": [
-        "0b",
-        "2d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Les résultats à un examen de statistique suivent $\\Nor(68\\,;12)$. Détermine dans chaque cas la note $x$ demandée.\n\n(a) 66,5 % des résultats sont supérieurs à $x$.\n\n(b) 11,25 % des résultats sont supérieurs à $x$.\n\n(c) 30 % des résultats se situent entre 65 et $x$.\n\n(d) 18 % des résultats se situent entre 74 et $x$.\n\n(e) 41 % des résultats sont inférieurs à $x$."
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Ici la table se lit à l'envers : on connaît une aire et on cherche la cote. Avant de la parcourir, ramène toujours l'aire demandée à une aire <em>mesurée depuis la moyenne</em> — c'est la seule que la table sait donner."
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "(a) $x = 62{,}84$ · (b) $x = 82{,}52$ · (c) $x = 74{,}36$ · (d) $x = 81{,}56$ · (e) $x = 65{,}24$"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Le geste commun.</strong> Chaque sous-question se résout en trois temps : ramener le pourcentage à une aire comptée depuis la moyenne, chercher cette aire <em>dans le corps</em> de la table pour en tirer une cote, puis dé-standardiser par $x = \\mu + z\\sigma = 68 + 12z$. Contrairement aux probabilités directes, l'aire cherchée ne figure presque jamais telle quelle : on retient l'entrée la plus proche.",
-            "<strong>(a) 66,5 % au-dessus de $x$.</strong> Plus de la moitié des résultats dépassent $x$, donc $x$ est <em>sous</em> la moyenne. Entre $x$ et la moyenne se trouvent $0{,}665 - 0{,}5 = 0{,}165$ des données. La valeur la plus proche de $0{,}165$ dans la table est $0{,}1664$, à la ligne $0{,}4$ et à la colonne $0{,}03$, soit $z = 0{,}43$. Comme $x$ est sous la moyenne, on prend $z = -0{,}43$ : $x = 68 - 0{,}43 \\times 12 = 62{,}84$.",
-            "<strong>(b) 11,25 % au-dessus de $x$.</strong> Moins de la moitié, donc $x$ est <em>au-dessus</em> de la moyenne. Entre la moyenne et $x$ : $0{,}5 - 0{,}1125 = 0{,}3875$. La valeur la plus proche est $0{,}3869$, à la ligne $1{,}2$ et à la colonne $0{,}01$, soit $z = 1{,}21$. Donc $x = 68 + 1{,}21 \\times 12 = 82{,}52$.",
-            "<strong>(c) 30 % entre 65 et $x$.</strong> La borne connue donne $z_{65} = \\dfrac{65 - 68}{12} = -0{,}25$ ; la table donne $0{,}0987$, c'est-à-dire la part comprise entre 65 et la moyenne. L'écriture « entre 65 et $x$ » impose $x > 65$, et il reste $0{,}30 - 0{,}0987 = 0{,}2013$ à couvrir au-delà de la moyenne. Ce reste étant positif, $x$ dépasse 68. La valeur la plus proche de $0{,}2013$ est $0{,}2019$, à la ligne $0{,}5$ et à la colonne $0{,}03$ : $z = 0{,}53$, donc $x = 68 + 0{,}53 \\times 12 = 74{,}36$.",
-            "<strong>(d) 18 % entre 74 et $x$.</strong> Cette fois la borne connue est <em>au-dessus</em> de la moyenne : $z_{74} = 0{,}5$, et la table donne $0{,}1915$ entre la moyenne et 74. Puisque $x > 74$, l'aire depuis la moyenne jusqu'à $x$ vaut $0{,}1915 + 0{,}18 = 0{,}3715$ — on <em>ajoute</em> ici, alors qu'on retranchait en (c), parce que la borne et la région cherchée sont du même côté. La valeur la plus proche de $0{,}3715$ est $0{,}3708$, à la ligne $1{,}1$ et à la colonne $0{,}03$ : $z = 1{,}13$, donc $x = 68 + 1{,}13 \\times 12 = 81{,}56$.",
-            "<strong>(e) 41 % en dessous de $x$.</strong> Moins de la moitié, donc $x$ est sous la moyenne. Entre $x$ et la moyenne : $0{,}5 - 0{,}41 = 0{,}09$. La valeur la plus proche est $0{,}0910$, à la ligne $0{,}2$ et à la colonne $0{,}03$ : $z = 0{,}23$, et comme $x$ est sous la moyenne, $x = 68 - 0{,}23 \\times 12 = 65{,}24$.",
-            "<strong>Contrôler l'ensemble.</strong> Chaque réponse doit être du bon côté de 68 : (a) et (e) en dessous, (b), (c) et (d) au-dessus. C'est le cas. Second contrôle : plus le pourcentage au-dessus de $x$ est petit, plus $x$ doit être haut — $11{,}25$ % donne $82{,}52$ alors que $66{,}5$ % donne $62{,}84$, l'ordre est respecté."
-          ],
-          "piegeCourant": "Chercher le pourcentage lui-même dans le corps de la table. En (e) par exemple, chercher $0{,}41$ donnerait $z = 1{,}34$ et une note de $84$, alors que la réponse est sous la moyenne. La table ne connaît que les aires <em>mesurées depuis la moyenne</em> : tout pourcentage qui part d'ailleurs — d'une queue, d'un point quelconque — doit y être ramené avant la lecture."
         }
       ]
     },
@@ -12344,6 +12242,108 @@
             }
           ],
           "piegeCourant": "Chercher la probabilité de queue directement dans le corps de la table. Elle s'y trouve parfois — comme ici, $0{,}0099$ correspondrait à $z \\approx 0{,}02$ — et donne alors une réponse plausible en apparence, mais complètement fausse."
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-201",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Utilisation de la table (ou d'un logiciel)",
+      "motsCles": [
+        "loi-normale",
+        "table",
+        "cote-z",
+        "symetrie"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une ensacheuse remplit des sachets de café. La masse d'un sachet suit $\\Nor(500\\,;8)$ g. Pour un sachet pris au hasard, calcule la probabilité que sa masse soit :\n\n(a) entre 494 g et 514 g\n\n(b) entre 488 g et 498 g\n\n(c) entre 506 g et 518 g\n\n(d) supérieure à 490 g\n\n(e) supérieure à 522 g\n\n(f) inférieure à 512 g\n\n(g) inférieure à 488 g"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Une seule chose change d'une sous-question à l'autre : la position des bornes par rapport à la moyenne. Trace la courbe et hachure la région demandée avant de calculer quoi que ce soit — c'est le dessin qui dit s'il faut additionner, soustraire, ou partir de $0{,}5$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $0{,}7333$ · (b) $0{,}3345$ · (c) $0{,}2144$ · (d) $0{,}8944$ · (e) $0{,}0030$ · (f) $0{,}9332$ · (g) $0{,}0668$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> Chaque borne se convertit en cote par $z = \\dfrac{x - 500}{8}$. Toutes celles de cet exercice tombent pile sur une entrée de la table, donc aucune interpolation n'est nécessaire. La table donne l'aire <em>entre 0 et z</em> : elle ne répond jamais directement, il faut toujours composer.",
+            "<strong>(a) entre 494 g et 514 g.</strong> $z_1 = -0{,}75$ et $z_2 = 1{,}75$. Les bornes encadrent la moyenne : les deux morceaux sont disjoints, leurs aires s'additionnent. Par symétrie, $\\prob(-0{,}75 < Z < 0) = \\prob(0 < Z < 0{,}75)$, que la table donne à $0{,}2734$ ; et $\\prob(0 < Z < 1{,}75) = 0{,}4599$. Total : $0{,}2734 + 0{,}4599 = 0{,}7333$.",
+            "<strong>(b) entre 488 g et 498 g.</strong> $z_1 = -1{,}5$ et $z_2 = -0{,}25$. Les deux bornes sont du même côté, sous la moyenne : la petite région est contenue dans la grande, on soustrait. La table donne $0{,}4332$ à $z = 1{,}50$ et $0{,}0987$ à $z = 0{,}25$, les deux lus positivement grâce à la symétrie. Résultat : $0{,}4332 - 0{,}0987 = 0{,}3345$.",
+            "<strong>(c) entre 506 g et 518 g.</strong> $z_1 = 0{,}75$ et $z_2 = 2{,}25$. Même configuration qu'en (b), mais à droite. La table donne $0{,}4878$ à $z = 2{,}25$ et $0{,}2734$ à $z = 0{,}75$ : $0{,}4878 - 0{,}2734 = 0{,}2144$.",
+            "<strong>(d) plus de 490 g.</strong> $z = -1{,}25$. La région part d'un point sous la moyenne et s'étend vers la droite sans fin : elle contient donc toute la moitié droite, plus la bande de $-1{,}25$ à $0$. La table donne $0{,}3944$ à $z = 1{,}25$, et l'on ajoute $0{,}5$ : $0{,}3944 + 0{,}5 = 0{,}8944$.",
+            "<strong>(e) plus de 522 g.</strong> $z = 2{,}75$. Cette fois la région est une queue à droite, au-delà d'un point déjà au-dessus de la moyenne. La demi-courbe droite vaut $0{,}5$ et la table en couvre $0{,}4970$ jusqu'à $2{,}75$ : il reste $0{,}5 - 0{,}4970 = 0{,}0030$.",
+            "<strong>(f) moins de 512 g.</strong> $z = 1{,}5$. La région couvre toute la moitié gauche plus la bande de $0$ à $1{,}5$ : $0{,}5 + 0{,}4332 = 0{,}9332$.",
+            "<strong>(g) moins de 488 g.</strong> $z = -1{,}5$. Queue à gauche, symétrique de la queue droite au-delà de $1{,}5$ : $0{,}5 - 0{,}4332 = 0{,}0668$.",
+            "<strong>Contrôler l'ensemble.</strong> Deux vérifications gratuites. D'abord (f) et (g) portent sur la même cote $1{,}5$ et doivent se compléter : $0{,}9332 + 0{,}0668 = 1$. Ensuite les probabilités doivent suivre la taille des régions : (e), une queue lointaine, est la plus petite ; (f), presque toute la courbe, est la plus grande. C'est bien le cas."
+          ],
+          "piegeCourant": "Appliquer machinalement la même opération partout. Les sept sous-questions se ressemblent, mais l'opération dépend entièrement de la position des bornes : on additionne deux lectures quand la région enjambe la moyenne, on les soustrait quand les bornes sont du même côté, et on part de $0{,}5$ dès qu'une région s'étend jusqu'à l'infini. Le dessin tranche à chaque fois ; la formule mémorisée, non."
+        }
+      ]
+    },
+    {
+      "id": "ch02-int-202",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Valeurs critiques : problème inverse",
+      "motsCles": [
+        "loi-normale",
+        "probleme-inverse",
+        "valeur-critique",
+        "table"
+      ],
+      "savoirFaire": [
+        "0b",
+        "2d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Les résultats à un examen de statistique suivent $\\Nor(68\\,;12)$. Détermine dans chaque cas la note $x$ demandée.\n\n(a) 66,5 % des résultats sont supérieurs à $x$.\n\n(b) 11,25 % des résultats sont supérieurs à $x$.\n\n(c) 30 % des résultats se situent entre 65 et $x$.\n\n(d) 18 % des résultats se situent entre 74 et $x$.\n\n(e) 41 % des résultats sont inférieurs à $x$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Ici la table se lit à l'envers : on connaît une aire et on cherche la cote. Avant de la parcourir, ramène toujours l'aire demandée à une aire <em>mesurée depuis la moyenne</em> — c'est la seule que la table sait donner."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $x = 62{,}84$ · (b) $x = 82{,}52$ · (c) $x = 74{,}36$ · (d) $x = 81{,}56$ · (e) $x = 65{,}24$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le geste commun.</strong> Chaque sous-question se résout en trois temps : ramener le pourcentage à une aire comptée depuis la moyenne, chercher cette aire <em>dans le corps</em> de la table pour en tirer une cote, puis dé-standardiser par $x = \\mu + z\\sigma = 68 + 12z$. Contrairement aux probabilités directes, l'aire cherchée ne figure presque jamais telle quelle : on retient l'entrée la plus proche.",
+            "<strong>(a) 66,5 % au-dessus de $x$.</strong> Plus de la moitié des résultats dépassent $x$, donc $x$ est <em>sous</em> la moyenne. Entre $x$ et la moyenne se trouvent $0{,}665 - 0{,}5 = 0{,}165$ des données. La valeur la plus proche de $0{,}165$ dans la table est $0{,}1664$, à la ligne $0{,}4$ et à la colonne $0{,}03$, soit $z = 0{,}43$. Comme $x$ est sous la moyenne, on prend $z = -0{,}43$ : $x = 68 - 0{,}43 \\times 12 = 62{,}84$.",
+            "<strong>(b) 11,25 % au-dessus de $x$.</strong> Moins de la moitié, donc $x$ est <em>au-dessus</em> de la moyenne. Entre la moyenne et $x$ : $0{,}5 - 0{,}1125 = 0{,}3875$. La valeur la plus proche est $0{,}3869$, à la ligne $1{,}2$ et à la colonne $0{,}01$, soit $z = 1{,}21$. Donc $x = 68 + 1{,}21 \\times 12 = 82{,}52$.",
+            "<strong>(c) 30 % entre 65 et $x$.</strong> La borne connue donne $z_{65} = \\dfrac{65 - 68}{12} = -0{,}25$ ; la table donne $0{,}0987$, c'est-à-dire la part comprise entre 65 et la moyenne. L'écriture « entre 65 et $x$ » impose $x > 65$, et il reste $0{,}30 - 0{,}0987 = 0{,}2013$ à couvrir au-delà de la moyenne. Ce reste étant positif, $x$ dépasse 68. La valeur la plus proche de $0{,}2013$ est $0{,}2019$, à la ligne $0{,}5$ et à la colonne $0{,}03$ : $z = 0{,}53$, donc $x = 68 + 0{,}53 \\times 12 = 74{,}36$.",
+            "<strong>(d) 18 % entre 74 et $x$.</strong> Cette fois la borne connue est <em>au-dessus</em> de la moyenne : $z_{74} = 0{,}5$, et la table donne $0{,}1915$ entre la moyenne et 74. Puisque $x > 74$, l'aire depuis la moyenne jusqu'à $x$ vaut $0{,}1915 + 0{,}18 = 0{,}3715$ — on <em>ajoute</em> ici, alors qu'on retranchait en (c), parce que la borne et la région cherchée sont du même côté. La valeur la plus proche de $0{,}3715$ est $0{,}3708$, à la ligne $1{,}1$ et à la colonne $0{,}03$ : $z = 1{,}13$, donc $x = 68 + 1{,}13 \\times 12 = 81{,}56$.",
+            "<strong>(e) 41 % en dessous de $x$.</strong> Moins de la moitié, donc $x$ est sous la moyenne. Entre $x$ et la moyenne : $0{,}5 - 0{,}41 = 0{,}09$. La valeur la plus proche est $0{,}0910$, à la ligne $0{,}2$ et à la colonne $0{,}03$ : $z = 0{,}23$, et comme $x$ est sous la moyenne, $x = 68 - 0{,}23 \\times 12 = 65{,}24$.",
+            "<strong>Contrôler l'ensemble.</strong> Chaque réponse doit être du bon côté de 68 : (a) et (e) en dessous, (b), (c) et (d) au-dessus. C'est le cas. Second contrôle : plus le pourcentage au-dessus de $x$ est petit, plus $x$ doit être haut — $11{,}25$ % donne $82{,}52$ alors que $66{,}5$ % donne $62{,}84$, l'ordre est respecté."
+          ],
+          "piegeCourant": "Chercher le pourcentage lui-même dans le corps de la table. En (e) par exemple, chercher $0{,}41$ donnerait $z = 1{,}34$ et une note de $84$, alors que la réponse est sous la moyenne. La table ne connaît que les aires <em>mesurées depuis la moyenne</em> : tout pourcentage qui part d'ailleurs — d'une queue, d'un point quelconque — doit y être ramené avant la lecture."
         }
       ]
     },

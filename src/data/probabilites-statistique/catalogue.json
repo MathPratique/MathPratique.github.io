@@ -1447,24 +1447,6 @@
       "verrouille": true
     },
     {
-      "id": "ch02-int-201",
-      "chapitre": 2,
-      "section": "2.20",
-      "type": "calcul-long",
-      "difficulte": "moyen",
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
-      "id": "ch02-int-202",
-      "chapitre": 2,
-      "section": "2.21",
-      "type": "calcul-long",
-      "difficulte": "moyen",
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
       "id": "ch02-dif-001",
       "chapitre": 2,
       "section": "2.1",
@@ -2473,6 +2455,24 @@
       "type": "qcm",
       "difficulte": "difficile",
       "acces": "gratuit"
+    },
+    {
+      "id": "ch02-int-201",
+      "chapitre": 2,
+      "section": "2.20",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch02-int-202",
+      "chapitre": 2,
+      "section": "2.21",
+      "type": "calcul-long",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
     },
     {
       "id": "ch02-dif-201",
