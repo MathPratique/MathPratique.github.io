@@ -153,55 +153,6 @@
       ]
     },
     {
-      "id": "CD-C03-E016",
-      "chapitre": 3,
-      "section": "3.3",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "gratuit",
-      "sectionNotes": "Continuité d'une fonction définie par parties",
-      "motsCles": [
-        "fonction par parties",
-        "discontinue",
-        "saut"
-      ],
-      "savoirFaire": [
-        "1d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Soit $g(x) = \\begin{cases} x+2 & \\text{si } x < 1, \\\\ 3x-1 & \\text{si } x \\geq 1. \\end{cases}$\\\\[0.3em] Étudie la continuité de $g$ en $x = 1$ et précise le type de discontinuité s'il y a lieu."
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Calcule les deux limites latérales avant de conclure. Si elles diffèrent, quelle condition échoue ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Discontinue en $x = 1$ : C2 échoue (limite à gauche $= 3$, limite à droite $= 2$) ; discontinuité par saut"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Étape 1 — Calcul de $g(1)$.</strong> Le symbole $\\geq$ place $x=1$ dans la seconde branche :\\[ g(1) = 3(1) - 1 = 2. \\]C1 est satisfaite.",
-            "<strong>Étape 2 — Limite à gauche.</strong> Pour $x < 1$, on utilise $x+2$ :\\[ \\lim_{x \\to 1^{-}} g(x) = 1 + 2 = 3. \\]",
-            "<strong>Étape 3 — Limite à droite.</strong> Pour $x > 1$, on utilise $3x-1$ :\\[ \\lim_{x \\to 1^{+}} g(x) = 3 - 1 = 2. \\]",
-            "<strong>Étape 4 — Comparaison.</strong> Les deux limites latérales existent mais diffèrent :\\[ 3 \\neq 2. \\]",
-            "La limite globale n'existe donc pas : la condition <strong>C2 échoue</strong>.",
-            "<strong>Conclusion.</strong> $g$ est <strong>discontinue</strong> en $x = 1$. Comme les deux limites latérales sont finies mais différentes, il s'agit d'une <strong>discontinuité par saut</strong>.",
-            "L'amplitude du saut vaut $|3 - 2| = 1$ unité. Contrairement à une discontinuité par trou, elle n'est <em>pas réparable</em> : aucune redéfinition de $g(1)$ ne pourrait rendre la fonction continue."
-          ],
-          "piegeCourant": "Conclure à la continuité parce que $g(1)$ coïncide avec l'une des deux limites latérales."
-        }
-      ]
-    },
-    {
       "id": "CD-C03-E021",
       "chapitre": 3,
       "section": "3.3",

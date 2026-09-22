@@ -12,8 +12,8 @@
     "7": 5
   },
   "totaux": {
-    "gratuit": 70,
-    "payant": 325
+    "gratuit": 69,
+    "payant": 329
   },
   "exercices": [
     {
@@ -1742,26 +1742,6 @@
       "verrouille": true
     },
     {
-      "id": "CD-C03-E001",
-      "chapitre": 3,
-      "section": "3.1",
-      "type": "qcm",
-      "difficulte": "facile",
-      "tempsEstime": 2,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
-      "id": "CD-C03-E002",
-      "chapitre": 3,
-      "section": "3.1",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 4,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
       "id": "CD-C03-E003",
       "chapitre": 3,
       "section": "3.1",
@@ -1790,16 +1770,6 @@
       "verrouille": true
     },
     {
-      "id": "CD-C03-E006",
-      "chapitre": 3,
-      "section": "3.1",
-      "type": "vrai-faux",
-      "difficulte": "facile",
-      "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
       "id": "CD-C03-E007",
       "chapitre": 3,
       "section": "3.1",
@@ -1816,16 +1786,6 @@
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
-      "id": "CD-C03-E009",
-      "chapitre": 3,
-      "section": "3.2",
-      "type": "qcm",
-      "difficulte": "facile",
-      "tempsEstime": 2,
       "acces": "payant",
       "verrouille": true
     },
@@ -1877,25 +1837,6 @@
       "tempsEstime": 3,
       "acces": "payant",
       "verrouille": true
-    },
-    {
-      "id": "CD-C03-E015",
-      "chapitre": 3,
-      "section": "3.3",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
-      "id": "CD-C03-E016",
-      "chapitre": 3,
-      "section": "3.3",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "gratuit"
     },
     {
       "id": "CD-C03-E017",
@@ -1966,36 +1907,6 @@
       "acces": "gratuit"
     },
     {
-      "id": "CD-C03-E024",
-      "chapitre": 3,
-      "section": "3.4",
-      "type": "qcm",
-      "difficulte": "facile",
-      "tempsEstime": 2,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
-      "id": "CD-C03-E025",
-      "chapitre": 3,
-      "section": "3.4",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 3,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
-      "id": "CD-C03-E026",
-      "chapitre": 3,
-      "section": "3.4",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "payant",
-      "verrouille": true
-    },
-    {
       "id": "CD-C03-E027",
       "chapitre": 3,
       "section": "3.4",
@@ -2032,6 +1943,126 @@
       "difficulte": "difficile",
       "tempsEstime": 4,
       "acces": "gratuit"
+    },
+    {
+      "id": "CD-C03-E031",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E032",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E033",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E034",
+      "chapitre": 3,
+      "section": "3.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E035",
+      "chapitre": 3,
+      "section": "3.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E036",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 11,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E037",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E038",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E039",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E040",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 11,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E041",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 11,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "CD-C03-E042",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "verrouille": true
     },
     {
       "id": "CD-C04-E001",

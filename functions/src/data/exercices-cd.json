@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "4dddabc37cf44ccd",
+  "contentHash": "ce01218a82583bc2",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -9238,141 +9238,6 @@
       ]
     },
     {
-      "id": "CD-C03-E001",
-      "chapitre": 3,
-      "section": "3.1",
-      "type": "qcm",
-      "difficulte": "facile",
-      "tempsEstime": 2,
-      "acces": "payant",
-      "sectionNotes": "La continuité en un point",
-      "motsCles": [
-        "trois conditions",
-        "continuité en un point"
-      ],
-      "savoirFaire": [
-        "1d",
-        "0b"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Combien de conditions faut-il vérifier pour établir qu'une fonction est continue en $x = a$, et lesquelles ?",
-          "choix": [
-            {
-              "cle": "a",
-              "texte": "Une seule : $\\displaystyle\\lim_{x \\to a} f(x) = f(a)$"
-            },
-            {
-              "cle": "b",
-              "texte": "Deux : $f(a)$ existe et $f$ est définie de part et d'autre de $a$"
-            },
-            {
-              "cle": "c",
-              "texte": "Trois : $f(a)$ existe, $\\displaystyle\\lim_{x \\to a} f(x)$ existe, et les deux sont égales"
-            },
-            {
-              "cle": "d",
-              "texte": "Trois : $f(a)$ existe, $f'(a)$ existe, et $f$ est définie sur un intervalle"
-            }
-          ]
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "L'ordre des conditions n'est pas arbitraire. Que faut-il savoir avant de pouvoir écrire l'égalité de la troisième ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Trois : $f(a)$ existe, $\\displaystyle\\lim_{x \\to a} f(x)$ existe, et les deux sont égales"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "La définition du cours énonce <strong>trois</strong> conditions, à vérifier dans l'ordre :",
-            "<strong>C1.</strong> $f(a)$ existe, autrement dit $a \\in \\mathrm{dom}\\,f$.",
-            "<strong>C2.</strong> $\\displaystyle\\lim_{x \\to a} f(x)$ existe, c'est-à-dire que les deux limites latérales existent et sont égales.",
-            "<strong>C3.</strong> $\\displaystyle\\lim_{x \\to a} f(x) = f(a)$.",
-            "L'ordre est important : si C1 échoue, l'égalité de C3 n'a même pas de sens, puisqu'on ne peut pas comparer avec un nombre qui n'existe pas.",
-            "En pratique, on vérifie les trois dans l'ordre et on s'arrête à la première qui échoue — c'est elle qui déterminera le <em>type</em> de discontinuité."
-          ],
-          "analyseChoix": [
-            {
-              "cle": "a",
-              "correct": false,
-              "explication": "Cette écriture suppose implicitement que $f(a)$ existe et que la limite existe. Le cours exige de vérifier ces deux existences <em>séparément</em>, avant de comparer."
-            },
-            {
-              "cle": "b",
-              "correct": false,
-              "explication": "Ces conditions ne disent rien du <em>comportement</em> de la fonction autour de $a$. Une fonction peut être définie partout et faire un saut."
-            },
-            {
-              "cle": "c",
-              "correct": true,
-              "explication": "Ce sont les conditions C1, C2 et C3 du cours, à vérifier dans cet ordre."
-            },
-            {
-              "cle": "d",
-              "correct": false,
-              "explication": "La dérivabilité relève du chapitre 4 et n'intervient pas dans la définition de la continuité — c'est même l'inverse : la dérivabilité <em>entraîne</em> la continuité."
-            }
-          ],
-          "piegeCourant": "Se contenter d'écrire $\\lim_{x\\to a} f(x) = f(a)$ sans avoir vérifié que les deux membres existent."
-        }
-      ]
-    },
-    {
-      "id": "CD-C03-E002",
-      "chapitre": 3,
-      "section": "3.1",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 4,
-      "acces": "payant",
-      "sectionNotes": "La continuité en un point",
-      "motsCles": [
-        "trois conditions",
-        "vérification",
-        "polynôme"
-      ],
-      "savoirFaire": [
-        "1d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Vérifie que $f(x) = x^{2} + 1$ est continue en $x = 2$, en examinant les trois conditions."
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Pour un polynôme, chacune des trois conditions se vérifie très rapidement. Nomme-les tout de même explicitement."
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Les trois conditions sont satisfaites : $f$ est continue en $x = 2$"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Condition C1.</strong> On évalue la fonction :\\[ f(2) = 2^{2} + 1 = 5. \\]La valeur existe, donc C1 est satisfaite.",
-            "<strong>Condition C2.</strong> La fonction est polynomiale, donc l'évaluation directe s'applique :\\[ \\lim_{x \\to 2}\\left(x^{2}+1\\right) = 5. \\]La limite existe, donc C2 est satisfaite.",
-            "<strong>Condition C3.</strong> On compare :\\[ \\lim_{x \\to 2} f(x) = 5 = f(2). \\]C3 est satisfaite.",
-            "<strong>Conclusion.</strong> Les trois conditions étant remplies, $f$ est <strong>continue</strong> en $x = 2$.",
-            "Ce résultat n'a rien de surprenant : les fonctions polynomiales sont continues sur $\\mathbb{R}$ tout entier. L'intérêt de l'exercice est de pratiquer la vérification systématique."
-          ],
-          "piegeCourant": "Conclure directement « c'est un polynôme donc c'est continu » sans énoncer les trois conditions demandées."
-        }
-      ]
-    },
-    {
       "id": "CD-C03-E003",
       "chapitre": 3,
       "section": "3.1",
@@ -9559,65 +9424,6 @@
       ]
     },
     {
-      "id": "CD-C03-E006",
-      "chapitre": 3,
-      "section": "3.1",
-      "type": "vrai-faux",
-      "difficulte": "facile",
-      "tempsEstime": 3,
-      "acces": "payant",
-      "sectionNotes": "La continuité en un point",
-      "motsCles": [
-        "continuité",
-        "domaine",
-        "condition nécessaire"
-      ],
-      "savoirFaire": [
-        "1d",
-        "0e"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Vrai ou faux ? Si $a$ n'appartient pas au domaine de $f$, alors $f$ ne peut pas être continue en $x = a$.",
-          "choix": [
-            {
-              "cle": "v",
-              "texte": "Vrai"
-            },
-            {
-              "cle": "f",
-              "texte": "Faux"
-            }
-          ]
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Que dit la première des trois conditions ? Est-elle négociable ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Vrai"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "La condition <strong>C1</strong> exige que $f(a)$ existe, c'est-à-dire que $a \\in \\mathrm{dom}\\,f$.",
-            "Si $a$ n'appartient pas au domaine, cette condition échoue d'emblée, et il devient inutile de poursuivre : $f$ ne peut pas être continue en $a$.",
-            "L'énoncé est donc <strong>vrai</strong>.",
-            "<strong>Exemple.</strong> La fonction $f(x) = \\dfrac{1}{x}$ n'est pas continue en $x = 0$, tout simplement parce qu'elle n'y est pas définie.",
-            "<strong>Nuance importante.</strong> Cela ne signifie pas que la <em>limite</em> n'existe pas en ce point. La fonction $\\dfrac{x^{2}-4}{x-2}$ n'est pas définie en $2$, donc pas continue, mais sa limite y vaut pourtant $4$.",
-            "Continuité et existence de la limite sont deux questions distinctes : la première exige la seconde, mais aussi bien davantage."
-          ],
-          "piegeCourant": "Confondre l'existence de la limite avec la continuité."
-        }
-      ]
-    },
-    {
       "id": "CD-C03-E007",
       "chapitre": 3,
       "section": "3.1",
@@ -9757,93 +9563,6 @@
             }
           ],
           "piegeCourant": "Conclure au saut dès qu'on voit deux points distincts, sans vérifier où aboutissent les branches."
-        }
-      ]
-    },
-    {
-      "id": "CD-C03-E009",
-      "chapitre": 3,
-      "section": "3.2",
-      "type": "qcm",
-      "difficulte": "facile",
-      "tempsEstime": 2,
-      "acces": "payant",
-      "sectionNotes": "La continuité sur un intervalle ouvert",
-      "motsCles": [
-        "continuité sur un intervalle",
-        "définition"
-      ],
-      "savoirFaire": [
-        "1d",
-        "0b"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Une fonction $f$ est continue sur l'intervalle ouvert $]a, b[$ lorsque :",
-          "choix": [
-            {
-              "cle": "a",
-              "texte": "elle est continue en $a$ et en $b$"
-            },
-            {
-              "cle": "b",
-              "texte": "elle est continue en chaque point de cet intervalle"
-            },
-            {
-              "cle": "c",
-              "texte": "elle est définie sur tout l'intervalle"
-            },
-            {
-              "cle": "d",
-              "texte": "sa limite existe en chaque point de l'intervalle"
-            }
-          ]
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "La continuité sur un intervalle se définit à partir d'une notion déjà connue. Laquelle ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "elle est continue en chaque point de cet intervalle"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "Le cours définit la continuité sur un intervalle à partir de la continuité en un point :\\[ f \\text{ continue sur } ]a,b[ \\iff f \\text{ continue en tout } c \\in \\;]a,b[. \\]",
-            "Chaque point de l'intervalle doit donc satisfaire les trois conditions C1, C2 et C3.",
-            "L'intervalle étant <strong>ouvert</strong>, les bornes $a$ et $b$ sont exclues : on ne se pose aucune question à leur sujet.",
-            "C'est d'ailleurs commode : à une borne, on ne pourrait approcher que d'un seul côté, ce qui compliquerait la définition de la limite.",
-            "Il suffit qu'<em>un seul</em> point de l'intervalle pose problème pour que la fonction ne soit pas continue sur l'intervalle entier."
-          ],
-          "analyseChoix": [
-            {
-              "cle": "a",
-              "correct": false,
-              "explication": "L'intervalle est <em>ouvert</em> : les bornes $a$ et $b$ en sont exclues. La continuité y est sans objet."
-            },
-            {
-              "cle": "b",
-              "correct": true,
-              "explication": "C'est la définition du cours : la continuité sur un intervalle se ramène à la continuité point par point."
-            },
-            {
-              "cle": "c",
-              "correct": false,
-              "explication": "Être définie ne suffit pas. Une fonction définie partout peut présenter un saut au milieu de l'intervalle."
-            },
-            {
-              "cle": "d",
-              "correct": false,
-              "explication": "L'existence de la limite est la condition C2 seulement. Il faut aussi C1 et C3 en chaque point."
-            }
-          ],
-          "piegeCourant": "Croire qu'il faut vérifier la continuité aux bornes d'un intervalle ouvert."
         }
       ]
     },
@@ -10139,103 +9858,6 @@
             }
           ],
           "piegeCourant": "Utiliser systématiquement la première branche écrite, sans regarder les conditions."
-        }
-      ]
-    },
-    {
-      "id": "CD-C03-E015",
-      "chapitre": 3,
-      "section": "3.3",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "payant",
-      "sectionNotes": "Continuité d'une fonction définie par parties",
-      "motsCles": [
-        "fonction par parties",
-        "point de jonction",
-        "continue"
-      ],
-      "savoirFaire": [
-        "1d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Soit $f(x) = \\begin{cases} 2x+1 & \\text{si } x < 3, \\\\ x^{2}-2 & \\text{si } x \\geq 3. \\end{cases}$\\\\[0.3em] Étudie la continuité de $f$ en $x = 3$."
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Trois calculs : $f(3)$, la limite à gauche, la limite à droite. Attention à utiliser la bonne branche pour chacun."
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "$f$ est continue en $x = 3$ (les trois valeurs égalent $7$)"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Étape 1 — Calcul de $f(3)$.</strong> Le symbole $\\geq$ place $x = 3$ dans la <em>seconde</em> branche :\\[ f(3) = 3^{2} - 2 = 7. \\]C1 est satisfaite.",
-            "<strong>Étape 2 — Limite à gauche.</strong> Pour $x < 3$, on utilise $2x+1$ :\\[ \\lim_{x \\to 3^{-}} f(x) = 2(3) + 1 = 7. \\]",
-            "<strong>Étape 3 — Limite à droite.</strong> Pour $x > 3$, on utilise $x^{2}-2$ :\\[ \\lim_{x \\to 3^{+}} f(x) = 9 - 2 = 7. \\]",
-            "<strong>Étape 4 — Comparaison.</strong> Les deux limites latérales sont égales, donc\\[ \\lim_{x \\to 3} f(x) = 7 \\]existe : C2 est satisfaite.",
-            "De plus\\[ \\lim_{x \\to 3} f(x) = 7 = f(3), \\]donc C3 est satisfaite.",
-            "<strong>Conclusion.</strong> Les trois conditions sont remplies : $f$ est <strong>continue</strong> en $x = 3$. Les deux branches se raccordent parfaitement."
-          ],
-          "piegeCourant": "Utiliser la branche $2x+1$ pour calculer $f(3)$, alors que le symbole $\\geq$ désigne l'autre."
-        }
-      ]
-    },
-    {
-      "id": "CD-C03-E016",
-      "chapitre": 3,
-      "section": "3.3",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "gratuit",
-      "sectionNotes": "Continuité d'une fonction définie par parties",
-      "motsCles": [
-        "fonction par parties",
-        "discontinue",
-        "saut"
-      ],
-      "savoirFaire": [
-        "1d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Soit $g(x) = \\begin{cases} x+2 & \\text{si } x < 1, \\\\ 3x-1 & \\text{si } x \\geq 1. \\end{cases}$\\\\[0.3em] Étudie la continuité de $g$ en $x = 1$ et précise le type de discontinuité s'il y a lieu."
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Calcule les deux limites latérales avant de conclure. Si elles diffèrent, quelle condition échoue ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Discontinue en $x = 1$ : C2 échoue (limite à gauche $= 3$, limite à droite $= 2$) ; discontinuité par saut"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Étape 1 — Calcul de $g(1)$.</strong> Le symbole $\\geq$ place $x=1$ dans la seconde branche :\\[ g(1) = 3(1) - 1 = 2. \\]C1 est satisfaite.",
-            "<strong>Étape 2 — Limite à gauche.</strong> Pour $x < 1$, on utilise $x+2$ :\\[ \\lim_{x \\to 1^{-}} g(x) = 1 + 2 = 3. \\]",
-            "<strong>Étape 3 — Limite à droite.</strong> Pour $x > 1$, on utilise $3x-1$ :\\[ \\lim_{x \\to 1^{+}} g(x) = 3 - 1 = 2. \\]",
-            "<strong>Étape 4 — Comparaison.</strong> Les deux limites latérales existent mais diffèrent :\\[ 3 \\neq 2. \\]",
-            "La limite globale n'existe donc pas : la condition <strong>C2 échoue</strong>.",
-            "<strong>Conclusion.</strong> $g$ est <strong>discontinue</strong> en $x = 1$. Comme les deux limites latérales sont finies mais différentes, il s'agit d'une <strong>discontinuité par saut</strong>.",
-            "L'amplitude du saut vaut $|3 - 2| = 1$ unité. Contrairement à une discontinuité par trou, elle n'est <em>pas réparable</em> : aucune redéfinition de $g(1)$ ne pourrait rendre la fonction continue."
-          ],
-          "piegeCourant": "Conclure à la continuité parce que $g(1)$ coïncide avec l'une des deux limites latérales."
         }
       ]
     },
@@ -10615,185 +10237,6 @@
       ]
     },
     {
-      "id": "CD-C03-E024",
-      "chapitre": 3,
-      "section": "3.4",
-      "type": "qcm",
-      "difficulte": "facile",
-      "tempsEstime": 2,
-      "acces": "payant",
-      "sectionNotes": "Théorèmes sur la continuité",
-      "motsCles": [
-        "théorème du quotient",
-        "condition"
-      ],
-      "savoirFaire": [
-        "1d",
-        "0b"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Si $f$ et $g$ sont continues en $x = a$, sous quelle condition le quotient $\\dfrac{f}{g}$ l'est-il aussi ?",
-          "choix": [
-            {
-              "cle": "a",
-              "texte": "Si $f(a) \\neq 0$"
-            },
-            {
-              "cle": "b",
-              "texte": "Si $f(a) \\neq g(a)$"
-            },
-            {
-              "cle": "c",
-              "texte": "Si $g(a) \\neq 0$"
-            },
-            {
-              "cle": "d",
-              "texte": "Aucune condition n'est nécessaire"
-            }
-          ]
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Qu'est-ce qui empêcherait le quotient d'être seulement <em>défini</em> en $a$ ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Si $g(a) \\neq 0$"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "Le théorème T3 du cours énonce : si $f$ et $g$ sont continues en $a$, alors $\\dfrac{f}{g}$ est continue en $a$, <strong>à la condition que $g(a) \\neq 0$</strong>.",
-            "La raison est immédiate : si $g(a) = 0$, le quotient $\\dfrac{f(a)}{g(a)}$ n'est pas défini. La condition C1 échoue, donc la continuité est impossible.",
-            "Aucune condition ne pèse sur le numérateur : si $f(a) = 0$ et $g(a) \\neq 0$, le quotient vaut simplement $0$, ce qui ne pose aucun problème.",
-            "<strong>Exemple.</strong> La fonction $\\dfrac{x^{2}}{x-3}$ est continue partout sauf en $x = 3$, où le dénominateur s'annule.",
-            "On retrouve la même condition qu'à la propriété du quotient des limites, au chapitre 2 — ce n'est pas un hasard : la continuité s'exprime précisément à l'aide des limites."
-          ],
-          "analyseChoix": [
-            {
-              "cle": "a",
-              "correct": false,
-              "explication": "C'est le dénominateur qui pose problème, pas le numérateur. Un numérateur nul donne simplement un quotient nul."
-            },
-            {
-              "cle": "b",
-              "correct": false,
-              "explication": "Cette condition n'a aucun rapport avec la continuité du quotient."
-            },
-            {
-              "cle": "c",
-              "correct": true,
-              "explication": "C'est la condition du théorème T3. Sans elle, le quotient n'est même pas défini en $a$."
-            },
-            {
-              "cle": "d",
-              "correct": false,
-              "explication": "Si $g(a) = 0$, le quotient n'est pas défini en $a$ : la condition C1 échoue et la continuité est impossible."
-            }
-          ],
-          "piegeCourant": "Placer la condition sur le numérateur plutôt que sur le dénominateur."
-        }
-      ]
-    },
-    {
-      "id": "CD-C03-E025",
-      "chapitre": 3,
-      "section": "3.4",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 3,
-      "acces": "payant",
-      "sectionNotes": "Théorèmes sur la continuité",
-      "motsCles": [
-        "polynôme",
-        "continuité sur le domaine"
-      ],
-      "savoirFaire": [
-        "1d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Sur quel ensemble la fonction $f(x) = x^{3} - 2x + 5$ est-elle continue ?"
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Quelle famille de fonctions cette expression appartient-elle ? Que dit le théorème correspondant ?"
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Sur $\\mathbb{R}$ tout entier"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Identifier la structure.</strong> L'expression $x^{3} - 2x + 5$ est une fonction <strong>polynomiale</strong>.",
-            "<strong>Appliquer le théorème.</strong> Le théorème du cours sur la continuité des fonctions usuelles énonce que les fonctions polynomiales sont continues sur $\\mathbb{R}$ tout entier.",
-            "<strong>Conclusion.</strong>\\[ f \\text{ est continue sur } \\mathbb{R}. \\]",
-            "<strong>Pourquoi c'est vrai.</strong> On pourrait aussi le justifier par décomposition : $x^{3}$, $-2x$ et $5$ sont continues sur $\\mathbb{R}$, et le théorème T1 (somme et différence) préserve la continuité.",
-            "Aucune valeur n'est exclue : un polynôme n'a ni dénominateur, ni radical, ni logarithme — donc aucune source de restriction."
-          ],
-          "piegeCourant": "Chercher des valeurs à exclure alors qu'un polynôme n'en a jamais."
-        }
-      ]
-    },
-    {
-      "id": "CD-C03-E026",
-      "chapitre": 3,
-      "section": "3.4",
-      "type": "calcul-court",
-      "difficulte": "facile",
-      "tempsEstime": 5,
-      "acces": "payant",
-      "sectionNotes": "Théorèmes sur la continuité",
-      "motsCles": [
-        "fonction rationnelle",
-        "théorème du quotient"
-      ],
-      "savoirFaire": [
-        "1d"
-      ],
-      "etapes": [
-        {
-          "etape": "enonce",
-          "titre": "Énoncé",
-          "texte": "Détermine où la fonction $\\displaystyle f(x) = \\dfrac{2x+1}{x^{2}-4}$ est continue."
-        },
-        {
-          "etape": "indice",
-          "titre": "Indice",
-          "texte": "Identifie d'abord la structure globale, puis vérifie la condition du théorème correspondant."
-        },
-        {
-          "etape": "reponse",
-          "titre": "Réponse finale",
-          "texte": "Sur $]-\\infty, -2[$, $]-2, 2[$ et $]2, +\\infty[$"
-        },
-        {
-          "etape": "demarche",
-          "titre": "Démarche détaillée",
-          "lignes": [
-            "<strong>Étape 1 — Identifier la structure.</strong> C'est un <em>quotient</em> de deux polynômes.",
-            "<strong>Étape 2 — Continuité des morceaux.</strong> Le numérateur $2x+1$ et le dénominateur $x^{2}-4$ sont des polynômes, donc continus sur $\\mathbb{R}$ (théorème sur les fonctions usuelles).",
-            "<strong>Étape 3 — Appliquer le théorème du quotient (T3).</strong> Le quotient est continu partout où le dénominateur ne s'annule pas. On cherche donc ses zéros :\\[ x^{2}-4 = 0 \\iff (x-2)(x+2) = 0 \\iff x = \\pm 2. \\]",
-            "<strong>Étape 4 — Conclure.</strong> La fonction est continue sur son domaine, c'est-à-dire sur\\[ ]-\\infty, -2[, \\qquad ]-2, 2[, \\qquad ]2, +\\infty[. \\]",
-            "<strong>Complément.</strong> En $x = \\pm 2$, le numérateur ne s'annule pas ($5$ et $-3$ respectivement). On obtient des formes $\\frac{k}{0}$ avec $k \\neq 0$ : ce sont des discontinuités <em>infinies</em>, avec asymptotes verticales."
-          ],
-          "piegeCourant": "Oublier de vérifier si le numérateur s'annule aussi aux points exclus, ce qui changerait le type de discontinuité."
-        }
-      ]
-    },
-    {
       "id": "CD-C03-E027",
       "chapitre": 3,
       "section": "3.4",
@@ -11034,6 +10477,627 @@
             }
           ],
           "piegeCourant": "Évaluer la continuité de la fonction extérieure en $a$ plutôt qu'en $g(a)$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E031",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "sectionNotes": "La continuité en un point",
+      "motsCles": [
+        "trois conditions",
+        "conjugué",
+        "forme 0/0",
+        "continuité vérifiée"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $f(x) = \\begin{cases} \\dfrac{\\sqrt{x+2} - 2}{x - 2} & \\text{si } x \\neq 2, \\\\[0.6em] \\dfrac{1}{4} & \\text{si } x = 2. \\end{cases}$\\\\[0.3em] (a) Vérifie les trois conditions de continuité en $x = 2$. \\\\[0.2em] (b) Conclus : $f$ est-elle continue en $x = 2$ ? Si non, précise le type de discontinuité."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'évaluation directe donne $\\frac{0}{0}$. Une racine au numérateur appelle la multiplication par le conjugué (technique du chapitre 2)."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) C1, C2 et C3 sont toutes satisfaites \\qquad (b) $f$ est \\textbf{continue} en $x = 2$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Condition C1.} La définition impose directement $f(2) = \\dfrac{1}{4}$. Donc $f(2)$ existe : \\textbf{C1 est satisfaite}.",
+            "\\textbf{Condition C2.} Pour $x \\neq 2$, on utilise la première branche. L'évaluation directe donne $\\dfrac{\\sqrt{4} - 2}{2 - 2} = \\dfrac{0}{0}$ : forme indéterminée.",
+            "On multiplie par le conjugué $\\sqrt{x+2} + 2$ au numérateur et au dénominateur :\n\\[\n\\dfrac{\\sqrt{x+2} - 2}{x - 2} \\cdot \\dfrac{\\sqrt{x+2} + 2}{\\sqrt{x+2} + 2}\n  = \\dfrac{(x + 2) - 4}{(x-2)\\bigl(\\sqrt{x+2} + 2\\bigr)}\n  = \\dfrac{x - 2}{(x-2)\\bigl(\\sqrt{x+2} + 2\\bigr)}.\n\\]",
+            "On simplifie par $(x - 2)$, légitime car $x \\neq 2$ :\n\\[\n\\lim_{x \\to 2} f(x) = \\lim_{x \\to 2} \\dfrac{1}{\\sqrt{x+2} + 2} = \\dfrac{1}{\\sqrt{4} + 2} = \\dfrac{1}{4}.\n\\]\nLa limite existe : \\textbf{C2 est satisfaite}.",
+            "\\textbf{Condition C3.} On compare :\n\\[\n\\lim_{x \\to 2} f(x) = \\dfrac{1}{4}\n\\qquad\\text{et}\\qquad\nf(2) = \\dfrac{1}{4}.\n\\]\nLes deux valeurs coïncident : \\textbf{C3 est satisfaite}.",
+            "\\textbf{Conclusion.} Les trois conditions sont remplies : $f$ est \\textbf{continue} en $x = 2$. La valeur $\\frac{1}{4}$ avait été choisie exactement pour combler le trou.",
+            "\\emph{Renvoi aux notes} : comparer avec l'exemple « Trois conditions sur une rationnelle simplifiable » (section 3.1), où la valeur manquante n'était \\emph{pas} fournie et la discontinuité subsistait."
+          ],
+          "piegeCourant": "Conclure à une discontinuité par trou dès qu'on voit $\\frac{0}{0}$, sans calculer la limite ni la comparer à $f(2)$. Ici la valeur $\\frac{1}{4}$ a été choisie précisément pour que C3 passe."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E032",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "La continuité en un point",
+      "motsCles": [
+        "paramètre",
+        "carré parfait",
+        "différence de carrés",
+        "réparation"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trouve la valeur de $c$ pour que\n\\[\nf(x) = \\begin{cases}\n\\dfrac{x^{2} - 10x + 25}{x^{2} - 25} & \\text{si } x \\neq 5, \\\\[1em]\nc & \\text{si } x = 5\n\\end{cases}\n\\]\nsoit continue en $x = 5$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le numérateur est un carré parfait, le dénominateur une différence de carrés. Simplifie avant de passer à la limite."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$c = 0$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Calcul de $f(5)$.} Par définition, $f(5) = c$. La condition \\textbf{C1} est satisfaite quelle que soit la valeur de $c$.",
+            "\\textbf{Étape 2 — Calcul de la limite.} Pour $x \\neq 5$, l'évaluation directe donne $\\dfrac{25 - 50 + 25}{25 - 25} = \\dfrac{0}{0}$. On factorise.",
+            "Numérateur : carré parfait, $x^{2} - 10x + 25 = (x - 5)^{2}$.\\\\[0.2em]\nDénominateur : différence de carrés, $x^{2} - 25 = (x - 5)(x + 5)$.",
+            "\\[\n\\lim_{x \\to 5} \\dfrac{(x-5)^{2}}{(x-5)(x+5)}\n  = \\lim_{x \\to 5} \\dfrac{x - 5}{x + 5}\n  = \\dfrac{5 - 5}{5 + 5}\n  = \\dfrac{0}{10} = 0.\n\\]\nLa limite existe et vaut $0$ : \\textbf{C2 est satisfaite}.",
+            "\\textbf{Étape 3 — Imposer la condition C3.} La continuité exige\n\\[\n\\lim_{x \\to 5} f(x) = f(5),\n\\]\nc'est-à-dire $0 = c$.",
+            "\\textbf{Conclusion.} Avec $c = 0$, la fonction devient continue en $x = 5$. Pour toute autre valeur de $c$, seule la condition \\textbf{C3} échouerait et on aurait une discontinuité par trou.",
+            "\\emph{Renvoi aux notes} : même structure que l'exemple « Réparer une discontinuité par trou » (section 3.3), mais avec une simplification à deux niveaux."
+          ],
+          "piegeCourant": "Simplifier $(x-5)^{2}$ par $(x-5)$ et oublier qu'il reste un facteur $(x-5)$ au numérateur : on conclut alors à tort $c = \\frac{1}{10}$ au lieu de $c = 0$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E033",
+      "chapitre": 3,
+      "section": "3.1",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "payant",
+      "sectionNotes": "La continuité en un point",
+      "motsCles": [
+        "classification",
+        "factorisation par groupement",
+        "trois discontinuités",
+        "asymptote"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit $\\displaystyle f(x) = \\dfrac{x^{2} - 4}{x^{3} - 2x^{2} - x + 2}$.\\\\[0.3em] (a) Identifie tous les points où $f$ est discontinue. \\\\[0.2em] (b) Classe chaque discontinuité (par trou, par saut ou infinie)."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Factorise le dénominateur par groupement : $x^{2}(x-2) - (x-2)$. Une seule des trois discontinuités se simplifie."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) $x = -1$, $x = 1$ et $x = 2$ \\qquad (b) par trou en $x = 2$ ; infinie en $x = 1$ et en $x = -1$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Factoriser numérateur et dénominateur.}\\\\[0.2em]\nNumérateur : $x^{2} - 4 = (x-2)(x+2)$.",
+            "Dénominateur, par groupement :\n\\[\nx^{3} - 2x^{2} - x + 2 = x^{2}(x - 2) - 1(x - 2) = (x - 2)(x^{2} - 1) = (x-2)(x-1)(x+1).\n\\]",
+            "\\textbf{Étape 2 — Points de discontinuité.} Le dénominateur s'annule en $x = 2$, $x = 1$ et $x = -1$. En ces trois points $f(x)$ n'est pas définie : \\textbf{C1 échoue} à chaque fois.",
+            "\\textbf{Étape 3 — Simplifier pour classer.} Pour $x \\neq 2$ :\n\\[\nf(x) = \\dfrac{(x-2)(x+2)}{(x-2)(x-1)(x+1)} = \\dfrac{x + 2}{(x-1)(x+1)}.\n\\]",
+            "\\textbf{Classement en $x = 2$.} Le facteur $(x-2)$ s'est simplifié. La limite est donc finie :\n\\[\n\\lim_{x \\to 2} f(x) = \\dfrac{2 + 2}{(2-1)(2+1)} = \\dfrac{4}{3}.\n\\]\nLimite finie mais $f(2)$ inexistant : discontinuité \\textbf{par trou} (réparable en posant $f(2) = \\frac{4}{3}$).",
+            "\\textbf{Classement en $x = 1$.} Le facteur $(x-1)$ ne s'est \\emph{pas} simplifié. Le numérateur y vaut $1 + 2 = 3 \\neq 0$, le dénominateur tend vers $0$ :\n\\[\n\\lim_{x \\to 1^{-}} f(x) = -\\infty,\n\\qquad\n\\lim_{x \\to 1^{+}} f(x) = +\\infty.\n\\]\nDiscontinuité \\textbf{infinie} : asymptote verticale $x = 1$.",
+            "\\textbf{Classement en $x = -1$.} Même raisonnement, le numérateur y vaut $-1 + 2 = 1 \\neq 0$ :\n\\[\n\\lim_{x \\to -1^{-}} f(x) = +\\infty,\n\\qquad\n\\lim_{x \\to -1^{+}} f(x) = -\\infty.\n\\]\nDiscontinuité \\textbf{infinie} : asymptote verticale $x = -1$.",
+            "\\textbf{Bilan.} Une seule fonction, trois discontinuités, deux types : un trou en $x=2$, deux asymptotes en $x = \\pm 1$.",
+            "\\emph{Renvoi aux notes} : même logique que l'exemple « Deux discontinuités de types différents dans une même fonction » (section 3.1), étendu à trois points."
+          ],
+          "piegeCourant": "Conclure que les trois discontinuités sont du même type parce qu'elles viennent toutes d'un zéro du dénominateur. Seul le facteur qui \\emph{se simplifie} avec le numérateur donne un trou ; les autres donnent des asymptotes."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E034",
+      "chapitre": 3,
+      "section": "3.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "payant",
+      "sectionNotes": "La continuité sur un intervalle ouvert",
+      "motsCles": [
+        "intervalles ouverts",
+        "racine paire",
+        "zéros du dénominateur",
+        "découpage du domaine"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine tous les intervalles ouverts \\emph{maximaux} sur lesquels $\\displaystyle f(x) = \\dfrac{\\sqrt{9 - x^{2}}}{(x - 1)(x + 2)}$ est continue."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux sources de restriction : la racine paire au numérateur et les zéros du dénominateur. Trouve d'abord le domaine, puis découpe-le aux points exclus."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$]-3, -2[$, \\quad $]-2, 1[$ \\quad et \\quad $]1, 3[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Restriction du numérateur.} Racine d'indice pair : le radicande doit être $\\geq 0$.\n\\[\n9 - x^{2} \\geq 0 \\iff (3-x)(3+x) \\geq 0 \\iff -3 \\leq x \\leq 3.\n\\]",
+            "\\textbf{Étape 2 — Restriction du dénominateur.}\n\\[\n(x - 1)(x + 2) \\neq 0 \\iff x \\neq 1 \\text{ et } x \\neq -2.\n\\]\nLes deux valeurs $-2$ et $1$ sont dans $[-3, 3]$ : elles doivent effectivement être retirées.",
+            "\\textbf{Étape 3 — Domaine.}\n\\[\n\\mathrm{dom}\\,f = [-3, -2[\\;\\cup\\;]-2, 1[\\;\\cup\\;]1, 3].\n\\]",
+            "\\textbf{Étape 4 — Continuité sur ce domaine.} Le numérateur est une composée continue (polynôme suivi d'une racine), le dénominateur un polynôme. Par le théorème du quotient, $f$ est continue partout sur son domaine.",
+            "\\textbf{Étape 5 — Extraire les intervalles \\emph{ouverts}.} Les bornes $-3$ et $3$ appartiennent au domaine, mais un intervalle ouvert ne peut pas les inclure. On retire donc les extrémités fermées :\n\\[\n]-3, -2[, \\qquad ]-2, 1[, \\qquad ]1, 3[.\n\\]",
+            "\\textbf{Conclusion.} $f$ est continue sur les trois intervalles ouverts maximaux $]-3, -2[$, $]-2, 1[$ et $]1, 3[$.",
+            "\\emph{Renvoi aux notes} : même démarche que l'exemple « Plusieurs intervalles à vérifier » (section 3.2), avec en plus la contrainte de la racine paire."
+          ],
+          "piegeCourant": "Donner $[-3, -2[$ comme réponse alors qu'on demande des intervalles \\emph{ouverts} : la borne $-3$ doit être exclue même si $f(-3) = 0$ existe."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E035",
+      "chapitre": 3,
+      "section": "3.2",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 10,
+      "acces": "payant",
+      "sectionNotes": "La continuité sur un intervalle ouvert",
+      "motsCles": [
+        "plus grand intervalle",
+        "logarithme",
+        "tableau de signes",
+        "point cible"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine le plus grand intervalle ouvert contenant $x = 2$ sur lequel $\\displaystyle f(x) = \\dfrac{\\ln\\bigl((x-1)(4-x)\\bigr)}{x^{2} - 9}$ est continue."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'argument du logarithme doit être \\emph{strictement} positif : fais un tableau de signes pour $(x-1)(4-x)$. N'oublie pas les zéros du dénominateur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$]1, 3[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Condition du logarithme.} L'argument doit être strictement positif :\n\\[\n(x - 1)(4 - x) > 0.\n\\]",
+            "Tableau de signes autour de $1$ et $4$ :\n\\begin{center}\n\\begin{tabular}{c|ccc}\n & $x < 1$ & $1 < x < 4$ & $x > 4$ \\\\ \\hline\n$x - 1$ & $-$ & $+$ & $+$ \\\\\n$4 - x$ & $+$ & $+$ & $-$ \\\\ \\hline\nproduit & $-$ & $+$ & $-$\n\\end{tabular}\n\\end{center}\nLe produit est strictement positif pour $1 < x < 4$.",
+            "\\textbf{Étape 2 — Condition du dénominateur.}\n\\[\nx^{2} - 9 \\neq 0 \\iff (x-3)(x+3) \\neq 0 \\iff x \\neq 3 \\text{ et } x \\neq -3.\n\\]\nSeul $x = 3$ tombe dans $]1, 4[$ : c'est le seul à retirer.",
+            "\\textbf{Étape 3 — Domaine de continuité.}\n\\[\n]1, 4[\\;\\setminus\\;\\{3\\} = \\;]1, 3[\\;\\cup\\;]3, 4[.\n\\]",
+            "\\textbf{Étape 4 — Localiser $x = 2$.} On a $1 < 2 < 3$, donc $x = 2$ appartient au morceau $]1, 3[$.",
+            "\\textbf{Étape 5 — Chercher le plus grand intervalle ouvert.} En partant de $x = 2$ et en s'étendant :\n\\begin{itemize}\\itemsep 1pt\n\\item vers la gauche, on ne peut pas dépasser $x = 1$ (l'argument du log s'y annule) ;\n\\item vers la droite, on ne peut pas dépasser $x = 3$ (le dénominateur s'y annule).\n\\end{itemize}",
+            "\\textbf{Conclusion.} Le plus grand intervalle ouvert cherché est $]1, 3[$.",
+            "\\emph{Renvoi aux notes} : même approche que l'exemple « Plus grand intervalle ouvert de continuité autour d'un point » (section 3.2), avec le logarithme en plus de la racine."
+          ],
+          "piegeCourant": "Répondre $]1, 4[$ en oubliant que le dénominateur s'annule en $x = 3$, qui se trouve à l'intérieur de cet intervalle."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E036",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 11,
+      "acces": "payant",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "trois branches",
+        "deux jonctions",
+        "radical",
+        "logarithme"
+      ],
+      "savoirFaire": [
+        "1d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Soit\n\\[\nf(x) = \\begin{cases}\n\\sqrt{x + 1} & \\text{si } x \\leq 3, \\\\[0.4em]\n\\dfrac{2x + 2}{x + 1} & \\text{si } 3 < x < 8, \\\\[0.8em]\n\\ln(x - 7) & \\text{si } x \\geq 8.\n\\end{cases}\n\\]\nÉtudie la continuité de $f$ aux deux points de jonction $x = 3$ et $x = 8$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux jonctions à traiter séparément. Pour chacune, calcule $f(a)$ avec la branche dont le symbole ($\\leq$, $\\geq$) contient $a$, puis les deux limites latérales."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Continue en $x = 3$ \\qquad ; \\qquad discontinue \\textbf{par saut} en $x = 8$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Jonction $x = 3$ — Étape 1 : calcul de $f(3)$.} Le symbole $\\leq$ place $x = 3$ dans la première branche :\n\\[\nf(3) = \\sqrt{3 + 1} = \\sqrt{4} = 2.\n\\]\n\\textbf{C1} est satisfaite.",
+            "\\textbf{Étape 2 : limite à gauche.} Pour $x < 3$, on utilise $\\sqrt{x+1}$ :\n\\[\n\\lim_{x \\to 3^{-}} f(x) = \\sqrt{3 + 1} = 2.\n\\]",
+            "\\textbf{Étape 3 : limite à droite.} Pour $3 < x < 8$, on utilise $\\dfrac{2x+2}{x+1}$ :\n\\[\n\\lim_{x \\to 3^{+}} f(x) = \\dfrac{2(3) + 2}{3 + 1} = \\dfrac{8}{4} = 2.\n\\]",
+            "\\textbf{Étape 4 : comparaison.} Les deux latérales valent $2$, donc $\\displaystyle\\lim_{x \\to 3} f(x) = 2$ existe (\\textbf{C2} satisfaite), et cette limite égale $f(3) = 2$ (\\textbf{C3} satisfaite).\\\\[0.2em]\n\\textbf{$f$ est continue en $x = 3$.}",
+            "\\textbf{Jonction $x = 8$ — Étape 1 : calcul de $f(8)$.} Le symbole $\\geq$ place $x = 8$ dans la troisième branche :\n\\[\nf(8) = \\ln(8 - 7) = \\ln 1 = 0.\n\\]\n\\textbf{C1} est satisfaite.",
+            "\\textbf{Étape 2 : limite à gauche.} Pour $3 < x < 8$, on utilise $\\dfrac{2x+2}{x+1}$ :\n\\[\n\\lim_{x \\to 8^{-}} f(x) = \\dfrac{2(8) + 2}{8 + 1} = \\dfrac{18}{9} = 2.\n\\]",
+            "\\textbf{Étape 3 : limite à droite.} Pour $x > 8$, on utilise $\\ln(x - 7)$ :\n\\[\n\\lim_{x \\to 8^{+}} f(x) = \\ln(8 - 7) = \\ln 1 = 0.\n\\]",
+            "\\textbf{Étape 4 : comparaison.} Comme $2 \\neq 0$, les limites latérales diffèrent : $\\displaystyle\\lim_{x \\to 8} f(x)$ n'existe pas et \\textbf{C2 échoue}.\\\\[0.2em]\n\\textbf{$f$ est discontinue en $x = 8$}, par saut, d'amplitude $2 - 0 = 2$ unités.",
+            "\\emph{Remarque.} La deuxième branche se simplifie : $\\dfrac{2x+2}{x+1} = \\dfrac{2(x+1)}{x+1} = 2$ pour $x \\neq -1$. Sur $]3, 8[$ elle est donc constante et vaut $2$, ce qui accélère les deux calculs de limite.",
+            "\\emph{Renvoi aux notes} : voir l'exemple « Jonction impliquant un radical » (section 3.3) pour la jonction $x = 3$, et l'exemple modèle « Fonction continue au point de jonction » pour la méthode en quatre étapes."
+          ],
+          "piegeCourant": "Utiliser la mauvaise branche pour $f(8)$ : comme le symbole est $\\geq$, c'est $\\ln(x-7)$ et non la branche rationnelle qui donne la valeur de la fonction en $8$."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E037",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 8,
+      "acces": "payant",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "paramètre",
+        "différence de cubes",
+        "forme 0/0",
+        "réparation"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trouve la valeur de $k$ pour que\n\\[\nf(x) = \\begin{cases}\n\\dfrac{x^{3} - 8}{x - 2} & \\text{si } x \\neq 2, \\\\[1em]\nk & \\text{si } x = 2\n\\end{cases}\n\\]\nsoit continue en $x = 2$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "$x^{3} - 8$ est une différence de cubes : $a^{3} - b^{3} = (a-b)(a^{2} + ab + b^{2})$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$k = 12$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Calcul de $f(2)$.} Par définition, $f(2) = k$. La condition \\textbf{C1} est satisfaite pour toute valeur de $k$.",
+            "\\textbf{Étape 2 — Calcul de la limite.} Pour $x \\neq 2$, l'évaluation directe donne $\\dfrac{8 - 8}{2 - 2} = \\dfrac{0}{0}$ : forme indéterminée.",
+            "On applique la formule de la différence de cubes avec $a = x$ et $b = 2$ :\n\\[\nx^{3} - 8 = x^{3} - 2^{3} = (x - 2)(x^{2} + 2x + 4).\n\\]",
+            "\\[\n\\lim_{x \\to 2} \\dfrac{x^{3} - 8}{x - 2}\n  = \\lim_{x \\to 2} \\dfrac{(x-2)(x^{2} + 2x + 4)}{x - 2}\n  = \\lim_{x \\to 2} (x^{2} + 2x + 4).\n\\]",
+            "On évalue directement (polynôme, donc continu) :\n\\[\n\\lim_{x \\to 2}(x^{2} + 2x + 4) = 4 + 4 + 4 = 12.\n\\]\nLa limite existe : \\textbf{C2 est satisfaite}.",
+            "\\textbf{Étape 3 — Imposer la condition C3.} La continuité exige\n\\[\n\\lim_{x \\to 2} f(x) = f(2)\n\\quad\\Longrightarrow\\quad\n12 = k.\n\\]",
+            "\\textbf{Conclusion.} Avec $k = 12$, la fonction est continue en $x = 2$. Pour toute autre valeur, la discontinuité serait \\emph{par trou} (C1 et C2 passent, seule C3 échoue).",
+            "\\emph{Renvoi aux notes} : voir l'exemple « Réparer une discontinuité par trou » (section 3.3) ; ici la factorisation est une différence de cubes au lieu d'une différence de carrés."
+          ],
+          "piegeCourant": "Croire que $x^{3} - 8$ se factorise en $(x-2)^{3}$ ou en $(x-2)(x^{2} - 2x + 4)$ : le trinôme est $x^{2} + 2x + 4$, avec des signes tous positifs."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E038",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 12,
+      "acces": "payant",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "deux paramètres",
+        "système d'équations",
+        "trois branches",
+        "deux jonctions"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trouve les valeurs de $a$ et de $b$ pour que\n\\[\nf(x) = \\begin{cases}\nax + 3 & \\text{si } x \\leq 2, \\\\[0.3em]\nx^{2} + b & \\text{si } 2 < x < 5, \\\\[0.3em]\n2x + a & \\text{si } x \\geq 5\n\\end{cases}\n\\]\nsoit continue \\emph{partout}."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Deux jonctions donnent deux équations. Attention : le paramètre $a$ apparaît à la fois dans la première et dans la troisième branche."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$a = -14$ \\qquad et \\qquad $b = -29$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Repérer les points de jonction.} La fonction change de définition en $x = 2$ et en $x = 5$. À l'intérieur de chaque portion, la formule est polynomiale, donc continue. Tout se joue aux deux jonctions.",
+            "\\textbf{Étape 2 — Condition en $x = 2$.} Le symbole $\\leq$ place $x = 2$ dans la première branche :\n\\[\nf(2) = a(2) + 3 = 2a + 3.\n\\]\nLimites latérales :\n\\[\n\\lim_{x \\to 2^{-}} f(x) = 2a + 3,\n\\qquad\n\\lim_{x \\to 2^{+}} f(x) = 2^{2} + b = 4 + b.\n\\]",
+            "La continuité en $x = 2$ exige que les trois valeurs coïncident :\n\\[\n2a + 3 = 4 + b\n\\quad\\Longrightarrow\\quad\n2a - b = 1. \\tag{1}\n\\]",
+            "\\textbf{Étape 3 — Condition en $x = 5$.} Le symbole $\\geq$ place $x = 5$ dans la troisième branche :\n\\[\nf(5) = 2(5) + a = 10 + a.\n\\]\nLimites latérales :\n\\[\n\\lim_{x \\to 5^{-}} f(x) = 5^{2} + b = 25 + b,\n\\qquad\n\\lim_{x \\to 5^{+}} f(x) = 10 + a.\n\\]",
+            "La continuité en $x = 5$ exige :\n\\[\n25 + b = 10 + a\n\\quad\\Longrightarrow\\quad\na - b = 15. \\tag{2}\n\\]",
+            "\\textbf{Étape 4 — Résoudre le système.} On soustrait (2) de (1) :\n\\[\n(2a - b) - (a - b) = 1 - 15\n\\quad\\Longrightarrow\\quad\na = -14.\n\\]\nOn reporte dans (2) :\n\\[\n-14 - b = 15\n\\quad\\Longrightarrow\\quad\nb = -29.\n\\]",
+            "\\textbf{Étape 5 — Vérification.} Avec $a = -14$ et $b = -29$ :\n\\begin{itemize}\\itemsep 1pt\n\\item en $x = 2$ : $f(2) = 2(-14) + 3 = -25$ ; branche du milieu : $4 + (-29) = -25$. Égalité $\\checkmark$\n\\item en $x = 5$ : branche du milieu : $25 + (-29) = -4$ ; $f(5) = 10 + (-14) = -4$. Égalité $\\checkmark$\n\\end{itemize}",
+            "\\textbf{Conclusion.} Avec $a = -14$ et $b = -29$, la fonction est continue partout.",
+            "\\emph{Renvoi aux notes} : voir l'exemple « Deux paramètres simultanés à déterminer » (section 3.3). Ici la difficulté supplémentaire vient du fait que $a$ réapparaît dans la troisième branche."
+          ],
+          "piegeCourant": "Traiter les deux jonctions comme indépendantes et résoudre chaque équation séparément. Comme $a$ apparaît dans deux branches, les deux conditions forment un \\emph{système} qu'il faut résoudre ensemble."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E039",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "sectionNotes": "Continuité d'une fonction définie par parties",
+      "motsCles": [
+        "paramètre",
+        "conjugué",
+        "forme 0/0",
+        "radical"
+      ],
+      "savoirFaire": [
+        "1d",
+        "1c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Trouve la valeur de $c$ pour que\n\\[\nf(x) = \\begin{cases}\n\\dfrac{\\sqrt{x + 3} - 2}{x - 1} & \\text{si } x \\neq 1, \\\\[1em]\nc & \\text{si } x = 1\n\\end{cases}\n\\]\nsoit continue en $x = 1$."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Forme $\\frac{0}{0}$ avec une racine : multiplie le numérateur et le dénominateur par le conjugué $\\sqrt{x+3} + 2$."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$c = \\dfrac{1}{4}$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Calcul de $f(1)$.} Par définition, $f(1) = c$. \\textbf{C1} est satisfaite quelle que soit la valeur de $c$.",
+            "\\textbf{Étape 2 — Calcul de la limite.} Pour $x \\neq 1$, l'évaluation directe donne\n\\[\n\\dfrac{\\sqrt{1 + 3} - 2}{1 - 1} = \\dfrac{2 - 2}{0} = \\dfrac{0}{0} :\n\\]\nforme indéterminée.",
+            "On multiplie par le conjugué $\\sqrt{x+3} + 2$ :\n\\[\n\\dfrac{\\sqrt{x+3} - 2}{x - 1} \\cdot \\dfrac{\\sqrt{x+3} + 2}{\\sqrt{x+3} + 2}\n  = \\dfrac{(x + 3) - 4}{(x-1)\\bigl(\\sqrt{x+3} + 2\\bigr)}\n  = \\dfrac{x - 1}{(x-1)\\bigl(\\sqrt{x+3} + 2\\bigr)}.\n\\]",
+            "On simplifie par $(x-1)$, légitime puisque $x \\neq 1$ :\n\\[\n\\lim_{x \\to 1} f(x)\n  = \\lim_{x \\to 1} \\dfrac{1}{\\sqrt{x+3} + 2}\n  = \\dfrac{1}{\\sqrt{4} + 2}\n  = \\dfrac{1}{4}.\n\\]\n\\textbf{C2} est satisfaite.",
+            "\\textbf{Étape 3 — Imposer la condition C3.}\n\\[\n\\lim_{x \\to 1} f(x) = f(1)\n\\quad\\Longrightarrow\\quad\n\\dfrac{1}{4} = c.\n\\]",
+            "\\textbf{Conclusion.} Avec $c = \\dfrac{1}{4}$, la fonction est continue en $x = 1$.",
+            "\\emph{Renvoi aux notes} : même technique que l'exercice \\texttt{CD-C03-E031} (section 3.1), mais ici la valeur à choisir est l'inconnue."
+          ],
+          "piegeCourant": "Multiplier seulement le numérateur par le conjugué sans multiplier aussi le dénominateur : l'expression obtenue n'est alors plus égale à la fonction de départ."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E040",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 11,
+      "acces": "payant",
+      "sectionNotes": "Théorèmes sur la continuité",
+      "motsCles": [
+        "composition triple",
+        "logarithme",
+        "racine paire",
+        "condition absorbante"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine l'ensemble de tous les points où $\\displaystyle f(x) = \\ln\\!\\left(\\dfrac{\\sqrt{x^{2} - 4}}{x - 3}\\right)$ est continue."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Trois conditions imbriquées. Celle du logarithme (argument \\emph{strictement} positif) est la plus contraignante : elle finit par absorber les deux autres."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$]3, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Recenser les trois conditions.}\n\\begin{itemize}\\itemsep 2pt\n\\item[(a)] racine paire : $x^{2} - 4 \\geq 0$ ;\n\\item[(b)] dénominateur non nul : $x - 3 \\neq 0$ ;\n\\item[(c)] argument du logarithme strictement positif : $\\dfrac{\\sqrt{x^{2}-4}}{x-3} > 0$.\n\\end{itemize}",
+            "\\textbf{Étape 2 — Analyse de (a).} $x^{2} - 4 = (x-2)(x+2) \\geq 0$ pour $x \\leq -2$ ou $x \\geq 2$.",
+            "\\textbf{Étape 3 — Analyse de (c).} Comme $\\sqrt{x^{2}-4} \\geq 0$ partout où elle est définie, le quotient est $> 0$ si et seulement si :\n\\begin{itemize}\\itemsep 1pt\n\\item le numérateur est \\emph{strictement} positif : $\\sqrt{x^{2}-4} > 0 \\iff x^{2} - 4 > 0 \\iff x < -2$ ou $x > 2$ (inégalités strictes, sinon le quotient vaudrait $0$) ;\n\\item le dénominateur est du même signe, donc positif : $x - 3 > 0 \\iff x > 3$.\n\\end{itemize}",
+            "\\textbf{Étape 4 — Intersection.} On combine :\n\\[\n\\bigl(x < -2 \\text{ ou } x > 2\\bigr)\n\\quad\\text{ET}\\quad\nx > 3.\n\\]\nLa branche $x < -2$ est incompatible avec $x > 3$. Il reste $x > 2$ et $x > 3$, c'est-à-dire $x > 3$.",
+            "\\textbf{Étape 5 — Vérifier l'absorption.} La condition $x > 3$ implique automatiquement $x^{2} - 4 > 0$ (condition (a)) et $x \\neq 3$ (condition (b)). Les conditions (a) et (b) sont donc absorbées par (c).",
+            "\\textbf{Étape 6 — Continuité.} Sur $]3, +\\infty[$, $f$ est une composée de fonctions continues (polynôme, racine, quotient, logarithme), chacune appliquée sur un domaine où elle est continue. Par les théorèmes de composition et du quotient, $f$ est continue sur tout cet ensemble.",
+            "\\textbf{Conclusion.} $f$ est continue sur $]3, +\\infty[$.",
+            "\\emph{Renvoi aux notes} : voir l'exemple « Composition triple : log, quotient, radical » (section 3.4). Attention, l'ordre des facteurs y était $4 - x^{2}$ (radicande borné) alors qu'ici c'est $x^{2} - 4$ (radicande non borné), ce qui change la forme de la condition (a)."
+          ],
+          "piegeCourant": "Écrire $x^{2} - 4 \\geq 0$ (avec égalité permise) dans la condition (c) : si $x = \\pm 2$, le numérateur vaut $0$, le quotient vaut $0$, et $\\ln 0$ n'existe pas. L'inégalité doit être stricte."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E041",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 11,
+      "acces": "payant",
+      "sectionNotes": "Théorèmes sur la continuité",
+      "motsCles": [
+        "arcsinus",
+        "racine au dénominateur",
+        "intervalle borné",
+        "inégalité stricte"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine l'ensemble de tous les points où $\\displaystyle f(x) = \\dfrac{\\arcsin\\!\\left(\\dfrac{x-1}{2}\\right)}{\\sqrt{4 - x^{2}}}$ est continue."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "L'arcsinus impose un intervalle borné au numérateur. Au dénominateur, la racine doit non seulement être définie, mais aussi \\emph{non nulle} : l'inégalité y est stricte."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$[-1, 2[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Condition du numérateur.} $\\arcsin(u)$ est définie si et seulement si $-1 \\leq u \\leq 1$. Ici $u = \\dfrac{x-1}{2}$, donc\n\\[\n-1 \\leq \\dfrac{x - 1}{2} \\leq 1\n\\iff -2 \\leq x - 1 \\leq 2\n\\iff -1 \\leq x \\leq 3.\n\\]",
+            "\\textbf{Étape 2 — Condition du dénominateur.} Deux exigences simultanées :\n\\begin{itemize}\\itemsep 1pt\n\\item la racine doit exister : $4 - x^{2} \\geq 0$ ;\n\\item le dénominateur ne doit pas s'annuler : $\\sqrt{4 - x^{2}} \\neq 0$, donc $4 - x^{2} \\neq 0$.\n\\end{itemize}\nLes deux se combinent en une seule inégalité \\emph{stricte} :\n\\[\n4 - x^{2} > 0 \\iff (2-x)(2+x) > 0 \\iff -2 < x < 2.\n\\]",
+            "\\textbf{Étape 3 — Intersection.} On combine les deux ensembles :\n\\[\n[-1, 3] \\cap \\;]-2, 2[\\; = \\;[-1, 2[.\n\\]\nLa borne $-1$ est \\emph{incluse} : l'arcsinus y est défini ($\\arcsin(-1) = -\\frac{\\pi}{2}$) et le dénominateur y vaut $\\sqrt{3} \\neq 0$.\\\\[0.2em]\nLa borne $2$ est \\emph{exclue} : le dénominateur s'y annule.",
+            "\\textbf{Étape 4 — Continuité.} Sur $[-1, 2[$, le numérateur est une composée continue (polynôme suivi de l'arcsinus, continue sur $[-1,1]$), le dénominateur est une composée continue qui ne s'annule pas. Par le théorème du quotient, $f$ est continue sur tout cet ensemble.",
+            "\\textbf{Conclusion.} $f$ est continue sur $[-1, 2[$.",
+            "\\emph{Vérification rapide.} En $x = 0$ : $\\arcsin(-\\frac{1}{2}) / \\sqrt{4} \\approx -0{,}26$, bien défini. En $x = 1{,}9$ : dénominateur $\\sqrt{4 - 3{,}61} = \\sqrt{0{,}39} \\approx 0{,}62$, encore non nul. En $x = 2$ : dénominateur nul, exclu.",
+            "\\emph{Renvoi aux notes} : le théorème de composition (section 3.4) s'applique au numérateur ; le théorème du quotient impose la condition stricte au dénominateur."
+          ],
+          "piegeCourant": "Écrire $4 - x^{2} \\geq 0$ pour le dénominateur, ce qui donnerait $[-2, 2]$ : on oublie alors que la racine se trouve \\emph{au dénominateur} et ne peut pas valoir $0$. L'inégalité doit être stricte."
+        }
+      ]
+    },
+    {
+      "id": "CD-C03-E042",
+      "chapitre": 3,
+      "section": "3.4",
+      "type": "calcul-long",
+      "difficulte": "difficile",
+      "tempsEstime": 9,
+      "acces": "payant",
+      "sectionNotes": "Théorèmes sur la continuité",
+      "motsCles": [
+        "logarithme",
+        "quotient",
+        "condition redondante",
+        "théorème du quotient"
+      ],
+      "savoirFaire": [
+        "1d",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Détermine l'ensemble de tous les points où $\\displaystyle f(x) = \\dfrac{\\ln(x + 3)}{x^{2} - 9}$ est continue."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le logarithme exclut déjà une des deux racines du dénominateur. Repère laquelle avant de conclure."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$]-3, 3[\\;\\cup\\;]3, +\\infty[$"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "\\textbf{Étape 1 — Condition du numérateur.} L'argument du logarithme doit être strictement positif :\n\\[\nx + 3 > 0 \\iff x > -3.\n\\]",
+            "\\textbf{Étape 2 — Condition du dénominateur.}\n\\[\nx^{2} - 9 \\neq 0 \\iff (x-3)(x+3) \\neq 0 \\iff x \\neq 3 \\text{ et } x \\neq -3.\n\\]",
+            "\\textbf{Étape 3 — Repérer la redondance.} La condition $x > -3$ (étape 1) exclut \\emph{déjà} la valeur $x = -3$. La restriction $x \\neq -3$ du dénominateur n'apporte donc rien de nouveau.\\\\[0.2em]\nIl ne reste qu'une seule restriction supplémentaire à appliquer : $x \\neq 3$.",
+            "\\textbf{Étape 4 — Intersection.}\n\\[\n]-3, +\\infty[\\;\\setminus\\;\\{3\\} = \\;]-3, 3[\\;\\cup\\;]3, +\\infty[.\n\\]",
+            "\\textbf{Étape 5 — Continuité.} Le numérateur $\\ln(x+3)$ est une composée continue sur $]-3, +\\infty[$ ; le dénominateur est un polynôme, continu partout. Par le théorème du quotient (\\textbf{T3}), $f$ est continue partout où les deux le sont et où le dénominateur ne s'annule pas.",
+            "\\textbf{Conclusion.} $f$ est continue sur $]-3, 3[\\;\\cup\\;]3, +\\infty[$.",
+            "\\emph{Renvoi aux notes} : voir l'exemple « Fonction logarithmique » (section 3.4) pour le traitement du logarithme, et l'exemple modèle « Fonction rationnelle » pour le théorème du quotient."
+          ],
+          "piegeCourant": "Écrire la réponse comme $\\mathbb{R}\\setminus\\{-3, 3\\}$ en traitant les deux zéros du dénominateur de la même façon. En réalité, tout l'intervalle $]-\\infty, -3]$ est exclu par le logarithme, pas seulement le point $-3$."
         }
       ]
     },
