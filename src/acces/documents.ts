@@ -355,6 +355,31 @@ export const DOCUMENTS: Document[] = [
     ),
   ]),
 
+  // --- Série de révision cumulative -----------------------------------------
+  //
+  // Contrairement aux méli-mélos A–E, qui tirent leurs exercices dans les
+  // banques de chapitre, celle-ci a ses cinquante exercices en propre
+  // (`banque/revision-cumulative.json` du projet jumeau). Ils n'apparaissent
+  // dans aucun cahier de chapitre, et le recueil ne montre ni le type, ni le
+  // niveau, ni le chapitre d'origine : l'étudiant doit reconnaître la
+  // situation lui-même.
+  doc(
+    CALCUL_DIFFERENTIEL,
+    "revision-cumulative",
+    "Série de révision cumulative — chapitres 1 à 3",
+    "revision/revision-cumulative.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_DIFFERENTIEL,
+    "revision-cumulative-solutions",
+    "Série de révision cumulative — solutions",
+    "revision/revision-cumulative-solutions.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+
   // --- Examens : énoncé, corrigé, grille ------------------------------------
   ...EXAMENS.flatMap((e) => [
     doc(
