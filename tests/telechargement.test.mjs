@@ -23,11 +23,13 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 84 documents", () => {
-  // Calcul différentiel — 65 :
+test("le catalogue couvre les 86 documents", () => {
+  // Calcul différentiel — 67 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
-  //   10 révision (5 séries + 5 solutions)
+  //   12 révision (5 méli-mélos + leurs 5 solutions, puis la série
+  //      cumulative et ses solutions — celle-ci a ses exercices en
+  //      propre au lieu de les tirer dans les banques de chapitre)
   //   18 examens (6 × énoncé, corrigé, grille)
   // Probabilités et statistique — 10 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
@@ -36,19 +38,19 @@ test("le catalogue couvre les 84 documents", () => {
   //    6 notes (chapitres 1 à 3 × 2 versions ; pas de recueil complet)
   //    3 exercices (chapitres 1 à 3, recueil complet seulement : les PDF
   //      « énoncés seuls » restent dans le seau mais ne sont plus déclarés)
-  assert.equal(DOCUMENTS.length, 84);
+  assert.equal(DOCUMENTS.length, 86);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 30, exercices: 26, revision: 10, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 30, exercices: 26, revision: 12, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
     return acc;
   }, {});
   assert.deepEqual(parCours, {
-    "calcul-differentiel": 65,
+    "calcul-differentiel": 67,
     "probabilites-statistique": 10,
     "calcul-integral": 9,
   });
