@@ -23,13 +23,14 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 86 documents", () => {
-  // Calcul différentiel — 67 :
+test("le catalogue couvre les 76 documents", () => {
+  // Calcul différentiel — 57 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
-  //   12 révision (5 méli-mélos + leurs 5 solutions, puis la série
-  //      cumulative et ses solutions — celle-ci a ses exercices en
-  //      propre au lieu de les tirer dans les banques de chapitre)
+  //    2 révision (la série cumulative et ses solutions — elle a ses
+  //      exercices en propre au lieu de les tirer dans les banques de
+  //      chapitre. Les cinq méli-mélos A–E ont été retirés du catalogue
+  //      le 2026-09-24 ; leurs PDF restent dans le seau, plus déclarés)
   //   18 examens (6 × énoncé, corrigé, grille)
   // Probabilités et statistique — 10 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
@@ -38,19 +39,19 @@ test("le catalogue couvre les 86 documents", () => {
   //    6 notes (chapitres 1 à 3 × 2 versions ; pas de recueil complet)
   //    3 exercices (chapitres 1 à 3, recueil complet seulement : les PDF
   //      « énoncés seuls » restent dans le seau mais ne sont plus déclarés)
-  assert.equal(DOCUMENTS.length, 86);
+  assert.equal(DOCUMENTS.length, 76);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 30, exercices: 26, revision: 12, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 30, exercices: 26, revision: 2, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
     return acc;
   }, {});
   assert.deepEqual(parCours, {
-    "calcul-differentiel": 67,
+    "calcul-differentiel": 57,
     "probabilites-statistique": 10,
     "calcul-integral": 9,
   });
@@ -137,9 +138,8 @@ test("tout chemin tient dans un jeu de caractères sûr pour Cloud Storage", () 
   // s'appelaient Chapitre_1_ÉTUDIANT.pdf avant d'entrer au catalogue.
   //
   // Les majuscules restent admises : le suffixe -ETUDIANT / -PROF, mais
-  // aussi melimelo-A.pdf et finalB.pdf, qui sont au catalogue depuis le
-  // début. Ce qui est proscrit, c'est le non-ASCII, l'espace et
-  // l'underscore.
+  // aussi finalA.pdf et finalB.pdf, qui sont au catalogue depuis le début.
+  // Ce qui est proscrit, c'est le non-ASCII, l'espace et l'underscore.
   for (const d of DOCUMENTS) {
     assert.ok(
       /^[A-Za-z0-9/.-]+$/.test(d.chemin),

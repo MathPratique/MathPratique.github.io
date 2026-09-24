@@ -218,8 +218,6 @@ const CHAPITRES_PROBSTAT: Chapitre[] = [
   },
 ];
 
-const SERIES = ["A", "B", "C", "D", "E"];
-
 const EXAMENS: { id: string; titre: string }[] = [
   { id: "intra1", titre: "Examen intra 1" },
   { id: "intra2", titre: "Examen intra 2" },
@@ -335,34 +333,23 @@ export const DOCUMENTS: Document[] = [
   // triplet énoncé / corrigé / grille des examens plus bas.
   ...CHAPITRES_CALCUL.flatMap((c) => cahiersDeChapitre(CALCUL_DIFFERENTIEL, c)),
 
-  // --- Séries de révision mélangées -----------------------------------------
-  ...SERIES.flatMap((s) => [
-    doc(
-      CALCUL_DIFFERENTIEL,
-      `melimelo-${s}`,
-      `Série de révision ${s}`,
-      `revision/melimelo-${s}.pdf`,
-      "revision",
-      NIVEAUX_EXERCICES_REVISION,
-    ),
-    doc(
-      CALCUL_DIFFERENTIEL,
-      `melimelo-${s}-solutions`,
-      `Série de révision ${s} — solutions`,
-      `revision/melimelo-${s}-solutions.pdf`,
-      "revision",
-      NIVEAUX_EXERCICES_REVISION,
-    ),
-  ]),
-
   // --- Série de révision cumulative -----------------------------------------
   //
-  // Contrairement aux méli-mélos A–E, qui tirent leurs exercices dans les
-  // banques de chapitre, celle-ci a ses cinquante exercices en propre
-  // (`banque/revision-cumulative.json` du projet jumeau). Ils n'apparaissent
-  // dans aucun cahier de chapitre, et le recueil ne montre ni le type, ni le
-  // niveau, ni le chapitre d'origine : l'étudiant doit reconnaître la
-  // situation lui-même.
+  // Seule série publiée. Les cinq méli-mélos A–E ont été retirés du catalogue
+  // le 2026-09-24 : leurs PDF restent dans le seau, mais plus rien ne les
+  // déclare, donc `obtenirLienTelechargement` répond `document-inconnu` même
+  // à qui devinerait l'URL. Leur machinerie (banque/meli-melo.json,
+  // generer-melimelo.js, verifier-melimelo.py) reste en place dans le projet
+  // jumeau : les séries continuent d'être générées et vérifiées, simplement
+  // plus publiées. Les remettre en ligne ne demanderait qu'un bloc comme
+  // celui-ci.
+  //
+  // Elle diffère des méli-mélos par sa source : ceux-ci tiraient leurs
+  // exercices dans les banques de chapitre, tandis que celle-ci a ses
+  // cinquante exercices en propre (`banque/revision-cumulative.json`). Ils
+  // n'apparaissent dans aucun cahier de chapitre, et le recueil ne montre ni
+  // le type, ni le niveau, ni le chapitre d'origine : l'étudiant doit
+  // reconnaître la situation lui-même.
   doc(
     CALCUL_DIFFERENTIEL,
     "revision-cumulative",
