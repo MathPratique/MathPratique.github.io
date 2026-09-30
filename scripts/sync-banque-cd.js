@@ -56,6 +56,28 @@ if (!existsSync(BANQUE_PROJET)) {
   process.exit(1);
 }
 
+// ─── Garde-fou : jamais d'évaluation dans ce qui part vers le site ─────────
+//
+// Les examens et leurs corrigés vivent dans
+// `notes+exercices-calcul-differentiel/evaluations-confidentielles/`, un
+// dossier qui n'a rien à faire ici : ce script lit le projet
+// `exercices-calcul-differentiel`, qui est un dossier VOISIN. Les deux noms
+// se ressemblent assez pour qu'une variable d'environnement mal posée
+// confonde l'un avec l'autre.
+//
+// Si BANQUE_CD_PATH pointait un jour vers le mauvais dossier, tout le
+// contenu de `banque/` partirait dans le blob des Cloud Functions, servi à
+// qui a un accès. On s'arrête plutôt que de le découvrir après coup.
+if (/evaluations-confidentielles/i.test(BANQUE_PROJET)) {
+  console.error(
+    `\n❌ REFUS : le chemin de la banque traverse un dossier d'évaluations.\n` +
+      `   ${BANQUE_PROJET}\n\n` +
+      `   Les examens et corrigés ne doivent jamais entrer dans le bundle du\n` +
+      `   site ni dans le blob des fonctions. Vérifie BANQUE_CD_PATH.\n`,
+  );
+  process.exit(1);
+}
+
 const WEB = join(BANQUE_PROJET, "sorties", "web");
 const BANQUE_DIR = join(BANQUE_PROJET, "banque");
 const DEST_PUBLIC = join(SITE, "src", "data", "calcul-differentiel");
