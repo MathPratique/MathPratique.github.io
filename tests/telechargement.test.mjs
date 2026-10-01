@@ -23,7 +23,7 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 76 documents", () => {
+test("le catalogue couvre les 78 documents", () => {
   // Calcul différentiel — 57 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
@@ -32,19 +32,19 @@ test("le catalogue couvre les 76 documents", () => {
   //      chapitre. Les cinq méli-mélos A–E ont été retirés du catalogue
   //      le 2026-09-24 ; leurs PDF restent dans le seau, plus déclarés)
   //   18 examens (6 × énoncé, corrigé, grille)
-  // Probabilités et statistique — 10 :
+  // Probabilités et statistique — 12 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
-  //    2 exercices (chapitre 2 seulement : énoncés + corrigé, sans indices)
+  //    4 exercices (chapitres 2 et 3 : énoncés + corrigé chacun, sans indices)
   // Calcul intégral — 9 :
   //    6 notes (chapitres 1 à 3 × 2 versions ; pas de recueil complet)
   //    3 exercices (chapitres 1 à 3, recueil complet seulement : les PDF
   //      « énoncés seuls » restent dans le seau mais ne sont plus déclarés)
-  assert.equal(DOCUMENTS.length, 76);
+  assert.equal(DOCUMENTS.length, 78);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 30, exercices: 26, revision: 2, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 30, exercices: 28, revision: 2, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -52,15 +52,16 @@ test("le catalogue couvre les 76 documents", () => {
   }, {});
   assert.deepEqual(parCours, {
     "calcul-differentiel": 57,
-    "probabilites-statistique": 10,
+    "probabilites-statistique": 12,
     "calcul-integral": 9,
   });
 });
 
 test("aucune entrée ne pointe vers un cahier d'indices inexistant", () => {
-  // Le cahier d'indices de prob-stat n'est pas produit : 97 des 160 exercices
-  // du chapitre 2 n'ont pas d'indice. Déclarer l'entrée quand même donnerait
-  // une carte visible dont le bouton échoue — pour quelqu'un qui a payé.
+  // Aucun cahier d'indices de prob-stat n'est produit : 97 des 166 exercices
+  // du chapitre 2 et 97 des 103 du chapitre 3 n'ont pas d'indice. Déclarer
+  // l'entrée quand même donnerait une carte visible dont le bouton échoue —
+  // pour quelqu'un qui a payé.
   //
   // Ce test verrouille la règle générale : le catalogue ne connaît que les
   // cahiers réellement produits. Il tombera le jour où les indices seront
@@ -77,6 +78,8 @@ test("aucune entrée ne pointe vers un cahier d'indices inexistant", () => {
   assert.deepEqual(cahiersProbStat, [
     "probabilites-statistique/exercices/ch02-1-exercices.pdf",
     "probabilites-statistique/exercices/ch02-3-corrige.pdf",
+    "probabilites-statistique/exercices/ch03-1-exercices.pdf",
+    "probabilites-statistique/exercices/ch03-3-corrige.pdf",
   ]);
 });
 

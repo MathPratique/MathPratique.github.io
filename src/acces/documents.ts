@@ -200,9 +200,11 @@ const CHAPITRES_CALCUL: Chapitre[] = [
  * pour quelqu'un qui y a droit.
  */
 const CHAPITRES_PROBSTAT: Chapitre[] = [
-  // Seul le chapitre 2 a des cahiers produits à ce jour, et seulement deux
-  // des trois : les 97 indices manquants n'ont pas été écrits. Les chapitres
-  // 1, 3 et 4 n'en déclarent aucun — leurs cahiers ne sont pas générés.
+  // Les chapitres 2 et 3 ont des cahiers produits à ce jour, et seulement deux
+  // des trois : les indices manquent dans les deux cas (69 exercices sur 166
+  // au chapitre 2, 6 sur 103 au chapitre 3), donc le cahier d'indices n'est
+  // pas généré. Les chapitres 1 et 4 ne déclarent aucun cahier — les leurs ne
+  // sont pas générés du tout.
   { n: "1", titre: "Statistiques descriptives", fichier: "ch01-statistiques-descriptives" },
   {
     n: "2",
@@ -210,7 +212,12 @@ const CHAPITRES_PROBSTAT: Chapitre[] = [
     fichier: "ch02-probabilites",
     cahiers: ["exercices", "corrige"],
   },
-  { n: "3", titre: "Inférence statistique", fichier: "ch03-inference-statistique" },
+  {
+    n: "3",
+    titre: "Inférence statistique",
+    fichier: "ch03-inference-statistique",
+    cahiers: ["exercices", "corrige"],
+  },
   {
     n: "4",
     titre: "Corrélation, régression et test du khi-carré",
@@ -255,7 +262,7 @@ function doc(
  * canonique et pas dans l'ordre de déclaration.
  *
  * Un chapitre sans `cahiers` n'en produit aucun : c'est le cas des chapitres
- * 1, 3 et 4 de prob-stat, dont les cahiers ne sont pas encore générés. Rien
+ * 1 et 4 de prob-stat, dont les cahiers ne sont pas encore générés. Rien
  * n'apparaît au catalogue tant que le PDF n'est pas dans le seau.
  */
 function cahiersDeChapitre(cours: Cours, c: Chapitre): Document[] {

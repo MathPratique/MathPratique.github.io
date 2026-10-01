@@ -4,7 +4,7 @@
   "commentaire": "Catalogue complet. Les exercices marqués `verrouille` n'ont ici que leur fiche signalétique ; leur contenu n'est publié nulle part dans ce dossier.",
   "totaux": {
     "gratuit": 100,
-    "payant": 357
+    "payant": 363
   },
   "exercices": [
     {
@@ -3458,6 +3458,60 @@
       "difficulte": "difficile",
       "tempsEstime": 8,
       "acces": "gratuit"
+    },
+    {
+      "id": "ch03-int-101",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-102",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-102",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-101",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-103",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-103",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
     },
     {
       "id": "ch04-fac-001",
