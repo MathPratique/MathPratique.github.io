@@ -6,8 +6,9 @@ import RichContent from "../ui/RichContent";
 // Exemple animé de la page d'accueil. Contenu, pas donnée d'exercice — il
 // vit ici directement plutôt que d'occuper une entrée dans `exercises.ts`.
 // Vestige récupéré tel quel de l'ancien `id: "calc-chain-rule"` ; si tu
-// changes cet exemple, garde le badge « Calcul différentiel · Moyen »
-// aligné avec la matière et la difficulté du nouvel exo.
+// changes cet exemple, garde le badge « Calcul différentiel » aligné avec
+// la matière du nouvel exo. Le niveau n'y figure plus : il n'est plus
+// affiché nulle part en calcul différentiel.
 const EXEMPLE_ANIME = {
   title: "Dériver avec la règle de la chaîne",
   prompt: "Trouver f′(x) pour f(x) = (3x² + 1)⁵",
@@ -50,7 +51,7 @@ function LiveWorkedExample() {
     <div className="relative rounded-2xl border border-brand-100 bg-white p-6 shadow-xl shadow-brand-900/10 sm:p-8">
       <div className="flex items-center justify-between">
         <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-          Calcul différentiel · Moyen
+          Calcul différentiel
         </span>
         <span className="font-mono text-xs text-ink-600">mathpratique.exemple</span>
       </div>

@@ -307,7 +307,12 @@ export default function ExercicesProbabilitesStatistique() {
 
             <div className="mx-auto mt-5 max-w-4xl space-y-4">
               {g.visibles.map((e, n) => (
-                <CarteExerciceCD key={e.id} exercice={e} numero={n + 1} />
+                <CarteExerciceCD
+                  key={e.id}
+                  exercice={e}
+                  numero={n + 1}
+                  afficherNiveau
+                />
               ))}
             </div>
 

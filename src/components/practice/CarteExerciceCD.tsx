@@ -44,9 +44,23 @@ const PALIERS: { palier: Palier; bouton: string }[] = [
 export default function CarteExerciceCD({
   exercice,
   numero,
+  afficherNiveau,
 }: {
   exercice: Exercice;
   numero: number;
+  /**
+   * Afficher ou non la pastille de niveau (Facile / Moyen / Difficile).
+   *
+   * Ce composant sert DEUX cours malgré son suffixe « CD » : la page de
+   * calcul différentiel et celle de probabilités-statistique l'utilisent
+   * toutes les deux. Le calcul différentiel ne montre plus le niveau, la
+   * prob-stat le montre encore.
+   *
+   * Volontairement SANS valeur par défaut : un troisième appelant doit
+   * choisir explicitement plutôt qu'hériter en silence d'une politique
+   * éditoriale qui ne le concerne peut-être pas.
+   */
+  afficherNiveau: boolean;
 }) {
   const enonce = etape(exercice, "enonce");
 
@@ -60,13 +74,15 @@ export default function CarteExerciceCD({
         <span className="rounded-full bg-brand-50 px-2.5 py-1 font-semibold text-brand-700">
           {LIB_TYPE[exercice.type]}
         </span>
-        <span
-          className={`rounded-full px-2.5 py-1 font-semibold ${
-            COULEUR_DIFFICULTE[exercice.difficulte]
-          }`}
-        >
-          {LIB_DIFFICULTE[exercice.difficulte]}
-        </span>
+        {afficherNiveau && (
+          <span
+            className={`rounded-full px-2.5 py-1 font-semibold ${
+              COULEUR_DIFFICULTE[exercice.difficulte]
+            }`}
+          >
+            {LIB_DIFFICULTE[exercice.difficulte]}
+          </span>
+        )}
         <span className="text-ink-600">§{exercice.section}</span>
         <span className="ml-auto">
           <BoutonsProgression id={exercice.id} />
