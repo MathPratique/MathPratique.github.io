@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "20"
+    "node": "24"
   },
   "_note_main": "rootDir remonte à la racine du dépôt pour partager src/acces/, donc la sortie se retrouve dans lib/functions/src/ et non lib/. Ce chemin doit suivre.",
   "main": "lib/functions/src/index.js",

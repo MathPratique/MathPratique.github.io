@@ -573,14 +573,19 @@ absent des 65 gratuits) ne se trouve dans `dist/`. Prévient qu'un ajout de
 code fasse fuiter par inadvertance du contenu payant dans le bundle Vite
 publié sur GitHub Pages.
 
-**⚠️ Node : émulateur ≠ production.** Les émulateurs Firebase tournent sous
-la version de Node installée localement (Node 24 sur le poste de développement), alors que la
-runtime déclarée pour les Cloud Functions déployées est Node 20
-(`firebase.json` → `"runtime": "nodejs20"`). Certains comportements JSON
-imports, syntaxes récentes ou API expérimentales peuvent passer en local
-et échouer en prod. **Le Test R doit être repassé après déploiement**
-(mode Stripe live, contre les vraies Functions déployées) pour valider que
-la Function `obtenirExercices` répond identiquement en prod.
+**Node : émulateur = production, depuis le 2026-10-05.** Les émulateurs
+Firebase tournent sous la version de Node installée localement (Node 24 sur
+le poste de développement), et la runtime déclarée pour les Cloud Functions
+déployées est désormais Node 24 elle aussi (`firebase.json` →
+`"runtime": "nodejs24"`). Ce qui passe en local passe donc en production.
+
+Ce n'était pas le cas avant la migration : la production tournait sous Node
+20, et un comportement d'import JSON, une syntaxe récente ou une API
+expérimentale pouvait passer en local et échouer en prod. L'écart est
+refermé, mais **le Test R reste à repasser après déploiement** (mode Stripe
+live, contre les vraies Functions déployées) : l'alignement des versions
+supprime une classe d'écarts, pas toutes — les secrets, les permissions IAM
+et la latence réseau ne s'émulent pas.
 
 ---
 
