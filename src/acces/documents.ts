@@ -149,6 +149,11 @@ const NIVEAUX_EXAMENS: NiveauAcces[] = ["acheteur", "enseignant"];
  * écrits (97 exercices sur 160 n'en ont pas), donc il ne déclare que
  * `exercices` et `corrige`. Le jour où ils le seront, on ajoute `indices` à
  * sa liste et l'entrée apparaît — sans toucher à rien d'autre.
+ *
+ * Depuis le 2026-10-05, AUCUN cours ne déclare `indices` : le calcul
+ * différentiel a fusionné les siens dans son corrigé. La valeur reste dans
+ * le type parce que le mécanisme sert toujours — c'est la porte d'entrée
+ * pour prob-stat.
  */
 type Cahier = "exercices" | "indices" | "corrige";
 
@@ -171,8 +176,23 @@ const CAHIERS: Record<Cahier, { fichier: string; suffixeId: string; libelle: str
  */
 const ORDRE_CAHIERS: Cahier[] = ["exercices", "indices", "corrige"];
 
-/** Les trois cahiers — le cas courant, celui du calcul différentiel. */
-const CAHIERS_COMPLETS: Cahier[] = ["exercices", "indices", "corrige"];
+/**
+ * Les cahiers du calcul différentiel : énoncés et corrigé.
+ *
+ * ⚠️ Le nom dit « COMPLETS » et la liste n'en contient que deux : c'est
+ * voulu. « Complet » qualifie le cours, pas le type `Cahier` — ce sont tous
+ * les cahiers que le calcul différentiel publie.
+ *
+ * Le cahier d'indices a été retiré le 2026-10-05. Il ne s'est rien perdu :
+ * le corrigé émet l'indice de chaque exercice juste avant sa réponse finale,
+ * donc l'étudiant qui bloque le trouve au même endroit qu'avant, sans
+ * ouvrir un second document. Le cahier séparé faisait doublon, au prix de
+ * 73 pages de PDF et de 7 entrées à tenir à jour.
+ *
+ * `indices` reste une valeur valide du type : prob-stat pourra la déclarer
+ * le jour où ses indices seront écrits.
+ */
+const CAHIERS_CALCUL: Cahier[] = ["exercices", "corrige"];
 
 type Chapitre = {
   n: string;
@@ -183,13 +203,13 @@ type Chapitre = {
 };
 
 const CHAPITRES_CALCUL: Chapitre[] = [
-  { n: "1", titre: "Fonctions et domaines", fichier: "ch01-fonctions", cahiers: CAHIERS_COMPLETS },
-  { n: "2", titre: "Limites", fichier: "ch02-limites", cahiers: CAHIERS_COMPLETS },
-  { n: "3", titre: "Continuité", fichier: "ch03-continuite", cahiers: CAHIERS_COMPLETS },
-  { n: "4", titre: "La dérivée : définition", fichier: "ch04-derivee-definition", cahiers: CAHIERS_COMPLETS },
-  { n: "5", titre: "Règles de dérivation", fichier: "ch05-regles-derivation", cahiers: CAHIERS_COMPLETS },
-  { n: "6", titre: "Étude de fonction", fichier: "ch06-etude-fonction", cahiers: CAHIERS_COMPLETS },
-  { n: "7", titre: "Applications", fichier: "ch07-applications-sn", cahiers: CAHIERS_COMPLETS },
+  { n: "1", titre: "Fonctions et domaines", fichier: "ch01-fonctions", cahiers: CAHIERS_CALCUL },
+  { n: "2", titre: "Limites", fichier: "ch02-limites", cahiers: CAHIERS_CALCUL },
+  { n: "3", titre: "Continuité", fichier: "ch03-continuite", cahiers: CAHIERS_CALCUL },
+  { n: "4", titre: "La dérivée : définition", fichier: "ch04-derivee-definition", cahiers: CAHIERS_CALCUL },
+  { n: "5", titre: "Règles de dérivation", fichier: "ch05-regles-derivation", cahiers: CAHIERS_CALCUL },
+  { n: "6", titre: "Étude de fonction", fichier: "ch06-etude-fonction", cahiers: CAHIERS_CALCUL },
+  { n: "7", titre: "Applications", fichier: "ch07-applications-sn", cahiers: CAHIERS_CALCUL },
 ];
 
 /**
@@ -327,16 +347,20 @@ export const DOCUMENTS: Document[] = [
   ),
   ...CHAPITRES_CALCUL.flatMap((c) => notesDeChapitre(CALCUL_DIFFERENTIEL, c)),
 
-  // --- Recueils d'exercices : énoncés, indices, corrigé ---------------------
+  // --- Recueils d'exercices : énoncés, corrigé ------------------------------
   //
-  // Trois fichiers par chapitre plutôt que deux : le PDF « indices » vit à
-  // côté du corrigé complet, pour que l'étudiant qui bloque puisse recevoir
-  // une piste sans consulter la solution intégrale. L'ordre ci-dessous
-  // (énoncés → indices → corrigé) est aussi l'ordre d'affichage dans
-  // /mon-compte — la progression pédagogique attendue.
+  // Deux fichiers par chapitre. Le cahier d'indices a été retiré le
+  // 2026-10-05 : le corrigé porte déjà l'indice de chaque exercice, juste
+  // avant sa réponse finale. L'étudiant qui bloque le trouve donc sans
+  // ouvrir la solution intégrale — ce que le cahier séparé servait à
+  // garantir — mais dans un document de moins.
+  //
+  // Les PDF gardent leurs noms `1-exercices` et `3-corrige`, sans le « 2 »
+  // intermédiaire. Renuméroter aurait cassé les chemins du seau et les
+  // identifiants du catalogue pour un gain nul.
   //
   // L'ID de l'énoncé garde la forme courte `exercices-chXX`, sans suffixe :
-  // c'est le fichier « principal » du triplet, comme `intra1` l'est pour le
+  // c'est le fichier « principal » de la paire, comme `intra1` l'est pour le
   // triplet énoncé / corrigé / grille des examens plus bas.
   ...CHAPITRES_CALCUL.flatMap((c) => cahiersDeChapitre(CALCUL_DIFFERENTIEL, c)),
 

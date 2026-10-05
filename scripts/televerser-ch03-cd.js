@@ -5,8 +5,13 @@
 // Script ad hoc, comme pour les lots précédents : `televerser-documents.js`
 // ne sait pas cibler un sous-ensemble de documents. Les trois objets existent
 // déjà dans le seau — c'est un REMPLACEMENT, pas un ajout. Le catalogue
-// `src/acces/documents.ts` déclare déjà CAHIERS_COMPLETS pour ce chapitre :
-// rien à y changer.
+// `src/acces/documents.ts` déclare déjà les cahiers de ce chapitre via
+// CAHIERS_CALCUL : rien à y changer.
+//
+// ⚠️ Script historique, conservé pour mémoire. Il visait les TROIS cahiers du
+// chapitre 3 ; celui d'indices n'existe plus depuis le 2026-10-05. Relancé
+// tel quel, il échouerait sur la source manquante avant d'écrire quoi que ce
+// soit — il s'arrête si un seul PDF source est introuvable.
 //
 // Source des PDF : `sorties/build/` du projet jumeau d'exercices, jamais la
 // racine de ce projet-là, qui n'en contient que des copies.

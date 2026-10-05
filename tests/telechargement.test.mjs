@@ -23,10 +23,12 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 78 documents", () => {
-  // Calcul différentiel — 57 :
+test("le catalogue couvre les 71 documents", () => {
+  // Calcul différentiel — 50 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
-  //   21 exercices (7 chapitres × 3 : énoncés + indices + corrigé)
+  //   14 exercices (7 chapitres × 2 : énoncés + corrigé. Les 7 cahiers
+  //      d'indices ont été retirés le 2026-10-05 : le corrigé porte déjà
+  //      l'indice de chaque exercice, juste avant sa réponse finale)
   //    2 révision (la série cumulative et ses solutions — elle a ses
   //      exercices en propre au lieu de les tirer dans les banques de
   //      chapitre. Les cinq méli-mélos A–E ont été retirés du catalogue
@@ -39,19 +41,19 @@ test("le catalogue couvre les 78 documents", () => {
   //    6 notes (chapitres 1 à 3 × 2 versions ; pas de recueil complet)
   //    3 exercices (chapitres 1 à 3, recueil complet seulement : les PDF
   //      « énoncés seuls » restent dans le seau mais ne sont plus déclarés)
-  assert.equal(DOCUMENTS.length, 78);
+  assert.equal(DOCUMENTS.length, 71);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 30, exercices: 28, revision: 2, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 30, exercices: 21, revision: 2, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
     return acc;
   }, {});
   assert.deepEqual(parCours, {
-    "calcul-differentiel": 57,
+    "calcul-differentiel": 50,
     "probabilites-statistique": 12,
     "calcul-integral": 9,
   });
@@ -83,21 +85,36 @@ test("aucune entrée ne pointe vers un cahier d'indices inexistant", () => {
   ]);
 });
 
-test("le calcul différentiel garde ses trois cahiers par chapitre", () => {
-  // Garde-fou de non-régression : le passage à une déclaration explicite des
-  // cahiers ne doit rien retirer au cours déjà en production.
+test("le calcul différentiel publie deux cahiers par chapitre", () => {
+  // Garde-fou de non-régression : chacun des 7 chapitres publie ses énoncés
+  // et son corrigé, et RIEN d'autre.
+  //
+  // Ce test en remplace un qui exigeait les trois cahiers, dont les indices.
+  // Ceux-ci ont été retirés le 2026-10-05 : le corrigé porte déjà l'indice de
+  // chaque exercice, juste avant sa réponse finale, donc le cahier séparé
+  // faisait doublon.
+  //
+  // Les PDF gardent les noms `1-exercices` et `3-corrige` : le « 2 » manquant
+  // est volontaire, renuméroter aurait cassé les chemins du seau.
   const cd = DOCUMENTS.filter(
     (d) => d.coursId === "calcul-differentiel" && d.categorie === "exercices",
   );
-  assert.equal(cd.length, 21);
+  assert.equal(cd.length, 14);
   for (const n of ["ch01", "ch02", "ch03", "ch04", "ch05", "ch06", "ch07"]) {
-    for (const suffixe of ["1-exercices", "2-indices", "3-corrige"]) {
+    for (const suffixe of ["1-exercices", "3-corrige"]) {
       assert.ok(
         cd.some((d) => d.chemin === `calcul-differentiel/exercices/${n}-${suffixe}.pdf`),
         `manque ${n}-${suffixe}`,
       );
     }
   }
+
+  // Et surtout : plus aucune entrée d'indices, pour aucun chapitre. Sans
+  // cette assertion, le test passerait encore si les 7 entrées revenaient.
+  assert.deepEqual(
+    cd.filter((d) => d.chemin.includes("2-indices")),
+    [],
+  );
 });
 
 test("chaque document déclare au moins un niveau autorisé", () => {
