@@ -456,7 +456,7 @@ export const DOCUMENTS: Document[] = [
 
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //
-  // Trois chapitres, complets : les notes dans leurs deux versions et un
+  // Cinq chapitres, complets : les notes dans leurs deux versions et un
   // document d'exercices par chapitre. Le catalogue est un INVENTAIRE, mais
   // l'inverse n'est pas vrai : un fichier peut vivre dans le seau sans être
   // déclaré ici, et il devient alors invisible et intéléchargeable. Les
@@ -470,21 +470,30 @@ export const DOCUMENTS: Document[] = [
   // majuscules dans le chemin des notes enseignant, alors que l'identifiant
   // dit « enseignant » comme partout ailleurs dans le catalogue.
   //
-  // Plus aucune mention « exercices à venir » : les trois chapitres ont leurs
+  // Plus aucune mention « exercices à venir » : les cinq chapitres ont leurs
   // exercices. Chacune a été retirée dans le commit même qui publiait les
   // exercices du chapitre concerné, jamais avant — un titre qui annonce comme
-  // manquant un document déjà offert est aussi trompeur que l'inverse.
+  // manquant un document déjà offert est aussi trompeur que l'inverse. Les
+  // chapitres 4 et 5, publiés le 2026-10-05, n'en ont jamais porté : leurs
+  // notes et leurs exercices sont partis dans le même lot.
+  //
+  // Les chapitres 6 à 9 ne sont pas déclarés. Ils n'apparaissent donc nulle
+  // part — c'est ce que « grisé » veut dire ici : non pas une entrée inerte,
+  // mais l'absence d'entrée.
   //
   // Un seul document d'exercices par chapitre : le recueil complet, qui
   // contient les énoncés, les réponses finales et les solutions détaillées,
   // ouvert aux trois niveaux comme les cahiers des autres cours.
   //
-  // La version « énoncés seuls » de chaque chapitre n'est PLUS déclarée
-  // (retirée le 2026-09-15). Les trois PDF restent dans le seau, aux chemins
-  // `exercices/chNN-enonces-seul.pdf` : ils servent à distribuer un devoir
-  // hors du site. Non déclarés, ils sont invisibles dans /mon-compte et
-  // refusés au téléchargement — `trouverDocument` ne les connaît pas. Les
-  // redéclarer un jour ne demandera qu'une entrée ici, sans téléversement.
+  // La version « énoncés seuls » n'est déclarée pour aucun chapitre. Pour les
+  // chapitres 1 à 3, les PDF restent dans le seau aux chemins
+  // `exercices/chNN-enonces-seul.pdf` (déclaration retirée le 2026-09-15) :
+  // ils servent à distribuer un devoir hors du site. Non déclarés, ils sont
+  // invisibles dans /mon-compte et refusés au téléchargement —
+  // `trouverDocument` ne les connaît pas. Pour les chapitres 4 et 5, ces PDF
+  // existent dans `build/` mais n'ont jamais été téléversés : rien à retirer.
+  // Les déclarer un jour demanderait une entrée ici, et un téléversement pour
+  // les chapitres 4 et 5.
   doc(
     CALCUL_INTEGRAL,
     "notes-ch01-integrale-indefinie-etudiant",
@@ -554,6 +563,54 @@ export const DOCUMENTS: Document[] = [
     "exercices-ch03-complet",
     "Exercices, réponses et solutions — chapitre 3 : Techniques d'intégration",
     "exercices/ch03-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch04-applications-integrale-definie-etudiant",
+    "Chapitre 4 — Applications de l'intégrale définie (étudiant)",
+    "notes/ch04-applications-integrale-definie-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch04-applications-integrale-definie-enseignant",
+    "Chapitre 4 — Applications de l'intégrale définie (enseignant)",
+    "notes/ch04-applications-integrale-definie-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch04-complet",
+    "Exercices, réponses et solutions — chapitre 4 : Applications de l'intégrale définie",
+    "exercices/ch04-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch05-equations-differentielles-etudiant",
+    "Chapitre 5 — Équations différentielles et modélisation (étudiant)",
+    "notes/ch05-equations-differentielles-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch05-equations-differentielles-enseignant",
+    "Chapitre 5 — Équations différentielles et modélisation (enseignant)",
+    "notes/ch05-equations-differentielles-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch05-complet",
+    "Exercices, réponses et solutions — chapitre 5 : Équations différentielles et modélisation",
+    "exercices/ch05-complet.pdf",
     "exercices",
     NIVEAUX_EXERCICES_REVISION,
   ),

@@ -37,16 +37,18 @@ test("le catalogue couvre les 71 documents", () => {
   // Probabilités et statistique — 12 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
   //    4 exercices (chapitres 2 et 3 : énoncés + corrigé chacun, sans indices)
-  // Calcul intégral — 9 :
-  //    6 notes (chapitres 1 à 3 × 2 versions ; pas de recueil complet)
-  //    3 exercices (chapitres 1 à 3, recueil complet seulement : les PDF
-  //      « énoncés seuls » restent dans le seau mais ne sont plus déclarés)
-  assert.equal(DOCUMENTS.length, 71);
+  // Calcul intégral — 15 :
+  //   10 notes (chapitres 1 à 5 × 2 versions ; pas de recueil complet)
+  //    5 exercices (chapitres 1 à 5, recueil complet seulement : les PDF
+  //      « énoncés seuls » des chapitres 1 à 3 restent dans le seau mais ne
+  //      sont plus déclarés ; ceux des chapitres 4 et 5 n'ont jamais été
+  //      téléversés)
+  assert.equal(DOCUMENTS.length, 77);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 30, exercices: 21, revision: 2, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 34, exercices: 23, revision: 2, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -55,7 +57,7 @@ test("le catalogue couvre les 71 documents", () => {
   assert.deepEqual(parCours, {
     "calcul-differentiel": 50,
     "probabilites-statistique": 12,
-    "calcul-integral": 9,
+    "calcul-integral": 15,
   });
 });
 
