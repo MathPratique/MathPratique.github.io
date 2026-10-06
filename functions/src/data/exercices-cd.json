@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "ce01218a82583bc2",
+  "contentHash": "74b34b31f8939849",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -11566,11 +11566,19 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "La formule 4.1 s'écrit ici en $x = 3$ :\\[ f'(3) = \\lim_{h \\to 0}\\dfrac{f(3+h) - f(3)}{h}. \\]",
+            "<strong>Développer $f(3+h)$.</strong>\\[ f(3+h) = (3+h)^{2} = 9 + 6h + h^{2}. \\]",
+            "<strong>Former la différence.</strong> Comme $f(3) = 9$ :\\[ f(3+h) - f(3) = 6h + h^{2}. \\]",
+            "<strong>Diviser par $h$.</strong> On met $h$ en évidence :\\[ \\dfrac{h(6 + h)}{h} = 6 + h, \\qquad h \\neq 0. \\]",
+            "<strong>Évaluer la limite.</strong>\\[ f'(3) = \\lim_{h \\to 0}(6 + h) = 6. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
             "<strong>Écrire la définition.</strong>\\[ \\text{TVI} = \\lim_{x \\to 3}\\dfrac{f(x)-f(3)}{x-3}. \\]",
             "<strong>Substituer.</strong> Comme $f(3) = 9$ :\\[ \\lim_{x \\to 3}\\dfrac{x^{2}-9}{x-3}. \\]",
             "<strong>Vérifier la forme.</strong> L'évaluation directe donne $\\dfrac{9-9}{3-3} = \\dfrac{0}{0}$ : forme indéterminée.",
             "<strong>Factoriser.</strong> Le numérateur est une différence de carrés :\\[ \\dfrac{(x-3)(x+3)}{x-3} = x+3, \\qquad x \\neq 3. \\]",
             "<strong>Évaluer la limite.</strong>\\[ \\text{TVI} = \\lim_{x \\to 3}(x+3) = 6. \\]",
+            "<strong>Les deux méthodes donnent $6$.</strong> La première fait apparaître $h$ en facteur au numérateur, la seconde factorise une différence de carrés. Le chemin diffère, le résultat non.",
             "<strong>Interprétation.</strong> La tangente à la courbe $y = x^{2}$ au point $(3, 9)$ a une pente de $6$."
           ],
           "piegeCourant": "Conclure que le TVI n'existe pas parce que l'évaluation directe donne $\\frac{0}{0}$."
@@ -11622,11 +11630,18 @@
             "Et du dernier :\\[ \\dfrac{(1{,}01)^{3}-1}{0{,}01} = \\dfrac{1{,}030301 - 1}{0{,}01} = 3{,}0301. \\]",
             "<strong>(b) Convergence.</strong> À mesure que $b$ se rapproche de $1$, les pentes des sécantes s'approchent de <strong>$3$</strong>.",
             "Géométriquement, les sécantes pivotent vers la tangente au point $(1, 1)$.",
-            "<strong>(c) Confirmation algébrique.</strong>\\[ \\text{TVI} = \\lim_{b \\to 1}\\dfrac{b^{3}-1}{b-1}. \\]",
+            "<strong>(c) Confirmation algébrique.</strong> Les deux formes de la définition mènent au même nombre — vérifions-le.",
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "\\[ f'(1) = \\lim_{h \\to 0}\\dfrac{f(1+h) - f(1)}{h} = \\lim_{h \\to 0}\\dfrac{(1+h)^{3} - 1}{h}. \\]",
+            "<strong>Développer le cube.</strong>\\[ (1+h)^{3} = 1 + 3h + 3h^{2} + h^{3}, \\qquad\\text{donc}\\qquad (1+h)^{3} - 1 = 3h + 3h^{2} + h^{3}. \\]",
+            "<strong>Diviser par $h$, puis évaluer.</strong>\\[ \\dfrac{h\\left(3 + 3h + h^{2}\\right)}{h} = 3 + 3h + h^{2} \\;\\xrightarrow[\\;h \\to 0\\;]{}\\; 3. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $b$).</strong>",
+            "\\[ \\text{TVI} = \\lim_{b \\to 1}\\dfrac{b^{3}-1}{b-1}. \\]",
             "L'évaluation directe donne $\\dfrac{0}{0}$. On factorise la différence de cubes :\\[ b^{3}-1 = (b-1)\\left(b^{2}+b+1\\right). \\]",
             "\\[ \\dfrac{(b-1)\\left(b^{2}+b+1\\right)}{b-1} = b^{2}+b+1, \\qquad b \\neq 1. \\]",
             "\\[ \\text{TVI} = \\lim_{b \\to 1}\\left(b^{2}+b+1\\right) = 1+1+1 = 3. \\]",
-            "L'approche numérique et l'approche algébrique concordent : la tangente en $(1,1)$ a une pente de $3$."
+            "<strong>Les deux méthodes donnent $3$.</strong> La première développe un cube, la seconde le factorise. C'est la même identité lue dans les deux sens.",
+            "L'approche numérique du (a) et les deux approches algébriques concordent : la tangente en $(1,1)$ a une pente de $3$."
           ],
           "piegeCourant": "Se contenter du tableau numérique sans confirmer algébriquement : un tableau suggère une valeur, il ne la démontre pas."
         }
@@ -11670,14 +11685,20 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Écrire la définition.</strong>\\[ v(2) = \\lim_{t \\to 2}\\dfrac{s(t)-s(2)}{t-2}. \\]",
-            "<strong>Calculer $s(2)$.</strong>\\[ s(2) = 4 + 6 = 10 \\ \\text{m}. \\]",
-            "<strong>Substituer.</strong>\\[ \\lim_{t \\to 2}\\dfrac{t^{2}+3t-10}{t-2}. \\]",
+            "<strong>Calculer $s(2)$.</strong> Les deux méthodes en ont besoin.\\[ s(2) = 4 + 6 = 10 \\ \\text{m}. \\]",
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "\\[ v(2) = \\lim_{h \\to 0}\\dfrac{s(2+h) - s(2)}{h}. \\]",
+            "<strong>Développer $s(2+h)$.</strong>\\begin{align*} s(2+h) &= (2+h)^{2} + 3(2+h) \\\\ &= 4 + 4h + h^{2} + 6 + 3h \\\\ &= h^{2} + 7h + 10. \\end{align*}",
+            "<strong>Former la différence et diviser.</strong>\\[ \\dfrac{\\left(h^{2}+7h+10\\right) - 10}{h} = \\dfrac{h(h+7)}{h} = h + 7, \\qquad h \\neq 0. \\]",
+            "<strong>Évaluer.</strong>\\[ v(2) = \\lim_{h \\to 0}(h+7) = 7. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $t$).</strong>",
+            "<strong>Écrire la définition.</strong>\\[ v(2) = \\lim_{t \\to 2}\\dfrac{s(t)-s(2)}{t-2} = \\lim_{t \\to 2}\\dfrac{t^{2}+3t-10}{t-2}. \\]",
             "<strong>Vérifier la forme.</strong> En $t=2$ : $4+6-10 = 0$ au numérateur et $0$ au dénominateur. Forme $\\dfrac{0}{0}$.",
             "<strong>Factoriser.</strong> On cherche deux nombres de produit $-10$ et de somme $3$ : ce sont $5$ et $-2$.\\[ t^{2}+3t-10 = (t+5)(t-2). \\]",
             "\\[ \\dfrac{(t+5)(t-2)}{t-2} = t+5, \\qquad t \\neq 2. \\]",
             "<strong>Évaluer.</strong>\\[ v(2) = \\lim_{t \\to 2}(t+5) = 7. \\]",
-            "<strong>Unités et interprétation.</strong> La vitesse est en m/s. À l'instant précis $t = 2$~s, le mobile se déplace à $7$~m/s."
+            "<strong>Les deux méthodes donnent $7$.</strong> La première développe un carré puis met $h$ en évidence, la seconde factorise un trinôme. Aucune n'est plus juste que l'autre.",
+            "<strong>Unités et interprétation.</strong> La vitesse est en m/s. À l'instant précis $t = 2$ s, le mobile se déplace à $7$ m/s."
           ],
           "piegeCourant": "Se tromper de signes en factorisant et obtenir $(t-5)(t+2)$."
         }
@@ -12097,12 +12118,19 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Étape 1 — Calculer $f(x+h)$.</strong>\\[ f(x+h) = 5(x+h) - 3 = 5x + 5h - 3. \\]",
-            "<strong>Étape 2 — Former la différence.</strong>\\begin{align*} f(x+h) - f(x) &= (5x + 5h - 3) - (5x - 3) \\\\ &= 5x + 5h - 3 - 5x + 3 \\\\ &= 5h. \\end{align*}",
-            "<strong>Étape 3 — Diviser par $h$.</strong>\\[ \\dfrac{5h}{h} = 5, \\qquad h \\neq 0. \\]",
-            "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0} 5 = 5. \\]",
-            "<strong>Interprétation.</strong> La dérivée est constante et vaut $5$, ce qui est cohérent : le graphique de $f$ est une droite de pente $5$. La tangente à une droite est la droite elle-même.",
-            "En notation de Leibniz : $\\dfrac{dy}{dx} = 5$."
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "<strong>Calculer $f(x+h)$.</strong>\\[ f(x+h) = 5(x+h) - 3 = 5x + 5h - 3. \\]",
+            "<strong>Former la différence.</strong>\\begin{align*} f(x+h) - f(x) &= (5x + 5h - 3) - (5x - 3) \\\\ &= 5x + 5h - 3 - 5x + 3 \\\\ &= 5h. \\end{align*}",
+            "<strong>Diviser par $h$.</strong>\\[ \\dfrac{5h}{h} = 5, \\qquad h \\neq 0. \\]",
+            "<strong>Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0} 5 = 5. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "La définition 4.2 donne le taux en un point. On le calcule en un point <strong>quelconque</strong> $a$, puis on observe que $a$ n'avait rien de particulier.",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{f(x)-f(a)}{x-a} = \\lim_{x \\to a}\\dfrac{(5x-3)-(5a-3)}{x-a}. \\]",
+            "<strong>Simplifier le numérateur.</strong>\\[ (5x-3)-(5a-3) = 5x - 5a = 5(x-a). \\]",
+            "\\[ \\dfrac{5(x-a)}{x-a} = 5, \\qquad x \\neq a, \\qquad\\text{donc}\\qquad f'(a) = 5. \\]",
+            "Comme $a$ est quelconque, on écrit $f'(x) = 5$ : la <strong>fonction</strong> dérivée.",
+            "<strong>Les deux méthodes donnent $f'(x) = 5$.</strong> La première travaille sur un accroissement $h$, la seconde sur deux abscisses $x$ et $a$. C'est le même quotient, écrit avec d'autres lettres.",
+            "<strong>Interprétation.</strong> La dérivée est constante et vaut $5$, ce qui est cohérent : le graphique de $f$ est une droite de pente $5$. La tangente à une droite est la droite elle-même. En notation de Leibniz : $\\dfrac{dy}{dx} = 5$."
           ],
           "piegeCourant": "Oublier de distribuer le signe négatif devant $(5x-3)$ lors de la soustraction."
         }
@@ -12145,12 +12173,16 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Étape 1 — Calculer $f(x+h)$.</strong>\\[ f(x+h) = (x+h)^{2} + 1 = x^{2} + 2xh + h^{2} + 1. \\]",
-            "<strong>Étape 2 — Former la différence.</strong>\\begin{align*} f(x+h) - f(x) &= \\left(x^{2} + 2xh + h^{2} + 1\\right) - \\left(x^{2}+1\\right) \\\\ &= 2xh + h^{2}. \\end{align*}",
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "<strong>Calculer $f(x+h)$.</strong>\\[ f(x+h) = (x+h)^{2} + 1 = x^{2} + 2xh + h^{2} + 1. \\]",
+            "<strong>Former la différence.</strong>\\begin{align*} f(x+h) - f(x) &= \\left(x^{2} + 2xh + h^{2} + 1\\right) - \\left(x^{2}+1\\right) \\\\ &= 2xh + h^{2}. \\end{align*}",
             "Les termes $x^{2}$ et $1$ se sont annulés — c'est toujours bon signe : il ne doit rester que des termes contenant $h$.",
-            "<strong>Étape 3 — Diviser par $h$.</strong> On met $h$ en évidence :\\[ \\dfrac{h(2x+h)}{h} = 2x + h, \\qquad h \\neq 0. \\]",
-            "<strong>Étape 4 — Évaluer la limite.</strong>\\[ \\dfrac{dy}{dx} = \\lim_{h \\to 0}(2x+h) = 2x. \\]",
-            "Le terme constant $+1$ n'a eu aucun effet sur la dérivée : une translation verticale ne change pas les pentes."
+            "<strong>Diviser par $h$, puis évaluer.</strong>\\[ \\dfrac{h(2x+h)}{h} = 2x + h \\;\\xrightarrow[\\;h \\to 0\\;]{}\\; 2x. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "On calcule le taux en un point quelconque $a$ :\\[ f'(a) = \\lim_{x \\to a}\\dfrac{\\left(x^{2}+1\\right)-\\left(a^{2}+1\\right)}{x-a} = \\lim_{x \\to a}\\dfrac{x^{2}-a^{2}}{x-a}. \\]",
+            "<strong>Factoriser la différence de carrés.</strong>\\[ \\dfrac{(x-a)(x+a)}{x-a} = x+a, \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a}(x+a) = 2a, \\qquad\\text{donc}\\qquad \\dfrac{dy}{dx} = 2x. \\]",
+            "<strong>Les deux méthodes donnent $\\dfrac{dy}{dx} = 2x$.</strong> La première développe $(x+h)^{2}$, la seconde factorise $x^{2}-a^{2}$. Les deux éliminent le facteur qui cause la forme $\\dfrac{0}{0}$."
           ],
           "piegeCourant": "Écrire $(x+h)^{2} = x^{2} + h^{2}$ en oubliant le double produit $2xh$."
         }
@@ -12193,12 +12225,15 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Étape 1 — Calculer $f(x+h)$.</strong>\\begin{align*} f(x+h) &= 3(x+h)^{2} \\\\ &= 3\\left(x^{2} + 2xh + h^{2}\\right) \\\\ &= 3x^{2} + 6xh + 3h^{2}. \\end{align*}",
-            "Le coefficient $3$ doit être distribué sur les <em>trois</em> termes du développement.",
-            "<strong>Étape 2 — Former la différence.</strong>\\[ f(x+h) - f(x) = \\left(3x^{2} + 6xh + 3h^{2}\\right) - 3x^{2} = 6xh + 3h^{2}. \\]",
-            "<strong>Étape 3 — Diviser par $h$.</strong>\\[ \\dfrac{h(6x + 3h)}{h} = 6x + 3h, \\qquad h \\neq 0. \\]",
-            "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0}(6x + 3h) = 6x. \\]",
-            "Comparaison utile : la dérivée de $x^{2}$ vaut $2x$, et celle de $3x^{2}$ vaut $3 \\times 2x = 6x$. Le coefficient traverse la dérivation."
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "<strong>Calculer $f(x+h)$.</strong>\\[ f(x+h) = 3(x+h)^{2} = 3\\left(x^{2} + 2xh + h^{2}\\right) = 3x^{2} + 6xh + 3h^{2}. \\]",
+            "<strong>Former la différence.</strong>\\[ f(x+h) - f(x) = \\left(3x^{2} + 6xh + 3h^{2}\\right) - 3x^{2} = 6xh + 3h^{2}. \\]",
+            "<strong>Diviser par $h$, puis évaluer.</strong>\\[ \\dfrac{h(6x + 3h)}{h} = 6x + 3h \\;\\xrightarrow[\\;h \\to 0\\;]{}\\; 6x. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "En un point quelconque $a$ :\\[ f'(a) = \\lim_{x \\to a}\\dfrac{3x^{2}-3a^{2}}{x-a} = \\lim_{x \\to a}\\dfrac{3\\left(x^{2}-a^{2}\\right)}{x-a}. \\]",
+            "<strong>Mettre $3$ en évidence, puis factoriser.</strong>\\[ \\dfrac{3(x-a)(x+a)}{x-a} = 3(x+a), \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a} 3(x+a) = 3(2a) = 6a, \\qquad\\text{donc}\\qquad f'(x) = 6x. \\]",
+            "<strong>Les deux méthodes donnent $f'(x) = 6x$.</strong> Le coefficient $3$ traverse les deux calculs sans rien changer à la structure : c'est la dérivée de $x^{2}$, multipliée par $3$."
           ],
           "piegeCourant": "Distribuer le $3$ sur un seul terme et obtenir $3x^{2}+2xh+h^{2}$."
         }
@@ -12242,12 +12277,16 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Étape 1 — Calculer $f(x+h)$.</strong>\\begin{align*} f(x+h) &= (x+h)^{2} - 4(x+h) \\\\ &= x^{2} + 2xh + h^{2} - 4x - 4h. \\end{align*}",
-            "<strong>Étape 2 — Former la différence.</strong>\\begin{align*} f(x+h) - f(x) &= \\left(x^{2} + 2xh + h^{2} - 4x - 4h\\right) - \\left(x^{2}-4x\\right) \\\\ &= 2xh + h^{2} - 4h. \\end{align*}",
-            "Tous les termes sans $h$ se sont annulés : $x^{2}$ avec $x^{2}$, et $-4x$ avec $-4x$.",
-            "<strong>Étape 3 — Diviser par $h$.</strong> On met $h$ en évidence :\\[ \\dfrac{h(2x + h - 4)}{h} = 2x + h - 4, \\qquad h \\neq 0. \\]",
-            "<strong>Étape 4 — Évaluer la limite.</strong>\\[ \\dfrac{dy}{dx} = \\lim_{h \\to 0}(2x + h - 4) = 2x - 4. \\]",
-            "<strong>Vérification.</strong> La dérivée s'annule en $x = 2$, ce qui correspond au sommet de la parabole $y = x^{2}-4x$. Cohérent."
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "<strong>Calculer $f(x+h)$.</strong>\\begin{align*} f(x+h) &= (x+h)^{2} - 4(x+h) \\\\ &= x^{2} + 2xh + h^{2} - 4x - 4h. \\end{align*}",
+            "<strong>Former la différence.</strong>\\[ f(x+h) - f(x) = 2xh + h^{2} - 4h. \\]",
+            "<strong>Diviser par $h$, puis évaluer.</strong>\\[ \\dfrac{h(2x + h - 4)}{h} = 2x + h - 4 \\;\\xrightarrow[\\;h \\to 0\\;]{}\\; 2x - 4. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "En un point quelconque $a$ :\\[ f'(a) = \\lim_{x \\to a}\\dfrac{\\left(x^{2}-4x\\right)-\\left(a^{2}-4a\\right)}{x-a}. \\]",
+            "<strong>Regrouper les termes de même degré.</strong>\\[ \\left(x^{2}-a^{2}\\right) - 4(x-a) = (x-a)(x+a) - 4(x-a) = (x-a)\\left(x+a-4\\right). \\]",
+            "\\[ \\dfrac{(x-a)(x+a-4)}{x-a} = x+a-4, \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a}(x+a-4) = 2a - 4, \\qquad\\text{donc}\\qquad \\dfrac{dy}{dx} = 2x - 4. \\]",
+            "<strong>Les deux méthodes donnent $\\dfrac{dy}{dx} = 2x - 4$.</strong> La seconde méthode demande de mettre $(x-a)$ en évidence dans DEUX groupes à la fois — c'est là qu'elle est plus exigeante que la première."
           ],
           "piegeCourant": "Oublier de distribuer le $-4$ sur les deux termes de $(x+h)$."
         }
@@ -12292,11 +12331,19 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<strong>Étape 1 — Calculer $f(x+h)$.</strong>\\[ f(x+h) = \\dfrac{1}{x+h}. \\]",
             "<strong>Étape 2 — Former la différence.</strong> C'est une soustraction de deux fractions : on les met au dénominateur commun $x(x+h)$.\\begin{align*} f(x+h) - f(x) &= \\dfrac{1}{x+h} - \\dfrac{1}{x} \\\\ &= \\dfrac{x}{x(x+h)} - \\dfrac{x+h}{x(x+h)} \\\\ &= \\dfrac{x - (x+h)}{x(x+h)} \\\\ &= \\dfrac{-h}{x(x+h)}. \\end{align*}",
             "Le facteur $-h$ qui apparaît au numérateur est exactement ce dont on a besoin pour l'étape suivante.",
             "<strong>Étape 3 — Diviser par $h$.</strong> Diviser par $h$ revient à multiplier par $\\dfrac{1}{h}$ :\\[ \\dfrac{-h}{x(x+h)} \\cdot \\dfrac{1}{h} = \\dfrac{-1}{x(x+h)}, \\qquad h \\neq 0. \\]",
             "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0}\\dfrac{-1}{x(x+h)} = \\dfrac{-1}{x(x+0)} = -\\dfrac{1}{x^{2}}. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "On calcule le taux en un point <strong>quelconque</strong> $a$, puis on observe que $a$ n'avait rien de particulier.",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{\\dfrac{1}{x} - \\dfrac{1}{a}}{x-a}. \\]",
+            "<strong>Mettre le numérateur au dénominateur commun.</strong>\\[ \\dfrac{1}{x} - \\dfrac{1}{a} = \\dfrac{a - x}{ax} = \\dfrac{-(x-a)}{ax}. \\]",
+            "<strong>Diviser par $(x-a)$.</strong> Le facteur qui causait la forme $\\dfrac{0}{0}$ disparaît :\\[ \\dfrac{-(x-a)}{ax} \\cdot \\dfrac{1}{x-a} = \\dfrac{-1}{ax}, \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{-1}{ax} = \\dfrac{-1}{a \\cdot a} = -\\dfrac{1}{a^{2}}, \\qquad\\text{donc}\\qquad f'(x) = -\\dfrac{1}{x^{2}}. \\]",
+            "<strong>Les deux méthodes donnent $f'(x) = -\\dfrac{1}{x^{2}}$.</strong> Les deux passent par un dénominateur commun. La première fait apparaître $-h$ au numérateur, la seconde $-(x-a)$ : c'est le même facteur, nommé autrement.",
             "<strong>Domaine.</strong> La dérivée existe pour $x \\neq 0$, comme la fonction elle-même.",
             "<strong>Interprétation.</strong> La dérivée est <em>toujours négative</em>, ce qui confirme que $\\frac{1}{x}$ est décroissante sur chacune de ses deux branches."
           ],
@@ -12343,6 +12390,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<strong>Étape 1 — Calculer $f(x+h)$.</strong>\\[ f(x+h) = \\sqrt{x+h}. \\]",
             "<strong>Étape 2 — Former le quotient.</strong>\\[ \\dfrac{f(x+h)-f(x)}{h} = \\dfrac{\\sqrt{x+h} - \\sqrt{x}}{h}. \\]",
             "Ici la simplification n'est pas immédiate : le facteur $h$ ne se met pas en évidence. Il faut le <strong>conjugué</strong>.",
@@ -12352,6 +12400,13 @@
             "\\[ = \\dfrac{h}{h\\left(\\sqrt{x+h}+\\sqrt{x}\\right)}. \\]",
             "<strong>Étape 4 — Simplifier puis évaluer.</strong>\\[ = \\dfrac{1}{\\sqrt{x+h}+\\sqrt{x}}, \\qquad h \\neq 0. \\]",
             "\\[ f'(x) = \\lim_{h \\to 0}\\dfrac{1}{\\sqrt{x+h}+\\sqrt{x}} = \\dfrac{1}{\\sqrt{x}+\\sqrt{x}} = \\dfrac{1}{2\\sqrt{x}}. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "On calcule le taux en un point <strong>quelconque</strong> $a$, puis on observe que $a$ n'avait rien de particulier.",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{\\sqrt{x} - \\sqrt{a}}{x-a}. \\]",
+            "<strong>Ici, pas besoin de conjugué.</strong> Le dénominateur se factorise de lui-même, parce que $x - a$ est une différence de carrés déguisée :\\[ x - a = \\left(\\sqrt{x}\\right)^{2} - \\left(\\sqrt{a}\\right)^{2} = \\left(\\sqrt{x}-\\sqrt{a}\\right)\\left(\\sqrt{x}+\\sqrt{a}\\right). \\]",
+            "<strong>Simplifier.</strong>\\[ \\dfrac{\\sqrt{x}-\\sqrt{a}}{\\left(\\sqrt{x}-\\sqrt{a}\\right)\\left(\\sqrt{x}+\\sqrt{a}\\right)} = \\dfrac{1}{\\sqrt{x}+\\sqrt{a}}, \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{1}{\\sqrt{x}+\\sqrt{a}} = \\dfrac{1}{2\\sqrt{a}}, \\qquad\\text{donc}\\qquad f'(x) = \\dfrac{1}{2\\sqrt{x}}. \\]",
+            "<strong>Les deux méthodes donnent $f'(x) = \\dfrac{1}{2\\sqrt{x}}$.</strong> C'est le seul exercice où la seconde méthode est plus <em>courte</em> : elle factorise $x-a$ directement, là où la première doit multiplier par le conjugué pour faire apparaître $h$. Même identité, deux usages.",
             "<strong>Domaine.</strong> La fonction $\\sqrt{x}$ existe pour $x \\geq 0$, mais sa dérivée seulement pour $x > 0$ : le point $x = 0$ mérite une attention particulière, qu'on lui donnera à la section 4.6."
           ],
           "piegeCourant": "Développer le dénominateur après multiplication par le conjugué, ce qui fait disparaître le facteur $h$ à simplifier."
@@ -12396,11 +12451,19 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<strong>Étape 1 — Calculer $f(x+h)$.</strong> On remplace chaque $x$ par $(x+h)$ :\\begin{align*} f(x+h) &= 2(x+h)^{2} - 5(x+h) + 3 \\\\ &= 2\\left(x^{2}+2xh+h^{2}\\right) - 5x - 5h + 3 \\\\ &= 2x^{2} + 4xh + 2h^{2} - 5x - 5h + 3. \\end{align*}",
             "<strong>Étape 2 — Former la différence.</strong>\\begin{align*} f(x+h) - f(x) &= \\left(2x^{2} + 4xh + 2h^{2} - 5x - 5h + 3\\right) - \\left(2x^{2} - 5x + 3\\right) \\\\ &= 4xh + 2h^{2} - 5h. \\end{align*}",
             "Vérification utile : les trois termes sans $h$ ($2x^{2}$, $-5x$ et $3$) se sont bien annulés. S'il en restait un, il y aurait une erreur.",
             "<strong>Étape 3 — Diviser par $h$.</strong> On met $h$ en évidence :\\[ \\dfrac{h(4x + 2h - 5)}{h} = 4x + 2h - 5, \\qquad h \\neq 0. \\]",
             "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0}(4x + 2h - 5) = 4x - 5. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "On calcule le taux en un point <strong>quelconque</strong> $a$, puis on observe que $a$ n'avait rien de particulier.",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{\\left(2x^{2}-5x+3\\right)-\\left(2a^{2}-5a+3\\right)}{x-a}. \\]",
+            "<strong>Regrouper par degré.</strong> Les constantes $+3$ s'annulent :\\[ 2\\left(x^{2}-a^{2}\\right) - 5(x-a) = 2(x-a)(x+a) - 5(x-a). \\]",
+            "<strong>Mettre $(x-a)$ en évidence.</strong>\\[ \\dfrac{(x-a)\\bigl[2(x+a) - 5\\bigr]}{x-a} = 2(x+a) - 5, \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a}\\bigl[2(x+a)-5\\bigr] = 4a - 5, \\qquad\\text{donc}\\qquad f'(x) = 4x - 5. \\]",
+            "<strong>Les deux méthodes donnent $f'(x) = 4x - 5$.</strong> La première développe puis met $h$ en évidence ; la seconde regroupe par degré puis met $(x-a)$ en évidence. Même geste, appliqué à l'autre bout.",
             "<strong>Évaluation en un point.</strong>\\[ f'(1) = 4(1) - 5 = -1. \\]",
             "<strong>Interprétation.</strong> La tangente à la courbe au point d'abscisse $1$ a une pente de $-1$ : la fonction y est décroissante."
           ],
@@ -12448,12 +12511,20 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<strong>Étape 1 — Calculer $f(x+h)$.</strong> On remplace $x$ par $(x+h)$ dans le dénominateur :\\[ f(x+h) = \\dfrac{1}{(x+h)+2} = \\dfrac{1}{x+h+2}. \\]",
             "<strong>Étape 2 — Former la différence.</strong> Le dénominateur commun est $(x+h+2)(x+2)$ :\\begin{align*} f(x+h) - f(x) &= \\dfrac{1}{x+h+2} - \\dfrac{1}{x+2} \\\\ &= \\dfrac{(x+2) - (x+h+2)}{(x+h+2)(x+2)}. \\end{align*}",
             "On simplifie le numérateur avec soin :\\[ (x+2) - (x+h+2) = x + 2 - x - h - 2 = -h. \\]",
             "\\[ f(x+h) - f(x) = \\dfrac{-h}{(x+h+2)(x+2)}. \\]",
             "<strong>Étape 3 — Diviser par $h$.</strong>\\[ \\dfrac{-h}{(x+h+2)(x+2)} \\cdot \\dfrac{1}{h} = \\dfrac{-1}{(x+h+2)(x+2)}, \\qquad h \\neq 0. \\]",
             "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0}\\dfrac{-1}{(x+h+2)(x+2)} = \\dfrac{-1}{(x+2)(x+2)} = -\\dfrac{1}{(x+2)^{2}}. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "On calcule le taux en un point <strong>quelconque</strong> $a$, puis on observe que $a$ n'avait rien de particulier.",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{\\dfrac{1}{x+2} - \\dfrac{1}{a+2}}{x-a}. \\]",
+            "<strong>Dénominateur commun au numérateur.</strong>\\[ \\dfrac{1}{x+2} - \\dfrac{1}{a+2} = \\dfrac{(a+2)-(x+2)}{(x+2)(a+2)} = \\dfrac{-(x-a)}{(x+2)(a+2)}. \\]",
+            "<strong>Diviser par $(x-a)$.</strong>\\[ \\dfrac{-(x-a)}{(x+2)(a+2)} \\cdot \\dfrac{1}{x-a} = \\dfrac{-1}{(x+2)(a+2)}, \\qquad x \\neq a. \\]",
+            "\\[ f'(a) = \\lim_{x \\to a}\\dfrac{-1}{(x+2)(a+2)} = \\dfrac{-1}{(a+2)^{2}}, \\qquad\\text{donc}\\qquad f'(x) = -\\dfrac{1}{(x+2)^{2}}. \\]",
+            "<strong>Les deux méthodes donnent $f'(x) = -\\dfrac{1}{(x+2)^{2}}$.</strong> Le décalage de $2$ ne change rien à la structure : c'est l'exercice précédent avec $x+2$ à la place de $x$, par les deux chemins.",
             "<strong>Domaine.</strong> La fonction et sa dérivée existent pour $x \\neq -2$.",
             "<strong>Vérification de plausibilité.</strong> La dérivée est toujours négative, ce qui est cohérent : $\\frac{1}{x+2}$ est décroissante sur chacune de ses branches, comme $\\frac{1}{x}$ dont elle n'est qu'une translation horizontale."
           ],
@@ -12498,11 +12569,16 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<strong>Étape 1 — Calculer $f(x+h)$.</strong> La fonction vaut $7$ <em>quelle que soit</em> la valeur d'entrée :\\[ f(x+h) = 7. \\]",
             "<strong>Étape 2 — Former la différence.</strong>\\[ f(x+h) - f(x) = 7 - 7 = 0. \\]",
             "<strong>Étape 3 — Diviser par $h$.</strong>\\[ \\dfrac{0}{h} = 0, \\qquad h \\neq 0. \\]",
             "Noter que $\\dfrac{0}{h}$ vaut bien $0$ tant que $h \\neq 0$ : il n'y a aucune indétermination ici.",
             "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0} 0 = 0. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "En un point quelconque $a$, le numérateur est nul avant même qu'on simplifie :\\[ f'(a) = \\lim_{x \\to a}\\dfrac{7 - 7}{x-a} = \\lim_{x \\to a}\\dfrac{0}{x-a} = \\lim_{x \\to a} 0 = 0. \\]",
+            "Il n'y a pas de forme indéterminée ici : le numérateur vaut $0$, le dénominateur ne s'annule pas tant que $x \\neq a$.",
+            "<strong>Les deux méthodes donnent $f'(x) = 0$.</strong> C'est le cas le plus simple : aucune des deux méthodes n'a quoi que ce soit à simplifier, parce que la différence est nulle dès le départ.",
             "<strong>Interprétation.</strong> Le graphique de $f$ est une droite <em>horizontale</em>, dont la pente est nulle en tout point. La fonction ne varie jamais, donc son taux de variation est nul partout.",
             "Ce résultat se généralise : la dérivée de toute fonction constante est $0$."
           ],
@@ -12737,10 +12813,16 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "<strong>(a) Calcul par la définition.</strong>",
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<em>Étape 1.</em> \\[ s(t+h) = (t+h)^{2} + 4(t+h) = t^{2} + 2th + h^{2} + 4t + 4h. \\]",
             "<em>Étape 2.</em> \\begin{align*} s(t+h) - s(t) &= \\left(t^{2} + 2th + h^{2} + 4t + 4h\\right) - \\left(t^{2}+4t\\right) \\\\ &= 2th + h^{2} + 4h. \\end{align*}",
             "<em>Étape 3.</em> On met $h$ en évidence :\\[ \\dfrac{h(2t + h + 4)}{h} = 2t + h + 4, \\qquad h \\neq 0. \\]",
             "<em>Étape 4.</em> \\[ \\dfrac{ds}{dt} = \\lim_{h \\to 0}(2t + h + 4) = 2t + 4. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $t$).</strong>",
+            "On calcule en un instant quelconque $a$ :\\[ \\left.\\dfrac{ds}{dt}\\right|_{t=a} = \\lim_{t \\to a}\\dfrac{\\left(t^{2}+4t\\right)-\\left(a^{2}+4a\\right)}{t-a}. \\]",
+            "<strong>Regrouper puis mettre $(t-a)$ en évidence.</strong>\\[ \\left(t^{2}-a^{2}\\right) + 4(t-a) = (t-a)(t+a) + 4(t-a) = (t-a)(t+a+4). \\]",
+            "\\[ \\lim_{t \\to a}\\dfrac{(t-a)(t+a+4)}{t-a} = \\lim_{t \\to a}(t+a+4) = 2a+4, \\qquad\\text{donc}\\qquad \\dfrac{ds}{dt} = 2t+4. \\]",
+            "<strong>Les deux méthodes donnent $\\dfrac{ds}{dt} = 2t+4$.</strong> La seconde méthode rend visible pourquoi le $+4$ survit intact : il sort du regroupement sans se mélanger au terme quadratique.",
             "<strong>(b) Vitesse à $t = 3$~s.</strong>\\[ \\left.\\dfrac{ds}{dt}\\right|_{t=3} = 2(3) + 4 = 10. \\]",
             "<strong>Unités.</strong> $\\dfrac{\\text{m}}{\\text{s}} = $ m/s. À $t = 3$~s, le mobile avance à $10$~m/s.",
             "<strong>(c) Instant où la vitesse vaut $20$~m/s.</strong> On résout l'équation portant sur la <em>vitesse</em> :\\[ 2t + 4 = 20. \\]",
@@ -12793,10 +12875,16 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "<strong>(a) Calcul par la définition.</strong>",
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<em>Étape 1.</em> \\[ C(t+h) = 50 - 3(t+h)^{2} = 50 - 3\\left(t^{2}+2th+h^{2}\\right) = 50 - 3t^{2} - 6th - 3h^{2}. \\]",
             "<em>Étape 2.</em> \\begin{align*} C(t+h) - C(t) &= \\left(50 - 3t^{2} - 6th - 3h^{2}\\right) - \\left(50 - 3t^{2}\\right) \\\\ &= -6th - 3h^{2}. \\end{align*}",
             "<em>Étape 3.</em> \\[ \\dfrac{h(-6t - 3h)}{h} = -6t - 3h, \\qquad h \\neq 0. \\]",
             "<em>Étape 4.</em> \\[ \\dfrac{dC}{dt} = \\lim_{h \\to 0}(-6t - 3h) = -6t. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $t$).</strong>",
+            "En un instant quelconque $a$ :\\[ \\left.\\dfrac{dC}{dt}\\right|_{t=a} = \\lim_{t \\to a}\\dfrac{\\left(50-3t^{2}\\right)-\\left(50-3a^{2}\\right)}{t-a}. \\]",
+            "<strong>Simplifier le numérateur.</strong> Les $50$ s'annulent :\\[ -3t^{2}+3a^{2} = -3\\left(t^{2}-a^{2}\\right) = -3(t-a)(t+a). \\]",
+            "\\[ \\lim_{t \\to a}\\dfrac{-3(t-a)(t+a)}{t-a} = \\lim_{t \\to a}\\bigl[-3(t+a)\\bigr] = -6a, \\qquad\\text{donc}\\qquad \\dfrac{dC}{dt} = -6t. \\]",
+            "<strong>Les deux méthodes donnent $\\dfrac{dC}{dt} = -6t$.</strong> La constante $50$ disparaît des deux côtés dès la soustraction : une constante additive ne contribue jamais à la dérivée.",
             "<strong>(b) Évaluation à $t = 4$~min.</strong>\\[ \\left.\\dfrac{dC}{dt}\\right|_{t=4} = -6(4) = -24. \\]",
             "<strong>Unités.</strong> La concentration est en mol/L et le temps en minutes :\\[ \\dfrac{\\text{mol/L}}{\\text{min}} = \\text{mol/(L}\\cdot\\text{min)}. \\]",
             "<strong>(c) Interprétation du signe.</strong> Le résultat est <strong>négatif</strong> : la concentration du réactif <em>diminue</em> au rythme de $24$~mol/(L$\\cdot$min) à cet instant.",

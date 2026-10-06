@@ -100,14 +100,20 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Écrire la définition.</strong>\\[ v(2) = \\lim_{t \\to 2}\\dfrac{s(t)-s(2)}{t-2}. \\]",
-            "<strong>Calculer $s(2)$.</strong>\\[ s(2) = 4 + 6 = 10 \\ \\text{m}. \\]",
-            "<strong>Substituer.</strong>\\[ \\lim_{t \\to 2}\\dfrac{t^{2}+3t-10}{t-2}. \\]",
+            "<strong>Calculer $s(2)$.</strong> Les deux méthodes en ont besoin.\\[ s(2) = 4 + 6 = 10 \\ \\text{m}. \\]",
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
+            "\\[ v(2) = \\lim_{h \\to 0}\\dfrac{s(2+h) - s(2)}{h}. \\]",
+            "<strong>Développer $s(2+h)$.</strong>\\begin{align*} s(2+h) &= (2+h)^{2} + 3(2+h) \\\\ &= 4 + 4h + h^{2} + 6 + 3h \\\\ &= h^{2} + 7h + 10. \\end{align*}",
+            "<strong>Former la différence et diviser.</strong>\\[ \\dfrac{\\left(h^{2}+7h+10\\right) - 10}{h} = \\dfrac{h(h+7)}{h} = h + 7, \\qquad h \\neq 0. \\]",
+            "<strong>Évaluer.</strong>\\[ v(2) = \\lim_{h \\to 0}(h+7) = 7. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $t$).</strong>",
+            "<strong>Écrire la définition.</strong>\\[ v(2) = \\lim_{t \\to 2}\\dfrac{s(t)-s(2)}{t-2} = \\lim_{t \\to 2}\\dfrac{t^{2}+3t-10}{t-2}. \\]",
             "<strong>Vérifier la forme.</strong> En $t=2$ : $4+6-10 = 0$ au numérateur et $0$ au dénominateur. Forme $\\dfrac{0}{0}$.",
             "<strong>Factoriser.</strong> On cherche deux nombres de produit $-10$ et de somme $3$ : ce sont $5$ et $-2$.\\[ t^{2}+3t-10 = (t+5)(t-2). \\]",
             "\\[ \\dfrac{(t+5)(t-2)}{t-2} = t+5, \\qquad t \\neq 2. \\]",
             "<strong>Évaluer.</strong>\\[ v(2) = \\lim_{t \\to 2}(t+5) = 7. \\]",
-            "<strong>Unités et interprétation.</strong> La vitesse est en m/s. À l'instant précis $t = 2$~s, le mobile se déplace à $7$~m/s."
+            "<strong>Les deux méthodes donnent $7$.</strong> La première développe un carré puis met $h$ en évidence, la seconde factorise un trinôme. Aucune n'est plus juste que l'autre.",
+            "<strong>Unités et interprétation.</strong> La vitesse est en m/s. À l'instant précis $t = 2$ s, le mobile se déplace à $7$ m/s."
           ],
           "piegeCourant": "Se tromper de signes en factorisant et obtenir $(t-5)(t+2)$."
         }
@@ -267,11 +273,16 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
+            "<strong>Méthode 1 — formule 4.1 (limite en $h$).</strong>",
             "<strong>Étape 1 — Calculer $f(x+h)$.</strong> La fonction vaut $7$ <em>quelle que soit</em> la valeur d'entrée :\\[ f(x+h) = 7. \\]",
             "<strong>Étape 2 — Former la différence.</strong>\\[ f(x+h) - f(x) = 7 - 7 = 0. \\]",
             "<strong>Étape 3 — Diviser par $h$.</strong>\\[ \\dfrac{0}{h} = 0, \\qquad h \\neq 0. \\]",
             "Noter que $\\dfrac{0}{h}$ vaut bien $0$ tant que $h \\neq 0$ : il n'y a aucune indétermination ici.",
             "<strong>Étape 4 — Évaluer la limite.</strong>\\[ f'(x) = \\lim_{h \\to 0} 0 = 0. \\]",
+            "<strong>Méthode 2 — définition 4.2 (limite en $x$).</strong>",
+            "En un point quelconque $a$, le numérateur est nul avant même qu'on simplifie :\\[ f'(a) = \\lim_{x \\to a}\\dfrac{7 - 7}{x-a} = \\lim_{x \\to a}\\dfrac{0}{x-a} = \\lim_{x \\to a} 0 = 0. \\]",
+            "Il n'y a pas de forme indéterminée ici : le numérateur vaut $0$, le dénominateur ne s'annule pas tant que $x \\neq a$.",
+            "<strong>Les deux méthodes donnent $f'(x) = 0$.</strong> C'est le cas le plus simple : aucune des deux méthodes n'a quoi que ce soit à simplifier, parce que la différence est nulle dès le départ.",
             "<strong>Interprétation.</strong> Le graphique de $f$ est une droite <em>horizontale</em>, dont la pente est nulle en tout point. La fonction ne varie jamais, donc son taux de variation est nul partout.",
             "Ce résultat se généralise : la dérivée de toute fonction constante est $0$."
           ],
