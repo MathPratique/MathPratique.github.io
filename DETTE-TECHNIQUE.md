@@ -297,3 +297,39 @@ mention de ce genre à la réalité. Une mention dérivée du catalogue
 plus et un rendu de plus — un chantier, pas une ligne. Tant qu'on écrit ces
 mentions à la main, la règle est celle qui a été suivie ici : elles entrent
 et sortent avec les documents, dans le même commit.
+
+---
+
+## 2026-10-05 — le verrou « catalogue = seau » des scripts ad hoc ignore les objets volontairement non déclarés
+
+**État : ouverte.** Contournée dans le script du lot ch04-ch05, pas corrigée
+dans le gabarit.
+
+Les scripts ad hoc de téléversement de Calcul intégral portent un verrou qui
+vérifie, dans les deux sens, que le catalogue du cours et le seau se
+recouvrent : rien de déclaré qui manque, rien de présent qui ne soit déclaré.
+Le second sens attrape l'orphelin — un PDF envoyé par erreur, ou laissé là
+par un lot abandonné.
+
+Ce verrou a cessé d'être vrai le **2026-09-15**, quand les trois « énoncés
+seuls » des chapitres 1 à 3 ont été retirés du catalogue sans être supprimés
+du seau. Ils y vivent délibérément, pour distribuer un devoir hors du site.
+L'essai à blanc du lot des chapitres 4 et 5 s'est donc arrêté sur ces trois
+chemins, en les présentant comme des anomalies.
+
+**Contournement retenu.** Le script `televerser-ci-ch04-ch05.mjs` déclare une
+liste nommée `TOLERES_NON_DECLARES` contenant exactement ces trois chemins, et
+le rapport les affiche séparément. Le second sens du verrou reste donc armé :
+un orphelin *nouveau* fait toujours échouer le script.
+
+**Pourquoi c'est une dette.** La liste est recopiée dans chaque script ad hoc,
+et rien ne la relie au catalogue. Le jour où un quatrième fichier sera laissé
+dans le seau sans être déclaré, il faudra penser à l'ajouter à la main — sans
+quoi le prochain lot s'arrêtera sur une fausse alerte, et la tentation sera de
+désarmer le verrou plutôt que de le nourrir.
+
+**Correctif.** Faire porter l'information par le catalogue lui-même : un champ
+optionnel `presentDansLeSeauNonDeclare` ou, mieux, une liste exportée à côté de
+`DOCUMENTS` que les scripts importeraient. Les deux demandent de toucher à
+`src/acces/documents.ts`, qui est lu par les Cloud Functions — donc un
+déploiement, donc pas au milieu d'une publication.
