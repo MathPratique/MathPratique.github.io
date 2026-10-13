@@ -456,7 +456,7 @@ export const DOCUMENTS: Document[] = [
 
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //
-  // Cinq chapitres, complets : les notes dans leurs deux versions et un
+  // Les NEUF chapitres, complets : les notes dans leurs deux versions et un
   // document d'exercices par chapitre. Le catalogue est un INVENTAIRE, mais
   // l'inverse n'est pas vrai : un fichier peut vivre dans le seau sans être
   // déclaré ici, et il devient alors invisible et intéléchargeable. Les
@@ -470,16 +470,20 @@ export const DOCUMENTS: Document[] = [
   // majuscules dans le chemin des notes enseignant, alors que l'identifiant
   // dit « enseignant » comme partout ailleurs dans le catalogue.
   //
-  // Plus aucune mention « exercices à venir » : les cinq chapitres ont leurs
+  // Plus aucune mention « exercices à venir » : les neuf chapitres ont leurs
   // exercices. Chacune a été retirée dans le commit même qui publiait les
   // exercices du chapitre concerné, jamais avant — un titre qui annonce comme
   // manquant un document déjà offert est aussi trompeur que l'inverse. Les
-  // chapitres 4 et 5, publiés le 2026-10-05, n'en ont jamais porté : leurs
-  // notes et leurs exercices sont partis dans le même lot.
+  // chapitres 4 et 5, publiés le 2026-10-05, n'en ont jamais porté, et les
+  // chapitres 6 à 9, publiés le 2026-10-13, non plus : leurs notes et leurs
+  // exercices sont partis dans le même lot.
   //
-  // Les chapitres 6 à 9 ne sont pas déclarés. Ils n'apparaissent donc nulle
-  // part — c'est ce que « grisé » veut dire ici : non pas une entrée inerte,
-  // mais l'absence d'entrée.
+  // Les titres des chapitres 6 et 9 nomment un mathématicien — la règle de
+  // L'Hospital, la série de Maclaurin. C'est du vocabulaire mathématique
+  // consacré, et le catalogue nomme chaque document comme le document se
+  // nomme lui-même : son titre ici est celui de son \chapter{} LaTeX. Aucun
+  // titre ne porte de sigle de cours, de nom d'établissement, ni le nom de
+  // quiconque participe au site.
   //
   // Un seul document d'exercices par chapitre : le recueil complet, qui
   // contient les énoncés, les réponses finales et les solutions détaillées,
@@ -490,10 +494,10 @@ export const DOCUMENTS: Document[] = [
   // `exercices/chNN-enonces-seul.pdf` (déclaration retirée le 2026-09-15) :
   // ils servent à distribuer un devoir hors du site. Non déclarés, ils sont
   // invisibles dans /mon-compte et refusés au téléchargement —
-  // `trouverDocument` ne les connaît pas. Pour les chapitres 4 et 5, ces PDF
+  // `trouverDocument` ne les connaît pas. Pour les chapitres 4 à 9, ces PDF
   // existent dans `build/` mais n'ont jamais été téléversés : rien à retirer.
   // Les déclarer un jour demanderait une entrée ici, et un téléversement pour
-  // les chapitres 4 et 5.
+  // les chapitres 4 à 9.
   doc(
     CALCUL_INTEGRAL,
     "notes-ch01-integrale-indefinie-etudiant",
@@ -611,6 +615,102 @@ export const DOCUMENTS: Document[] = [
     "exercices-ch05-complet",
     "Exercices, réponses et solutions — chapitre 5 : Équations différentielles et modélisation",
     "exercices/ch05-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch06-formes-indeterminees-etudiant",
+    "Chapitre 6 — Formes indéterminées et règle de L'Hospital (étudiant)",
+    "notes/ch06-formes-indeterminees-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch06-formes-indeterminees-enseignant",
+    "Chapitre 6 — Formes indéterminées et règle de L'Hospital (enseignant)",
+    "notes/ch06-formes-indeterminees-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch06-complet",
+    "Exercices, réponses et solutions — chapitre 6 : Formes indéterminées et règle de L'Hospital",
+    "exercices/ch06-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch07-integrales-impropres-etudiant",
+    "Chapitre 7 — Intégrales impropres (étudiant)",
+    "notes/ch07-integrales-impropres-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch07-integrales-impropres-enseignant",
+    "Chapitre 7 — Intégrales impropres (enseignant)",
+    "notes/ch07-integrales-impropres-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch07-complet",
+    "Exercices, réponses et solutions — chapitre 7 : Intégrales impropres",
+    "exercices/ch07-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch08-series-numeriques-etudiant",
+    "Chapitre 8 — Séries numériques (étudiant)",
+    "notes/ch08-series-numeriques-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch08-series-numeriques-enseignant",
+    "Chapitre 8 — Séries numériques (enseignant)",
+    "notes/ch08-series-numeriques-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch08-complet",
+    "Exercices, réponses et solutions — chapitre 8 : Séries numériques",
+    "exercices/ch08-complet.pdf",
+    "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch09-series-puissances-etudiant",
+    "Chapitre 9 — Séries de puissances et série de Maclaurin (étudiant)",
+    "notes/ch09-series-puissances-ETUDIANT.pdf",
+    "notes",
+    NIVEAUX_NOTES_ETUDIANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "notes-ch09-series-puissances-enseignant",
+    "Chapitre 9 — Séries de puissances et série de Maclaurin (enseignant)",
+    "notes/ch09-series-puissances-PROF.pdf",
+    "notes",
+    NIVEAUX_NOTES_ENSEIGNANT,
+  ),
+  doc(
+    CALCUL_INTEGRAL,
+    "exercices-ch09-complet",
+    "Exercices, réponses et solutions — chapitre 9 : Séries de puissances et série de Maclaurin",
+    "exercices/ch09-complet.pdf",
     "exercices",
     NIVEAUX_EXERCICES_REVISION,
   ),
