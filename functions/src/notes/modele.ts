@@ -2,35 +2,68 @@
 //  L'appel au modèle — et sa doublure pour les émulateurs
 // ===========================================================================
 //
-// À l'étape 3, `analyserAvecModele` n'appelle rien : seule la doublure
-// répond. L'appel réel à Claude arrive à l'étape 4, une fois le catalogue
-// approuvé — brancher les deux d'un coup aurait voulu dire déboguer le
-// quota, les limites et le prompte en payant chaque essai.
+// Ce module ne fait que parler au modèle. Le prompte, le schéma et la lecture
+// de la réponse sont des fonctions pures de src/notes/prompte.ts, testées
+// sans réseau ; la décision de croire ou non la réponse appartient à
+// l'appelant (validerDetections).
 
+import Anthropic from "@anthropic-ai/sdk";
+
+import {
+  consigneUtilisateur,
+  lireReponse,
+  MAX_JETONS_SORTIE,
+  promptSysteme,
+  schemaReponse,
+  type CauseEchec,
+} from "../../../src/notes/prompte.js";
 import type { NotionComplete } from "./types.js";
 
-/** Le modèle qui fera la détection. Haiku : la tâche est une classification. */
+/** Le modèle qui fait la détection. Haiku : la tâche est une classification. */
 export const MODELE = "claude-haiku-5-5";
 
+/**
+ * Peu d'effort : classer une page parmi une centaine de notions ne demande
+ * pas de longue réflexion, et c'est le réglage qui coûte le moins. Sur ce
+ * modèle, baisser l'effort est la façon recommandée de réduire la
+ * réflexion — plutôt que de la couper.
+ */
+const EFFORT = "low" as const;
+
 export type EntreeModele = {
+  coursId: string;
   catalogue: NotionComplete[];
   texte?: string;
   fichier?: { mediaType: string; donnees: Buffer };
 };
 
-/**
- * La doublure n'est active QUE dans un émulateur, et seulement si on le
- * demande. Les deux conditions sont là exprès : avec la seule variable
- * d'environnement, un oubli de configuration en production donnerait un
- * service qui répond — faux, mais plausible — au lieu de tomber en panne.
- * Une analyse inventée qui se fait passer pour une vraie est le pire des
- * deux mondes.
- */
-export function modeSimule(): boolean {
-  return process.env.ANALYSE_NOTES_SIMULEE === "1" && process.env.FUNCTIONS_EMULATOR === "true";
+export type MotifEchec = CauseEchec | "indisponible";
+
+/** Une analyse qui n'a pas abouti, avec ce qu'il faut pour en parler. */
+export class ErreurModele extends Error {
+  readonly motif: MotifEchec;
+  constructor(motif: MotifEchec, detail?: string) {
+    super(detail ? `${motif} (${detail})` : motif);
+    this.motif = motif;
+  }
 }
 
-/** Sans accents ni majuscules — pour comparer du texte d'étudiant. */
+/**
+ * La doublure n'est active QUE dans un émulateur, et seulement si on le
+ * demande. Avec la seule variable d'environnement, un oubli de configuration
+ * en production donnerait une analyse inventée qui se fait passer pour une
+ * vraie — le pire des deux mondes.
+ *
+ *   ANALYSE_NOTES_SIMULEE=1       réponse inventée par correspondance de mots
+ *   ANALYSE_NOTES_SIMULEE=panne   modèle injoignable — pour vérifier que
+ *                                 l'analyse réservée est bien rendue
+ */
+export function modeSimule(): "reponse" | "panne" | null {
+  if (process.env.FUNCTIONS_EMULATOR !== "true") return null;
+  const v = process.env.ANALYSE_NOTES_SIMULEE;
+  return v === "1" ? "reponse" : v === "panne" ? "panne" : null;
+}
+
 function aplatir(s: string): string {
   return s
     .normalize("NFD")
@@ -40,45 +73,95 @@ function aplatir(s: string): string {
 
 /**
  * La doublure : une détection par simple correspondance de mots-clés.
- *
  * Volontairement bête — elle n'est là que pour faire tourner l'interface, le
- * quota et les messages d'erreur sans dépenser un sou. Elle ne comprend rien
- * à des notes manuscrites, d'où la réponse fixe pour un fichier.
+ * quota et les messages d'erreur sans dépenser un sou.
  */
 export function reponseSimulee(entree: EntreeModele): unknown {
   if (!entree.texte) {
-    // Un fichier : la doublure ne sait pas lire une image. Elle renvoie les
-    // deux premières notions du cours, pour que l'interface ait de quoi
-    // s'afficher.
     return {
       notions: entree.catalogue.slice(0, 2).map((n) => ({ id: n.id, confiance: "moyenne" })),
       horsSujet: false,
     };
   }
-
   const texte = aplatir(entree.texte);
   const scores = entree.catalogue
     .map((n) => {
       const termes = [n.titre, ...n.motsCles];
-      const touches = termes.filter((t) => texte.includes(aplatir(t))).length;
-      return { id: n.id, touches };
+      return { id: n.id, touches: termes.filter((t) => texte.includes(aplatir(t))).length };
     })
     .filter((s) => s.touches > 0)
     .sort((a, b) => b.touches - a.touches)
     .slice(0, 4);
-
   return {
     notions: scores.map((s) => ({ id: s.id, confiance: s.touches >= 2 ? "elevee" : "moyenne" })),
     horsSujet: scores.length === 0,
   };
 }
 
+/** Le bloc qui porte le fichier de l'étudiant, s'il y en a un. */
+function blocFichier(fichier: NonNullable<EntreeModele["fichier"]>): Anthropic.ContentBlockParam {
+  const data = fichier.donnees.toString("base64");
+  if (fichier.mediaType === "application/pdf") {
+    return { type: "document", source: { type: "base64", media_type: "application/pdf", data } };
+  }
+  // validerEntree n'a laissé passer que ces trois types d'image.
+  const mediaType = fichier.mediaType as "image/jpeg" | "image/png" | "image/webp";
+  return { type: "image", source: { type: "base64", media_type: mediaType, data } };
+}
+
 /**
- * Renvoie la réponse BRUTE du modèle, telle quelle. La validation contre le
- * catalogue se fait chez l'appelant (`validerDetections`) : le module qui
- * parle au modèle ne doit pas être aussi celui qui décide si on le croit.
+ * Renvoie le JSON BRUT du modèle. La validation contre le catalogue se fait
+ * chez l'appelant : le module qui parle au modèle ne doit pas être aussi
+ * celui qui décide si on le croit.
+ *
+ * Lève une ErreurModele si l'analyse n'aboutit pas — l'appelant rend alors
+ * l'analyse réservée.
  */
-export async function analyserAvecModele(entree: EntreeModele): Promise<unknown> {
-  if (modeSimule()) return reponseSimulee(entree);
-  throw new Error("appel-modele-non-branche");
+export async function analyserAvecModele(entree: EntreeModele, cle: string): Promise<unknown> {
+  const simulation = modeSimule();
+  if (simulation === "reponse") return reponseSimulee(entree);
+  if (simulation === "panne") throw new ErreurModele("indisponible", "panne simulée");
+
+  // Un seul nouvel essai : au-delà, l'étudiant attend devant un indicateur
+  // de chargement pour une analyse qui ne viendra probablement pas.
+  const client = new Anthropic({ apiKey: cle, maxRetries: 1, timeout: 60_000 });
+
+  // Le document d'abord, la consigne ensuite : c'est l'ordre dans lequel le
+  // modèle lit le mieux une image ou un PDF.
+  const contenu: Anthropic.ContentBlockParam[] = [];
+  if (entree.fichier) contenu.push(blocFichier(entree.fichier));
+  contenu.push({ type: "text", text: consigneUtilisateur(entree.texte) });
+
+  let message: Anthropic.Message;
+  try {
+    message = await client.messages.create({
+      model: MODELE,
+      max_tokens: MAX_JETONS_SORTIE,
+      system: [
+        {
+          type: "text",
+          text: promptSysteme(entree.coursId, entree.catalogue),
+          // Le prompte système est identique d'un appel à l'autre pour un
+          // même cours : en classe, quand trente étudiants analysent leurs
+          // notes à quelques minutes d'intervalle, il n'est facturé plein
+          // tarif qu'une fois.
+          cache_control: { type: "ephemeral" },
+        },
+      ],
+      output_config: {
+        effort: EFFORT,
+        format: { type: "json_schema", schema: schemaReponse(entree.catalogue.map((n) => n.id)) },
+      },
+      messages: [{ role: "user", content: contenu }],
+    });
+  } catch (err) {
+    // Ni le message d'erreur de l'API ni la requête ne sont recopiés : ils
+    // pourraient contenir un extrait des notes. Le statut HTTP suffit.
+    const statut = err instanceof Anthropic.APIError ? String(err.status ?? "réseau") : "réseau";
+    throw new ErreurModele("indisponible", `HTTP ${statut}`);
+  }
+
+  const lecture = lireReponse(message);
+  if (!lecture.ok) throw new ErreurModele(lecture.cause, lecture.detail);
+  return lecture.json;
 }

@@ -48,7 +48,7 @@ import {
   type RaisonRefus as RaisonRefusAnalyse,
 } from "../../src/notes/analyse.js";
 import { catalogueDe, COURS_AVEC_CATALOGUE, idsDuCatalogue } from "./notes/index.js";
-import { analyserAvecModele, modeSimule } from "./notes/modele.js";
+import { analyserAvecModele, ErreurModele, modeSimule, type MotifEchec } from "./notes/modele.js";
 import { rembourserAnalyse, reserverAnalyse } from "./notes/quota.js";
 import { CONTENT_HASH_CD } from "./data/exercices-cd-version.js";
 import { CONTENT_HASH_PS } from "./data/exercices-ps-version.js";
@@ -566,6 +566,30 @@ const CODE_HTTPS_PAR_REFUS: Partial<Record<RaisonRefusAnalyse, FunctionsErrorCod
   "quota-atteint": "resource-exhausted",
 };
 
+/**
+ * Ce qu'on dit à l'étudiant quand le modèle ne livre pas. Dans tous les
+ * cas l'analyse est rendue — d'où la même fin de phrase — mais la suite à
+ * proposer diffère : réessayer n'aide pas après un refus.
+ */
+const MESSAGES_ECHEC_MODELE: Record<MotifEchec, HttpsError> = {
+  indisponible: new HttpsError(
+    "unavailable",
+    "L'analyse n'a pas pu se faire. Réessaie dans un moment — celle-ci ne t'a pas été comptée.",
+  ),
+  refus: new HttpsError(
+    "failed-precondition",
+    "Ce document n'a pas pu être analysé. Colle plutôt le texte de tes notes, ou choisis tes notions dans la liste — celle-ci ne t'a pas été comptée.",
+  ),
+  tronquee: new HttpsError(
+    "internal",
+    "La réponse de l'analyse était incomplète. Réessaie — celle-ci ne t'a pas été comptée.",
+  ),
+  illisible: new HttpsError(
+    "internal",
+    "La réponse de l'analyse était illisible. Réessaie — celle-ci ne t'a pas été comptée.",
+  ),
+};
+
 function refusAnalyse(raison: RaisonRefusAnalyse): HttpsError {
   return new HttpsError(
     CODE_HTTPS_PAR_REFUS[raison] ?? "invalid-argument",
@@ -667,21 +691,25 @@ export const analyserNotes = onCall(
 
     let brut: unknown;
     try {
-      brut = await analyserAvecModele({
-        catalogue,
-        texte,
-        fichier: fichier ? { mediaType: fichier.mediaType, donnees: fichier.donnees } : undefined,
-      });
+      brut = await analyserAvecModele(
+        {
+          coursId,
+          catalogue,
+          texte,
+          fichier: fichier ? { mediaType: fichier.mediaType, donnees: fichier.donnees } : undefined,
+        },
+        CLE_ANTHROPIC.value(),
+      );
     } catch (err) {
       await rendre();
+      const motif = err instanceof ErreurModele ? err.motif : "indisponible";
+      // Le message d'ErreurModele ne porte qu'un motif et un statut HTTP ou
+      // une catégorie de refus — jamais un extrait des notes.
       logger.error(
-        `[analyse] ${uid} → ${coursId} : le modèle n'a pas répondu ` +
-          `(${err instanceof Error ? err.message : "cause inconnue"}) — analyse remboursée`,
+        `[analyse] ${uid} → ${coursId} : échec du modèle ` +
+          `(${err instanceof ErreurModele ? err.message : "cause inconnue"}) — analyse remboursée`,
       );
-      throw new HttpsError(
-        "unavailable",
-        "L'analyse n'a pas pu se faire. Réessaie dans un moment — celle-ci ne t'a pas été comptée.",
-      );
+      throw MESSAGES_ECHEC_MODELE[motif];
     }
 
     // ─── 6. On ne croit le modèle que sur ce qui existe ──────────────────
@@ -702,7 +730,7 @@ export const analyserNotes = onCall(
     }
     logger.info(
       `[analyse] ${uid} → ${coursId} : ${sortie.detectees.map((d) => d.id).join(",") || "aucune notion"}` +
-        `${modeSimule() ? " (simulé)" : ""}`,
+        `${modeSimule() === "reponse" ? " (simulé)" : ""}`,
     );
 
     return {
@@ -714,7 +742,7 @@ export const analyserNotes = onCall(
       detectees: sortie.detectees,
       horsSujet: sortie.horsSujet,
       restantes: decision.restantes,
-      ...(modeSimule() ? { simule: true } : {}),
+      ...(modeSimule() === "reponse" ? { simule: true } : {}),
     };
   },
 );

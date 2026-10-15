@@ -33,22 +33,36 @@ export const QUOTA_QUOTIDIEN = 10;
 export const ESSAIS_SANS_ACCES = 1;
 
 export const MAX_CARACTERES = 30_000;
+/** Pour un PDF. */
 export const MAX_OCTETS_FICHIER = 10 * 1024 * 1024;
 export const MAX_PAGES_PDF = 20;
 
 /**
- * Les types acceptés. Le HEIC est là parce que c'est ce que produit un
- * iPhone par défaut : refuser le format le plus courant des photos de notes
- * serait refuser la moitié des envois.
+ * Pour une photo, la borne est plus basse : l'API plafonne une image à
+ * 10 Mo une fois encodée en base64, et le base64 pèse les 4/3 de
+ * l'original. 7 Mio d'image font 9,3 Mio encodés, sous la barre. En
+ * pratique l'interface réduira les photos avant l'envoi (une photo de
+ * cellulaire passe sous le mégaoctet) ; ceci n'est que le filet.
+ */
+export const MAX_OCTETS_IMAGE = 7 * 1024 * 1024;
+
+/**
+ * Les types que l'API lit (documentation vérifiée le 2026-10-15) : PDF,
+ * JPEG, PNG, WebP. Le GIF aussi, mais personne ne prend ses notes en GIF.
  */
 export const TYPES_FICHIER_ACCEPTES = [
   "application/pdf",
   "image/jpeg",
   "image/png",
   "image/webp",
-  "image/heic",
-  "image/heif",
 ] as const;
+
+/**
+ * Le HEIC, format par défaut des photos d'iPhone, n'est PAS lu par l'API.
+ * On le reconnaît pour répondre autre chose que « format non reconnu » —
+ * l'étudiant n'a souvent aucune idée du format de ses photos.
+ */
+const TYPES_HEIC = ["image/heic", "image/heif"];
 
 export type TypeFichier = (typeof TYPES_FICHIER_ACCEPTES)[number];
 
@@ -74,7 +88,9 @@ export type RaisonRefus =
   | "texte-trop-long"
   | "fichier-vide"
   | "fichier-trop-gros"
+  | "image-trop-grosse"
   | "type-non-accepte"
+  | "heic-non-lu"
   | "pdf-trop-long"
   | "pdf-illisible"
   | "niveau-non-autorise"
@@ -92,8 +108,11 @@ export const MESSAGES_REFUS: Record<RaisonRefus, string> = {
   "entree-double": "Envoie soit du texte, soit un fichier, pas les deux en même temps.",
   "texte-trop-long": `Ton texte dépasse ${MAX_CARACTERES.toLocaleString("fr-CA")} caractères. Garde la partie que tu veux réviser.`,
   "fichier-vide": "Ce fichier est vide.",
-  "fichier-trop-gros": `Ton fichier dépasse ${MAX_OCTETS_FICHIER / (1024 * 1024)} Mo. Essaie une photo de moins bonne résolution, ou envoie moins de pages.`,
-  "type-non-accepte": "Format non reconnu. Envoie un PDF ou une photo (JPG, PNG, HEIC).",
+  "fichier-trop-gros": `Ton PDF dépasse ${MAX_OCTETS_FICHIER / (1024 * 1024)} Mo. Garde seulement les pages de la matière à réviser.`,
+  "image-trop-grosse": `Ta photo dépasse ${MAX_OCTETS_IMAGE / (1024 * 1024)} Mo. Reprends-la en résolution normale, ou fais une capture d'écran.`,
+  "type-non-accepte": "Format non reconnu. Envoie un PDF ou une photo (JPG, PNG ou WebP).",
+  "heic-non-lu":
+    "Les photos HEIC ne peuvent pas être lues. Sur iPhone, choisis « Le plus compatible » dans Réglages › Appareil photo › Formats, ou envoie une capture d'écran de la photo.",
   "pdf-trop-long": `Ton PDF dépasse ${MAX_PAGES_PDF} pages. Garde les pages de la matière à réviser.`,
   // On refuse au lieu de deviner : sans pouvoir compter les pages, rien ne
   // dit que ce PDF en a vingt plutôt que six cents.
@@ -127,12 +146,15 @@ export function validerEntree(
 
   if (entree.fichier) {
     const { mediaType, octets, pages } = entree.fichier;
+    if (TYPES_HEIC.includes(mediaType)) return refus("heic-non-lu");
     if (!(TYPES_FICHIER_ACCEPTES as readonly string[]).includes(mediaType)) {
       return refus("type-non-accepte");
     }
     if (octets <= 0) return refus("fichier-vide");
-    if (octets > MAX_OCTETS_FICHIER) return refus("fichier-trop-gros");
-    if (mediaType === "application/pdf" && typeof pages === "number" && pages > MAX_PAGES_PDF) {
+    const estUnPdf = mediaType === "application/pdf";
+    if (estUnPdf && octets > MAX_OCTETS_FICHIER) return refus("fichier-trop-gros");
+    if (!estUnPdf && octets > MAX_OCTETS_IMAGE) return refus("image-trop-grosse");
+    if (estUnPdf && typeof pages === "number" && pages > MAX_PAGES_PDF) {
       return refus("pdf-trop-long");
     }
   }

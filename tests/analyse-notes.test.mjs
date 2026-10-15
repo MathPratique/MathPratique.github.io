@@ -5,7 +5,9 @@ import {
   jourLocal,
   MAX_CARACTERES,
   MAX_OCTETS_FICHIER,
+  MAX_OCTETS_IMAGE,
   MAX_NOTIONS_DETECTEES,
+  MESSAGES_REFUS,
   QUOTA_QUOTIDIEN,
   quotaApres,
   quotaRembourse,
@@ -58,7 +60,7 @@ test("les tailles sont des bornes, pas des suggestions", () => {
     valide: true,
   });
   assert.equal(
-    refus({ coursId: COURS[0], fichier: { mediaType: "image/png", octets: MAX_OCTETS_FICHIER + 1 } }),
+    refus({ coursId: COURS[0], fichier: { mediaType: "application/pdf", octets: MAX_OCTETS_FICHIER + 1, pages: 2 } }),
     "fichier-trop-gros",
   );
   assert.equal(
@@ -81,10 +83,8 @@ test("un PDF trop long est refusé avant l'appel au modèle", () => {
   );
 });
 
-test("le HEIC est accepté, le reste non", () => {
-  // C'est le format par défaut d'un iPhone : le refuser, c'est refuser la
-  // moitié des photos de notes.
-  for (const type of ["image/heic", "image/jpeg", "image/png", "application/pdf"]) {
+test("les formats que l'API lit passent, les autres non", () => {
+  for (const type of ["image/jpeg", "image/png", "image/webp", "application/pdf"]) {
     assert.deepEqual(
       validerEntree({ coursId: COURS[0], fichier: { mediaType: type, octets: 100 } }, COURS),
       { valide: true },
@@ -94,6 +94,32 @@ test("le HEIC est accepté, le reste non", () => {
   assert.equal(
     refus({ coursId: COURS[0], fichier: { mediaType: "application/zip", octets: 100 } }),
     "type-non-accepte",
+  );
+});
+
+test("le HEIC a son propre message, pas « format non reconnu »", () => {
+  // Format par défaut des photos d'iPhone, que l'API ne lit pas. L'étudiant
+  // ignore souvent le format de ses photos : il faut lui dire quoi faire.
+  for (const type of ["image/heic", "image/heif"]) {
+    assert.equal(refus({ coursId: COURS[0], fichier: { mediaType: type, octets: 100 } }), "heic-non-lu");
+  }
+  assert.match(MESSAGES_REFUS["heic-non-lu"], /capture d'écran/);
+});
+
+test("une photo est plafonnée plus bas qu'un PDF", () => {
+  // L'API refuse une image de plus de 10 Mo en base64, soit ~7,5 Mo d'image.
+  assert.ok(MAX_OCTETS_IMAGE * (4 / 3) < 10 * 1024 * 1024, "la borne image tient sous la limite de l'API");
+  assert.equal(
+    refus({ coursId: COURS[0], fichier: { mediaType: "image/jpeg", octets: MAX_OCTETS_IMAGE + 1 } }),
+    "image-trop-grosse",
+  );
+  // Le même poids passe pour un PDF.
+  assert.deepEqual(
+    validerEntree(
+      { coursId: COURS[0], fichier: { mediaType: "application/pdf", octets: MAX_OCTETS_IMAGE + 1, pages: 3 } },
+      COURS,
+    ),
+    { valide: true },
   );
 });
 
