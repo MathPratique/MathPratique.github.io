@@ -1,0 +1,53 @@
+// Généré par scripts/generer-catalogue-notions.mjs — NE PAS ÉDITER À LA MAIN.
+//
+// Les 44 sections de la banque « calcul-differentiel ». Les mots-clés qui servent
+// à la détection sont ailleurs : voir motsCles-calcul-differentiel.ts.
+
+import type { Notion } from "./types.js";
+
+export const NOTIONS_CALCUL_DIFFERENTIEL: Notion[] = [
+  { id: "CD-1.1.1", chapitre: 1, section: "1.1.1", titre: "La mise en évidence" },
+  { id: "CD-1.1.2", chapitre: 1, section: "1.1.2", titre: "Les identités remarquables" },
+  { id: "CD-1.1.3", chapitre: 1, section: "1.1.3", titre: "La formule quadratique" },
+  { id: "CD-1.1.4", chapitre: 1, section: "1.1.4", titre: "Les polynômes de degré 3" },
+  { id: "CD-1.2", chapitre: 1, section: "1.2", titre: "Rappel : simplification d'expressions rationnelles" },
+  { id: "CD-1.3", chapitre: 1, section: "1.3", titre: "Rappel : les fonctions de base et leurs graphiques" },
+  { id: "CD-1.4", chapitre: 1, section: "1.4", titre: "Rappel : lois des exposants et propriétés des logarithmes" },
+  { id: "CD-1.5", chapitre: 1, section: "1.5", titre: "Les fonctions arcsinus et arctangente" },
+  { id: "CD-1.6", chapitre: 1, section: "1.6", titre: "Rappel : cercle trigonométrique et identités" },
+  { id: "CD-1.7", chapitre: 1, section: "1.7", titre: "Détermination algébrique du domaine" },
+  { id: "CD-2.1", chapitre: 2, section: "2.1", titre: "Notation et approche intuitive" },
+  { id: "CD-2.2", chapitre: 2, section: "2.2", titre: "Limites à gauche, à droite et existence de la limite" },
+  { id: "CD-2.3", chapitre: 2, section: "2.3", titre: "Propriétés des limites" },
+  { id: "CD-2.4", chapitre: 2, section: "2.4", titre: "Calcul algébrique de limites de fonctions élémentaires" },
+  { id: "CD-2.5", chapitre: 2, section: "2.5", titre: "Limites infinies et asymptotes verticales" },
+  { id: "CD-2.6", chapitre: 2, section: "2.6", titre: "Limites à l'infini et asymptotes horizontales" },
+  { id: "CD-2.7", chapitre: 2, section: "2.7", titre: "Formes indéterminées" },
+  { id: "CD-3.1", chapitre: 3, section: "3.1", titre: "La continuité en un point" },
+  { id: "CD-3.2", chapitre: 3, section: "3.2", titre: "La continuité sur un intervalle ouvert" },
+  { id: "CD-3.3", chapitre: 3, section: "3.3", titre: "Continuité d'une fonction définie par parties" },
+  { id: "CD-3.4", chapitre: 3, section: "3.4", titre: "Théorèmes sur la continuité" },
+  { id: "CD-4.1", chapitre: 4, section: "4.1", titre: "Le taux de variation moyen" },
+  { id: "CD-4.2", chapitre: 4, section: "4.2", titre: "Du taux moyen au taux instantané" },
+  { id: "CD-4.3", chapitre: 4, section: "4.3", titre: "La dérivée : définition et notations" },
+  { id: "CD-4.4", chapitre: 4, section: "4.4", titre: "Calculer une dérivée à partir de la définition" },
+  { id: "CD-4.5", chapitre: 4, section: "4.5", titre: "La dérivée en un point et son interprétation" },
+  { id: "CD-4.6", chapitre: 4, section: "4.6", titre: "La dérivabilité" },
+  { id: "CD-5.1", chapitre: 5, section: "5.1", titre: "Dériver les fonctions de base, intérieur compris" },
+  { id: "CD-5.3", chapitre: 5, section: "5.3", titre: "La règle du produit et la règle du quotient" },
+  { id: "CD-5.5", chapitre: 5, section: "5.5", titre: "La dérivation implicite" },
+  { id: "CD-5.6", chapitre: 5, section: "5.6", titre: "Les dérivées successives" },
+  { id: "CD-5.7", chapitre: 5, section: "5.7", titre: "Démonstrations" },
+  { id: "CD-6.1", chapitre: 6, section: "6.1", titre: "La droite tangente" },
+  { id: "CD-6.2", chapitre: 6, section: "6.2", titre: "La règle de L'Hospital" },
+  { id: "CD-6.3", chapitre: 6, section: "6.3", titre: "Les nombres critiques" },
+  { id: "CD-6.4", chapitre: 6, section: "6.4", titre: "Croissance, décroissance et extremums" },
+  { id: "CD-6.5", chapitre: 6, section: "6.5", titre: "Concavité et points d'inflexion" },
+  { id: "CD-6.6", chapitre: 6, section: "6.6", titre: "Le tableau de variation combiné" },
+  { id: "CD-6.7", chapitre: 6, section: "6.7", titre: "L'étude complète d'une fonction" },
+  { id: "CD-7.2", chapitre: 7, section: "7.2", titre: "Problèmes de taux de variation en contexte" },
+  { id: "CD-7.3", chapitre: 7, section: "7.3", titre: "La tendance à long terme" },
+  { id: "CD-7.4", chapitre: 7, section: "7.4", titre: "Les taux liés" },
+  { id: "CD-7.5", chapitre: 7, section: "7.5", titre: "Les problèmes d'optimisation" },
+  { id: "CD-7.6", chapitre: 7, section: "7.6", titre: "Interpréter un résultat" },
+];
