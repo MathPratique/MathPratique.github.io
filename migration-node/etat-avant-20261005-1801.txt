@@ -1,0 +1,28 @@
+ETAT DES CLOUD FUNCTIONS AVANT LA MIGRATION NODE 20 -> NODE 24
+Releve le 2026-10-05 18:01:53
+Projet : mathpratique-8dea1
+Tag git : avant-migration-node -> e3f49e7d4e3fac6bfb89548e0e44d2c9a9efb487
+
+=== Les 4 functions deployees ===
+┌───────────────────────────┬─────────┬──────────┬─────────────────────────┬────────┬──────────┐
+│ Function                  │ Version │ Trigger  │ Location                │ Memory │ Runtime  │
+├───────────────────────────┼─────────┼──────────┼─────────────────────────┼────────┼──────────┤
+│ creerSessionCheckout      │ v2      │ callable │ northamerica-northeast1 │ 256    │ nodejs20 │
+├───────────────────────────┼─────────┼──────────┼─────────────────────────┼────────┼──────────┤
+│ obtenirExercices          │ v2      │ callable │ northamerica-northeast1 │ 256    │ nodejs20 │
+├───────────────────────────┼─────────┼──────────┼─────────────────────────┼────────┼──────────┤
+│ obtenirLienTelechargement │ v2      │ callable │ northamerica-northeast1 │ 256    │ nodejs20 │
+├───────────────────────────┼─────────┼──────────┼─────────────────────────┼────────┼──────────┤
+│ webhookStripe             │ v2      │ https    │ northamerica-northeast1 │ 256    │ nodejs20 │
+└───────────────────────────┴─────────┴──────────┴─────────────────────────┴────────┴──────────┘
+
+=== Declare dans le depot ===
+firebase.json          : nodejs20
+functions/package.json : engines.node = 20
+
+=== Paquets des functions ===
++-- firebase-admin@13.10.0
++-- firebase-functions@6.6.0
++-- stripe@19.3.0
+`-- typescript@5.9.3
+
