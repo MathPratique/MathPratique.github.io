@@ -71,6 +71,12 @@ function notionsDuCours(cours) {
     if (typeof e.section !== "string" || e.section.length === 0) {
       throw new Error(`${cours.id} : l'exercice ${e.id} n'a pas de section.`);
     }
+    // Le codec d'URL du quiz (src/quiz/specs.ts) n'accepte que des entiers
+    // séparés par des points : une section « 3.3a » serait écartée en
+    // silence au décodage. Mieux vaut l'arrêter ici.
+    if (!/^\d+(?:\.\d+)*$/.test(e.section)) {
+      throw new Error(`${cours.id} : la section « ${e.section} » (exercice ${e.id}) n'est pas un numéro.`);
+    }
     const cle = `${cours.prefixe}-${e.section}`;
     if (!parSection.has(cle)) {
       parSection.set(cle, { id: cle, chapitre: e.chapitre, section: e.section, libelles: new Map() });
@@ -107,14 +113,22 @@ function notionsDuCours(cours) {
         `\n  Ajoute-les à LIBELLES_CANONIQUES après arbitrage de l'enseignant.`,
     );
   }
-  // Ordre de lecture : chapitre, puis numéro de section.
-  notions.sort(
-    (a, b) =>
-      a.chapitre - b.chapitre ||
-      parseFloat(a.section) - parseFloat(b.section) ||
-      a.section.localeCompare(b.section, "fr"),
-  );
+  // Ordre de lecture : chapitre, puis numéro de section, composante par
+  // composante. Surtout pas parseFloat : « 1.10 » vaudrait 1,1 et se
+  // rangerait entre 1.1 et 1.2 — l'erreur a été faite une fois.
+  notions.sort((a, b) => a.chapitre - b.chapitre || comparerSections(a.section, b.section));
   return notions;
+}
+
+/** « 1.2 » < « 1.10 » < « 1.10.1 » : on compare des entiers, pas des décimaux. */
+function comparerSections(a, b) {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const d = (pa[i] ?? -1) - (pb[i] ?? -1);
+    if (d !== 0) return d;
+  }
+  return 0;
 }
 
 function rendre(cours, notions) {
