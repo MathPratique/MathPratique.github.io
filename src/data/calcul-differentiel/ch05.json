@@ -12,7 +12,7 @@
       "difficulte": "facile",
       "tempsEstime": 3,
       "acces": "gratuit",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "règle de la puissance",
         "exposant négatif",
@@ -73,7 +73,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Détermine $f'(x)$ si $f(x) = \\dfrac{2x - 3}{x^{2} + 1}$."
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = \\dfrac{2x - 3}{x^{2} + 1}$."
         },
         {
           "etape": "indice",
@@ -83,17 +83,17 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$f'(x) = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}$"
+          "texte": "$\\dfrac{dy}{dx} = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie le haut et le bas :\\[ u(x) = 2x - 3 \\qquad \\text{et} \\qquad v(x) = x^{2} + 1. \\]",
-            "On dérive chacun :\\[ u'(x) = 2 \\qquad \\text{et} \\qquad v'(x) = 2x. \\]",
-            "On applique la règle du quotient $\\dfrac{u'v - uv'}{v^{2}}$ :\\[ f'(x) = \\dfrac{2\\left(x^{2}+1\\right) - (2x-3)(2x)}{\\left(x^{2}+1\\right)^{2}}. \\]",
+            "On identifie le haut et le bas :\\[ f(x) = 2x - 3 \\qquad \\text{et} \\qquad g(x) = x^{2} + 1. \\]",
+            "On dérive chacun :\\[ f'(x) = 2 \\qquad \\text{et} \\qquad g'(x) = 2x. \\]",
+            "On applique la règle du quotient $\\dfrac{f'g - fg'}{g^{2}}$ :\\[ \\dfrac{dy}{dx} = \\dfrac{2\\left(x^{2}+1\\right) - (2x-3)(2x)}{\\left(x^{2}+1\\right)^{2}}. \\]",
             "On développe le numérateur, en faisant attention au signe devant la parenthèse :\\begin{align*} 2\\left(x^{2}+1\\right) - (2x-3)(2x) &= 2x^{2} + 2 - \\left(4x^{2} - 6x\\right) \\\\ &= 2x^{2} + 2 - 4x^{2} + 6x \\\\ &= -2x^{2} + 6x + 2. \\end{align*}",
-            "D'où\\[ f'(x) = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}. \\]",
+            "D'où\\[ \\dfrac{dy}{dx} = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}. \\]",
             "Le domaine ne pose aucun problème ici : $x^{2}+1 > 0$ pour tout $x$ réel."
           ],
           "piegeCourant": "Oublier de distribuer le signe moins sur les deux termes du produit $(2x-3)(2x)$."
@@ -103,12 +103,12 @@
     {
       "id": "CD-C05-E008",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 3,
       "acces": "gratuit",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "puissance d'un polynôme"
@@ -126,7 +126,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Développer la puissance quatrième serait absurde. Quelle est la fonction intérieure, et que vaut sa dérivée ?"
+          "texte": "Développer la puissance quatrième serait absurde. Quel est l'intérieur, et que vaut sa dérivée ?"
         },
         {
           "etape": "reponse",
@@ -137,14 +137,14 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie la fonction intérieure :\\[ u(x) = 3x^{2} - 5. \\]",
-            "L'extérieure est la puissance quatrième : $y = u^{4}$.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 4u^{3} = 4\\left(3x^{2}-5\\right)^{3}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 6x. \\]",
+            "On identifie l'intérieur :\\[ u = 3x^{2} - 5. \\]",
+            "L'extérieur est la puissance quatrième : $y = u^{4}$.",
+            "On dérive l'extérieur en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 4u^{3} = 4\\left(3x^{2}-5\\right)^{3}. \\]",
+            "On dérive l'intérieur :\\[ \\dfrac{du}{dx} = 6x. \\]",
             "On multiplie les deux :\\[ \\dfrac{dy}{dx} = \\dfrac{dy}{du} \\cdot \\dfrac{du}{dx} = 4\\left(3x^{2}-5\\right)^{3} \\cdot 6x. \\]",
             "On simplifie le coefficient :\\[ \\dfrac{dy}{dx} = 24x\\left(3x^{2}-5\\right)^{3}. \\]"
           ],
-          "piegeCourant": "Écrire $4\\left(3x^{2}-5\\right)^{3}$ et oublier de multiplier par la dérivée de l'intérieure."
+          "piegeCourant": "Écrire $4\\left(3x^{2}-5\\right)^{3}$ et oublier de multiplier par la dérivée de l'intérieur."
         }
       ]
     },
@@ -209,12 +209,12 @@
     {
       "id": "CD-C05-E027",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.3",
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 3,
       "acces": "gratuit",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "La règle du produit et la règle du quotient",
       "motsCles": [
         "règle du produit",
         "développement préalable"
@@ -253,7 +253,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Par la règle du produit.</strong> Avec $u = x+2$ et $v = x-5$, on a $u' = 1$ et $v' = 1$, donc\\[ \\left[(x+2)(x-5)\\right]' = 1(x-5) + (x+2)(1) = x - 5 + x + 2 = 2x - 3. \\]",
+            "<strong>Par la règle du produit.</strong> Avec $f(x) = x+2$ et $g(x) = x-5$, on a $f'(x) = 1$ et $g'(x) = 1$, donc\\[ \\left[(x+2)(x-5)\\right]' = 1(x-5) + (x+2)(1) = x - 5 + x + 2 = 2x - 3. \\]",
             "<strong>En développant d'abord.</strong>\\[ (x+2)(x-5) = x^{2} - 5x + 2x - 10 = x^{2} - 3x - 10. \\]",
             "On dérive ce polynôme terme à terme :\\[ \\left(x^{2} - 3x - 10\\right)' = 2x - 3. \\]",
             "Les deux méthodes donnent bien $2x - 3$ : l'énoncé est <strong>vrai</strong>.",

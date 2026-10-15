@@ -1,6 +1,6 @@
 {
   "cours": "calcul-differentiel",
-  "contentHash": "74b34b31f8939849",
+  "contentHash": "14956fec15f16172",
   "exercices": [
     {
       "id": "CD-C01-E001",
@@ -13300,7 +13300,7 @@
       "difficulte": "facile",
       "tempsEstime": 1,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivée du cosinus",
         "formule élémentaire"
@@ -13385,7 +13385,7 @@
       "difficulte": "facile",
       "tempsEstime": 3,
       "acces": "gratuit",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "règle de la puissance",
         "exposant négatif",
@@ -13429,12 +13429,12 @@
     {
       "id": "CD-C05-E003",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivée d'un polynôme",
         "règle de la somme"
@@ -13490,7 +13490,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = x^{3}\\sin x$. Quelle est $f'(x)$ ?",
+          "texte": "Soit $y = x^{3}\\sin x$. Quelle est $\\dfrac{dy}{dx}$ ?",
           "choix": [
             {
               "cle": "a",
@@ -13524,9 +13524,9 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie les deux facteurs :\\[ u(x) = x^{3} \\qquad \\text{et} \\qquad v(x) = \\sin x. \\]",
-            "On dérive chacun séparément :\\[ u'(x) = 3x^{2} \\qquad \\text{et} \\qquad v'(x) = \\cos x. \\]",
-            "On applique la règle du produit $u'v + uv'$ :\\[ f'(x) = 3x^{2}\\sin x + x^{3}\\cos x. \\]"
+            "On identifie les deux facteurs :\\[ f(x) = x^{3} \\qquad \\text{et} \\qquad g(x) = \\sin x. \\]",
+            "On dérive chacun séparément :\\[ f'(x) = 3x^{2} \\qquad \\text{et} \\qquad g'(x) = \\cos x. \\]",
+            "On applique la règle du produit $f'g + fg'$ :\\[ \\dfrac{dy}{dx} = 3x^{2}\\sin x + x^{3}\\cos x. \\]"
           ],
           "analyseChoix": [
             {
@@ -13537,7 +13537,7 @@
             {
               "cle": "b",
               "correct": true,
-              "explication": "C'est bien $u'v + uv'$ avec $u = x^{3}$ et $v = \\sin x$."
+              "explication": "C'est bien $f'g + fg'$ avec $f = x^{3}$ et $g = \\sin x$."
             },
             {
               "cle": "c",
@@ -13547,7 +13547,7 @@
             {
               "cle": "d",
               "correct": false,
-              "explication": "Les facteurs ont été mal appariés : on a associé $u'$ à $v'$ et $u$ à $v$. La règle du produit associe la dérivée de l'un au facteur <em>non dérivé</em> de l'autre."
+              "explication": "Les facteurs ont été mal appariés : on a associé $f'$ à $g'$ et $f$ à $g$. La règle du produit associe la dérivée de l'un au facteur <em>non dérivé</em> de l'autre."
             }
           ],
           "piegeCourant": "Croire que la dérivée d'un produit est le produit des dérivées."
@@ -13574,7 +13574,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Détermine $f'(x)$ si $f(x) = \\dfrac{2x - 3}{x^{2} + 1}$."
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = \\dfrac{2x - 3}{x^{2} + 1}$."
         },
         {
           "etape": "indice",
@@ -13584,17 +13584,17 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$f'(x) = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}$"
+          "texte": "$\\dfrac{dy}{dx} = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie le haut et le bas :\\[ u(x) = 2x - 3 \\qquad \\text{et} \\qquad v(x) = x^{2} + 1. \\]",
-            "On dérive chacun :\\[ u'(x) = 2 \\qquad \\text{et} \\qquad v'(x) = 2x. \\]",
-            "On applique la règle du quotient $\\dfrac{u'v - uv'}{v^{2}}$ :\\[ f'(x) = \\dfrac{2\\left(x^{2}+1\\right) - (2x-3)(2x)}{\\left(x^{2}+1\\right)^{2}}. \\]",
+            "On identifie le haut et le bas :\\[ f(x) = 2x - 3 \\qquad \\text{et} \\qquad g(x) = x^{2} + 1. \\]",
+            "On dérive chacun :\\[ f'(x) = 2 \\qquad \\text{et} \\qquad g'(x) = 2x. \\]",
+            "On applique la règle du quotient $\\dfrac{f'g - fg'}{g^{2}}$ :\\[ \\dfrac{dy}{dx} = \\dfrac{2\\left(x^{2}+1\\right) - (2x-3)(2x)}{\\left(x^{2}+1\\right)^{2}}. \\]",
             "On développe le numérateur, en faisant attention au signe devant la parenthèse :\\begin{align*} 2\\left(x^{2}+1\\right) - (2x-3)(2x) &= 2x^{2} + 2 - \\left(4x^{2} - 6x\\right) \\\\ &= 2x^{2} + 2 - 4x^{2} + 6x \\\\ &= -2x^{2} + 6x + 2. \\end{align*}",
-            "D'où\\[ f'(x) = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}. \\]",
+            "D'où\\[ \\dfrac{dy}{dx} = \\dfrac{-2x^{2} + 6x + 2}{\\left(x^{2}+1\\right)^{2}}. \\]",
             "Le domaine ne pose aucun problème ici : $x^{2}+1 > 0$ pour tout $x$ réel."
           ],
           "piegeCourant": "Oublier de distribuer le signe moins sur les deux termes du produit $(2x-3)(2x)$."
@@ -13624,7 +13624,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $\\displaystyle f(x) = \\dfrac{e^{2x}}{x^{2}+1}$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$ et exprime le résultat sous forme factorisée. \\\\[0.2em] (b) Calcule $f'(0)$."
+          "texte": "Soit $\\displaystyle y = \\dfrac{e^{2x}}{x^{2}+1}$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$ et exprime le résultat sous forme factorisée. \\\\[0.2em] (b) Calcule $\\left.\\dfrac{dy}{dx}\\right|_{x=0}$."
         },
         {
           "etape": "indice",
@@ -13634,20 +13634,20 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $\\dfrac{dy}{dx} = \\dfrac{2e^{2x}\\left(x^{2} - x + 1\\right)}{\\left(x^{2}+1\\right)^{2}}$ \\qquad (b) $f'(0) = 2$"
+          "texte": "(a) $\\dfrac{dy}{dx} = \\dfrac{2e^{2x}\\left(x^{2} - x + 1\\right)}{\\left(x^{2}+1\\right)^{2}}$ \\qquad (b) $\\left.\\dfrac{dy}{dx}\\right|_{x=0} = 2$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> La structure globale est un <em>quotient</em>. Le numérateur exigera en plus la <em>dérivation en chaîne</em>.",
-            "On identifie :\\[ u(x) = e^{2x} \\qquad \\text{et} \\qquad v(x) = x^{2}+1. \\]",
-            "On dérive $u$ par la chaîne : la fonction intérieure est $2x$, de dérivée $2$, donc\\[ u'(x) = e^{2x} \\cdot 2 = 2e^{2x}. \\]",
-            "On dérive $v$ :\\[ v'(x) = 2x. \\]",
+            "<strong>(a)</strong> La structure globale est un <em>quotient</em>. Le numérateur, $e^{2x}$, a un <em>intérieur</em>.",
+            "On identifie :\\[ f(x) = e^{2x} \\qquad \\text{et} \\qquad g(x) = x^{2}+1. \\]",
+            "On dérive $f$. L'intérieur est $2x$, donc $u' = 2$~:\\[ f'(x) = e^{2x} \\cdot 2 = 2e^{2x}. \\]",
+            "On dérive $g$ :\\[ g'(x) = 2x. \\]",
             "On applique la règle du quotient :\\[ \\dfrac{dy}{dx} = \\dfrac{2e^{2x}\\left(x^{2}+1\\right) - e^{2x}(2x)}{\\left(x^{2}+1\\right)^{2}}. \\]",
             "On met $e^{2x}$ en évidence au numérateur :\\begin{align*} 2e^{2x}\\left(x^{2}+1\\right) - 2x\\,e^{2x} &= e^{2x}\\left[2\\left(x^{2}+1\\right) - 2x\\right] \\\\ &= e^{2x}\\left(2x^{2} - 2x + 2\\right) \\\\ &= 2e^{2x}\\left(x^{2} - x + 1\\right). \\end{align*}",
             "D'où la forme factorisée :\\[ \\dfrac{dy}{dx} = \\dfrac{2e^{2x}\\left(x^{2} - x + 1\\right)}{\\left(x^{2}+1\\right)^{2}}. \\]",
-            "<strong>(b)</strong> On évalue en $x = 0$ :\\[ f'(0) = \\dfrac{2e^{0}\\left(0 - 0 + 1\\right)}{\\left(0+1\\right)^{2}} = \\dfrac{2(1)(1)}{1} = 2. \\]"
+            "<strong>(b)</strong> On évalue en $x = 0$ :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=0} = \\dfrac{2e^{0}\\left(0 - 0 + 1\\right)}{\\left(0+1\\right)^{2}} = \\dfrac{2(1)(1)}{1} = 2. \\]"
           ],
           "piegeCourant": "Dériver $e^{2x}$ en $e^{2x}$ sans multiplier par la dérivée de l'argument intérieur."
         }
@@ -13656,12 +13656,12 @@
     {
       "id": "CD-C05-E007",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "composition",
@@ -13689,7 +13689,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Dans chacune des deux expressions, quelle est la fonction intérieure et quelle est l'extérieure ? Sont-elles composées dans le même ordre ?"
+          "texte": "Dans chacune des deux expressions, quel est l'intérieur et quel est l'extérieur ? Sont-elles composées dans le même ordre ?"
         },
         {
           "etape": "reponse",
@@ -13701,8 +13701,8 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "Ces deux expressions sont des compositions <em>différentes</em>, dans l'ordre inverse l'une de l'autre.",
-            "<strong>Pour $\\sin\\left(x^{3}\\right)$ :</strong> l'intérieure est $u = x^{3}$ et l'extérieure est le sinus. La dérivation en chaîne donne\\[ \\left[\\sin\\left(x^{3}\\right)\\right]' = \\cos\\left(x^{3}\\right) \\cdot 3x^{2} = 3x^{2}\\cos\\left(x^{3}\\right). \\]",
-            "<strong>Pour $\\left(\\sin x\\right)^{3}$ :</strong> l'intérieure est $u = \\sin x$ et l'extérieure est la puissance cubique. La dérivation en chaîne donne\\[ \\left[\\left(\\sin x\\right)^{3}\\right]' = 3\\left(\\sin x\\right)^{2} \\cdot \\cos x = 3\\sin^{2} x\\,\\cos x. \\]",
+            "<strong>Pour $\\sin\\left(x^{3}\\right)$ :</strong> l'intérieur est $u = x^{3}$ et l'extérieur est le sinus. La dérivation en chaîne donne\\[ \\left[\\sin\\left(x^{3}\\right)\\right]' = \\cos\\left(x^{3}\\right) \\cdot 3x^{2} = 3x^{2}\\cos\\left(x^{3}\\right). \\]",
+            "<strong>Pour $\\left(\\sin x\\right)^{3}$ :</strong> l'intérieur est $u = \\sin x$ et l'extérieur est la puissance cubique. La dérivation en chaîne donne\\[ \\left[\\left(\\sin x\\right)^{3}\\right]' = 3\\left(\\sin x\\right)^{2} \\cdot \\cos x = 3\\sin^{2} x\\,\\cos x. \\]",
             "Les deux résultats sont manifestement différents. Pour s'en convaincre par un contre-exemple, évaluons en $x = 1$ :\\[ 3(1)^{2}\\cos(1) \\approx 1{,}62 \\qquad \\text{alors que} \\qquad 3\\sin^{2}(1)\\cos(1) \\approx 1{,}15. \\]",
             "L'énoncé est donc <strong>faux</strong>."
           ],
@@ -13713,12 +13713,12 @@
     {
       "id": "CD-C05-E008",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 3,
       "acces": "gratuit",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "puissance d'un polynôme"
@@ -13736,7 +13736,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Développer la puissance quatrième serait absurde. Quelle est la fonction intérieure, et que vaut sa dérivée ?"
+          "texte": "Développer la puissance quatrième serait absurde. Quel est l'intérieur, et que vaut sa dérivée ?"
         },
         {
           "etape": "reponse",
@@ -13747,26 +13747,26 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie la fonction intérieure :\\[ u(x) = 3x^{2} - 5. \\]",
-            "L'extérieure est la puissance quatrième : $y = u^{4}$.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 4u^{3} = 4\\left(3x^{2}-5\\right)^{3}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 6x. \\]",
+            "On identifie l'intérieur :\\[ u = 3x^{2} - 5. \\]",
+            "L'extérieur est la puissance quatrième : $y = u^{4}$.",
+            "On dérive l'extérieur en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 4u^{3} = 4\\left(3x^{2}-5\\right)^{3}. \\]",
+            "On dérive l'intérieur :\\[ \\dfrac{du}{dx} = 6x. \\]",
             "On multiplie les deux :\\[ \\dfrac{dy}{dx} = \\dfrac{dy}{du} \\cdot \\dfrac{du}{dx} = 4\\left(3x^{2}-5\\right)^{3} \\cdot 6x. \\]",
             "On simplifie le coefficient :\\[ \\dfrac{dy}{dx} = 24x\\left(3x^{2}-5\\right)^{3}. \\]"
           ],
-          "piegeCourant": "Écrire $4\\left(3x^{2}-5\\right)^{3}$ et oublier de multiplier par la dérivée de l'intérieure."
+          "piegeCourant": "Écrire $4\\left(3x^{2}-5\\right)^{3}$ et oublier de multiplier par la dérivée de l'intérieur."
         }
       ]
     },
     {
       "id": "CD-C05-E009",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 7,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "chaîne imbriquée",
@@ -13798,7 +13798,7 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "<strong>(a)</strong> On repère les trois couches, de l'extérieur vers l'intérieur : le logarithme, puis le cosinus, puis $2x$.",
-            "On dérive la couche extérieure, le logarithme, en gardant son argument intact :\\[ \\dfrac{1}{\\cos(2x)}. \\]",
+            "On dérive l'extérieur, le logarithme, en gardant son argument intact :\\[ \\dfrac{1}{\\cos(2x)}. \\]",
             "On multiplie par la dérivée de la couche suivante, le cosinus :\\[ \\times\\ \\left(-\\sin(2x)\\right). \\]",
             "On multiplie par la dérivée de la couche la plus interne :\\[ \\times\\ 2. \\]",
             "On rassemble :\\[ f'(x) = \\dfrac{1}{\\cos(2x)} \\cdot \\left(-\\sin(2x)\\right) \\cdot 2 = \\dfrac{-2\\sin(2x)}{\\cos(2x)}. \\]",
@@ -14118,31 +14118,31 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = x^{2}\\tan x$.\\\\[0.3em] (a) Détermine $f'(x)$. \\\\[0.2em] (b) Calcule la valeur exacte de $f'\\!\\left(\\dfrac{\\pi}{4}\\right)$.\\\\[0.4em] \\textit{Formule fournie} : $\\dfrac{d}{dx}(\\tan x) = \\sec^{2} x$."
+          "texte": "Soit $y = x^{2}\\tan x$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$. \\\\[0.2em] (b) Calcule la valeur exacte de $\\left.\\dfrac{dy}{dx}\\right|_{x=\\frac{\\pi}{4}}$.\\\\[0.4em] \\textit{Formule fournie} : $\\dfrac{d}{dx}(\\tan u) = \\sec^{2} u \\cdot u'$."
         },
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Tu n'as pas à connaître la dérivée de $\\tan x$ par cœur — elle t'est donnée. La question est de savoir <em>où</em> l'insérer. Pour la partie (b), rappelle-toi que $\\sec\\theta = \\frac{1}{\\cos\\theta}$."
+          "texte": "Tu n'as pas à connaître la dérivée de $\\tan u$ par cœur — elle t'est donnée. La question est de savoir <em>où</em> l'insérer. Pour la partie (b), rappelle-toi que $\\sec\\theta = \\frac{1}{\\cos\\theta}$."
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $f'(x) = 2x\\tan x + x^{2}\\sec^{2} x$ \\qquad (b) $f'\\!\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{2} + \\dfrac{\\pi^{2}}{8}$"
+          "texte": "(a) $\\dfrac{dy}{dx} = 2x\\tan x + x^{2}\\sec^{2} x$ \\qquad (b) $\\left.\\dfrac{dy}{dx}\\right|_{x=\\frac{\\pi}{4}} = \\dfrac{\\pi}{2} + \\dfrac{\\pi^{2}}{8}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On reconnaît un produit et on identifie les deux facteurs :\\[ u(x) = x^{2} \\qquad \\text{et} \\qquad v(x) = \\tan x. \\]",
-            "On dérive chacun. Pour $v$, on utilise la formule fournie :\\[ u'(x) = 2x \\qquad \\text{et} \\qquad v'(x) = \\sec^{2} x. \\]",
-            "On applique la règle du produit $u'v + uv'$ :\\[ f'(x) = 2x\\tan x + x^{2}\\sec^{2} x. \\]",
+            "<strong>(a)</strong> On reconnaît un produit et on identifie les deux facteurs :\\[ f(x) = x^{2} \\qquad \\text{et} \\qquad g(x) = \\tan x. \\]",
+            "On dérive chacun. Pour $g$, on utilise la formule fournie :\\[ f'(x) = 2x \\qquad \\text{et} \\qquad g'(x) = \\sec^{2} x \\cdot 1 = \\sec^{2} x. \\]",
+            "On applique la règle du produit $f'g + fg'$ :\\[ \\dfrac{dy}{dx} = 2x\\tan x + x^{2}\\sec^{2} x. \\]",
             "<strong>(b)</strong> On évalue en $x = \\dfrac{\\pi}{4}$. Il faut d'abord les deux valeurs trigonométriques exactes.",
             "La table des valeurs donne $\\tan\\dfrac{\\pi}{4} = 1$.",
             "Pour la sécante, on utilise $\\sec\\theta = \\dfrac{1}{\\cos\\theta}$ et $\\cos\\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ :\\[ \\sec\\dfrac{\\pi}{4} = \\dfrac{1}{\\frac{\\sqrt{2}}{2}} = \\dfrac{2}{\\sqrt{2}} = \\sqrt{2}, \\qquad \\text{donc} \\qquad \\sec^{2}\\dfrac{\\pi}{4} = 2. \\]",
-            "On substitue :\\[ f'\\!\\left(\\dfrac{\\pi}{4}\\right) = 2\\left(\\dfrac{\\pi}{4}\\right)(1) + \\left(\\dfrac{\\pi}{4}\\right)^{2}(2). \\]",
+            "On substitue :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=\\frac{\\pi}{4}} = 2\\left(\\dfrac{\\pi}{4}\\right)(1) + \\left(\\dfrac{\\pi}{4}\\right)^{2}(2). \\]",
             "On simplifie chaque terme :\\[ 2\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{2}, \\qquad \\left(\\dfrac{\\pi}{4}\\right)^{2}(2) = \\dfrac{\\pi^{2}}{16}\\cdot 2 = \\dfrac{\\pi^{2}}{8}. \\]",
-            "D'où la valeur exacte :\\[ f'\\!\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{2} + \\dfrac{\\pi^{2}}{8}. \\]"
+            "D'où la valeur exacte :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=\\frac{\\pi}{4}} = \\dfrac{\\pi}{2} + \\dfrac{\\pi^{2}}{8}. \\]"
           ],
           "piegeCourant": "Confondre $\\sec^{2}\\frac{\\pi}{4}$ avec $\\cos^{2}\\frac{\\pi}{4}$ et obtenir $\\frac{1}{2}$ au lieu de $2$."
         }
@@ -14156,7 +14156,7 @@
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "fonction exponentielle",
         "base quelconque"
@@ -14241,7 +14241,7 @@
       "difficulte": "facile",
       "tempsEstime": 3,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "règle de la puissance",
         "radical",
@@ -14290,7 +14290,7 @@
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "logarithme naturel",
         "logarithme de base a"
@@ -14336,7 +14336,7 @@
       "difficulte": "moyen",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "arcsinus",
         "fonction trigonométrique inverse"
@@ -14421,7 +14421,7 @@
       "difficulte": "facile",
       "tempsEstime": 1,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "exponentielle naturelle"
       ],
@@ -14475,7 +14475,7 @@
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "exponentielle",
         "logarithme",
@@ -14522,7 +14522,7 @@
       "difficulte": "moyen",
       "tempsEstime": 6,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "arctangente",
         "arcsinus",
@@ -14573,93 +14573,94 @@
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Formules de dérivation des fonctions élémentaires",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "formules fournies",
-        "mémorisation",
-        "épreuve finale"
+        "dérivation en chaîne",
+        "intérieur"
       ],
       "savoirFaire": [
+        "2c",
         "2e"
       ],
       "etapes": [
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "À l'épreuve finale, les formules de dérivation de $\\tan x$, $\\sec x$, $\\cot x$ et $\\csc x$ sont fournies. Parmi les formules suivantes, laquelle dois-tu donc <em>mémoriser</em> ?",
+          "texte": "À l'épreuve finale, la formule $\\dfrac{d}{dx}(\\tan u) = \\sec^{2} u \\cdot u'$ t'est <em>fournie</em>. Utilise-la pour dériver $y = \\tan\\left(x^{2}\\right)$.",
           "choix": [
             {
               "cle": "a",
-              "texte": "$\\dfrac{d}{dx}(\\tan x) = \\sec^{2} x$"
+              "texte": "$\\sec^{2}\\left(x^{2}\\right)$"
             },
             {
               "cle": "b",
-              "texte": "$\\dfrac{d}{dx}(\\sec x) = \\sec x\\tan x$"
+              "texte": "$2x\\sec^{2}\\left(x^{2}\\right)$"
             },
             {
               "cle": "c",
-              "texte": "$\\dfrac{d}{dx}(\\arctan x) = \\dfrac{1}{1+x^{2}}$"
+              "texte": "$2x\\sec^{2} x$"
             },
             {
               "cle": "d",
-              "texte": "$\\dfrac{d}{dx}(\\csc x) = -\\csc x\\cot x$"
+              "texte": "$2x\\sec\\left(x^{2}\\right)\\tan\\left(x^{2}\\right)$"
             }
           ]
         },
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Quelles sont exactement les quatre fonctions dont les formules te seront données ? Tout le reste est à savoir par cœur."
+          "texte": "L'intérieur est $u = x^{2}$. Que vaut $u'$, et à quel endroit de la formule fournie va-t-il~?"
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$\\dfrac{d}{dx}(\\arctan x) = \\dfrac{1}{1+x^{2}}$"
+          "texte": "$2x\\sec^{2}\\left(x^{2}\\right)$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "Le plan-cadre du cours précise que l'épreuve finale se fait <strong>sans documentation, sans formulaire et sans règles de dérivation</strong>, à une exception près.",
-            "Les quatre formules fournies sont celles de $\\tan x$, $\\sec x$, $\\cot x$ et $\\csc x$.",
-            "Toutes les autres formules du chapitre 5 sont à mémoriser : $k$, $x^{r}$, $\\sin x$, $\\cos x$, $a^{x}$, $e^{x}$, $\\log_{a} x$, $\\ln x$, $\\arcsin x$ et $\\arctan x$.",
-            "La seule réponse qui ne figure pas dans la liste des formules fournies est donc celle de l'arctangente :\\[ \\dfrac{d}{dx}(\\arctan x) = \\dfrac{1}{1+x^{2}}. \\]"
+            "Tu n'as pas à retenir la dérivée de $\\tan$~: elle t'est donnée. Ce que tu dois savoir, c'est <strong>où</strong> placer l'intérieur et sa dérivée.",
+            "Ici l'intérieur est ce qui se trouve dans la parenthèse~:\\[ u = x^{2}, \\qquad u' = 2x. \\]",
+            "On recopie l'intérieur <strong>tel quel</strong> dans $\\sec^{2} u$~:\\[ \\sec^{2}\\left(x^{2}\\right). \\]",
+            "Puis on multiplie par la dérivée de l'intérieur~:\\[ \\dfrac{dy}{dx} = \\sec^{2}\\left(x^{2}\\right) \\cdot 2x = 2x\\sec^{2}\\left(x^{2}\\right). \\]"
           ],
           "analyseChoix": [
             {
               "cle": "a",
               "correct": false,
-              "explication": "Cette formule fait partie des quatre qui te sont fournies. Tu dois savoir t'en servir, pas la retenir."
+              "explication": "C'est la formule recopiée sans le facteur $u'$. L'intérieur est $u = x^{2}$, donc $u' = 2x$~: ce facteur ne disparaît que si l'intérieur est $x$ tout seul."
             },
             {
               "cle": "b",
-              "correct": false,
-              "explication": "Également fournie. Les quatre formules fournies concernent $\\tan$, $\\sec$, $\\cot$ et $\\csc$."
+              "correct": true,
+              "explication": "L'intérieur $u = x^{2}$ est recopié tel quel dans $\\sec^{2} u$, puis multiplié par $u' = 2x$."
             },
             {
               "cle": "c",
-              "correct": true,
-              "explication": "L'arctangente ne figure pas parmi les formules fournies : elle fait partie des formules à mémoriser, au même titre que $\\sin$, $\\cos$, $a^{x}$, $\\log_{a}$ et $\\arcsin$."
+              "correct": false,
+              "explication": "L'intérieur a été dérivé <em>dans</em> la fonction. On le recopie tel quel et on multiplie par sa dérivée à côté, jamais dedans."
             },
             {
               "cle": "d",
               "correct": false,
-              "explication": "Fournie elle aussi. Retiens la règle : les quatre fonctions trigonométriques « secondaires » sont données, les autres non."
+              "explication": "C'est la formule de $\\sec u$, pas celle de $\\tan u$. Relis la ligne du formulaire qui commence par $\\tan$."
             }
           ],
-          "piegeCourant": "Négliger de mémoriser les dérivées de $\\arcsin$ et $\\arctan$ en croyant qu'elles seront fournies avec les autres formules trigonométriques."
+          "piegeCourant": "Oublier le facteur $u'$ et répondre $\\sec^{2}\\left(x^{2}\\right)$. Le facteur ne disparaît que lorsque l'intérieur est $x$ tout seul, car alors $u' = 1$."
         }
       ]
     },
     {
       "id": "CD-C05-E024",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
       "acces": "payant",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "règle de la somme",
         "radical",
@@ -14701,12 +14702,12 @@
     {
       "id": "CD-C05-E025",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 3,
       "acces": "payant",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "simplification préalable",
         "quotient"
@@ -14724,7 +14725,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Faut-il vraiment la règle du quotient ici ? Regarde si l'expression peut se simplifier avant de dériver."
+          "texte": "Regarde l'expression avant de te lancer~: chaque terme du numérateur se divise-t-il par le dénominateur~?"
         },
         {
           "etape": "reponse",
@@ -14747,12 +14748,12 @@
     {
       "id": "CD-C05-E026",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivée du sinus",
         "dérivée du cosinus",
@@ -14833,12 +14834,12 @@
     {
       "id": "CD-C05-E027",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.3",
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 3,
       "acces": "gratuit",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "La règle du produit et la règle du quotient",
       "motsCles": [
         "règle du produit",
         "développement préalable"
@@ -14877,7 +14878,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>Par la règle du produit.</strong> Avec $u = x+2$ et $v = x-5$, on a $u' = 1$ et $v' = 1$, donc\\[ \\left[(x+2)(x-5)\\right]' = 1(x-5) + (x+2)(1) = x - 5 + x + 2 = 2x - 3. \\]",
+            "<strong>Par la règle du produit.</strong> Avec $f(x) = x+2$ et $g(x) = x-5$, on a $f'(x) = 1$ et $g'(x) = 1$, donc\\[ \\left[(x+2)(x-5)\\right]' = 1(x-5) + (x+2)(1) = x - 5 + x + 2 = 2x - 3. \\]",
             "<strong>En développant d'abord.</strong>\\[ (x+2)(x-5) = x^{2} - 5x + 2x - 10 = x^{2} - 3x - 10. \\]",
             "On dérive ce polynôme terme à terme :\\[ \\left(x^{2} - 3x - 10\\right)' = 2x - 3. \\]",
             "Les deux méthodes donnent bien $2x - 3$ : l'énoncé est <strong>vrai</strong>.",
@@ -14891,12 +14892,12 @@
     {
       "id": "CD-C05-E028",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
       "acces": "payant",
-      "sectionNotes": "Les règles usuelles",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "combinaison de fonctions élémentaires",
         "évaluation",
@@ -14963,7 +14964,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = (2x+1)\\left(x^{2}-3\\right)$.\\\\[0.3em] (a) Détermine $f'(x)$ à l'aide de la règle du produit. \\\\[0.2em] (b) Développe d'abord $f(x)$, puis dérive terme à terme. \\\\[0.2em] (c) Compare les deux résultats."
+          "texte": "Soit $y = (2x+1)\\left(x^{2}-3\\right)$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$ à l'aide de la règle du produit. \\\\[0.2em] (b) Développe d'abord $y$, puis dérive terme à terme. \\\\[0.2em] (c) Compare les deux résultats."
         },
         {
           "etape": "indice",
@@ -14973,18 +14974,18 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) et (b) donnent tous deux $f'(x) = 6x^{2} + 2x - 6$ \\qquad (c) les deux méthodes concordent"
+          "texte": "(a) et (b) donnent tous deux $\\dfrac{dy}{dx} = 6x^{2} + 2x - 6$ \\qquad (c) les deux méthodes concordent"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a) Par la règle du produit.</strong> On identifie les deux facteurs :\\[ u(x) = 2x+1 \\qquad \\text{et} \\qquad v(x) = x^{2}-3. \\]",
-            "On dérive chacun :\\[ u'(x) = 2 \\qquad \\text{et} \\qquad v'(x) = 2x. \\]",
-            "On applique $u'v + uv'$ :\\[ f'(x) = 2\\left(x^{2}-3\\right) + (2x+1)(2x). \\]",
-            "On développe :\\begin{align*} f'(x) &= 2x^{2} - 6 + 4x^{2} + 2x \\\\ &= 6x^{2} + 2x - 6. \\end{align*}",
+            "<strong>(a) Par la règle du produit.</strong> On identifie les deux facteurs :\\[ f(x) = 2x+1 \\qquad \\text{et} \\qquad g(x) = x^{2}-3. \\]",
+            "On dérive chacun :\\[ f'(x) = 2 \\qquad \\text{et} \\qquad g'(x) = 2x. \\]",
+            "On applique $f'g + fg'$ :\\[ \\dfrac{dy}{dx} = 2\\left(x^{2}-3\\right) + (2x+1)(2x). \\]",
+            "On développe :\\begin{align*} \\dfrac{dy}{dx} &= 2x^{2} - 6 + 4x^{2} + 2x \\\\ &= 6x^{2} + 2x - 6. \\end{align*}",
             "<strong>(b) En développant d'abord.</strong>\\begin{align*} f(x) &= (2x+1)\\left(x^{2}-3\\right) \\\\ &= 2x^{3} - 6x + x^{2} - 3 \\\\ &= 2x^{3} + x^{2} - 6x - 3. \\end{align*}",
-            "On dérive ce polynôme terme à terme :\\[ f'(x) = 6x^{2} + 2x - 6. \\]",
+            "On dérive ce polynôme terme à terme :\\[ \\dfrac{dy}{dx} = 6x^{2} + 2x - 6. \\]",
             "<strong>(c)</strong> Les deux méthodes donnent exactement $6x^{2} + 2x - 6$.",
             "C'était attendu : les deux écritures désignent la même fonction, qui n'a qu'une seule dérivée. Développer d'abord est plus rapide ici, mais deviendrait impossible avec un facteur comme $\\sin x$ ou $e^{x}$."
           ],
@@ -15029,9 +15030,9 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie les deux facteurs :\\[ u(x) = x \\qquad \\text{et} \\qquad v(x) = \\ln x. \\]",
-            "On dérive chacun :\\[ u'(x) = 1 \\qquad \\text{et} \\qquad v'(x) = \\dfrac{1}{x}. \\]",
-            "On applique la règle du produit $u'v + uv'$ :\\[ \\dfrac{dy}{dx} = (1)(\\ln x) + (x)\\left(\\dfrac{1}{x}\\right). \\]",
+            "On identifie les deux facteurs :\\[ f(x) = x \\qquad \\text{et} \\qquad g(x) = \\ln x. \\]",
+            "On dérive chacun :\\[ f'(x) = 1 \\qquad \\text{et} \\qquad g'(x) = \\dfrac{1}{x}. \\]",
+            "On applique la règle du produit $f'g + fg'$ :\\[ \\dfrac{dy}{dx} = (1)(\\ln x) + (x)\\left(\\dfrac{1}{x}\\right). \\]",
             "Le second terme se simplifie :\\[ x \\cdot \\dfrac{1}{x} = 1. \\]",
             "D'où\\[ \\dfrac{dy}{dx} = \\ln x + 1, \\qquad x > 0. \\]"
           ],
@@ -15061,7 +15062,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = \\dfrac{x^{2}}{x+1}$.\\\\[0.3em] (a) Détermine $f'(x)$ et factorise le numérateur. \\\\[0.2em] (b) Calcule $f'(1)$. \\\\[0.2em] (c) Pour quelles valeurs de $x$ a-t-on $f'(x) = 0$ ?"
+          "texte": "Soit $y = \\dfrac{x^{2}}{x+1}$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$ et factorise le numérateur. \\\\[0.2em] (b) Calcule $\\left.\\dfrac{dy}{dx}\\right|_{x=1}$. \\\\[0.2em] (c) Pour quelles valeurs de $x$ a-t-on $\\dfrac{dy}{dx} = 0$ ?"
         },
         {
           "etape": "indice",
@@ -15071,22 +15072,22 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $f'(x) = \\dfrac{x(x+2)}{(x+1)^{2}}$ \\qquad (b) $f'(1) = \\dfrac{3}{4}$ \\qquad (c) $x = 0$ et $x = -2$"
+          "texte": "(a) $\\dfrac{dy}{dx} = \\dfrac{x(x+2)}{(x+1)^{2}}$ \\qquad (b) $\\left.\\dfrac{dy}{dx}\\right|_{x=1} = \\dfrac{3}{4}$ \\qquad (c) $x = 0$ et $x = -2$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On identifie le haut et le bas :\\[ u(x) = x^{2} \\qquad \\text{et} \\qquad v(x) = x+1. \\]",
-            "On dérive chacun :\\[ u'(x) = 2x \\qquad \\text{et} \\qquad v'(x) = 1. \\]",
-            "On applique la règle du quotient :\\[ f'(x) = \\dfrac{2x(x+1) - x^{2}(1)}{(x+1)^{2}}. \\]",
+            "<strong>(a)</strong> On identifie le haut et le bas :\\[ f(x) = x^{2} \\qquad \\text{et} \\qquad g(x) = x+1. \\]",
+            "On dérive chacun :\\[ f'(x) = 2x \\qquad \\text{et} \\qquad g'(x) = 1. \\]",
+            "On applique la règle du quotient :\\[ \\dfrac{dy}{dx} = \\dfrac{2x(x+1) - x^{2}(1)}{(x+1)^{2}}. \\]",
             "On développe et on réduit le numérateur :\\[ 2x^{2} + 2x - x^{2} = x^{2} + 2x. \\]",
-            "On met $x$ en évidence :\\[ f'(x) = \\dfrac{x^{2}+2x}{(x+1)^{2}} = \\dfrac{x(x+2)}{(x+1)^{2}}, \\qquad x \\neq -1. \\]",
-            "<strong>(b)</strong> On évalue en $x = 1$ :\\[ f'(1) = \\dfrac{1(1+2)}{(1+1)^{2}} = \\dfrac{3}{4}. \\]",
+            "On met $x$ en évidence :\\[ \\dfrac{dy}{dx} = \\dfrac{x^{2}+2x}{(x+1)^{2}} = \\dfrac{x(x+2)}{(x+1)^{2}}, \\qquad x \\neq -1. \\]",
+            "<strong>(b)</strong> On évalue en $x = 1$ :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=1} = \\dfrac{1(1+2)}{(1+1)^{2}} = \\dfrac{3}{4}. \\]",
             "<strong>(c)</strong> Une fraction est nulle quand son <em>numérateur</em> est nul et que son dénominateur ne l'est pas :\\[ x(x+2) = 0 \\iff x = 0 \\ \\text{ ou } \\ x = -2. \\]",
-            "Ces deux valeurs appartiennent bien au domaine de $f'$ (elles ne valent pas $-1$), donc\\[ f'(x) = 0 \\quad \\text{pour} \\quad x = 0 \\ \\text{ et } \\ x = -2. \\]"
+            "Ces deux valeurs appartiennent bien au domaine de $f'$ (elles ne valent pas $-1$), donc\\[ \\dfrac{dy}{dx} = 0 \\quad \\text{pour} \\quad x = 0 \\ \\text{ et } \\ x = -2. \\]"
           ],
-          "piegeCourant": "Chercher où $f'(x) = 0$ en annulant le dénominateur au lieu du numérateur."
+          "piegeCourant": "Chercher où $\\dfrac{dy}{dx} = 0$ en annulant le dénominateur au lieu du numérateur."
         }
       ]
     },
@@ -15110,7 +15111,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $g(x) = \\dfrac{\\sin x}{x}$. Quelle est $g'(x)$ ?",
+          "texte": "Soit $y = \\dfrac{\\sin x}{x}$. Quelle est $\\dfrac{dy}{dx}$ ?",
           "choix": [
             {
               "cle": "a",
@@ -15144,10 +15145,10 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "On identifie le haut et le bas :\\[ u(x) = \\sin x \\qquad \\text{et} \\qquad v(x) = x. \\]",
-            "On dérive chacun :\\[ u'(x) = \\cos x \\qquad \\text{et} \\qquad v'(x) = 1. \\]",
-            "On applique la règle du quotient, en respectant l'ordre :\\[ g'(x) = \\dfrac{u'v - uv'}{v^{2}} = \\dfrac{(\\cos x)(x) - (\\sin x)(1)}{x^{2}}. \\]",
-            "D'où\\[ g'(x) = \\dfrac{x\\cos x - \\sin x}{x^{2}}, \\qquad x \\neq 0. \\]",
+            "On identifie le haut et le bas :\\[ f(x) = \\sin x \\qquad \\text{et} \\qquad g(x) = x. \\]",
+            "On dérive chacun :\\[ f'(x) = \\cos x \\qquad \\text{et} \\qquad g'(x) = 1. \\]",
+            "On applique la règle du quotient, en respectant l'ordre :\\[ \\dfrac{dy}{dx} = \\dfrac{f'g - fg'}{g^{2}} = \\dfrac{(\\cos x)(x) - (\\sin x)(1)}{x^{2}}. \\]",
+            "D'où\\[ \\dfrac{dy}{dx} = \\dfrac{x\\cos x - \\sin x}{x^{2}}, \\qquad x \\neq 0. \\]",
             "L'ordre des deux termes du numérateur n'est pas négociable : intervertir revient à changer le signe du résultat."
           ],
           "analyseChoix": [
@@ -15169,7 +15170,7 @@
             {
               "cle": "d",
               "correct": true,
-              "explication": "C'est bien $\\frac{u'v - uv'}{v^{2}}$ avec $u = \\sin x$ et $v = x$."
+              "explication": "C'est bien $\\frac{f'g - fg'}{g^{2}}$ avec $f = \\sin x$ et $g = x$."
             }
           ],
           "piegeCourant": "Inverser les deux termes du numérateur et obtenir l'opposé de la bonne réponse."
@@ -15199,7 +15200,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = \\left(x^{2}+1\\right)e^{x}$.\\\\[0.3em] (a) Détermine $f'(x)$ et exprime le résultat sous forme factorisée. \\\\[0.2em] (b) Calcule $f'(0)$. \\\\[0.2em] (c) Montre que $f'(x) \\geq 0$ pour tout $x$ réel."
+          "texte": "Soit $y = \\left(x^{2}+1\\right)e^{x}$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$ et exprime le résultat sous forme factorisée. \\\\[0.2em] (b) Calcule $\\left.\\dfrac{dy}{dx}\\right|_{x=0}$. \\\\[0.2em] (c) Montre que $\\dfrac{dy}{dx} \\geq 0$ pour tout $x$ réel."
         },
         {
           "etape": "indice",
@@ -15209,21 +15210,21 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $f'(x) = e^{x}(x+1)^{2}$ \\qquad (b) $f'(0) = 1$ \\qquad (c) produit de deux quantités positives ou nulles"
+          "texte": "(a) $\\dfrac{dy}{dx} = e^{x}(x+1)^{2}$ \\qquad (b) $\\left.\\dfrac{dy}{dx}\\right|_{x=0} = 1$ \\qquad (c) produit de deux quantités positives ou nulles"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On identifie les deux facteurs :\\[ u(x) = x^{2}+1 \\qquad \\text{et} \\qquad v(x) = e^{x}. \\]",
-            "On dérive chacun :\\[ u'(x) = 2x \\qquad \\text{et} \\qquad v'(x) = e^{x}. \\]",
-            "On applique la règle du produit :\\[ f'(x) = 2x\\,e^{x} + \\left(x^{2}+1\\right)e^{x}. \\]",
-            "On met $e^{x}$ en évidence :\\[ f'(x) = e^{x}\\left(2x + x^{2} + 1\\right) = e^{x}\\left(x^{2} + 2x + 1\\right). \\]",
+            "<strong>(a)</strong> On identifie les deux facteurs :\\[ f(x) = x^{2}+1 \\qquad \\text{et} \\qquad g(x) = e^{x}. \\]",
+            "On dérive chacun :\\[ f'(x) = 2x \\qquad \\text{et} \\qquad g'(x) = e^{x}. \\]",
+            "On applique la règle du produit :\\[ \\dfrac{dy}{dx} = 2x\\,e^{x} + \\left(x^{2}+1\\right)e^{x}. \\]",
+            "On met $e^{x}$ en évidence :\\[ \\dfrac{dy}{dx} = e^{x}\\left(2x + x^{2} + 1\\right) = e^{x}\\left(x^{2} + 2x + 1\\right). \\]",
             "Le trinôme est un carré parfait :\\[ x^{2}+2x+1 = (x+1)^{2}. \\]",
-            "D'où la forme factorisée :\\[ f'(x) = e^{x}(x+1)^{2}. \\]",
-            "<strong>(b)</strong> On évalue en $x = 0$ :\\[ f'(0) = e^{0}(0+1)^{2} = 1 \\times 1 = 1. \\]",
+            "D'où la forme factorisée :\\[ \\dfrac{dy}{dx} = e^{x}(x+1)^{2}. \\]",
+            "<strong>(b)</strong> On évalue en $x = 0$ :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=0} = e^{0}(0+1)^{2} = 1 \\times 1 = 1. \\]",
             "<strong>(c)</strong> La forme factorisée rend la conclusion immédiate. D'une part $e^{x} > 0$ pour tout $x$ réel ; d'autre part $(x+1)^{2} \\geq 0$ comme tout carré.",
-            "Le produit d'une quantité strictement positive par une quantité positive ou nulle est positif ou nul :\\[ f'(x) = e^{x}(x+1)^{2} \\geq 0 \\qquad \\text{pour tout } x \\in \\mathbb{R}. \\]",
+            "Le produit d'une quantité strictement positive par une quantité positive ou nulle est positif ou nul :\\[ \\dfrac{dy}{dx} = e^{x}(x+1)^{2} \\geq 0 \\qquad \\text{pour tout } x \\in \\mathbb{R}. \\]",
             "La dérivée ne s'annule qu'en $x = -1$."
           ],
           "piegeCourant": "S'arrêter à $2xe^{x} + \\left(x^{2}+1\\right)e^{x}$ sans factoriser, ce qui rend la partie (c) beaucoup plus difficile."
@@ -15252,7 +15253,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Détermine $f'(x)$ si $\\displaystyle f(x) = \\dfrac{x\\sin x}{x+1}$."
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $\\displaystyle y = \\dfrac{x\\sin x}{x+1}$."
         },
         {
           "etape": "indice",
@@ -15262,21 +15263,21 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$f'(x) = \\dfrac{\\sin x + x(x+1)\\cos x}{(x+1)^{2}}$"
+          "texte": "$\\dfrac{dy}{dx} = \\dfrac{\\sin x + x(x+1)\\cos x}{(x+1)^{2}}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
             "La structure globale est un <strong>quotient</strong>. Son numérateur est lui-même un <strong>produit</strong>, ce qui va exiger une seconde règle.",
-            "On identifie le haut et le bas :\\[ u(x) = x\\sin x \\qquad \\text{et} \\qquad v(x) = x+1. \\]",
-            "On dérive le haut par la règle du produit, avec les facteurs $x$ et $\\sin x$ :\\[ u'(x) = (1)(\\sin x) + (x)(\\cos x) = \\sin x + x\\cos x. \\]",
-            "On dérive le bas :\\[ v'(x) = 1. \\]",
-            "On applique la règle du quotient :\\[ f'(x) = \\dfrac{\\left(\\sin x + x\\cos x\\right)(x+1) - \\left(x\\sin x\\right)(1)}{(x+1)^{2}}. \\]",
+            "On identifie le haut et le bas :\\[ f(x) = x\\sin x \\qquad \\text{et} \\qquad g(x) = x+1. \\]",
+            "On dérive le haut par la règle du produit, avec les facteurs $x$ et $\\sin x$ :\\[ f'(x) = (1)(\\sin x) + (x)(\\cos x) = \\sin x + x\\cos x. \\]",
+            "On dérive le bas :\\[ g'(x) = 1. \\]",
+            "On applique la règle du quotient :\\[ \\dfrac{dy}{dx} = \\dfrac{\\left(\\sin x + x\\cos x\\right)(x+1) - \\left(x\\sin x\\right)(1)}{(x+1)^{2}}. \\]",
             "On développe le numérateur avec soin :\\begin{align*} \\left(\\sin x + x\\cos x\\right)(x+1) &= x\\sin x + \\sin x + x^{2}\\cos x + x\\cos x. \\end{align*}",
             "On soustrait le second terme :\\begin{align*} x\\sin x + \\sin x + x^{2}\\cos x + x\\cos x - x\\sin x &= \\sin x + x^{2}\\cos x + x\\cos x. \\end{align*}",
             "Les deux termes en $x\\sin x$ se sont annulés. On met $x\\cos x$ en évidence sur les deux derniers termes :\\[ x^{2}\\cos x + x\\cos x = x(x+1)\\cos x. \\]",
-            "D'où\\[ f'(x) = \\dfrac{\\sin x + x(x+1)\\cos x}{(x+1)^{2}}, \\qquad x \\neq -1. \\]"
+            "D'où\\[ \\dfrac{dy}{dx} = \\dfrac{\\sin x + x(x+1)\\cos x}{(x+1)^{2}}, \\qquad x \\neq -1. \\]"
           ],
           "piegeCourant": "Dériver le numérateur $x\\sin x$ en $\\cos x$, en oubliant qu'il s'agit lui-même d'un produit."
         }
@@ -15365,7 +15366,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = x^{2}\\arctan x$.\\\\[0.3em] (a) Détermine $f'(x)$. \\\\[0.2em] (b) Calcule la valeur exacte de $f'(1)$."
+          "texte": "Soit $y = x^{2}\\arctan x$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$. \\\\[0.2em] (b) Calcule la valeur exacte de $\\left.\\dfrac{dy}{dx}\\right|_{x=1}$."
         },
         {
           "etape": "indice",
@@ -15375,20 +15376,20 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $f'(x) = 2x\\arctan x + \\dfrac{x^{2}}{1+x^{2}}$ \\qquad (b) $f'(1) = \\dfrac{\\pi}{2} + \\dfrac{1}{2}$"
+          "texte": "(a) $\\dfrac{dy}{dx} = 2x\\arctan x + \\dfrac{x^{2}}{1+x^{2}}$ \\qquad (b) $\\left.\\dfrac{dy}{dx}\\right|_{x=1} = \\dfrac{\\pi}{2} + \\dfrac{1}{2}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On identifie les deux facteurs :\\[ u(x) = x^{2} \\qquad \\text{et} \\qquad v(x) = \\arctan x. \\]",
-            "On dérive chacun :\\[ u'(x) = 2x \\qquad \\text{et} \\qquad v'(x) = \\dfrac{1}{1+x^{2}}. \\]",
-            "On applique la règle du produit :\\[ f'(x) = 2x\\arctan x + x^{2} \\cdot \\dfrac{1}{1+x^{2}}. \\]",
-            "D'où\\[ f'(x) = 2x\\arctan x + \\dfrac{x^{2}}{1+x^{2}}. \\]",
+            "<strong>(a)</strong> On identifie les deux facteurs :\\[ f(x) = x^{2} \\qquad \\text{et} \\qquad g(x) = \\arctan x. \\]",
+            "On dérive chacun :\\[ f'(x) = 2x \\qquad \\text{et} \\qquad g'(x) = \\dfrac{1}{1+x^{2}}. \\]",
+            "On applique la règle du produit :\\[ \\dfrac{dy}{dx} = 2x\\arctan x + x^{2} \\cdot \\dfrac{1}{1+x^{2}}. \\]",
+            "D'où\\[ \\dfrac{dy}{dx} = 2x\\arctan x + \\dfrac{x^{2}}{1+x^{2}}. \\]",
             "<strong>(b)</strong> On a besoin de la valeur exacte de $\\arctan 1$. C'est l'unique angle de $\\left]-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right[$ dont la tangente vaut $1$, soit\\[ \\arctan 1 = \\dfrac{\\pi}{4}. \\]",
-            "On substitue :\\[ f'(1) = 2(1)\\left(\\dfrac{\\pi}{4}\\right) + \\dfrac{1^{2}}{1+1^{2}}. \\]",
+            "On substitue :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=1} = 2(1)\\left(\\dfrac{\\pi}{4}\\right) + \\dfrac{1^{2}}{1+1^{2}}. \\]",
             "On simplifie chaque terme :\\[ 2 \\cdot \\dfrac{\\pi}{4} = \\dfrac{\\pi}{2}, \\qquad \\dfrac{1}{2}. \\]",
-            "D'où la valeur exacte :\\[ f'(1) = \\dfrac{\\pi}{2} + \\dfrac{1}{2}. \\]"
+            "D'où la valeur exacte :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=1} = \\dfrac{\\pi}{2} + \\dfrac{1}{2}. \\]"
           ],
           "piegeCourant": "Donner une valeur décimale approchée alors que l'énoncé demande la valeur exacte."
         }
@@ -15397,12 +15398,12 @@
     {
       "id": "CD-C05-E037",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "puissance d'un binôme"
@@ -15415,40 +15416,40 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = (2x+5)^{3}$."
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = (3x-1)^{4}$."
         },
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Quelle est la fonction intérieure ? Sa dérivée est un simple nombre."
+          "texte": "Quel est l'intérieur~? Sa dérivée est un simple nombre."
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$\\dfrac{dy}{dx} = 6(2x+5)^{2}$"
+          "texte": "$\\dfrac{dy}{dx} = 12(3x-1)^{3}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "La fonction intérieure est $u(x) = 2x+5$, et l'extérieure est la puissance cubique.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 3u^{2} = 3(2x+5)^{2}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 2. \\]",
-            "On multiplie les deux :\\[ \\dfrac{dy}{dx} = 3(2x+5)^{2} \\cdot 2 = 6(2x+5)^{2}. \\]"
+            "L'intérieur est $u = 3x-1$, et l'extérieur est la puissance quatrième.",
+            "On dérive l'extérieur en gardant $u$ intact~:\\[ \\dfrac{dy}{du} = 4u^{3} = 4(3x-1)^{3}. \\]",
+            "On dérive l'intérieur~:\\[ \\dfrac{du}{dx} = 3. \\]",
+            "On multiplie les deux~:\\[ \\dfrac{dy}{dx} = 4(3x-1)^{3} \\cdot 3 = 12(3x-1)^{3}. \\]"
           ],
-          "piegeCourant": "Écrire $3(2x+5)^{2}$ sans multiplier par $2$."
+          "piegeCourant": "Écrire $4(3x-1)^{3}$ sans multiplier par $3$."
         }
       ]
     },
     {
       "id": "CD-C05-E038",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "radical",
@@ -15463,45 +15464,45 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $f(x) = \\sqrt{x^{2}+9}$.\\\\[0.3em] (a) Détermine $f'(x)$. \\\\[0.2em] (b) Calcule $f'(4)$. \\\\[0.2em] (c) Interprète géométriquement le résultat de (b)."
+          "texte": "Soit $f(x) = \\sqrt{x^{2}+25}$.\\\\[0.3em] (a) Détermine $f'(x)$. \\\\[0.2em] (b) Calcule $f'(12)$. \\\\[0.2em] (c) Interprète géométriquement le résultat de (b)."
         },
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Réécris la racine sous forme de puissance avant d'appliquer la chaîne. L'intérieure est le radicande."
+          "texte": "Réécris la racine sous forme de puissance avant d'appliquer la chaîne. L'intérieur est le radicande."
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $f'(x) = \\dfrac{x}{\\sqrt{x^{2}+9}}$ \\qquad (b) $f'(4) = \\dfrac{4}{5}$ \\qquad (c) pente de la tangente au point $(4, 5)$"
+          "texte": "(a) $f'(x) = \\dfrac{x}{\\sqrt{x^{2}+25}}$ \\qquad (b) $f'(12) = \\dfrac{12}{13}$ \\qquad (c) pente de la tangente au point $(12, 13)$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On réécrit sous forme de puissance :\\[ f(x) = \\left(x^{2}+9\\right)^{1/2}. \\]",
-            "La fonction intérieure est $u(x) = x^{2}+9$, l'extérieure est la puissance $\\frac{1}{2}$.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{1}{2}\\left(x^{2}+9\\right)^{-1/2} = \\dfrac{1}{2\\sqrt{x^{2}+9}}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 2x. \\]",
-            "On multiplie :\\[ f'(x) = \\dfrac{1}{2\\sqrt{x^{2}+9}} \\cdot 2x = \\dfrac{x}{\\sqrt{x^{2}+9}}. \\]",
-            "Le domaine ne pose aucun problème : $x^{2}+9 > 0$ pour tout $x$ réel.",
-            "<strong>(b)</strong> On évalue en $x = 4$ :\\[ f'(4) = \\dfrac{4}{\\sqrt{16+9}} = \\dfrac{4}{\\sqrt{25}} = \\dfrac{4}{5}. \\]",
-            "<strong>(c)</strong> On calcule d'abord l'ordonnée du point de contact :\\[ f(4) = \\sqrt{16+9} = 5. \\]",
-            "Le nombre $f'(4) = \\dfrac{4}{5}$ est donc la <strong>pente de la droite tangente</strong> à la courbe de $f$ au point $(4, 5)$. Le signe positif indique que la fonction y est croissante."
+            "(a) On réécrit sous forme de puissance~:\\[ f(x) = \\left(x^{2}+25\\right)^{1/2}. \\]",
+            "L'intérieur est $u = x^{2}+25$, l'extérieur est la puissance $\\frac{1}{2}$.",
+            "On dérive l'extérieur en gardant $u$ intact~:\\[ \\dfrac{1}{2}\\left(x^{2}+25\\right)^{-1/2} = \\dfrac{1}{2\\sqrt{x^{2}+25}}. \\]",
+            "On dérive l'intérieur~:\\[ \\dfrac{du}{dx} = 2x. \\]",
+            "On multiplie~:\\[ f'(x) = \\dfrac{1}{2\\sqrt{x^{2}+25}} \\cdot 2x = \\dfrac{x}{\\sqrt{x^{2}+25}}. \\]",
+            "Le domaine ne pose aucun problème~: $x^{2}+25 > 0$ pour tout $x$ réel.",
+            "(b) On évalue en $x = 12$~:\\[ f'(12) = \\dfrac{12}{\\sqrt{144+25}} = \\dfrac{12}{\\sqrt{169}} = \\dfrac{12}{13}. \\]",
+            "(c) On calcule d'abord l'ordonnée du point de contact~:\\[ f(12) = \\sqrt{144+25} = 13. \\]",
+            "Le nombre $f'(12) = \\dfrac{12}{13}$ est donc la pente de la droite tangente à la courbe de $f$ au point $(12, 13)$. Le signe positif indique que la fonction y est croissante."
           ],
-          "piegeCourant": "Oublier de multiplier par la dérivée du radicande et obtenir $\\frac{1}{2\\sqrt{x^{2}+9}}$."
+          "piegeCourant": "Oublier de multiplier par la dérivée du radicande et obtenir $\\frac{1}{2\\sqrt{x^{2}+25}}$."
         }
       ]
     },
     {
       "id": "CD-C05-E039",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "exponentielle",
@@ -15531,9 +15532,9 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "La fonction intérieure est $u(x) = -3x$, l'extérieure est l'exponentielle.",
-            "On dérive l'extérieure, qui est sa propre dérivée :\\[ \\dfrac{dy}{du} = e^{u} = e^{-3x}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = -3. \\]",
+            "L'intérieur est $u = -3x$, l'extérieur est l'exponentielle.",
+            "On dérive l'extérieur, qui est sa propre dérivée :\\[ \\dfrac{dy}{du} = e^{u} = e^{-3x}. \\]",
+            "On dérive l'intérieur :\\[ \\dfrac{du}{dx} = -3. \\]",
             "On multiplie :\\[ \\dfrac{dy}{dx} = e^{-3x} \\cdot (-3) = -3e^{-3x}. \\]",
             "Le signe négatif se conserve : c'est cohérent, puisque $e^{-3x}$ est une fonction décroissante."
           ],
@@ -15544,12 +15545,12 @@
     {
       "id": "CD-C05-E040",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "cosinus"
@@ -15567,7 +15568,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Deux signes à surveiller ici : celui de la dérivée du cosinus, et le facteur venant de l'intérieure."
+          "texte": "Deux signes à surveiller ici : celui de la dérivée du cosinus, et le facteur venant de l'intérieur."
         },
         {
           "etape": "reponse",
@@ -15578,9 +15579,9 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "La fonction intérieure est $u(x) = 5x$, l'extérieure est le cosinus.",
-            "On dérive l'extérieure en gardant $u$ intact, sans oublier le signe négatif :\\[ \\dfrac{dy}{du} = -\\sin u = -\\sin(5x). \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 5. \\]",
+            "L'intérieur est $u = 5x$, l'extérieur est le cosinus.",
+            "On dérive l'extérieur en gardant $u$ intact, sans oublier le signe négatif :\\[ \\dfrac{dy}{du} = -\\sin u = -\\sin(5x). \\]",
+            "On dérive l'intérieur :\\[ \\dfrac{du}{dx} = 5. \\]",
             "On multiplie :\\[ \\dfrac{dy}{dx} = -\\sin(5x) \\cdot 5 = -5\\sin(5x). \\]"
           ],
           "piegeCourant": "Écrire $-\\sin(5x)$ en oubliant le facteur $5$, ou perdre le signe négatif du cosinus."
@@ -15590,12 +15591,12 @@
     {
       "id": "CD-C05-E041",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 2,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "sinus"
@@ -15641,16 +15642,16 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "L'intérieure est $u(x) = 2x$, l'extérieure est le sinus.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\cos(2x). \\]",
-            "On multiplie par la dérivée de l'intérieure :\\[ \\times\\ 2. \\]",
+            "L'intérieur est $u = 2x$, l'extérieur est le sinus.",
+            "On dérive l'extérieur en gardant $u$ intact :\\[ \\cos(2x). \\]",
+            "On multiplie par la dérivée de l'intérieur :\\[ \\times\\ 2. \\]",
             "D'où\\[ f'(x) = 2\\cos(2x). \\]"
           ],
           "analyseChoix": [
             {
               "cle": "a",
               "correct": false,
-              "explication": "La dérivée de l'extérieure est correcte, mais on a oublié de multiplier par la dérivée de l'intérieure $2x$, qui vaut $2$."
+              "explication": "La dérivée de l'extérieur est correcte, mais on a oublié de multiplier par la dérivée de l'intérieur $2x$, qui vaut $2$."
             },
             {
               "cle": "b",
@@ -15668,19 +15669,19 @@
               "explication": "C'est la dérivée de $\\sin^{2}(2x)$, pas celle de $\\sin(2x)$. L'expression a été traitée comme si le sinus était élevé au carré."
             }
           ],
-          "piegeCourant": "Oublier le facteur venant de l'intérieure, l'erreur la plus fréquente de toute la section."
+          "piegeCourant": "Oublier le facteur venant de l'intérieur, l'erreur la plus fréquente de toute la section."
         }
       ]
     },
     {
       "id": "CD-C05-E042",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "logarithme",
@@ -15713,9 +15714,9 @@
           "lignes": [
             "<strong>(a)</strong> L'argument du logarithme doit être strictement positif :\\[ 3x + 1 > 0 \\iff 3x > -1 \\iff x > -\\dfrac{1}{3}. \\]",
             "Donc\\[ \\mathrm{dom}\\,f = \\left]-\\dfrac{1}{3}, +\\infty\\right[. \\]",
-            "<strong>(b)</strong> La fonction intérieure est $u(x) = 3x+1$, l'extérieure est le logarithme naturel.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{dy}{du} = \\dfrac{1}{u} = \\dfrac{1}{3x+1}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 3. \\]",
+            "<strong>(b)</strong> L'intérieur est $u = 3x+1$, l'extérieur est le logarithme naturel.",
+            "On dérive l'extérieur en gardant $u$ intact :\\[ \\dfrac{dy}{du} = \\dfrac{1}{u} = \\dfrac{1}{3x+1}. \\]",
+            "On dérive l'intérieur :\\[ \\dfrac{du}{dx} = 3. \\]",
             "On multiplie :\\[ f'(x) = \\dfrac{1}{3x+1} \\cdot 3 = \\dfrac{3}{3x+1}, \\qquad x > -\\dfrac{1}{3}. \\]",
             "<strong>(c)</strong> La valeur $x = 1$ appartient bien au domaine. On évalue :\\[ f'(1) = \\dfrac{3}{3(1)+1} = \\dfrac{3}{4}. \\]"
           ],
@@ -15726,12 +15727,12 @@
     {
       "id": "CD-C05-E043",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "puissance élevée",
@@ -15762,9 +15763,9 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> La fonction intérieure est $u(x) = x^{2}+1$, l'extérieure est la puissance cinquième.",
-            "On dérive l'extérieure en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 5u^{4} = 5\\left(x^{2}+1\\right)^{4}. \\]",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 2x. \\]",
+            "<strong>(a)</strong> L'intérieur est $u = x^{2}+1$, l'extérieur est la puissance cinquième.",
+            "On dérive l'extérieur en gardant $u$ intact :\\[ \\dfrac{dy}{du} = 5u^{4} = 5\\left(x^{2}+1\\right)^{4}. \\]",
+            "On dérive l'intérieur :\\[ \\dfrac{du}{dx} = 2x. \\]",
             "On multiplie :\\[ \\dfrac{dy}{dx} = 5\\left(x^{2}+1\\right)^{4} \\cdot 2x = 10x\\left(x^{2}+1\\right)^{4}. \\]",
             "<strong>(b)</strong> On évalue en $x = 1$ :\\[ \\left.\\dfrac{dy}{dx}\\right|_{x=1} = 10(1)\\left(1+1\\right)^{4} = 10 \\cdot 2^{4} = 10 \\cdot 16 = 160. \\]",
             "La pente de la tangente au point d'abscisse $1$ vaut donc $160$.",
@@ -15779,12 +15780,12 @@
     {
       "id": "CD-C05-E044",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 8,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "chaîne imbriquée",
@@ -15799,44 +15800,44 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Soit $y = \\sin^{2}(3x)$, c'est-à-dire $y = \\left[\\sin(3x)\\right]^{2}$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$. \\\\[0.2em] (b) Simplifie le résultat à l'aide de l'identité $\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$."
+          "texte": "Soit $y = \\cos^{2}(2x)$, c'est-à-dire $y = \\left[\\cos(2x)\\right]^{2}$.\\\\[0.3em] (a) Détermine $\\dfrac{dy}{dx}$. \\\\[0.2em] (b) Simplifie le résultat à l'aide de l'identité $\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$."
         },
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "Il y a trois couches ici : le carré, le sinus, puis $3x$. Nomme-les avant de dériver quoi que ce soit."
+          "texte": "Il y a trois couches ici~: le carré, le cosinus, puis $2x$. Nomme-les avant de dériver quoi que ce soit."
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "(a) $\\dfrac{dy}{dx} = 6\\sin(3x)\\cos(3x)$ \\qquad (b) $\\dfrac{dy}{dx} = 3\\sin(6x)$"
+          "texte": "(a) $\\dfrac{dy}{dx} = -4\\sin(2x)\\cos(2x)$ \\qquad (b) $\\dfrac{dy}{dx} = -2\\sin(4x)$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On repère les trois couches, de l'extérieur vers l'intérieur : le carré, puis le sinus, puis $3x$.",
-            "On dérive la couche extérieure, le carré, en gardant son contenu intact :\\[ 2\\left[\\sin(3x)\\right]^{1} = 2\\sin(3x). \\]",
-            "On multiplie par la dérivée de la couche suivante, le sinus :\\[ \\times\\ \\cos(3x). \\]",
-            "On multiplie par la dérivée de la couche la plus interne :\\[ \\times\\ 3. \\]",
-            "On rassemble :\\[ \\dfrac{dy}{dx} = 2\\sin(3x) \\cdot \\cos(3x) \\cdot 3 = 6\\sin(3x)\\cos(3x). \\]",
-            "<strong>(b)</strong> L'identité de l'angle double s'écrit $\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$. En posant $\\theta = 3x$, on obtient\\[ 2\\sin(3x)\\cos(3x) = \\sin(6x). \\]",
-            "Or notre résultat contient un facteur $6$, soit $3$ fois le facteur $2$ de l'identité :\\[ 6\\sin(3x)\\cos(3x) = 3 \\cdot \\left[2\\sin(3x)\\cos(3x)\\right] = 3\\sin(6x). \\]",
-            "D'où la forme simplifiée :\\[ \\dfrac{dy}{dx} = 3\\sin(6x). \\]"
+            "(a) On repère les trois couches, de l'extérieur vers l'intérieur~: le carré, puis le cosinus, puis $2x$.",
+            "On dérive la couche extérieure, le carré, en gardant son contenu intact~:\\[ 2\\left[\\cos(2x)\\right]^{1} = 2\\cos(2x). \\]",
+            "On multiplie par la dérivée de la couche suivante, le cosinus, qui porte un signe négatif~:\\[ \\times\\ \\left(-\\sin(2x)\\right). \\]",
+            "On multiplie par la dérivée de la couche la plus interne~:\\[ \\times\\ 2. \\]",
+            "On rassemble~:\\[ \\dfrac{dy}{dx} = 2\\cos(2x) \\cdot \\left(-\\sin(2x)\\right) \\cdot 2 = -4\\sin(2x)\\cos(2x). \\]",
+            "(b) L'identité de l'angle double s'écrit $\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$. En posant $\\theta = 2x$, on obtient\\[ 2\\sin(2x)\\cos(2x) = \\sin(4x). \\]",
+            "Or notre résultat contient un facteur $-4$, soit $-2$ fois le facteur $2$ de l'identité~:\\[ -4\\sin(2x)\\cos(2x) = -2 \\cdot \\left[2\\sin(2x)\\cos(2x)\\right] = -2\\sin(4x). \\]",
+            "D'où la forme simplifiée~:\\[ \\dfrac{dy}{dx} = -2\\sin(4x). \\]"
           ],
-          "piegeCourant": "Confondre $\\sin^{2}(3x)$ avec $\\sin\\left(9x^{2}\\right)$ à cause de la notation en exposant."
+          "piegeCourant": "Confondre $\\cos^{2}(2x)$ avec $\\cos\\left(4x^{2}\\right)$ à cause de la notation en exposant, ou perdre le signe négatif de la dérivée du cosinus."
         }
       ]
     },
     {
       "id": "CD-C05-E045",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.3",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 9,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "La règle du produit et la règle du quotient",
       "motsCles": [
         "dérivation en chaîne",
         "règle du produit",
@@ -15856,7 +15857,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "La structure globale est un produit. L'un des deux facteurs exige en plus la dérivation en chaîne — lequel ?"
+          "texte": "La structure globale est un produit. L'un des deux facteurs a un intérieur~— lequel~?"
         },
         {
           "etape": "reponse",
@@ -15868,10 +15869,10 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "La structure globale est un <strong>produit</strong>. Le premier facteur, $e^{x^{2}}$, exigera en plus la <em>dérivation en chaîne</em>.",
-            "On identifie :\\[ u(x) = e^{x^{2}} \\qquad \\text{et} \\qquad v(x) = \\ln x. \\]",
-            "On dérive $u$ par la chaîne. L'intérieure est $x^{2}$, de dérivée $2x$ :\\[ u'(x) = e^{x^{2}} \\cdot 2x = 2x\\,e^{x^{2}}. \\]",
-            "On dérive $v$ :\\[ v'(x) = \\dfrac{1}{x}. \\]",
-            "On applique la règle du produit $u'v + uv'$ :\\[ \\dfrac{dy}{dx} = 2x\\,e^{x^{2}}\\ln x + e^{x^{2}} \\cdot \\dfrac{1}{x}. \\]",
+            "On identifie :\\[ f(x) = e^{x^{2}} \\qquad \\text{et} \\qquad g(x) = \\ln x. \\]",
+            "On dérive $f$. L'intérieur est $x^{2}$, donc $u' = 2x$~:\\[ f'(x) = e^{x^{2}} \\cdot 2x = 2x\\,e^{x^{2}}. \\]",
+            "On dérive $g$~:\\[ g'(x) = \\dfrac{1}{x}. \\]",
+            "On applique la règle du produit $f'g + fg'$ :\\[ \\dfrac{dy}{dx} = 2x\\,e^{x^{2}}\\ln x + e^{x^{2}} \\cdot \\dfrac{1}{x}. \\]",
             "On met $e^{x^{2}}$ en évidence :\\[ \\dfrac{dy}{dx} = e^{x^{2}}\\left(2x\\ln x + \\dfrac{1}{x}\\right), \\qquad x > 0. \\]",
             "La restriction $x > 0$ vient du domaine du logarithme."
           ],
@@ -15882,15 +15883,15 @@
     {
       "id": "CD-C05-E046",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 1,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
-        "fonction intérieure"
+        "intérieur"
       ],
       "savoirFaire": [
         "2e"
@@ -15899,7 +15900,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Dans la fonction $f(x) = \\sqrt{3x-7}$, quelle est la fonction <em>intérieure</em> ?",
+          "texte": "Dans la fonction $f(x) = \\sqrt{3x-7}$, quel est l'<em>intérieur</em>~?",
           "choix": [
             {
               "cle": "a",
@@ -15933,27 +15934,27 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "Pour identifier la fonction intérieure, demande-toi quelle opération tu ferais <strong>en premier</strong> si tu devais évaluer la fonction.",
+            "Pour identifier l'intérieur, demande-toi quelle opération tu ferais <strong>en premier</strong> si tu devais évaluer la fonction.",
             "Pour calculer $f(4) = \\sqrt{3(4)-7}$, on calcule d'abord $3(4)-7 = 5$, puis on prend la racine de $5$.",
-            "La première opération correspond à la fonction <strong>intérieure</strong> :\\[ u(x) = 3x - 7. \\]",
-            "La seconde correspond à l'<strong>extérieure</strong>, la racine carrée.",
-            "En dérivation en chaîne, on dérive l'extérieure en gardant $u$ intact, puis on multiplie par $u'(x) = 3$."
+            "La première opération correspond à l'<strong>intérieur</strong> :\\[ u = 3x - 7. \\]",
+            "La seconde correspond à l'<strong>extérieur</strong>, la racine carrée.",
+            "On dérive l'extérieur en gardant l'intérieur tel quel, puis on multiplie par la dérivée de l'intérieur, $u' = 3$."
           ],
           "analyseChoix": [
             {
               "cle": "a",
               "correct": true,
-              "explication": "C'est bien ce qui se trouve « à l'intérieur » du radical. On lui appliquera ensuite la fonction extérieure, la racine carrée."
+              "explication": "C'est bien ce qui se trouve « à l'intérieur » du radical. On lui appliquera ensuite l'extérieur, la racine carrée."
             },
             {
               "cle": "b",
               "correct": false,
-              "explication": "C'est la fonction <em>extérieure</em> : celle qu'on applique au résultat de l'intérieure. Les deux rôles ont été inversés."
+              "explication": "C'est l'<em>extérieur</em>~: celui qu'on applique au résultat de l'intérieur. Les deux rôles ont été inversés."
             },
             {
               "cle": "c",
               "correct": false,
-              "explication": "L'intérieure est l'expression complète sous le radical, constante comprise. Le terme $-7$ en fait partie."
+              "explication": "L'intérieur est l'expression complète sous le radical, constante comprise. Le terme $-7$ en fait partie."
             },
             {
               "cle": "d",
@@ -15961,19 +15962,19 @@
               "explication": "C'est la fonction entière, soit la composée des deux. La question porte sur l'une de ses deux composantes."
             }
           ],
-          "piegeCourant": "Confondre la fonction intérieure et la fonction extérieure, ce qui inverse tout le calcul de la chaîne."
+          "piegeCourant": "Confondre l'intérieur et l'extérieur, ce qui inverse tout le calcul de la chaîne."
         }
       ]
     },
     {
       "id": "CD-C05-E047",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 4,
       "acces": "payant",
-      "sectionNotes": "La dérivation en chaîne",
+      "sectionNotes": "Dériver les fonctions de base, intérieur compris",
       "motsCles": [
         "dérivation en chaîne",
         "arctangente"
@@ -15986,29 +15987,29 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = \\arctan(2x)$."
+          "texte": "Détermine $\\dfrac{dy}{dx}$ si $y = \\arctan\\left(x^{2}\\right)$."
         },
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "La formule de l'arctangente contient un carré au dénominateur. Que devient ce carré quand l'argument n'est plus simplement $x$ ?"
+          "texte": "La formule de l'arctangente contient un carré au dénominateur. Que devient ce carré quand l'argument n'est plus simplement $x$~?"
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$\\dfrac{dy}{dx} = \\dfrac{2}{1+4x^{2}}$"
+          "texte": "$\\dfrac{dy}{dx} = \\dfrac{2x}{1+x^{4}}$"
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "La fonction intérieure est $u(x) = 2x$, l'extérieure est l'arctangente.",
-            "On dérive l'extérieure en gardant $u$ intact. La formule $\\left(\\arctan u\\right)' = \\dfrac{1}{1+u^{2}}$ donne\\[ \\dfrac{1}{1+(2x)^{2}} = \\dfrac{1}{1+4x^{2}}. \\]",
-            "Attention : le carré porte sur tout l'argument, donc $(2x)^{2} = 4x^{2}$ et non $2x^{2}$.",
-            "On dérive l'intérieure :\\[ \\dfrac{du}{dx} = 2. \\]",
-            "On multiplie :\\[ \\dfrac{dy}{dx} = \\dfrac{1}{1+4x^{2}} \\cdot 2 = \\dfrac{2}{1+4x^{2}}. \\]"
+            "L'intérieur est $u = x^{2}$, donc $u' = 2x$. L'extérieur est l'arctangente.",
+            "La formule porte déjà l'intérieur et sa dérivée~:\\[ \\left(\\arctan u\\right)' = \\dfrac{u'}{1+u^{2}}. \\]La dérivée de l'intérieur passe au numérateur, l'intérieur lui-même au dénominateur.",
+            "Attention~: le carré porte sur tout l'intérieur, donc $u^{2} = \\left(x^{2}\\right)^{2} = x^{4}$ et non $x^{2}$.",
+            "On remplace $u$ et $u'$~:\\[ \\dfrac{dy}{dx} = \\dfrac{2x}{1+x^{4}}. \\]",
+            "Le facteur $u' = 2x$ n'est pas ajouté à la fin~: il fait partie de la formule dès le départ."
           ],
-          "piegeCourant": "Écrire $1+2x^{2}$ au dénominateur en oubliant d'élever le coefficient au carré."
+          "piegeCourant": "Écrire $1+x^{2}$ au dénominateur en oubliant d'élever tout l'intérieur au carré."
         }
       ]
     },
@@ -16149,7 +16150,7 @@
         {
           "etape": "indice",
           "titre": "Indice",
-          "texte": "La fonction extérieure est le cube, l'intérieure est $y$. Que dit la dérivation en chaîne dans ce cas ?"
+          "texte": "L'extérieur est le cube, l'intérieur est $y$. Que dit la dérivation en chaîne dans ce cas ?"
         },
         {
           "etape": "reponse",
@@ -16161,8 +16162,8 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "On applique la dérivation en chaîne, en considérant $y$ comme une fonction de $x$.",
-            "La fonction extérieure est le cube. On la dérive en gardant $y$ intact :\\[ 3y^{2}. \\]",
-            "On multiplie par la dérivée de la fonction intérieure, qui est $y$ elle-même :\\[ \\times\\ \\dfrac{dy}{dx}. \\]",
+            "L'extérieur est le cube. On la dérive en gardant $y$ intact :\\[ 3y^{2}. \\]",
+            "On multiplie par la dérivée de l'intérieur, qui est $y$ elle-même :\\[ \\times\\ \\dfrac{dy}{dx}. \\]",
             "D'où\\[ \\dfrac{d}{dx}\\left(y^{3}\\right) = 3y^{2}\\,\\dfrac{dy}{dx}. \\]",
             "C'est ce facteur $\\dfrac{dy}{dx}$, apparaissant à chaque terme en $y$, qui permet ensuite de l'isoler."
           ],
@@ -16442,7 +16443,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "<strong>(a)</strong> On applique la dérivation en chaîne. L'intérieure est $2x$, de dérivée $2$ :\\[ \\dfrac{dy}{dx} = e^{2x} \\cdot 2 = 2e^{2x}. \\]",
+            "<strong>(a)</strong> On applique la dérivation en chaîne. L'intérieur est $2x$, de dérivée $2$ :\\[ \\dfrac{dy}{dx} = e^{2x} \\cdot 2 = 2e^{2x}. \\]",
             "<strong>(b)</strong> On dérive $2e^{2x}$. La constante $2$ sort, et la chaîne s'applique de nouveau :\\[ \\dfrac{d^{2}y}{dx^{2}} = 2 \\cdot \\left(2e^{2x}\\right) = 4e^{2x}. \\]",
             "<strong>(c)</strong> On dérive $4e^{2x}$ de la même façon :\\[ \\dfrac{d^{3}y}{dx^{3}} = 4 \\cdot \\left(2e^{2x}\\right) = 8e^{2x}. \\]",
             "<strong>(d)</strong> Les coefficients successifs sont $2$, $4$, $8$ : chacun est le double du précédent.",

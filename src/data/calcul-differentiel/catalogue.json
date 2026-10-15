@@ -2427,7 +2427,7 @@
     {
       "id": "CD-C05-E003",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
@@ -2466,7 +2466,7 @@
     {
       "id": "CD-C05-E007",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "vrai-faux",
       "difficulte": "facile",
       "tempsEstime": 2,
@@ -2476,7 +2476,7 @@
     {
       "id": "CD-C05-E008",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 3,
@@ -2485,7 +2485,7 @@
     {
       "id": "CD-C05-E009",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 7,
@@ -2634,7 +2634,7 @@
     {
       "id": "CD-C05-E024",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 3,
@@ -2644,7 +2644,7 @@
     {
       "id": "CD-C05-E025",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "moyen",
       "tempsEstime": 3,
@@ -2654,7 +2654,7 @@
     {
       "id": "CD-C05-E026",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 2,
@@ -2664,7 +2664,7 @@
     {
       "id": "CD-C05-E027",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.3",
       "type": "vrai-faux",
       "difficulte": "moyen",
       "tempsEstime": 3,
@@ -2673,7 +2673,7 @@
     {
       "id": "CD-C05-E028",
       "chapitre": 5,
-      "section": "5.2",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
@@ -2762,7 +2762,7 @@
     {
       "id": "CD-C05-E037",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
@@ -2772,7 +2772,7 @@
     {
       "id": "CD-C05-E038",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
@@ -2782,7 +2782,7 @@
     {
       "id": "CD-C05-E039",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
@@ -2792,7 +2792,7 @@
     {
       "id": "CD-C05-E040",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "facile",
       "tempsEstime": 2,
@@ -2802,7 +2802,7 @@
     {
       "id": "CD-C05-E041",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "qcm",
       "difficulte": "moyen",
       "tempsEstime": 2,
@@ -2812,7 +2812,7 @@
     {
       "id": "CD-C05-E042",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
@@ -2822,7 +2822,7 @@
     {
       "id": "CD-C05-E043",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "moyen",
       "tempsEstime": 6,
@@ -2832,7 +2832,7 @@
     {
       "id": "CD-C05-E044",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 8,
@@ -2842,7 +2842,7 @@
     {
       "id": "CD-C05-E045",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.3",
       "type": "calcul-long",
       "difficulte": "difficile",
       "tempsEstime": 9,
@@ -2852,7 +2852,7 @@
     {
       "id": "CD-C05-E046",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "qcm",
       "difficulte": "facile",
       "tempsEstime": 1,
@@ -2862,7 +2862,7 @@
     {
       "id": "CD-C05-E047",
       "chapitre": 5,
-      "section": "5.4",
+      "section": "5.1",
       "type": "calcul-court",
       "difficulte": "difficile",
       "tempsEstime": 4,
