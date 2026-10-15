@@ -333,3 +333,50 @@ optionnel `presentDansLeSeauNonDeclare` ou, mieux, une liste exportée à côté
 `DOCUMENTS` que les scripts importeraient. Les deux demandent de toucher à
 `src/acces/documents.ts`, qui est lu par les Cloud Functions — donc un
 déploiement, donc pas au milieu d'une publication.
+
+---
+
+## 2026-10-15 — treize objets du seau ne sont déclarés nulle part
+
+**État : ouverte. Rien n'a été supprimé.**
+
+`scripts/orphelins-seau.mjs` compare le catalogue au seau : 89 documents
+déclarés, 102 objets présents, **13 orphelins, 0 manquant**. Un orphelin
+n'est téléchargeable par personne — `obtenirLienTelechargement` répond
+`document-inconnu` — mais il occupe le seau et brouille chaque inventaire.
+
+Les treize se rangent en deux groupes, **tous deux laissés là exprès** :
+
+- **10 objets `calcul-differentiel/revision/`** — `melimelo-A.pdf` à
+  `melimelo-E.pdf` et leurs cinq `-solutions.pdf`. Retirés du catalogue le
+  2026-09-24 (commit `3dec0e8`) sans être supprimés, parce qu'on ne saurait
+  plus les régénérer à l'identique : les séries tiraient dans les banques de
+  chapitre, qui ont changé depuis.
+- **3 objets `calcul-integral/exercices/`** — `ch01-enonces-seul.pdf`,
+  `ch02-enonces-seul.pdf`, `ch03-enonces-seul.pdf`. Retirés du catalogue le
+  2026-09-15, gardés pour distribuer un devoir hors du site (voir l'entrée du
+  2026-10-05).
+
+**Pourquoi c'est une dette.** Le caractère volontaire de ces treize objets
+n'est écrit que dans des messages de commit et dans une liste recopiée à la
+main dans un script ad hoc. Aucun outil ne le sait : l'inventaire les affiche
+comme des anomalies, et la personne qui « nettoiera » le seau un jour
+supprimera des PDF qu'on ne peut pas refaire.
+
+**Point fragile, constaté le même jour.** Les dix mêlimêlos ont une copie
+locale au MD5 identique au seau, mais elle vit dans
+`exercices-calcul-differentiel/sorties/build/`, que Git ignore et que
+`build-tout.sh` régénère (`generer-melimelo.js`). Le prochain build complet
+remplacera ces copies par des PDF **différents** : le seau redeviendra alors
+le seul exemplaire des originaux. Les 42 objets des deux autres cours, sans
+arbre source sur ce poste, ont été téléchargés le 2026-10-15 dans une
+sauvegarde locale hors dépôt, MD5 vérifiés.
+
+**Correctif.** Celui de l'entrée du 2026-10-05, étendu aux deux groupes : une
+liste exportée à côté de `DOCUMENTS` — chemin et raison de chaque objet
+conservé hors catalogue — que `orphelins-seau.mjs` et les scripts de
+téléversement importeraient. Un orphelin absent de cette liste resterait une
+alerte. Ensuite seulement, trancher groupe par groupe : garder, ou supprimer
+après avoir vérifié une copie hors du seau. Toucher `documents.ts` demande un
+déploiement et casse les compteurs en dur des tests : à faire hors
+publication, avec `npm test` avant de pousser.
