@@ -64,6 +64,31 @@ const LIBELLES_CANONIQUES = {
   "CD-2.7": "Formes indéterminées",
 };
 
+/**
+ * Renommages éditoriaux — sections à libellé unique dont le libellé de la
+ * banque nomme un type de document (« Exemples résolus », « Synthèse »)
+ * plutôt qu'une notion. C'est pourtant ce que l'étudiant lira dans sa liste
+ * de notions à cocher. Décidés par l'enseignant le 2026-10-15.
+ *
+ * Chaque entrée porte l'ANCIEN libellé, pas seulement le nouveau : si la
+ * banque change un jour ce libellé, le renommage ne doit pas l'écraser en
+ * silence. Le script s'arrête alors et demande qu'on le revoie.
+ */
+const RENOMMAGES = {
+  "CD-1.2": ["Rappel : simplification d'expressions rationnelles", "Simplification d'expressions rationnelles"],
+  "CD-1.3": ["Rappel : les fonctions de base et leurs graphiques", "Les fonctions de base et leurs graphiques"],
+  "CD-1.4": ["Rappel : lois des exposants et propriétés des logarithmes", "Lois des exposants et propriétés des logarithmes"],
+  "CD-1.6": ["Rappel : cercle trigonométrique et identités", "Cercle trigonométrique et identités"],
+  "CD-5.7": ["Démonstrations", "Démonstrations des règles de dérivation"],
+  "CD-7.6": ["Interpréter un résultat", "Interprétation d'un résultat en contexte"],
+  "PS-2.8": ["Choix de la bonne formule", "Choisir entre permutation, arrangement et combinaison"],
+  "PS-2.17": ["Exemples résolus (loi binomiale)", "Calculs avec la loi binomiale"],
+  "PS-3.6": ["Exemples résolus (IC moyenne, grand échantillon)", "Calcul d'un intervalle de confiance (moyenne, grand échantillon)"],
+  "PS-3.11": ["Méthode en 5 étapes", "Les étapes d'un test d'hypothèse"],
+  "PS-3.13": ["Exemples résolus (test moyenne, grand échantillon)", "Test d'hypothèse pour la moyenne — grand échantillon"],
+  "PS-3.16": ["Synthèse — Quel outil choisir ?", "Choisir le bon outil d'inférence"],
+};
+
 function notionsDuCours(cours) {
   const ex = JSON.parse(readFileSync(resolve(SITE, cours.blob), "utf8")).exercices;
   const parSection = new Map();
@@ -94,10 +119,20 @@ function notionsDuCours(cours) {
 
   const notions = [];
   const aArbitrer = [];
+  const renommagesPerimes = [];
   for (const s of parSection.values()) {
     let titre;
     if (s.libelles.size === 1) {
       titre = [...s.libelles.keys()][0];
+      const renommage = RENOMMAGES[s.id];
+      if (renommage) {
+        const [ancien, nouveau] = renommage;
+        if (titre !== ancien) {
+          renommagesPerimes.push(`${s.id} : la banque dit « ${titre} », le renommage attendait « ${ancien} »`);
+          continue;
+        }
+        titre = nouveau;
+      }
     } else if (LIBELLES_CANONIQUES[s.id]) {
       titre = LIBELLES_CANONIQUES[s.id];
     } else {
@@ -112,6 +147,22 @@ function notionsDuCours(cours) {
         aArbitrer.map((l) => `    ${l}`).join("\n") +
         `\n  Ajoute-les à LIBELLES_CANONIQUES après arbitrage de l'enseignant.`,
     );
+  }
+  if (renommagesPerimes.length) {
+    throw new Error(
+      `${cours.id} : ${renommagesPerimes.length} renommage(s) à revoir — le libellé a changé dans la banque.\n` +
+        renommagesPerimes.map((l) => `    ${l}`).join("\n"),
+    );
+  }
+  // Un renommage ou un arbitrage qui ne vise aucune section de ce cours :
+  // la section a changé de numéro, la décision de l'enseignant pointe dans
+  // le vide.
+  const ids = new Set(notions.map((n) => n.id));
+  const orphelins = [...Object.keys(RENOMMAGES), ...Object.keys(LIBELLES_CANONIQUES)].filter(
+    (id) => id.startsWith(`${cours.prefixe}-`) && !ids.has(id),
+  );
+  if (orphelins.length) {
+    throw new Error(`${cours.id} : libellé décidé pour une section absente de la banque — ${orphelins.join(", ")}`);
   }
   // Ordre de lecture : chapitre, puis numéro de section, composante par
   // composante. Surtout pas parseFloat : « 1.10 » vaudrait 1,1 et se

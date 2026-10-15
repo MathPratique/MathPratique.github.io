@@ -206,9 +206,11 @@ export const MOTS_CLES_CALCUL_DIFFERENTIEL: Record<string, string[]> = {
     "la sécante devient la tangente",
   ],
   "CD-4.3": [
+    // Pas de « dy/dx » ici : la notation figure dans toute page de notes
+    // sur la dérivée et faisait détecter cette section à tort (relecture de
+    // l'enseignant, 2026-10-15).
     "définition de la dérivée",
     "notation de Leibniz",
-    "dy/dx",
     "f'(x)",
     "notations équivalentes de la dérivée",
   ],
@@ -245,6 +247,10 @@ export const MOTS_CLES_CALCUL_DIFFERENTIEL: Record<string, string[]> = {
     "dy/du · du/dx",
     "dérivée de l'intérieur",
     "dérivée du sinus et du cosinus",
+    "dérivée de la tangente",
+    "sec² x",
+    "dérivée de l'arcsinus",
+    "dérivée de l'arctangente",
     "dérivée de l'exponentielle",
     "dérivée du logarithme",
   ],
