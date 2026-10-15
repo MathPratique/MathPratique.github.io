@@ -25,8 +25,8 @@ import type {
   Difficulte as DifficulteBanque,
   Etape,
   Exercice,
-  TypeExercice,
 } from "../data/banque-types";
+import { compterCibles, filtrerPool, type Canal } from "./filtrage";
 import { shuffle } from "./rng";
 
 export const PROB_STAT_LESSONS = ["PSD1", "PSD2", "PSD3", "PSD4"] as const;
@@ -41,17 +41,9 @@ export function isProbStatLesson(lessonId: string): lessonId is ProbStatLessonId
 // contrairement au calcul différentiel. Le jour où une figure apparaîtra
 // dans cette banque, reprendre le mécanisme de calcDiffPicker.ts.
 
-// Mêmes trois canaux que le reste du quiz : `exercise` = CALC, `mcq` = QCM,
-// `tf` = V/F. Les deux formats de calcul du JSON (court/long) tombent dans
-// le canal CALC.
-type Kind = "exercise" | "mcq" | "tf";
-
-function correspondAuKind(type: TypeExercice, kind: Kind): boolean {
-  if (kind === "mcq") return type === "qcm";
-  if (kind === "tf") return type === "vrai-faux";
-  return type === "calcul-court" || type === "calcul-long";
-}
-
+// Les trois canaux du quiz (`exercise` = CALC, `mcq` = QCM, `tf` = V/F) et
+// le filtre lui-même vivent dans filtrage.ts, partagés avec le calcul
+// différentiel.
 const DIFF_VERS_SITE: Record<DifficulteBanque, Difficulty> = {
   facile: "Facile",
   moyen: "Moyen",
@@ -75,46 +67,53 @@ function chapitreDe(lessonId: ProbStatLessonId): number {
 const BUNDLE_APLATI: Exercice[] = CHAPITRES.flatMap((c) => c.exercices);
 
 /**
- * Pool utilisable pour un tirage : filtre par chapitre, par kind, par
- * difficulté, et écarte les exos avec figure manquante.
+ * Le critère de tirage, dans le vocabulaire de la banque.
  *
- * @param pool  Liste à plat des exercices disponibles. Optionnel — sans lui,
- *              on retombe sur les 65 gratuits du bundle. Les détenteurs
- *              d'accès passent les 305 via useExercicesComplets.
+ * @param sections  Sections visées à l'intérieur du chapitre (« 3.3 »).
+ *                  Absentes : tout le chapitre, comportement d'origine.
  */
-function poolFor(
+function critereDe(
   lessonId: ProbStatLessonId,
-  kind: Kind,
+  canal: Canal,
   difficulty?: Difficulty,
-  pool: Exercice[] = BUNDLE_APLATI,
-): Exercice[] {
-  const num = chapitreDe(lessonId);
-  const filtreDiff = difficulty ? DIFF_VERS_BANQUE[difficulty] : null;
-  return pool.filter(
-    (ex) =>
-      ex.chapitre === num &&
-      correspondAuKind(ex.type, kind) &&
-      (!filtreDiff || ex.difficulte === filtreDiff),
-  );
+  sections?: readonly string[],
+) {
+  return {
+    chapitre: chapitreDe(lessonId),
+    canal,
+    difficulte: difficulty ? DIFF_VERS_BANQUE[difficulty] : undefined,
+    sections,
+  };
 }
 
-/** Nombre d'exercices disponibles pour un (chapitre, canal, difficulté). */
+/**
+ * Nombre d'exercices disponibles pour un (chapitre, canal, difficulté) et,
+ * s'il y en a, les sections visées. Compte les cibles seulement : le
+ * complément du même chapitre ne doit pas gonfler un chiffre qui promet la
+ * notion demandée.
+ *
+ * @param pool  Liste à plat des exercices disponibles. Optionnel — sans lui,
+ *              on retombe sur la vitrine bundlée. Les détenteurs d'accès
+ *              passent la banque complète via useExercicesComplets.
+ */
 export function countAvailable(
   lessonId: ProbStatLessonId,
-  kind: Kind,
+  canal: Canal,
   difficulty?: Difficulty,
-  pool?: Exercice[],
+  pool: Exercice[] = BUNDLE_APLATI,
+  sections?: readonly string[],
 ): number {
-  return poolFor(lessonId, kind, difficulty, pool).length;
+  return compterCibles(pool, critereDe(lessonId, canal, difficulty, sections));
 }
 
 export function hasAny(
   lessonId: ProbStatLessonId,
-  kind: Kind,
+  canal: Canal,
   difficulty?: Difficulty,
   pool?: Exercice[],
+  sections?: readonly string[],
 ): boolean {
-  return countAvailable(lessonId, kind, difficulty, pool) > 0;
+  return countAvailable(lessonId, canal, difficulty, pool, sections) > 0;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -214,8 +213,15 @@ function traduire(ex: Exercice, lessonId: ProbStatLessonId): Exercise {
 // ═══════════════════════════════════════════════════════════════════════
 
 export class ProbStatPicker {
-  // key = `${lessonId}|${kind}|${difficulty ?? "any"}`; value = queue mélangée
-  private queues = new Map<string, Exercice[]>();
+  // clé = `${lessonId}|${canal}|${difficulté}|${sections}` ; valeur = les deux
+  // files mélangées, celle des sections visées et celle du reste du chapitre.
+  private queues = new Map<string, { cibles: Exercice[]; complements: Exercice[] }>();
+  /**
+   * Combien d'exercices ont été pris hors des sections demandées, faute de
+   * mieux. L'interface s'en sert pour le dire à l'étudiant — un complément
+   * silencieux lui ferait croire qu'il révise la notion de ses notes.
+   */
+  public complementsUtilises = 0;
   /**
    * Le pool servant à chaque tirage. Fixé à la construction — un même
    * quiz doit puiser dans un ensemble cohérent, même si l'accès change
@@ -235,16 +241,28 @@ export class ProbStatPicker {
 
   draw(
     lessonId: ProbStatLessonId,
-    kind: Kind,
+    canal: Canal,
     difficulty?: Difficulty,
+    sections?: readonly string[],
   ): Exercise | null {
-    const key = `${lessonId}|${kind}|${difficulty ?? "any"}`;
-    let queue = this.queues.get(key);
-    if (!queue) {
-      queue = shuffle(poolFor(lessonId, kind, difficulty, this.pool));
-      this.queues.set(key, queue);
+    const cle = `${lessonId}|${canal}|${difficulty ?? "any"}|${(sections ?? []).join(",")}`;
+    let files = this.queues.get(cle);
+    if (!files) {
+      const { cibles, complements } = filtrerPool(
+        this.pool,
+        critereDe(lessonId, canal, difficulty, sections),
+      );
+      files = { cibles: shuffle(cibles), complements: shuffle(complements) };
+      this.queues.set(cle, files);
     }
-    const brut = queue.shift();
+    // Les sections demandées d'abord, toujours. Le reste du chapitre ne sert
+    // que lorsqu'elles sont épuisées — une section peut n'avoir qu'un seul
+    // exercice, et un visiteur sans accès n'en a parfois aucun de gratuit.
+    let brut = files.cibles.shift();
+    if (!brut) {
+      brut = files.complements.shift();
+      if (brut) this.complementsUtilises++;
+    }
     if (!brut) return null;
     return traduire(brut, lessonId);
   }

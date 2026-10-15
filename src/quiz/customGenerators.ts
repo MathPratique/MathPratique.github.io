@@ -14,6 +14,7 @@ import {
   type CalcDiffLessonId,
 } from "./calcDiffPicker";
 import type { Exercice as ExerciceBanque } from "../data/banque-types";
+import type { CustomQuizSpec } from "./specs";
 import { topics } from "../data/topics";
 import { getLessonById, getChapterById } from "../data/lessons";
 
@@ -1897,17 +1898,21 @@ function getTfExercise(lessonId: string): Exercise | null {
 //  Public API
 // ════════════════════════════════════════════════════════════════════════
 
-export type CustomQuizSpec = {
-  lessonId: string;
-  exerciseCount: number;
-  mcqCount: number;
-  tfCount: number;
-  // Optional per-spec difficulty filter — currently only wired for the
-  // Prob-Stat lessons (procedural linalg generators ignore it).
-  difficulty?: Difficulty;
-};
+// Le type d'une consigne et son codec d'URL vivent dans specs.ts — un module
+// pur, sans dépendance, donc testable par le banc d'essai (qui ne sait
+// résoudre ni les imports JSON ni `import.meta.glob`). Réexportés ici pour
+// que les appelants d'hier n'aient rien à changer.
+export type { CustomQuizSpec, NiveauAffiche } from "./specs";
+export { encodeCustomQuiz, decodeCustomQuiz } from "./specs";
 
-export function buildCustomQuiz(
+/**
+ * Construit le quiz et rapporte ce qu'il a fallu compléter.
+ *
+ * `complements` compte les exercices tirés hors des sections demandées,
+ * faute d'en avoir assez dedans. L'interface doit le dire à l'étudiant :
+ * sans ça, il croirait réviser exactement la notion de ses notes.
+ */
+export function buildCustomQuizDetaille(
   specs: CustomQuizSpec[],
   /**
    * Pool calc-diff à utiliser — 65 gratuits (défaut, bundle) ou 305 pour
@@ -1919,7 +1924,7 @@ export function buildCustomQuiz(
    * pour un détenteur d'accès. Même mécanique que ci-dessus.
    */
   banqueProbStat?: ExerciceBanque[],
-): Exercise[] {
+): { exercices: Exercise[]; complements: number } {
   const out: Exercise[] = [];
   // Un picker par quiz, pour chaque banque : tirage sans remise au sein du
   // quiz, pool réinitialisé au prochain tirage.
@@ -1931,30 +1936,30 @@ export function buildCustomQuiz(
     if (estLeconEnPreparation(spec.lessonId)) continue;
     if (isProbStatLesson(spec.lessonId)) {
       for (let i = 0; i < spec.exerciseCount; i++) {
-        const ex = psdPicker.draw(spec.lessonId, "exercise", spec.difficulty);
+        const ex = psdPicker.draw(spec.lessonId, "exercise", spec.difficulty, spec.sections);
         if (ex) out.push(ex);
       }
       for (let i = 0; i < spec.mcqCount; i++) {
-        const ex = psdPicker.draw(spec.lessonId, "mcq", spec.difficulty);
+        const ex = psdPicker.draw(spec.lessonId, "mcq", spec.difficulty, spec.sections);
         if (ex) out.push(ex);
       }
       for (let i = 0; i < spec.tfCount; i++) {
-        const ex = psdPicker.draw(spec.lessonId, "tf", spec.difficulty);
+        const ex = psdPicker.draw(spec.lessonId, "tf", spec.difficulty, spec.sections);
         if (ex) out.push(ex);
       }
       continue;
     }
     if (isCalcDiffLesson(spec.lessonId)) {
       for (let i = 0; i < spec.exerciseCount; i++) {
-        const ex = cdPicker.draw(spec.lessonId, "exercise", spec.difficulty);
+        const ex = cdPicker.draw(spec.lessonId, "exercise", spec.difficulty, spec.sections);
         if (ex) out.push(ex);
       }
       for (let i = 0; i < spec.mcqCount; i++) {
-        const ex = cdPicker.draw(spec.lessonId, "mcq", spec.difficulty);
+        const ex = cdPicker.draw(spec.lessonId, "mcq", spec.difficulty, spec.sections);
         if (ex) out.push(ex);
       }
       for (let i = 0; i < spec.tfCount; i++) {
-        const ex = cdPicker.draw(spec.lessonId, "tf", spec.difficulty);
+        const ex = cdPicker.draw(spec.lessonId, "tf", spec.difficulty, spec.sections);
         if (ex) out.push(ex);
       }
       continue;
@@ -1972,51 +1977,19 @@ export function buildCustomQuiz(
       if (ex) out.push(ex);
     }
   }
-  return out;
+  return {
+    exercices: out,
+    complements: psdPicker.complementsUtilises + cdPicker.complementsUtilises,
+  };
 }
 
-// URL encoding examples:
-//   "L15-e2m3t1_L17-e1m2t0"        (linalg, no difficulty)
-//   "PSD1-e2m3t1-df_PSD2-e1m0t2"    (PSD1 filtered to Facile, PSD2 mixed)
-//   difficulty codes: f=Facile, m=Moyen, d=Difficile (omitted when undefined)
-const DIFF_TO_CODE: Record<Difficulty, string> = {
-  Facile: "f",
-  Moyen: "m",
-  Difficile: "d",
-};
-const CODE_TO_DIFF: Record<string, Difficulty> = {
-  f: "Facile",
-  m: "Moyen",
-  d: "Difficile",
-};
-export function encodeCustomQuiz(specs: CustomQuizSpec[]): string {
-  return specs
-    .filter((s) => s.exerciseCount + s.mcqCount + s.tfCount > 0)
-    .map((s) => {
-      const base = `${s.lessonId}-e${s.exerciseCount}m${s.mcqCount}t${s.tfCount}`;
-      const diff = s.difficulty ? `-d${DIFF_TO_CODE[s.difficulty]}` : "";
-      return base + diff;
-    })
-    .join("_");
-}
-
-export function decodeCustomQuiz(str: string): CustomQuizSpec[] {
-  if (!str) return [];
-  return str
-    .split("_")
-    .map((seg) => {
-      const m = seg.match(/^([A-Z]+\d+)-e(\d+)m(\d+)t(\d+)(?:-d([fmd]))?$/);
-      if (!m) return null;
-      const spec: CustomQuizSpec = {
-        lessonId: m[1],
-        exerciseCount: parseInt(m[2], 10),
-        mcqCount: parseInt(m[3], 10),
-        tfCount: parseInt(m[4], 10),
-      };
-      if (m[5]) spec.difficulty = CODE_TO_DIFF[m[5]];
-      return spec;
-    })
-    .filter((x): x is CustomQuizSpec => x !== null);
+/** Le quiz seul, pour les appelants que le détail n'intéresse pas. */
+export function buildCustomQuiz(
+  specs: CustomQuizSpec[],
+  banqueCalcDiff?: ExerciceBanque[],
+  banqueProbStat?: ExerciceBanque[],
+): Exercise[] {
+  return buildCustomQuizDetaille(specs, banqueCalcDiff, banqueProbStat).exercices;
 }
 
 // Which lesson-type combos have a generator (used to enable/disable inputs in the UI).
@@ -2027,6 +2000,8 @@ export function getAvailableTypes(
   difficulty?: Difficulty,
   banqueCalcDiff?: ExerciceBanque[],
   banqueProbStat?: ExerciceBanque[],
+  /** Restreint le décompte aux sections visées — mode « à partir de mes notes ». */
+  sections?: readonly string[],
 ): {
   exercise: boolean;
   mcq: boolean;
@@ -2035,17 +2010,17 @@ export function getAvailableTypes(
   if (isProbStatLesson(lessonId)) {
     const id = lessonId as ProbStatLessonId;
     return {
-      exercise: probStatHasAny(id, "exercise", difficulty, banqueProbStat),
-      mcq: probStatHasAny(id, "mcq", difficulty, banqueProbStat),
-      tf: probStatHasAny(id, "tf", difficulty, banqueProbStat),
+      exercise: probStatHasAny(id, "exercise", difficulty, banqueProbStat, sections),
+      mcq: probStatHasAny(id, "mcq", difficulty, banqueProbStat, sections),
+      tf: probStatHasAny(id, "tf", difficulty, banqueProbStat, sections),
     };
   }
   if (isCalcDiffLesson(lessonId)) {
     const id = lessonId as CalcDiffLessonId;
     return {
-      exercise: calcDiffHasAny(id, "exercise", difficulty, banqueCalcDiff),
-      mcq: calcDiffHasAny(id, "mcq", difficulty, banqueCalcDiff),
-      tf: calcDiffHasAny(id, "tf", difficulty, banqueCalcDiff),
+      exercise: calcDiffHasAny(id, "exercise", difficulty, banqueCalcDiff, sections),
+      mcq: calcDiffHasAny(id, "mcq", difficulty, banqueCalcDiff, sections),
+      tf: calcDiffHasAny(id, "tf", difficulty, banqueCalcDiff, sections),
     };
   }
   const lessonNum = parseInt(lessonId.slice(1), 10);
