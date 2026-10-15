@@ -15,7 +15,7 @@
 // événement — vit dans ../../src/acces/. Le même code sert au navigateur et
 // au serveur. Il n'y a pas deux définitions à garder en phase.
 
-import { onCall, onRequest, HttpsError } from "firebase-functions/v2/https";
+import { onCall, onRequest, HttpsError, type FunctionsErrorCode } from "firebase-functions/v2/https";
 import { defineSecret, defineString } from "firebase-functions/params";
 // Import ciblé du logger, PAS depuis "firebase-functions/v2" : le point
 // d'entrée racine v2 charge tous les providers (dont database), qui
@@ -39,6 +39,17 @@ import {
 import { trouverDocument } from "../../src/acces/documents.js";
 import { DUREE_ACCES_MOIS, verifierAcces } from "../../src/acces/regles.js";
 import { versAccesDepuisDonnees } from "./lecture.js";
+import {
+  jourLocal,
+  MAX_OCTETS_FICHIER,
+  MESSAGES_REFUS as MESSAGES_REFUS_ANALYSE,
+  validerDetections,
+  validerEntree,
+  type RaisonRefus as RaisonRefusAnalyse,
+} from "../../src/notes/analyse.js";
+import { catalogueDe, COURS_AVEC_CATALOGUE, idsDuCatalogue } from "./notes/index.js";
+import { analyserAvecModele, modeSimule } from "./notes/modele.js";
+import { rembourserAnalyse, reserverAnalyse } from "./notes/quota.js";
 import { CONTENT_HASH_CD } from "./data/exercices-cd-version.js";
 import { CONTENT_HASH_PS } from "./data/exercices-ps-version.js";
 // La banque calc-diff complète (305 exos AVEC contenu) — bundlée avec la
@@ -68,6 +79,10 @@ const db = getFirestore();
 
 const CLE_STRIPE = defineSecret("STRIPE_SECRET_KEY");
 const SECRET_WEBHOOK = defineSecret("STRIPE_WEBHOOK_SECRET");
+// Déclarée dès maintenant, utilisée à partir de l'étape 4. Le déploiement
+// échouera tant que le secret n'existe pas :
+//     firebase functions:secrets:set ANTHROPIC_API_KEY
+const CLE_ANTHROPIC = defineSecret("ANTHROPIC_API_KEY");
 
 /** Identifiant du Price Stripe du package. Se règle sans redéploiement. */
 const PRICE_ID = defineString("STRIPE_PRICE_ID", { default: "" });
@@ -514,5 +529,192 @@ export const obtenirExercices = onCall(
 
     logger.info(`[exercices] ${uid} → ${coursId} autorisé`);
     return banque.blob;
+  },
+);
+
+// ---------------------------------------------------------------------------
+//  analyserNotes — reconnaît les notions d'une page de notes
+// ---------------------------------------------------------------------------
+//
+// L'étudiant colle du texte ou envoie une photo de ses notes ; la fonction
+// répond avec les notions du catalogue qu'elle y reconnaît. Le quiz est
+// ensuite composé par le site, dans la banque, à partir de ces notions. Rien
+// n'est généré : le modèle ne fait que désigner des sections existantes.
+//
+// ─── Vie privée (Loi 25) ──────────────────────────────────────────────────
+//
+// Le texte et le fichier ne sont écrits NULLE PART : ni dans Cloud Storage,
+// ni dans Firestore, ni dans les journaux. Ils existent le temps d'un appel
+// puis disparaissent avec le processus. Le journal ne porte que l'uid, le
+// cours et les identifiants de notions — jamais un extrait, jamais le nom du
+// fichier (qui contient souvent un prénom).
+//
+// ─── Ordre des contrôles ──────────────────────────────────────────────────
+//
+// Tailles d'abord, accès ensuite, modèle en dernier. Un PDF de six cents
+// pages doit être refusé avant d'avoir coûté un sou, et avant même d'avoir
+// fait lire Firestore.
+
+/** Le base64 pèse ~4/3 de l'original : au-delà, inutile de décoder. */
+const BASE64_MAX = Math.ceil((MAX_OCTETS_FICHIER * 4) / 3) + 1024;
+
+const CODE_HTTPS_PAR_REFUS: Partial<Record<RaisonRefusAnalyse, FunctionsErrorCode>> = {
+  "non-connecte": "unauthenticated",
+  "cours-inconnu": "not-found",
+  "niveau-non-autorise": "permission-denied",
+  "essai-gratuit-epuise": "resource-exhausted",
+  "quota-atteint": "resource-exhausted",
+};
+
+function refusAnalyse(raison: RaisonRefusAnalyse): HttpsError {
+  return new HttpsError(
+    CODE_HTTPS_PAR_REFUS[raison] ?? "invalid-argument",
+    MESSAGES_REFUS_ANALYSE[raison],
+    { raison },
+  );
+}
+
+/**
+ * Le nombre de pages d'un PDF, ou `null` s'il est illisible.
+ *
+ * `pdf-lib` est importé à la demande : les autres fonctions du même bundle
+ * (paiement, téléchargement) n'ont aucune raison de le charger au démarrage.
+ */
+async function compterPagesPdf(donnees: Buffer): Promise<number | null> {
+  try {
+    const { PDFDocument } = await import("pdf-lib");
+    const doc = await PDFDocument.load(donnees, {
+      ignoreEncryption: true,
+      updateMetadata: false,
+    });
+    return doc.getPageCount();
+  } catch {
+    return null;
+  }
+}
+
+export const analyserNotes = onCall(
+  {
+    region: "northamerica-northeast1",
+    cors: true,
+    secrets: [CLE_ANTHROPIC],
+    // Un PDF de 10 Mo arrive en base64 (≈ 13 Mo), est décodé, puis relu par
+    // pdf-lib : les 256 Mo par défaut laissent trop peu de marge.
+    memory: "512MiB",
+    timeoutSeconds: 120,
+  },
+  async (requete) => {
+    const uid = requete.auth?.uid;
+    if (!uid) throw refusAnalyse("non-connecte");
+
+    const donneesAppel = (requete.data ?? {}) as Record<string, unknown>;
+    const coursId = String(donneesAppel.coursId ?? "");
+    const texte = typeof donneesAppel.texte === "string" ? donneesAppel.texte : undefined;
+
+    // ─── 1. Le fichier, s'il y en a un ───────────────────────────────────
+    let fichier: { mediaType: string; donnees: Buffer; octets: number; pages?: number } | undefined;
+    const brutFichier = donneesAppel.fichier;
+    if (brutFichier && typeof brutFichier === "object") {
+      const champs = brutFichier as Record<string, unknown>;
+      const mediaType = String(champs.mediaType ?? "");
+      const base64 = typeof champs.donnees === "string" ? champs.donnees : "";
+      if (base64.length > BASE64_MAX) throw refusAnalyse("fichier-trop-gros");
+      const octetsDecodes = Buffer.from(base64, "base64");
+      fichier = { mediaType, donnees: octetsDecodes, octets: octetsDecodes.byteLength };
+      if (mediaType === "application/pdf") {
+        const pages = await compterPagesPdf(octetsDecodes);
+        if (pages === null) throw refusAnalyse("pdf-illisible");
+        fichier.pages = pages;
+      }
+    }
+
+    // ─── 2. Les limites, avant toute lecture et tout appel ───────────────
+    const controle = validerEntree(
+      {
+        coursId,
+        texte,
+        fichier: fichier
+          ? { mediaType: fichier.mediaType, octets: fichier.octets, pages: fichier.pages }
+          : undefined,
+      },
+      COURS_AVEC_CATALOGUE,
+    );
+    if (!controle.valide) throw refusAnalyse(controle.raison);
+
+    // ─── 3. L'accès, à l'horloge du serveur ──────────────────────────────
+    const snap = await db.doc(`utilisateurs/${uid}/acces/${coursId}`).get();
+    const acces = versAccesDepuisDonnees(coursId, snap.data());
+    const maintenant = Date.now();
+    const etat = verifierAcces(acces, maintenant);
+    const jour = jourLocal(maintenant);
+
+    // ─── 4. La réservation ───────────────────────────────────────────────
+    const decision = await reserverAnalyse(db, uid, {
+      accesActif: etat.actif,
+      niveau: acces?.niveau ?? null,
+      jour,
+    });
+    if (!decision.autorise) {
+      logger.info(`[analyse] ${uid} → ${coursId} refusé (${decision.raison})`);
+      throw refusAnalyse(decision.raison);
+    }
+
+    const catalogue = catalogueDe(coursId);
+    if (!catalogue) throw refusAnalyse("cours-inconnu");
+
+    // ─── 5. Le modèle ────────────────────────────────────────────────────
+    const rendre = async () => rembourserAnalyse(db, uid, jour, decision.essaiGratuit);
+
+    let brut: unknown;
+    try {
+      brut = await analyserAvecModele({
+        catalogue,
+        texte,
+        fichier: fichier ? { mediaType: fichier.mediaType, donnees: fichier.donnees } : undefined,
+      });
+    } catch (err) {
+      await rendre();
+      logger.error(
+        `[analyse] ${uid} → ${coursId} : le modèle n'a pas répondu ` +
+          `(${err instanceof Error ? err.message : "cause inconnue"}) — analyse remboursée`,
+      );
+      throw new HttpsError(
+        "unavailable",
+        "L'analyse n'a pas pu se faire. Réessaie dans un moment — celle-ci ne t'a pas été comptée.",
+      );
+    }
+
+    // ─── 6. On ne croit le modèle que sur ce qui existe ──────────────────
+    const sortie = validerDetections(brut, idsDuCatalogue(coursId));
+    if (!sortie.valide) {
+      await rendre();
+      logger.error(`[analyse] ${uid} → ${coursId} : réponse illisible — analyse remboursée`);
+      throw new HttpsError(
+        "internal",
+        "La réponse de l'analyse était illisible. Réessaie — celle-ci ne t'a pas été comptée.",
+      );
+    }
+
+    // Les identifiants écartés sont comptés, jamais journalisés : ils
+    // viennent du modèle, qui a lu les notes de l'étudiant.
+    if (sortie.ignorees.length > 0) {
+      logger.warn(`[analyse] ${uid} → ${coursId} : ${sortie.ignorees.length} identifiant(s) hors catalogue écarté(s)`);
+    }
+    logger.info(
+      `[analyse] ${uid} → ${coursId} : ${sortie.detectees.map((d) => d.id).join(",") || "aucune notion"}` +
+        `${modeSimule() ? " (simulé)" : ""}`,
+    );
+
+    return {
+      cours: coursId,
+      // Le catalogue entier accompagne la réponse : l'étudiant doit pouvoir
+      // décocher une notion détectée et en ajouter une autre sans qu'un
+      // second appel soit nécessaire. Les mots-clés, eux, restent ici.
+      notions: catalogue.map(({ id, chapitre, section, titre }) => ({ id, chapitre, section, titre })),
+      detectees: sortie.detectees,
+      horsSujet: sortie.horsSujet,
+      restantes: decision.restantes,
+      ...(modeSimule() ? { simule: true } : {}),
+    };
   },
 );

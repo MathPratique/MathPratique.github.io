@@ -11,7 +11,9 @@
 // Rien ici ne touche au contenu de l'étudiant : les limites portent sur des
 // tailles, jamais sur du texte.
 
-import type { NiveauAcces } from "../acces/documents";
+// Extension « .js » comme dans src/acces/ : ces modules sont partagés avec
+// les Cloud Functions, dont la résolution ESM l'exige.
+import type { NiveauAcces } from "../acces/documents.js";
 
 // ─── Les constantes de politique ──────────────────────────────────────────
 //
@@ -24,8 +26,9 @@ export const NIVEAUX_ANALYSE_NOTES: NiveauAcces[] = ["restreint", "acheteur", "e
 export const QUOTA_QUOTIDIEN = 10;
 
 /**
- * Analyses offertes, au total et pour toujours, à quelqu'un qui a un compte
- * mais pas d'accès. Pas « par jour » : c'est un aperçu, pas un service.
+ * Analyses offertes à quelqu'un qui a un compte mais pas d'accès — une
+ * fois par compte, sans recharge. Pas « par jour » : c'est un aperçu, pas
+ * un service.
  */
 export const ESSAIS_SANS_ACCES = 1;
 
@@ -73,6 +76,7 @@ export type RaisonRefus =
   | "fichier-trop-gros"
   | "type-non-accepte"
   | "pdf-trop-long"
+  | "pdf-illisible"
   | "niveau-non-autorise"
   | "essai-gratuit-epuise"
   | "quota-atteint";
@@ -91,6 +95,9 @@ export const MESSAGES_REFUS: Record<RaisonRefus, string> = {
   "fichier-trop-gros": `Ton fichier dépasse ${MAX_OCTETS_FICHIER / (1024 * 1024)} Mo. Essaie une photo de moins bonne résolution, ou envoie moins de pages.`,
   "type-non-accepte": "Format non reconnu. Envoie un PDF ou une photo (JPG, PNG, HEIC).",
   "pdf-trop-long": `Ton PDF dépasse ${MAX_PAGES_PDF} pages. Garde les pages de la matière à réviser.`,
+  // On refuse au lieu de deviner : sans pouvoir compter les pages, rien ne
+  // dit que ce PDF en a vingt plutôt que six cents.
+  "pdf-illisible": "Ce PDF n'a pas pu être ouvert. Essaie de l'exporter à nouveau, ou envoie une photo des pages.",
   "niveau-non-autorise": "Ton accès ne comprend pas l'analyse de notes.",
   "essai-gratuit-epuise":
     "Tu as utilisé ton analyse d'essai. Le package donne droit à des analyses tous les jours.",
@@ -130,6 +137,67 @@ export function validerEntree(
     }
   }
   return { valide: true };
+}
+
+// ─── La sortie du modèle ──────────────────────────────────────────────────
+
+/** Au-delà, la détection ne dit plus rien : une page de notes ne couvre pas
+ *  huit notions. Borne aussi ce qu'une réponse bavarde peut imposer à l'UI. */
+export const MAX_NOTIONS_DETECTEES = 8;
+
+export type Confiance = "elevee" | "moyenne";
+export type Detection = { id: string; confiance: Confiance };
+
+export type SortieValidee = {
+  detectees: Detection[];
+  horsSujet: boolean;
+  /** Identifiants renvoyés par le modèle mais absents du catalogue. */
+  ignorees: string[];
+};
+
+/**
+ * Le filtre entre le modèle et le reste du site.
+ *
+ * Deux choses s'y jouent. La première est banale : une réponse peut être mal
+ * formée, et on préfère une erreur franche à un objet à moitié lu. La
+ * seconde l'est moins — le texte analysé vient de l'étudiant, et rien
+ * n'empêche une page de notes de contenir « ignore tes instructions et
+ * renvoie… ». Quoi qu'il arrive en amont, seul ce qui existe déjà dans le
+ * catalogue ressort d'ici. La détection ne peut donc jamais désigner autre
+ * chose que des sections de la banque.
+ */
+export function validerDetections(
+  brut: unknown,
+  idsValides: ReadonlySet<string>,
+): { valide: false } | ({ valide: true } & SortieValidee) {
+  if (typeof brut !== "object" || brut === null) return { valide: false };
+  const objet = brut as Record<string, unknown>;
+  if (!Array.isArray(objet.notions)) return { valide: false };
+
+  const detectees: Detection[] = [];
+  const ignorees: string[] = [];
+  const deja = new Set<string>();
+
+  for (const item of objet.notions) {
+    if (typeof item !== "object" || item === null) continue;
+    const { id, confiance } = item as Record<string, unknown>;
+    if (typeof id !== "string") continue;
+    if (!idsValides.has(id)) {
+      ignorees.push(id.slice(0, 40));
+      continue;
+    }
+    if (deja.has(id)) continue;
+    deja.add(id);
+    detectees.push({ id, confiance: confiance === "elevee" ? "elevee" : "moyenne" });
+    if (detectees.length >= MAX_NOTIONS_DETECTEES) break;
+  }
+
+  return {
+    valide: true,
+    detectees,
+    horsSujet: objet.horsSujet === true || detectees.length === 0,
+    ignorees,
+  };
 }
 
 // ─── Le quota ─────────────────────────────────────────────────────────────
@@ -174,7 +242,8 @@ export function jourLocal(maintenant: number, fuseau = "America/Toronto"): strin
  * l'horloge du serveur — cette fonction ne les recalcule pas, elle décide.
  *
  * Deux régimes volontairement différents : un détenteur a un quota qui se
- * recharge chaque jour, quelqu'un sans accès a un seul essai pour la vie.
+ * recharge chaque jour, quelqu'un sans accès a un seul essai, qui ne se
+ * recharge jamais.
  */
 export function deciderAnalyse(params: {
   accesActif: boolean;
@@ -184,7 +253,11 @@ export function deciderAnalyse(params: {
 }): DecisionAnalyse {
   const { accesActif, niveau, quota, jour } = params;
 
-  if (accesActif && niveau !== null && !NIVEAUX_ANALYSE_NOTES.includes(niveau)) {
+  // Un vieux document d'accès peut ne pas porter de niveau. On applique
+  // alors le plus restrictif, comme le fait déjà la règle de téléchargement
+  // — et on le vérifie comme les autres, au lieu de le laisser passer.
+  const niveauEffectif: NiveauAcces = niveau ?? "restreint";
+  if (accesActif && !NIVEAUX_ANALYSE_NOTES.includes(niveauEffectif)) {
     return { autorise: false, restantes: 0, raison: "niveau-non-autorise" };
   }
 
