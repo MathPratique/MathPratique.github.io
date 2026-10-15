@@ -1,0 +1,227 @@
+// ===========================================================================
+//  Analyse de notes — les décisions, sans entrées-sorties
+// ===========================================================================
+//
+// Même découpage que src/acces/telechargement.ts : tout ce qui décide vit
+// ici, en fonctions pures, et la Cloud Function ne fait que lire Firestore,
+// appeler ces fonctions, puis écrire. C'est ce qui rend les règles testables
+// sans émulateur — et c'est aussi la raison pour laquelle l'horloge est
+// toujours un paramètre, jamais `Date.now()`.
+//
+// Rien ici ne touche au contenu de l'étudiant : les limites portent sur des
+// tailles, jamais sur du texte.
+
+import type { NiveauAcces } from "../acces/documents";
+
+// ─── Les constantes de politique ──────────────────────────────────────────
+//
+// Groupées en tête pour qu'un ajustement ne demande pas de lire le reste.
+
+/** Qui a droit à l'analyse de notes. Liste explicite, pas une hiérarchie. */
+export const NIVEAUX_ANALYSE_NOTES: NiveauAcces[] = ["restreint", "acheteur", "enseignant"];
+
+/** Analyses par jour et par personne, pour un détenteur d'accès. */
+export const QUOTA_QUOTIDIEN = 10;
+
+/**
+ * Analyses offertes, au total et pour toujours, à quelqu'un qui a un compte
+ * mais pas d'accès. Pas « par jour » : c'est un aperçu, pas un service.
+ */
+export const ESSAIS_SANS_ACCES = 1;
+
+export const MAX_CARACTERES = 30_000;
+export const MAX_OCTETS_FICHIER = 10 * 1024 * 1024;
+export const MAX_PAGES_PDF = 20;
+
+/**
+ * Les types acceptés. Le HEIC est là parce que c'est ce que produit un
+ * iPhone par défaut : refuser le format le plus courant des photos de notes
+ * serait refuser la moitié des envois.
+ */
+export const TYPES_FICHIER_ACCEPTES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+] as const;
+
+export type TypeFichier = (typeof TYPES_FICHIER_ACCEPTES)[number];
+
+// ─── L'entrée ─────────────────────────────────────────────────────────────
+
+export type EntreeAnalyse = {
+  coursId: string;
+  texte?: string;
+  fichier?: {
+    mediaType: string;
+    /** Taille du fichier décodé, en octets. */
+    octets: number;
+    /** Nombre de pages — seulement pour un PDF, compté avant l'appel. */
+    pages?: number;
+  };
+};
+
+export type RaisonRefus =
+  | "non-connecte"
+  | "cours-inconnu"
+  | "entree-vide"
+  | "entree-double"
+  | "texte-trop-long"
+  | "fichier-vide"
+  | "fichier-trop-gros"
+  | "type-non-accepte"
+  | "pdf-trop-long"
+  | "niveau-non-autorise"
+  | "essai-gratuit-epuise"
+  | "quota-atteint";
+
+/**
+ * Ce qu'on dit à l'étudiant. Tutoiement, et jamais de jargon interne : ces
+ * phrases sont lues dans une carte d'erreur, pas dans un journal.
+ */
+export const MESSAGES_REFUS: Record<RaisonRefus, string> = {
+  "non-connecte": "Crée un compte gratuit pour analyser tes notes — c'est l'affaire d'une minute.",
+  "cours-inconnu": "L'analyse de notes n'est pas encore offerte pour ce cours.",
+  "entree-vide": "Colle le texte de tes notes ou choisis un fichier avant de lancer l'analyse.",
+  "entree-double": "Envoie soit du texte, soit un fichier, pas les deux en même temps.",
+  "texte-trop-long": `Ton texte dépasse ${MAX_CARACTERES.toLocaleString("fr-CA")} caractères. Garde la partie que tu veux réviser.`,
+  "fichier-vide": "Ce fichier est vide.",
+  "fichier-trop-gros": `Ton fichier dépasse ${MAX_OCTETS_FICHIER / (1024 * 1024)} Mo. Essaie une photo de moins bonne résolution, ou envoie moins de pages.`,
+  "type-non-accepte": "Format non reconnu. Envoie un PDF ou une photo (JPG, PNG, HEIC).",
+  "pdf-trop-long": `Ton PDF dépasse ${MAX_PAGES_PDF} pages. Garde les pages de la matière à réviser.`,
+  "niveau-non-autorise": "Ton accès ne comprend pas l'analyse de notes.",
+  "essai-gratuit-epuise":
+    "Tu as utilisé ton analyse d'essai. Le package donne droit à des analyses tous les jours.",
+  "quota-atteint": `Tu as atteint tes ${QUOTA_QUOTIDIEN} analyses pour aujourd'hui. Le compteur repart demain.`,
+};
+
+/**
+ * Contrôle de l'entrée, avant toute lecture de Firestore et avant tout appel
+ * au modèle. Un fichier trop gros doit coûter zéro cent.
+ */
+export function validerEntree(
+  entree: EntreeAnalyse,
+  coursConnus: readonly string[],
+): { valide: true } | { valide: false; raison: RaisonRefus } {
+  const refus = (raison: RaisonRefus) => ({ valide: false as const, raison });
+
+  if (!coursConnus.includes(entree.coursId)) return refus("cours-inconnu");
+
+  const aDuTexte = typeof entree.texte === "string" && entree.texte.trim().length > 0;
+  const aUnFichier = entree.fichier !== undefined;
+  if (!aDuTexte && !aUnFichier) return refus("entree-vide");
+  if (aDuTexte && aUnFichier) return refus("entree-double");
+
+  if (aDuTexte && (entree.texte as string).length > MAX_CARACTERES) {
+    return refus("texte-trop-long");
+  }
+
+  if (entree.fichier) {
+    const { mediaType, octets, pages } = entree.fichier;
+    if (!(TYPES_FICHIER_ACCEPTES as readonly string[]).includes(mediaType)) {
+      return refus("type-non-accepte");
+    }
+    if (octets <= 0) return refus("fichier-vide");
+    if (octets > MAX_OCTETS_FICHIER) return refus("fichier-trop-gros");
+    if (mediaType === "application/pdf" && typeof pages === "number" && pages > MAX_PAGES_PDF) {
+      return refus("pdf-trop-long");
+    }
+  }
+  return { valide: true };
+}
+
+// ─── Le quota ─────────────────────────────────────────────────────────────
+
+/**
+ * Le compteur d'une personne, tel qu'il dort dans Firestore.
+ *
+ * `jour` est une date locale (voir jourLocal) et non un horodatage : le
+ * compteur doit repartir à minuit chez l'étudiant, pas à 20 h parce que le
+ * serveur compte en UTC.
+ */
+export type QuotaStocke = {
+  jour?: string;
+  utiliseesAujourdhui?: number;
+  essaiGratuitUtilise?: boolean;
+};
+
+export type DecisionAnalyse =
+  | { autorise: true; restantes: number; essaiGratuit: boolean }
+  | { autorise: false; restantes: number; raison: RaisonRefus };
+
+/**
+ * La date locale d'un instant, au format AAAA-MM-JJ.
+ *
+ * `fr-CA` rend précisément ce format, ce qui évite d'assembler la date à la
+ * main — et le fuseau est passé en paramètre pour que le test n'ait pas à
+ * dépendre de l'horloge de la machine.
+ */
+export function jourLocal(maintenant: number, fuseau = "America/Toronto"): string {
+  return new Intl.DateTimeFormat("fr-CA", {
+    timeZone: fuseau,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(maintenant));
+}
+
+/**
+ * Peut-elle lancer une analyse, et combien lui en restera-t-il ?
+ *
+ * `accesActif` et `niveau` viennent d'une lecture de l'accès faite avec
+ * l'horloge du serveur — cette fonction ne les recalcule pas, elle décide.
+ *
+ * Deux régimes volontairement différents : un détenteur a un quota qui se
+ * recharge chaque jour, quelqu'un sans accès a un seul essai pour la vie.
+ */
+export function deciderAnalyse(params: {
+  accesActif: boolean;
+  niveau: NiveauAcces | null;
+  quota: QuotaStocke | undefined;
+  jour: string;
+}): DecisionAnalyse {
+  const { accesActif, niveau, quota, jour } = params;
+
+  if (accesActif && niveau !== null && !NIVEAUX_ANALYSE_NOTES.includes(niveau)) {
+    return { autorise: false, restantes: 0, raison: "niveau-non-autorise" };
+  }
+
+  if (!accesActif) {
+    if (quota?.essaiGratuitUtilise === true) {
+      return { autorise: false, restantes: 0, raison: "essai-gratuit-epuise" };
+    }
+    return { autorise: true, restantes: ESSAIS_SANS_ACCES - 1, essaiGratuit: true };
+  }
+
+  // Un compteur d'hier ne compte pas : le jour change, le compteur repart.
+  const utilisees = quota?.jour === jour ? (quota.utiliseesAujourdhui ?? 0) : 0;
+  if (utilisees >= QUOTA_QUOTIDIEN) {
+    return { autorise: false, restantes: 0, raison: "quota-atteint" };
+  }
+  return { autorise: true, restantes: QUOTA_QUOTIDIEN - utilisees - 1, essaiGratuit: false };
+}
+
+/** Le compteur après une analyse accordée — ce que la transaction écrira. */
+export function quotaApres(quota: QuotaStocke | undefined, jour: string, essaiGratuit: boolean): QuotaStocke {
+  if (essaiGratuit) {
+    return { ...quota, jour: quota?.jour ?? jour, essaiGratuitUtilise: true };
+  }
+  const utilisees = quota?.jour === jour ? (quota.utiliseesAujourdhui ?? 0) : 0;
+  return { ...quota, jour, utiliseesAujourdhui: utilisees + 1 };
+}
+
+/**
+ * Le compteur après un remboursement — une analyse réservée puis ratée.
+ *
+ * La réservation a lieu AVANT l'appel au modèle, pour que deux analyses
+ * lancées en même temps ne passent pas toutes les deux au travers du quota.
+ * Quand l'appel échoue, on rend ce qu'on a pris : une panne de notre côté ne
+ * doit pas coûter une analyse à l'étudiant.
+ */
+export function quotaRembourse(quota: QuotaStocke | undefined, jour: string, essaiGratuit: boolean): QuotaStocke {
+  if (essaiGratuit) return { ...quota, essaiGratuitUtilise: false };
+  if (quota?.jour !== jour) return { ...quota };
+  return { ...quota, utiliseesAujourdhui: Math.max(0, (quota.utiliseesAujourdhui ?? 0) - 1) };
+}
