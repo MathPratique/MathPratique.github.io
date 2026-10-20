@@ -5,6 +5,7 @@ import { EMAIL_CONTACT } from "../data/site";
 import { useAuth } from "../firebase/useAuth";
 import { useAcces } from "../firebase/useAcces";
 import { COURS_EN_VENTE } from "../firebase/acces";
+import { VENTE_OUVERTE } from "../acces/vente";
 import { demarrerAchat, messagePaiement } from "../firebase/paiement";
 import { topics } from "../data/topics";
 import {
@@ -29,11 +30,12 @@ const COULEUR = topics.find((t) => t.id === "differential-calculus")!.couleur;
 const DUREE_ACCES_MOIS = 12;
 
 /**
- * Le paiement n'existe pas encore : ni compte, ni Stripe, ni octroi d'accès.
- * Tant que c'est `false`, la page annonce le produit sans prétendre le vendre.
- * Passer à `true` uniquement quand le parcours d'achat complet est en place.
+ * Bouton « Acheter » actif ou non. Suit l'interrupteur unique de la vente
+ * (src/acces/vente.ts), partagé avec la Cloud Function creerSessionCheckout.
+ * En développement (`npm run dev`), la vente est toujours ouverte pour les
+ * tests : on ne modifie plus cette ligne pour tester.
  */
-const PAIEMENT_ACTIF = false;
+const PAIEMENT_ACTIF = VENTE_OUVERTE || import.meta.env.DEV;
 
 /** Chapitre en version enseignant + dix exercices. Aucune inscription. */
 const PDF_APERCU = "/boutique/echantillon.pdf";

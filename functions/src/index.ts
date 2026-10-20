@@ -38,6 +38,7 @@ import {
 } from "../../src/acces/telechargement.js";
 import { trouverDocument } from "../../src/acces/documents.js";
 import { DUREE_ACCES_MOIS, verifierAcces } from "../../src/acces/regles.js";
+import { VENTE_OUVERTE } from "../../src/acces/vente.js";
 import { versAccesDepuisDonnees } from "./lecture.js";
 import {
   jourLocal,
@@ -132,6 +133,15 @@ function stripe(): Stripe {
 export const creerSessionCheckout = onCall(
   { secrets: [CLE_STRIPE], region: "northamerica-northeast1", cors: true },
   async (requete) => {
+    // Vente fermée : refus AVANT tout le reste — ni lecture Firestore, ni
+    // appel à Stripe. Même interrupteur que le bouton de la page produit
+    // (src/acces/vente.ts) ; l'émulateur, lui, vend toujours, pour les tests.
+    // `failed-precondition` est déjà traduit en « boutique fermée » par le site.
+    if (!VENTE_OUVERTE && process.env.FUNCTIONS_EMULATOR !== "true") {
+      logger.warn("[checkout] refusé : la vente est fermée (VENTE_OUVERTE = false)");
+      throw new HttpsError("failed-precondition", "La boutique n'est pas encore ouverte.");
+    }
+
     // L'achat doit être rattaché à un compte : sans uid, le webhook ne
     // saurait à qui ouvrir l'accès.
     const uid = requete.auth?.uid;

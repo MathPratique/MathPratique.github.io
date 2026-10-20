@@ -96,16 +96,22 @@ Colle la valeur `sk_test_...` récupérée en §1.4. `STRIPE_WEBHOOK_SECRET`
 reste vide pour l'instant — on l'ajoutera en §1.7 quand Stripe CLI l'aura
 généré.
 
-Créer aussi le fichier des paramètres non secrets :
+Créer aussi le fichier des paramètres non secrets **de l'émulateur** :
 
 ```bash
-cat > functions/.env <<'EOF'
+cat > functions/.env.local <<'EOF'
 STRIPE_PRICE_ID=price_XXXXXXXXXXXX
 STRIPE_COUPON_LANCEMENT=PROMOXXXXXXXX
 URL_SITE=http://localhost:5173
 STRIPE_TAXES_ACTIVES=non
 EOF
 ```
+
+⚠️ **`.env.local`, jamais `.env`.** L'émulateur lit `functions/.env.local`
+et `firebase deploy` l'ignore. `functions/.env`, lui, part en production à
+chaque déploiement : c'est ainsi que `URL_SITE=http://localhost:5173` s'est
+retrouvé sur les fonctions déployées jusqu'au 2026-10-20. Les valeurs de
+production vivent dans `functions/.env.mathpratique-8dea1` (§4.2).
 
 **Vérification que Git ignore bien ces fichiers** :
 
@@ -114,10 +120,10 @@ git status --short | grep -E "\.secret\.local|functions/\.env"
 # doit ne rien afficher
 ```
 
-`.secret.local` est couvert par le pattern `*.local` (section « Dependencies »
-de `.gitignore`), `functions/.env` par le pattern `.env`. Si l'un ou l'autre
-apparaît dans `git status`, arrête tout et corrige le `.gitignore` avant de
-continuer.
+`.secret.local` et `.env.local` sont couverts par le pattern `*.local`
+(section « Dependencies » de `.gitignore`), `.env.mathpratique-8dea1` par
+le pattern `.env.*`. Si l'un d'eux apparaît dans `git status`, arrête tout
+et corrige le `.gitignore` avant de continuer.
 
 > **Pour la production**, ces mêmes secrets seront posés dans Secret Manager
 > avec `firebase functions:secrets:set` — voir **Partie 4**.
@@ -657,10 +663,11 @@ npx firebase functions:secrets:set STRIPE_SECRET_KEY
 Pour `STRIPE_WEBHOOK_SECRET`, il faut d'abord créer l'endpoint webhook
 (§4.3) — reviens ici après.
 
-Mettre à jour `functions/.env` avec les identifiants **live** :
+Mettre à jour `functions/.env.mathpratique-8dea1` — le fichier que
+`firebase deploy` lit pour ce projet — avec les identifiants **live** :
 
 ```bash
-cat > functions/.env <<'EOF'
+cat > functions/.env.mathpratique-8dea1 <<'EOF'
 STRIPE_PRICE_ID=price_XXXXXXXXXXXX_LIVE
 STRIPE_COUPON_LANCEMENT=PROMOXXXXXXXX_LIVE
 URL_SITE=https://mathpratique.ca
@@ -668,9 +675,11 @@ STRIPE_TAXES_ACTIVES=non
 EOF
 ```
 
-⚠️ **`URL_SITE` doit passer à `https://mathpratique.ca`** — sinon Stripe
+⚠️ **`URL_SITE` doit valoir `https://mathpratique.ca`** — sinon Stripe
 renvoie les acheteurs sur `http://localhost:5173/achat-confirme` qui n'existe
 nulle part. C'est l'erreur qui gâche l'expérience de tes premiers acheteurs.
+Ne jamais remettre de valeur locale dans `functions/.env` : elle serait
+déployée (voir §1.5).
 
 ## 4.3 Créer le webhook Stripe en mode live
 
@@ -712,16 +721,32 @@ npx firebase deploy --only functions
 Vérifie dans le dashboard Firebase (Fonctions) que les 3 fonctions
 apparaissent, en région `northamerica-northeast1`.
 
-## 4.5 Activer le paiement côté site
+## 4.5 Ouvrir la vente — site ET serveur
 
-Dans `src/pages/BoutiqueCalculDifferentiel.tsx`, ligne du haut :
+Un seul interrupteur, `src/acces/vente.ts`, commande à la fois le bouton
+« Acheter » de la page produit et la Cloud Function `creerSessionCheckout`,
+qui refuse toute session tant qu'il est fermé :
 
 ```ts
-const PAIEMENT_ACTIF = true;  // était false
+export const VENTE_OUVERTE = true;  // était false
 ```
 
-Commit et push. Le site en prod (GitHub Pages) prendra la nouvelle version
-au prochain build.
+Puis, dans cet ordre :
+
+1. Commit.
+2. `npx firebase deploy --only functions:creerSessionCheckout` — la fonction
+   ne lit l'interrupteur qu'au déploiement.
+3. Rendre `creerSessionCheckout` publique, si ce n'est pas déjà fait :
+   console Google Cloud → Cloud Run → `creersessioncheckout` → Sécurité →
+   « Autoriser l'accès public ». La CLI Firebase ne le fait qu'à la création
+   réussie d'une fonction, jamais lors d'une mise à jour d'une fonction
+   `onCall` ; la création du 2026-08-19 ayant échoué, c'est à faire à la main.
+   Sans ça, le bouton reçoit un 403 de Google.
+4. Push. Le site en prod (GitHub Pages) prendra la nouvelle version au
+   prochain build.
+
+Pour tester en local, ne touche pas à l'interrupteur : la vente est toujours
+ouverte sous `npm run dev` et dans l'émulateur.
 
 ## 4.6 Validation en live
 
