@@ -25,7 +25,7 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "90 % → 1,645 ; 95 % → 1,96 ; 99 % → 2,576."
+          "texte": "90 % → 1,645 ; 95 % → 1,96 ; 99 % → 2,575."
         },
         {
           "etape": "demarche",
@@ -33,7 +33,7 @@
           "lignes": [
             "À 90 % : $\\alpha/2 = 0{,}05 \\Rightarrow z = 1{,}645$.",
             "À 95 % : $\\alpha/2 = 0{,}025 \\Rightarrow z = 1{,}96$.",
-            "À 99 % : $\\alpha/2 = 0{,}005 \\Rightarrow z = 2{,}576$."
+            "À 99 % : $\\alpha/2 = 0{,}005$, on cherche l'aire $0{,}495$ entre 0 et $z$. Dans la table de la loi normale, elle tombe pile entre $0{,}4949$ (ligne $2{,}5$, colonne $0{,}07$ : $z = 2{,}57$) et $0{,}4951$ (ligne $2{,}5$, colonne $0{,}08$ : $z = 2{,}58$), donc $z = 2{,}575$."
           ]
         }
       ]
@@ -462,7 +462,7 @@
             },
             {
               "cle": "d",
-              "texte": "2,576"
+              "texte": "2,575"
             }
           ]
         },
@@ -476,7 +476,7 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "À 95 %, $\\alpha/2 = 0{,}025 \\Rightarrow z_{0{,}025} = 1{,}96$.",
-            "Autres : 90 % → 1,645 ; 99 % → 2,576."
+            "Autres : 90 % → 1,645 ; 99 % → 2,575."
           ],
           "analyseChoix": [
             {

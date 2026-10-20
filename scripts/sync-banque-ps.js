@@ -33,6 +33,17 @@
  * reste en place pour cette raison : un contrôle qu'on retire « parce qu'il
  * ne sert à rien pour l'instant » n'est jamais remis.
  *
+ * ─── LES SÉRIES MÉLI-MÉLO ─────────────────────────────────────────────────
+ *
+ * Une question de série méli-mélo (series/melimelo-*.json du projet de la
+ * banque) n'existe que dans sa série. Elle n'a ni fiche au catalogue public
+ * ni place dans le blob : listée au chapitre avec son type, sa section et sa
+ * notion, elle trahirait l'outil que la série demande de reconnaître. La
+ * règle est lue dans le projet de la banque (scripts/series-melimelo.js),
+ * la même que pour les cahiers et l'export web. Un garde-fou relit le
+ * catalogue, les chapitres et le blob avant toute écriture, et arrête tout
+ * s'il y trouve une de ces questions.
+ *
  * Usage :
  *   node scripts/sync-banque-ps.js
  */
@@ -42,6 +53,7 @@ import { resolve, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import { createRequire } from "node:module";
 import { catalogueSansFuite } from "./lib/catalogue-public.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -77,6 +89,25 @@ if (!existsSync(BANQUE_PROJET)) {
 
 const WEB = join(BANQUE_PROJET, "sorties", "web");
 const BANQUE = join(BANQUE_PROJET, "banque");
+
+// La règle des séries méli-mélo vit dans le projet de la banque : une seule
+// définition pour les cahiers, l'export web et ce script.
+const { identifiantsMelimelo, tracesMelimelo } = createRequire(import.meta.url)(
+  join(BANQUE_PROJET, "scripts", "series-melimelo.js"),
+);
+const RESERVES = identifiantsMelimelo(BANQUE_PROJET);
+
+/** Garde-fou : arrête tout, avant écriture, si `objet` contient une question de méli-mélo. */
+function arreterSiMelimelo(quoi, objet) {
+  const traces = tracesMelimelo(objet, RESERVES);
+  if (traces.length) {
+    console.error(
+      `\n❌ ${quoi} contient ${traces.length} question(s) réservée(s) aux séries méli-mélo ` +
+        `(${traces.slice(0, 5).join(", ")}${traces.length > 5 ? ", …" : ""}). Rien n'est écrit.`,
+    );
+    process.exit(1);
+  }
+}
 const DEST_PUBLIC = join(SITE, "src", "data", "probabilites-statistique");
 const DEST_PRIVE_DIR = join(SITE, "functions", "src", "data");
 const DEST_PRIVE_JSON = join(DEST_PRIVE_DIR, "exercices-ps.json");
@@ -86,27 +117,32 @@ const DEST_PRIVE_HASH = join(DEST_PRIVE_DIR, "exercices-ps-version.ts");
 console.log("1. Régénération de l'export web…");
 execSync("node scripts/generer-web.js", { cwd: BANQUE_PROJET, stdio: "inherit" });
 
-// ─── Étape 2 : copier le bundle public ─────────────────────────────────────
-console.log("\n2. Copie du bundle public…");
-mkdirSync(DEST_PUBLIC, { recursive: true });
+// ─── Étape 2 : lire et contrôler le bundle public ──────────────────────────
+//
+// Rien n'est écrit avant l'étape 5. Tous les contrôles — schéma du catalogue,
+// séries méli-mélo, divergence des gratuits — passent d'abord : un arrêt
+// après avoir écrit la moitié du bundle laisserait le site dans un état que
+// personne n'a voulu.
+console.log("\n2. Lecture et contrôle du bundle public…");
 
 const chapitres = readdirSync(join(WEB, "chapitres"))
   .filter((f) => /^ch\d\d\.json$/.test(f))
   .sort();
 
 let totalPublies = 0;
-for (const nom of chapitres) {
+const contenusChapitres = chapitres.map((nom) => {
   const data = JSON.parse(readFileSync(join(WEB, "chapitres", nom), "utf8"));
+  arreterSiMelimelo(`Le fichier de chapitre ${nom}`, data);
   totalPublies += data.exercices.length;
-  writeFileSync(join(DEST_PUBLIC, nom), JSON.stringify(data, null, 2) + "\n", "utf8");
-}
+  return [nom, data];
+});
 
 // Le catalogue part dans le bundle public : il passe par le schéma de
 // src/data/banque-types.ts au lieu d'être recopié tel quel. Une clé hors
 // schéma (sigle, établissement, auteur…) arrête ici la synchronisation.
 const cheminIndex = join(WEB, "index.json");
 const index = catalogueSansFuite(JSON.parse(readFileSync(cheminIndex, "utf8")), cheminIndex);
-writeFileSync(join(DEST_PUBLIC, "catalogue.json"), JSON.stringify(index, null, 2) + "\n", "utf8");
+arreterSiMelimelo("Le catalogue public", index);
 console.log(
   `   ${chapitres.length} chapitres (${totalPublies} exercices publiés) + catalogue.json (${index.exercices.length} fiches)`,
 );
@@ -115,7 +151,8 @@ console.log(
 //
 // Liste blanche, comme partout : on part d'un objet vide et on copie les
 // champs autorisés. Le blob contient TOUT — gratuits et réservés — puisqu'il
-// ne quitte le serveur qu'après vérification de l'accès.
+// ne quitte le serveur qu'après vérification de l'accès. Seule exception :
+// les questions des séries méli-mélo (voir l'en-tête).
 
 const CHAMPS_FICHE = ["id", "chapitre", "section", "type", "difficulte", "tempsEstime", "acces"];
 const CHAMPS_EN_PLUS = ["sectionNotes", "motsCles", "savoirFaire"];
@@ -166,15 +203,23 @@ function transformerExercice(ex) {
 console.log("\n3. Construction du blob privé…");
 const ACCES_DEFAUT = "payant"; // même défaut que generer-web.js
 const tousExos = [];
+let exclusMelimelo = 0;
 readdirSync(BANQUE)
   .filter((f) => /^ch\d\d.*\.json$/.test(f))
   .sort()
   .forEach((f) => {
     const data = JSON.parse(readFileSync(join(BANQUE, f), "utf8"));
-    data.exercices.forEach((e) =>
-      tousExos.push(transformerExercice({ ...e, acces: e.acces ?? ACCES_DEFAUT })),
-    );
+    data.exercices.forEach((e) => {
+      // Une question de série méli-mélo n'a pas sa place dans le blob : voir l'en-tête.
+      if (RESERVES.has(e.id)) {
+        exclusMelimelo++;
+        return;
+      }
+      tousExos.push(transformerExercice({ ...e, acces: e.acces ?? ACCES_DEFAUT }));
+    });
   });
+if (exclusMelimelo) console.log(`   ${exclusMelimelo} question(s) réservée(s) aux séries méli-mélo, exclue(s)`);
+arreterSiMelimelo("Le blob privé", tousExos);
 
 /** Hash SHA-256 du blob canonique (JSON.stringify sans indentation). */
 function hashCanonique(exercices) {
@@ -187,9 +232,11 @@ console.log(`   ${tousExos.length} exercices — hash ${contentHash}`);
 // ─── Étape 4 : les gratuits sont-ils identiques dans les deux sources ? ────
 console.log("\n4. Contrôle : les gratuits sont-ils identiques dans les deux sources ?");
 
+// Les chapitres lus à l'étape 2, et non les fichiers du bundle : ceux-ci ne
+// sont écrits qu'à l'étape 5. C'est le même contenu (JSON pur, aller-retour
+// sans perte), contrôlé avant d'être écrit plutôt qu'après.
 const gratuitsPublicParId = new Map();
-for (const nom of chapitres) {
-  const data = JSON.parse(readFileSync(join(DEST_PUBLIC, nom), "utf8"));
+for (const [, data] of contenusChapitres) {
   data.exercices.forEach((e) => gratuitsPublicParId.set(e.id, e));
 }
 
@@ -221,8 +268,15 @@ if (divergences.length) {
 }
 console.log(`   ${gratuitsPublicParId.size} gratuit(s) — aucune divergence.`);
 
-// ─── Étape 5 : écriture du blob privé + constantes de version ──────────────
-console.log("\n5. Écriture du blob privé et des constantes de version…");
+// ─── Étape 5 : écriture du bundle public, du blob privé et des versions ────
+console.log("\n5. Écriture du bundle public, du blob privé et des constantes de version…");
+mkdirSync(DEST_PUBLIC, { recursive: true });
+for (const [nom, data] of contenusChapitres) {
+  writeFileSync(join(DEST_PUBLIC, nom), JSON.stringify(data, null, 2) + "\n", "utf8");
+}
+writeFileSync(join(DEST_PUBLIC, "catalogue.json"), JSON.stringify(index, null, 2) + "\n", "utf8");
+console.log(`   src/data/probabilites-statistique/ : ${chapitres.length} chapitres + catalogue.json`);
+
 mkdirSync(DEST_PRIVE_DIR, { recursive: true });
 writeFileSync(
   DEST_PRIVE_JSON,

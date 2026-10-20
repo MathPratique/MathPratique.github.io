@@ -23,7 +23,7 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 89 documents", () => {
+test("le catalogue couvre les 91 documents", () => {
   // Calcul différentiel — 50 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   14 exercices (7 chapitres × 2 : énoncés + corrigé. Les 7 cahiers
@@ -34,9 +34,11 @@ test("le catalogue couvre les 89 documents", () => {
   //      chapitre. Les cinq méli-mélos A–E ont été retirés du catalogue
   //      le 2026-09-24 ; leurs PDF restent dans le seau, plus déclarés)
   //   18 examens (6 × énoncé, corrigé, grille)
-  // Probabilités et statistique — 12 :
+  // Probabilités et statistique — 14 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
   //    4 exercices (chapitres 2 et 3 : énoncés + corrigé chacun, sans indices)
+  //    2 révision (la série méli-mélo du chapitre 3 et ses solutions — ses 70
+  //      questions n'existent que là : ni cahier, ni catalogue, ni blob)
   // Calcul intégral — 27, le cours complet depuis le 2026-10-13 :
   //   18 notes (les 9 chapitres × 2 versions ; pas de recueil complet)
   //    9 exercices (les 9 chapitres, recueil complet seulement : les PDF
@@ -44,12 +46,12 @@ test("le catalogue couvre les 89 documents", () => {
   //      sont plus déclarés ; ceux des chapitres 4 à 9 n'ont jamais été
   //      téléversés)
   //      Pas d'examens : ils n'existent pas encore pour ce cours.
-  assert.equal(DOCUMENTS.length, 89);
+  assert.equal(DOCUMENTS.length, 91);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 42, exercices: 27, revision: 2, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 42, exercices: 27, revision: 4, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -57,14 +59,14 @@ test("le catalogue couvre les 89 documents", () => {
   }, {});
   assert.deepEqual(parCours, {
     "calcul-differentiel": 50,
-    "probabilites-statistique": 12,
+    "probabilites-statistique": 14,
     "calcul-integral": 27,
   });
 });
 
 test("aucune entrée ne pointe vers un cahier d'indices inexistant", () => {
   // Aucun cahier d'indices de prob-stat n'est produit : 97 des 166 exercices
-  // du chapitre 2 et 97 des 103 du chapitre 3 n'ont pas d'indice. Déclarer
+  // du chapitre 2 et 97 des 115 du chapitre 3 n'ont pas d'indice. Déclarer
   // l'entrée quand même donnerait une carte visible dont le bouton échoue —
   // pour quelqu'un qui a payé.
   //

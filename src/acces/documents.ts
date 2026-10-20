@@ -222,7 +222,7 @@ const CHAPITRES_CALCUL: Chapitre[] = [
 const CHAPITRES_PROBSTAT: Chapitre[] = [
   // Les chapitres 2 et 3 ont des cahiers produits à ce jour, et seulement deux
   // des trois : les indices manquent dans les deux cas (69 exercices sur 166
-  // au chapitre 2, 6 sur 103 au chapitre 3), donc le cahier d'indices n'est
+  // au chapitre 2, 18 sur 115 au chapitre 3), donc le cahier d'indices n'est
   // pas généré. Les chapitres 1 et 4 ne déclarent aucun cahier — les leurs ne
   // sont pas générés du tout.
   { n: "1", titre: "Statistiques descriptives", fichier: "ch01-statistiques-descriptives" },
@@ -431,28 +431,54 @@ export const DOCUMENTS: Document[] = [
   // Quatre chapitres, deux versions chacun : huit documents, tous en
   // catégorie « notes ».
   //
-  // Trois absences, toutes voulues à ce stade :
+  // Deux absences, toutes deux voulues à ce stade :
   //
   //   - Pas de recueil complet. Le calcul différentiel en a un parce qu'il
   //     a un `main.tex` qui assemble ses chapitres ; les notes de probabilités sont
   //     quatre documents autonomes, sans document maître. Le recueil
   //     viendra quand ce main existera.
-  //   - Ni révision ni examens : rien n'est encore écrit.
+  //   - Pas d'examens : rien n'est encore écrit.
   //
-  // Ces catégories s'ajouteront ici sans rien changer à ce qui précède : un
-  // document absent du catalogue est simplement un document que personne ne
-  // peut demander.
+  // La catégorie « révision » a une seule série, le méli-mélo du chapitre 3,
+  // déclaré plus bas. Les examens s'ajouteront ici sans rien changer à ce
+  // qui précède : un document absent du catalogue est simplement un document
+  // que personne ne peut demander.
   ...CHAPITRES_PROBSTAT.flatMap((c) => notesDeChapitre(PROBABILITES_STATISTIQUE, c)),
 
-  // --- Cahiers d'exercices : chapitre 2 seulement ---------------------------
+  // --- Cahiers d'exercices : chapitres 2 et 3 -------------------------------
   //
   // Deux cahiers sur trois : les énoncés et le corrigé. Le cahier d'indices
-  // n'existe pas — 97 des 160 exercices du chapitre n'ont pas d'indice, et
-  // le générateur le saute plutôt que de produire 160 entrées vides.
+  // n'existe pas : une partie des exercices n'en a pas (voir
+  // CHAPITRES_PROBSTAT), et le générateur le saute plutôt que de produire
+  // des entrées vides.
   //
-  // Les chapitres 1, 3 et 4 ne déclarent aucun cahier : ils ne sont pas
+  // Les chapitres 1 et 4 ne déclarent aucun cahier : ils ne sont pas
   // générés. Le catalogue ne connaît que ce qui est réellement dans le seau.
   ...CHAPITRES_PROBSTAT.flatMap((c) => cahiersDeChapitre(PROBABILITES_STATISTIQUE, c)),
+
+  // --- Série méli-mélo du chapitre 3 ----------------------------------------
+  //
+  // Soixante-dix questions qui n'existent que dans cette série : la règle de
+  // series/melimelo-*.json les exclut des cahiers, du catalogue public et du
+  // blob servi par obtenirExercices. Ces deux PDF en sont donc le seul accès.
+  // Le recueil ne montre ni le type, ni la notion, ni la section : l'étudiant
+  // doit reconnaître l'outil lui-même.
+  doc(
+    PROBABILITES_STATISTIQUE,
+    "revision-melimelo-ch03",
+    "Série méli-mélo — chapitre 3 : Inférence statistique",
+    "revision/melimelo-ch03.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    PROBABILITES_STATISTIQUE,
+    "revision-melimelo-ch03-solutions",
+    "Série méli-mélo — chapitre 3 : solutions",
+    "revision/melimelo-ch03-solutions.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
 
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //

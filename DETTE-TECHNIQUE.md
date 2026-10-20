@@ -380,3 +380,39 @@ alerte. Ensuite seulement, trancher groupe par groupe : garder, ou supprimer
 après avoir vérifié une copie hors du seau. Toucher `documents.ts` demande un
 déploiement et casse les compteurs en dur des tests : à faire hors
 publication, avec `npm test` avant de pousser.
+
+---
+
+## 2026-10-20 — le contrôle anti-fuite des cahiers PS bloque le chapitre 4 (faux positif)
+
+**État : ouverte. Rien n'a été corrigé.** À régler avant de régénérer les
+cahiers du chapitre 4 de probabilités et statistique.
+
+`generer-cahiers.js`, dans le projet `exercices-prob-stat`, refuse d'écrire le
+cahier d'énoncés du chapitre 4. Avant d'écrire, il cherche dans les cahiers 1
+et 2 des motifs qui trahiraient la bonne réponse d'un QCM (`SENTINELLES`), dont
+`/\bexplication/i`. Or deux **énoncés** du chapitre 4 emploient ce mot dans
+leur sens ordinaire :
+
+- **ch04-moy-005** (n° 30) : « Identifie l'explication tierce probable. »
+- **ch04-dif-001** (n° 51) : « Cite au moins trois explications
+  concurrentes… »
+
+**Reproduire.** Depuis la racine d'`exercices-prob-stat` :
+`node scripts/generer-cahiers.js 4`. Le script s'arrête sur
+`ch04-1-exercices : fuite détectée — le motif /\bexplication/i apparaît…`. Le
+script d'origine, avant les changements du 2026-10-20, s'arrête au même
+endroit : le défaut est antérieur. Les chapitres 1 à 3 ne sont pas touchés.
+
+**Effet.** Les cahiers du chapitre 4 ne peuvent pas être générés. Ils ne sont
+pas publiés aujourd'hui (le chapitre ne déclare aucun cahier dans
+`documents.ts`), donc rien n'est cassé en ligne. Mais le commentaire des
+`SENTINELLES` affirme qu'aucun champ public ne contient ces mots
+légitimement, et ce n'est plus vrai.
+
+**Piste.** Ne pas affaiblir le contrôle en retirant le motif : il protège
+contre la fuite du champ `explication` des choix. Le resserrer plutôt sur ce
+qui ne peut venir que d'une fuite — par exemple le comparer aux textes
+d'explication réels des QCM du chapitre, comme le fait `controlerFuites` de
+`generer-web.js` avec les champs entiers. Ou bien exclure du balayage le texte
+des énoncés eux-mêmes, qui est public par définition.

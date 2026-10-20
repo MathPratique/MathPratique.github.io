@@ -4,7 +4,7 @@
   "commentaire": "Catalogue complet. Les exercices marqués `verrouille` n'ont ici que leur fiche signalétique ; leur contenu n'est publié nulle part dans ce dossier.",
   "totaux": {
     "gratuit": 100,
-    "payant": 363
+    "payant": 375
   },
   "exercices": [
     {
@@ -3506,6 +3506,114 @@
     },
     {
       "id": "ch03-int-103",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-104",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-105",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-106",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-104",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-106",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-107",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-107",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-108",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-108",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-109",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-dif-105",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch03-int-109",
       "chapitre": 3,
       "section": "3.3",
       "type": "calcul-court",

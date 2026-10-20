@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "33c07d1b4ce0665d",
+  "contentHash": "2bba850c778c7bc7",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -12852,7 +12852,7 @@
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "90 % → 1,645 ; 95 % → 1,96 ; 99 % → 2,576."
+          "texte": "90 % → 1,645 ; 95 % → 1,96 ; 99 % → 2,575."
         },
         {
           "etape": "demarche",
@@ -12860,7 +12860,7 @@
           "lignes": [
             "À 90 % : $\\alpha/2 = 0{,}05 \\Rightarrow z = 1{,}645$.",
             "À 95 % : $\\alpha/2 = 0{,}025 \\Rightarrow z = 1{,}96$.",
-            "À 99 % : $\\alpha/2 = 0{,}005 \\Rightarrow z = 2{,}576$."
+            "À 99 % : $\\alpha/2 = 0{,}005$, on cherche l'aire $0{,}495$ entre 0 et $z$. Dans la table de la loi normale, elle tombe pile entre $0{,}4949$ (ligne $2{,}5$, colonne $0{,}07$ : $z = 2{,}57$) et $0{,}4951$ (ligne $2{,}5$, colonne $0{,}08$ : $z = 2{,}58$), donc $z = 2{,}575$."
           ]
         }
       ]
@@ -13572,7 +13572,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Un environnementaliste mesure le taux de nitrates dans 64 prélèvements et obtient $\\bar{x} = 12{,}8$ mg/L et $s = 3{,}0$ mg/L. Construis l'IC à 99 % pour la vraie concentration $\\mu$ ($z_{0{,}005} = 2{,}576$)."
+          "texte": "Un environnementaliste mesure le taux de nitrates dans 64 prélèvements et obtient $\\bar{x} = 12{,}8$ mg/L et $s = 3{,}0$ mg/L. Construis l'IC à 99 % pour la vraie concentration $\\mu$."
         },
         {
           "etape": "reponse",
@@ -13584,7 +13584,8 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "$n = 64 \\geq 30$.",
-            "$E = 2{,}576 \\times 3/\\sqrt{64} = 2{,}576 \\times 0{,}375 \\approx 0{,}966$.",
+            "<strong>Lire la valeur critique.</strong> À 99 %, $\\alpha/2 = 0{,}005$ : on cherche dans la table de la loi normale l'aire $0{,}5 - 0{,}005 = 0{,}495$ entre 0 et $z$. Elle tombe pile entre $0{,}4949$ (ligne $2{,}5$, colonne $0{,}07$ : $z = 2{,}57$) et $0{,}4951$ (ligne $2{,}5$, colonne $0{,}08$ : $z = 2{,}58$), donc $z_{0{,}005} = 2{,}575$.",
+            "$E = 2{,}575 \\times 3/\\sqrt{64} = 2{,}575 \\times 0{,}375 \\approx 0{,}966$.",
             "IC = $[12{,}8 - 0{,}966\\,; 12{,}8 + 0{,}966] \\approx [11{,}83\\,; 13{,}77]$."
           ]
         }
@@ -13655,7 +13656,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "Les valeurs critiques : $z_{0{,}05} = 1{,}645$, $z_{0{,}025} = 1{,}96$, $z_{0{,}005} = 2{,}576$.",
+            "Les valeurs critiques : $z_{0{,}05} = 1{,}645$, $z_{0{,}025} = 1{,}96$, $z_{0{,}005} = 2{,}575$.",
             "Comme $E = z_{\\alpha/2} \\cdot s/\\sqrt{n}$ avec $s$ et $n$ fixes, $E$ augmente avec le niveau.",
             "Compromis : plus on veut être sûr, plus l'intervalle est vague."
           ]
@@ -14207,8 +14208,8 @@
             "$H_0 : p = 0{,}10$ ; $H_1 : p \\neq 0{,}10$.",
             "$\\hat{p} \\approx 0{,}1208$.",
             "$z = (0{,}1208 - 0{,}10)/\\sqrt{0{,}10 \\times 0{,}90/1200} = 0{,}0208/0{,}00866 \\approx 2{,}40$.",
-            "Valeur critique : $z_{0{,}005} = 2{,}576$.",
-            "$|2{,}40| < 2{,}576$ → NE PAS rejeter $H_0$ au seuil 1 %. (Note : au seuil 5 %, on aurait rejeté puisque $2{,}40 > 1{,}96$.)"
+            "Valeur critique : $z_{0{,}005} = 2{,}575$.",
+            "$|2{,}40| < 2{,}575$ → NE PAS rejeter $H_0$ au seuil 1 %. (Note : au seuil 5 %, on aurait rejeté puisque $2{,}40 > 1{,}96$.)"
           ]
         }
       ]
@@ -14385,7 +14386,7 @@
           "lignes": [
             "Largeur = $2E$, donc $E_0 = 2$ (95 %) et $E' = 1$ (99 %).",
             "De $E = z \\cdot s/\\sqrt{n}$ : $n = (z \\cdot s/E)^2$.",
-            "Rapport : $n'/n = (z'/z \\times E/E')^2 = (2{,}576/1{,}96 \\times 2)^2 = (2{,}628)^2 \\approx 6{,}91$.",
+            "Rapport : $n'/n = (z'/z \\times E/E')^2 = (2{,}575/1{,}96 \\times 2)^2 = (2{,}628)^2 \\approx 6{,}91$.",
             "Donc $n' \\approx 691$."
           ]
         }
@@ -15185,7 +15186,7 @@
             },
             {
               "cle": "d",
-              "texte": "2,576"
+              "texte": "2,575"
             }
           ]
         },
@@ -15199,7 +15200,7 @@
           "titre": "Démarche détaillée",
           "lignes": [
             "À 95 %, $\\alpha/2 = 0{,}025 \\Rightarrow z_{0{,}025} = 1{,}96$.",
-            "Autres : 90 % → 1,645 ; 99 % → 2,576."
+            "Autres : 90 % → 1,645 ; 99 % → 2,575."
           ],
           "analyseChoix": [
             {
@@ -16730,7 +16731,8 @@
       ],
       "savoirFaire": [
         "0b",
-        "3a"
+        "3a",
+        "3e"
       ],
       "etapes": [
         {
@@ -16779,7 +16781,8 @@
       ],
       "savoirFaire": [
         "0b",
-        "3a"
+        "3a",
+        "3e"
       ],
       "etapes": [
         {
@@ -16828,7 +16831,8 @@
       ],
       "savoirFaire": [
         "0b",
-        "3a"
+        "3a",
+        "3e"
       ],
       "etapes": [
         {
@@ -16877,7 +16881,8 @@
       ],
       "savoirFaire": [
         "0b",
-        "3a"
+        "3a",
+        "3e"
       ],
       "etapes": [
         {
@@ -16926,7 +16931,8 @@
       ],
       "savoirFaire": [
         "0b",
-        "3a"
+        "3a",
+        "3e"
       ],
       "etapes": [
         {
@@ -16975,7 +16981,8 @@
       ],
       "savoirFaire": [
         "0b",
-        "3a"
+        "3a",
+        "3e"
       ],
       "etapes": [
         {
@@ -17005,6 +17012,612 @@
             "<strong>Interpréter.</strong> Une moyenne d'échantillon inférieure à $1\\,992{,}16$ ml ne survient que dans 2,5 % des prélèvements de 36 cartons : c'est le genre de seuil qui sert à déclencher une vérification de la machine."
           ],
           "piegeCourant": "Chercher $0{,}0250$ dans le corps de la table, ce qui mène à $z = 0{,}06$ et à un seuil à peine sous la moyenne. La table mesure l'aire <em>depuis la moyenne</em> : une queue de 2,5 % doit d'abord être convertie en $0{,}475$."
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-104",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La consommation quotidienne d'eau des ménages d'une ville a une moyenne de 285 litres et un écart-type de 72 litres. La municipalité installe des compteurs intelligents chez 81 ménages choisis au hasard. Quelle est la probabilité que la consommation quotidienne moyenne de ces 81 ménages dépasse 298,6 litres ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "C'est la moyenne de 81 ménages qui est en jeu, pas un ménage pris isolément : par quoi faut-il diviser l'écart-type avant de standardiser ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(\\overline{X} > 298{,}6) = 0{,}5 - 0{,}4554 = 0{,}0446$, soit environ 4,5 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 81 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des consommations dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{72}{\\sqrt{81}} = \\dfrac{72}{9} = 8$ litres. L'espérance de $\\overline{X}$ reste 285 litres.",
+            "<strong>Standardiser.</strong> $z = \\dfrac{298{,}6 - 285}{8} = \\dfrac{13{,}6}{8} = 1{,}7$.",
+            "<strong>Lire la table.</strong> À la ligne $1{,}7$ et à la colonne $0{,}00$, la table donne $\\prob(0 < Z < 1{,}7) = 0{,}4554$.",
+            "<strong>Composer.</strong> La région cherchée est la queue à droite de $1{,}7$. La demi-courbe droite vaut $0{,}5$, d'où $\\prob(\\overline{X} > 298{,}6) = 0{,}5 - 0{,}4554 = 0{,}0446$.",
+            "<strong>Interpréter.</strong> Environ 4,5 % des échantillons de 81 ménages auront une consommation quotidienne moyenne supérieure à 298,6 litres."
+          ],
+          "piegeCourant": "Standardiser avec l'écart-type de 72 litres : $z = \\dfrac{13{,}6}{72} \\approx 0{,}19$, ce qui donnerait environ 42 %. Cette cote répondrait à « un ménage consomme plus de 298,6 litres ». La moyenne de 81 ménages varie neuf fois moins qu'un ménage isolé, puisque $\\sqrt{81} = 9$."
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-105",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "symetrie",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La durée d'une course en taxi entre l'aéroport et le centre-ville d'une grande ville a une moyenne de 34 minutes et un écart-type de 9 minutes. On choisit au hasard 144 de ces courses. Quelle est la probabilité que leur durée moyenne soit inférieure à 32,65 minutes ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La cote obtenue sera négative, et la table n'en contient pas : c'est la symétrie de la courbe qui règle le problème."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(\\overline{X} < 32{,}65) = 0{,}5 - 0{,}4641 = 0{,}0359$, soit environ 3,6 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 144 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des durées de course dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{9}{\\sqrt{144}} = \\dfrac{9}{12} = 0{,}75$ minute. L'espérance de $\\overline{X}$ reste 34 minutes.",
+            "<strong>Standardiser.</strong> $z = \\dfrac{32{,}65 - 34}{0{,}75} = \\dfrac{-1{,}35}{0{,}75} = -1{,}8$.",
+            "<strong>Lire la table, par symétrie.</strong> La table ne contient pas de cote négative, mais la courbe est symétrique : $\\prob(-1{,}8 < Z < 0) = \\prob(0 < Z < 1{,}8)$. À la ligne $1{,}8$ et à la colonne $0{,}00$, la table donne $0{,}4641$.",
+            "<strong>Composer.</strong> La région cherchée est la queue à gauche de $-1{,}8$. La demi-courbe gauche vaut $0{,}5$, d'où $\\prob(\\overline{X} < 32{,}65) = 0{,}5 - 0{,}4641 = 0{,}0359$.",
+            "<strong>Interpréter.</strong> Environ 3,6 % des échantillons de 144 courses auront une durée moyenne inférieure à 32,65 minutes."
+          ],
+          "piegeCourant": "Répondre $0{,}5 + 0{,}4641 = 0{,}9641$. Cette somme est la probabilité que la durée moyenne <em>dépasse</em> 32,65 minutes : elle couvre toute la moitié droite de la courbe, alors que la question ne demande qu'une queue à gauche."
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-106",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "symetrie",
+        "plus-de-la-moitie",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un producteur remplit des sacs de pommes de terre annoncés à 10 kg. La masse d'un sac a une moyenne de 10,12 kg et un écart-type de 0,35 kg. Un inspecteur pèse 100 sacs choisis au hasard. Quelle est la probabilité que la masse moyenne de ces sacs dépasse 10,05 kg ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "La valeur 10,05 kg est sous la moyenne : la région demandée contient donc toute la moitié droite de la courbe, et un morceau de plus."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(\\overline{X} > 10{,}05) = 0{,}4772 + 0{,}5 = 0{,}9772$, soit environ 98 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 100 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des masses dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{0{,}35}{\\sqrt{100}} = \\dfrac{0{,}35}{10} = 0{,}035$ kg. L'espérance de $\\overline{X}$ reste $10{,}12$ kg.",
+            "<strong>Standardiser.</strong> $z = \\dfrac{10{,}05 - 10{,}12}{0{,}035} = \\dfrac{-0{,}07}{0{,}035} = -2$.",
+            "<strong>Lire la table, par symétrie.</strong> $\\prob(-2 < Z < 0) = \\prob(0 < Z < 2)$ : à la ligne $2{,}0$ et à la colonne $0{,}00$, la table donne $0{,}4772$.",
+            "<strong>Composer.</strong> La région à droite de $-2$ comprend la bande entre $-2$ et 0, puis toute la moitié droite de la courbe : $\\prob(\\overline{X} > 10{,}05) = 0{,}4772 + 0{,}5 = 0{,}9772$.",
+            "<strong>Interpréter.</strong> Environ 98 % des échantillons de 100 sacs auront une masse moyenne supérieure à 10,05 kg."
+          ],
+          "piegeCourant": "Répondre $0{,}5 - 0{,}4772 = 0{,}0228$, la queue à gauche. Comme 10,05 kg est sous la moyenne, « dépasser 10,05 kg » couvre plus de la moitié de la courbe : une probabilité inférieure à 50 % doit mettre la puce à l'oreille."
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-104",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "entre-deux-bornes",
+        "meme-cote",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une érablière, la quantité d'eau d'érable récoltée par entaille au cours d'une saison a une moyenne de 48 litres et un écart-type de 14 litres. Le propriétaire choisit au hasard 49 entailles et calcule leur récolte moyenne. Quelle est la probabilité que cette moyenne se situe entre 50 et 53 litres ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Cette fois, les deux bornes sont du même côté de la moyenne. Trace la courbe et hachure la région demandée : les deux aires lues dans la table s'additionnent-elles ou se retranchent-elles ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(50 < \\overline{X} < 53) = 0{,}4938 - 0{,}3413 = 0{,}1525$, soit environ 15 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 49 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des récoltes par entaille. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{14}{\\sqrt{49}} = \\dfrac{14}{7} = 2$ litres. L'espérance de $\\overline{X}$ reste 48 litres.",
+            "<strong>Standardiser les deux bornes.</strong> $z_1 = \\dfrac{50 - 48}{2} = 1$ et $z_2 = \\dfrac{53 - 48}{2} = 2{,}5$. Les deux bornes sont au-dessus de la moyenne.",
+            "<strong>Lire la table.</strong> À la ligne $1{,}0$ et à la colonne $0{,}00$, la table donne $\\prob(0 < Z < 1) = 0{,}3413$. À la ligne $2{,}5$ et à la colonne $0{,}00$, elle donne $\\prob(0 < Z < 2{,}5) = 0{,}4938$.",
+            "<strong>Composer.</strong> La région cherchée va de $z = 1$ à $z = 2{,}5$. C'est l'aire comprise entre 0 et $2{,}5$, moins celle comprise entre 0 et 1, qui y est contenue : $\\prob(50 < \\overline{X} < 53) = 0{,}4938 - 0{,}3413 = 0{,}1525$.",
+            "<strong>Interpréter.</strong> Environ 15 % des échantillons de 49 entailles donneront une récolte moyenne comprise entre 50 et 53 litres."
+          ],
+          "piegeCourant": "Additionner les deux aires, comme lorsque les bornes encadrent la moyenne : $0{,}3413 + 0{,}4938 = 0{,}8351$. Ce total couvrirait la région de $z = -1$ à $z = 2{,}5$. Quand les deux bornes sont du même côté, la petite aire est contenue dans la grande : elle se retranche."
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-106",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "entre-deux-bornes",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La facture d'électricité mensuelle des logements d'un quartier a une moyenne de 118 \\$ et un écart-type de 32 \\$. Une étude porte sur 64 logements choisis au hasard. Quelle est la probabilité que la facture mensuelle moyenne de ces logements se situe entre 113 \\$ et 121 \\$ ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les deux bornes sont de part et d'autre de la moyenne, à des distances différentes : deux lectures de table, puis une question à trancher. Les deux aires s'additionnent-elles ou se retranchent-elles ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(113 < \\overline{X} < 121) = 0{,}3944 + 0{,}2734 = 0{,}6678$, soit environ 67 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 64 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des factures dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{32}{\\sqrt{64}} = \\dfrac{32}{8} = 4$ \\$. L'espérance de $\\overline{X}$ reste 118 \\$.",
+            "<strong>Standardiser les deux bornes.</strong> $z_1 = \\dfrac{113 - 118}{4} = -1{,}25$ et $z_2 = \\dfrac{121 - 118}{4} = 0{,}75$. Les bornes encadrent la moyenne.",
+            "<strong>Lire la table.</strong> Par symétrie, $\\prob(-1{,}25 < Z < 0) = \\prob(0 < Z < 1{,}25)$ : à la ligne $1{,}2$ et à la colonne $0{,}05$, la table donne $0{,}3944$. À la ligne $0{,}7$ et à la colonne $0{,}05$, elle donne $\\prob(0 < Z < 0{,}75) = 0{,}2734$.",
+            "<strong>Composer.</strong> Les deux morceaux sont de part et d'autre du sommet et ne se chevauchent pas : leurs aires s'additionnent, $0{,}3944 + 0{,}2734 = 0{,}6678$.",
+            "<strong>Interpréter.</strong> Environ 67 % des échantillons de 64 logements auront une facture mensuelle moyenne comprise entre 113 \\$ et 121 \\$."
+          ],
+          "piegeCourant": "Soustraire les deux aires, $0{,}3944 - 0{,}2734 = 0{,}1210$, comme si les deux bornes étaient du même côté de la moyenne. C'est le signe des deux cotes qui décide de l'opération : des signes contraires, les aires s'additionnent."
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-107",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "population-normale",
+        "petit-echantillon",
+        "symetrie",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une serre, la hauteur des plants de tomates six semaines après la plantation suit une loi normale de moyenne 42 cm et d'écart-type 6 cm. Une horticultrice mesure 16 plants choisis au hasard. Quelle est la probabilité que leur hauteur moyenne soit inférieure à 39,15 cm ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Seize plants, c'est moins que 30 : le TCL ne suffit pas à lui seul. Que t'apprend l'énoncé sur la forme de la population ? Et l'écart-type de la population est-il connu ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\prob(\\overline{X} < 39{,}15) = 0{,}5 - 0{,}4713 = 0{,}0287$, soit environ 2,9 %."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition.</strong> L'échantillon compte $n = 16 < 30$ : on ne peut pas s'appuyer sur le théorème central limite. Mais l'énoncé précise que la hauteur des plants suit une loi normale. Quand la population est elle-même normale, la moyenne d'un échantillon suit aussi une loi normale, quelle que soit la taille de l'échantillon. C'est le cas que les notes signalent : si la population est déjà normale, un petit échantillon suffit.",
+            "<strong>Calculer l'erreur type.</strong> L'écart-type de la population est connu : $\\sigma_{\\overline{X}} = \\dfrac{6}{\\sqrt{16}} = \\dfrac{6}{4} = 1{,}5$ cm. L'espérance de $\\overline{X}$ reste 42 cm.",
+            "<strong>Standardiser.</strong> $z = \\dfrac{39{,}15 - 42}{1{,}5} = \\dfrac{-2{,}85}{1{,}5} = -1{,}9$.",
+            "<strong>Lire la table, par symétrie.</strong> $\\prob(-1{,}9 < Z < 0) = \\prob(0 < Z < 1{,}9)$ : à la ligne $1{,}9$ et à la colonne $0{,}00$, la table donne $0{,}4713$.",
+            "<strong>Composer.</strong> La région cherchée est la queue à gauche de $-1{,}9$ : $\\prob(\\overline{X} < 39{,}15) = 0{,}5 - 0{,}4713 = 0{,}0287$.",
+            "<strong>Interpréter.</strong> Environ 2,9 % des échantillons de 16 plants auront une hauteur moyenne inférieure à 39,15 cm."
+          ],
+          "piegeCourant": "Conclure qu'aucun calcul n'est possible parce que $n < 30$, ou sortir la loi de Student. Le TCL n'est qu'une des deux façons d'obtenir une moyenne normale : ici, la population est déjà normale. Et la loi de Student sert quand $\\sigma$ est inconnu ; ici, il est donné."
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-107",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "probleme-inverse",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le temps de montage d'un meuble en kit vendu par un détaillant a une moyenne de 95 minutes et un écart-type de 21 minutes. Le service à la clientèle interroge des échantillons de 49 acheteurs choisis au hasard. Quel temps de montage moyen n'est dépassé que par 3 % des échantillons de cette taille ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "On connaît une proportion et on cherche une valeur : la table se lit à l'envers. Situe d'abord la valeur cherchée par rapport à 95 minutes, puis traduis 3 % en une aire mesurée depuis la moyenne."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\overline{x} = 95 + 1{,}88 \\times 3 = 100{,}64$ minutes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 49 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des temps de montage dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{21}{\\sqrt{49}} = \\dfrac{21}{7} = 3$ minutes. L'espérance de $\\overline{X}$ reste 95 minutes.",
+            "<strong>Situer la valeur cherchée.</strong> Seulement 3 % des échantillons dépassent $\\overline{x}$ : moins de la moitié, donc $\\overline{x}$ est au-dessus de la moyenne. L'aire comprise entre la moyenne et $\\overline{x}$ vaut $0{,}5 - 0{,}03 = 0{,}47$.",
+            "<strong>Lire la table à l'envers.</strong> On cherche $0{,}4700$ dans le corps de la table, où cette valeur ne figure pas. Elle est encadrée par $0{,}4699$, à la ligne $1{,}8$ et à la colonne $0{,}08$, et par $0{,}4706$, à la colonne $0{,}09$ de la même ligne. Les écarts valent $0{,}0001$ et $0{,}0006$ : la plus proche est $0{,}4699$, donc on retient $z = 1{,}88$.",
+            "<strong>Dé-standardiser.</strong> $\\overline{x} = \\mu + z\\,\\sigma_{\\overline{X}} = 95 + 1{,}88 \\times 3 = 100{,}64$ minutes.",
+            "<strong>Interpréter et contrôler.</strong> Environ 3 % des échantillons de 49 acheteurs auront un temps de montage moyen supérieur à 100,64 minutes. Le calcul exact donne aussi $100{,}64$ au centième : l'arrondi de la table n'a pas d'effet ici."
+          ],
+          "piegeCourant": "Chercher $0{,}03$ dans le corps de la table, ce qui mène à $z = 0{,}08$ et à une valeur à peine au-dessus de la moyenne. La table mesure l'aire <em>depuis la moyenne</em> : une queue de 3 % doit d'abord être convertie en $0{,}47$."
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-108",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "probleme-inverse",
+        "seuil-d-alerte",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "En fonctionnement normal, le temps de réponse du serveur d'une boutique en ligne a une moyenne de 180 millisecondes et un écart-type de 42 millisecondes. Chaque heure, l'équipe technique calcule le temps de réponse moyen de 36 requêtes choisies au hasard. Elle veut qu'une alerte se déclenche lorsque ce temps moyen fait partie des 1 % les plus élevés qu'on observe en fonctionnement normal. À partir de quel temps moyen l'alerte doit-elle se déclencher ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les 1 % les plus élevés forment une queue à droite. Quelle aire, mesurée depuis la moyenne, faut-il chercher ? Elle ne figure pas exactement dans la table."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\overline{x} = 180 + 2{,}33 \\times 7 = 196{,}31$ millisecondes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 36 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des temps de réponse dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{42}{\\sqrt{36}} = \\dfrac{42}{6} = 7$ millisecondes. L'espérance de $\\overline{X}$ reste 180 millisecondes.",
+            "<strong>Situer la valeur cherchée.</strong> Les 1 % les plus élevés sont au-dessus du seuil, dans la queue à droite : le seuil est au-dessus de la moyenne. L'aire comprise entre la moyenne et le seuil vaut $0{,}5 - 0{,}01 = 0{,}49$.",
+            "<strong>Lire la table à l'envers.</strong> On cherche $0{,}4900$ dans le corps de la table, où cette valeur ne figure pas. Elle est encadrée par $0{,}4898$, à la ligne $2{,}3$ et à la colonne $0{,}02$, et par $0{,}4901$, à la colonne $0{,}03$ de la même ligne. Les écarts valent $0{,}0002$ et $0{,}0001$ : la plus proche est $0{,}4901$, donc on retient $z = 2{,}33$.",
+            "<strong>Dé-standardiser.</strong> $\\overline{x} = 180 + 2{,}33 \\times 7 = 196{,}31$ millisecondes.",
+            "<strong>Interpréter et contrôler.</strong> En fonctionnement normal, seulement 1 % des moyennes horaires dépassent 196,31 millisecondes : un dépassement est donc un signal à examiner. Le calcul exact donnerait $196{,}28$ : l'écart vient de l'arrondi de la table et ne change pas la réponse à la milliseconde près."
+          ],
+          "piegeCourant": "Prendre $z = 2{,}575$, la valeur qui laisse 0,5 % dans <em>chaque</em> queue, comme pour un intervalle à 99 % au centre. Ici, tout le 1 % est d'un seul côté : l'aire à chercher est $0{,}49$, pas $0{,}495$."
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-108",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "probleme-inverse",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une région, la production quotidienne de lait d'une vache a une moyenne de 32 litres et un écart-type de 8 litres. Une coopérative suit des échantillons de 64 vaches choisies au hasard. En dessous de quelle production moyenne se situent les 15 % d'échantillons les moins productifs ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les 15 % les moins productifs sont dans la queue de gauche : la valeur cherchée est sous 32 litres. Quelle aire faut-il chercher entre elle et la moyenne ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\overline{x} = 32 - 1{,}04 \\times 1 = 30{,}96$ litres."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 64 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des productions dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$ litre. L'espérance de $\\overline{X}$ reste 32 litres.",
+            "<strong>Situer la valeur cherchée et traduire en aire.</strong> Les 15 % les moins productifs sont sous le seuil, donc $\\overline{x}$ est sous la moyenne. Entre $\\overline{x}$ et la moyenne se trouvent $0{,}5 - 0{,}15 = 0{,}35$ des échantillons.",
+            "<strong>Lire la table à l'envers.</strong> On cherche $0{,}3500$ dans le corps de la table, où cette valeur ne figure pas. Elle est encadrée par $0{,}3485$, à la ligne $1{,}0$ et à la colonne $0{,}03$, et par $0{,}3508$, à la colonne $0{,}04$ de la même ligne. Les écarts valent $0{,}0015$ et $0{,}0008$ : la plus proche est $0{,}3508$, donc on retient $z = 1{,}04$.",
+            "<strong>Dé-standardiser, du bon côté.</strong> $\\overline{x}$ étant sous la moyenne, sa cote est négative : $\\overline{x} = 32 - 1{,}04 \\times 1 = 30{,}96$ litres.",
+            "<strong>Interpréter et contrôler.</strong> Environ 15 % des échantillons de 64 vaches auront une production moyenne inférieure à 30,96 litres. Le calcul exact donne aussi $30{,}96$ au centième."
+          ],
+          "piegeCourant": "Ajouter au lieu de soustraire : $32 + 1{,}04 = 33{,}04$ litres est la production moyenne que seuls les 15 % d'échantillons les <em>plus</em> productifs dépassent. Le côté se décide avant de lire la table."
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-109",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "probleme-inverse",
+        "plus-de-la-moitie",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "La masse des valises enregistrées sur les vols d'une compagnie aérienne a une moyenne de 19,5 kg et un écart-type de 4 kg. On considère des échantillons aléatoires de 100 valises. Quelle masse moyenne est dépassée par 75 % des échantillons de cette taille ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Plus de la moitié des échantillons dépassent la valeur cherchée : est-elle au-dessus ou au-dessous de 19,5 kg ? Ramène ensuite 75 % à une aire mesurée depuis la moyenne."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$\\overline{x} = 19{,}5 - 0{,}67 \\times 0{,}4 = 19{,}232$ kg, soit environ $19{,}23$ kg."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 100 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des masses dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{4}{\\sqrt{100}} = \\dfrac{4}{10} = 0{,}4$ kg. L'espérance de $\\overline{X}$ reste $19{,}5$ kg.",
+            "<strong>Situer la valeur cherchée.</strong> 75 % des échantillons dépassent $\\overline{x}$ : plus de la moitié de la courbe est à droite de cette valeur, donc $\\overline{x}$ est <em>sous</em> la moyenne. L'aire comprise entre $\\overline{x}$ et la moyenne vaut $0{,}75 - 0{,}5 = 0{,}25$.",
+            "<strong>Lire la table à l'envers.</strong> On cherche $0{,}2500$ dans le corps de la table, où cette valeur ne figure pas. Elle est encadrée par $0{,}2486$, à la ligne $0{,}6$ et à la colonne $0{,}07$, et par $0{,}2517$, à la colonne $0{,}08$ de la même ligne. Les écarts valent $0{,}0014$ et $0{,}0017$ : la plus proche est $0{,}2486$, donc on retient $z = 0{,}67$.",
+            "<strong>Dé-standardiser, du bon côté.</strong> Comme $\\overline{x}$ est sous la moyenne, sa cote est négative : $\\overline{x} = 19{,}5 - 0{,}67 \\times 0{,}4 = 19{,}232$ kg.",
+            "<strong>Interpréter et contrôler.</strong> Environ 75 % des échantillons de 100 valises auront une masse moyenne supérieure à 19,23 kg. Le calcul exact donnerait $19{,}230$ : l'écart vient de l'arrondi de la table et ne change pas la réponse au centième."
+          ],
+          "piegeCourant": "Ajouter au lieu de soustraire et répondre $19{,}5 + 0{,}67 \\times 0{,}4 = 19{,}768$ kg. Cette masse moyenne n'est dépassée que par 25 % des échantillons : le côté se décide avant la lecture, en comparant 75 % à 50 %."
+        }
+      ]
+    },
+    {
+      "id": "ch03-dif-105",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "probleme-inverse",
+        "intervalle-symetrique",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans un grand hôpital, la masse des nouveau-nés à terme a une moyenne de $3\\,400$ g et un écart-type de 500 g. On considère des échantillons aléatoires de 100 nouveau-nés. Entre quelles valeurs, symétriques autour de $3\\,400$ g, se situe la masse moyenne de 90 % des échantillons ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Les 10 % d'échantillons qui restent se partagent également entre les deux queues. Quelle aire, mesurée depuis la moyenne, faut-il alors chercher dans la table ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$3\\,400 \\pm 1{,}645 \\times 50$, soit de $3\\,317{,}75$ g à $3\\,482{,}25$ g."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 100 \\geq 30$ : le théorème central limite s'applique, et la distribution d'échantillonnage de $\\overline{X}$ est approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{500}{\\sqrt{100}} = \\dfrac{500}{10} = 50$ g. L'espérance de $\\overline{X}$ reste $3\\,400$ g.",
+            "<strong>Situer les bornes et traduire en aire.</strong> Les 90 % du centre laissent 10 % des échantillons hors de l'intervalle, soit 5 % dans chaque queue. Entre la moyenne et la borne supérieure se trouvent donc $0{,}5 - 0{,}05 = 0{,}45$ des échantillons ; par symétrie, il en va de même entre la borne inférieure et la moyenne.",
+            "<strong>Lire la table à l'envers.</strong> On cherche $0{,}4500$ dans le corps de la table, où cette valeur ne figure pas. Elle tombe pile entre $0{,}4495$, à la ligne $1{,}6$ et à la colonne $0{,}04$, et $0{,}4505$, à la colonne $0{,}05$ de la même ligne : les deux écarts valent $0{,}0005$. On retient le milieu entre $z = 1{,}64$ et $z = 1{,}65$, soit $z = 1{,}645$.",
+            "<strong>Dé-standardiser, des deux côtés.</strong> $3\\,400 - 1{,}645 \\times 50 = 3\\,317{,}75$ g et $3\\,400 + 1{,}645 \\times 50 = 3\\,482{,}25$ g.",
+            "<strong>Interpréter et contrôler.</strong> Environ 90 % des échantillons de 100 nouveau-nés auront une masse moyenne comprise entre $3\\,317{,}75$ g et $3\\,482{,}25$ g. Le calcul exact donnerait $3\\,317{,}76$ g et $3\\,482{,}24$ g : l'écart vient de la lecture de la table et ne change pas la réponse au gramme près."
+          ],
+          "piegeCourant": "Chercher $0{,}40$ dans la table, comme si les 10 % restants formaient une seule queue : on obtiendrait $z = 1{,}28$, et un intervalle qui ne contient que 80 % des moyennes. Autre piège : prendre l'écart-type de 500 g au lieu de l'erreur type. On obtiendrait l'intervalle où tombent 90 % des nouveau-nés pris un à un, et non 90 % des moyennes de 100 nouveau-nés."
+        }
+      ]
+    },
+    {
+      "id": "ch03-int-109",
+      "chapitre": 3,
+      "section": "3.3",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Théorème central limite",
+      "motsCles": [
+        "distribution-echantillonnage",
+        "tcl",
+        "probleme-inverse",
+        "intervalle-symetrique",
+        "erreur-type"
+      ],
+      "savoirFaire": [
+        "0b",
+        "3a",
+        "3e"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Dans une chaîne de pizzerias, le temps de cuisson d'une pizza a une moyenne de 9,6 minutes et un écart-type de 1,8 minute. Un responsable de la qualité chronomètre des échantillons de 81 pizzas. Entre quelles valeurs, symétriques autour de 9,6 minutes, se situe le temps de cuisson moyen de 99 % des échantillons ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Le 1 % restant se partage également entre les deux queues. Quelle aire, mesurée depuis la moyenne, faut-il alors chercher dans la table ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "$9{,}6 \\pm 2{,}575 \\times 0{,}2$, soit de $9{,}085$ à $10{,}115$ minutes."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Vérifier la condition du TCL.</strong> L'échantillon compte $n = 81 \\geq 30$ : le théorème central limite s'applique, peu importe la forme de la distribution des temps de cuisson dans la population. La distribution d'échantillonnage de $\\overline{X}$ est donc approximativement normale.",
+            "<strong>Calculer l'erreur type.</strong> $\\sigma_{\\overline{X}} = \\dfrac{1{,}8}{\\sqrt{81}} = \\dfrac{1{,}8}{9} = 0{,}2$ minute. L'espérance de $\\overline{X}$ reste $9{,}6$ minutes.",
+            "<strong>Situer les bornes et traduire en aire.</strong> Les 99 % du centre laissent 1 % des échantillons hors de l'intervalle, soit 0,5 % dans chaque queue. Entre la moyenne et la borne supérieure se trouvent donc $0{,}5 - 0{,}005 = 0{,}495$ des échantillons ; par symétrie, il en va de même entre la borne inférieure et la moyenne.",
+            "<strong>Lire la table à l'envers.</strong> On cherche $0{,}4950$ dans le corps de la table, où cette valeur ne figure pas. Elle tombe pile entre $0{,}4949$, à la ligne $2{,}5$ et à la colonne $0{,}07$, et $0{,}4951$, à la colonne $0{,}08$ de la même ligne : les deux écarts valent $0{,}0001$. On retient le milieu entre $z = 2{,}57$ et $z = 2{,}58$, soit $z = 2{,}575$.",
+            "<strong>Dé-standardiser, des deux côtés.</strong> $2{,}575 \\times 0{,}2 = 0{,}515$, d'où $9{,}6 - 0{,}515 = 9{,}085$ minutes et $9{,}6 + 0{,}515 = 10{,}115$ minutes.",
+            "<strong>Interpréter et contrôler.</strong> Environ 99 % des échantillons de 81 pizzas auront un temps de cuisson moyen compris entre 9,085 et 10,115 minutes. Le calcul exact donne les mêmes bornes au millième."
+          ],
+          "piegeCourant": "Chercher $0{,}49$, comme si tout le 1 % était dans une seule queue : on obtiendrait $z = 2{,}33$ et un intervalle trop étroit, qui ne contiendrait que 98 % des moyennes."
         }
       ]
     },
