@@ -229,8 +229,20 @@ export const creerSessionCheckout = onCall(
 //  2. Le webhook — c'est lui, et lui seul, qui ouvre l'accès
 // ---------------------------------------------------------------------------
 
+// `invoker: "public"` est déclaré, pas laissé au défaut. La CLI Firebase ne
+// rend une fonction publique qu'à sa CRÉATION réussie : une mise à jour ne
+// touche à l'IAM que si `invoker` figure dans le code. Le 2026-08-19, la
+// création a échoué (conteneur qui ne démarrait pas) et la réparation est
+// passée par une mise à jour — le webhook est resté privé jusqu'au
+// 2026-10-20, et Stripe aurait reçu un 403 de Google. Déclaré ici, chaque
+// déploiement repose l'autorisation. La signature ci-dessous reste la seule
+// protection, comme pour tout webhook.
 export const webhookStripe = onRequest(
-  { secrets: [CLE_STRIPE, SECRET_WEBHOOK], region: "northamerica-northeast1" },
+  {
+    secrets: [CLE_STRIPE, SECRET_WEBHOOK],
+    region: "northamerica-northeast1",
+    invoker: "public",
+  },
   async (requete, reponse) => {
     // --- Vérification de signature : non négociable -------------------------
     // Sans elle, l'URL du webhook est un formulaire public permettant de
