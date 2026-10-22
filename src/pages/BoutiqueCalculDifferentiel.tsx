@@ -94,7 +94,7 @@ const DISPONIBILITE = {
     // ici plutôt que de laisser une date dépassée en ligne.
     {
       texte: "La consultation en ligne du contenu, directement sur le site",
-      mois: "Septembre 2026",
+      mois: "Octobre 2026",
     },
   ],
 };
