@@ -23,14 +23,15 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 91 documents", () => {
-  // Calcul différentiel — 50 :
+test("le catalogue couvre les 93 documents", () => {
+  // Calcul différentiel — 52 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   14 exercices (7 chapitres × 2 : énoncés + corrigé. Les 7 cahiers
   //      d'indices ont été retirés le 2026-10-05 : le corrigé porte déjà
   //      l'indice de chaque exercice, juste avant sa réponse finale)
-  //    2 révision (la série cumulative et ses solutions — elle a ses
-  //      exercices en propre au lieu de les tirer dans les banques de
+  //    4 révision (la série cumulative et ses solutions, puis le méli-mélo
+  //      du chapitre 5 et ses solutions, depuis le 2026-10-22 — chacune a
+  //      ses exercices en propre au lieu de les tirer dans les banques de
   //      chapitre. Les cinq méli-mélos A–E ont été retirés du catalogue
   //      le 2026-09-24 ; leurs PDF restent dans le seau, plus déclarés)
   //   18 examens (6 × énoncé, corrigé, grille)
@@ -46,19 +47,19 @@ test("le catalogue couvre les 91 documents", () => {
   //      sont plus déclarés ; ceux des chapitres 4 à 9 n'ont jamais été
   //      téléversés)
   //      Pas d'examens : ils n'existent pas encore pour ce cours.
-  assert.equal(DOCUMENTS.length, 91);
+  assert.equal(DOCUMENTS.length, 93);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 42, exercices: 27, revision: 4, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 42, exercices: 27, revision: 6, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
     return acc;
   }, {});
   assert.deepEqual(parCours, {
-    "calcul-differentiel": 50,
+    "calcul-differentiel": 52,
     "probabilites-statistique": 14,
     "calcul-integral": 27,
   });

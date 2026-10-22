@@ -85,6 +85,7 @@ const DISPONIBILITE = {
     "Les sept chapitres de notes, en version étudiant et en version enseignant",
     `Les ${totauxBanque.gratuit + totauxBanque.payant} exercices, avec réponses finales et démarches détaillées`,
     "La série de révision cumulative — 50 exercices mélangés sur les chapitres 1 à 3, avec les solutions",
+    "Le méli-mélo du chapitre 5 — 50 exercices de dérivation qui combinent les règles du chapitre, avec les solutions",
     "Les six examens, avec corrigés détaillés et grilles de correction",
     "Tous ces documents en PDF téléchargeables",
   ],

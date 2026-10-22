@@ -366,7 +366,8 @@ export const DOCUMENTS: Document[] = [
 
   // --- Série de révision cumulative -----------------------------------------
   //
-  // Seule série publiée. Les cinq méli-mélos A–E ont été retirés du catalogue
+  // Première des deux séries publiées (l'autre, le méli-mélo du chapitre 5,
+  // suit). Les cinq méli-mélos A–E ont été retirés du catalogue
   // le 2026-09-24 : leurs PDF restent dans le seau, mais plus rien ne les
   // déclare, donc `obtenirLienTelechargement` répond `document-inconnu` même
   // à qui devinerait l'URL. Leur machinerie (banque/meli-melo.json,
@@ -394,6 +395,30 @@ export const DOCUMENTS: Document[] = [
     "revision-cumulative-solutions",
     "Série de révision cumulative — solutions",
     "revision/revision-cumulative-solutions.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+
+  // --- Série méli-mélo du chapitre 5 ----------------------------------------
+  //
+  // Cinquante exercices de dérivation qui combinent chacun au moins deux
+  // règles du chapitre 5. Comme la série cumulative, ils ont leur propre
+  // banque (`banque/melange-ch05.json`), que la synchronisation n'envoie pas
+  // au site : ces deux PDF en sont le seul accès. Rien à voir avec les
+  // méli-mélos A–E retirés plus haut, malgré le nom.
+  doc(
+    CALCUL_DIFFERENTIEL,
+    "revision-melange-ch05",
+    "Série méli-mélo — chapitre 5 : Règles de dérivation",
+    "revision/melange-ch05.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    CALCUL_DIFFERENTIEL,
+    "revision-melange-ch05-solutions",
+    "Série méli-mélo — chapitre 5 : solutions",
+    "revision/melange-ch05-solutions.pdf",
     "revision",
     NIVEAUX_EXERCICES_REVISION,
   ),
