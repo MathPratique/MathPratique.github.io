@@ -11,6 +11,7 @@ import AchatConfirme from "./pages/AchatConfirme";
 import Enseignants from "./pages/Enseignants";
 import Connexion from "./pages/Connexion";
 import MonCompte from "./pages/MonCompte";
+import CalculateurNoteFinale from "./pages/CalculateurNoteFinale";
 import { ProgressionProvider } from "./progression/ProgressionContext";
 // Chargée à la demande : cette page tire KaTeX et les 65 exercices avec
 // leurs démarches, soit environ 430 ko. Les inclure dans le bundle principal
@@ -76,6 +77,8 @@ export default function App() {
         <Route path="/enseignants" element={<Enseignants />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/mon-compte" element={<MonCompte />} />
+        {/* Outil gratuit, sans compte ni appel réseau. */}
+        <Route path="/outils/note-examen-final" element={<CalculateurNoteFinale />} />
       </Route>
     </Routes>
   );

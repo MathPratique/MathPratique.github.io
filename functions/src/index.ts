@@ -720,7 +720,11 @@ export const analyserNotes = onCall(
           texte,
           fichier: fichier ? { mediaType: fichier.mediaType, donnees: fichier.donnees } : undefined,
         },
-        CLE_ANTHROPIC.value(),
+        // Un collage dans le terminal Windows laisse un retour chariot au
+        // bout de la valeur : l'API refuse alors une clé pourtant bonne
+        // (vu le 2026-10-15). On nettoie ici plutôt que de compter sur la
+        // main qui colle.
+        CLE_ANTHROPIC.value().trim(),
       );
     } catch (err) {
       await rendre();

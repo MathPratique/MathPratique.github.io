@@ -122,6 +122,14 @@ export async function analyserAvecModele(entree: EntreeModele, cle: string): Pro
   if (simulation === "reponse") return reponseSimulee(entree);
   if (simulation === "panne") throw new ErreurModele("indisponible", "panne simulée");
 
+  // Une clé de l'API commence toujours par « sk-ant- ». Une autre forme
+  // signale un secret mal enregistré (collage tronqué, mauvaise valeur) :
+  // on le dit tout de suite au lieu d'attendre le 401 de l'API — et sans
+  // jamais écrire la clé dans le journal.
+  if (!cle.startsWith("sk-ant-")) {
+    throw new ErreurModele("indisponible", "secret ANTHROPIC_API_KEY mal formé — ce n'est pas une clé « sk-ant- »");
+  }
+
   // Un seul nouvel essai : au-delà, l'étudiant attend devant un indicateur
   // de chargement pour une analyse qui ne viendra probablement pas.
   const client = new Anthropic({ apiKey: cle, maxRetries: 1, timeout: 60_000 });

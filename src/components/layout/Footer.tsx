@@ -15,12 +15,15 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className="flex items-center gap-6 text-sm font-medium text-ink-600" aria-label="Navigation du pied de page">
+        <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-ink-600" aria-label="Navigation du pied de page">
           <NavLink to="/" className="cursor-pointer transition-colors duration-200 hover:text-brand-700">
             Accueil
           </NavLink>
           <NavLink to="/practice" className="cursor-pointer transition-colors duration-200 hover:text-brand-700">
             Exercices
+          </NavLink>
+          <NavLink to="/outils/note-examen-final" className="cursor-pointer transition-colors duration-200 hover:text-brand-700">
+            Calculateur de note finale
           </NavLink>
         </nav>
       </div>

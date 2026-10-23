@@ -93,6 +93,14 @@ const ROUTES = [
     priorite: "0.7",
   },
   {
+    // Mêmes titre et description que dans src/pages/CalculateurNoteFinale.tsx.
+    chemin: "/outils/note-examen-final",
+    titre: "Quelle note me faut-il au final? | MathPratique",
+    description:
+      "Calcule la moyenne qu'il te faut sur tes évaluations restantes, dont l'examen final, pour réussir ton cours au cégep. Gratuit, sans compte, résultat immédiat.",
+    priorite: "0.8",
+  },
+  {
     chemin: "/custom-quiz",
     titre: "Quiz personnalisé de maths — MathPratique",
     description:
