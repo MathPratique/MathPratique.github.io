@@ -2,13 +2,18 @@
 
 ## Historique des modifications de l'interface
 
-### Bilan au 2026-10-20
+### Bilan au 2026-10-23
 
 **Périmètre.** Tout ce qui a changé à l'écran sur mathpratique.ca entre le
-premier commit (2026-06-17) et le dernier (2026-10-15). Aucun commit
-d'interface depuis. Trois sources croisées : la conversation de travail
-principale (101 demandes ayant touché l'interface), `git log` (54 commits sur
-les fichiers d'interface) et `git status` du 2026-10-20.
+premier commit (2026-06-17) et le 2026-10-23. Le bilan initial, du 2026-10-20,
+couvrait jusqu'au commit du 2026-10-15 ; il croisait trois sources : la
+conversation de travail principale (101 demandes ayant touché l'interface),
+`git log` (54 commits sur les fichiers d'interface) et `git status`.
+
+**Mise à jour du 2026-10-23.** Ajout des changements du 20 au 23 octobre :
+interrupteur de vente, catalogue, boutique, calculateur de note, navigation et
+accueil. Les sections « Commencé, pas terminé », « Problèmes connus » et
+« Prochaines étapes » sont remises à jour à la même date.
 
 **Légende.** Sans marque : fait dans la conversation principale. **◆** : fait
 hors de cette conversation (autre session Claude ou commit direct du
@@ -38,6 +43,11 @@ celles des commits.
   maintenant son propre compteur, et Calcul intégral revient avec la mention
   « À venir ». *Raison : un acheteur voyait « 65 sur 305 », et une carte vide
   côtoyait le package mis en vente.*
+- **2026-10-23** — `CarteCalculateur.tsx` (nouveau) : une carte « Fin de
+  session? Calcule la note qu'il te faut », juste sous le bandeau, mène au
+  calculateur de note. Elle est remontée dans la marge basse du bandeau.
+  *Raison : sans cela, près de 190 px de vide la séparaient du bouton du
+  bandeau.*
 
 #### Navigation et gabarit — `Navbar.tsx`, `Footer.tsx`, `Layout.tsx`, `index.html`
 
@@ -53,6 +63,24 @@ celles des commits.
   `Layout.tsx`, `BandeauExpiration.tsx` affiche sur toutes les pages un rappel
   30 jours, puis 7 jours, avant la fin de l'accès. *Raison : le site n'a aucun
   envoi de courriel, et deux rappels par an ne justifient pas d'en ajouter un.*
+- **2026-10-23** — `Footer.tsx` : ajout du lien « Calculateur de note
+  finale ».
+- **2026-10-23** — `Navbar.tsx` :
+  - ajout de l'entrée « Calculateur », entre « Quiz personnalisé » et
+    « Boutique », marquée active sur sa page ;
+  - les liens en ligne apparaissent à partir de 1024 px (`lg`) au lieu de
+    640 px (`sm`) ; en dessous, c'est le menu déroulant ;
+  - pour tenir à 1024 px sans réduire le texte : « Quiz » dans la barre (le
+    nom complet reste dans le menu déroulant, sur la page et pour les lecteurs
+    d'écran), marge intérieure des liens de 16 à 12 px, aucun retour à la
+    ligne ;
+  - marge libre mesurée à 1024 px : 71 px avec « Connexion », 56 px avec
+    « Mon compte ».
+
+  *Raisons : la barre débordait déjà entre 640 et 900 px environ, même sans le
+  calculateur ; et beaucoup de portables Windows affichés à 125 % ou 150 % ont
+  une largeur utile entre 1024 et 1279 px, où un menu déroulant serait
+  malvenu.*
 
 #### Exercices : choix de la matière et cartes — `Practice.tsx`, `TopicPicker.tsx`, `ExerciseCard.tsx`, `MCQCard.tsx`, `TFCard.tsx`
 
@@ -158,6 +186,32 @@ celles des commits.
   chapitre ; les adresses déjà partagées fonctionnent toujours. *Raison :
   préparer « Quiz à partir de mes notes ».*
 
+#### Outils — `CalculateurNoteFinale.tsx`, `src/outils/note-finale.ts`
+
+- **2026-10-23** — nouvelle page `/outils/note-examen-final`, « Quelle note me
+  faut-il à l'examen final? ». Elle est gratuite, sans compte et sans appel
+  réseau :
+  - l'étudiant entre seulement ses évaluations déjà faites ; tout le reste,
+    examen final compris, forme « ce qui reste » (encadré « Il te reste X % du
+    cours à évaluer ») ;
+  - le résultat est la moyenne requise sur ce qui reste, arrondie vers le haut
+    au dixième, suivie d'un tableau « si tu obtiens en moyenne 50 à 100 % » ;
+  - cas particuliers : plus de 100 % évalués (erreur, aucun calcul), 100 %
+    (« Ton cours est terminé »), objectif déjà atteint, objectif impossible
+    (avec la note maximale atteignable) ;
+  - « Détailler ce qui reste », repliable et facultatif, sert au seuil de 60 %
+    de moyenne d'examens. Ce seuil n'est calculé que si le détail couvre
+    exactement ce qui reste (à 0,05 % près) ;
+  - la saisie est gardée dans `localStorage` (clé `…:v2`), avec un bouton
+    « Réinitialiser » ;
+  - la page est pré-rendue, avec titre et description propres, et figure dans
+    le plan du site. Le calcul est couvert par `tests/note-finale.test.mjs`.
+
+  *Raisons : une première version, jamais publiée, ne comptait que le final
+  comme reste du cours et déclarait impossible un objectif atteignable (20 %
+  d'évaluations faites, final à 30 %). Et un seuil calculé sur un détail
+  partiel affichait 63,8 % là où l'exigence réelle était de 61,4 %.*
+
 #### Boutique — `Boutique.tsx`, `BoutiqueCalculDifferentiel.tsx`, `CarteBoutique.tsx`, `AchatConfirme.tsx`, `products.ts`, `tarifs.ts`
 
 - **2026-07-09** — création de la section Boutique (quatre produits
@@ -183,6 +237,13 @@ celles des commits.
   locaux, puis remis à `false`.
 - **2026-09-24** — la page ne mentionne plus les cinq séries de révision
   retirées.
+- **2026-10-20** — `PAIEMENT_ACTIF` découle maintenant de `VENTE_OUVERTE`
+  (`src/acces/vente.ts`, à `false`), que `creerSessionCheckout` vérifie aussi
+  côté serveur. Le bouton reste actif en développement local pour les tests.
+  *Raison : un seul interrupteur pour le site et la fonction.*
+- **2026-10-22** — « Disponible maintenant » annonce le méli-mélo du
+  chapitre 5. La consultation en ligne est annoncée pour « Octobre 2026 ».
+  *Raison : la date de septembre était dépassée.*
 
 #### Enseignants — `Enseignants.tsx`
 
@@ -208,6 +269,12 @@ celles des commits.
 - **2026-09-24 → 10-05** — liste des documents : la série de révision
   cumulative est ajoutée ; les cinq méli-mélos et les sept cahiers d'indices
   sont retirés (les indices sont maintenant dans le corrigé).
+- **2026-10-20 ◆** — liste des documents : ajout de la série méli-mélo du
+  chapitre 3 de probabilités et statistique (énoncés et solutions).
+- **2026-10-22** — liste des documents : ajout de la série méli-mélo du
+  chapitre 5 de calcul différentiel (recueil et solutions), ouverte aux trois
+  niveaux d'accès. Ces deux PDF sont le seul accès, sur le site, à ses
+  cinquante exercices.
 
 #### Contenu servi, sans changement de code
 
@@ -217,35 +284,51 @@ celles des commits.
   correction de la formule d'E047 (2026-10-15).
 - Les PDF des notes, des cahiers et des recueils sont republiés dans le seau le
   2026-10-15.
+- Les deux PDF du méli-mélo du chapitre 5 sont téléversés le 2026-10-22, MD5
+  vérifiés dans le seau. ◆ Ceux du méli-mélo du chapitre 3 de probabilités et
+  statistique le sont le même jour.
 
 ### Commencé, pas terminé
 
 - **« Quiz à partir de mes notes » ◆** : le tirage par section, le catalogue de
-  notions et la fonction `analyserNotes` sont commités. Au 2026-10-20,
-  `functions/src/index.ts` et `functions/src/notes/modele.ts` ont des
-  modifications non commitées. L'interface (la liste de notions à cocher)
-  n'existe pas encore.
-- **Vente** : `PAIEMENT_ACTIF` vaut `false`, et aucun achat réel n'a été fait.
+  notions et la fonction `analyserNotes` sont commités, y compris, depuis le
+  2026-10-23, les garde-fous sur la clé de l'API qui étaient en cours au
+  2026-10-20. L'interface (la liste de notions à cocher) n'existe pas encore,
+  et `analyserNotes` n'est pas déployée.
+- **Vente** : `VENTE_OUVERTE` vaut `false` ; `creerSessionCheckout` refuse
+  aussi côté serveur et reste privée. Aucun achat réel n'a été fait.
+- **Migration vers Firebase Hosting** : le bloc `hosting` de `firebase.json`
+  existe, et un déploiement de test a été vérifié sur
+  `mathpratique-8dea1.web.app` (2026-10-20). Restent le compte de service et
+  le secret GitHub pour le déploiement automatique, puis la bascule du
+  domaine, puis le passage du dépôt en privé.
 - **Calcul intégral** : « À venir », sans banque interactive. **Algèbre
   linéaire** : encore servie par `exercises.ts` ; sa carte en boutique est
   inerte.
 
 ### Problèmes connus
 
-- `creerSessionCheckout` et `webhookStripe` répondent 403 (couche IAM de Google,
-  avant même le code) depuis la vérification du 2026-10-05. On ne sait pas si
-  le problème date d'avant ou d'après la migration vers Node 24. Tant qu'il
-  n'est pas réglé, le bouton d'achat échouerait.
+- Le dépôt est encore public jusqu'à la fin de la migration vers Firebase
+  Hosting : ce fichier, le code et les banques servies au site y sont lisibles.
+  La décision de le passer en privé est prise depuis le 2026-10-20.
 - Six problèmes ESLint dans les deux pages d'exercices (voir
   `DETTE-TECHNIQUE.md`, entrée du 2026-09-10).
-- La visibilité du dépôt est à trancher avant d'ouvrir les paiements.
 - Les exercices CD-C03-E034 et E035 sont à reformuler.
+- Les adresses canoniques et le plan du site donnent les pages sans barre
+  finale (`/enseignants`), que GitHub Pages redirige vers la forme avec barre
+  (`/enseignants/`). C'est sans gravité, mais à harmoniser, au plus tard lors
+  de la bascule vers Firebase Hosting.
+
+Réglé : le 403 de `webhookStripe` (2026-10-20). L'accès public est maintenant
+déclaré dans le code, et un événement de test Stripe a été reçu avec un 200.
+`creerSessionCheckout` répond toujours 403, mais volontairement : elle reste
+privée jusqu'à l'ouverture de la vente.
 
 ### Prochaines étapes suggérées
 
-1. Trancher la visibilité du dépôt.
-2. Diagnostiquer le 403 de `creerSessionCheckout` et de `webhookStripe`.
-3. Faire l'achat réel de `TESTS-ACHAT.md`, puis passer `PAIEMENT_ACTIF` à
-   `true`.
-4. Construire l'interface de « Quiz à partir de mes notes ».
-5. Régler la dette ESLint, puis reformuler E034 et E035.
+1. Terminer la migration vers Firebase Hosting, puis passer le dépôt en privé.
+2. Faire l'achat réel de `TESTS-ACHAT.md`, puis ouvrir la vente : passer
+   `VENTE_OUVERTE` à `true`, déployer `creerSessionCheckout` et la rendre
+   publique (voir `TESTS-ACHAT.md`, § 4.5).
+3. Construire l'interface de « Quiz à partir de mes notes ».
+4. Régler la dette ESLint, puis reformuler E034 et E035.
