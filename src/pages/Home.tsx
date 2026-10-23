@@ -1,4 +1,5 @@
 import Hero from "../components/home/Hero";
+import CarteCalculateur from "../components/home/CarteCalculateur";
 import StatsBar from "../components/home/StatsBar";
 import Features from "../components/home/Features";
 import TopicsShowcase from "../components/home/TopicsShowcase";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <CarteCalculateur />
       <StatsBar />
       <Features />
       <TopicsShowcase />
