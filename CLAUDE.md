@@ -21,6 +21,27 @@ pied de page, nom « Probabilités et statistique » au singulier, et trois
 pages légales en brouillon. Ajout de la section « À régler avant
 l'ouverture des ventes ».
 
+**Vérifié en ligne le 2026-10-26**, après le déploiement GitHub Pages
+réussi de ces corrections, en lisant ce que sert réellement
+mathpratique.ca :
+
+- accueil pré-rendu : les nouveaux chiffres (708, trois matières, « 0 $ »),
+  la phrase des matières, les badges (« 69 gratuits · 398 avec le
+  package », « 100 exercices gratuits »), la section Boutique (398
+  exercices, 12 mois, 34 $ et 49 $, « L'achat en ligne ouvre bientôt »,
+  mention aux enseignants) et la nouvelle phrase de l'appel à l'action ;
+- aucune ancienne formulation : ni « paywall », ni « 100 % gratuit », ni
+  « mathpratique.exemple », ni « 4 matières », ni « statistiques » au
+  pluriel ;
+- pied de page : Accueil, Exercices, Calculateur de note finale, Boutique,
+  Enseignants, Contact — aucun lien vers les pages légales ;
+- boutique inchangée : un package en vente, trois cartes « Bientôt
+  disponible » ;
+- les trois pages légales s'ouvrent en ligne avec leur bandeau, le titre
+  « (brouillon) », `noindex` et tout leur texte ; elles ne sont pas dans le
+  plan du site. Leur statut HTTP est 404 (voir la section des pages
+  légales) ; tous les fichiers chargés derrière répondent 200.
+
 **Légende.** Sans marque : fait dans la conversation principale. **◆** : fait
 hors de cette conversation (autre session Claude ou commit direct du
 propriétaire) ; la raison vient alors du message de commit. Les dates sont
@@ -306,6 +327,13 @@ celles des commits.
   Les points à faire réviser sont en commentaires au début de chaque page,
   pas dans le texte affiché. À la validation : prop `brouillon={false}`,
   ajout au pré-rendu, puis lien au pied de page.
+
+  **Statut HTTP 404, attendu.** Une page non pré-rendue n'a pas de fichier
+  sur GitHub Pages : le serveur répond par `404.html`, copie de
+  l'application, qui affiche ensuite la bonne page. La page s'affiche donc
+  normalement, mais avec un statut 404 et une erreur « Failed to load
+  resource » dans la console. Sans conséquence pour des brouillons en
+  `noindex` ; l'ajout au pré-rendu, à la validation, donnera un statut 200.
 
 #### Enseignants — `Enseignants.tsx`
 
