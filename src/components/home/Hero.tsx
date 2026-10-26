@@ -49,11 +49,12 @@ function LiveWorkedExample() {
 
   return (
     <div className="relative rounded-2xl border border-brand-100 bg-white p-6 shadow-xl shadow-brand-900/10 sm:p-8">
+      {/* Le libellé de travail « mathpratique.exemple », à droite de la
+          pastille, a été retiré le 2026-10-26. */}
       <div className="flex items-center justify-between">
         <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
           Calcul différentiel
         </span>
-        <span className="font-mono text-xs text-ink-600">mathpratique.exemple</span>
       </div>
 
       <h3 className="mt-4 font-display text-lg font-semibold text-brand-900">

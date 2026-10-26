@@ -13,6 +13,15 @@ import Connexion from "./pages/Connexion";
 import MonCompte from "./pages/MonCompte";
 import CalculateurNoteFinale from "./pages/CalculateurNoteFinale";
 import { ProgressionProvider } from "./progression/ProgressionContext";
+// Pages légales, en BROUILLON depuis le 2026-10-26 : chargées à la demande
+// (rarement consultées), ni pré-rendues ni liées au pied de page tant
+// qu'elles ne sont pas révisées — voir components/legal/PageBrouillon.tsx.
+const PolitiqueRemboursement = lazy(() => import("./pages/PolitiqueRemboursement"));
+const ConditionsUtilisation = lazy(() => import("./pages/ConditionsUtilisation"));
+const PolitiqueConfidentialite = lazy(() => import("./pages/PolitiqueConfidentialite"));
+const chargementPage = (
+  <div className="container-page py-16 text-center text-sm text-ink-600">Chargement…</div>
+);
 // Chargée à la demande : cette page tire KaTeX et les 65 exercices avec
 // leurs démarches, soit environ 430 ko. Les inclure dans le bundle principal
 // les imposait à chaque visiteur de l'accueil, qui n'en a aucun usage.
@@ -79,6 +88,18 @@ export default function App() {
         <Route path="/mon-compte" element={<MonCompte />} />
         {/* Outil gratuit, sans compte ni appel réseau. */}
         <Route path="/outils/note-examen-final" element={<CalculateurNoteFinale />} />
+        <Route
+          path="/politique-de-remboursement"
+          element={<Suspense fallback={chargementPage}><PolitiqueRemboursement /></Suspense>}
+        />
+        <Route
+          path="/conditions-d-utilisation"
+          element={<Suspense fallback={chargementPage}><ConditionsUtilisation /></Suspense>}
+        />
+        <Route
+          path="/politique-de-confidentialite"
+          element={<Suspense fallback={chargementPage}><PolitiqueConfidentialite /></Suspense>}
+        />
       </Route>
     </Routes>
   );

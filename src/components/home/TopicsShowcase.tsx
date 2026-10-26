@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 import { topics, badgeMatiere } from "../../data/topics";
 import { exercises } from "../../data/exercises";
+import { compteurs } from "../../data/stats";
+import { enLettres } from "../../data/compteurs";
 import AnimatedSection from "../ui/AnimatedSection";
+
+// « Trois matières du parcours collégial, et une autre en préparation. »
+// Dérivé des données : la phrase disait « Quatre matières clés » alors que
+// l'une d'elles est encore « À venir ».
+function phraseMatieres(): string {
+  const { matieresDisponibles: dispo, matieresEnPreparation: prep } = compteurs;
+  const debut = enLettres(dispo);
+  const majuscule = debut.charAt(0).toUpperCase() + debut.slice(1);
+  const matieres = `${majuscule} matière${dispo > 1 ? "s" : ""} du parcours collégial`;
+  if (prep === 0) return `${matieres}.`;
+  return `${matieres}, et ${prep === 1 ? "une autre" : `${enLettres(prep)} autres`} en préparation.`;
+}
 
 export default function TopicsShowcase() {
   // On garde le filtre `masquerListe` (mécanisme conservé pour usage
@@ -15,8 +29,8 @@ export default function TopicsShowcase() {
           Choisis une matière et avance à ton rythme
         </h2>
         <p className="mt-4 text-balance text-lg text-ink-600">
-          Quatre matières clés du parcours collégial, chaque problème
-          accompagné de sa solution complète prête à être consultée.
+          {phraseMatieres()} Chaque problème est accompagné de sa solution
+          complète, prête à être consultée.
         </p>
       </AnimatedSection>
 
@@ -27,7 +41,9 @@ export default function TopicsShowcase() {
           // décompte dans `exercises` (matières procédurales — linalg,
           // prob-stat). Le badge est ensuite dérivé par `badgeMatiere` :
           // « À venir » pour enPreparation, « X gratuits · Y avec le
-          // package » quand un total existe, sinon « X exercices ».
+          // package » quand le package est en vente, « X exercices
+          // gratuits » quand une banque réservée existe sans package en
+          // vente, sinon « X exercices ».
           const gratuits =
             topic.nbExercicesPublies
             ?? exercises.filter((e) => e.topicId === topic.id).length;

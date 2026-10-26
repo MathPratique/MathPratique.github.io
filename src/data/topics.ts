@@ -5,6 +5,8 @@
 // est élagué par Vite, le reste du catalogue n'entre pas par ce chemin.
 import { totaux as totauxCD } from "./calcul-differentiel/catalogue.json";
 import { totaux as totauxPS } from "./probabilites-statistique/catalogue.json";
+import { libelleBadge } from "./compteurs";
+import { packageEnVente } from "./boutique";
 
 /**
  * Palette d'un cours — source unique pour toutes les cartes du site.
@@ -85,24 +87,26 @@ export type Topic = {
 
 /**
  * Texte du badge d'une carte de matière — piloté strictement par les
- * données de `topics.ts`, aucune condition écrite en dur sur un `id`.
+ * données de `topics.ts` et la liste des packages en vente
+ * (`data/boutique.ts`), aucune condition écrite en dur sur un `id`. La règle
+ * elle-même est `libelleBadge` (`data/compteurs.ts`), testée par `npm test`.
  *
- *   enPreparation                          → « À venir »
- *   nbExercicesTotal > nbExercicesPublies  → « X gratuits · Y avec le package »
- *   sinon                                   → « X exercices »
+ * Depuis le 2026-10-26, « avec le package » n'apparaît que si le package de
+ * la matière est en vente : probabilités et statistique affichait
+ * « 100 gratuits · 475 avec le package » alors qu'aucun package ne
+ * s'achetait.
  *
  * @param gratuitsCalcule  Nombre de gratuits calculé en amont depuis le
  *   tableau `exercises` — évite d'importer `exercises` ici et le cycle
  *   potentiel avec des couches qui remonteraient vers topics.ts.
  */
 export function badgeMatiere(topic: Topic, gratuitsCalcule: number): string {
-  if (topic.enPreparation) return "À venir";
-  const gratuits = topic.nbExercicesPublies ?? gratuitsCalcule;
-  const total = topic.nbExercicesTotal;
-  if (typeof total === "number" && total > gratuits) {
-    return `${gratuits} gratuits · ${total} avec le package`;
-  }
-  return `${gratuits} exercice${gratuits > 1 ? "s" : ""}`;
+  return libelleBadge({
+    enPreparation: topic.enPreparation,
+    gratuits: topic.nbExercicesPublies ?? gratuitsCalcule,
+    total: topic.nbExercicesTotal,
+    packageEnVente: packageEnVente(topic.id),
+  });
 }
 
 export const topics: Topic[] = [
@@ -162,7 +166,7 @@ export const topics: Topic[] = [
   },
   {
     id: "probability",
-    name: "Probabilités et statistiques",
+    name: "Probabilités et statistique",
     description: "Hasard, distributions et raisonnement dans l'incertitude.",
     icon: "M4 19V9M10 19V5M16 19v-7M22 19H2",
     couleur: {

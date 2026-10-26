@@ -1,6 +1,19 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../ui/Logo";
-import { COPYRIGHT } from "../../data/site";
+import { COPYRIGHT, EMAIL_CONTACT } from "../../data/site";
+
+const lien = "cursor-pointer transition-colors duration-200 hover:text-brand-700";
+
+// Les pages Politique de remboursement, Conditions d'utilisation et Politique
+// de confidentialité existent en brouillon (2026-10-26) mais ne sont PAS
+// liées ici : leurs liens s'ajouteront après révision.
+const LIENS = [
+  { to: "/", label: "Accueil" },
+  { to: "/practice", label: "Exercices" },
+  { to: "/outils/note-examen-final", label: "Calculateur de note finale" },
+  { to: "/boutique", label: "Boutique" },
+  { to: "/enseignants", label: "Enseignants" },
+];
 
 export default function Footer() {
   return (
@@ -15,16 +28,18 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-ink-600" aria-label="Navigation du pied de page">
-          <NavLink to="/" className="cursor-pointer transition-colors duration-200 hover:text-brand-700">
-            Accueil
-          </NavLink>
-          <NavLink to="/practice" className="cursor-pointer transition-colors duration-200 hover:text-brand-700">
-            Exercices
-          </NavLink>
-          <NavLink to="/outils/note-examen-final" className="cursor-pointer transition-colors duration-200 hover:text-brand-700">
-            Calculateur de note finale
-          </NavLink>
+        <nav
+          className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-ink-600 sm:max-w-md sm:justify-end"
+          aria-label="Navigation du pied de page"
+        >
+          {LIENS.map((l) => (
+            <NavLink key={l.to} to={l.to} end={l.to === "/"} className={lien}>
+              {l.label}
+            </NavLink>
+          ))}
+          <a href={`mailto:${EMAIL_CONTACT}`} className={lien}>
+            Contact
+          </a>
         </nav>
       </div>
 

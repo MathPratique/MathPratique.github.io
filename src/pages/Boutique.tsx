@@ -10,20 +10,9 @@ import CarteBoutique, {
 } from "../components/shop/CarteBoutique";
 import { topics } from "../data/topics";
 import { TARIFS_CALCUL_DIFFERENTIEL } from "../data/tarifs";
-
-// Ce que chaque topic « offre » côté boutique. Table locale plutôt que
-// nouveau champ sur `topics.ts` : le lien package ne concerne QUE la
-// boutique, il n'a pas à polluer le modèle de topic. Ajouter un cours en
-// vente = ajouter une entrée ici et créer sa page package.
-const PRODUITS_PAR_TOPIC: Record<string, ProduitCarte> = {
-  "differential-calculus": {
-    prix: TARIFS_CALCUL_DIFFERENTIEL.prixLancement,
-    prixOriginal: TARIFS_CALCUL_DIFFERENTIEL.prixRegulier,
-    devise: TARIFS_CALCUL_DIFFERENTIEL.devise,
-    href: "/boutique/calcul-differentiel",
-    disponible: true,
-  },
-};
+// La liste des packages en vente vit dans `data/boutique.ts` depuis le
+// 2026-10-26 : l'accueil la lit aussi. Ajouter un cours en vente se fait là.
+import { PRODUITS_PAR_TOPIC } from "../data/boutique";
 
 // Fallback pour les cours pas encore en vente : carte inerte, sans prix.
 const A_VENIR: ProduitCarte = {

@@ -2,10 +2,10 @@
 
 ## Historique des modifications de l'interface
 
-### Bilan au 2026-10-23
+### Bilan au 2026-10-26
 
 **Périmètre.** Tout ce qui a changé à l'écran sur mathpratique.ca entre le
-premier commit (2026-06-17) et le 2026-10-23. Le bilan initial, du 2026-10-20,
+premier commit (2026-06-17) et le 2026-10-26. Le bilan initial, du 2026-10-20,
 couvrait jusqu'au commit du 2026-10-15 ; il croisait trois sources : la
 conversation de travail principale (101 demandes ayant touché l'interface),
 `git log` (54 commits sur les fichiers d'interface) et `git status`.
@@ -14,6 +14,12 @@ conversation de travail principale (101 demandes ayant touché l'interface),
 interrupteur de vente, catalogue, boutique, calculateur de note, navigation et
 accueil. Les sections « Commencé, pas terminé », « Problèmes connus » et
 « Prochaines étapes » sont remises à jour à la même date.
+
+**Mise à jour du 2026-10-26.** Corrections de la page d'accueil (prix,
+chiffres dérivés des données, section Boutique, libellé de travail),
+pied de page, nom « Probabilités et statistique » au singulier, et trois
+pages légales en brouillon. Ajout de la section « À régler avant
+l'ouverture des ventes ».
 
 **Légende.** Sans marque : fait dans la conversation principale. **◆** : fait
 hors de cette conversation (autre session Claude ou commit direct du
@@ -48,6 +54,34 @@ celles des commits.
   calculateur de note. Elle est remontée dans la marge basse du bandeau.
   *Raison : sans cela, près de 190 px de vide la séparaient du bouton du
   bandeau.*
+- **2026-10-26** — chiffres de l'accueil dérivés des données
+  (`src/data/compteurs.ts`, calcul pur testé ; câblage dans `stats.ts`) :
+  - le bandeau affiche « 708 exercices corrigés gratuits dans trois
+    matières » au lieu de « 539 exercices dans 4 matières » ;
+  - la 4ᵉ case passe de « 100 % gratuit, sans compte requis » à « 0 $ — pour
+    commencer, sans compte. Un package complet est offert en option. » ;
+  - la phrase des matières (`TopicsShowcase.tsx`) devient « Trois matières du
+    parcours collégial, et une autre en préparation ».
+
+  Règles : une matière « À venir » n'est ni disponible ni comptée, et seuls
+  les exercices réservés d'un cours **en vente** comptent « avec le
+  package ». *Raisons : « 539 » ne comptait que l'algèbre linéaire, les
+  « 4 matières » incluaient Calcul intégral, et « 100 % gratuit » était faux
+  depuis qu'un package payant existe.*
+- **2026-10-26** — `CallToAction.tsx` : « Pas d'inscription, pas de
+  paywall » devient « Des centaines d'exercices corrigés gratuits, sans
+  compte. Pour aller plus loin, un package complet est offert en option. »
+  L'ordre de grandeur (« Des centaines d'… », « Plus de mille… ») suit le
+  nombre réel.
+- **2026-10-26** — `SectionBoutique.tsx` (nouveau), avant l'appel à l'action
+  final : le package de chaque cours en vente (aujourd'hui Calcul
+  différentiel seulement), avec notes complètes, nombre d'exercices avec
+  démarches, examens corrigés, accès de 12 mois, prix de lancement et prix
+  régulier lus dans `tarifs.ts`. Tant que `VENTE_OUVERTE` vaut `false`, une
+  ligne dit « L'achat en ligne ouvre bientôt ». Lien vers la boutique, et
+  mention neutre vers la page Enseignants.
+- **2026-10-26** — `Hero.tsx` : le libellé de travail « mathpratique.exemple »,
+  visible en haut à droite de l'exemple animé, est retiré.
 
 #### Navigation et gabarit — `Navbar.tsx`, `Footer.tsx`, `Layout.tsx`, `index.html`
 
@@ -65,6 +99,10 @@ celles des commits.
   envoi de courriel, et deux rappels par an ne justifient pas d'en ajouter un.*
 - **2026-10-23** — `Footer.tsx` : ajout du lien « Calculateur de note
   finale ».
+- **2026-10-26** — `Footer.tsx` : ajout des liens Boutique, Enseignants et
+  Contact (`mailto:` vers l'adresse de `src/data/site.ts`). Les liens vers les
+  trois pages légales ne sont **pas** encore ajoutés : ils viendront après
+  révision (un test le vérifie).
 - **2026-10-23** — `Navbar.tsx` :
   - ajout de l'entrée « Calculateur », entre « Quiz personnalisé » et
     « Boutique », marquée active sur sa page ;
@@ -123,6 +161,11 @@ celles des commits.
 - **2026-09-10 ◆** — `topics.ts` et les pages concernées : les compteurs sont
   lus dans le catalogue. *Raison : « 65 / 305 » restait affiché alors que la
   banque comptait 70 / 395.*
+- **2026-10-26** — `topics.ts` : la matière s'appelle « Probabilités et
+  statistique » (au singulier) sur toutes les cartes. Sa carte affiche
+  « 100 exercices gratuits » au lieu de « 100 gratuits · 475 avec le
+  package ». *Raison : aucun package de cette matière ne s'achète ;
+  « avec le package » n'apparaît plus que pour un cours en vente.*
 
 #### Exercices de calcul différentiel — `ExercicesCalculDifferentiel.tsx`, `CarteExerciceCD.tsx`, `QcmInteractif.tsx`
 
@@ -244,6 +287,25 @@ celles des commits.
 - **2026-10-22** — « Disponible maintenant » annonce le méli-mélo du
   chapitre 5. La consultation en ligne est annoncée pour « Octobre 2026 ».
   *Raison : la date de septembre était dépassée.*
+- **2026-10-26** — sans changement visible : la liste des packages en vente
+  quitte `Boutique.tsx` pour `src/data/boutique.ts`, que l'accueil lit aussi.
+  Ajouter un cours en vente se fait là.
+
+#### Pages légales, en brouillon — `src/components/legal/PageBrouillon.tsx`
+
+- **2026-10-26** — trois pages créées comme **brouillons**, à faire réviser :
+  `/politique-de-remboursement`, `/conditions-d-utilisation` et
+  `/politique-de-confidentialite` (Loi 25 : comptes, paiements Stripe,
+  Google Analytics). Chacune :
+  - affiche un bandeau « Brouillon — en attente de révision » ;
+  - porte `noindex` pendant qu'on la consulte, et rend titre, description et
+    robots d'origine en la quittant ;
+  - n'est ni pré-rendue, ni dans le plan du site, ni liée au pied de page ;
+  - lit délais, durée d'accès, devise et adresse dans leurs constantes.
+
+  Les points à faire réviser sont en commentaires au début de chaque page,
+  pas dans le texte affiché. À la validation : prop `brouillon={false}`,
+  ajout au pré-rendu, puis lien au pied de page.
 
 #### Enseignants — `Enseignants.tsx`
 
@@ -305,6 +367,30 @@ celles des commits.
 - **Calcul intégral** : « À venir », sans banque interactive. **Algèbre
   linéaire** : encore servie par `exercises.ts` ; sa carte en boutique est
   inerte.
+- **Pages légales** : trois brouillons à faire réviser (2026-10-26), puis à
+  publier : retirer le bandeau, les pré-rendre, les lier au pied de page.
+- **Adresses en français** (plan approuvé, gardé pour plus tard, rien de
+  changé) : `/practice` → `/exercices`, `/custom-quiz` → `/quiz-personnalise`,
+  `/quiz` inchangée (les quiz partagés y vivent : `/quiz?custom=…`). Les
+  anciennes adresses doivent rester valides : redirection React qui garde
+  les paramètres, pages de redirection pré-rendues aux anciennes adresses
+  (adresse canonique vers la nouvelle), plan du site avec les nouvelles
+  seulement, liens internes mis à jour, puis vraies redirections 301 dans
+  `firebase.json` après la migration.
+
+### À régler avant l'ouverture des ventes
+
+- **Consentement à Google Analytics (Loi 25)** : GA est chargé d'office dans
+  `index.html`, sans consentement préalable. La Loi 25 exige que les
+  technologies permettant d'identifier, de localiser ou d'effectuer un
+  profilage soient désactivées par défaut. Prévoir un mécanisme de
+  consentement, puis ajuster la section 6 de la politique de confidentialité.
+- **Pages légales révisées et liées** au pied de page (voir plus haut), avec
+  l'évaluation d'impact sur la confidentialité (EFVP) pour les
+  communications hors Québec (Stripe, Google Analytics, Firebase
+  Authentication), et la désignation de l'exploitant exigée pour un contrat
+  conclu à distance. Les points précis sont en commentaires au début de
+  chaque page.
 
 ### Problèmes connus
 
@@ -327,8 +413,10 @@ privée jusqu'à l'ouverture de la vente.
 ### Prochaines étapes suggérées
 
 1. Terminer la migration vers Firebase Hosting, puis passer le dépôt en privé.
-2. Faire l'achat réel de `TESTS-ACHAT.md`, puis ouvrir la vente : passer
+2. Régler la section « À régler avant l'ouverture des ventes ».
+3. Faire l'achat réel de `TESTS-ACHAT.md`, puis ouvrir la vente : passer
    `VENTE_OUVERTE` à `true`, déployer `creerSessionCheckout` et la rendre
    publique (voir `TESTS-ACHAT.md`, § 4.5).
-3. Construire l'interface de « Quiz à partir de mes notes ».
-4. Régler la dette ESLint, puis reformuler E034 et E035.
+4. Construire l'interface de « Quiz à partir de mes notes ».
+5. Régler la dette ESLint, puis reformuler E034 et E035.
+6. Passer les adresses en français, selon le plan ci-dessus.

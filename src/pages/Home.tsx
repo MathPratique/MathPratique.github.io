@@ -3,6 +3,7 @@ import CarteCalculateur from "../components/home/CarteCalculateur";
 import StatsBar from "../components/home/StatsBar";
 import Features from "../components/home/Features";
 import TopicsShowcase from "../components/home/TopicsShowcase";
+import SectionBoutique from "../components/home/SectionBoutique";
 import CallToAction from "../components/home/CallToAction";
 
 // La section de témoignages a été retirée : elle affichait le titre
@@ -20,6 +21,7 @@ export default function Home() {
       <StatsBar />
       <Features />
       <TopicsShowcase />
+      <SectionBoutique />
       <CallToAction />
     </>
   );

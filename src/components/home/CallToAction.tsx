@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AnimatedSection from "../ui/AnimatedSection";
+import { ACCROCHE_PRIX } from "../../data/stats";
 
 export default function CallToAction() {
   return (
@@ -21,9 +22,10 @@ export default function CallToAction() {
           <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl">
             Ta prochaine série d'exercices est à un clic
           </h2>
+          {/* « Pas d'inscription, pas de paywall » était faux depuis qu'un
+              package payant existe. La phrase est dérivée des compteurs. */}
           <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-brand-100">
-            Pas d'inscription, pas de paywall — ouvre une matière et
-            avance sur les problèmes avec le raisonnement complet à chaque étape.
+            {ACCROCHE_PRIX}
           </p>
           <div className="mt-8 flex justify-center">
             <Link

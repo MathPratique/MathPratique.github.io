@@ -20,7 +20,7 @@ export const chapters: Chapter[] = [
   { id: "produits-3d", name: "Produits et géométrie 3D", topicId: "linear-algebra" },
   { id: "droites-plans", name: "Droites et plans dans l'espace", topicId: "linear-algebra" },
 
-  // Probabilités et statistiques
+  // Probabilités et statistique
   { id: "stat-descriptives", name: "Statistiques descriptives", topicId: "probability" },
   { id: "probabilites", name: "Probabilités", topicId: "probability" },
   { id: "inference", name: "Inférence statistique", topicId: "probability" },
@@ -98,16 +98,16 @@ export const lessons: Lesson[] = [
   { id: "L57", number: 57, name: "Interactions entre droites et plans — partie 1", chapterId: "droites-plans" },
   { id: "L58", number: 58, name: "Interactions entre droites et plans — partie 2", chapterId: "droites-plans" },
 
-  // Probabilités et statistiques — Statistiques descriptives (ch. 1)
+  // Probabilités et statistique — Statistiques descriptives (ch. 1)
   { id: "PSD1", number: 1, name: "Chapitre 1 — Statistiques descriptives", chapterId: "stat-descriptives" },
 
-  // Probabilités et statistiques — Probabilités (ch. 2)
+  // Probabilités et statistique — Probabilités (ch. 2)
   { id: "PSD2", number: 2, name: "Chapitre 2 — Probabilités", chapterId: "probabilites" },
 
-  // Probabilités et statistiques — Inférence statistique (ch. 3)
+  // Probabilités et statistique — Inférence statistique (ch. 3)
   { id: "PSD3", number: 3, name: "Chapitre 3 — Inférence statistique", chapterId: "inference" },
 
-  // Probabilités et statistiques — Corrélation, régression et χ² (ch. 4)
+  // Probabilités et statistique — Corrélation, régression et χ² (ch. 4)
   { id: "PSD4", number: 4, name: "Chapitre 4 — Corrélation, régression et χ²", chapterId: "correlation-regression" },
 
   // Calcul différentiel — 7 chapitres tirés directement des titres de la banque
