@@ -83,3 +83,47 @@ jobs:
       - name: Déployer sur GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Transition vers Firebase Hosting (plan du 2026-10-20, étape 4). Le même
+  # site part aussi sur Firebase, à l'adresse mathpratique-8dea1.web.app ;
+  # mathpratique.ca reste servi par GitHub Pages jusqu'à la bascule du DNS.
+  #
+  # - Job séparé : un échec côté Firebase ne bloque pas GitHub Pages.
+  # - Aucune nouvelle construction : on publie l'artefact exact du job
+  #   `build`, déjà testé, pour que les deux hébergeurs servent les mêmes
+  #   fichiers.
+  # - Le site seulement : pour le canal `live`, l'action lance
+  #   `firebase deploy --only hosting`. Les fonctions ne sont jamais
+  #   touchées (analyserNotes est dans main sans être déployée).
+  # - Le compte de service `github-deploiement-site` n'a que les rôles
+  #   Administrateur Firebase Hosting et Lecteur de clés API.
+  deploy-firebase:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Récupérer le code (pour firebase.json)
+        uses: actions/checkout@v4
+
+      - name: Récupérer le site construit par le job build
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: ./artefact
+
+      - name: Extraire le site dans dist/
+        # CNAME ne sert qu'à GitHub Pages : on ne le publie pas sur Firebase.
+        run: |
+          mkdir -p dist
+          tar -xf artefact/artifact.tar -C dist
+          rm -f dist/CNAME
+          test -f dist/index.html
+          test -f dist/404.html
+
+      - name: Déployer sur Firebase Hosting (site seulement)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: mathpratique-8dea1
+          channelId: live
