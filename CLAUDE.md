@@ -385,8 +385,11 @@ celles des commits.
   2026-10-23, les garde-fous sur la clé de l'API qui étaient en cours au
   2026-10-20. L'interface (la liste de notions à cocher) n'existe pas encore,
   et `analyserNotes` n'est pas déployée.
-- **Vente** : `VENTE_OUVERTE` vaut `false` ; `creerSessionCheckout` refuse
-  aussi côté serveur et reste privée. Aucun achat réel n'a été fait.
+- **Vente** : `VENTE_OUVERTE` vaut `false`, et `creerSessionCheckout` refuse
+  côté serveur toute session tant qu'il l'est. Depuis le 2026-10-26, la
+  fonction est appelable publiquement (voir « Réglé » plus bas) ; c'est donc
+  le code qui refuse, et non plus Google. Clés Stripe toujours en mode test
+  (`sk_test_`). Aucun achat réel n'a été fait.
 - **Migration vers Firebase Hosting** : le bloc `hosting` de `firebase.json`
   existe, et un déploiement de test a été vérifié sur
   `mathpratique-8dea1.web.app` (2026-10-20). Restent le compte de service et
@@ -433,18 +436,32 @@ celles des commits.
   (`/enseignants/`). C'est sans gravité, mais à harmoniser, au plus tard lors
   de la bascule vers Firebase Hosting.
 
-Réglé : le 403 de `webhookStripe` (2026-10-20). L'accès public est maintenant
-déclaré dans le code, et un événement de test Stripe a été reçu avec un 200.
-`creerSessionCheckout` répond toujours 403, mais volontairement : elle reste
-privée jusqu'à l'ouverture de la vente.
+Réglé : les deux 403 des fonctions de paiement.
+
+- `webhookStripe` (2026-10-20) : `invoker: "public"` déclaré dans le code,
+  que la CLI réapplique à chaque déploiement d'une fonction `onRequest`. Un
+  événement de test Stripe a été reçu avec un 200. Revérifié le 2026-10-26 :
+  un appel sans signature reçoit 400 « signature manquante » (le code).
+- `creerSessionCheckout` (2026-10-26) : la liaison `allUsers →
+  roles/run.invoker` est posée une fois sur le service Cloud Run, par l'API.
+  Pour un `onCall`, firebase-tools 15.25.1 ne pose ce droit qu'à une création
+  réussie et n'y touche jamais lors d'une mise à jour : une option `invoker`
+  serait ignorée, et la liaison survit aux déploiements (voir le commentaire
+  au-dessus de la fonction et `TESTS-ACHAT.md`, § 4.5). Un appel sans jeton
+  reçoit maintenant 400 « La boutique n'est pas encore ouverte » au lieu du
+  403 de Google.
+
+Dans les deux cas, la sécurité est dans le code : signature Stripe vérifiée
+pour le webhook ; vente fermée refusée d'abord, puis connexion exigée, pour
+`creerSessionCheckout`.
 
 ### Prochaines étapes suggérées
 
 1. Terminer la migration vers Firebase Hosting, puis passer le dépôt en privé.
 2. Régler la section « À régler avant l'ouverture des ventes ».
 3. Faire l'achat réel de `TESTS-ACHAT.md`, puis ouvrir la vente : passer
-   `VENTE_OUVERTE` à `true`, déployer `creerSessionCheckout` et la rendre
-   publique (voir `TESTS-ACHAT.md`, § 4.5).
+   `VENTE_OUVERTE` à `true`, déployer `creerSessionCheckout` et vérifier
+   qu'elle est toujours publique (voir `TESTS-ACHAT.md`, § 4.5).
 4. Construire l'interface de « Quiz à partir de mes notes ».
 5. Régler la dette ESLint, puis reformuler E034 et E035.
 6. Passer les adresses en français, selon le plan ci-dessus.

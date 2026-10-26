@@ -736,12 +736,19 @@ Puis, dans cet ordre :
 1. Commit.
 2. `npx firebase deploy --only functions:creerSessionCheckout` — la fonction
    ne lit l'interrupteur qu'au déploiement.
-3. Rendre `creerSessionCheckout` publique, si ce n'est pas déjà fait :
-   console Google Cloud → Cloud Run → `creersessioncheckout` → Sécurité →
-   « Autoriser l'accès public ». La CLI Firebase ne le fait qu'à la création
-   réussie d'une fonction, jamais lors d'une mise à jour d'une fonction
-   `onCall` ; la création du 2026-08-19 ayant échoué, c'est à faire à la main.
-   Sans ça, le bouton reçoit un 403 de Google.
+3. Vérifier que `creerSessionCheckout` est toujours publique : console
+   Google Cloud → Cloud Run → `creersessioncheckout` → Sécurité → « Autoriser
+   l'accès public » doit être coché. **Fait le 2026-10-26** (liaison
+   `allUsers → roles/run.invoker` posée par l'API) : un appel sans jeton
+   reçoit depuis « La boutique n'est pas encore ouverte » (le code), et non
+   plus un 403 de Google.
+
+   Cette liaison survit aux déploiements : la CLI Firebase ne touche jamais
+   aux droits d'une fonction `onCall` lors d'une mise à jour (elle ne les pose
+   qu'à une création réussie, et celle du 2026-08-19 avait échoué). Elle ne
+   disparaîtrait qu'en supprimant le service ; à recocher dans ce cas.
+   Déclarer `invoker` dans les options d'un `onCall` n'y changerait rien :
+   l'option est ignorée à la mise à jour.
 4. Push. Le site en prod (GitHub Pages) prendra la nouvelle version au
    prochain build.
 

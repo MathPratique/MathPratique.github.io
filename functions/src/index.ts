@@ -130,6 +130,12 @@ function stripe(): Stripe {
 //  1. Créer la session Checkout
 // ---------------------------------------------------------------------------
 
+// Appel public : la liaison `allUsers → roles/run.invoker` a été posée une
+// fois sur le service Cloud Run, le 2026-10-26 — pas ici. Pour un `onCall`,
+// firebase-tools ne pose ce droit qu'à une création réussie et n'y touche
+// jamais lors d'une mise à jour : une option `invoker` serait ignorée, et la
+// liaison posée survit donc aux déploiements. La sécurité est dans le code :
+// vente fermée refusée d'abord, puis connexion exigée. Voir TESTS-ACHAT.md, § 4.5.
 export const creerSessionCheckout = onCall(
   { secrets: [CLE_STRIPE], region: "northamerica-northeast1", cors: true },
   async (requete) => {
