@@ -23,7 +23,7 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 93 documents", () => {
+test("le catalogue couvre les 94 documents", () => {
   // Calcul différentiel — 52 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   14 exercices (7 chapitres × 2 : énoncés + corrigé. Les 7 cahiers
@@ -40,19 +40,22 @@ test("le catalogue couvre les 93 documents", () => {
   //    4 exercices (chapitres 2 et 3 : énoncés + corrigé chacun, sans indices)
   //    2 révision (la série méli-mélo du chapitre 3 et ses solutions — ses 70
   //      questions n'existent que là : ni cahier, ni catalogue, ni blob)
-  // Calcul intégral — 27, le cours complet depuis le 2026-10-13 :
+  // Calcul intégral — 28, le cours complet depuis le 2026-10-13 :
   //   18 notes (les 9 chapitres × 2 versions ; pas de recueil complet)
   //    9 exercices (les 9 chapitres, recueil complet seulement : les PDF
   //      « énoncés seuls » des chapitres 1 à 3 restent dans le seau mais ne
   //      sont plus déclarés ; ceux des chapitres 4 à 9 n'ont jamais été
   //      téléversés)
+  //    1 révision (la série méli-mélo 1, chapitres 3 à 5 : un recueil
+  //      complet unique, énoncés, réponses et solutions, comme les chapitres
+  //      de ce cours — ses 40 exercices n'existent que là)
   //      Pas d'examens : ils n'existent pas encore pour ce cours.
-  assert.equal(DOCUMENTS.length, 93);
+  assert.equal(DOCUMENTS.length, 94);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 42, exercices: 27, revision: 6, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 42, exercices: 27, revision: 7, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -61,7 +64,7 @@ test("le catalogue couvre les 93 documents", () => {
   assert.deepEqual(parCours, {
     "calcul-differentiel": 52,
     "probabilites-statistique": 14,
-    "calcul-integral": 27,
+    "calcul-integral": 28,
   });
 });
 

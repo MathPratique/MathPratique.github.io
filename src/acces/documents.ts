@@ -508,7 +508,8 @@ export const DOCUMENTS: Document[] = [
   // ═══ Calcul intégral ════════════════════════════════════════════════════
   //
   // Les NEUF chapitres, complets : les notes dans leurs deux versions et un
-  // document d'exercices par chapitre. Le catalogue est un INVENTAIRE, mais
+  // document d'exercices par chapitre, puis la série méli-mélo 1 (chapitres 3
+  // à 5), en fin de bloc. Le catalogue est un INVENTAIRE, mais
   // l'inverse n'est pas vrai : un fichier peut vivre dans le seau sans être
   // déclaré ici, et il devient alors invisible et intéléchargeable. Les
   // examens n'existent pas encore pour ce cours, donc ils n'ont pas d'entrée
@@ -763,6 +764,29 @@ export const DOCUMENTS: Document[] = [
     "Exercices, réponses et solutions — chapitre 9 : Séries de puissances et série de Maclaurin",
     "exercices/ch09-complet.pdf",
     "exercices",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+
+  // --- Série méli-mélo 1 : chapitres 3 à 5 ----------------------------------
+  //
+  // Quarante exercices écrits pour la série, absents des banques de chapitre
+  // (identifiants mm01-NNN dans le projet de notes), sur cinq types de
+  // questions mélangés : substitution trigonométrique, aire, volume de
+  // révolution, identification d'un solide parmi six dessins, équation
+  // différentielle à poser en mots. Ouverte aux trois niveaux, comme les
+  // séries méli-mélo des deux autres cours.
+  //
+  // Un seul document, comme pour les chapitres de ce cours : le recueil
+  // complet (énoncés, réponses finales, solutions détaillées), là où les deux
+  // autres cours publient le recueil et ses solutions séparément. La version
+  // « énoncés seuls » existe dans `build/` mais n'est ni déclarée ni
+  // téléversée. Le nom de fichier est celui de `build/`, sans renommage.
+  doc(
+    CALCUL_INTEGRAL,
+    "revision-melimelo-1",
+    "Série méli-mélo 1 — chapitres 3 à 5 : Techniques, aires, volumes et modélisation",
+    "revision/mm01-complet.pdf",
+    "revision",
     NIVEAUX_EXERCICES_REVISION,
   ),
 ];
