@@ -6,7 +6,7 @@
 // les fichiers servis.
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import AnimatedSection from "../components/ui/AnimatedSection";
 import CarteExerciceCD from "../components/practice/CarteExerciceCD";
 import FiltreProgressionBarre from "../progression/FiltreProgression";
@@ -18,6 +18,7 @@ import {
 } from "../progression/regles";
 import {
   CHAPITRES,
+  INDEX_CAHIER,
   LIB_DIFFICULTE,
   LIB_TYPE,
   TOTAL_BANQUE,
@@ -174,6 +175,31 @@ export default function ExercicesCalculDifferentiel() {
     [chapitresLive, chapitreActif, typeActif, difficulteActive, filtreProg, idsSnapshot, progression],
   );
 
+  // ── Arrivée sur une carte précise (#CD-C01-E026), depuis la page Devoirs.
+  // Le navigateur ne peut pas défiler seul : la carte n'existe pas encore
+  // au chargement. On attend que la banque définitive soit affichée — pour
+  // un détenteur d'accès, celle du réseau ou du cache, pas la vitrine qui
+  // la précède et qui décalerait tout — puis on défile une seule fois par
+  // ancre et on souligne la carte un instant.
+  const { hash } = useLocation();
+  const ancreTraitee = useRef<string | null>(null);
+  const banqueDefinitive =
+    accesResolu &&
+    banque.statut === "actif" &&
+    (!acces.etat.actif || banque.provenance !== "bundle");
+  useEffect(() => {
+    if (!hash || !banqueDefinitive || ancreTraitee.current === hash) return;
+    const carte = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!carte) return;
+    ancreTraitee.current = hash;
+    carte.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Pas de nettoyage de la minuterie : `groupes` change à chaque coche de
+    // progression, et l'annuler laisserait le surlignage en place.
+    const surlignage = ["ring-2", "ring-brand-500", "ring-offset-2"];
+    carte.classList.add(...surlignage);
+    setTimeout(() => carte.classList.remove(...surlignage), 2500);
+  }, [hash, banqueDefinitive, groupes]);
+
   const nbVisibles = groupes.reduce((n, g) => n + g.visibles.length, 0);
   const filtre = (cle: string, valeur: string | null) => {
     const p = new URLSearchParams(params);
@@ -288,11 +314,14 @@ export default function ExercicesCalculDifferentiel() {
             </header>
 
             <div className="mx-auto mt-5 max-w-4xl space-y-4">
+              {/* Le numéro du cahier, stable quel que soit le filtre : c'est
+                  celui des recueils et de la page Devoirs. La position dans
+                  la liste ne sert que si l'exercice manque au catalogue. */}
               {g.visibles.map((e, n) => (
                 <CarteExerciceCD
                   key={e.id}
                   exercice={e}
-                  numero={n + 1}
+                  numero={INDEX_CAHIER.get(e.id)?.numero ?? n + 1}
                   afficherNiveau={false}
                 />
               ))}

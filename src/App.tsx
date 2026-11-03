@@ -31,6 +31,10 @@ const ExercicesCalculDifferentiel = lazy(
 const ExercicesProbabilitesStatistique = lazy(
   () => import("./pages/ExercicesProbabilitesStatistique")
 );
+// Pages réservées (étudiants d'un groupe, administrateur) : chargées à la
+// demande, ni pré-rendues ni dans le plan du site, comme /mon-compte.
+const Devoirs = lazy(() => import("./pages/Devoirs"));
+const EditionDevoirs = lazy(() => import("./pages/EditionDevoirs"));
 
 export default function App() {
   // Un provider PAR COURS, posé sur la route du cours et non à la racine.
@@ -86,6 +90,14 @@ export default function App() {
         <Route path="/enseignants" element={<Enseignants />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/mon-compte" element={<MonCompte />} />
+        <Route
+          path="/devoirs/:coursId"
+          element={<Suspense fallback={chargementPage}><Devoirs /></Suspense>}
+        />
+        <Route
+          path="/devoirs/:coursId/edition"
+          element={<Suspense fallback={chargementPage}><EditionDevoirs /></Suspense>}
+        />
         {/* Outil gratuit, sans compte ni appel réseau. */}
         <Route path="/outils/note-examen-final" element={<CalculateurNoteFinale />} />
         <Route

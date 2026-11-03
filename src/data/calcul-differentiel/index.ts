@@ -40,6 +40,9 @@ export type {
 export { LIB_TYPE, LIB_DIFFICULTE, etape, enonce } from "../banque-types";
 
 import type { Chapitre, Exercice } from "../banque-types";
+// Les numéros du cahier, dans leur propre module : la page Devoirs en a
+// besoin sans tirer le contenu des 65 exercices.
+export { INDEX_CAHIER, FICHES_CATALOGUE } from "./cahier";
 
 const BRUTS = [ch01, ch02, ch03, ch04, ch05, ch06, ch07] as unknown as {
   chapitre: number;

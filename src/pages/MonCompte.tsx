@@ -16,6 +16,7 @@ import { niveauDe } from "../acces/telechargement";
 import { telecharger, messageTelechargement } from "../firebase/telechargement";
 import { EMAIL_CONTACT } from "../data/site";
 import { getProductById } from "../data/products";
+import { COURS_DEVOIRS, UID_ADMINISTRATEUR, accesOuvreDevoirs } from "../devoirs/regles";
 
 /** Le nom affichable d'un cours, sans exposer son identifiant technique. */
 function nomDuCours(coursId: string): string {
@@ -76,6 +77,23 @@ export default function MonCompte() {
       <AnimatedSection className="mx-auto max-w-3xl">
         <h1 className="text-balance text-3xl font-bold sm:text-4xl">Mon compte</h1>
         <p className="mt-2 text-sm text-ink-600">{utilisateur.email}</p>
+
+        {/* Le compte administrateur n'a pas forcément d'accès à un cours :
+            ses liens d'édition ne dépendent que de l'uid. */}
+        {utilisateur.uid === UID_ADMINISTRATEUR && (
+          <div className="mt-8 rounded-2xl border border-brand-100 bg-brand-50/40 p-5">
+            <h2 className="font-display text-base font-bold text-brand-900">Administration</h2>
+            <ul className="mt-2 space-y-1 text-sm">
+              {COURS_DEVOIRS.map((c) => (
+                <li key={c}>
+                  <Link to={`/devoirs/${c}/edition`} className="font-semibold text-brand-700">
+                    Modifier les devoirs — {nomDuCours(c)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <h2 className="mt-10 font-display text-xl font-bold text-brand-900">Mes accès</h2>
 
@@ -271,6 +289,17 @@ function CarteAcces({ acces }: { acces: Acces }) {
           télécharger les documents que tu veux garder : ils resteront à toi
           après la fin de l'accès.
         </p>
+      )}
+
+      {/* Les devoirs du groupe : pour un accès restreint actif, dans un
+          cours qui a une page Devoirs. */}
+      {COURS_DEVOIRS.includes(acces.coursId) && accesOuvreDevoirs(acces) && (
+        <Link
+          to={`/devoirs/${acces.coursId}`}
+          className="mt-4 inline-flex items-center justify-center rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+        >
+          Voir les devoirs
+        </Link>
       )}
 
       {etat.actif && <ListeDocuments acces={acces} />}

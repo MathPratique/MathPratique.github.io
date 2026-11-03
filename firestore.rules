@@ -90,6 +90,53 @@ service cloud.firestore {
       }
     }
 
+    // --- Compte administrateur du site --------------------------------------
+    // Un seul compte, désigné par son uid. Un uid n'est pas un secret : il ne
+    // permet pas de se connecter. Le même uid est écrit dans
+    // src/devoirs/regles.ts (UID_ADMINISTRATEUR), qui ne sert qu'à afficher
+    // ou cacher le bouton d'édition ; un test vérifie que les deux valeurs
+    // sont identiques. Changer d'administrateur = modifier les deux, puis
+    // déployer ces règles.
+    function estAdministrateurSite() {
+      return request.auth != null && request.auth.uid == "hZWPVvkJcWTmRbpox6jr0X6Mz3P2";
+    }
+
+    // --- Devoirs d'un cours ------------------------------------------------
+    // Un document par cours : la liste des exercices à faire, par semaine,
+    // désignés par leur ID dans la banque. Lu par les étudiants du cours
+    // (niveau restreint, accès valide), écrit par l'administrateur seulement.
+    match /devoirs/{coursId} {
+      // Même lecture du niveau que `niveauDe` dans le site : absent, vide ou
+      // inconnu compte comme « restreint ». Seuls « acheteur » et
+      // « enseignant » sont exclus — les devoirs sont ceux d'un groupe-classe.
+      function etudiantDuCours() {
+        let a = /databases/$(database)/documents/utilisateurs/$(request.auth.uid)/acces/$(coursId);
+        return request.auth != null
+          && exists(a)
+          && get(a).data.dateFin > request.time
+          && !(get(a).data.get('niveau', 'restreint') in ['acheteur', 'enseignant']);
+      }
+      // Liste blanche des clés, comme pour la progression. Le contenu de
+      // chaque semaine n'est pas audité ici : seul l'administrateur écrit.
+      function formeValide() {
+        return coursId in ['calcul-differentiel']
+          && request.resource.data.keys().hasOnly(['semaines', 'version', 'dateMaj'])
+          && request.resource.data.semaines is list
+          && request.resource.data.semaines.size() <= 60
+          && request.resource.data.version is int
+          && request.resource.data.dateMaj == request.time;
+      }
+      allow read: if estAdministrateurSite() || etudiantDuCours();
+      // `version` sert de verrou : un enregistrement fait à partir d'une
+      // version périmée (deux onglets ouverts) est refusé au lieu d'écraser
+      // le plus récent.
+      allow create: if estAdministrateurSite() && formeValide()
+        && request.resource.data.version == 1;
+      allow update: if estAdministrateurSite() && formeValide()
+        && request.resource.data.version == resource.data.version + 1;
+      allow delete: if false;
+    }
+
     // --- Journal des événements Stripe -------------------------------------
     // Sert à l'idempotence du webhook : un identifiant de session déjà
     // présent signifie « déjà traité ». Écrit et lu par le serveur seulement ;

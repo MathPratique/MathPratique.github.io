@@ -220,6 +220,16 @@ celles des commits.
   dans les deux cours.
 - **2026-09-30** — la pastille de niveau est retirée pour le calcul différentiel
   seulement (prop `afficherNiveau`), y compris dans `Hero.tsx`.
+- **2026-11-03** — chaque carte affiche le **numéro du cahier** (sa position
+  dans le chapitre, calculée sur `catalogue.json` : `INDEX_CAHIER`, module
+  `cahier.ts`) au lieu de sa position parmi les cartes affichées. Le numéro ne
+  change plus avec les filtres ; un visiteur voit donc des numéros non
+  consécutifs (3, 5, 11…). Une adresse avec ancre (`#CD-C01-E026`) fait
+  défiler jusqu'à la carte et la souligne un instant, une fois la banque
+  définitive affichée. *Raison : la page Devoirs nomme les exercices par ce
+  numéro et mène à leur carte.* La page de probabilités et statistique n'est
+  pas touchée : le catalogue de son chapitre 3 n'est pas synchronisé avec sa
+  banque (115 fiches contre 185 exercices).
 
 #### Exercices de probabilités et statistique — `ExercicesProbabilitesStatistique.tsx`
 
@@ -231,6 +241,32 @@ celles des commits.
   corrigé. *Cause : l'explication manquait dans 64 QCM sur 83.*
 - **2026-09-10 ◆** — un sigle de cours est retiré de la méta-description
   indexée.
+
+#### Devoirs — `Devoirs.tsx`, `EditionDevoirs.tsx`, `src/devoirs/`
+
+- **2026-11-03** — nouvelle page `/devoirs/calcul-differentiel` : les
+  exercices à faire, par semaine (titre, date et note facultatives), groupés
+  par chapitre. Chaque exercice est stocké par son ID et affiché par son
+  numéro du cahier, avec un lien vers sa carte. Lecture en direct dans
+  Firestore (`devoirs/{coursId}`, un document par cours). *Raison : remplacer
+  la liste Word convertie en PDF, sans commit ni déploiement à chaque
+  changement.*
+  - Réservée, par les règles Firestore, aux accès **restreints** actifs du
+    cours et au compte administrateur (uid écrit dans `firestore.rules` et
+    dans `UID_ADMINISTRATEUR`, un test vérifie qu'ils sont identiques).
+    Acheteurs et enseignants ne la voient pas.
+  - `/devoirs/calcul-differentiel/edition`, pour l'administrateur : ajouter,
+    retirer et réordonner les semaines ; choisir les exercices par chapitre
+    et section ; « Coller une liste » (« 26, 29, 50 à 54 », convertie en IDs
+    avec le catalogue du jour) ; enregistrer. `version` sert de verrou : un
+    enregistrement fait depuis une version périmée (deux onglets) est refusé.
+  - Les deux pages sont chargées à la demande, en `noindex`, ni pré-rendues
+    ni dans le plan du site, comme `/mon-compte`.
+  - Mon compte : bouton « Voir les devoirs » pour un accès restreint actif,
+    et bloc « Administration » pour le compte administrateur.
+  - Tests : `tests/devoirs.test.mjs` (dans `npm test`) et
+    `tests/regles-devoirs.test.mjs` (émulateur, commande en tête du fichier,
+    avec `--test-concurrency=1`).
 
 #### Quiz et quiz personnalisé — `Quiz.tsx`, `CustomQuiz.tsx`, `src/quiz/`
 

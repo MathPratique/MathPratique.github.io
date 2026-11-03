@@ -167,6 +167,35 @@ export function clesRefuseesCatalogue(
     }));
 }
 
+// ---------------------------------------------------------------------------
+//  Le numéro du cahier
+// ---------------------------------------------------------------------------
+//
+// Le numéro qu'un étudiant voit dans un recueil imprimé est la POSITION de
+// l'exercice dans son chapitre, dans l'ordre de la banque. Le catalogue
+// public suit exactement cet ordre (vérifié pour les 7 chapitres du calcul
+// différentiel le 2026-11-02). Ce numéro peut donc changer si la banque est
+// réordonnée : c'est pourquoi on stocke toujours l'ID, et on recalcule le
+// numéro à l'affichage.
+
+/** Ce qu'il faut d'une fiche du catalogue pour la numéroter. */
+export type FicheNumerotee = { id: string; chapitre: number; section: string };
+
+/** Où se trouve un exercice dans les cahiers. */
+export type Repere = { chapitre: number; section: string; numero: number };
+
+/** Le repère de chaque exercice, indexé par ID. */
+export function indexerCahier(fiches: FicheNumerotee[]): Map<string, Repere> {
+  const index = new Map<string, Repere>();
+  const compteur = new Map<number, number>();
+  for (const f of fiches) {
+    const numero = (compteur.get(f.chapitre) ?? 0) + 1;
+    compteur.set(f.chapitre, numero);
+    index.set(f.id, { chapitre: f.chapitre, section: f.section, numero });
+  }
+  return index;
+}
+
 /** Le palier d'une étape, ou null si l'étape est absente. */
 export function etape(ex: Exercice, palier: Palier): Etape | null {
   return ex.etapes.find((e) => e.etape === palier) ?? null;
