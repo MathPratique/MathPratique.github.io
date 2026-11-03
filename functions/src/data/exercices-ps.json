@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "2bba850c778c7bc7",
+  "contentHash": "590174482628913e",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -4212,6 +4212,1161 @@
             "Deux jeux peuvent avoir la même dispersion (même $s$) tout en étant centrés sur des valeurs très différentes.",
             "Ex : {10, 20, 30} et {110, 120, 130} ont tous deux $s = 10$ mais $\\bar{x} = 20$ et $120$."
           ]
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "population",
+        "echantillon",
+        "unite-statistique",
+        "variable"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour évaluer la qualité de l'air dans les cégeps de Montréal, une équipe mesure la concentration de dioxyde de carbone (en ppm) dans 40 salles de classe choisies au hasard, en fin d'avant-midi. Dans l'une d'elles, l'appareil indique 1 150 ppm.\n\nIdentifie la population, l'échantillon, l'unité statistique, la variable et une donnée."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Demande-toi d'abord ce qu'on mesure, puis sur quoi on le mesure chaque fois."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Population : l'ensemble des salles de classe des cégeps de Montréal ; échantillon : les 40 salles mesurées ; unité statistique : une salle de classe ; variable : la concentration de dioxyde de carbone dans l'air (en ppm) ; donnée : 1 150 ppm."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Repérer la variable.</strong> L'appareil mesure la concentration de dioxyde de carbone dans l'air, en parties par million (ppm). C'est la caractéristique étudiée : la <em>variable</em>.",
+            "<strong>Trouver l'unité statistique.</strong> On obtient une mesure par salle : l'unité statistique est <em>une salle de classe</em>. Ce n'est pas un élève, puisque la concentration est une propriété de l'air d'une salle, pas d'une personne. Ce n'est pas non plus un cégep, puisqu'un même cégep peut fournir plusieurs salles.",
+            "<strong>Délimiter la population.</strong> L'étude veut décrire l'air des salles de classe des cégeps de Montréal : la population est l'ensemble de ces salles.",
+            "<strong>Repérer l'échantillon.</strong> Les 40 salles réellement mesurées forment l'échantillon, un sous-ensemble de la population.",
+            "<strong>Donner une donnée.</strong> La valeur obtenue pour une salle précise, 1 150 ppm, est une donnée."
+          ],
+          "piegeCourant": "Désigner les élèves comme unité statistique parce que l'étude porte sur leur environnement. La variable est mesurée dans une salle : c'est la salle, l'unité."
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "population",
+        "echantillon",
+        "recensement"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un arrondissement compte 14 piscines intérieures publiques. Pour vérifier la désinfection de l'eau, une inspectrice mesure la concentration de chlore libre (en mg/L) dans chacune des 14 piscines. Pour l'une d'elles, elle obtient 1,2 mg/L.\n\n(a) Identifie la population, l'échantillon, l'unité statistique, la variable et une donnée.\n\n(b) S'agit-il d'un recensement ou d'un sondage ? Justifie."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Compare l'ensemble des piscines qu'on veut décrire avec l'ensemble des piscines réellement observées."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Population : les 14 piscines intérieures publiques de l'arrondissement ; échantillon : ces mêmes 14 piscines ; unité statistique : une piscine ; variable : la concentration de chlore libre (en mg/L) ; donnée : 1,2 mg/L. (b) Un recensement, puisque toute la population est observée."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Repérer la variable et l'unité.</strong> On mesure la concentration de chlore libre, en mg/L : c'est la <em>variable</em>. On fait une mesure par piscine : l'unité statistique est <em>une piscine</em>.",
+            "<strong>Délimiter la population.</strong> L'inspection porte sur les piscines intérieures publiques de l'arrondissement : la population compte 14 piscines.",
+            "<strong>Repérer l'échantillon.</strong> L'inspectrice a mesuré les 14 piscines. Les unités observées sont donc toutes celles de la population : ici, l'échantillon se confond avec la population.",
+            "<strong>Donner une donnée.</strong> 1,2 mg/L est la valeur de la variable pour une piscine précise.",
+            "<strong>Recensement ou sondage (b).</strong> Observer toute la population, c'est la définition d'un recensement. Il est réaliste ici : la population est petite, accessible, et la mesure ne détruit rien."
+          ],
+          "piegeCourant": "Croire qu'une étude a toujours un échantillon plus petit que la population. Quand on observe toutes les unités, on fait un recensement : l'échantillon est la population elle-même."
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "unite-statistique",
+        "population",
+        "echantillon"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour suivre la propagation de l'herbe à poux le long d'un tronçon de 10 km de l'autoroute 20, une équipe délimite sur l'accotement 25 carrés de 1 m², appelés quadrats, placés au hasard. Dans chaque quadrat, elle compte les plants d'herbe à poux ; le premier en contient 12.\n\nIdentifie la population, l'échantillon, l'unité statistique, la variable et une donnée."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour trouver l'unité statistique, demande-toi sur quoi chaque valeur de la variable a été relevée."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Population : l'ensemble des carrés de 1 m² qu'on peut délimiter sur l'accotement du tronçon ; échantillon : les 25 quadrats ; unité statistique : un quadrat (un carré de 1 m²) ; variable : le nombre de plants d'herbe à poux dans le quadrat ; donnée : 12 plants."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Repérer la variable.</strong> Ce que l'équipe relève, c'est le nombre de plants d'herbe à poux dans un carré : c'est la <em>variable</em>.",
+            "<strong>Trouver l'unité statistique.</strong> Chaque valeur de la variable (12, par exemple) a été relevée sur un quadrat. On ne compte pas « le nombre de plants » d'un plant : l'unité statistique est <em>un quadrat</em>, et non un plant.",
+            "<strong>Délimiter la population.</strong> Si l'unité est un carré de 1 m², la population est l'ensemble de tous les carrés de 1 m² qu'on pourrait délimiter sur l'accotement du tronçon de 10 km.",
+            "<strong>Repérer l'échantillon et une donnée.</strong> L'échantillon est formé des 25 quadrats placés au hasard. La donnée du premier quadrat est 12 plants.",
+            "<strong>Vérifier la cohérence.</strong> Population, échantillon, unité et donnée parlent tous de carrés de terrain. Si l'on prenait le plant comme unité, la variable « nombre de plants » ne voudrait plus rien dire."
+          ],
+          "piegeCourant": "Choisir le plant d'herbe à poux comme unité statistique parce que c'est l'organisme étudié. La variable, un nombre de plants, se relève sur un carré de terrain : c'est le carré, l'unité."
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "variable",
+        "donnee",
+        "population",
+        "echantillon"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour évaluer la pollution des plages du Saint-Laurent par les microplastiques, une équipe choisit au hasard 20 plages publiques du fleuve. Sur chacune, elle prélève 1 kg de sable et compte les particules de plastique qu'il contient. Sur l'une des plages, elle en trouve 37.\n\nUn élève propose l'analyse suivante :\n\nPopulation : les 20 plages.\n\nÉchantillon : les particules de microplastique.\n\nUnité statistique : une plage.\n\nVariable : 37 particules.\n\nDonnée : les microplastiques.\n\nRepère les erreurs de l'élève et corrige-les."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Vérifie chaque ligne avec sa définition : s'agit-il d'un ensemble d'unités, d'une seule unité, d'une caractéristique ou d'une valeur ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Seule l'unité statistique (une plage) est juste. Corrections : population : l'ensemble des plages publiques du Saint-Laurent ; échantillon : les 20 plages étudiées ; variable : le nombre de particules de plastique dans 1 kg de sable ; donnée : 37 particules, pour une plage."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Partir de l'élément juste.</strong> La variable est relevée une fois par plage : l'unité statistique est bien <em>une plage</em>. Les autres éléments doivent être cohérents avec cette unité.",
+            "<strong>Population.</strong> L'étude veut décrire les plages du Saint-Laurent, pas seulement celles qu'on a visitées : la population est l'ensemble des plages publiques du fleuve. L'élève a donné l'échantillon à la place de la population.",
+            "<strong>Échantillon.</strong> Un échantillon est un sous-ensemble de la population : ses éléments sont des plages. Les particules de plastique ne sont pas des plages ; l'échantillon, ce sont les 20 plages étudiées.",
+            "<strong>Variable et donnée.</strong> La variable est une caractéristique qui change d'une unité à l'autre : le nombre de particules de plastique dans 1 kg de sable. La donnée est la valeur obtenue pour une unité : 37 particules. L'élève a inversé les deux, et « les microplastiques » ne sont ni l'un ni l'autre : c'est ce qu'on compte.",
+            "<strong>Un test rapide.</strong> Une variable peut prendre des valeurs différentes d'une plage à l'autre ; « 37 particules » est une seule valeur et ne peut pas varier. C'est donc une donnée, pas une variable."
+          ],
+          "piegeCourant": "Confondre la variable et la donnée. La variable est la question qu'on pose à chaque unité (« combien de particules ? ») ; la donnée est la réponse obtenue pour une unité (« 37 »)."
+        }
+      ]
+    },
+    {
+      "id": "ch01-dif-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "population",
+        "echantillon",
+        "unite-statistique",
+        "variable"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une MRC de l'Abitibi-Témiscamingue compte 3 600 puits privés, répartis le long de 60 rangs. Pour connaître la concentration d'arsenic dans l'eau de ces puits, une technicienne forme un échantillon de 150 puits choisis au hasard parmi les 3 600. Dans chacun, elle prélève un échantillon d'eau de 250 mL, qu'elle envoie au laboratoire. Pour l'un des puits, le laboratoire obtient une concentration de 4,3 µg/L.\n\n(a) Identifie la population, l'échantillon, l'unité statistique, la variable et une donnée.\n\n(b) Le mot « échantillon » revient deux fois dans cette description. Désigne-t-il chaque fois un échantillon au sens statistique ? Justifie.\n\n(c) Un collègue soutient que l'unité statistique est le rang, puisque la MRC classe ses dossiers par rang. A-t-il raison ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par la variable : qu'est-ce qui est mesuré, et sur quoi le mesure-t-on chaque fois ? Rappelle-toi ensuite qu'un échantillon, au sens statistique, est un sous-ensemble de la population."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Population : les 3 600 puits privés de la MRC ; échantillon : les 150 puits choisis ; unité statistique : un puits ; variable : la concentration d'arsenic dans son eau (en µg/L) ; donnée : 4,3 µg/L. (b) Non : seul l'échantillon de 150 puits est un échantillon statistique ; l'échantillon d'eau est un prélèvement qui sert à mesurer la variable sur un seul puits. (c) Non : la variable est mesurée sur chaque puits, et ce sont des puits qu'on a tirés au hasard ; l'unité statistique est le puits."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Repérer la variable d'abord.</strong> Ce que l'étude mesure, c'est la concentration d'arsenic dans l'eau, en microgrammes par litre. C'est la caractéristique observée : la <em>variable</em>.",
+            "<strong>Trouver l'unité statistique.</strong> On se demande sur quoi la variable est mesurée, une mesure à la fois. Chaque concentration provient de l'eau d'un puits précis : l'unité statistique est <em>un puits</em>. Les 150 mesures correspondent bien à 150 puits.",
+            "<strong>Délimiter la population.</strong> L'étude veut décrire l'eau des puits privés de la MRC : la population est l'ensemble des 3 600 puits. Ce n'est pas l'ensemble des puits du Québec, que l'étude ne vise pas. Ce ne sont pas non plus les 60 rangs, puisque ce n'est pas sur un rang qu'on mesure la variable.",
+            "<strong>Repérer l'échantillon et une donnée.</strong> L'échantillon est le sous-ensemble réellement observé : les 150 puits choisis au hasard. Une donnée est la valeur de la variable pour une unité : 4,3 µg/L pour l'un des puits.",
+            "<strong>Démêler les deux « échantillons » (b).</strong> Au sens statistique, un échantillon est un sous-ensemble de la population : ses éléments sont des unités statistiques, ici des puits. L'échantillon de 150 puits répond à cette définition. L'échantillon d'eau de 250 mL, non : ce n'est pas un élément de la population, mais le prélèvement sur lequel le laboratoire mesure la variable pour <em>un</em> puits. Les 150 prélèvements fournissent les 150 données ; ils ne forment pas un deuxième échantillon.",
+            "<strong>Trancher entre le puits et le rang (c).</strong> L'unité statistique est l'élément sur lequel on observe la variable ; la façon de classer les dossiers n'y change rien. Ici, on mesure l'eau de chaque puits, et ce sont des puits qu'on a tirés au hasard. Si l'étude avait plutôt tiré des rangs au hasard pour relever, sur chacun, la proportion de puits qui dépassent la norme, l'unité aurait été le rang, et la population, les 60 rangs.",
+            "<strong>Vérifier la cohérence.</strong> Population (3 600 puits), échantillon (150 puits), unité (un puits), donnée (la concentration d'un puits) : les quatre parlent des mêmes objets. Si l'un d'eux parlait de rangs ou de flacons d'eau, une erreur se serait glissée."
+          ],
+          "piegeCourant": "Prendre l'échantillon d'eau du laboratoire pour l'échantillon statistique, ou désigner le rang comme unité parce que les puits y sont regroupés. Dans les deux cas, on a oublié de se demander sur quoi, exactement, la variable est mesurée."
+        }
+      ]
+    },
+    {
+      "id": "ch01-dif-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "population",
+        "echantillon",
+        "unite-statistique",
+        "representativite",
+        "biais-selection"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une entreprise d'eau embouteillée veut connaître le nombre de bouteilles d'eau achetées chaque mois par les ménages de Laval. Un samedi, ses employés interrogent 800 clients à la sortie d'un magasin-entrepôt situé à Laval. Une cliente déclare que son ménage achète 48 bouteilles par mois.\n\n(a) Quelle population l'entreprise veut-elle décrire ? Précise l'unité statistique et la variable.\n\n(b) Plusieurs clients interrogés habitent Montréal ou Terrebonne. Leurs réponses font-elles partie de l'échantillon de cette étude ? Justifie à l'aide de la définition d'un échantillon.\n\n(c) Même en écartant ces clients, explique pourquoi l'échantillon obtenu n'est pas représentatif de la population.\n\n(d) Propose une façon de choisir l'échantillon qui corrige ce problème."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (c), demande-toi quels ménages de Laval n'avaient aucune chance d'être interrogés, et en quoi ils peuvent différer de ceux qui l'ont été."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Population : les ménages de Laval ; unité statistique : un ménage ; variable : le nombre de bouteilles d'eau achetées par le ménage en un mois. (b) Non : un échantillon est un sous-ensemble de la population, et un ménage de Montréal ou de Terrebonne n'appartient pas à la population étudiée. (c) Seuls les ménages qui fréquentent ce magasin-entrepôt, un samedi, pouvaient être interrogés ; ce sont souvent des ménages qui achètent en grande quantité. L'échantillon ne reflète pas la diversité des ménages de Laval : il est biaisé, et ses 800 réponses n'y changent rien. (d) Tirer des ménages au hasard dans une liste de toutes les adresses résidentielles de Laval, puis les joindre."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Population (a).</strong> L'entreprise veut décrire les achats des ménages de Laval : la population est l'ensemble des ménages de Laval, et non les clients du magasin.",
+            "<strong>Unité et variable (a).</strong> La question porte sur les achats d'un ménage : l'unité statistique est <em>un ménage</em>. La cliente interrogée répond au nom du sien, et sa réponse (48 bouteilles) est une donnée qui décrit ce ménage. La variable est le nombre de bouteilles d'eau achetées par le ménage en un mois.",
+            "<strong>Qui fait partie de l'échantillon (b) ?</strong> Un échantillon est un sous-ensemble de la population. Un ménage de Montréal ou de Terrebonne n'appartient pas à la population des ménages de Laval : il ne peut pas faire partie de l'échantillon. Ses réponses, même exactes, décrivent une autre population ; il faut les écarter.",
+            "<strong>Pourquoi l'échantillon est biaisé (c).</strong> Un échantillon représentatif reflète fidèlement la diversité de la population. Or seuls les ménages qui font leurs courses dans ce magasin-entrepôt, ce samedi-là, pouvaient être interrogés. Ces ménages achètent souvent en grande quantité ; ceux qui n'y vont jamais n'avaient aucune chance d'être choisis. L'image obtenue est biaisée, probablement vers le haut.",
+            "<strong>La taille ne corrige rien (c).</strong> Interroger 800 personnes, ou même 8 000, au même endroit reproduirait le même biais. La qualité de l'échantillonnage importe autant que sa taille.",
+            "<strong>Corriger la méthode (d).</strong> Il faut que chaque ménage de Laval puisse être choisi : on tire des ménages au hasard dans une liste de toutes les adresses résidentielles de la ville, puis on les joint, par exemple par téléphone ou par courrier."
+          ],
+          "piegeCourant": "Croire qu'un grand nombre de réponses compense la façon dont l'échantillon a été choisi. L'étude porte sur les ménages de Laval : c'est à eux que l'échantillon doit ressembler, pas aux clients d'un magasin."
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "population",
+        "echantillon",
+        "unite-statistique",
+        "donnee"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Pour évaluer la contamination au mercure des poissons du réservoir Gouin, des biologistes capturent 45 dorés jaunes et mesurent la concentration de mercure dans la chair de chacun (en mg/kg). Pour l'un d'eux, ils obtiennent 0,42 mg/kg. Laquelle des associations suivantes est correcte ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Population : les 45 dorés jaunes capturés."
+            },
+            {
+              "cle": "b",
+              "texte": "Variable : 0,42 mg/kg."
+            },
+            {
+              "cle": "c",
+              "texte": "Unité statistique : un doré jaune."
+            },
+            {
+              "cle": "d",
+              "texte": "Donnée : la concentration de mercure dans la chair."
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque proposition, demande-toi si l'élément nommé est un ensemble de poissons, un seul poisson, une caractéristique ou une valeur."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Unité statistique : un doré jaune."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Établir les cinq éléments.</strong> Population : l'ensemble des dorés jaunes du réservoir Gouin. Échantillon : les 45 dorés capturés. Unité statistique : un doré jaune. Variable : la concentration de mercure dans la chair (en mg/kg). Donnée : 0,42 mg/kg pour un poisson.",
+            "<strong>Confronter chaque choix.</strong> a) confond la population et l'échantillon. b) donne une donnée à la place de la variable. d) donne la variable à la place d'une donnée.",
+            "<strong>Conclure.</strong> Seul c) associe correctement un élément à son rôle : l'unité statistique est un doré jaune."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Les 45 poissons capturés ne sont qu'une partie de ceux que l'étude veut décrire : c'est l'échantillon. La population est l'ensemble des dorés jaunes du réservoir Gouin."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "0,42 mg/kg est la valeur obtenue pour un poisson précis : c'est une donnée. La variable est la caractéristique mesurée, la concentration de mercure dans la chair."
+            },
+            {
+              "cle": "c",
+              "correct": true,
+              "explication": "On fait une mesure par poisson : chaque doré jaune est une unité statistique. C'est sur lui que la variable est observée."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "La concentration de mercure est la caractéristique qu'on mesure sur chaque poisson : c'est la variable. Une donnée est une valeur précise, comme 0,42 mg/kg."
+            }
+          ],
+          "piegeCourant": "Confondre la population et l'échantillon. L'étude veut parler de tous les dorés jaunes du réservoir, et les 45 poissons capturés n'en sont qu'une partie."
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "representativite",
+        "biais-selection",
+        "echantillon",
+        "sondage"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un cégep de 4 200 étudiants veut estimer la proportion de ses étudiants qui viennent au cégep en transport en commun. Laquelle des méthodes suivantes donne l'échantillon le plus susceptible d'être représentatif ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Interroger les 300 premiers étudiants qui descendent de l'autobus devant le cégep, un lundi matin."
+            },
+            {
+              "cle": "b",
+              "texte": "Tirer 250 étudiants au hasard dans la liste officielle des inscrits, puis les joindre un à un."
+            },
+            {
+              "cle": "c",
+              "texte": "Publier un sondage sur la page de l'association étudiante ; 1 900 étudiants y répondent."
+            },
+            {
+              "cle": "d",
+              "texte": "Interroger tous les étudiants présents à un cours de 8 h du programme de sciences de la nature."
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque méthode, demande-toi si tous les étudiants du cégep avaient une chance d'être choisis, et si la façon de les choisir est liée à leur moyen de transport."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Tirer 250 étudiants au hasard dans la liste officielle des inscrits, puis les joindre un à un."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Le critère.</strong> Un échantillon représentatif reflète fidèlement la diversité de la population, ici les 4 200 étudiants du cégep. La façon la plus sûre d'y arriver est de choisir les unités au hasard.",
+            "<strong>Méthode a).</strong> Le lieu de l'enquête choisit lui-même les répondants : il ne retient que des usagers de l'autobus. C'est le biais le plus grossier des quatre.",
+            "<strong>Méthode c).</strong> Les répondants se sélectionnent eux-mêmes. 1 900 réponses ne suffisent pas à rendre l'échantillon représentatif.",
+            "<strong>Méthode d).</strong> Un groupe-classe d'un seul programme, à une seule heure, ne reflète pas la diversité du cégep.",
+            "<strong>Méthode b).</strong> Le tirage au hasard dans la liste de tous les inscrits donne à chaque étudiant une chance d'être choisi. C'est la seule méthode qui ne favorise aucun moyen de transport.",
+            "<strong>Ce qu'il faut retenir.</strong> L'échantillon le plus représentatif est ici le plus petit : la qualité de l'échantillonnage importe autant que sa taille."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Toutes ces personnes viennent en autobus : les étudiants qui viennent en voiture, à vélo ou à pied n'avaient aucune chance d'être choisis. La proportion obtenue serait proche de 100 %, une image très biaisée."
+            },
+            {
+              "cle": "b",
+              "correct": true,
+              "explication": "Chaque étudiant inscrit a une chance d'être choisi, quelle que soit sa façon de se déplacer. Le hasard permet à l'échantillon de refléter la diversité des 4 200 étudiants, même s'il est le plus petit des quatre."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Ce sont des volontaires : seuls ceux qui suivent cette page et qui ont envie de répondre participent. Malgré sa grande taille, l'échantillon peut être biaisé ; la taille ne corrige pas le mode de sélection."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Un seul programme, un seul horaire : ces étudiants ne reflètent pas la diversité du cégep. Ceux qui ont un cours à 8 h, par exemple, n'ont pas forcément les mêmes habitudes de transport que les autres."
+            }
+          ],
+          "piegeCourant": "Choisir la méthode qui donne le plus de réponses. 1 900 volontaires restent des volontaires : la taille ne corrige pas la façon dont l'échantillon a été choisi."
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "vocabulaire",
+        "population",
+        "definition"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "En statistique, la population d'une étude peut être formée d'objets, d'animaux ou de lieux, et pas seulement de personnes.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Dans le vocabulaire de la statistique, que désigne le mot « individu » dans la définition de la population ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>La définition.</strong> La population est l'ensemble de tous les individus sur lesquels porte l'étude. En statistique, un « individu » est simplement une unité statistique, quelle qu'elle soit.",
+            "<strong>Des exemples.</strong> Une étude sur l'eau des lacs a pour population des lacs ; un contrôle de qualité de piles électriques, des piles ; une étude de la qualité de l'air, des salles ; un suivi de la faune, des animaux.",
+            "<strong>Conclure.</strong> La population peut être formée de personnes, mais aussi d'objets, d'animaux, de lieux ou de parcelles de terrain. L'énoncé est vrai."
+          ],
+          "piegeCourant": "Prendre le mot « individu » dans son sens courant, celui d'une personne. En statistique, un lac, une pièce fabriquée ou un poisson sont aussi des individus."
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Vocabulaire de base",
+      "motsCles": [
+        "recensement",
+        "sondage",
+        "test-destructif"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un recensement donne une information exacte sur la population. C'est donc toujours la stratégie à privilégier lorsqu'on étudie une population.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Un recensement est-il toujours possible ? Pense au coût, au temps, et à ce que deviennent les unités après la mesure."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Ce qui est vrai.</strong> Un recensement observe toute la population : aucun écart ne vient du choix d'un échantillon. C'est son avantage.",
+            "<strong>Il est parfois impossible.</strong> On ne peut pas capturer et peser tous les poissons du Saint-Laurent : la population est trop grande et en partie inaccessible.",
+            "<strong>Il est souvent trop coûteux.</strong> Mesurer la tension artérielle de tous les adultes du Québec demanderait des années et des sommes énormes.",
+            "<strong>Il peut être destructif.</strong> Tester jusqu'à la rupture toutes les poutres d'un lot reviendrait à détruire tout le lot : il ne resterait rien à vendre.",
+            "<strong>Conclure.</strong> Le sondage est presque toujours la stratégie retenue en pratique. Le recensement convient surtout quand la population est petite, accessible, et que la mesure ne détruit rien. L'énoncé est faux."
+          ],
+          "piegeCourant": "Retenir l'avantage du recensement, l'exactitude, en oubliant ses contraintes : il est souvent impossible, trop coûteux ou même destructif."
+        }
+      ]
+    },
+    {
+      "id": "ch01-fac-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "classification-multiple",
+        "qualitative",
+        "quantitative"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une clinique vétérinaire tient une fiche pour chaque chien vu en consultation. On y trouve :\n\n(a) la race du chien (labrador, beagle, caniche, …) ;\n\n(b) le nombre de consultations depuis un an ;\n\n(c) la masse du chien (en kg) ;\n\n(d) l'état de la dentition (bon, moyen, mauvais).\n\nClasse chaque variable (type et sous-type)."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Applique la méthode à chaque variable : catégorie ou nombre ? Puis, selon le cas, ordre naturel ou non, comptée ou mesurée."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Qualitative nominale ; (b) quantitative discrète ; (c) quantitative continue ; (d) qualitative ordinale."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 : catégorie ou nombre ?</strong> La race (a) et l'état de la dentition (d) prennent pour valeurs des mots : ce sont des variables qualitatives. Le nombre de consultations (b) et la masse (c) sont des nombres : ce sont des variables quantitatives.",
+            "<strong>Étape 2a : les catégories ont-elles un ordre naturel ?</strong> Les races ne se rangent pas : un labrador n'est ni « plus » ni « moins » qu'un beagle. (a) est <em>nominale</em>. L'état de la dentition va du meilleur au pire : bon, moyen, mauvais. (d) est <em>ordinale</em>.",
+            "<strong>Étape 2b : comptée ou mesurée ?</strong> On compte les consultations : 0, 1, 2, … (b) est <em>discrète</em>. On mesure la masse avec une balance, et elle peut prendre n'importe quelle valeur dans un intervalle : (c) est <em>continue</em>.",
+            "<strong>Bilan.</strong> Une variable de chaque sous-type : nominale (a), discrète (b), continue (c) et ordinale (d)."
+          ],
+          "piegeCourant": "Classer l'état de la dentition comme nominale. Bon, moyen et mauvais se rangent naturellement, du meilleur au pire : la variable est ordinale."
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "nominale",
+        "ordinale",
+        "discrete",
+        "continue"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un réseau de vélos en libre-service enregistre des informations sur chaque trajet effectué.\n\nPropose une variable de chaque sous-type qu'on pourrait relever sur un trajet : une qualitative nominale, une qualitative ordinale, une quantitative discrète et une quantitative continue. Justifie chaque choix à l'aide de la méthode de classement."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Commence par fixer l'unité statistique : un trajet. Pour chaque sous-type, demande-toi quel genre de valeurs il faut : des catégories sans ordre, des catégories ordonnées, un comptage ou une mesure."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Plusieurs réponses sont possibles. Exemple : nominale : le type de vélo (mécanique ou électrique) ; ordinale : l'appréciation du trajet par l'usager (mauvaise, correcte, bonne, excellente) ; discrète : le nombre de vélos disponibles à la station de départ au moment de l'emprunt ; continue : la distance parcourue (en km). Une proposition est juste si la variable se relève sur un trajet et si la méthode mène bien au sous-type annoncé."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Fixer l'unité.</strong> Chaque variable doit prendre une valeur pour chaque trajet. Le nombre de stations du réseau, par exemple, ne convient pas : il ne change pas d'un trajet à l'autre.",
+            "<strong>Une nominale.</strong> Il faut des catégories sans ordre naturel : le type de vélo (mécanique ou électrique), ou encore la station de départ.",
+            "<strong>Une ordinale.</strong> Il faut des catégories qui se rangent : l'appréciation du trajet par l'usager (mauvaise, correcte, bonne, excellente).",
+            "<strong>Une discrète.</strong> Il faut un comptage : le nombre de vélos disponibles à la station de départ au moment de l'emprunt (0, 1, 2, …).",
+            "<strong>Une continue.</strong> Il faut une mesure qui peut prendre n'importe quelle valeur dans un intervalle : la distance parcourue, en km, ou la durée du trajet.",
+            "<strong>Contrôler ses propositions.</strong> On refait la méthode sur chaque variable proposée. Un numéro de vélo ou de station n'est pas une variable quantitative : c'est une étiquette, donc une variable nominale. Mieux vaut choisir des variables dont le classement ne fait aucun doute."
+          ],
+          "piegeCourant": "Proposer le numéro du vélo comme variable quantitative discrète. C'est une étiquette : la moyenne des numéros de vélo n'aurait aucun sens."
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "classification-multiple",
+        "code-numerique",
+        "nominale",
+        "ordinale"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un organisme de bassin versant suit la qualité de l'eau de la rivière Yamaska. À chaque visite d'une station d'échantillonnage, l'équipe note :\n\n(a) le numéro d'identification de la station (par exemple 03030023) ;\n\n(b) la température de l'eau (en °C) ;\n\n(c) le nombre d'espèces d'invertébrés identifiées dans un prélèvement de fond ;\n\n(d) la classe de qualité de l'eau (bonne, satisfaisante, douteuse, mauvaise, très mauvaise) ;\n\n(e) le débit de la rivière (en m³/s) ;\n\n(f) l'usage dominant des terres en bordure (agricole, forestier, urbain).\n\nClasse chaque variable (type et sous-type). Pour lesquelles une moyenne aurait-elle du sens ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque variable, suis la méthode dans l'ordre : catégorie ou nombre ? Puis, selon le cas, ordre naturel ou non, comptée ou mesurée. Devant des chiffres, demande-toi d'abord si en faire la moyenne aurait du sens."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Qualitative nominale ; (b) quantitative continue ; (c) quantitative discrète ; (d) qualitative ordinale ; (e) quantitative continue ; (f) qualitative nominale. Une moyenne aurait du sens pour (b), (c) et (e) seulement."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Étape 1 : catégorie ou nombre ?</strong> Les valeurs de (d) et de (f) sont des mots : ce sont des catégories, donc des variables qualitatives. Celles de (a), (b), (c) et (e) s'écrivent avec des chiffres, mais (a) demande un examen de plus près.",
+            "<strong>Le cas du numéro de station (a).</strong> Le numéro 03030023 sert à désigner une station, comme le ferait un nom. Faire la moyenne de deux numéros de station ne donnerait rien d'interprétable, et l'ordre des numéros ne dit rien sur les stations. C'est une étiquette, pas un nombre au sens statistique : (a) est qualitative <em>nominale</em>.",
+            "<strong>Étape 2a : les catégories ont-elles un ordre naturel ?</strong> Les classes de qualité (d) vont naturellement de la meilleure à la pire : bonne, satisfaisante, douteuse, mauvaise, très mauvaise. (d) est qualitative <em>ordinale</em>. Les usages des terres (f) ne se classent pas : agricole n'est ni « plus » ni « moins » que forestier. (f) est qualitative <em>nominale</em>.",
+            "<strong>Étape 2b : comptée ou mesurée ?</strong> Le nombre d'espèces (c) s'obtient en comptant : 0, 1, 2, …, sans valeur possible entre deux entiers. (c) est quantitative <em>discrète</em>. La température (b) et le débit (e) se mesurent avec un instrument et peuvent prendre n'importe quelle valeur dans un intervalle : ils sont quantitatifs <em>continus</em>.",
+            "<strong>Le test de la moyenne.</strong> Une température moyenne, un débit moyen et un nombre moyen d'espèces par prélèvement ont chacun un sens : une moyenne de 7,4 espèces se comprend très bien, même si aucun prélèvement n'en compte 7,4. La moyenne n'a de sens ni pour les catégories (d) et (f), ni pour le numéro de station (a).",
+            "<strong>Bilan.</strong> Deux variables nominales (a et f), une ordinale (d), une discrète (c) et deux continues (b et e). Le numéro de station est le seul piège : écrit en chiffres, il reste une étiquette."
+          ],
+          "piegeCourant": "Classer le numéro de station comme une variable quantitative parce qu'il s'écrit avec des chiffres. Autre glissement fréquent : traiter la classe de qualité comme nominale, alors que ses catégories suivent un ordre naturel."
+        }
+      ]
+    },
+    {
+      "id": "ch01-int-105",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "classification-multiple",
+        "discrete",
+        "continue",
+        "ordinale",
+        "nominale"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une étude sur la lecture chez les cégépiens relève, pour chaque participant :\n\n(a) le nombre de livres lus au cours de la dernière année ;\n\n(b) le temps consacré à la lecture la veille (en minutes) ;\n\n(c) la fréquence de lecture (jamais, rarement, souvent, chaque jour) ;\n\n(d) le genre de livre préféré (roman, bande dessinée, essai, poésie).\n\nClasse chaque variable (type et sous-type). Ces quatre variables portent toutes sur la lecture : qu'est-ce qui, alors, détermine leur type ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Ne te fie pas au sujet commun : pour chaque variable, regarde la forme des valeurs relevées, puis applique la méthode."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Quantitative discrète ; (b) quantitative continue ; (c) qualitative ordinale ; (d) qualitative nominale. Le type ne dépend pas du sujet de l'étude, mais de la façon dont on relève l'information : on compte, on mesure, ou on classe dans des catégories, ordonnées ou non."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>(a) Le nombre de livres.</strong> C'est un nombre, obtenu en comptant : 0, 1, 2, … Variable quantitative <em>discrète</em>.",
+            "<strong>(b) Le temps de lecture.</strong> C'est un nombre, obtenu en mesurant une durée, qui peut prendre n'importe quelle valeur dans un intervalle. Variable quantitative <em>continue</em>.",
+            "<strong>(c) La fréquence.</strong> Les valeurs sont des catégories, qui se rangent de « jamais » à « chaque jour ». Variable qualitative <em>ordinale</em>.",
+            "<strong>(d) Le genre préféré.</strong> Les valeurs sont des catégories sans ordre naturel : un roman n'est ni « plus » ni « moins » qu'un essai. Variable qualitative <em>nominale</em>.",
+            "<strong>Ce qui détermine le type.</strong> Les quatre variables portent sur la lecture, et pourtant elles sont de quatre sous-types différents. Le type ne se lit pas dans le sujet de l'étude : il dépend de la forme des valeurs relevées, c'est-à-dire de la façon dont on recueille l'information."
+          ],
+          "piegeCourant": "Donner le même type aux quatre variables parce qu'elles parlent toutes de lecture. Le type se décide variable par variable, d'après la forme de ses valeurs."
+        }
+      ]
+    },
+    {
+      "id": "ch01-dif-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "continue",
+        "ordinale",
+        "seuils"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0c"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une station de ski des Laurentides classe ses pistes selon leur pente, en pourcentage : c'est le dénivelé divisé par la distance horizontale parcourue, multiplié par 100. Les seuils sont les suivants : niveau facile (piste verte) si la pente est inférieure à 25 % ; niveau intermédiaire (piste bleue) de 25 % à moins de 40 % ; niveau difficile (piste noire) à partir de 40 %.\n\n(a) La piste du Ruisseau descend de 96 m sur une distance horizontale de 480 m ; la piste du Sommet descend de 168 m sur 350 m. Calcule la pente de chacune et donne son niveau.\n\n(b) Classe la variable « pente » et la variable « niveau de difficulté » (type et sous-type).\n\n(c) Pour laquelle de ces deux variables le calcul d'une moyenne aurait-il du sens ?"
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour (a), divise le dénivelé par la distance horizontale avant de multiplier par 100. Pour (b), regarde la forme des valeurs de chaque variable : des nombres, ou des mots ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Piste du Ruisseau : pente de 20 %, niveau facile ; piste du Sommet : pente de 48 %, niveau difficile. (b) Pente : quantitative continue ; niveau de difficulté : qualitative ordinale. (c) Seulement pour la pente."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Calculer la pente du Ruisseau.</strong> $\\dfrac{96}{480} \\times 100 = 0{,}2 \\times 100 = 20$, soit une pente de 20 %. Comme 20 % est inférieur à 25 %, la piste est de niveau facile.",
+            "<strong>Calculer la pente du Sommet.</strong> $\\dfrac{168}{350} \\times 100 = 0{,}48 \\times 100 = 48$, soit une pente de 48 %. Comme 48 % dépasse 40 %, la piste est de niveau difficile.",
+            "<strong>Classer la pente (b).</strong> Ses valeurs sont des nombres, calculés à partir de deux mesures de distance ; elle peut prendre n'importe quelle valeur dans un intervalle (20 %, 31,7 %, 48 %…). Variable quantitative <em>continue</em>.",
+            "<strong>Classer le niveau de difficulté (b).</strong> Ses valeurs sont des mots : facile, intermédiaire, difficile. Ces catégories se rangent naturellement, de la plus facile à la plus difficile. Variable qualitative <em>ordinale</em>. Les couleurs verte, bleue et noire ne sont que des étiquettes de ces niveaux.",
+            "<strong>Le test de la moyenne (c).</strong> La pente moyenne des pistes d'une station a un sens. Une « moyenne » de facile et de difficile n'en a aucun : on ne fait pas de calcul sur des catégories.",
+            "<strong>Ce qu'il faut retenir.</strong> Le niveau est défini à partir de seuils chiffrés, mais ses valeurs restent des catégories : les nombres servent à les délimiter, pas à les exprimer."
+          ],
+          "piegeCourant": "Diviser la distance par le dénivelé ($480 / 96 = 5$) ou oublier de multiplier par 100. Autre erreur fréquente : classer le niveau de difficulté comme quantitatif parce qu'il est défini par des seuils chiffrés."
+        }
+      ]
+    },
+    {
+      "id": "ch01-dif-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "classification-multiple",
+        "code-numerique",
+        "ordinale"
+      ],
+      "savoirFaire": [
+        "1a",
+        "1d"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Un fichier recense les séismes enregistrés au Québec. Chaque ligne correspond à un séisme ; les colonnes donnent, dans l'ordre : l'identifiant de l'événement, la région, la magnitude, le nombre de répliques enregistrées dans les 48 heures et le ressenti de la population, codé 0 (non ressenti), 1 (faiblement), 2 (modérément) ou 3 (fortement). Voici les quatre premières lignes :\n\nE-01 ; Charlevoix ; 3,1 ; 2 ; 1\n\nE-02 ; Outaouais ; 2,4 ; 0 ; 0\n\nE-03 ; Bas-Saint-Laurent ; 4,2 ; 5 ; 2\n\nE-04 ; Charlevoix ; 4,7 ; 9 ; 3\n\n(a) Classe chacune des cinq colonnes (type et sous-type).\n\n(b) Pour quelles colonnes le calcul d'une moyenne aurait-il du sens ? Justifie ta réponse pour la colonne du ressenti."
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Pour chaque colonne, regarde ce que représentent les valeurs, pas seulement leur forme. Un chiffre peut être un code qui remplace un mot."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "(a) Identifiant : qualitative nominale ; région : qualitative nominale ; magnitude : quantitative continue ; répliques : quantitative discrète ; ressenti : qualitative ordinale. (b) Seulement pour la magnitude et le nombre de répliques. Les chiffres du ressenti sont des codes qui remplacent des catégories ordonnées : on aurait pu les coder autrement sans rien changer à l'information, alors qu'une « moyenne des codes » changerait."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Repérer l'unité.</strong> Chaque ligne correspond à un séisme : l'unité statistique est un séisme, et chaque colonne est une variable relevée sur lui.",
+            "<strong>Identifiant et région.</strong> E-01, E-02, … désignent des événements, comme des noms : qualitative <em>nominale</em>. Les régions (Charlevoix, Outaouais, Bas-Saint-Laurent) sont des catégories sans ordre naturel : qualitative <em>nominale</em>.",
+            "<strong>Magnitude.</strong> C'est un nombre issu d'une mesure, qui peut prendre n'importe quelle valeur dans un intervalle : quantitative <em>continue</em>.",
+            "<strong>Répliques.</strong> On compte les répliques : 0, 2, 5, 9… sans valeur possible entre deux entiers. Quantitative <em>discrète</em>.",
+            "<strong>Ressenti.</strong> Les chiffres 0 à 3 remplacent des mots : non ressenti, faiblement, modérément, fortement. Ce sont des catégories, et elles se rangent naturellement : qualitative <em>ordinale</em>, même si le fichier l'écrit avec des chiffres.",
+            "<strong>Le test de la moyenne (b).</strong> Une magnitude moyenne et un nombre moyen de répliques ont un sens. Pour le ressenti, les codes sont arbitraires : on aurait pu écrire 1, 2, 3, 4 ou A, B, C, D sans rien changer à l'information, mais la « moyenne » changerait. Un ressenti « moyen » de 1,5 ne correspondrait d'ailleurs à aucune catégorie."
+          ],
+          "piegeCourant": "Classer le ressenti comme quantitatif discret parce qu'il contient des entiers de 0 à 3. Ces chiffres sont des codes qui remplacent des catégories ordonnées : la variable est qualitative ordinale."
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "qcm",
+      "difficulte": "facile",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "discrete",
+        "continue",
+        "definition"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "On sait déjà qu'une variable est quantitative. Quelle question permet de décider si elle est discrète ou continue ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Ses valeurs sont-elles des catégories ou des nombres ?"
+            },
+            {
+              "cle": "b",
+              "texte": "Ses valeurs ont-elles un ordre naturel ?"
+            },
+            {
+              "cle": "c",
+              "texte": "La variable est-elle relevée sur des personnes ou sur des objets ?"
+            },
+            {
+              "cle": "d",
+              "texte": "Ses valeurs sont-elles obtenues en comptant ou en mesurant ?"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Rappelle-toi l'ordre des questions de la méthode de classement. Laquelle vient après « catégorie ou nombre ? » quand la réponse est « nombre » ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Ses valeurs sont-elles obtenues en comptant ou en mesurant ?"
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>La méthode, étape par étape.</strong> Première question : catégorie ou nombre ? Elle sépare le qualitatif du quantitatif. Pour une variable qualitative, on se demande ensuite si les catégories ont un ordre naturel. Pour une variable quantitative, on se demande si elle est comptée ou mesurée.",
+            "<strong>Appliquer au cas présent.</strong> La variable est quantitative : la question utile est donc « comptée ou mesurée ? ». Comptée, elle est discrète ; mesurée, elle est continue.",
+            "<strong>Deux exemples.</strong> Le nombre d'enfants d'une personne se compte : variable discrète. Sa température corporelle se mesure : variable continue.",
+            "<strong>Écarter les autres choix.</strong> a) est déjà réglée ; b) concerne les variables qualitatives ; c) porte sur l'unité statistique, qui ne détermine pas le type."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": false,
+              "explication": "Cette question sert à départager les variables qualitatives et quantitatives. Elle est déjà réglée : on sait que la variable est quantitative."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "Cette question départage les variables qualitatives nominales et ordinales. Des nombres ont toujours un ordre : elle ne permet pas de distinguer discrète et continue."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "L'unité statistique ne détermine pas le type : sur une même personne, on peut compter ses enfants (discrète) et mesurer sa température (continue)."
+            },
+            {
+              "cle": "d",
+              "correct": true,
+              "explication": "C'est la question de la méthode pour une variable quantitative : comptée, elle est discrète ; mesurée, elle est continue."
+            }
+          ],
+          "piegeCourant": "Choisir « ordre naturel ? ». Cette question départage nominale et ordinale, et ne concerne que les variables qualitatives."
+        }
+      ]
+    },
+    {
+      "id": "ch01-qcm-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "discrete",
+        "code-numerique"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Laquelle des variables suivantes est quantitative discrète ?",
+          "choix": [
+            {
+              "cle": "a",
+              "texte": "Le nombre de visites chez le dentiste au cours de la dernière année."
+            },
+            {
+              "cle": "b",
+              "texte": "La durée d'un appel reçu par une centrale d'urgence (en minutes)."
+            },
+            {
+              "cle": "c",
+              "texte": "Le niveau de risque d'incendie de forêt (bas, modéré, élevé, très élevé, extrême)."
+            },
+            {
+              "cle": "d",
+              "texte": "L'indicatif régional du numéro de téléphone (418, 450, 514, 819, …)."
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Une variable quantitative discrète provient d'un comptage. Pour chaque choix, demande-toi si l'on compte quelque chose."
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Le nombre de visites chez le dentiste au cours de la dernière année."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Ce qu'on cherche.</strong> Une variable quantitative discrète a pour valeurs des nombres obtenus en comptant.",
+            "<strong>Examiner chaque choix avec la méthode.</strong> a) des nombres, obtenus en comptant : discrète. b) des nombres, obtenus en mesurant : continue. c) des catégories ordonnées : ordinale. d) des chiffres qui servent d'étiquettes : nominale.",
+            "<strong>Le test de la moyenne pour d).</strong> Faire la moyenne de deux indicatifs régionaux n'a aucun sens : malgré les chiffres, la variable est qualitative.",
+            "<strong>Conclure.</strong> Seul le nombre de visites chez le dentiste est une variable quantitative discrète."
+          ],
+          "analyseChoix": [
+            {
+              "cle": "a",
+              "correct": true,
+              "explication": "On compte les visites : 0, 1, 2, … sans valeur possible entre deux entiers. C'est une variable quantitative discrète."
+            },
+            {
+              "cle": "b",
+              "correct": false,
+              "explication": "Une durée se mesure et peut prendre n'importe quelle valeur dans un intervalle : la variable est quantitative continue."
+            },
+            {
+              "cle": "c",
+              "correct": false,
+              "explication": "Les valeurs sont des catégories qui se rangent du plus faible au plus fort : la variable est qualitative ordinale."
+            },
+            {
+              "cle": "d",
+              "correct": false,
+              "explication": "Ces nombres désignent des régions, comme des étiquettes : la moyenne de 514 et de 450 ne correspondrait à rien. La variable est qualitative nominale."
+            }
+          ],
+          "piegeCourant": "Choisir l'indicatif régional parce qu'il s'écrit avec des nombres entiers. Il désigne une région : c'est une étiquette, pas un comptage."
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "discrete",
+        "continue",
+        "piege"
+      ],
+      "savoirFaire": [
+        "1a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Le nombre de jours de pluie en juillet à Sherbrooke est une variable quantitative continue, puisque le temps s'écoule de façon continue.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Ne regarde pas la nature du temps : regarde comment on obtient la valeur de la variable. Compte-t-on ou mesure-t-on ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Faux."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Ce qu'on relève.</strong> Pour un mois de juillet donné, on compte les jours où il a plu : 0, 1, 2, …, jusqu'à 31 au plus.",
+            "<strong>Appliquer la méthode.</strong> Les valeurs sont des nombres : la variable est quantitative. Elles sont obtenues en comptant, et il n'existe aucune valeur entre 12 et 13 jours : la variable est <em>discrète</em>.",
+            "<strong>Où est l'erreur.</strong> L'argument porte sur le temps qui s'écoule, pas sur la variable étudiée. Si l'on mesurait plutôt la durée totale de la pluie en juillet, en heures, on obtiendrait une variable continue, mais ce serait une autre variable.",
+            "<strong>Conclure.</strong> Le nombre de jours de pluie est une variable quantitative discrète. L'énoncé est faux."
+          ],
+          "piegeCourant": "Classer la variable d'après son sujet, le temps qu'il fait, plutôt que d'après la façon dont ses valeurs sont obtenues."
+        }
+      ]
+    },
+    {
+      "id": "ch01-vf-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "sectionNotes": "Types de variables",
+      "motsCles": [
+        "types-variables",
+        "ordinale",
+        "discrete",
+        "definition"
+      ],
+      "savoirFaire": [
+        "1a",
+        "0a"
+      ],
+      "etapes": [
+        {
+          "etape": "enonce",
+          "titre": "Énoncé",
+          "texte": "Une variable qualitative ordinale et une variable quantitative discrète ont toutes deux des valeurs qu'on peut ranger dans un ordre naturel. Pourtant, seule la seconde permet de calculer un écart qui a un sens entre deux valeurs.",
+          "choix": [
+            {
+              "cle": "v",
+              "texte": "Vrai"
+            },
+            {
+              "cle": "f",
+              "texte": "Faux"
+            }
+          ]
+        },
+        {
+          "etape": "indice",
+          "titre": "Indice",
+          "texte": "Un écart se calcule par une soustraction, qui est une opération arithmétique. Selon la définition, pour quel type de variable les opérations arithmétiques ont-elles un sens ?"
+        },
+        {
+          "etape": "reponse",
+          "titre": "Réponse finale",
+          "texte": "Vrai."
+        },
+        {
+          "etape": "demarche",
+          "titre": "Démarche détaillée",
+          "lignes": [
+            "<strong>Ce qui les rapproche.</strong> Les catégories d'une variable ordinale se rangent naturellement, par exemple le niveau de scolarité : primaire, secondaire, collégial, universitaire. Les valeurs d'une variable discrète, comme le nombre d'enfants, se rangent aussi : 0, 1, 2, …",
+            "<strong>Ce que dit la définition.</strong> Une variable est quantitative si ses valeurs sont des nombres sur lesquels les opérations arithmétiques ont un sens. Un écart est une soustraction : il n'a de sens que pour une variable quantitative.",
+            "<strong>Pour la variable discrète.</strong> Entre 1 et 3 enfants, l'écart est de 2 enfants, exactement comme entre 4 et 6. L'écart a un sens, et on peut le comparer d'une paire de valeurs à l'autre.",
+            "<strong>Pour la variable ordinale.</strong> On sait que « collégial » vient après « secondaire », mais « collégial moins secondaire » n'est pas un nombre. On ne peut pas dire que l'écart entre primaire et secondaire égale celui entre collégial et universitaire.",
+            "<strong>Et si l'on code les catégories ?</strong> Coder les niveaux 1, 2, 3, 4 ne change rien : ces chiffres sont des étiquettes, et leur différence ne mesure rien. On aurait aussi bien pu les coder 1, 2, 5, 10.",
+            "<strong>Conclure.</strong> L'ordre est commun aux deux types ; seule la variable quantitative a des écarts qui ont un sens. L'énoncé est vrai."
+          ],
+          "piegeCourant": "Croire qu'une variable dont les valeurs se rangent est forcément quantitative. L'ordre ne suffit pas : il faut que les opérations sur les valeurs, comme un écart, aient elles-mêmes un sens."
         }
       ]
     },

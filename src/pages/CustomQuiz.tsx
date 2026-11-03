@@ -106,8 +106,8 @@ export default function CustomQuiz() {
   // Passée au générateur pour que les disponibilités par leçon reflètent
   // vraiment ce que le quiz pourra piocher.
   const banqueCd = useExercicesComplets("calcul-differentiel");
-  // Banque prob-stat : vide pour un visiteur (tout est réservé aujourd'hui),
-  // 451 pour un détenteur d'accès. Même rôle que banqueCd juste au-dessus.
+  // Banque prob-stat : 100 gratuits pour un visiteur, 495 pour un détenteur
+  // d'accès (au 2026-11-03). Même rôle que banqueCd juste au-dessus.
   const banquePs = useExercicesComplets("probabilites-statistique");
 
   const lessonMeta = useMemo(() => {

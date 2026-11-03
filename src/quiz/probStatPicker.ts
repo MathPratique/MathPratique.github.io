@@ -13,11 +13,11 @@
 //
 // ─── CE QUE LE POOL CONTIENT ──────────────────────────────────────────────
 //
-// Par défaut la vitrine bundlée — VIDE aujourd'hui, puisque tout est réservé
-// tant que la sélection éditoriale n'a pas eu lieu. Un détenteur d'accès
-// passe `banque.exercices` (via useExercicesComplets) et retrouve les 451.
-// Le quiz d'un visiteur sans accès est donc sans question pour ce cours,
-// ce qui est le comportement voulu : rien de réservé ne doit fuir par là.
+// Par défaut la vitrine bundlée : les 100 exercices gratuits (au 2026-11-03).
+// Un détenteur d'accès passe `banque.exercices` (via useExercicesComplets) et
+// retrouve les 495. Le quiz d'un visiteur sans accès ne pioche donc que dans
+// les gratuits, ce qui est le comportement voulu : rien de réservé ne doit
+// fuir par là.
 
 import type { Difficulty, Exercise, MCQOption } from "../data/exercises";
 import { CHAPITRES } from "../data/probabilites-statistique";
@@ -36,8 +36,8 @@ export function isProbStatLesson(lessonId: string): lessonId is ProbStatLessonId
   return (PROB_STAT_LESSONS as readonly string[]).includes(lessonId);
 }
 
-// Aucun exercice de prob-stat n'a de figure : vérifié sur les 451 au moment
-// de l'export web. Il n'y a donc ni résolution de SVG ni liste d'exclusion,
+// Aucun exercice de prob-stat n'a de figure : vérifié sur les 495 à la
+// synchronisation du 2026-11-03. Il n'y a donc ni résolution de SVG ni liste d'exclusion,
 // contrairement au calcul différentiel. Le jour où une figure apparaîtra
 // dans cette banque, reprendre le mécanisme de calcDiffPicker.ts.
 

@@ -1920,8 +1920,8 @@ export function buildCustomQuizDetaille(
    */
   banqueCalcDiff?: ExerciceBanque[],
   /**
-   * Pool prob-stat — vide par défaut aujourd'hui (tout est réservé), 451
-   * pour un détenteur d'accès. Même mécanique que ci-dessus.
+   * Pool prob-stat — 100 gratuits (défaut, bundle) ou 495 pour un détenteur
+   * d'accès (au 2026-11-03). Même mécanique que ci-dessus.
    */
   banqueProbStat?: ExerciceBanque[],
 ): { exercices: Exercise[]; complements: number } {

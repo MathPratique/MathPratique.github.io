@@ -4,7 +4,7 @@
   "commentaire": "Catalogue complet. Les exercices marqués `verrouille` n'ont ici que leur fiche signalétique ; leur contenu n'est publié nulle part dans ce dossier.",
   "totaux": {
     "gratuit": 100,
-    "payant": 375
+    "payant": 395
   },
   "exercices": [
     {
@@ -951,6 +951,186 @@
       "type": "vrai-faux",
       "difficulte": "difficile",
       "tempsEstime": 8,
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-fac-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-fac-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-int-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-int-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-dif-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-dif-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-qcm-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-qcm-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "qcm",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-vf-101",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "vrai-faux",
+      "difficulte": "facile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-vf-102",
+      "chapitre": 1,
+      "section": "1.1",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-fac-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "facile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-int-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-int-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-int-105",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-dif-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-dif-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "calcul-court",
+      "difficulte": "difficile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-qcm-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "qcm",
+      "difficulte": "facile",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-qcm-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "qcm",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-vf-103",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "vrai-faux",
+      "difficulte": "moyen",
+      "acces": "payant",
+      "verrouille": true
+    },
+    {
+      "id": "ch01-vf-104",
+      "chapitre": 1,
+      "section": "1.2",
+      "type": "vrai-faux",
+      "difficulte": "difficile",
       "acces": "payant",
       "verrouille": true
     },

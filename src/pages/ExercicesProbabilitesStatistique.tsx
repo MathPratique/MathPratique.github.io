@@ -5,12 +5,12 @@
 // ce qui n'est pas ouvert est compté à partir des fiches signalétiques —
 // jamais à partir du contenu, qui n'est pas dans les fichiers servis.
 //
-// ─── ÉTAT AU 2026-08-29 ────────────────────────────────────────────────────
+// ─── ÉTAT AU 2026-11-03 ────────────────────────────────────────────────────
 //
-// Zéro exercice ouvert : la sélection éditoriale n'a pas eu lieu et tout est
-// réservé en attendant. Un visiteur sans accès voit donc les 451 fiches
-// verrouillées et rien d'autre ; un détenteur d'accès reçoit la banque
-// complète par la Cloud Function, comme pour le calcul différentiel.
+// 100 exercices ouverts sur 495 (sélection gratuite du 2026-08-29). Un
+// visiteur sans accès voit les 100 gratuits et les 395 autres fiches
+// verrouillées ; un détenteur d'accès reçoit la banque complète par la Cloud
+// Function, comme pour le calcul différentiel.
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";

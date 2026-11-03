@@ -22,16 +22,16 @@
  * entre les deux sources.
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * ─── ÉTAT AU 2026-08-29 ───────────────────────────────────────────────────
+ * ─── ÉTAT AU 2026-11-03 ───────────────────────────────────────────────────
  *
- * Zéro exercice gratuit : la sélection éditoriale n'a pas eu lieu, et tout
- * est réservé en attendant. Le bundle public ne contient donc que des
- * fichiers de chapitre vides, et le catalogue 451 fiches verrouillées.
+ * 100 exercices gratuits sur 495 (sélection éditoriale du 2026-08-29). Le
+ * bundle public porte ces 100 exercices, et le catalogue 495 fiches dont 395
+ * verrouillées.
  *
- * Le contrôle des gratuits porte sur un ensemble vide — il est trivialement
- * satisfait aujourd'hui, et deviendra utile le jour de la sélection. Il
- * reste en place pour cette raison : un contrôle qu'on retire « parce qu'il
- * ne sert à rien pour l'instant » n'est jamais remis.
+ * Le contrôle des gratuits compare donc les 100 exercices des deux sources à
+ * chaque synchronisation. Il a été posé quand l'ensemble était encore vide
+ * et trivialement satisfait : un contrôle qu'on retire « parce qu'il ne sert
+ * à rien pour l'instant » n'est jamais remis.
  *
  * ─── LES SÉRIES MÉLI-MÉLO ─────────────────────────────────────────────────
  *
