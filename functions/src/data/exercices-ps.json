@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "590174482628913e",
+  "contentHash": "8fe698ea86d9d48b",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -19793,19 +19793,19 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "L'été au Québec, la consommation de crème glacée et le nombre de noyades sont fortement corrélés ($r \\approx 0{,}90$). Peut-on en conclure que manger de la crème glacée cause des noyades ? Identifie l'explication tierce probable."
+          "texte": "Pendant l'hiver au Québec, d'une semaine à l'autre, les ventes de pelles à neige et les ventes de chocolat chaud dans les épiceries sont fortement corrélées ($r \\approx 0{,}88$). Peut-on en conclure qu'acheter une pelle à neige pousse à boire du chocolat chaud ? Identifie l'explication tierce probable."
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "Non — la variable tierce (chaleur estivale) explique les deux augmentations. Corrélation fallacieuse."
+          "texte": "Non — la variable tierce (la météo hivernale : froid et chutes de neige) explique les deux hausses. Corrélation fallacieuse."
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
             "Corrélation $\\neq$ causalité.",
-            "Ici, la chaleur estivale entraîne à la fois plus de baignade (donc plus de noyades) ET plus de consommation de crème glacée.",
+            "Ici, les semaines de grand froid et de tempêtes de neige entraînent à la fois plus d'achats de pelles (pour déneiger) ET plus de chocolat chaud (pour se réchauffer).",
             "C'est une variable de confusion."
           ]
         }
@@ -20421,7 +20421,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Tableau observé ($n = 400$) : Fumeurs $[50\\,\\text{Malades}\\,;\\,150\\,\\text{Sains}]$ ; Non-fumeurs $[30\\,\\text{Malades}\\,;\\,170\\,\\text{Sains}]$. Marges : lignes 200/200 ; colonnes 80/320. Calcule les 4 effectifs attendus puis $\\chi^2_{\\text{obs}}$."
+          "texte": "Tableau observé ($n = 400$) — fumeurs : 50 malades et 150 sains ; non-fumeurs : 30 malades et 170 sains. Marges : lignes 200/200 ; colonnes 80/320. Calcule les 4 effectifs attendus puis $\\chi^2_{\\text{obs}}$."
         },
         {
           "etape": "reponse",
@@ -20925,12 +20925,12 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Un croisement Mendel prédit les proportions 9:3:3:1 pour quatre phénotypes. Sur 160 plants observés, on compte : 95, 32, 25, 8. (a) Calcule les $E$ théoriques. (b) Calcule $\\chi^2_{\\text{obs}}$. (c) Conclus au seuil 5 % avec $\\chi^2_{\\text{crit}}(3\\,\\text{ddl}\\,;\\,5\\,\\%) = 7{,}81$."
+          "texte": "Un croisement Mendel prédit les proportions $9:3:3:1$ pour quatre phénotypes. Sur 160 plants observés, on compte : 95, 32, 25, 8. (a) Calcule les $E$ théoriques. (b) Calcule $\\chi^2_{\\text{obs}}$. (c) Conclus au seuil 5 % avec $\\chi^2_{\\text{crit}}(3\\,\\text{ddl}\\,;\\,5\\,\\%) = 7{,}81$."
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "$E$ : 90 ; 30 ; 30 ; 10. $\\chi^2_{\\text{obs}} \\approx 1{,}64$. Non-rejet de $H_0$ : les observations sont compatibles avec les proportions 9:3:3:1."
+          "texte": "$E$ : 90 ; 30 ; 30 ; 10. $\\chi^2_{\\text{obs}} \\approx 1{,}64$. Non-rejet de $H_0$ : les observations sont compatibles avec les proportions $9:3:3:1$."
         },
         {
           "etape": "demarche",
