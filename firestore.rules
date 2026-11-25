@@ -144,5 +144,39 @@ service cloud.firestore {
     match /evenementsStripe/{sessionId} {
       allow read, write: if false;
     }
+
+    // --- Classements des jeux ----------------------------------------------
+    // Un document par joueur et par jeu : son meilleur temps, sous un
+    // pseudonyme qu'il choisit. Lecture publique (le top 10 se consulte sans
+    // compte) ; chacun n'écrit que sa propre entrée.
+    match /classements/{jeu}/entrees/{uid} {
+      function jeuConnu() {
+        return jeu in ['jardin-des-derivees'];
+      }
+      // Liste blanche des clés ; pseudonyme de 1 à 20 caractères ; temps en
+      // secondes, jamais sous 3 minutes (impossible) ni au-delà de 10 heures.
+      function entreeValide() {
+        let e = request.resource.data;
+        return e.keys().hasOnly(['pseudo', 'temps', 'date'])
+          && e.pseudo is string
+          && e.pseudo.size() <= 20
+          && e.pseudo.trim().size() >= 1
+          && e.temps is number
+          && e.temps >= 180
+          && e.temps <= 36000;
+      }
+      allow read: if jeuConnu();
+      allow create: if jeuConnu() && estLeProprietaire(uid) && entreeValide()
+        && request.resource.data.date == request.time;
+      // Une seule entrée par joueur : une mise à jour améliore le temps (la
+      // date devient celle du nouveau temps), ou garde le même temps et la
+      // même date pour changer seulement de pseudonyme.
+      allow update: if jeuConnu() && estLeProprietaire(uid) && entreeValide()
+        && ((request.resource.data.temps < resource.data.temps
+              && request.resource.data.date == request.time)
+          || (request.resource.data.temps == resource.data.temps
+              && request.resource.data.date == resource.data.date));
+      allow delete: if false;
+    }
   }
 }

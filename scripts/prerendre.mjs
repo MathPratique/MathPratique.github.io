@@ -101,6 +101,23 @@ const ROUTES = [
     priorite: "0.8",
   },
   {
+    // Mêmes titre et description que dans src/pages/Jeux.tsx.
+    chemin: "/jeux",
+    titre: "Jeux de maths — MathPratique",
+    description:
+      "Des jeux pour pratiquer les maths autrement, comme un labyrinthe en 3D où chaque grille s'ouvre avec la bonne dérivée. Gratuits, sans compte.",
+    priorite: "0.6",
+  },
+  {
+    // Mêmes titre et description que dans src/data/jeux.ts. Le jeu lui-même
+    // (public/jeux/jardin-des-derivees/jeu.html) n'est pas indexé : noindex.
+    chemin: "/jeux/jardin-des-derivees",
+    titre: "Le jardin des dérivées — un jeu de dérivées en 3D | MathPratique",
+    description:
+      "Un labyrinthe en 3D où chaque grille s'ouvre avec la bonne dérivée : règle de la puissance, du produit, du quotient et dérivée en chaîne. Gratuit, sans compte, à jouer à l'ordinateur.",
+    priorite: "0.6",
+  },
+  {
     chemin: "/custom-quiz",
     titre: "Quiz personnalisé de maths — MathPratique",
     description:

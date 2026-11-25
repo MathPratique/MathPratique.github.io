@@ -427,6 +427,37 @@ export const DOCUMENTS: Document[] = [
     NIVEAUX_EXERCICES_REVISION,
   ),
 
+  // --- Série de révision pour l'examen 3 -------------------------------------
+  //
+  // Cinquante-cinq exercices écrits pour la série (projet jumeau,
+  // `revision-examen3/questions/`), absents des banques de chapitre :
+  // dérivées, analyse de fonctions et optimisation. Deux documents, comme les
+  // autres séries de ce cours : le recueil des énoncés, puis les solutions
+  // (tableau des réponses finales, puis solutions détaillées), produits par
+  // `scripts/generer-revision-examen3.js`.
+  //
+  // Accès « restreint » SEULEMENT, par décision de l'enseignant (2026-11-24) :
+  // contrairement aux deux séries précédentes (NIVEAUX_EXERCICES_REVISION),
+  // ni les acheteurs ni les enseignants ne la voient. La liste est écrite en
+  // clair plutôt que tirée d'une constante : aucun autre document ne la
+  // partage.
+  doc(
+    CALCUL_DIFFERENTIEL,
+    "revision-examen3",
+    "Série de révision pour l'examen 3",
+    "revision/revision-examen3.pdf",
+    "revision",
+    ["restreint"],
+  ),
+  doc(
+    CALCUL_DIFFERENTIEL,
+    "revision-examen3-solutions",
+    "Série de révision pour l'examen 3 — solutions",
+    "revision/revision-examen3-solutions.pdf",
+    "revision",
+    ["restreint"],
+  ),
+
   // --- Examens : énoncé, corrigé, grille ------------------------------------
   ...EXAMENS.flatMap((e) => [
     doc(

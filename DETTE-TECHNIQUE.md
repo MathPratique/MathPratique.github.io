@@ -380,3 +380,59 @@ alerte. Ensuite seulement, trancher groupe par groupe : garder, ou supprimer
 après avoir vérifié une copie hors du seau. Toucher `documents.ts` demande un
 déploiement et casse les compteurs en dur des tests : à faire hors
 publication, avec `npm test` avant de pousser.
+
+---
+
+## 2026-11-10 — les notes du chapitre 3 de prob-stat lisent une table Φ que le cours ne donne pas
+
+**Contexte.** Constaté en préparant l'examen 2 de Probabilités et statistique.
+La table du cours (`notes-201-SN1-RE/table-normale.tex`, annexe du ch. 2) donne
+$A(z) = P(0 \le Z \le z)$, de 0,0000 à 0,5000, et le ch. 2 enseigne
+$P(Z > z) = 0{,}5 - A(z)$. Cinq passages de `contenu-ch3.tex` calculent
+plutôt avec $\Phi(z) = P(Z \le z)$ :
+
+- ligne 175 : $1 - \Phi(1{,}5) \approx 0{,}0668$ ;
+- ligne 689 : valeur $p = 2(1 - \Phi(|z|))$ ;
+- ligne 725 : $2(1 - 0{,}9977)$ ;
+- ligne 755 : $1 - 0{,}9938$ ;
+- ligne 859 : $1 - 0{,}9838$.
+
+**Effet.** Un étudiant qui cherche 0,9977, 0,9938 ou 0,9838 dans sa table ne
+les trouve pas : aucune valeur n'y dépasse 0,5. Les résultats sont justes ;
+seule la lecture diffère. Les banques et le méli-mélo du ch. 3 écrivent déjà
+$0{,}5 - A(z)$.
+
+**Correctif.** Réécrire ces cinq passages avec $A(z)$, comme au ch. 2
+(par exemple $P(Z > 2{,}828) = 0{,}5 - A(2{,}83) = 0{,}5 - 0{,}4977$),
+recompiler les deux versions du ch. 3, puis republier les notes. Hors du
+chantier de l'examen 2, qui suit déjà la convention $A(z)$.
+
+---
+
+## 2026-11-19 — la banque du chapitre 4 de prob-stat arrondit le khi-carré à deux décimales
+
+**Contexte.** Constaté en préparant la série de préparation à l'examen final
+de Probabilités et statistique. Les valeurs critiques du khi-carré n'ont pas la
+même précision partout :
+
+- `exercices-prob-stat/banque/ch04-correlation-regression-khi-carre.json` les
+  écrit à **deux** décimales : $\chi^2_{\text{crit}} = 3{,}84$, $5{,}99$,
+  $12{,}59$ ;
+- `notes-201-SN1-RE/contenu-ch4.tex` les cite à **trois** décimales
+  ($\chi^2_{0{,}05,\,1} \approx 3{,}841$, $\chi^2_{0{,}01,\,4} \approx 13{,}277$),
+  mais ne contient **aucune table** du khi-carré : seules ces deux valeurs y
+  figurent ;
+- la série de préparation à l'examen final aura en annexe une table générée à
+  trois décimales ($\nu$ de 1 à 20, $\alpha$ = 0,100 à 0,005).
+
+**Effet.** Un étudiant qui compare son corrigé de cahier à sa table lit
+$3{,}841$ et trouve $3{,}84$. Un écart de l'ordre du millième ne devrait
+changer aucune décision (à vérifier exercice par exercice lors du correctif),
+mais la convention n'est pas la même d'un document à l'autre, et les notes
+n'offrent pas de table où lire une valeur qui n'est pas citée.
+
+**Correctif.** Aligner la banque du ch. 4 sur trois décimales, et décider si
+les notes du ch. 4 doivent recevoir la même table en annexe (comme la table
+normale au ch. 2 et la table de Student au ch. 3). Ensuite : régénérer les
+cahiers du ch. 4, resynchroniser le blob, republier. Hors du chantier de la
+série de préparation.

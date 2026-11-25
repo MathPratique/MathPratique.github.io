@@ -37,6 +37,10 @@ const RACINE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
  * Les fichiers dont l'absence casse une promesse faite à l'utilisateur.
  * `signature` : les premiers octets attendus. `tailleMin` : en octets, pour
  * attraper un fichier tronqué ou un marqueur Git LFS non résolu.
+ * `marqueur` (facultatif) : un texte qui doit figurer dans les 4 premiers ko,
+ * pour distinguer une page HTML voulue de la page d'accueil renommée — les
+ * deux commencent par « <!doctype html> ». Ni signature ni marqueur ne
+ * contiennent de fin de ligne : Git peut les convertir sous Windows.
  */
 const REQUIS = [
   {
@@ -52,6 +56,38 @@ const REQUIS = [
     tailleMin: 50_000,
     role: "aperçu gratuit téléchargeable depuis /boutique (version étudiant)",
     lien: "src/pages/Boutique.tsx (PDF_APERCU)",
+  },
+  // Le jeu et ses deux bibliothèques : absents, l'iframe de /jeux/jardin-des-derivees
+  // afficherait le site lui-même (sa page 404) au lieu du jeu.
+  {
+    chemin: "jeux/jardin-des-derivees/jeu.html",
+    signature: "<!DOCTYPE html>",
+    marqueur: "<title>Le jardin des dérivées — MathPratique</title>",
+    tailleMin: 100_000,
+    role: "le jeu, affiché dans un iframe par /jeux/jardin-des-derivees",
+    lien: "src/data/jeux.ts (fichier)",
+  },
+  {
+    chemin: "jeux/jardin-des-derivees/three.module.min.js",
+    signature: "/**",
+    marqueur: "Copyright 2010-2023 Three.js Authors",
+    tailleMin: 500_000,
+    role: "Three.js 0.160.0, importé par jeu.html",
+    lien: "public/jeux/jardin-des-derivees/jeu.html (import)",
+  },
+  {
+    chemin: "jeux/jardin-des-derivees/katex.min.js",
+    signature: "!function(e,t){",
+    tailleMin: 200_000,
+    role: "KaTeX, chargé par jeu.html pour les formules",
+    lien: "public/jeux/jardin-des-derivees/jeu.html (<script src>)",
+  },
+  {
+    chemin: "jeux/jardin-des-derivees/apercu.webp",
+    signature: "RIFF",
+    tailleMin: 10_000,
+    role: "image de la carte du jeu sur /jeux",
+    lien: "src/data/jeux.ts (image)",
   },
 ];
 
@@ -97,6 +133,10 @@ function verifier(base) {
         `${affiche} ne commence pas par « ${f.signature} » mais par ` +
           `« ${debut.replace(/[\r\n]/g, "·")} ». Ce n'est pas le format annoncé.`
       );
+      continue;
+    }
+    if (f.marqueur && !readFileSync(complet).subarray(0, 4096).toString("utf8").includes(f.marqueur)) {
+      problemes.push(`${affiche} ne contient pas « ${f.marqueur} » au début. Ce n'est pas le fichier attendu.`);
       continue;
     }
 

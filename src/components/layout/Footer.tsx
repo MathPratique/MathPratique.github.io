@@ -11,6 +11,7 @@ const LIENS = [
   { to: "/", label: "Accueil" },
   { to: "/practice", label: "Exercices" },
   { to: "/outils/note-examen-final", label: "Calculateur de note finale" },
+  { to: "/jeux", label: "Jeux" },
   { to: "/boutique", label: "Boutique" },
   { to: "/enseignants", label: "Enseignants" },
 ];

@@ -12,6 +12,8 @@ import Enseignants from "./pages/Enseignants";
 import Connexion from "./pages/Connexion";
 import MonCompte from "./pages/MonCompte";
 import CalculateurNoteFinale from "./pages/CalculateurNoteFinale";
+import Jeux from "./pages/Jeux";
+import PageJeu from "./pages/PageJeu";
 import { ProgressionProvider } from "./progression/ProgressionContext";
 // Pages légales, en BROUILLON depuis le 2026-10-26 : chargées à la demande
 // (rarement consultées), ni pré-rendues ni liées au pied de page tant
@@ -100,6 +102,9 @@ export default function App() {
         />
         {/* Outil gratuit, sans compte ni appel réseau. */}
         <Route path="/outils/note-examen-final" element={<CalculateurNoteFinale />} />
+        {/* Jeux gratuits, sans compte ; le classement demande la connexion. */}
+        <Route path="/jeux" element={<Jeux />} />
+        <Route path="/jeux/:slug" element={<PageJeu />} />
         <Route
           path="/politique-de-remboursement"
           element={<Suspense fallback={chargementPage}><PolitiqueRemboursement /></Suspense>}

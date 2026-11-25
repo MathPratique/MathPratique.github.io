@@ -312,6 +312,46 @@ celles des commits.
   d'évaluations faites, final à 30 %). Et un seuil calculé sur un détail
   partiel affichait 63,8 % là où l'exigence réelle était de 61,4 %.*
 
+#### Jeux — `Jeux.tsx`, `PageJeu.tsx`, `src/data/jeux.ts`, `src/jeux/`, `public/jeux/`
+
+- **2026-11-09** — nouvelle page `/jeux` (liste tirée de `src/data/jeux.ts` :
+  ajouter un jeu = une entrée, ses fichiers dans `public/jeux/<slug>/`, sa page
+  au pré-rendu) et premier jeu, `/jeux/jardin-des-derivees` : le mode Maths du
+  labyrinthe 3D « Le Dédale des cèdres », seul (4 zones, grilles et fausses
+  grilles, clés, compteur de portes, 6 choix, pénalités, volume, victoire).
+  Gratuit, sans compte. Lien « Jeux » au pied de page seulement : la barre du
+  haut n'a plus la place à 1024 px (voir Navigation).
+  - **Architecture.** Le jeu est une page HTML autonome
+    (`public/jeux/jardin-des-derivees/jeu.html`, Three.js 0.160 et KaTeX
+    hébergés à côté, aucun CDN), affichée dans un iframe de même origine par
+    `PageJeu.tsx`, avec un bouton plein écran. Il ne contient aucun code
+    Firebase : il demande le classement à la page par `postMessage`
+    (`src/jeux/usePontJeu.ts`), et les deux côtés ignorent tout message qui
+    ne vient pas de la même origine et de la bonne fenêtre. Ouvert seul, il
+    renvoie vers sa page (`?seul` l'en empêche) ; il porte `noindex`.
+  - **Classement.** Firestore `classements/{jeu}/entrees/{uid}` = { pseudo,
+    temps, date } : une entrée par joueur, son meilleur temps. Lecture
+    publique ; inscription avec un compte, pseudonyme de 20 caractères au
+    plus, filtré par une liste de mots (`src/jeux/regles.ts`, message poli
+    en cas de refus). Les règles refusent les temps sous 3 minutes ou au-delà
+    de 10 heures, les entrées d'un autre, les temps moins bons et toute
+    suppression. Un joueur non connecté voit son temps et une invitation à se
+    connecter. Le top 10 s'affiche aussi sous le jeu (visible sur téléphone).
+  - **Téléphone et tablette** (pas de souris) : le jeu n'est pas chargé ; la
+    page dit « Ce jeu se joue à l'ordinateur, avec un clavier et une
+    souris. »
+  - **Notation.** Les questions alternent « f'(x) si f(x) = … » et « dy/dx si
+    y = … » ; les plaques des grilles aussi.
+  - **Outils de test** (`LABY.verifierJardin()`, `LABY.simulerJardin()`…) :
+    sur localhost seulement, dans la console de l'iframe.
+  - Tests : `tests/jeux.test.mjs` (dans `npm test`) et
+    `tests/regles-classement.test.mjs` (émulateur, même commande que les
+    autres tests de règles, `--test-concurrency=1`).
+  - Le minimum théorique d'une partie (chemin parfait connu d'avance, toujours
+    en courant, réponses instantanées) va de 2 min 18 s à 3 min 48 s selon le
+    jardin (40 jardins simulés) : aucun vrai joueur, qui ne connaît pas le
+    jardin et doit chercher quatre clés, n'approche les 3 minutes du seuil.
+
 #### Boutique — `Boutique.tsx`, `BoutiqueCalculDifferentiel.tsx`, `CarteBoutique.tsx`, `AchatConfirme.tsx`, `products.ts`, `tarifs.ts`
 
 - **2026-07-09** — création de la section Boutique (quatre produits
@@ -436,6 +476,11 @@ celles des commits.
   inerte.
 - **Pages légales** : trois brouillons à faire réviser (2026-10-26), puis à
   publier : retirer le bandeau, les pré-rendre, les lier au pied de page.
+  Depuis le 2026-11-09, la politique de confidentialité doit aussi mentionner
+  le classement des jeux (pseudonyme et temps publiés).
+- **Jeux (2026-11-09)** : rien n'est déployé. Ordre de mise en ligne :
+  `firebase deploy --only firestore:rules` d'abord (sinon le classement est
+  refusé en ligne), puis la poussée sur `main`.
 - **Adresses en français** (plan approuvé, gardé pour plus tard, rien de
   changé) : `/practice` → `/exercices`, `/custom-quiz` → `/quiz-personnalise`,
   `/quiz` inchangée (les quiz partagés y vivent : `/quiz?custom=…`). Les

@@ -23,17 +23,19 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 98 documents", () => {
-  // Calcul différentiel — 52 :
+test("le catalogue couvre les 100 documents", () => {
+  // Calcul différentiel — 54 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   14 exercices (7 chapitres × 2 : énoncés + corrigé. Les 7 cahiers
   //      d'indices ont été retirés le 2026-10-05 : le corrigé porte déjà
   //      l'indice de chaque exercice, juste avant sa réponse finale)
-  //    4 révision (la série cumulative et ses solutions, puis le méli-mélo
-  //      du chapitre 5 et ses solutions, depuis le 2026-10-22 — chacune a
-  //      ses exercices en propre au lieu de les tirer dans les banques de
-  //      chapitre. Les cinq méli-mélos A–E ont été retirés du catalogue
-  //      le 2026-09-24 ; leurs PDF restent dans le seau, plus déclarés)
+  //    6 révision (la série cumulative et ses solutions, puis le méli-mélo
+  //      du chapitre 5 et ses solutions, depuis le 2026-10-22, puis la série
+  //      de révision pour l'examen 3 et ses solutions, depuis le 2026-11-24,
+  //      en accès « restreint » seulement — chacune a ses exercices en
+  //      propre au lieu de les tirer dans les banques de chapitre. Les cinq
+  //      méli-mélos A–E ont été retirés du catalogue le 2026-09-24 ; leurs
+  //      PDF restent dans le seau, plus déclarés)
   //   18 examens (6 × énoncé, corrigé, grille)
   // Probabilités et statistique — 18 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
@@ -52,19 +54,19 @@ test("le catalogue couvre les 98 documents", () => {
   //      complet unique, énoncés, réponses et solutions, comme les chapitres
   //      de ce cours — ses 40 exercices n'existent que là)
   //      Pas d'examens : ils n'existent pas encore pour ce cours.
-  assert.equal(DOCUMENTS.length, 98);
+  assert.equal(DOCUMENTS.length, 100);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 42, exercices: 31, revision: 7, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 42, exercices: 31, revision: 9, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
     return acc;
   }, {});
   assert.deepEqual(parCours, {
-    "calcul-differentiel": 52,
+    "calcul-differentiel": 54,
     "probabilites-statistique": 18,
     "calcul-integral": 28,
   });

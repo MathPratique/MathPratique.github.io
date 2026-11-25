@@ -1,0 +1,3244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Le jardin des dérivées — MathPratique</title>
+<!--
+  Le jardin des dérivées, un jeu de MathPratique.ca.
+  © 2026 MathPratique.ca. Tous droits réservés.
+
+  Cette page est faite pour être affichée dans un iframe par la page du site
+  /jeux/jardin-des-derivees, qui fournit l'en-tête, le pied de page, le bouton
+  plein écran et le classement (Firestore). Le jeu ne parle à Firebase
+  qu'à travers cette page, par messages entre fenêtres de même origine.
+  Ouverte seule, la page renvoie vers celle du site (« ?seul » l'en empêche,
+  pour les tests).
+-->
+<script>
+  if (window.top === window && !/[?&]seul(=|&|$)/.test(location.search)) location.replace('/jeux/jardin-des-derivees');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  /* Panneaux de jardin botanique : vert de cèdre profond, texte crème, filets laiton. */
+  :root {
+    --cedre: rgba(16, 36, 23, 0.84);
+    --creme: #f3ecd8;
+    --laiton: #d8b25c;
+    --sauge: #a9c79f;
+    --voile: rgba(9, 22, 13, 0.45);
+    --police-titre: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --police-texte: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #9cc9ec; }
+  body { font-family: var(--police-texte); color: var(--creme); }
+  canvas { display: block; }
+  #hud {
+    position: fixed; top: 14px; right: 18px; display: flex; align-items: baseline; gap: 12px;
+    color: rgba(255, 255, 255, .85); text-shadow: 0 1px 3px rgba(0, 0, 0, .5); pointer-events: none;
+  }
+  #hud-niveau { font: 600 11px/1 var(--police-texte); letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+  #chrono { font: 600 15px/1 var(--police-texte); letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .ecran {
+    position: fixed; inset: 0; display: grid; overflow-y: auto;   /* défile si la fenêtre est basse */
+    background: var(--voile); padding: 16px;
+  }
+  .ecran > .panneau { margin: auto; }
+  .panneau {
+    background: var(--cedre); border: 1px solid rgba(216, 178, 92, .5); border-radius: 6px;
+    padding: 30px 38px; max-width: 560px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+    backdrop-filter: blur(6px);
+  }
+  .etiquette {
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--laiton); margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--police-titre); font-weight: 600; font-size: 46px; line-height: 1.05;
+    margin: 0 0 8px; text-wrap: balance;
+  }
+  .sous-titre { font-family: var(--police-titre); font-style: italic; font-size: 21px; color: var(--sauge); margin: 0 0 22px; }
+  .commandes { display: grid; grid-template-columns: auto 1fr; gap: 9px 16px; margin: 0 0 22px; font-size: 15px; align-items: center; }
+  kbd {
+    display: inline-block; min-width: 14px; text-align: center;
+    font: 600 12px/1 var(--police-texte); padding: 4px 6px; margin-right: 3px;
+    border: 1px solid rgba(243, 236, 216, .55); border-bottom-width: 2px; border-radius: 4px;
+  }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  button {
+    font: 600 15px/1 var(--police-texte); padding: 12px 18px; border-radius: 4px; cursor: pointer;
+    border: 1px solid var(--laiton);
+  }
+  button.principal { background: var(--laiton); color: #142a1a; }
+  button.secondaire { background: transparent; color: var(--creme); }
+  button:focus-visible { outline: 2px solid var(--creme); outline-offset: 2px; }
+  .temps { font-family: var(--police-titre); font-size: 58px; line-height: 1; color: var(--laiton); margin: 0 0 22px; font-variant-numeric: lining-nums tabular-nums; }
+  .note { font-size: 13px; color: var(--sauge); margin: 16px 0 0; }
+  .consigne { font-size: 14px; color: var(--sauge); margin: 0 0 20px; }
+  .record-local { font-size: 13px; color: var(--laiton); margin: 16px 0 0; font-variant-numeric: lining-nums tabular-nums; }
+  .droits { font-size: 12px; color: var(--sauge); opacity: .85; margin: 18px 0 0; }
+  .meilleur { font-size: 15px; margin: -8px 0 22px; font-variant-numeric: lining-nums tabular-nums; }
+  .meilleur.record-battu { color: var(--laiton); font-weight: 600; }
+  .temps-mondes { list-style: none; padding: 0; margin: -6px 0 20px; display: grid; gap: 6px; font-size: 15px; font-variant-numeric: lining-nums tabular-nums; }
+  .temps-mondes li { display: flex; justify-content: space-between; gap: 24px; padding-bottom: 5px; border-bottom: 1px solid rgba(243, 236, 216, .15); }
+  .temps-mondes span:last-child { color: var(--laiton); }
+  /* Classement (servi par la page du site, voir section 12) */
+  button.lien { padding: 0; border: 0; background: none; color: var(--laiton); font: 600 13px/1.3 var(--police-texte); text-decoration: underline; text-underline-offset: 3px; }
+  .defile { overflow-x: auto; }
+  .tableau-classement { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: lining-nums tabular-nums; }
+  .tableau-classement th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--sauge); padding: 0 8px 6px; }
+  .tableau-classement td { padding: 6px 8px; border-top: 1px solid rgba(243, 236, 216, .12); white-space: nowrap; }
+  .tableau-classement td.rang { width: 2.5em; color: var(--laiton); }
+  .tableau-classement td.nom { white-space: normal; overflow-wrap: anywhere; }
+  .tableau-classement .duree { text-align: right; }
+  .tableau-classement tr.moi td { background: rgba(216, 178, 92, .2); font-weight: 600; }
+  .tableau-classement td.vide { color: var(--sauge); font-style: italic; }
+  .etat-classement { font-size: 13px; color: var(--sauge); margin: 10px 0 0; }
+  .bloc-classement { margin: 0 0 22px; padding-top: 16px; border-top: 1px solid rgba(216, 178, 92, .3); }
+  .invitation { display: grid; gap: 10px; justify-items: start; margin: 0 0 14px; font-size: 14px; }
+  .invitation p { margin: 0; }
+  .form-nom { display: grid; gap: 8px; margin: 0 0 14px; font-size: 14px; }
+  .form-nom .ligne-nom { display: flex; flex-wrap: wrap; gap: 8px; }
+  input.champ-nom {
+    flex: 1 1 180px; min-width: 0; box-sizing: border-box; padding: 10px 12px; border-radius: 4px;
+    border: 1px solid var(--laiton); background: rgba(0, 0, 0, .25); color: var(--creme); font: 16px var(--police-texte);
+  }
+  input.champ-nom:focus-visible { outline: 2px solid var(--creme); outline-offset: 1px; }
+  .refus { margin: 0; color: #f5b3a8; font-size: 14px; }
+  /* Le jardin : zones, questions, grilles */
+  .zones-maths { list-style: none; counter-reset: zone; padding: 0; margin: 0 0 22px; display: grid; gap: 6px; font-size: 15px; }
+  .zones-maths li { counter-increment: zone; display: flex; justify-content: space-between; gap: 16px; padding-bottom: 5px; border-bottom: 1px solid rgba(243, 236, 216, .15); }
+  .zones-maths li span:first-child::before { content: counter(zone) ". "; color: var(--laiton); }
+  .zones-maths li span:last-child { color: var(--sauge); text-align: right; }
+  .ecran-question { background: rgba(9, 22, 13, 0.3); grid-template-columns: minmax(0, 1fr); }   /* le panneau ne déborde jamais de la fenêtre */
+  .panneau-question { max-width: 740px; width: 100%; box-sizing: border-box; }
+  .enonce { font-size: 20px; margin: 0 0 18px; line-height: 1.5; }
+  .enonce math, .choix math, .explication math { font-size: 1.12em; }
+  .choix-maths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0 0 18px; }   /* 6 choix : 2 colonnes de 3 */
+  @media (max-width: 560px) { .choix-maths { grid-template-columns: 1fr; } }
+  button.choix {
+    display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 14px; text-align: left;
+    background: rgba(243, 236, 216, .05); color: var(--creme); border-color: rgba(216, 178, 92, .5); font-weight: 400; font-size: 17px;
+  }
+  button.choix:hover:not(:disabled) { background: rgba(216, 178, 92, .16); }
+  button.choix:disabled { cursor: default; opacity: .75; }
+  button.choix .touche { flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 4px; border: 1px solid rgba(243, 236, 216, .5); font: 600 12px/1 var(--police-texte); }
+  button.choix.juste { opacity: 1; border-color: #8fd18a; background: rgba(110, 190, 100, .22); }
+  button.choix.faux { opacity: 1; border-color: #f2a59a; background: rgba(220, 90, 70, .22); }
+  .verdict { font-weight: 600; margin: 0 0 6px; }
+  .verdict.juste { color: #a8e0a2; }
+  .verdict.faux { color: #f5b3a8; }
+  .explication { font-size: 15px; color: var(--creme); margin: 0 0 18px; line-height: 1.55; }
+  #invite-grille {
+    position: fixed; left: 50%; bottom: 14%; transform: translateX(-50%); z-index: 4; padding: 9px 14px; border-radius: 6px;
+    background: rgba(9, 22, 13, .72); color: var(--creme); font: 600 14px/1 var(--police-texte); pointer-events: none;
+  }
+  /* Compteur de portes et clé de la zone (grise, puis dorée quand on la tient) */
+  #portes { font: 600 12px/1 var(--police-texte); letter-spacing: .06em; opacity: .85; font-variant-numeric: tabular-nums; }
+  #cle-hud { display: inline-flex; color: rgba(255, 255, 255, .45); transition: color .3s; }
+  #cle-hud.tenue { color: #ffcf4a; filter: drop-shadow(0 0 3px rgba(255, 200, 80, .8)); }
+  #cle-hud.eclat { animation: cle-eclat .7s ease-out; }
+  @keyframes cle-eclat { 0% { transform: scale(1); } 40% { transform: scale(1.7); } 100% { transform: scale(1); } }
+  #invite-grille.verrou { background: rgba(60, 22, 14, .8); }
+  #invite-grille.secousse { animation: secousse .35s; }
+  @keyframes secousse { 0%, 100% { transform: translateX(-50%); } 25% { transform: translateX(calc(-50% - 6px)); } 75% { transform: translateX(calc(-50% + 6px)); } }
+  @media (prefers-reduced-motion: reduce) { #cle-hud.eclat, #invite-grille.secousse { animation: none; } }
+  #penalite { font: 600 13px/1 var(--police-texte); color: #ffb3a6; opacity: 0; }
+  #penalite.flash { animation: penalite 2.2s ease-out; }
+  @keyframes penalite { 0% { opacity: 1; transform: translateY(0); } 70% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } }
+  @media (prefers-reduced-motion: reduce) { #penalite.flash { animation-duration: .01s; } }
+  /* Réglages du son */
+  .reglages-son { display: grid; gap: 14px; margin: 0 0 24px; }
+  .reglage-son { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; font-size: 15px; }
+  .reglage-son label { font-weight: 600; }
+  .reglage-son output { color: var(--laiton); font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: right; }
+  .reglage-son .aide { grid-column: 1 / -1; margin: -2px 0 0; font-size: 12px; color: var(--sauge); }
+  .reglage-son input[type="range"] { grid-column: 1 / -1; width: 100%; margin: 2px 0 0; accent-color: var(--laiton); cursor: pointer; }
+  .reglage-son input[type="range"]:focus-visible { outline: 2px solid var(--creme); outline-offset: 3px; }
+  #indicateur-muet {
+    position: fixed; top: 12px; left: 16px; z-index: 6; display: flex; align-items: center; gap: 6px;
+    padding: 5px 10px; border-radius: 999px; background: rgba(9, 22, 13, 0.5); color: rgba(255, 255, 255, 0.85);
+    font: 600 11px/1 var(--police-texte); letter-spacing: .12em; text-transform: uppercase; pointer-events: none;
+  }
+  #ecran-ordinateur { z-index: 10; background: #10241a; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div id="hud" hidden><span id="hud-niveau">Zone 1/4</span><span id="portes">Portes : 0/16</span><span id="cle-hud" aria-label="Clé de la zone : pas encore trouvée"><svg width="18" height="12" viewBox="0 0 36 24" aria-hidden="true"><circle cx="8" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M14.5 12h19M27 12v6M32 12v5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span id="chrono">00:00</span><span id="penalite" hidden>+30 s</span></div>
+<div id="invite-grille" hidden><kbd>E</kbd> ouvrir la grille</div>
+
+<div id="ecran-titre" class="ecran">
+  <div class="panneau">
+    <p class="etiquette">Labyrinthe de haies</p>
+    <h1>Le jardin des dérivées</h1>
+    <p class="sous-titre">Quatre jardins, quatre règles. Des grilles barrent le chemin : trouve la bonne dérivée pour les ouvrir.</p>
+    <ol class="zones-maths">
+      <li><span>Haie de cèdres</span><span>La règle de la puissance</span></li>
+      <li><span>Haie fleurie</span><span>La règle du produit</span></li>
+      <li><span>Jardin de pierres</span><span>La règle du quotient</span></li>
+      <li><span>Forêt d’automne</span><span>La dérivée en chaîne</span></li>
+    </ol>
+    <div class="commandes">
+      <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><span>ou les flèches : marcher (Z Q S D en AZERTY)</span>
+      <span><kbd>Souris</kbd></span><span>regarder autour</span>
+      <span><kbd>Maj</kbd></span><span>marcher plus vite</span>
+      <span><kbd>E</kbd></span><span>ouvrir une grille, quand tu es tout près</span>
+      <span><kbd>1</kbd>…<kbd>6</kbd></span><span>choisir une réponse (ou cliquer)</span>
+      <span><kbd>Échap</kbd></span><span>pause, ou refermer la question</span>
+      <span><kbd>N</kbd></span><span>recommencer dans un nouveau jardin</span>
+      <span><kbd>M</kbd></span><span>couper ou remettre le son</span>
+    </div>
+    <p class="consigne">Chaque jardin cache une clé au fond d’un cul-de-sac : sans elle, la grille qui mène plus loin reste verrouillée. Certaines grilles ne mènent qu’à un cul-de-sac : retiens celles que tu as déjà ouvertes. Le chronomètre tourne pendant que tu réponds ; une mauvaise réponse coûte 30 secondes, puis la grille propose une nouvelle fonction. Aucune carte.</p>
+    <div class="actions">
+      <button class="principal" type="button" id="btn-entrer-jardin">Entrer dans le jardin</button>
+      <button class="secondaire" type="button" id="btn-classement">Classement</button>
+      <button class="secondaire" type="button" id="btn-son">Son</button>
+    </div>
+    <p class="record-local" id="record-local" hidden></p>
+    <p class="droits">© 2026 MathPratique.ca. Tous droits réservés.</p>
+  </div>
+</div>
+
+<div id="ecran-pause" class="ecran" hidden>
+  <div class="panneau">
+    <p class="etiquette">Pause</p>
+    <h1>Une pause à l'ombre</h1>
+    <p class="sous-titre">Le chronomètre est arrêté.</p>
+    <div class="reglages-son" id="reglages-son-pause" role="group" aria-label="Son"></div>
+    <div class="actions">
+      <button class="principal" type="button" id="btn-reprendre">Reprendre</button>
+      <button class="secondaire" type="button" id="btn-nouveau">Nouveau jardin</button>
+      <button class="secondaire" type="button" id="btn-menu-pause">Menu</button>
+    </div>
+    <p class="note" id="note-verrou" hidden>Le navigateur demande une seconde de délai : clique de nouveau sur Reprendre.</p>
+  </div>
+</div>
+
+<div id="ecran-victoire" class="ecran" hidden>
+  <div class="panneau">
+    <p class="etiquette">Sortie trouvée</p>
+    <h1>Te voilà au bout du jardin</h1>
+    <p class="sous-titre">Temps total, pénalités comprises</p>
+    <div class="temps" id="temps-final">00:00</div>
+    <ol class="temps-mondes" id="bilan"></ol>
+    <p class="meilleur" id="meilleur-temps"></p>
+    <section class="bloc-classement" id="bloc-victoire" aria-labelledby="titre-classement-victoire">
+      <p class="etiquette" id="titre-classement-victoire">Classement</p>
+      <div class="invitation" id="invitation-victoire" hidden>
+        <p>Connecte-toi avec ton compte MathPratique pour inscrire tes temps au classement la prochaine fois.</p>
+        <button class="secondaire" type="button" data-connexion>Me connecter</button>
+      </div>
+      <form class="form-nom" id="form-pseudo-victoire" data-form-pseudo hidden>
+        <label for="champ-pseudo-victoire">Ton pseudonyme pour le classement (20 caractères au plus). Pas besoin d’utiliser ton vrai nom.</label>
+        <div class="ligne-nom">
+          <input class="champ-nom" id="champ-pseudo-victoire" maxlength="20" autocomplete="nickname" required>
+          <button class="principal" type="submit">Inscrire mon temps</button>
+        </div>
+        <p class="refus" role="alert" hidden></p>
+      </form>
+      <p class="etat-classement" id="message-victoire" hidden></p>
+      <div class="defile">
+        <table class="tableau-classement" id="tableau-victoire">
+          <thead><tr><th>Rang</th><th>Pseudonyme</th><th class="duree">Temps</th><th>Date</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="etat-classement" id="rang-victoire" hidden></p>
+    </section>
+    <div class="actions">
+      <button class="principal" type="button" id="btn-rejouer">Rejouer dans un nouveau jardin</button>
+      <button class="secondaire" type="button" id="btn-menu">Menu</button>
+    </div>
+  </div>
+</div>
+
+<div id="ecran-classement" class="ecran" hidden>
+  <div class="panneau">
+    <p class="etiquette">Classement</p>
+    <h1>Les meilleurs temps</h1>
+    <div class="invitation" id="invitation-classement" hidden>
+      <p>Connecte-toi avec ton compte MathPratique pour inscrire tes temps au classement.</p>
+      <button class="secondaire" type="button" data-connexion>Me connecter</button>
+    </div>
+    <div class="defile">
+      <table class="tableau-classement" id="tableau-classement">
+        <thead><tr><th>Rang</th><th>Pseudonyme</th><th class="duree">Temps</th><th>Date</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="etat-classement" id="rang-classement" hidden></p>
+    <p class="etat-classement" id="mon-pseudo" hidden><span></span> <button class="lien" type="button" id="btn-changer-pseudo">Changer de pseudonyme</button></p>
+    <form class="form-nom" id="form-pseudo-classement" data-form-pseudo hidden style="margin-top: 14px">
+      <label for="champ-pseudo-classement">Ton nouveau pseudonyme (20 caractères au plus)</label>
+      <div class="ligne-nom">
+        <input class="champ-nom" id="champ-pseudo-classement" maxlength="20" autocomplete="nickname" required>
+        <button class="principal" type="submit">Enregistrer</button>
+      </div>
+      <p class="refus" role="alert" hidden></p>
+    </form>
+    <p class="etat-classement" id="etat-classement" hidden></p>
+    <div class="actions" style="margin-top: 20px"><button class="principal" type="button" id="btn-retour-classement">Retour</button></div>
+  </div>
+</div>
+
+<div id="ecran-son" class="ecran" hidden>
+  <div class="panneau">
+    <p class="etiquette">Réglages</p>
+    <h1>Le son</h1>
+    <div class="reglages-son" id="reglages-son-titre" role="group" aria-label="Son"></div>
+    <p class="note" style="margin: -8px 0 22px">Touche <kbd>M</kbd> : couper ou remettre le son, à tout moment.</p>
+    <div class="actions"><button class="principal" type="button" id="btn-retour-son">Retour</button></div>
+  </div>
+</div>
+
+<div id="indicateur-muet" hidden>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/>
+  </svg>
+  Son coupé · M
+</div>
+
+<div id="ecran-question" class="ecran ecran-question" hidden>
+  <div class="panneau panneau-question" role="dialog" aria-labelledby="enonce-question">
+    <p class="etiquette" id="etiquette-question">Grille</p>
+    <p class="enonce" id="enonce-question"></p>
+    <div class="choix-maths" id="choix-question"></div>
+    <div id="retour-question" hidden>
+      <p class="verdict" id="verdict-question"></p>
+      <p class="explication" id="explication-question"></p>
+    </div>
+    <div class="actions">
+      <button class="principal" type="button" id="btn-nouvelle-question" hidden>Nouvelle question</button>
+      <button class="secondaire" type="button" id="btn-fermer-question">Fermer (Échap)</button>
+    </div>
+  </div>
+</div>
+
+<div id="ecran-ordinateur" class="ecran" hidden>
+  <div class="panneau">
+    <p class="etiquette">Le jardin des dérivées</p>
+    <h1>À l’ordinateur</h1>
+    <p class="sous-titre">Ce jeu se joue à l’ordinateur, avec un clavier et une souris.</p>
+    <p class="droits">© 2026 MathPratique.ca. Tous droits réservés.</p>
+  </div>
+</div>
+
+<script src="katex.min.js" defer></script>
+<script type="module">
+/* =====================================================================
+   LE JARDIN DES DÉRIVÉES — labyrinthe 3D en première personne (Three.js)
+   © 2026 MathPratique.ca. Tous droits réservés.
+   ---------------------------------------------------------------------
+    1. Réglages
+    2. Hasard reproductible et bruit 3D
+    3. Outils de parcours du labyrinthe
+    4. Textures procédurales (feuillage, gravier, herbe, fleurs)
+    5. Scène, lumière et ciel
+    6. Construction du monde (haies instanciées, sol, herbe, clairière)
+    7. Joueur : regard, déplacement, collisions, balancement
+    8. Sons d'ambiance (Web Audio)
+    9. États du jeu et interface
+   10. Boucle principale et outils de test (console : LABY, sur localhost seulement)
+   11. Outils communs (géométries, textures)
+   12. Classement : messages avec la page du site, qui lit et écrit Firestore
+   13. Jardin des dérivées : génération, questions, décor, grilles, clés
+   ===================================================================== */
+import * as THREE from './three.module.min.js';
+
+/* ===================== 1. RÉGLAGES ===================== */
+
+const CELLULE = 3.0;             // taille d'une cellule (m)
+const EPAISSEUR = 0.8;           // épaisseur d'une haie (m)
+const HAUTEUR_HAIE = 3.0;        // bien plus haut que les yeux
+const LONGUEUR_SEGMENT = CELLULE + EPAISSEUR;   // un segment de haie couvre aussi les jonctions
+const YEUX = 1.65;
+const RAYON_JOUEUR = 0.32;
+const MARGE_FEUILLAGE = 0.12;    // le feuillage déborde un peu de la boîte : on s'arrête avant
+const VITESSE = 2.6;             // m/s en marchant
+const VITESSE_RAPIDE = 4.6;      // m/s avec Maj
+
+// Ambiance du jardin : ciel, brouillard (aucun), lumières, exposition. Couleurs du ciel en RVB 0–1.
+const THEMES = {
+  cedres: {
+    ciel: { horizon: [0.80, 0.89, 0.97], zenith: [0.22, 0.48, 0.86], soleil: 1, couverture: [0.50, 0.74],
+      nuageClair: [1.0, 0.99, 0.97], nuageSombre: [0.80, 0.85, 0.92] },
+    brouillard: null, fond: null,
+    hemi: { ciel: 0xd8eaff, sol: 0x9c8a60, intensite: 1.6 },
+    soleil: { couleur: 0xffefd4, intensite: 3.0 },
+    exposition: 1.1,
+  },
+};
+THEMES.jardin = THEMES.cedres;   // le jardin a la lumière et le ciel des cèdres
+const SENSIBILITE = 0.0022;      // radians par pixel de souris
+
+/* ===================== 2. HASARD ET BRUIT ===================== */
+
+// Générateur pseudo-aléatoire à graine (mulberry32) : un même nombre donne le même labyrinthe.
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Bruit de valeur 3D lissé, valeurs dans [-1, 1].
+function creerBruit3D(graine) {
+  const alea = mulberry32(graine);
+  const perm = new Uint8Array(512);
+  const valeurs = new Float32Array(256);
+  for (let i = 0; i < 256; i++) { perm[i] = i; valeurs[i] = alea() * 2 - 1; }
+  for (let i = 255; i > 0; i--) {
+    const j = Math.floor(alea() * (i + 1));
+    [perm[i], perm[j]] = [perm[j], perm[i]];
+  }
+  for (let i = 0; i < 256; i++) perm[i + 256] = perm[i];
+  const v = (x, y, z) => valeurs[perm[(x & 255) + perm[(y & 255) + perm[z & 255]]]];
+  const lisse = t => t * t * (3 - 2 * t);
+  const mix = (a, b, t) => a + (b - a) * t;
+  return (x, y, z) => {
+    const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+    const u = lisse(x - xi), w = lisse(y - yi), s = lisse(z - zi);
+    return mix(
+      mix(mix(v(xi, yi, zi), v(xi + 1, yi, zi), u), mix(v(xi, yi + 1, zi), v(xi + 1, yi + 1, zi), u), w),
+      mix(mix(v(xi, yi, zi + 1), v(xi + 1, yi, zi + 1), u), mix(v(xi, yi + 1, zi + 1), v(xi + 1, yi + 1, zi + 1), u), w),
+      s);
+  };
+}
+
+function fbm3(bruit, x, y, z, octaves = 3) {
+  let somme = 0, amplitude = 0.5, frequence = 1;
+  for (let k = 0; k < octaves; k++) {
+    somme += amplitude * bruit(x * frequence, y * frequence, z * frequence);
+    amplitude *= 0.5; frequence *= 2.03;
+  }
+  return somme;
+}
+
+/* ===================== 3. OUTILS DE PARCOURS DU LABYRINTHE ===================== */
+// Repère : la cellule (i, j) occupe x ∈ [i·C, (i+1)·C] et z ∈ [j·C, (j+1)·C].
+//   murH[j][i] : mur sur la ligne z = j·C, entre les cellules (i, j−1) et (i, j)   (j de 0 à n)
+//   murV[j][i] : mur sur la ligne x = i·C, entre les cellules (i−1, j) et (i, j)   (i de 0 à n)
+// n = lab.n, le nombre de cellules par côté (selon le niveau).
+
+function passage(lab, i, j, di, dj) {
+  const ni = i + di, nj = j + dj;
+  if (ni < 0 || nj < 0 || ni >= lab.n || nj >= lab.n) return false;
+  if (di === 1) return !lab.murV[j][i + 1];
+  if (di === -1) return !lab.murV[j][i];
+  if (dj === 1) return !lab.murH[j + 1][i];
+  return !lab.murH[j][i];
+}
+
+// Distances (en cellules) depuis une cellule, par parcours en largeur.
+function distancesDepuis(lab, depart) {
+  const dist = Array.from({ length: lab.n }, () => new Array(lab.n).fill(Infinity));
+  const file = [[depart.i, depart.j]];
+  dist[depart.j][depart.i] = 0;
+  for (let k = 0; k < file.length; k++) {
+    const [i, j] = file[k];
+    for (const [di, dj] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      if (passage(lab, i, j, di, dj) && dist[j + dj][i + di] === Infinity) {
+        dist[j + dj][i + di] = dist[j][i] + 1;
+        file.push([i + di, j + dj]);
+      }
+    }
+  }
+  return dist;
+}
+
+// Chemin le plus court (liste de cellules) entre deux cellules.
+function cheminLePlusCourt(lab, depart, arrivee) {
+  const dist = distancesDepuis(lab, arrivee);
+  if (dist[depart.j][depart.i] === Infinity) return null;
+  const chemin = [{ i: depart.i, j: depart.j }];
+  let { i, j } = depart;
+  while (i !== arrivee.i || j !== arrivee.j) {
+    for (const [di, dj] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      if (passage(lab, i, j, di, dj) && dist[j + dj][i + di] === dist[j][i] - 1) { i += di; j += dj; break; }
+    }
+    chemin.push({ i, j });
+  }
+  return chemin;
+}
+
+function nbMursAuSommet(lab, vx, vz) {
+  let n = 0;
+  if (vx > 0 && lab.murH[vz] && lab.murH[vz][vx - 1]) n++;
+  if (vx < lab.n && lab.murH[vz] && lab.murH[vz][vx]) n++;
+  if (vz > 0 && lab.murV[vz - 1] && lab.murV[vz - 1][vx]) n++;
+  if (vz < lab.n && lab.murV[vz] && lab.murV[vz][vx]) n++;
+  return n;
+}
+
+
+// Nombre de culs-de-sac (cellules entourées de trois murs).
+function compterCulsDeSac(lab) {
+  let n = 0;
+  for (let j = 0; j < lab.n; j++) {
+    for (let i = 0; i < lab.n; i++) {
+      const ouverts = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([di, dj]) => passage(lab, i, j, di, dj)).length;
+      if (ouverts === 1) n++;
+    }
+  }
+  return n;
+}
+
+/* ===================== 4. TEXTURES PROCÉDURALES ===================== */
+// Tout est dessiné dans des canevas au lancement : aucune image externe.
+
+function creerCanvas(l, h) {
+  const c = document.createElement('canvas');
+  c.width = l; c.height = h;
+  return c;
+}
+
+// Un motif proche du bord est redessiné de l'autre côté : la texture se répète sans couture.
+function copiesBouclees(x, y, marge, L, H = L) {
+  const xs = [0], ys = [0];
+  if (x < marge) xs.push(L);
+  if (x > L - marge) xs.push(-L);
+  if (y < marge) ys.push(H);
+  if (y > H - marge) ys.push(-H);
+  const res = [];
+  for (const dx of xs) for (const dy of ys) res.push([x + dx, y + dy]);
+  return res;
+}
+
+function ellipse(ctx, x, y, rx, ry, angle, couleur) {
+  ctx.fillStyle = couleur;
+  ctx.beginPath();
+  ctx.ellipse(x, y, rx, ry, angle, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function versTexture(canvas, { repeter = true, srgb = true } = {}) {
+  const t = new THREE.CanvasTexture(canvas);
+  if (repeter) t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  if (srgb) t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 8;
+  return t;
+}
+
+// Palettes de feuillage : cèdre (petites écailles vert franc) et sapin (aiguilles bleu-vert sombre).
+// Chaque paire [min, écart] donne une valeur tirée entre min et min + écart.
+const PALETTE_CEDRE = {
+  fond: '#0b1f10', trous: '#051008', densite: 1, longueur: [2.5, 6], largeur: [1.2, 2.2], eventail: 1.6,
+  teinte: [92, 34], saturation: [32, 26], lumiere: [8, 25], ecailles: true,
+  pointes: ['rgba(170, 205, 110, 0.85)', 'rgba(120, 170, 80, 0.85)'],
+};
+
+// Feuillage : des milliers de petits rameaux, du plus sombre (profondeur) au plus clair (surface).
+// Une image jumelle en niveaux de gris sert de relief (bumpMap).
+function texturesFeuillage(graine, p = PALETTE_CEDRE) {
+  const T = 512, alea = mulberry32(graine);
+  const couleur = creerCanvas(T, T), relief = creerCanvas(T, T);
+  const c = couleur.getContext('2d'), r = relief.getContext('2d');
+  c.fillStyle = p.fond; c.fillRect(0, 0, T, T);
+  r.fillStyle = '#141414'; r.fillRect(0, 0, T, T);
+  const couches = 6;
+  for (let couche = 0; couche < couches; couche++) {
+    const clarte = couche / (couches - 1);                 // 0 = fond, 1 = surface
+    const nombre = Math.round((couche === 0 ? 1800 : 2500) * p.densite);
+    for (let k = 0; k < nombre; k++) {
+      const x = alea() * T, y = alea() * T;
+      const longueur = p.longueur[0] + alea() * p.longueur[1], largeur = p.largeur[0] + alea() * p.largeur[1];
+      const angle = -Math.PI / 2 + (alea() - 0.5) * p.eventail;   // rameaux plutôt dressés, en éventail
+      const teinte = p.teinte[0] + alea() * p.teinte[1];
+      const saturation = p.saturation[0] + alea() * p.saturation[1];
+      const lumiere = (p.lumiere[0] + clarte * p.lumiere[1]) * (0.8 + alea() * 0.45);
+      const gris = Math.round(30 + clarte * 190 + alea() * 25);
+      const col = `hsl(${teinte.toFixed(0)}, ${saturation.toFixed(0)}%, ${lumiere.toFixed(1)}%)`;
+      const colRelief = `rgb(${gris},${gris},${gris})`;
+      const ex = Math.cos(angle) * longueur * 0.6, ey = Math.sin(angle) * longueur * 0.6;
+      for (const [px, py] of copiesBouclees(x, y, 12, T)) {
+        ellipse(c, px, py, longueur, largeur, angle, col);
+        ellipse(r, px, py, longueur, largeur, angle, colRelief);
+        if (p.ecailles && clarte > 0.3) {   // écailles latérales : l'aspect « tressé » du thuya
+          ellipse(c, px + ex - ey * 0.4, py + ey + ex * 0.4, largeur * 0.9, largeur * 0.6, angle + 0.8, col);
+        }
+      }
+    }
+    if (couche === 1) {       // trous d'ombre entre les rameaux, en partie recouverts ensuite
+      for (let k = 0; k < 420; k++) {
+        const x = alea() * T, y = alea() * T, rx = 2 + alea() * 6, ry = 1.5 + alea() * 4, a = alea() * Math.PI;
+        for (const [px, py] of copiesBouclees(x, y, 10, T)) {
+          ellipse(c, px, py, rx, ry, a, p.trous);
+          ellipse(r, px, py, rx, ry, a, '#000000');
+        }
+      }
+    }
+  }
+  for (let k = 0; k < 900; k++) {   // pointes ensoleillées
+    const x = alea() * T, y = alea() * T, rr = 0.8 + alea() * 1.2;
+    const col = alea() < 0.5 ? p.pointes[0] : p.pointes[1];
+    for (const [px, py] of copiesBouclees(x, y, 3, T)) {
+      ellipse(c, px, py, rr * 1.6, rr, -1.2, col);
+      ellipse(r, px, py, rr * 1.6, rr, -1.2, '#ffffff');
+    }
+  }
+  return { couleur: versTexture(couleur), relief: versTexture(relief, { srgb: false }) };
+}
+
+// Sentier de terre battue et de petit gravier (512 px = 2 m).
+function texturesGravier(graine) {
+  const T = 512, alea = mulberry32(graine);
+  const couleur = creerCanvas(T, T), relief = creerCanvas(T, T);
+  const c = couleur.getContext('2d'), r = relief.getContext('2d');
+  c.fillStyle = '#b39c78'; c.fillRect(0, 0, T, T);
+  r.fillStyle = '#606060'; r.fillRect(0, 0, T, T);
+  for (let k = 0; k < 260; k++) {              // marbrures de terre battue
+    const x = alea() * T, y = alea() * T, rayon = 20 + alea() * 60;
+    const teinte = alea() < 0.5 ? '205, 186, 152' : '138, 116, 86';
+    for (const [px, py] of copiesBouclees(x, y, rayon, T)) {
+      const g = c.createRadialGradient(px, py, 0, px, py, rayon);
+      g.addColorStop(0, `rgba(${teinte}, 0.2)`);
+      g.addColorStop(1, `rgba(${teinte}, 0)`);
+      c.fillStyle = g;
+      c.fillRect(px - rayon, py - rayon, rayon * 2, rayon * 2);
+    }
+  }
+  for (let k = 0; k < 30000; k++) {            // grain fin
+    c.fillStyle = alea() < 0.5 ? 'rgba(90, 72, 50, 0.35)' : 'rgba(238, 225, 198, 0.35)';
+    c.fillRect(Math.floor(alea() * T), Math.floor(alea() * T), 1, 1);
+  }
+  const tons = ['#9b9186', '#b8ad9c', '#cfc4b0', '#857a6c', '#a59780', '#d8cfbf'];
+  for (let k = 0; k < 1400; k++) {             // petits cailloux : ombre, caillou, reflet
+    const x = alea() * T, y = alea() * T, rx = 1.5 + alea() * 3.5, ry = rx * (0.6 + alea() * 0.4), a = alea() * Math.PI;
+    const ton = tons[Math.floor(alea() * tons.length)];
+    for (const [px, py] of copiesBouclees(x, y, 8, T)) {
+      ellipse(c, px + 1, py + 1.2, rx, ry, a, 'rgba(70, 55, 38, 0.55)');
+      ellipse(c, px, py, rx, ry, a, ton);
+      ellipse(c, px - rx * 0.3, py - ry * 0.35, rx * 0.4, ry * 0.35, a, 'rgba(255, 250, 240, 0.45)');
+      ellipse(r, px, py, rx, ry, a, '#d0d0d0');
+    }
+  }
+  return { couleur: versTexture(couleur), relief: versTexture(relief, { srgb: false }) };
+}
+
+// Bande d'herbe au pied des haies : dense contre la haie (haut de l'image), effilochée vers l'allée.
+function textureBordHerbe(graine) {
+  const L = 512, H = 128, alea = mulberry32(graine);
+  const cv = creerCanvas(L, H), c = cv.getContext('2d');
+  for (let k = 0; k < 900; k++) {              // fond touffu
+    const x = alea() * L, y = Math.pow(alea(), 2.2) * H * 0.75, rr = 3 + alea() * 7;
+    const col = `hsl(${85 + alea() * 30}, 45%, ${16 + alea() * 12}%)`;
+    for (const [px] of copiesBouclees(x, 0, rr, L, H)) ellipse(c, px, y, rr, rr * 0.7, 0, col);
+  }
+  for (let k = 0; k < 5200; k++) {             // brins
+    const x = alea() * L, y = Math.pow(alea(), 1.7) * H;
+    const long = 5 + alea() * 12, angle = alea() * Math.PI * 2;
+    c.strokeStyle = `hsl(${78 + alea() * 38}, ${42 + alea() * 22}%, ${20 + alea() * 28}%)`;
+    c.lineWidth = 1 + alea() * 1.4;
+    for (const [px] of copiesBouclees(x, 0, long, L, H)) {
+      c.beginPath(); c.moveTo(px, y); c.lineTo(px + Math.cos(angle) * long, y + Math.sin(angle) * long); c.stroke();
+    }
+  }
+  const t = versTexture(cv);
+  t.wrapT = THREE.ClampToEdgeWrapping;
+  return t;
+}
+
+// Touffe d'herbe vue de côté (brins qui partent du bas), fond transparent.
+function textureTouffe(graine) {
+  const T = 128, alea = mulberry32(graine);
+  const cv = creerCanvas(T, T), c = cv.getContext('2d');
+  for (let k = 0; k < 70; k++) {
+    const base = T / 2 + (alea() - 0.5) * 60, pointeX = base + (alea() - 0.5) * 70, pointeY = T - (45 + alea() * 78);
+    const g = c.createLinearGradient(0, T, 0, pointeY);
+    const teinte = 80 + alea() * 35;
+    g.addColorStop(0, `hsl(${teinte}, 45%, 14%)`);
+    g.addColorStop(1, `hsl(${teinte}, 50%, ${34 + alea() * 18}%)`);
+    c.fillStyle = g;
+    c.beginPath(); c.moveTo(base - 2, T); c.quadraticCurveTo(base, (T + pointeY) / 2, pointeX, pointeY);
+    c.quadraticCurveTo(base + 1, (T + pointeY) / 2, base + 2, T); c.fill();
+  }
+  return versTexture(cv, { repeter: false });
+}
+
+// Fleurs sauvages pour la clairière (tiges, feuilles, corolles), fond transparent.
+function textureFleurs(graine) {
+  const T = 128, alea = mulberry32(graine);
+  const cv = creerCanvas(T, T), c = cv.getContext('2d');
+  const corolles = ['#ffffff', '#ffe066', '#c9a0ff', '#ff9ec4', '#fff4d0'];
+  for (let k = 0; k < 9; k++) {
+    const x = 18 + alea() * 92, y = 20 + alea() * 60;
+    c.strokeStyle = '#3f7a2a'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(x + (alea() - 0.5) * 10, T); c.lineTo(x, y); c.stroke();
+    ellipse(c, x - 5, y + 25, 6, 2.5, -0.5, '#4f8f34');
+    const col = corolles[Math.floor(alea() * corolles.length)], rr = 3 + alea() * 3;
+    for (let p = 0; p < 5; p++) {
+      const a = p * Math.PI * 2 / 5;
+      ellipse(c, x + Math.cos(a) * rr, y + Math.sin(a) * rr, rr, rr * 0.7, a, col);
+    }
+    ellipse(c, x, y, rr * 0.6, rr * 0.6, 0, '#f2a516');
+  }
+  return versTexture(cv, { repeter: false });
+}
+
+// Pelouse de la clairière, vue de dessus (256 px = 1 m).
+function texturePelouse(graine) {
+  const T = 256, alea = mulberry32(graine);
+  const cv = creerCanvas(T, T), c = cv.getContext('2d');
+  c.fillStyle = '#4c8a32'; c.fillRect(0, 0, T, T);
+  for (let k = 0; k < 9000; k++) {
+    const x = alea() * T, y = alea() * T, long = 3 + alea() * 7, angle = alea() * Math.PI * 2;
+    c.strokeStyle = `hsl(${80 + alea() * 35}, ${45 + alea() * 20}%, ${22 + alea() * 30}%)`;
+    c.lineWidth = 1;
+    for (const [px, py] of copiesBouclees(x, y, long, T)) {
+      c.beginPath(); c.moveTo(px, py); c.lineTo(px + Math.cos(angle) * long, py + Math.sin(angle) * long); c.stroke();
+    }
+  }
+  return versTexture(cv);
+}
+
+
+/* ===================== 5. SCÈNE, LUMIÈRE ET CIEL ===================== */
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFShadowMap;
+// Le soleil et les haies ne bougent pas : la carte d'ombres n'est recalculée qu'à chaque nouveau
+// labyrinthe (voir construireMonde), pas à chaque image. Gros gain sur les cartes graphiques modestes.
+renderer.shadowMap.autoUpdate = false;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+document.body.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(72, innerWidth / innerHeight, 0.1, 1000);
+camera.rotation.order = 'YXZ';
+
+// Soleil d'après-midi, haut dans le ciel : ombres franches mais douces sur les allées.
+const ELEVATION = THREE.MathUtils.degToRad(43), AZIMUT = THREE.MathUtils.degToRad(-35);
+const DIR_SOLEIL = new THREE.Vector3(
+  Math.cos(ELEVATION) * Math.cos(AZIMUT), Math.sin(ELEVATION), Math.cos(ELEVATION) * Math.sin(AZIMUT)).normalize();
+
+// Lumière du ciel et du sol : les allées à l'ombre restent claires (réglée par monde, voir THEMES)
+const hemi = new THREE.HemisphereLight(0xd8eaff, 0x9c8a60, 1.6);
+scene.add(hemi);
+
+const soleil = new THREE.DirectionalLight(0xffefd4, 3.0);
+soleil.castShadow = true;
+soleil.shadow.mapSize.set(4096, 4096);
+soleil.shadow.bias = -0.0004;
+soleil.shadow.normalBias = 0.04;
+scene.add(soleil, soleil.target);
+
+// Cadre la carte d'ombres sur le labyrinthe courant : plus il est petit, plus les ombres sont fines.
+function cadrerSoleil(lab) {
+  const centre = new THREE.Vector3(lab.cote / 2 + CELLULE, 0, lab.cote / 2);
+  soleil.position.copy(centre).addScaledVector(DIR_SOLEIL, 100);
+  soleil.target.position.copy(centre);
+  const demi = lab.cote * 0.75 + 8;
+  Object.assign(soleil.shadow.camera, { left: -demi, right: demi, top: demi, bottom: -demi, near: 10, far: 230 });
+  soleil.shadow.camera.updateProjectionMatrix();
+}
+
+// Ciel : dégradé (plus clair à l'horizon), soleil et nuages qui dérivent. Ses couleurs et la
+// couverture nuageuse viennent de THEMES (section 1).
+const ciel = new THREE.Mesh(
+  new THREE.SphereGeometry(600, 32, 16),
+  new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false,
+    uniforms: {
+      dirSoleil: { value: DIR_SOLEIL }, temps: { value: 0 },
+      horizon: { value: new THREE.Vector3() }, zenith: { value: new THREE.Vector3() },
+      soleilVisible: { value: 1 }, couverture: { value: new THREE.Vector2() },
+      nuageClair: { value: new THREE.Vector3() }, nuageSombre: { value: new THREE.Vector3() },
+    },
+    vertexShader: /* glsl */`
+      varying vec3 vDir;
+      void main() {
+        vDir = normalize(position);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }`,
+    fragmentShader: /* glsl */`
+      uniform vec3 dirSoleil, horizon, zenith, nuageClair, nuageSombre;
+      uniform float temps, soleilVisible;
+      uniform vec2 couverture;
+      varying vec3 vDir;
+      // Hachage en entiers : un même point de la grille donne toujours la même valeur, quel que
+      // soit l'ordre des calculs choisi par le GPU (un hachage en virgule flottante laissait des
+      // lignes droites dans les nuages).
+      float hash(vec2 p) {
+        uvec2 q = uvec2(ivec2(p) + ivec2(4096));
+        q = q * uvec2(1664525u, 1013904223u);
+        q.x += q.y * 1664525u; q.y += q.x * 1664525u;
+        q = q ^ (q >> 16u);
+        q.x += q.y * 1664525u; q.y += q.x * 1664525u;
+        q = q ^ (q >> 16u);
+        return float(q.x ^ q.y) * (1.0 / 4294967295.0);
+      }
+      float bruit(vec2 p) {
+        vec2 i = floor(p), f = fract(p);
+        vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);   // interpolation quintique : aucune arête visible
+        return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
+                   mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y);
+      }
+      float fbm(vec2 p) {
+        float s = 0.0, a = 0.5;
+        for (int k = 0; k < 5; k++) { s += a * bruit(p); p = p * 2.03 + vec2(17.0, 9.0); a *= 0.5; }
+        return s;
+      }
+      void main() {
+        vec3 d = normalize(vDir);
+        float h = clamp(d.y, 0.0, 1.0);
+        vec3 col = mix(horizon, zenith, pow(h, 0.5));
+        float s = max(dot(d, dirSoleil), 0.0);
+        col += vec3(1.0, 0.86, 0.62) * pow(s, 10.0) * 0.22 * soleilVisible;                  // halo chaud
+        col = mix(col, vec3(1.0, 0.98, 0.92), smoothstep(0.9990, 0.9996, s) * soleilVisible); // disque solaire
+        if (d.y > 0.0) {
+          // Nuages projetés sur un plafond : plus serrés vers l'horizon, comme dans la réalité
+          vec2 uv = d.xz / (d.y + 0.15) * 1.3 + vec2(temps * 0.010, temps * 0.004);
+          float n = fbm(uv);
+          float densite = smoothstep(couverture.x, couverture.y, n);
+          // Le cœur épais des nuages est plus sombre, les bords sont clairs et lumineux
+          float epaisseur = smoothstep(0.62, 0.95, n);
+          vec3 nuage = mix(nuageClair, nuageSombre, epaisseur);
+          float fondu = smoothstep(0.0, 0.18, d.y);
+          col = mix(col, nuage, densite * fondu * 0.96);
+        }
+        gl_FragColor = vec4(col, 1.0);
+      }`,
+  }));
+ciel.frustumCulled = false;
+ciel.renderOrder = -1;
+scene.add(ciel);
+
+/* ===================== 6. CONSTRUCTION DU MONDE ===================== */
+
+const TEX = {
+  feuillage: [texturesFeuillage(11), texturesFeuillage(23)],
+  gravier: texturesGravier(5),
+  bordHerbe: textureBordHerbe(7),
+  touffe: textureTouffe(9),
+  fleurs: textureFleurs(13),
+  pelouse: texturePelouse(17),
+};
+
+// Segment de mur (haie de cèdres, de sapins ou paroi de roche) : boîte subdivisée dont la
+// surface est bosselée par un bruit 3D. Le déplacement ne dépend que de la position du sommet :
+// les sommets dupliqués aux arêtes bougent ensemble, donc la surface reste fermée et on ne voit
+// jamais à travers.
+//   hauteur, grosses / fines (amplitude des bosses, m), frequence, sommet (irrégularité du haut),
+//   piedNet (la base reste droite), tailleTexture (m par répétition de texture)
+function creerGeometrieHaie(graine, decalageUV, {
+  hauteur = HAUTEUR_HAIE, grosses: ampGrosses = 0.16, fines: ampFines = 0.05, frequence = 1.1,
+  sommet = 1, piedNet = true, tailleTexture = 1.5, segments = [14, 9, 3],
+} = {}) {
+  const L = LONGUEUR_SEGMENT, H = hauteur, E = EPAISSEUR;
+  const geo = new THREE.BoxGeometry(L, H, E, ...segments);   // le relief fin vient de la bumpMap
+  geo.translate(0, H / 2, 0);                      // base posée au sol
+  const bruit = creerBruit3D(graine), bruitFin = creerBruit3D(graine + 101);
+  const pos = geo.attributes.position, nor = geo.attributes.normal, uv = geo.attributes.uv;
+  const couleurs = new Float32Array(pos.count * 3);
+  const eps = 1e-4, TAILLE_TEXTURE = tailleTexture;
+  for (let k = 0; k < pos.count; k++) {
+    const x0 = pos.getX(k), y0 = pos.getY(k), z0 = pos.getZ(k);
+    // Coordonnées de texture en mètres, selon la face (pas d'étirement)
+    const nx = nor.getX(k), nz = nor.getZ(k);
+    if (Math.abs(nz) > 0.5) uv.setXY(k, x0 / TAILLE_TEXTURE + decalageUV, y0 / TAILLE_TEXTURE);
+    else if (Math.abs(nx) > 0.5) uv.setXY(k, z0 / TAILLE_TEXTURE + decalageUV, y0 / TAILLE_TEXTURE);
+    else uv.setXY(k, x0 / TAILLE_TEXTURE + decalageUV, z0 / TAILLE_TEXTURE);
+
+    const grosses = fbm3(bruit, x0 * frequence, y0 * frequence, z0 * frequence, 3);
+    const fines = fbm3(bruitFin, x0 * 4.0, y0 * 4.0, z0 * 4.0, 2);
+    const bosse = grosses * ampGrosses + fines * ampFines;
+    const montee = piedNet ? Math.min(1, y0 / 0.6) : 1;   // haie : le pied reste net, le haut gonfle
+    let x = x0, y = y0, z = z0;
+    if (Math.abs(Math.abs(z0) - E / 2) < eps) z += Math.sign(z0) * bosse * montee;
+    if (Math.abs(Math.abs(x0) - L / 2) < eps) x += Math.sign(x0) * bosse * montee;
+    if (Math.abs(y0 - H) < eps) y += (grosses * 0.35 + fines * 0.08) * sommet;   // sommet irrégulier
+    pos.setXYZ(k, x, y, z);
+
+    // Couleur de sommet : pied et creux plus sombres, comme une ombre de contact
+    const pied = 0.5 + 0.5 * Math.min(1, y0 / 1.3);
+    const creux = 0.86 + 0.22 * THREE.MathUtils.clamp(bosse / 0.12, -1, 1);
+    const v = pied * creux;
+    couleurs[k * 3] = v; couleurs[k * 3 + 1] = v; couleurs[k * 3 + 2] = v * 0.96;
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(couleurs, 3));
+  geo.computeVertexNormals();
+  // Lisse les normales entre faces (sommets confondus) : la haie paraît arrondie, pas en boîte
+  const somme = new Map();
+  const n = geo.attributes.normal;
+  const cle = k => `${pos.getX(k).toFixed(3)},${pos.getY(k).toFixed(3)},${pos.getZ(k).toFixed(3)}`;
+  for (let k = 0; k < pos.count; k++) {
+    const c = cle(k), s = somme.get(c) || [0, 0, 0];
+    s[0] += n.getX(k); s[1] += n.getY(k); s[2] += n.getZ(k);
+    somme.set(c, s);
+  }
+  for (let k = 0; k < pos.count; k++) {
+    const [sx, sy, sz] = somme.get(cle(k));
+    const l = Math.hypot(sx, sy, sz) || 1;
+    n.setXYZ(k, sx / l, sy / l, sz / l);
+  }
+  return geo;
+}
+
+// Deux plans croisés verticaux (touffes d'herbe, fleurs), normales vers le haut
+// pour qu'ils soient éclairés comme le sol qui les porte.
+function creerGeometrieCroisee(largeur, hauteur) {
+  const l = largeur / 2, h = hauteur;
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(
+    [-l, 0, 0, l, 0, 0, l, h, 0, -l, h, 0, 0, 0, -l, 0, 0, l, 0, h, l, 0, h, -l], 3));
+  g.setAttribute('uv', new THREE.Float32BufferAttribute([0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1], 2));
+  g.setAttribute('normal', new THREE.Float32BufferAttribute(new Array(8).fill([0, 1, 0]).flat(), 3));
+  g.setIndex([0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7]);
+  return g;
+}
+
+const GEO = {
+  haies: [creerGeometrieHaie(3, 0), creerGeometrieHaie(19, 0.37), creerGeometrieHaie(41, 0.71)],
+  bordHerbe: new THREE.PlaneGeometry(CELLULE, 0.5).rotateX(-Math.PI / 2),
+  touffe: creerGeometrieCroisee(0.5, 0.38),
+  fleur: creerGeometrieCroisee(0.45, 0.42),
+};
+
+const MAT = {
+  haies: TEX.feuillage.map(t => new THREE.MeshStandardMaterial({
+    map: t.couleur, bumpMap: t.relief, bumpScale: 3, vertexColors: true, roughness: 0.92, metalness: 0,
+  })),
+  bordHerbe: new THREE.MeshStandardMaterial({
+    map: TEX.bordHerbe, alphaTest: 0.5, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
+  }),
+  touffe: new THREE.MeshStandardMaterial({ map: TEX.touffe, alphaTest: 0.45, side: THREE.DoubleSide, roughness: 1 }),
+  fleur: new THREE.MeshStandardMaterial({ map: TEX.fleurs, alphaTest: 0.45, side: THREE.DoubleSide, roughness: 0.9 }),
+  pelouse: new THREE.MeshStandardMaterial({
+    map: TEX.pelouse, roughness: 1, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1,
+  }),
+  bois: new THREE.MeshStandardMaterial({ color: 0x9a6b42, roughness: 0.8 }),
+  pierre: new THREE.MeshStandardMaterial({ color: 0xb9b3a6, roughness: 0.95 }),
+};
+
+// Sol sous tout le jardin (26 × 26 cellules, voir JARDIN en section 13) et sous la clairière de sortie
+const COTE_MAX = 26 * CELLULE;
+const LARGEUR_SOL = COTE_MAX + 2 * CELLULE + 24, PROFONDEUR_SOL = COTE_MAX + 24;
+const sol = new THREE.Mesh(new THREE.PlaneGeometry(LARGEUR_SOL, PROFONDEUR_SOL).rotateX(-Math.PI / 2));
+sol.position.set(COTE_MAX / 2 + CELLULE, 0, COTE_MAX / 2);
+sol.receiveShadow = true;
+scene.add(sol);
+
+function materiauSol(textures, metresParRepetition, reglages) {
+  for (const t of [textures.couleur, textures.relief]) {
+    t.repeat.set(LARGEUR_SOL / metresParRepetition, PROFONDEUR_SOL / metresParRepetition);
+  }
+  return new THREE.MeshStandardMaterial({ map: textures.couleur, bumpMap: textures.relief, ...reglages });
+}
+
+// Ressources des haies de cèdres et du jardin, créées une seule fois (les textures prennent un peu de temps)
+const AXE_Y = new THREE.Vector3(0, 1, 0);
+const RESSOURCES = {};
+function ressources(theme) {
+  if (RESSOURCES[theme]) return RESSOURCES[theme];
+  const r = theme === 'jardin' ? ressourcesJardin() : {
+    murs: GEO.haies, matsMurs: MAT.haies,
+    sol: materiauSol(TEX.gravier, 2, { bumpScale: 1, roughness: 1 }),
+    teinte: alea => new THREE.Color().setHSL(0.25 + alea() * 0.09, 0.3, 0.6 + alea() * 0.2),
+  };
+  return (RESSOURCES[theme] = r);
+}
+
+// Applique l'ambiance du jardin : sol, ciel, lumières et sons (une seule fois)
+let themeCourant = null;
+function appliquerTheme(theme) {
+  if (themeCourant === theme) return;
+  themeCourant = theme;
+  const t = THEMES[theme], r = ressources(theme);
+  sol.material = r.sol;
+  const u = ciel.material.uniforms;
+  u.horizon.value.fromArray(t.ciel.horizon); u.zenith.value.fromArray(t.ciel.zenith);
+  u.soleilVisible.value = t.ciel.soleil; u.couverture.value.fromArray(t.ciel.couverture);
+  u.nuageClair.value.fromArray(t.ciel.nuageClair); u.nuageSombre.value.fromArray(t.ciel.nuageSombre);
+  hemi.color.set(t.hemi.ciel); hemi.groundColor.set(t.hemi.sol); hemi.intensity = t.hemi.intensite;
+  soleil.color.set(t.soleil.couleur); soleil.intensity = t.soleil.intensite;
+  renderer.toneMappingExposure = t.exposition;
+  Sons.profil(theme);
+}
+
+let monde = null;   // { groupe, jetables, boites, clairiere, jardin }
+
+function instancier(geo, mat, matrices, couleurs, ombres) {
+  const m = new THREE.InstancedMesh(geo, mat, matrices.length);
+  matrices.forEach((mx, k) => m.setMatrixAt(k, mx));
+  if (couleurs) couleurs.forEach((c, k) => m.setColorAt(k, c));
+  m.castShadow = ombres; m.receiveShadow = true;
+  m.computeBoundingSphere();
+  return m;
+}
+
+function matrice(x, y, z, angle, echelle = 1) {
+  return new THREE.Matrix4().compose(
+    new THREE.Vector3(x, y, z),
+    new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), angle),
+    new THREE.Vector3(echelle, echelle, echelle));
+}
+
+function composer(x, y, z, rotation, echelle) {
+  const q = rotation.isEuler ? new THREE.Quaternion().setFromEuler(rotation) : new THREE.Quaternion().setFromAxisAngle(AXE_Y, rotation);
+  return new THREE.Matrix4().compose(new THREE.Vector3(x, y, z), q, echelle);
+}
+
+// Cèdres : bandes d'herbe plates et touffes en relief au pied des haies.
+function decorerCedres(segments, dansLesAllees, alea, ajouter) {
+  const bandes = [], touffes = [];
+  const recul = EPAISSEUR / 2 + 0.18;
+  for (const s of segments) {
+    for (const sens of [1, -1]) {
+      const bx = s.axe === 'z' ? s.x + sens * recul : s.x;
+      const bz = s.axe === 'x' ? s.z + sens * recul : s.z;
+      if (!dansLesAllees(bx, bz)) continue;
+      const angle = s.axe === 'x' ? (sens > 0 ? 0 : Math.PI) : (sens > 0 ? Math.PI / 2 : -Math.PI / 2);
+      bandes.push(matrice(bx, 0.015, bz, angle));
+      for (let k = 0; k < 4; k++) {
+        const le = (alea() - 0.5) * CELLULE * 0.95, ecart = EPAISSEUR / 2 + 0.03 + alea() * 0.3;
+        const tx = s.axe === 'x' ? s.x + le : s.x + sens * ecart;
+        const tz = s.axe === 'x' ? s.z + sens * ecart : s.z + le;
+        touffes.push(matrice(tx, 0, tz, alea() * Math.PI, 0.6 + alea() * 0.7));
+      }
+    }
+  }
+  ajouter(instancier(GEO.bordHerbe, MAT.bordHerbe, bandes, null, false), instancier(GEO.touffe, MAT.touffe, touffes, null, false));
+}
+
+// Sortie : clairière avec pelouse, fleurs sauvages et un banc de pierre et de bois.
+function sortieClairiere(clairiere, alea, ajouter, groupe, jetables) {
+  const pelouse = new THREE.Mesh(new THREE.PlaneGeometry(2 * CELLULE, 3 * CELLULE).rotateX(-Math.PI / 2), MAT.pelouse);
+  pelouse.geometry.attributes.uv.array.forEach((v, k, a) => { a[k] = v * (k % 2 ? 9 : 6); });   // 1 m par répétition
+  pelouse.position.set(clairiere.X0 + CELLULE, 0.01, clairiere.Zc);
+  pelouse.receiveShadow = true;
+  ajouter(pelouse);
+  const fleurs = [];
+  for (let k = 0; k < 90; k++) {
+    const fx = clairiere.X0 + 0.6 + alea() * (2 * CELLULE - 1.2), fz = clairiere.Z0 + 0.6 + alea() * (3 * CELLULE - 1.2);
+    if (Math.abs(fz - clairiere.Zc) < 0.8 && fx < clairiere.X0 + 2.2) continue;   // l'entrée reste dégagée
+    fleurs.push(matrice(fx, 0, fz, alea() * Math.PI, 0.7 + alea() * 0.6));
+  }
+  ajouter(instancier(GEO.fleur, MAT.fleur, fleurs, null, false));
+  const banc = new THREE.Group();
+  const piece = (l, h, p, x, y, z, mat) => {
+    const b = new THREE.Mesh(new THREE.BoxGeometry(l, h, p), mat);
+    b.position.set(x, y, z); b.castShadow = b.receiveShadow = true;
+    banc.add(b); jetables.push(b.geometry);
+  };
+  piece(0.4, 0.42, 0.18, 0, 0.21, -0.65, MAT.pierre);
+  piece(0.4, 0.42, 0.18, 0, 0.21, 0.65, MAT.pierre);
+  for (const dx of [-0.11, 0.11]) piece(0.19, 0.05, 1.8, dx, 0.445, 0, MAT.bois);
+  banc.position.set(clairiere.X1 - 1.0, 0, clairiere.Zc);
+  groupe.add(banc);
+}
+
+/* ===================== 7. JOUEUR ===================== */
+
+const joueur = { x: 0, z: 0, lacet: 0, tangage: 0, vx: 0, vz: 0, phase: 0, balancement: 0, demiPas: 0 };
+const entree = { avant: false, arriere: false, gauche: false, droite: false, rapide: false };
+
+function placerAuDepart(l) {
+  joueur.x = (l.depart.i + 0.5) * CELLULE;
+  joueur.z = (l.depart.j + 0.5) * CELLULE;
+  joueur.lacet = -Math.PI / 2;            // regard tourné vers l'intérieur du labyrinthe
+  joueur.tangage = 0;
+  joueur.vx = joueur.vz = 0;
+  joueur.phase = 0; joueur.balancement = 0; joueur.demiPas = 0;
+}
+
+function tourner(dx, dy) {
+  joueur.lacet -= dx * SENSIBILITE;
+  joueur.tangage = THREE.MathUtils.clamp(joueur.tangage - dy * SENSIBILITE, -1.45, 1.45);   // jusqu'au ciel
+}
+
+// Cercle (le joueur) contre boîtes alignées : on repousse le joueur hors de chaque boîte le long
+// de la normale de contact. La part du mouvement qui longe la haie est conservée : on glisse.
+function resoudreCollisions(p, rayon) {
+  for (let passe = 0; passe < 3; passe++) {
+    let touche = false;
+    for (const b of monde.boites) {
+      if (p.x < b.x0 - rayon || p.x > b.x1 + rayon || p.z < b.z0 - rayon || p.z > b.z1 + rayon) continue;
+      const cx = Math.max(b.x0, Math.min(p.x, b.x1)), cz = Math.max(b.z0, Math.min(p.z, b.z1));
+      const dx = p.x - cx, dz = p.z - cz, d2 = dx * dx + dz * dz;
+      if (d2 >= rayon * rayon) continue;
+      touche = true;
+      if (d2 > 1e-10) {
+        const d = Math.sqrt(d2), pousse = rayon - d;
+        p.x += dx / d * pousse; p.z += dz / d * pousse;
+      } else {
+        // Centre à l'intérieur de la boîte : sortie par le côté le plus proche
+        const sorties = [[b.x0 - rayon - p.x, 0], [b.x1 + rayon - p.x, 0], [0, b.z0 - rayon - p.z], [0, b.z1 + rayon - p.z]];
+        sorties.sort((a, c) => Math.abs(a[0] + a[1]) - Math.abs(c[0] + c[1]));
+        p.x += sorties[0][0]; p.z += sorties[0][1];
+      }
+    }
+    if (!touche) break;
+  }
+}
+
+function deplacerJoueur(dt) {
+  const avant = (entree.avant ? 1 : 0) - (entree.arriere ? 1 : 0);
+  const cote = (entree.droite ? 1 : 0) - (entree.gauche ? 1 : 0);
+  const s = Math.sin(joueur.lacet), c = Math.cos(joueur.lacet);
+  let dx = -s * avant + c * cote, dz = -c * avant - s * cote;
+  const l = Math.hypot(dx, dz);
+  if (l > 0) { dx /= l; dz /= l; }
+  const vmax = entree.rapide ? VITESSE_RAPIDE : VITESSE;
+  const k = 1 - Math.exp(-dt * (l > 0 ? 9 : 12));          // démarrage et arrêt en douceur
+  joueur.vx += (dx * vmax - joueur.vx) * k;
+  joueur.vz += (dz * vmax - joueur.vz) * k;
+
+  const ax = joueur.x, az = joueur.z;
+  joueur.x += joueur.vx * dt;
+  joueur.z += joueur.vz * dt;
+  resoudreCollisions(joueur, RAYON_JOUEUR);
+  // La vitesse retenue est celle du mouvement réel : contre une haie, on ne garde que le glissement
+  const parcouru = Math.hypot(joueur.x - ax, joueur.z - az);
+  if (dt > 0) { joueur.vx = (joueur.x - ax) / dt; joueur.vz = (joueur.z - az) / dt; }
+
+  // Balancement de la marche : un pas tous les ~75 cm, un bruit de gravier à chaque appui
+  const vitesse = dt > 0 ? parcouru / dt : 0;
+  joueur.balancement += ((vitesse > 0.2 ? 1 : 0) - joueur.balancement) * (1 - Math.exp(-dt * 6));
+  joueur.phase += parcouru * 4.2;
+  const demiPas = Math.floor(joueur.phase / Math.PI);
+  if (demiPas !== joueur.demiPas) {
+    joueur.demiPas = demiPas;
+    if (vitesse > 0.3) Sons.pas(entree.rapide);
+  }
+}
+
+function placerCamera() {
+  const b = joueur.balancement;
+  const hauteur = (Math.abs(Math.sin(joueur.phase)) - 0.5) * 0.055 * b;   // plus bas à chaque appui
+  const lateral = Math.sin(joueur.phase) * 0.022 * b;                      // léger roulis gauche-droite
+  const c = Math.cos(joueur.lacet), s = Math.sin(joueur.lacet);
+  camera.position.set(joueur.x + c * lateral, YEUX + hauteur, joueur.z - s * lateral);
+  camera.rotation.set(joueur.tangage, joueur.lacet, 0);
+}
+
+/* ===================== 8. SONS D'AMBIANCE (WEB AUDIO) ===================== */
+
+const Sons = {
+  ctx: null, maitre: null, bruitBlanc: null, muet: false, prochainOiseau: 0,
+  profilCourant: 'jardin',
+  volumes: { general: 70, ambiance: 100, effets: 100 },   // réglages du joueur, en % (voir section 9)
+
+  // Tout son passe par l'un des deux canaux, ambiance ou effets, puis par le volume général :
+  //   source → canal.entree ou canal.volume → canal.volume → maitre → haut-parleurs
+  init() {
+    if (this.ctx) { if (this.ctx.state === 'suspended') this.ctx.resume(); return; }
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    const ctx = this.ctx = new AC();
+    this.maitre = ctx.createGain();
+    this.maitre.connect(ctx.destination);
+    const n = ctx.sampleRate * 2;
+    this.bruitBlanc = ctx.createBuffer(1, n, ctx.sampleRate);
+    const d = this.bruitBlanc.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+    this.ambiance = this.creerCanal();
+    this.effets = this.creerCanal();
+    this.appliquerVolumes(true);
+    this.demarrerVent();
+    this.prochainOiseau = 0;
+    this.profil(this.profilCourant);
+  },
+
+  // Canal réglable : une entrée et un volume (l'entrée passe par le volume)
+  creerCanal() {
+    const ctx = this.ctx, volume = ctx.createGain(), entree = ctx.createGain();
+    entree.connect(volume);
+    volume.connect(this.maitre);
+    return { volume, entree };
+  },
+
+  // Volumes du joueur : un changement s'entend tout de suite (court fondu pour éviter les claquements)
+  appliquerVolumes(immediat = false) {
+    if (!this.ctx) return;
+    const t = this.ctx.currentTime, regler = (param, v) => immediat ? param.setValueAtTime(v, t) : param.setTargetAtTime(v, t, 0.03);
+    regler(this.maitre.gain, this.muet ? 0 : this.volumes.general / 100);
+    regler(this.ambiance.volume.gain, this.volumes.ambiance / 100);
+    regler(this.effets.volume.gain, this.volumes.effets / 100);
+  },
+
+  // Ambiance du jardin : vent dans les feuilles (transition douce)
+  profil(theme) {
+    this.profilCourant = theme;
+    if (!this.ctx) return;
+    const t = this.ctx.currentTime, regler = (param, v) => param.setTargetAtTime(v, t, 0.6);
+    const r = { vent: 0.035, frequence: 700, q: 0.5 };
+    regler(this.ventGain.gain, r.vent);
+    regler(this.ventRafales.gain, r.vent * 0.6);
+    regler(this.ventFiltre.frequency, r.frequence);
+    regler(this.ventFiltre.Q, r.q);
+  },
+
+  // Vent dans les feuilles : bruit filtré dont le volume et le timbre ondulent lentement
+  demarrerVent() {
+    const ctx = this.ctx;
+    const src = ctx.createBufferSource();
+    src.buffer = this.bruitBlanc; src.loop = true;
+    const filtre = ctx.createBiquadFilter();
+    filtre.type = 'bandpass'; filtre.frequency.value = 700; filtre.Q.value = 0.5;
+    const gain = ctx.createGain();
+    gain.gain.value = 0.035;
+    const rafales = ctx.createOscillator(), profondeur = ctx.createGain();
+    rafales.frequency.value = 0.07; profondeur.gain.value = 0.022;
+    rafales.connect(profondeur); profondeur.connect(gain.gain);
+    const timbre = ctx.createOscillator(), ecart = ctx.createGain();
+    timbre.frequency.value = 0.11; ecart.gain.value = 260;
+    timbre.connect(ecart); ecart.connect(filtre.frequency);
+    src.connect(filtre); filtre.connect(gain); gain.connect(this.ambiance.volume);
+    src.start(); rafales.start(); timbre.start();
+    this.ventFiltre = filtre; this.ventGain = gain; this.ventRafales = profondeur;
+  },
+
+  // Oiseau lointain : quelques notes glissées, à gauche ou à droite
+  oiseau() {
+    const ctx = this.ctx;
+    const sortie = ctx.createGain();
+    sortie.gain.value = 0.04 + Math.random() * 0.05;
+    if (ctx.createStereoPanner) {
+      const pan = ctx.createStereoPanner();
+      pan.pan.value = Math.random() * 1.6 - 0.8;
+      sortie.connect(pan); pan.connect(this.ambiance.volume);
+    } else sortie.connect(this.ambiance.volume);
+    const base = 2600 + Math.random() * 1800, notes = 2 + Math.floor(Math.random() * 5), montant = Math.random() < 0.5;
+    let t = ctx.currentTime + 0.05;
+    for (let k = 0; k < notes; k++) {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      const f0 = base * (montant ? 1 + k * 0.04 : 1.15 - k * 0.03), duree = 0.05 + Math.random() * 0.07;
+      o.type = 'sine';
+      o.frequency.setValueAtTime(f0, t);
+      o.frequency.exponentialRampToValueAtTime(f0 * (0.8 + Math.random() * 0.5), t + duree);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(1, t + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + duree);
+      o.connect(g); g.connect(sortie);
+      o.start(t); o.stop(t + duree + 0.02);
+      t += duree + 0.03 + Math.random() * 0.06;
+    }
+  },
+
+  // Pas : craquements aigus sur le gravier des allées
+  pas(rapide) {
+    if (!this.ctx || this.muet) return;
+    const ctx = this.ctx, t = ctx.currentTime;
+    const r = { frequence: [1400, 1600], q: 0.8, duree: 0.09, volume: 0.16, coups: 2 };
+    for (let k = 0; k < r.coups; k++) {
+      const src = ctx.createBufferSource();
+      src.buffer = this.bruitBlanc;
+      const f = ctx.createBiquadFilter();
+      f.type = 'bandpass'; f.frequency.value = r.frequence[0] + Math.random() * r.frequence[1]; f.Q.value = r.q;
+      const g = ctx.createGain(), debut = t + k * (0.025 + Math.random() * 0.03);
+      const vol = r.volume * (rapide ? 1.35 : 1) * (k ? 0.6 : 1);
+      g.gain.setValueAtTime(0.0001, debut);
+      g.gain.exponentialRampToValueAtTime(vol, debut + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, debut + r.duree);
+      src.connect(f); f.connect(g); g.connect(this.effets.entree);
+      src.start(debut, Math.random() * 1.5, r.duree + 0.03);
+    }
+  },
+
+  // Carillon de victoire
+  victoire() {
+    if (!this.ctx || this.muet) return;
+    const ctx = this.ctx;
+    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, k) => {
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = ctx.currentTime + k * 0.13;
+      o.type = 'triangle'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.18, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 1.4);
+      o.connect(g); g.connect(this.effets.volume);
+      o.start(t); o.stop(t + 1.5);
+    });
+  },
+
+  // Oiseaux, de temps en temps
+  mettreAJour(temps) {
+    if (!this.ctx || this.muet) return;
+    if (temps > this.prochainOiseau) {
+      if (this.prochainOiseau > 0) this.oiseau();
+      this.prochainOiseau = temps + 1.5 + Math.random() * 5;
+    }
+  },
+
+  // Touche M : coupe ou remet le son (le volume général réglé est conservé)
+  basculerMuet() {
+    this.muet = !this.muet;
+    this.appliquerVolumes();
+    majIndicateurSon();
+  },
+};
+
+/* ===================== 9. ÉTATS DU JEU ET INTERFACE ===================== */
+// titre → jeu ⇄ pause ; jeu ⇄ question (devant une grille) ; jeu → victoire → jeu (nouveau jardin) ou titre
+
+const $ = id => document.getElementById(id);
+const ui = {
+  titre: $('ecran-titre'), pause: $('ecran-pause'), victoire: $('ecran-victoire'),
+  hud: $('hud'), hudNiveau: $('hud-niveau'), chrono: $('chrono'),
+  tempsFinal: $('temps-final'), meilleur: $('meilleur-temps'), bilan: $('bilan'), noteVerrou: $('note-verrou'),
+};
+const horloge = new THREE.Clock();
+let etat = 'titre';
+let lab = null;
+let tempsJeu = 0;
+let jardinNeuf = false;          // le jardin derrière le menu n'a pas encore servi
+let verrouDejaObtenu = false;   // le navigateur a-t-il déjà accepté de capturer la souris ?
+let sansVerrou = false;         // repli : on regarde en glissant la souris, bouton enfoncé
+let glisse = false;
+let modeTest = false;           // joueur simulé : pas d'écran ni de son
+
+// Nouveau jardin aléatoire, joueur placé au départ, chronomètre à zéro
+function nouveauJardin(graine = Math.floor(Math.random() * 2 ** 31)) {
+  lab = genererJardin(graine);
+  construireJardin(lab);
+  placerAuDepart(lab);
+  tempsJeu = 0;
+  jardinNeuf = true;
+  majHudJardin();
+  majChrono();
+}
+
+// Meilleur temps sur cet appareil (localStorage). Si le navigateur refuse l'accès (navigation privée),
+// il reste valable jusqu'à la fermeture. Le classement, lui, est dans Firestore (section 12).
+const CLE_RECORD = 'mathpratique:jardin-des-derivees:meilleur-temps';
+let recordMemoire = null;
+function lireRecord() {
+  try {
+    const v = parseFloat(localStorage.getItem(CLE_RECORD));
+    if (Number.isFinite(v) && v > 0) return v;
+  } catch (e) { /* stockage indisponible */ }
+  return recordMemoire;
+}
+function enregistrerRecord(temps) {
+  const ancien = lireRecord(), record = ancien === null || temps < ancien;
+  if (record) {
+    recordMemoire = temps;
+    try { localStorage.setItem(CLE_RECORD, String(temps)); } catch (e) { /* idem */ }
+  }
+  return { record, meilleur: record ? temps : ancien };
+}
+function afficherRecord() {
+  const t = lireRecord(), el = $('record-local');
+  el.hidden = t === null;
+  if (t !== null) el.textContent = 'Ton meilleur temps sur cet appareil : ' + formaterTemps(t, true);
+}
+
+function formaterTemps(t, dixiemes = false) {
+  const m = Math.floor(t / 60), s = Math.floor(t % 60);
+  let txt = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  if (dixiemes) txt += ',' + Math.floor((t * 10) % 10);
+  return txt;
+}
+
+function majChrono() { ui.chrono.textContent = formaterTemps(tempsJeu); }
+
+function afficher(nom) {
+  ui.titre.hidden = nom !== 'titre';
+  ui.pause.hidden = nom !== 'pause';
+  ui.victoire.hidden = nom !== 'victoire';
+  $('invite-grille').hidden = true;             // l'invitation revient d'elle-même près d'une grille
+  ui.hud.hidden = nom === 'titre';
+  if (nom === 'titre') afficherRecord();
+}
+
+function capturerSouris() {
+  const el = renderer.domElement;
+  if (sansVerrou || !el.requestPointerLock) return;
+  try {
+    const p = el.requestPointerLock();
+    if (p && p.catch) p.catch(() => {});      // le refus est traité par « pointerlockerror »
+  } catch (e) { /* idem */ }
+}
+
+function jouer() {
+  Sons.init();
+  ui.noteVerrou.hidden = true;
+  for (const k in entree) entree[k] = false;
+  jardinNeuf = false;
+  etat = 'jeu';
+  afficher('jeu');
+  horloge.getDelta();                           // pas de bond du chronomètre à la reprise
+  capturerSouris();
+}
+
+function mettreEnPause() {
+  if (etat !== 'jeu') return;
+  etat = 'pause';
+  afficher('pause');
+}
+
+function allerAuMenu() {
+  if (document.pointerLockElement) document.exitPointerLock();
+  etat = 'titre';
+  nouveauJardin();                              // un jardin neuf derrière le menu, prêt pour la partie suivante
+  afficher('titre');
+}
+
+function gagner() {
+  etat = 'victoire';
+  if (modeTest) return;
+  const temps = Math.round(tempsJeu * 10) / 10;
+  const { record, meilleur } = enregistrerRecord(temps);
+  ui.tempsFinal.textContent = formaterTemps(temps, true);
+  // Bilan des réponses : premier coup, portes, pénalités, taux par règle (section 13)
+  ui.bilan.replaceChildren(...bilanJardin().map(([texte, valeur]) => {
+    const li = document.createElement('li'), nom = document.createElement('span'), v = document.createElement('span');
+    nom.textContent = texte;
+    v.textContent = valeur;
+    li.append(nom, v);
+    return li;
+  }));
+  ui.meilleur.textContent = record ? 'Nouveau meilleur temps sur cet appareil !' : 'Meilleur temps sur cet appareil : ' + formaterTemps(meilleur, true);
+  ui.meilleur.classList.toggle('record-battu', record);
+  afficher('victoire');
+  apresVictoireClassement(temps);               // classement en ligne (section 12)
+  if (document.pointerLockElement) document.exitPointerLock();
+  Sons.victoire();
+}
+
+document.addEventListener('pointerlockchange', () => {
+  if (document.pointerLockElement === renderer.domElement) { verrouDejaObtenu = true; return; }
+  if (etat === 'jeu' && !sansVerrou) mettreEnPause();       // Échap libère la souris → pause
+});
+document.addEventListener('pointerlockerror', () => {
+  if (etat !== 'jeu') return;
+  if (verrouDejaObtenu) { mettreEnPause(); ui.noteVerrou.hidden = false; }   // délai imposé après Échap
+  else sansVerrou = true;                                                      // capture impossible ici
+});
+
+$('btn-entrer-jardin').addEventListener('click', () => { if (!jardinNeuf) nouveauJardin(); jouer(); });
+$('btn-reprendre').addEventListener('click', jouer);
+$('btn-nouveau').addEventListener('click', () => { nouveauJardin(); jouer(); });
+$('btn-menu-pause').addEventListener('click', allerAuMenu);
+$('btn-rejouer').addEventListener('click', () => { nouveauJardin(); jouer(); });
+$('btn-menu').addEventListener('click', allerAuMenu);
+
+document.addEventListener('mousemove', e => {
+  if (etat !== 'jeu') return;
+  if (document.pointerLockElement === renderer.domElement || (sansVerrou && glisse)) tourner(e.movementX, e.movementY);
+});
+renderer.domElement.addEventListener('mousedown', () => {
+  glisse = true;
+  if (etat === 'jeu' && !sansVerrou && !document.pointerLockElement) capturerSouris();
+});
+addEventListener('mouseup', () => { glisse = false; });
+
+const TOUCHES = {
+  KeyW: 'avant', ArrowUp: 'avant', KeyS: 'arriere', ArrowDown: 'arriere',
+  KeyA: 'gauche', ArrowLeft: 'gauche', KeyD: 'droite', ArrowRight: 'droite',
+  ShiftLeft: 'rapide', ShiftRight: 'rapide',
+};
+addEventListener('keydown', e => {
+  if (e.target instanceof HTMLInputElement) {                // on tape son nom ou l'on règle un curseur : pas de commande de jeu
+    if (e.target.type === 'range' && e.code === 'KeyM' && !e.repeat) Sons.basculerMuet();   // sauf couper le son
+    return;
+  }
+  const action = TOUCHES[e.code];
+  if (action) { entree[action] = true; e.preventDefault(); return; }
+  if (e.repeat) return;
+  // E ouvre la grille toute proche ; 1 à 6 répondent ; Échap referme la question
+  if (e.code === 'KeyE' && etat === 'jeu' && monde.jardin && monde.jardin.proche) { ouvrirQuestion(monde.jardin.proche); return; }
+  if (etat === 'question') {
+    const k = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Numpad1', 'Numpad2', 'Numpad3', 'Numpad4', 'Numpad5', 'Numpad6'].indexOf(e.code);
+    if (k >= 0) { repondre(k % 6); return; }
+    if (e.code === 'Escape') { fermerQuestion(); return; }
+  }
+  if (e.code === 'KeyN' && etat !== 'question') {
+    nouveauJardin();
+    if (etat === 'pause' || etat === 'victoire') jouer();
+  }
+  if (e.code === 'KeyM') Sons.basculerMuet();
+  if (e.code === 'Escape' && etat === 'jeu' && sansVerrou) mettreEnPause();
+});
+addEventListener('keyup', e => { const action = TOUCHES[e.code]; if (action) entree[action] = false; });
+addEventListener('blur', () => { for (const k in entree) entree[k] = false; });
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+// --- Réglages du son : volume général, ambiance, effets (écran « Son » et menu de pause) ---
+// Gardés dans le navigateur ; si le stockage est refusé, le jeu démarre avec les valeurs par défaut.
+const CLE_SON = 'mathpratique:jardin-des-derivees:son';
+const REGLAGES_SON = [
+  { cle: 'general', nom: 'Volume général' },
+  { cle: 'ambiance', nom: 'Ambiance', aide: 'Vent dans les haies, oiseaux…' },
+  { cle: 'effets', nom: 'Effets sonores', aide: 'Pas, grilles, clés, réponses, carillon de victoire…' },
+];
+function lireReglagesSon() {
+  const r = { ...Sons.volumes };
+  try {
+    const lu = JSON.parse(localStorage.getItem(CLE_SON) || 'null');
+    if (lu && typeof lu === 'object') for (const cle in r) if (Number.isFinite(lu[cle])) r[cle] = Math.min(100, Math.max(0, Math.round(lu[cle])));
+  } catch (e) { /* stockage indisponible : valeurs par défaut */ }
+  return r;
+}
+function sauverReglagesSon() {
+  try { localStorage.setItem(CLE_SON, JSON.stringify(Sons.volumes)); } catch (e) { /* idem : réglages gardés jusqu'à la fermeture */ }
+}
+
+const curseursSon = [];      // tous les curseurs (écran « Son » et pause), toujours d'accord entre eux
+let dernierEssaiSon = 0;
+function construireReglagesSon(conteneur) {
+  for (const r of REGLAGES_SON) {
+    const ligne = document.createElement('div'), label = document.createElement('label');
+    const valeur = document.createElement('output'), curseur = document.createElement('input');
+    ligne.className = 'reglage-son';
+    curseur.type = 'range'; curseur.min = '0'; curseur.max = '100'; curseur.step = '1';
+    curseur.id = `${conteneur.id}-${r.cle}`;
+    label.htmlFor = curseur.id; label.textContent = r.nom;
+    valeur.setAttribute('for', curseur.id);
+    curseur.addEventListener('input', () => reglerVolume(r.cle, +curseur.value));
+    ligne.append(label, valeur, curseur);
+    if (r.aide) { const aide = document.createElement('p'); aide.className = 'aide'; aide.textContent = r.aide; ligne.append(aide); }
+    conteneur.append(ligne);
+    curseursSon.push({ cle: r.cle, curseur, valeur });
+  }
+}
+function majCurseursSon() {
+  for (const { cle, curseur, valeur } of curseursSon) {
+    if (+curseur.value !== Sons.volumes[cle]) curseur.value = String(Sons.volumes[cle]);
+    valeur.textContent = Sons.volumes[cle] + ' %';
+    curseur.setAttribute('aria-valuetext', Sons.volumes[cle] + ' %');
+  }
+}
+// Le changement s'entend pendant qu'on bouge le curseur : l'ambiance joue en continu, et un pas
+// se fait entendre de temps en temps quand on règle le volume général ou les effets
+function reglerVolume(cle, valeur) {
+  Sons.volumes[cle] = valeur;
+  Sons.init();                                   // à l'écran titre, le son démarre au premier réglage
+  Sons.appliquerVolumes();
+  majCurseursSon();
+  sauverReglagesSon();
+  if (cle !== 'ambiance' && performance.now() - dernierEssaiSon > 180) { dernierEssaiSon = performance.now(); Sons.pas(false); }
+}
+function majIndicateurSon() { $('indicateur-muet').hidden = !Sons.muet; }
+
+Sons.volumes = lireReglagesSon();
+construireReglagesSon($('reglages-son-titre'));
+construireReglagesSon($('reglages-son-pause'));
+majCurseursSon();
+$('btn-son').addEventListener('click', () => {
+  ui.titre.hidden = true;
+  $('ecran-son').hidden = false;
+  $('reglages-son-titre-general').focus({ preventScroll: true });
+});
+$('btn-retour-son').addEventListener('click', () => {
+  $('ecran-son').hidden = true;
+  ui.titre.hidden = etat !== 'titre';
+});
+
+/* ===================== 10. BOUCLE PRINCIPALE ET OUTILS DE TEST ===================== */
+
+let tempsTotal = 0;
+
+// Résolution adaptative : si les images prennent trop de temps (carte graphique modeste),
+// on dessine en un peu moins de pixels ; on remonte quand il y a de la marge.
+const RATIO_MAX = Math.min(window.devicePixelRatio, 1.5), RATIO_MIN = 0.6;
+const adaptatif = { ratio: RATIO_MAX, cumul: 0, images: 0 };
+function ajusterResolution(dtBrut) {
+  adaptatif.cumul += dtBrut; adaptatif.images++;
+  if (adaptatif.cumul < 1) return;
+  const moyenne = adaptatif.cumul / adaptatif.images;
+  adaptatif.cumul = 0; adaptatif.images = 0;
+  let r = adaptatif.ratio;
+  if (moyenne > 1 / 50) r = Math.max(RATIO_MIN, r - 0.1);          // moins de 50 images/s
+  else if (moyenne < 1 / 58) r = Math.min(RATIO_MAX, r + 0.05);    // de la marge : on remonte
+  if (Math.abs(r - adaptatif.ratio) > 0.001) { adaptatif.ratio = r; renderer.setPixelRatio(r); }
+}
+
+function etapeJeu(dt) { etapeJardin(dt); }      // grilles, clés, sortie (section 13)
+
+renderer.setAnimationLoop(() => {
+  const dtBrut = horloge.getDelta();
+  const dt = Math.min(dtBrut, 0.05);
+  if (etat === 'jeu' && dtBrut < 0.25) ajusterResolution(dtBrut);
+  tempsTotal += dt;
+  ciel.material.uniforms.temps.value = tempsTotal;
+  if (etat === 'jeu') { etapeJeu(dt); majChrono(); }
+  else if (etat === 'question') { tempsJeu += dt; majChrono(); }      // le chronomètre tourne pendant qu'on répond
+  Sons.mettreAJour(tempsTotal);
+  placerCamera();
+  ciel.position.copy(camera.position);
+  majJardin(dt);
+  renderer.render(scene, camera);
+});
+
+// Outils de vérification (LABY.verifierJardin(), LABY.simulerJardin(), …), dans la console du navigateur,
+// SUR LOCALHOST SEULEMENT : en ligne, personne ne peut lancer le joueur automatique. Ils ne montrent
+// rien en jeu : le joueur n'a ni carte ni indice.
+const OUTILS_TEST = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+const LABY = {
+  get etat() { return etat; }, get lab() { return lab; }, get monde() { return monde; },
+  joueur, entree, camera, renderer, scene, ciel, sons: Sons, nouveau: nouveauJardin,
+  // Fait avancer le jeu image par image (quand le navigateur suspend l'animation d'un onglet caché)
+  avancer(images = 60) { for (let k = 0; k < images && etat === 'jeu'; k++) { etapeJeu(1 / 60); majChrono(); } return etat; },
+
+  stats() {
+    const i = renderer.info.render;
+    return { appelsDessin: i.calls, triangles: i.triangles, boitesDeCollision: monde.boites.length };
+  },
+
+  mesurerImagesParSeconde(ms = 3000) {
+    return new Promise(resoudre => {
+      let n = 0; const debut = performance.now();
+      const compter = () => { n++; if (performance.now() - debut < ms) requestAnimationFrame(compter); else resoudre(+(n * 1000 / (performance.now() - debut)).toFixed(1)); };
+      requestAnimationFrame(compter);
+    });
+  },
+};
+if (OUTILS_TEST) window.LABY = LABY;
+
+/* ===================== 11. OUTILS COMMUNS ===================== */
+// Géométries, textures et petits utilitaires dont le jardin se sert : fusion de géométries, boîtes,
+// cache, moellons des murets, feuilles mortes, palette des érables.
+
+const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+
+// Fusionne des géométries indexées (positions, normales, UV) en une seule.
+function fusionnerGeometries(geos) {
+  const pos = [], nor = [], uv = [], idx = [];
+  let decalage = 0;
+  for (const g of geos) {
+    for (const v of g.attributes.position.array) pos.push(v);
+    for (const v of g.attributes.normal.array) nor.push(v);
+    for (const v of g.attributes.uv.array) uv.push(v);
+    for (const v of g.index.array) idx.push(v + decalage);
+    decalage += g.attributes.position.count;
+    g.dispose();
+  }
+  const r = new THREE.BufferGeometry();
+  r.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  r.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3));
+  r.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  r.setIndex(idx);
+  return r;
+}
+
+
+function rondRect(ctx, x, y, l, h, rayon) { ctx.beginPath(); ctx.roundRect(x, y, l, h, rayon); ctx.fill(); }
+
+
+// Maçonnerie de pierres des champs, joints clairs (512 px = 2 m), teintée par l'instance
+function texturesMoellons(graine) {
+  const T = 512, alea = mulberry32(graine);
+  const couleur = creerCanvas(T, T), relief = creerCanvas(T, T);
+  const c = couleur.getContext('2d'), r = relief.getContext('2d');
+  c.fillStyle = '#cfc6b6'; c.fillRect(0, 0, T, T);
+  r.fillStyle = '#303030'; r.fillRect(0, 0, T, T);
+  const rangs = 9, h = T / rangs;
+  for (let k = 0; k < rangs; k++) {
+    let x = alea() * 40;
+    while (x < T + 40) {
+      const l = 40 + alea() * 50, hh = h * (0.75 + alea() * 0.2), ton = 140 + alea() * 70;
+      const cx = x + l / 2, cy = k * h + h / 2 + (alea() - 0.5) * 6;
+      for (const [px, py] of copiesBouclees(cx, cy, 60, T)) {
+        c.fillStyle = `rgb(${Math.round(ton)}, ${Math.round(ton * 0.95)}, ${Math.round(ton * 0.88)})`;
+        rondRect(c, px - l / 2 + 3, py - hh / 2, l - 6, hh, 12);
+        const g = c.createLinearGradient(0, py - hh / 2, 0, py + hh / 2);
+        g.addColorStop(0, 'rgba(255, 250, 240, 0.25)'); g.addColorStop(1, 'rgba(40, 32, 24, 0.3)');
+        c.fillStyle = g; rondRect(c, px - l / 2 + 3, py - hh / 2, l - 6, hh, 12);
+        r.fillStyle = '#d8d8d8'; rondRect(r, px - l / 2 + 3, py - hh / 2, l - 6, hh, 12);
+      }
+      x += l;
+    }
+  }
+  return { couleur: versTexture(couleur), relief: versTexture(relief, { srgb: false }) };
+}
+
+
+// Feuilles d'érable tombées au sol : rouges, orangées, jaunes, brunes (fond transparent)
+function textureFeuillesMortes(graine, nombre = 70) {
+  const T = 256, alea = mulberry32(graine), cv = creerCanvas(T, T), c = cv.getContext('2d');
+  for (let k = 0; k < nombre; k++) {
+    const x = 20 + alea() * (T - 40), y = 20 + alea() * (T - 40), rr = 5 + alea() * 6, a0 = alea() * Math.PI * 2;
+    const col = `hsl(${4 + alea() * 40}, ${60 + alea() * 30}%, ${30 + alea() * 25}%)`;
+    for (let p = 0; p < 5; p++) {               // cinq lobes : une feuille d'érable
+      const a = a0 + (p - 2) * 0.75;
+      ellipse(c, x + Math.cos(a) * rr * 0.55, y + Math.sin(a) * rr * 0.55, rr * 0.6, rr * 0.28, a, col);
+    }
+    ellipse(c, x, y, rr * 0.35, rr * 0.35, 0, col);
+  }
+  return versTexture(cv, { repeter: false });
+}
+
+const PALETTE_ERABLE = {
+  fond: '#3c1406', trous: '#1a0803', densite: 1.1, longueur: [2.5, 4], largeur: [1.6, 2.2], eventail: 3.2,
+  teinte: [8, 36], saturation: [66, 26], lumiere: [24, 34], ecailles: false,
+  pointes: ['rgba(255, 196, 92, 0.85)', 'rgba(244, 128, 44, 0.85)'],
+};
+
+
+// Boîte posée sur sa base, coordonnées de texture en mètres sur chaque face
+function boiteM(lx, ly, lz, x = 0, y = 0, z = 0) {
+  const g = new THREE.BoxGeometry(lx, ly, lz).translate(x, y + ly / 2, z);
+  const pos = g.attributes.position, nor = g.attributes.normal, uv = g.attributes.uv;
+  for (let k = 0; k < pos.count; k++) {
+    const px = pos.getX(k), py = pos.getY(k), pz = pos.getZ(k);
+    if (Math.abs(nor.getZ(k)) > 0.5) uv.setXY(k, px * Math.sign(nor.getZ(k)), py);
+    else if (Math.abs(nor.getX(k)) > 0.5) uv.setXY(k, -pz * Math.sign(nor.getX(k)), py);
+    else uv.setXY(k, px, pz);
+  }
+  return g;
+}
+
+
+// Géométries partagées, fabriquées une seule fois
+const CACHE_GEO = new Map();
+function enCache(cle, fabriquer) {
+  if (!CACHE_GEO.has(cle)) CACHE_GEO.set(cle, fabriquer());
+  return CACHE_GEO.get(cle);
+}
+
+const UN3 = new THREE.Vector3(1, 1, 1);
+const geoBoiteUnite = () => enCache('boite', () => new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0));
+
+/* ===================== 12. CLASSEMENT ===================== */
+// Le jeu ne parle jamais à Firebase lui-même. Il demande à la page du site qui l'affiche (iframe de même
+// origine) de lire le top 10 et d'inscrire les temps, par messages entre fenêtres (postMessage) :
+//   jeu → page : 'pret', 'classement', 'inscrire' { temps, pseudo? }, 'pseudo' { pseudo }, 'connexion'
+//   page → jeu : 'etat' (connexion, classement), 'reponse' { id, ok, raison?, message?, etat }
+// Dans les deux sens, un message n'est accepté que s'il vient de la même origine (event.origin) et de la
+// bonne fenêtre ; tout le reste est ignoré. Ce sont les règles Firestore qui protègent les données :
+// une page qui mentirait ne pourrait écrire que ce que les règles acceptent.
+
+const CANAL = 'mathpratique:jeu';
+const JEU = 'jardin-des-derivees';
+
+const Classement = {
+  dansLeSite: window.parent !== window,
+  etat: { disponible: false, connecte: false, top: [], moi: null, charge: false },
+  attentes: new Map(), prochainId: 1,
+
+  demarrer() {
+    addEventListener('message', e => this.recevoir(e));
+    this.envoyer('pret');                    // la page répond par l'état de connexion et le classement
+  },
+
+  envoyer(type, donnees = {}) {
+    if (this.dansLeSite) window.parent.postMessage({ canal: CANAL, jeu: JEU, type, ...donnees }, location.origin);
+  },
+
+  // Demande à la page ; la promesse se résout avec sa réponse (ou un échec après 15 s)
+  demander(type, donnees = {}) {
+    if (!this.dansLeSite) return Promise.resolve({ ok: false, raison: 'hors-site' });
+    const id = this.prochainId++;
+    return new Promise(resoudre => {
+      const delai = setTimeout(() => { this.attentes.delete(id); resoudre({ ok: false, raison: 'delai' }); }, 15000);
+      this.attentes.set(id, reponse => { clearTimeout(delai); resoudre(reponse); });
+      this.envoyer(type, { id, ...donnees });
+    });
+  },
+
+  recevoir(e) {
+    if (e.origin !== location.origin || e.source !== window.parent) return;   // autre origine ou autre fenêtre : ignoré
+    const m = e.data;
+    if (!m || typeof m !== 'object' || m.canal !== CANAL || m.jeu !== JEU) return;
+    if (m.etat) this.prendre(m.etat);
+    if (m.type === 'reponse' && this.attentes.has(m.id)) {
+      const suite = this.attentes.get(m.id);
+      this.attentes.delete(m.id);
+      suite(m);
+    }
+    if (m.type === 'etat') majEcransClassement();
+  },
+
+  // Copie défensive de l'état envoyé par la page : seulement les champs attendus, avec les bons types
+  prendre(e) {
+    const texte = v => typeof v === 'string' ? v.slice(0, 20) : '';
+    const nombre = v => Number.isFinite(v) ? v : null;
+    this.etat.disponible = e.disponible === true;
+    this.etat.connecte = e.connecte === true;
+    if (e.classement && Array.isArray(e.classement.top)) {
+      this.etat.top = e.classement.top.slice(0, 10).map(l => ({ pseudo: texte(l.pseudo), temps: nombre(l.temps), date: nombre(l.date), moi: l.moi === true }))
+        .filter(l => l.temps !== null);
+      const moi = e.classement.moi;
+      this.etat.moi = moi && nombre(moi.temps) !== null ? { pseudo: texte(moi.pseudo), temps: moi.temps, rang: nombre(moi.rang) } : null;
+      this.etat.charge = true;
+    }
+  },
+};
+
+const rangTexte = n => (n === 1 ? '1er' : `${n}e`);
+const dateCourte = ms => ms ? new Date(ms).toLocaleDateString('fr-CA', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+
+function dessinerTableau(tbody) {
+  const top = Classement.etat.top;
+  tbody.replaceChildren();
+  if (!top.length) {
+    const tr = document.createElement('tr'), td = document.createElement('td');
+    td.colSpan = 4; td.className = 'vide';
+    td.textContent = Classement.etat.charge ? 'Aucun temps pour l’instant. Le premier temps inscrit apparaîtra ici.' : 'Chargement du classement…';
+    tr.append(td); tbody.append(tr);
+    return;
+  }
+  top.forEach((l, k) => {
+    const tr = document.createElement('tr');
+    if (l.moi) tr.className = 'moi';
+    const cases = [[String(k + 1), 'rang'], [l.pseudo, 'nom'], [formaterTemps(l.temps, true), 'duree'], [dateCourte(l.date), '']];
+    for (const [texte, classe] of cases) {
+      const td = document.createElement('td');
+      td.textContent = texte;                 // texte seulement : un pseudonyme ne peut pas injecter de HTML
+      if (classe) td.className = classe;
+      tr.append(td);
+    }
+    tbody.append(tr);
+  });
+}
+
+function montrer(el, texte) { el.textContent = texte; el.hidden = !texte; }
+
+// Ligne « Tu es 14e » quand le joueur est inscrit mais hors du top 10
+function texteRang() {
+  const moi = Classement.etat.moi;
+  if (!moi || moi.rang === null || Classement.etat.top.some(l => l.moi)) return '';
+  return `Ton meilleur temps : ${formaterTemps(moi.temps, true)}. Tu es ${rangTexte(moi.rang)} au classement.`;
+}
+
+const MESSAGE_INDISPONIBLE = 'Le classement n’est pas disponible pour le moment.';
+
+// --- Écran « Classement » (depuis l'écran titre) ---
+function ouvrirClassement() {
+  ui.titre.hidden = true;
+  $('ecran-classement').hidden = false;
+  $('form-pseudo-classement').hidden = true;
+  majEcranClassement();
+  $('btn-retour-classement').focus({ preventScroll: true });
+  Classement.demander('classement').then(r => { if (!r.ok) montrer($('etat-classement'), MESSAGE_INDISPONIBLE); majEcranClassement(); });
+}
+function majEcranClassement() {
+  const E = Classement.etat, enLigne = Classement.dansLeSite && E.disponible;
+  dessinerTableau($('tableau-classement').tBodies[0]);
+  montrer($('rang-classement'), texteRang());
+  $('invitation-classement').hidden = !enLigne || E.connecte;
+  const monPseudo = $('mon-pseudo');
+  monPseudo.hidden = !enLigne || !E.connecte || !E.moi;
+  if (E.moi) monPseudo.firstElementChild.textContent = `Ton pseudonyme : « ${E.moi.pseudo} ».`;
+  if (!Classement.dansLeSite || (Classement.etat.charge && !E.disponible)) montrer($('etat-classement'), MESSAGE_INDISPONIBLE);
+  else if (E.disponible) montrer($('etat-classement'), '');
+}
+$('btn-classement').addEventListener('click', ouvrirClassement);
+$('btn-retour-classement').addEventListener('click', () => {
+  $('ecran-classement').hidden = true;
+  ui.titre.hidden = etat !== 'titre';
+  $('btn-classement').focus({ preventScroll: true });
+});
+$('btn-changer-pseudo').addEventListener('click', () => {
+  const form = $('form-pseudo-classement');
+  form.hidden = false;
+  form.querySelector('.refus').hidden = true;
+  $('champ-pseudo-classement').value = Classement.etat.moi ? Classement.etat.moi.pseudo : '';
+  $('champ-pseudo-classement').focus({ preventScroll: true });
+});
+
+// --- Après une victoire : inscription du temps, ou invitation à se connecter ---
+let tempsAInscrire = null;
+async function apresVictoireClassement(temps) {
+  tempsAInscrire = temps;
+  $('invitation-victoire').hidden = true;
+  $('form-pseudo-victoire').hidden = true;
+  $('rang-victoire').hidden = true;
+  montrer($('message-victoire'), Classement.dansLeSite ? 'Chargement du classement…' : MESSAGE_INDISPONIBLE);
+  dessinerTableau($('tableau-victoire').tBodies[0]);
+  const r = await Classement.demander('classement');
+  if (etat !== 'victoire' || tempsAInscrire !== temps) return;    // le joueur est déjà reparti
+  const E = Classement.etat;
+  dessinerTableau($('tableau-victoire').tBodies[0]);
+  if (!r.ok || !E.disponible) { montrer($('message-victoire'), MESSAGE_INDISPONIBLE); return; }
+  if (!E.connecte) { montrer($('message-victoire'), ''); $('invitation-victoire').hidden = false; return; }
+  if (!E.moi) {                                                    // première inscription : il choisit un pseudonyme
+    montrer($('message-victoire'), '');
+    const form = $('form-pseudo-victoire');
+    form.hidden = false; form.querySelector('.refus').hidden = true;
+    $('champ-pseudo-victoire').value = '';
+    $('champ-pseudo-victoire').focus({ preventScroll: true });
+    return;
+  }
+  if (temps < E.moi.temps) { inscrireTemps(temps, null); return; }   // meilleur temps : même pseudonyme
+  montrer($('message-victoire'), `Ton meilleur temps reste ${formaterTemps(E.moi.temps, true)}, sous le pseudonyme « ${E.moi.pseudo} ».`);
+  montrer($('rang-victoire'), E.moi.rang ? `Tu es ${rangTexte(E.moi.rang)} au classement.` : '');
+}
+
+async function inscrireTemps(temps, pseudo) {
+  const form = $('form-pseudo-victoire'), refus = form.querySelector('.refus');
+  montrer($('message-victoire'), 'Inscription de ton temps…');
+  const r = await Classement.demander('inscrire', pseudo ? { temps, pseudo } : { temps });
+  if (etat !== 'victoire' || tempsAInscrire !== temps) return;
+  dessinerTableau($('tableau-victoire').tBodies[0]);
+  if (r.ok) {
+    form.hidden = true;
+    const moi = Classement.etat.moi;
+    montrer($('message-victoire'), moi ? `Temps inscrit au classement sous le pseudonyme « ${moi.pseudo} ».` : 'Temps inscrit au classement.');
+    montrer($('rang-victoire'), moi && moi.rang ? `Tu es ${rangTexte(moi.rang)} au classement.` : '');
+    return;
+  }
+  montrer($('message-victoire'), '');
+  if (r.raison === 'pseudo-refuse' && !form.hidden) { montrer(refus, r.message || 'Ce pseudonyme n’est pas accepté. Choisis-en un autre, s’il te plaît.'); $('champ-pseudo-victoire').focus({ preventScroll: true }); return; }
+  montrer($('message-victoire'), r.message || MESSAGE_INDISPONIBLE);
+}
+
+async function changerPseudo(pseudo) {
+  const form = $('form-pseudo-classement'), refus = form.querySelector('.refus');
+  const r = await Classement.demander('pseudo', { pseudo });
+  if (r.ok) { form.hidden = true; majEcranClassement(); return; }
+  montrer(refus, r.message || MESSAGE_INDISPONIBLE);
+  if (r.raison === 'pseudo-refuse') $('champ-pseudo-classement').focus({ preventScroll: true });
+}
+
+for (const form of document.querySelectorAll('[data-form-pseudo]')) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const pseudo = form.querySelector('input').value.trim();
+    form.querySelector('.refus').hidden = true;
+    if (!pseudo) return;
+    if (form.id === 'form-pseudo-victoire') inscrireTemps(tempsAInscrire, pseudo); else changerPseudo(pseudo);
+  });
+}
+for (const b of document.querySelectorAll('[data-connexion]')) b.addEventListener('click', () => Classement.envoyer('connexion'));
+
+// La connexion a changé (ou le classement est arrivé) : les écrans ouverts se mettent à jour
+function majEcransClassement() {
+  if (!$('ecran-classement').hidden) majEcranClassement();
+  if (etat === 'victoire') dessinerTableau($('tableau-victoire').tBodies[0]);
+}
+
+/* ===================== 13. JARDIN DES DÉRIVÉES ===================== */
+// Un jardin de 26 × 26 cellules en quatre zones de 13 × 13, une par règle de dérivation : puissance,
+// produit, quotient, dérivée en chaîne. Des grilles barrent le chemin de la solution, et de fausses grilles
+// ferment des culs-de-sac ; pour en ouvrir une, il faut choisir la bonne dérivée parmi six. Chaque question
+// est générée au hasard à partir de modèles, puis vérifiée numériquement avant d'être posée.
+
+// --- Fractions simples (coefficients et exposants) ---
+function pgcdFr(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; }
+function fr(n, d = 1) { if (d < 0) { n = -n; d = -d; } const g = pgcdFr(n, d); return { n: n / g, d: d / g }; }
+const frMul = (a, b) => fr(a.n * b.n, a.d * b.d);
+const frAdd = (a, b) => fr(a.n * b.d + b.n * a.d, a.d * b.d);
+const frNeg = a => fr(-a.n, a.d);
+const frSub = (a, b) => frAdd(a, frNeg(b));
+const frVal = a => a.n / a.d;
+
+// --- Monômes c·x^e·T(x), T ∈ {1, eˣ, ln x, sin x, cos x}, et sommes de monômes ---
+const TEX_T = { '': '', exp: 'e^{x}', ln: '\\ln x', sin: '\\sin x', cos: '\\cos x' };
+const VAL_T = { '': () => 1, exp: Math.exp, ln: Math.log, sin: Math.sin, cos: Math.cos };
+const mono = (c, e = 0, t = '') => ({ c: typeof c === 'number' ? fr(c) : c, e: typeof e === 'number' ? fr(e) : e, t });
+const valMonome = (m, x) => frVal(m.c) * Math.pow(x, frVal(m.e)) * VAL_T[m.t](x);
+const valSomme = (s, x) => s.reduce((acc, m) => acc + valMonome(m, x), 0);
+
+// Regroupe les termes semblables ; une somme de puissances seules est rangée par exposant décroissant
+function simplifier(s) {
+  const ordre = [], parCle = new Map();
+  for (const m of s) {
+    const cle = `${m.e.n}/${m.e.d}:${m.t}`;
+    if (parCle.has(cle)) parCle.get(cle).c = frAdd(parCle.get(cle).c, m.c);
+    else { const copie = { ...m }; parCle.set(cle, copie); ordre.push(copie); }
+  }
+  const r = ordre.filter(m => m.c.n !== 0);
+  // Une seule sorte de terme : exposants décroissants, la constante à la fin (5x⁴ + 2/x³ + 3)
+  const rangTri = m => m.e.n === 0 && !m.t ? -Infinity : frVal(m.e);
+  if (r.every(m => m.t === r[0].t)) r.sort((a, b) => rangTri(b) - rangTri(a));
+  return r;
+}
+const sommeOpp = s => s.map(m => ({ ...m, c: frNeg(m.c) }));
+const sommePlus = (a, b) => simplifier([...a, ...b]);
+const sommeMoins = (a, b) => simplifier([...a, ...sommeOpp(b)]);
+const sommeFois = (s, k) => s.map(m => ({ ...m, c: frMul(m.c, k) }));
+// Produit de deux sommes (au plus une fonction T par terme)
+const produitSommes = (a, b) => simplifier(a.flatMap(m => b.map(p => ({ c: frMul(m.c, p.c), e: frAdd(m.e, p.e), t: m.t || p.t }))));
+
+// Dérivée exacte d'un monôme : (c·xᵉ·T)' = c·e·xᵉ⁻¹·T + c·xᵉ·T'
+function deriverMonome(m) {
+  const r = [];
+  if (m.e.n !== 0) r.push({ c: frMul(m.c, m.e), e: frSub(m.e, fr(1)), t: m.t });
+  if (m.t === 'exp') r.push({ c: m.c, e: m.e, t: 'exp' });
+  if (m.t === 'ln') r.push({ c: m.c, e: frSub(m.e, fr(1)), t: '' });
+  if (m.t === 'sin') r.push({ c: m.c, e: m.e, t: 'cos' });
+  if (m.t === 'cos') r.push({ c: frNeg(m.c), e: m.e, t: 'sin' });
+  return r;
+}
+const deriver = s => simplifier(s.flatMap(deriverMonome));
+
+// --- Écriture LaTeX « comme dans un corrigé » : radicaux pour les demis et les tiers, exposants positifs ---
+function puissanceTex(e) {                 // xᵉ avec e > 0
+  if (e.d === 1) return e.n === 1 ? 'x' : `x^{${e.n}}`;
+  const k = Math.floor(e.n / e.d), r = e.n % e.d;
+  const racine = e.d === 2 ? '\\sqrt{x}' : e.d === 3 ? (r === 1 ? '\\sqrt[3]{x}' : '\\sqrt[3]{x^{2}}') : null;
+  if (!racine) return `x^{\\frac{${e.n}}{${e.d}}}`;
+  return (k === 0 ? '' : k === 1 ? 'x' : `x^{${k}}`) + racine;
+}
+// Valeur absolue d'un monôme, suivie d'un facteur facultatif (ex. cos(x²+1)) ; le signe est mis par sommeTex
+function monomeTex(m, facteur = '') {
+  const n = Math.abs(m.c.n), d = m.c.d, apres = facteur + TEX_T[m.t];
+  if (m.e.n >= 0) {
+    const X = m.e.n === 0 ? '' : puissanceTex(m.e);
+    if (!X && !apres) return d === 1 ? `${n}` : `\\frac{${n}}{${d}}`;
+    return (d === 1 ? (n === 1 ? '' : `${n}`) : `\\frac{${n}}{${d}}`) + X + apres;
+  }
+  const X = puissanceTex(fr(-m.e.n, m.e.d));
+  return `\\frac{${(n === 1 && apres ? '' : `${n}`) + apres}}{${d === 1 ? '' : d}${X}}`;
+}
+function sommeTex(s, facteur = '') {
+  if (!s.length) return '0';
+  return s.map((m, k) => (m.c.n < 0 ? (k ? ' - ' : '-') : (k ? ' + ' : '')) + monomeTex(m, facteur)).join('');
+}
+// Forme avec exposant (pour les explications) : 6/x² s'écrit 6x^{-2}
+function exposantTex(m) {
+  const n = m.c.n, d = m.c.d, e = m.e;
+  const coef = d === 1 ? (Math.abs(n) === 1 && e.n !== 0 ? (n < 0 ? '-' : '') : `${n}`) : `${n < 0 ? '-' : ''}\\frac{${Math.abs(n)}}{${d}}`;
+  if (e.n === 0) return d === 1 ? `${n}` : coef;
+  return coef + (e.d === 1 ? (e.n === 1 ? 'x' : `x^{${e.n}}`) : `x^{${e.n < 0 ? '-' : ''}\\frac{${Math.abs(e.n)}}{${e.d}}}`) + TEX_T[m.t];
+}
+const entreParentheses = s => s.length > 1 ? `\\left(${sommeTex(s)}\\right)` : sommeTex(s);
+const exprSomme = (s, type = '') => ({ tex: sommeTex(s), val: x => valSomme(s, x), type });
+
+// --- Vérification numérique d'une question ---
+// La bonne réponse doit coïncider avec la dérivée numérique de f ; un mauvais choix doit s'en écarter
+// nettement en au moins deux points (sinon il serait équivalent, donc aussi « bon »).
+const POINTS_TEST = [0.37, 0.71, 1.13, 1.58, 2.21, 2.87];
+function bonneReponseExacte(q) {
+  let valides = 0;
+  for (const x of POINTS_TEST) {
+    const h = 1e-5, pente = (q.f.val(x + h) - q.f.val(x - h)) / (2 * h), c = q.bonne.val(x);
+    if (!Number.isFinite(pente) || !Number.isFinite(c)) continue;
+    if (Math.abs(pente - c) > 1e-4 * (1 + Math.abs(c))) return false;
+    valides++;
+  }
+  return valides >= 4;
+}
+function differents(a, b) {
+  let ecarts = 0, valides = 0;
+  for (const x of POINTS_TEST) {
+    const u = a.val(x), v = b.val(x);
+    if (!Number.isFinite(u) || !Number.isFinite(v)) continue;
+    valides++;
+    if (Math.abs(u - v) > 1e-4 * (1 + Math.abs(v))) ecarts++;
+  }
+  return valides >= 4 && ecarts >= 2;
+}
+
+// --- Modèles de questions, un par règle. Chacun renvoie f, la bonne dérivée, des erreurs typiques
+//     (plus de cinq : on garde les cinq premières qui ne sont pas équivalentes) et une explication ---
+const entierEntre = (alea, a, b) => a + Math.floor(alea() * (b - a + 1));
+const nonNul = (alea, a, b) => { let v = 0; while (v === 0) v = entierEntre(alea, a, b); return v; };
+const auHasard = (alea, t) => t[Math.floor(alea() * t.length)];
+function melangerTableau(t, alea = Math.random) {
+  for (let k = t.length - 1; k > 0; k--) { const m = Math.floor(alea() * (k + 1)); [t[k], t[m]] = [t[m], t[k]]; }
+  return t;
+}
+const formule = tex => ({ m: tex });              // morceau de formule dans une explication
+
+// 1. Puissance : polynômes, puis exposants négatifs, puis racines et exposants fractionnaires
+function questionPuissance(rang, alea) {
+  let termes;
+  if (rang === 0) {
+    termes = [mono(nonNul(alea, -6, 6), entierEntre(alea, 3, 5)), mono(nonNul(alea, -9, 9), entierEntre(alea, 1, 2)), mono(nonNul(alea, -9, 9), 0)];
+  } else if (rang === 1) {
+    termes = [mono(nonNul(alea, -5, 5), entierEntre(alea, 2, 4)), mono(nonNul(alea, -8, 8), -entierEntre(alea, 1, 3))];
+    if (alea() < 0.6) termes.push(mono(nonNul(alea, -9, 9), 0));
+  } else {
+    const radicaux = melangerTableau([[fr(1, 2), [2, 4, 6, 8]], [fr(2, 3), [3, 6, 9]], [fr(-1, 2), [2, 4, 6]], [fr(3, 2), [2, 4]], [fr(-1, 3), [3, 6]], [fr(1, 3), [3, 6]]], alea);
+    termes = radicaux.slice(0, 2).map(([e, coefs]) => mono((alea() < 0.75 ? 1 : -1) * auHasard(alea, coefs), e));
+  }
+  const f = simplifier(termes), variables = f.filter(m => m.e.n !== 0), constantes = f.filter(m => m.e.n === 0);
+  const bonne = deriver(f), negatif = variables.some(m => m.e.n < 0);
+  const transforme = g => simplifier(variables.map(g));
+  const erreurs = {
+    nonDiminue: { type: 'exposant pas diminué', s: transforme(m => ({ c: frMul(m.c, m.e), e: m.e, t: '' })) },
+    nonMultiplie: { type: 'exposant pas multiplié', s: transforme(m => ({ c: m.c, e: frSub(m.e, fr(1)), t: '' })) },
+    augmente: { type: 'exposant augmenté de 1', s: transforme(m => ({ c: frMul(m.c, m.e), e: frAdd(m.e, fr(1)), t: '' })) },
+    signe: negatif ? { type: 'erreur de signe (exposant négatif)', s: transforme(m => ({ c: m.e.n < 0 ? frNeg(frMul(m.c, m.e)) : frMul(m.c, m.e), e: frSub(m.e, fr(1)), t: '' })) } : null,
+    versZero: negatif ? { type: 'exposant négatif « diminué » vers 0', s: transforme(m => ({ c: frMul(m.c, m.e), e: m.e.n < 0 ? frAdd(m.e, fr(1)) : frSub(m.e, fr(1)), t: '' })) } : null,
+    constante: constantes.length ? { type: 'constante gardée', s: simplifier([...bonne, ...constantes]) } : null,
+    constanteUn: constantes.length ? { type: 'constante dérivée en 1', s: simplifier([...bonne, mono(1)]) } : null,
+    coefficient: { type: 'coefficient oublié', s: transforme(m => ({ c: frMul(fr(Math.sign(m.c.n)), m.e), e: frSub(m.e, fr(1)), t: '' })) },
+    // √x réécrit x², ∛x² réécrit x^{3/2}, 1/√x réécrit x^{-2} : l'exposant fractionnaire est retourné
+    racine: variables.some(m => m.e.d > 1) ? { type: 'racine mal réécrite en exposant', s: transforme(m => {
+      if (m.e.d === 1) return { c: frMul(m.c, m.e), e: frSub(m.e, fr(1)), t: '' };
+      const inv = fr(Math.sign(m.e.n) * m.e.d, Math.abs(m.e.n));
+      return { c: frMul(m.c, inv), e: frSub(inv, fr(1)), t: '' };
+    }) } : null,
+  };
+  const ordre = [['nonDiminue', 'nonMultiplie', 'constante', 'coefficient', 'augmente', 'constanteUn'],
+    ['signe', 'nonDiminue', 'versZero', 'constante', 'coefficient', 'nonMultiplie', 'augmente'],
+    ['racine', 'nonMultiplie', 'signe', 'nonDiminue', 'versZero', 'coefficient', 'augmente']][rang];
+  // L'exemple de l'explication : le terme le plus délicat (exposant négatif ou fractionnaire)
+  const delicat = variables.find(m => m.e.n < 0 || m.e.d > 1) || variables[0], derive = deriverMonome(delicat)[0];
+  // Un terme à radical ou à exposant négatif s'écrit des deux façons : 6/x² = 6x^{-2}
+  const ecritures = m => m.e.n < 0 || m.e.d > 1 ? [(m.c.n < 0 ? '-' : '') + monomeTex(m), exposantTex(m)] : [exposantTex(m)];
+  const avant = ecritures(delicat), apres = ecritures(derive).reverse();
+  return {
+    regle: 'puissance', f: exprSomme(f), bonne: exprSomme(bonne),
+    erreurs: ordre.map(k => erreurs[k]).filter(Boolean).map(e => exprSomme(e.s, e.type)),
+    explication: [formule("(x^{n})' = nx^{n-1}"), ' : on multiplie par l’exposant, puis on lui retire 1, même s’il est négatif ou fractionnaire ; une constante disparaît. Ici, ',
+      formule(`${[...new Set(avant)].join(' = ')} \\;\\to\\; ${[...new Set(apres)].join(' = ')}`), '.'],
+  };
+}
+
+// 2. Produit : (uv)' = u'v + uv'
+function questionProduit(rang, alea) {
+  let u, v, fTex;
+  if (rang === 0) {
+    u = simplifier([mono(nonNul(alea, -4, 4), entierEntre(alea, 1, 2)), mono(nonNul(alea, -6, 6), 0)]);
+    v = simplifier([mono(nonNul(alea, -3, 3), entierEntre(alea, 1, 3)), mono(nonNul(alea, -6, 6), 0)]);
+    fTex = entreParentheses(u) + entreParentheses(v);
+  } else if (rang === 1) {
+    u = [mono(nonNul(alea, -4, 4), entierEntre(alea, 2, 4))]; v = [mono(1, 0, auHasard(alea, ['exp', 'ln', 'sin', 'cos']))];
+    fTex = sommeTex(produitSommes(u, v));
+  } else if (alea() < 0.6) {
+    const T = auHasard(alea, ['sin', 'cos', 'exp']);
+    u = simplifier([mono(nonNul(alea, -3, 3), 2), mono(nonNul(alea, -6, 6), 0)]); v = [mono(1, 0, T)];
+    fTex = entreParentheses(u) + TEX_T[T];
+  } else {
+    u = [mono((alea() < 0.8 ? 1 : -1) * auHasard(alea, [2, 4, 6]), fr(1, 2))]; v = [mono(1, 0, 'ln')];
+    fTex = sommeTex(produitSommes(u, v));
+  }
+  const du = deriver(u), dv = deriver(v), duv = produitSommes(du, v), udv = produitSommes(u, dv);
+  const erreurs = [
+    { type: 'f′·g′', s: produitSommes(du, dv) }, { type: 'terme uv′ oublié', s: duv }, { type: 'terme u′v oublié', s: udv },
+    { type: 'somme des dérivées', s: sommePlus(du, dv) }, { type: 'signe moins inversé (uv′ − u′v)', s: sommeMoins(udv, duv) },
+    { type: 'signe moins (règle du quotient)', s: sommeMoins(duv, udv) }, { type: 'u′v′ + uv', s: sommePlus(produitSommes(du, dv), produitSommes(u, v)) },
+  ];
+  return {
+    regle: 'produit', f: { tex: fTex, val: x => valSomme(u, x) * valSomme(v, x) }, bonne: exprSomme(sommePlus(duv, udv)),
+    erreurs: erreurs.map(e => exprSomme(e.s, e.type)),
+    explication: [formule("(uv)' = u'v + uv'"), ' : on dérive un facteur à la fois, puis on additionne les deux termes. Ici ',
+      formule(`u = ${sommeTex(u)},\\; v = ${sommeTex(v)},\\; u' = ${sommeTex(du)},\\; v' = ${sommeTex(dv)}`), '.'],
+  };
+}
+
+// 3. Quotient : (u/v)' = (u'v − uv')/v², numérateur simplifié, dénominateur laissé au carré
+function quotientExpr(N, v, p, type = '') {
+  let num = N, den;
+  if (v.length === 1 && !v[0].t) {                    // v = c·xᵏ : on simplifie par la plus petite puissance de x du numérateur
+    let D = { c: fr(v[0].c.n ** p, v[0].c.d ** p), e: frMul(v[0].e, fr(p)), t: '' };
+    const emin = Math.min(...num.map(m => frVal(m.e)));
+    if (num.length && emin > 0 && Number.isInteger(emin)) {
+      const k = Math.min(emin, frVal(D.e));
+      num = num.map(m => ({ ...m, e: frSub(m.e, fr(k)) })); D = { ...D, e: frSub(D.e, fr(k)) };
+    }
+    den = D.e.n === 0 && D.c.n === 1 && D.c.d === 1 ? '' : monomeTex(D);
+  } else if (v.length === 1) den = p === 2 ? TEX_T[v[0].t].replace(/^\\(sin|cos)/, '\\$1^{2}') : TEX_T[v[0].t];
+  else den = p === 2 ? `\\left(${sommeTex(v)}\\right)^{2}` : sommeTex(v);
+  const negatif = num.length && num.every(m => m.c.n < 0), haut = sommeTex(negatif ? sommeOpp(num) : num);
+  const tex = (negatif ? '-' : '') + (den ? `\\frac{${haut}}{${den}}` : (num.length > 1 && negatif ? `\\left(${haut}\\right)` : haut));
+  return { tex, val: x => valSomme(N, x) / valSomme(v, x) ** p, type };
+}
+function questionQuotient(rang, alea) {
+  let u, v;
+  if (rang === 0) {
+    let a, b, c, d;
+    do { a = nonNul(alea, -4, 4); b = nonNul(alea, -6, 6); c = entierEntre(alea, 1, 2); d = nonNul(alea, -5, 5); } while (a * d - b * c === 0);
+    u = [mono(a, 1), mono(b, 0)]; v = [mono(c, 1), mono(d, 0)];
+  } else if (rang === 1) {
+    if (alea() < 0.5) { u = [mono(nonNul(alea, -3, 3), 2), mono(nonNul(alea, -6, 6), 0)]; v = [mono(1, 1), mono(nonNul(alea, -5, 5), 0)]; }
+    else { u = [mono(nonNul(alea, -4, 4), 1), mono(nonNul(alea, -5, 5), 0)]; v = [mono(1, 2), mono(entierEntre(alea, 1, 9), 0)]; }
+  } else if (alea() < 0.6) {
+    u = [mono(entierEntre(alea, 1, 3), 0, auHasard(alea, ['ln', 'sin', 'cos', 'exp']))]; v = [mono(1, entierEntre(alea, 1, 2))];
+  } else {
+    u = [mono(entierEntre(alea, 1, 3), entierEntre(alea, 1, 2))]; v = [mono(1, 0, auHasard(alea, ['sin', 'cos']))];
+  }
+  u = simplifier(u); v = simplifier(v);
+  const du = deriver(u), dv = deriver(v), duv = produitSommes(du, v), udv = produitSommes(u, dv), N = sommeMoins(duv, udv);
+  const fTex = `\\frac{${sommeTex(u)}}{${sommeTex(v)}}`;
+  return {
+    regle: 'quotient', f: { tex: fTex, val: x => valSomme(u, x) / valSomme(v, x) }, bonne: quotientExpr(N, v, 2),
+    erreurs: [quotientExpr(sommeOpp(N), v, 2, 'numérateur inversé (uv′ − u′v)'), quotientExpr(N, v, 1, 'carré du dénominateur oublié'),
+      quotientExpr(sommePlus(duv, udv), v, 2, 'signe + (règle du produit)'), quotientExpr(du, dv, 1, 'quotient des dérivées u′/v′'),
+      quotientExpr(du, v, 1, 'terme uv′ oublié'), quotientExpr(sommeOpp(N), v, 1, 'numérateur inversé et carré oublié'),
+      quotientExpr(sommeOpp(sommePlus(duv, udv)), v, 2, 'erreur de signe (−u′v − uv′)')],
+    explication: [formule("\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^{2}}"), ' : l’ordre compte au numérateur (u′v d’abord) et le dénominateur est élevé au carré. Ici ',
+      formule(`u' = ${sommeTex(du)},\\; v' = ${sommeTex(dv)}`), '.'],
+  };
+}
+
+// 4. Chaîne : (f(g(x)))' = f'(g(x))·g'(x), extérieur ∈ {puissance, sin, cos, exp, ln, racine}
+function questionChaine(rang, alea) {
+  let ext, n = 1, g;
+  if (rang === 0) {
+    ext = auHasard(alea, ['puissance', 'puissance', 'sin', 'cos', 'exp']);
+    g = simplifier([mono(entierEntre(alea, 2, 5) * (alea() < 0.8 ? 1 : -1), 1), ...(ext === 'puissance' || alea() < 0.5 ? [mono(nonNul(alea, -6, 6), 0)] : [])]);
+    n = entierEntre(alea, 3, 5);
+  } else if (rang === 1) {
+    ext = auHasard(alea, ['sin', 'cos', 'exp', 'ln', 'puissance']);
+    let a, b;
+    do {                                 // pour ln, a et b premiers entre eux : g'/g est déjà simplifiée
+      a = ext === 'ln' ? entierEntre(alea, 1, 4) : nonNul(alea, -4, 4); b = ext === 'ln' ? entierEntre(alea, 1, 6) : nonNul(alea, -6, 6);
+    } while (ext === 'ln' && pgcdFr(a, b) !== 1);
+    g = simplifier([mono(a, entierEntre(alea, 2, 3)), mono(b, 0)]);
+    n = entierEntre(alea, 2, 4);
+  } else {
+    const cas = auHasard(alea, ['racine', 'racine', 'expTrig', 'expRacine', 'puissanceTrig', 'trigRacine']);
+    if (cas === 'racine') { ext = 'racine'; g = simplifier([mono(entierEntre(alea, 1, 4), 2), mono(entierEntre(alea, 1, 9), 0)]); }
+    else if (cas === 'expTrig') { ext = 'exp'; g = [mono(1, 0, auHasard(alea, ['sin', 'cos']))]; }
+    else if (cas === 'expRacine') { ext = 'exp'; g = [mono(1, fr(1, 2))]; }
+    else if (cas === 'puissanceTrig') { ext = 'puissance'; g = [mono(1, 0, auHasard(alea, ['sin', 'cos']))]; n = entierEntre(alea, 2, 4); }
+    else { ext = auHasard(alea, ['sin', 'cos']); g = [mono(1, fr(1, 2))]; }
+  }
+  const gTex = sommeTex(g), gv = x => valSomme(g, x), dg = deriver(g);
+  const trig = g.length === 1 && (g[0].t === 'sin' || g[0].t === 'cos') && g[0].e.n === 0 && g[0].c.n === 1;
+  const par = t => `\\left(${t}\\right)`;
+  const puissanceDe = (t, k) => k === 1 ? (trig && t === gTex ? t : par(t)) : (trig && t === gTex ? t.replace(/^\\(sin|cos)/, `\\$1^{${k}}`) : `${par(t)}^{${k}}`);
+  const applique = t => ({ puissance: puissanceDe(t, n), sin: `\\sin${par(t)}`, cos: `\\cos${par(t)}`, exp: `e^{${t}}`, ln: `\\ln${par(t)}`, racine: `\\sqrt{${t}}` }[ext]);
+  // Facteur M multiplié par une partie « extérieure » OUT : un seul terme s'écrit d'un bloc, sinon entre parenthèses
+  const fois = (Mul, OUT, k = fr(1)) => {
+    const s = sommeFois(Mul, k);
+    if (s.length === 1) return sommeTex(s, OUT);
+    return (frVal(k) < 0 ? '-' : '') + (Math.abs(frVal(k)) === 1 ? '' : `${Math.abs(k.n)}`) + par(sommeTex(s)) + OUT;
+  };
+  const sur = (Mul, den, k = fr(1)) => {                     // Mul·k / den
+    const s = sommeFois(Mul, k), negatif = s.every(m => m.c.n < 0), haut = negatif ? sommeOpp(s) : s;
+    if (haut.length === 1 && haut[0].e.n >= 0) {
+      const m = haut[0];
+      return (negatif ? '-' : '') + `\\frac{${monomeTex({ ...m, c: fr(m.c.n, 1) })}}{${m.c.d === 1 ? '' : m.c.d}${den}}`;
+    }
+    return (negatif ? '-' : '') + `\\frac{${sommeTex(haut)}}{${den}}`;
+  };
+  // Dérivée de l'extérieur évaluée en t, multipliée par Mul
+  const derivee = (Mul, t, tv, type = '') => {
+    const mv = x => valSomme(Mul, x);
+    const r = {
+      puissance: { tex: fois(Mul, puissanceDe(t, n - 1), fr(n)), val: x => n * mv(x) * tv(x) ** (n - 1) },
+      sin: { tex: fois(Mul, `\\cos${par(t)}`), val: x => mv(x) * Math.cos(tv(x)) },
+      cos: { tex: fois(Mul, `\\sin${par(t)}`, fr(-1)), val: x => -mv(x) * Math.sin(tv(x)) },
+      exp: { tex: fois(Mul, `e^{${t}}`), val: x => mv(x) * Math.exp(tv(x)) },
+      ln: { tex: sur(Mul, t), val: x => mv(x) / tv(x) },
+      racine: { tex: sur(Mul, `\\sqrt{${t}}`, fr(1, 2)), val: x => mv(x) / (2 * Math.sqrt(tv(x))) },
+    }[ext];
+    return { ...r, type };
+  };
+  const un = [mono(1)], dgTex = sommeTex(dg), dgv = x => valSomme(dg, x);
+  const Fv = { puissance: y => y ** n, sin: Math.sin, cos: Math.cos, exp: Math.exp, ln: Math.log, racine: Math.sqrt }[ext];
+  // « cos(3) » ou « 3(2)² » seraient trop visiblement faux : les erreurs qui mettent g' dans f seulement si g' contient x
+  const gPrimeVariable = dg.some(m => m.e.n !== 0 || m.t);
+  const erreurs = [derivee(un, gTex, gv, 'dérivée intérieure oubliée')];
+  if (ext === 'sin') erreurs.push({ tex: fois(dg, `\\cos${par(gTex)}`, fr(-1)), val: x => -dgv(x) * Math.cos(gv(x)), type: 'mauvaise dérivée de sin (signe)' });
+  if (ext === 'cos') erreurs.push({ tex: fois(dg, `\\sin${par(gTex)}`), val: x => dgv(x) * Math.sin(gv(x)), type: 'mauvaise dérivée de cos (signe)' });
+  if (gPrimeVariable) erreurs.push(derivee(un, dgTex, dgv, 'dérivée intérieure mise dedans'));
+  if (ext !== 'exp') erreurs.push({ tex: fois(dg, applique(gTex)), val: x => dgv(x) * Fv(gv(x)), type: 'extérieur pas dérivé' });
+  if (gPrimeVariable) erreurs.push({ tex: applique(dgTex), val: x => Fv(dgv(x)), type: 'seulement l’intérieur dérivé' });
+  if (ext === 'puissance') {
+    erreurs.push({ tex: fois(dg, puissanceDe(gTex, n), fr(n)), val: x => n * dgv(x) * gv(x) ** n, type: 'exposant pas diminué' },
+      { tex: fois(dg, puissanceDe(gTex, n - 1)), val: x => dgv(x) * gv(x) ** (n - 1), type: 'facteur n oublié' },
+      { tex: fois(un, puissanceDe(gTex, n), fr(n)), val: x => n * gv(x) ** n, type: 'ni exposant diminué ni dérivée intérieure' });
+  }
+  if (ext === 'sin' || ext === 'cos') {
+    erreurs.push(ext === 'sin' ? { tex: `-\\cos${par(gTex)}`, val: x => -Math.cos(gv(x)), type: 'signe et dérivée intérieure oubliés' }
+                               : { tex: `\\sin${par(gTex)}`, val: x => Math.sin(gv(x)), type: 'signe et dérivée intérieure oubliés' },
+      derivee(g, gTex, gv, 'multiplié par l’intérieur'));
+  }
+  if (ext === 'exp') {
+    const neg = dg.every(m => m.c.n < 0), dgAbs = neg ? sommeOpp(dg) : dg;
+    erreurs.push({ tex: `${g.length > 1 ? par(gTex) : gTex}\\,e^{${sommeTex(sommeMoins(g, [mono(1)]))}}`, val: x => gv(x) * Math.exp(gv(x) - 1), type: 'règle de la puissance appliquée à e' },
+      derivee(g, gTex, gv, 'multiplié par l’intérieur'),
+      { tex: fois(dg, 'e^{x}'), val: x => dgv(x) * Math.exp(x), type: 'exposant remplacé par x' },
+      { tex: `${neg ? '-' : ''}\\frac{e^{${gTex}}}{${sommeTex(dgAbs)}}`, val: x => Math.exp(gv(x)) / dgv(x), type: 'divisé par g′ (confusion avec la primitive)' });
+  }
+  if (ext === 'ln') {
+    erreurs.push({ tex: `\\frac{${gTex}}{${dgTex}}`, val: x => gv(x) / dgv(x), type: 'fraction inversée' },
+      { tex: `\\frac{${dgTex}}{\\left(${gTex}\\right)^{2}}`, val: x => dgv(x) / gv(x) ** 2, type: 'carré au dénominateur' });
+  }
+  if (ext === 'racine') {
+    erreurs.push({ tex: sur(dg, `\\sqrt{${gTex}}`), val: x => dgv(x) / Math.sqrt(gv(x)), type: 'facteur ½ oublié' },
+      { tex: sur(dg, gTex, fr(1, 2)), val: x => dgv(x) / (2 * gv(x)), type: 'racine oubliée au dénominateur' });
+  }
+  return {
+    regle: 'chaine', f: { tex: applique(gTex), val: x => Fv(gv(x)) },
+    bonne: derivee(dg, gTex, gv), erreurs,
+    explication: [formule("\\big(f(g(x))\\big)' = f'(g(x))\\cdot g'(x)"), ' : on dérive l’extérieur sans toucher à l’intérieur, puis on multiplie par la dérivée de l’intérieur. Ici ',
+      formule(`g(x) = ${gTex},\\; g'(x) = ${dgTex}`), '.'],
+  };
+}
+
+const REGLES = {
+  puissance: { nom: 'Puissance', titre: 'La règle de la puissance', modele: questionPuissance },
+  produit: { nom: 'Produit', titre: 'La règle du produit', modele: questionProduit },
+  quotient: { nom: 'Quotient', titre: 'La règle du quotient', modele: questionQuotient },
+  chaine: { nom: 'Chaîne', titre: 'La dérivée en chaîne', modele: questionChaine },
+};
+const ORDRE_REGLES = ['puissance', 'produit', 'quotient', 'chaine'];
+
+// Question vérifiée : bonne réponse exacte, cinq mauvais choix non équivalents entre eux ni à la bonne
+const NB_DISTRACTEURS = 5;
+function genererQuestion(regle, rang, alea = Math.random) {
+  for (let essai = 0; essai < 80; essai++) {
+    const q = REGLES[regle].modele(rang, alea);
+    if (!bonneReponseExacte(q)) continue;
+    const choisis = [];
+    for (const e of q.erreurs) {
+      if (choisis.length === NB_DISTRACTEURS) break;
+      if (e.tex === q.bonne.tex || !differents(e, q.bonne) || choisis.some(c => c.tex === e.tex || !differents(c, e))) continue;
+      choisis.push(e);
+    }
+    if (choisis.length < NB_DISTRACTEURS) continue;
+    return { ...q, rang, essais: essai + 1, choix: melangerTableau([{ ...q.bonne, bonne: true }, ...choisis]) };
+  }
+  throw new Error(`Aucune question valide pour la règle ${regle}`);
+}
+
+// --- Le labyrinthe : 26 × 26 cellules, quatre zones de 13 × 13, une par règle ---
+// Ordre des zones : sud-ouest (1), nord-ouest (2), nord-est (3), sud-est (4). Départ au bord ouest de la
+// zone 1, sortie au bord est de la zone 4. Chaque zone est un vrai labyrinthe (longs couloirs droits,
+// culs-de-sac, ~8 % de boucles) ; une seule ouverture mène à la zone suivante, loin de l'entrée.
+// Grilles de chaque zone (4, donc 16 en tout) : trois vraies sur le chemin, la dernière au passage vers la
+// zone suivante (ou à la sortie), chacune à au moins 30 % du chemin de la zone après la précédente (trois
+// intervalles : 33 % au mieux) et jamais en vue de la précédente ni de l'entrée ; plus une fausse grille
+// qui ferme un embranchement sans issue. La dernière grille est verrouillée : il faut la clé de la zone,
+// cachée au fond d'un long cul-de-sac sinueux.
+const JARDIN = { n: 26, zone: 13, boucles: 0.08, toutDroit: 0.55, retourAnticipe: 0.12, ecart: 0.3 };
+const zoneJardin = (i, j) => i < JARDIN.zone ? (j >= JARDIN.zone ? 0 : 1) : (j < JARDIN.zone ? 2 : 3);
+
+function fixerMurJardin(lab, a, b, ferme) {
+  if (a.i !== b.i) lab.murV[a.j][Math.max(a.i, b.i)] = ferme; else lab.murH[Math.max(a.j, b.j)][a.i] = ferme;
+}
+// Une vraie grille est obligatoire si, fermée, elle sépare le départ de la sortie
+function grilleObligatoire(lab, g) {
+  if (g.b.i >= lab.n) return true;                       // la grille de la sortie : on ne la contourne jamais
+  fixerMurJardin(lab, g.a, g.b, true);
+  const coupe = distancesDepuis(lab, lab.depart)[lab.sortie.j][lab.sortie.i] === Infinity;
+  fixerMurJardin(lab, g.a, g.b, false);
+  return coupe;
+}
+// Une fausse grille est la seule entrée de son embranchement : fermée, la cellule derrière devient inaccessible
+function grilleScellee(lab, g) {
+  fixerMurJardin(lab, g.a, g.b, true);
+  const isolee = distancesDepuis(lab, lab.depart)[g.b.j][g.b.i] === Infinity;
+  fixerMurJardin(lab, g.a, g.b, false);
+  return isolee;
+}
+// Cellules visibles depuis des cellules : en ligne droite dans les quatre directions, tant que le passage
+// est ouvert (les barreaux d'une grille ne cachent rien)
+function vuesDepuis(lab, cellules) {
+  const vu = new Set();
+  for (const c of cellules) {
+    if (c.i < 0 || c.j < 0 || c.i >= lab.n || c.j >= lab.n) continue;
+    vu.add(c.i + ',' + c.j);
+    for (const [di, dj] of DIRS) {
+      let i = c.i, j = c.j;
+      while (passage(lab, i, j, di, dj)) { i += di; j += dj; vu.add(i + ',' + j); }
+    }
+  }
+  return vu;
+}
+const grilleEnVue = (lab, g, depuis) => { const v = vuesDepuis(lab, depuis); return [g.a, g.b].some(c => v.has(c.i + ',' + c.j)); };
+
+// Raisons des essais refusés (diagnostic, console : LABY.echecsJardin)
+const ECHECS_JARDIN = {};
+function echecJardin(raison) { ECHECS_JARDIN[raison] = (ECHECS_JARDIN[raison] || 0) + 1; return null; }
+
+function genererJardin(graine) {
+  for (let essai = 0; essai < 300; essai++) {
+    const lab = essayerJardin(graine * 17 + essai);
+    if (lab) { lab.graine = graine; lab.essais = essai + 1; return lab; }
+  }
+  throw new Error('Jardin impossible à générer');
+}
+
+function essayerJardin(g) {
+  const { n } = JARDIN, Z = JARDIN.zone, alea = mulberry32(g), cle = c => c.i + ',' + c.j;
+  const dans = (i, j) => i >= 0 && j >= 0 && i < n && j < n;
+  const lab = { graine: g, niveau: 'jardin', n, cote: n * CELLULE,
+    murH: Array.from({ length: n + 1 }, () => new Array(n).fill(true)), murV: Array.from({ length: n }, () => new Array(n + 1).fill(true)) };
+
+  // Une zone : recursive backtracker qui prolonge souvent les couloirs en ligne droite et abandonne parfois
+  // une branche plus tôt (courtes impasses le long des couloirs). On referme d'abord ses murs intérieurs.
+  const creuserZone = z => {
+    const cellules = [];
+    for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) if (zoneJardin(i, j) === z) cellules.push({ i, j });
+    for (const c of cellules) for (const [di, dj] of [[1, 0], [0, 1]]) {
+      if (dans(c.i + di, c.j + dj) && zoneJardin(c.i + di, c.j + dj) === z) fixerMurJardin(lab, c, { i: c.i + di, j: c.j + dj }, true);
+    }
+    const vu = new Set();
+    const libres = (i, j) => DIRS.filter(([di, dj]) => dans(i + di, j + dj) && zoneJardin(i + di, j + dj) === z && !vu.has((i + di) + ',' + (j + dj)));
+    const c0 = cellules[Math.floor(alea() * cellules.length)], pile = [{ ...c0, di: 0, dj: 0 }];
+    vu.add(cle(c0));
+    while (true) {
+      if (!pile.length) {
+        const reprise = cellules.find(c => vu.has(cle(c)) && libres(c.i, c.j).length);
+        if (!reprise) break;
+        pile.push({ ...reprise, di: 0, dj: 0 });
+      }
+      const s = pile[pile.length - 1], voisins = libres(s.i, s.j);
+      if (!voisins.length || (pile.length > 1 && alea() < JARDIN.retourAnticipe)) { pile.pop(); continue; }
+      let choix = voisins[Math.floor(alea() * voisins.length)];
+      const droit = voisins.find(([di, dj]) => di === s.di && dj === s.dj);
+      if (droit && alea() < JARDIN.toutDroit) choix = droit;
+      const [di, dj] = choix;
+      fixerMurJardin(lab, s, { i: s.i + di, j: s.j + dj }, false);
+      vu.add((s.i + di) + ',' + (s.j + dj));
+      pile.push({ i: s.i + di, j: s.j + dj, di, dj });
+    }
+  };
+
+  // 1. Zone par zone : on creuse, on choisit le passage de sortie parmi les trois cellules de bord les plus
+  //    éloignées de l'entrée, puis on place grilles, fausse grille et clé. Une zone qui ne s'y prête pas est
+  //    recreusée (jusqu'à 40 fois) sans toucher aux zones déjà faites.
+  lab.depart = { i: 0, j: Z + Math.floor(alea() * (n - Z)) };
+  const bords = [
+    Array.from({ length: Z }, (_, i) => [{ i, j: Z }, { i, j: Z - 1 }]),             // zone 1 → 2 : vers le nord
+    Array.from({ length: Z }, (_, j) => [{ i: Z - 1, j }, { i: Z, j }]),             // zone 2 → 3 : vers l'est
+    Array.from({ length: n - Z }, (_, k) => [{ i: Z + k, j: Z - 1 }, { i: Z + k, j: Z }]),   // zone 3 → 4 : vers le sud
+    Array.from({ length: n - Z }, (_, k) => [{ i: n - 1, j: Z + k }, { i: n, j: Z + k }]),   // zone 4 → sortie, à l'est
+  ];
+  lab.grilles = []; lab.cles = []; lab.passages = [];
+  let entree = lab.depart, entreeZone = [lab.depart];
+  for (let z = 0; z < 4; z++) {
+    let plan = null, passageZone = null;
+    for (let essai = 0; essai < 40 && !plan; essai++) {
+      creuserZone(z);
+      const d = distancesDepuis(lab, entree);
+      const tries = bords[z].filter(([a]) => d[a.j][a.i] < Infinity).sort((p, q) => d[q[0].j][q[0].i] - d[p[0].j][p[0].i]);
+      const [a, b] = tries[Math.floor(alea() * Math.min(3, tries.length))];
+      passageZone = { a, b };
+      plan = planifierZone(lab, z, cheminLePlusCourt(lab, entree, a), entreeZone, passageZone, alea);
+    }
+    if (!plan) return echecJardin(`zone ${z + 1} impossible`);
+    lab.grilles.push(...plan.grilles);
+    lab.cles.push(plan.cle);
+    if (z < 3) { fixerMurJardin(lab, passageZone.a, passageZone.b, false); lab.passages.push(passageZone); }
+    else { lab.sortie = passageZone.a; lab.murV[passageZone.a.j][n] = false; }
+    entree = passageZone.b; entreeZone = [passageZone.a, passageZone.b];
+  }
+
+  // 2. Boucles : seulement à l'intérieur des parties que délimitent les grilles et l'entrée des culs-de-sac
+  //    des clés (tous fermés) : aucune grille ne peut être contournée, chaque clé reste au fond d'une impasse ;
+  //    jamais de placette, jamais de cul-de-sac ouvert
+  const ouverturesDe = c => DIRS.filter(([di, dj]) => passage(lab, c.i, c.j, di, dj)).length;
+  const scelles = [...lab.grilles.filter(gr => gr.b.i < n), ...lab.cles.map(c => c.entree)];
+  scelles.forEach(s => fixerMurJardin(lab, s.a, s.b, true));
+  const partie = Array.from({ length: n }, () => new Array(n).fill(-1));
+  let parties = 0;
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    if (partie[j][i] >= 0) continue;
+    const file = [[i, j]];
+    partie[j][i] = parties;
+    while (file.length) {
+      const [x, y] = file.pop();
+      for (const [di, dj] of DIRS) if (passage(lab, x, y, di, dj) && partie[y + dj][x + di] < 0) { partie[y + dj][x + di] = parties; file.push([x + di, y + dj]); }
+    }
+    parties++;
+  }
+  scelles.forEach(s => fixerMurJardin(lab, s.a, s.b, false));
+  const internes = [];
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    if (i + 1 < n && lab.murV[j][i + 1] && zoneJardin(i, j) === zoneJardin(i + 1, j)) internes.push([{ i, j }, { i: i + 1, j }, i + 1, j, 'V']);
+    if (j + 1 < n && lab.murH[j + 1][i] && zoneJardin(i, j) === zoneJardin(i, j + 1)) internes.push([{ i, j }, { i, j: j + 1 }, i, j + 1, 'H']);
+  }
+  melangerTableau(internes, alea);
+  const objectif = Math.round(internes.length * JARDIN.boucles);
+  // Une boucle qui raccourcirait le chemin de la solution rapprocherait deux grilles : refusée
+  const longueur = () => distancesDepuis(lab, lab.depart)[lab.sortie.j][lab.sortie.i], reference = longueur();
+  lab.mursRetires = 0;
+  for (const [a, b, x, y, type] of internes) {
+    if (lab.mursRetires >= objectif) break;
+    if (partie[a.j][a.i] !== partie[b.j][b.i]) continue;
+    const sommets = type === 'H' ? [[x, y], [x + 1, y]] : [[x, y], [x, y + 1]];
+    if (sommets.some(([vx, vz]) => nbMursAuSommet(lab, vx, vz) <= 1)) continue;
+    if (ouverturesDe(a) === 1 || ouverturesDe(b) === 1) continue;
+    fixerMurJardin(lab, a, b, false);
+    if (longueur() < reference) { fixerMurJardin(lab, a, b, true); continue; }
+    lab.mursRetires++;
+  }
+  lab.mursInternes = internes.length;
+
+  // 3. Contrôles sur le labyrinthe final (voir controlerGrillesJardin)
+  lab.chemin = cheminLePlusCourt(lab, lab.depart, lab.sortie);
+  const controle = lab.chemin && controlerGrillesJardin(lab);
+  if (!controle || !controle.ok) { ECHECS_JARDIN.dernierControle = controle; return echecJardin('contrôle final'); }
+  lab.distance = lab.chemin.length - 1;
+  lab.grilles.sort((p, q) => p.zone - q.zone || p.k - q.k);
+  lab.grilles.forEach((gr, k) => { gr.id = k; gr.regle = ORDRE_REGLES[gr.zone]; });
+  return lab;
+}
+
+// Grilles et clé d'une zone, sur le segment du chemin de la solution qui la traverse (de la cellule d'entrée
+// à la cellule du passage de sortie). Positions en pas : l'entrée est en −½, le passage de sortie en fin + ½,
+// L = longueur du segment. Trois vraies grilles (la dernière ferme le passage et demande la clé), chacune à au
+// moins 30 % de L après la précédente et hors de sa vue ; une fausse grille ; une clé au fond d'un cul-de-sac.
+function planifierZone(lab, z, segment, entreeZone, passageZone, alea) {
+  if (!segment) return echecJardin('zone sans chemin');
+  const cle = c => c.i + ',' + c.j, fin = segment.length - 1, L = segment.length, e = JARDIN.ecart * L;
+  if (L < 16) return echecJardin('zone trop courte');
+  const surChemin = new Set(segment.map(cle)), vueDuChemin = vuesDepuis(lab, segment);
+  const ouverturesDe = c => DIRS.filter(([di, dj]) => passage(lab, c.i, c.j, di, dj)).length;
+  const brancheDerriere = (c, d) => {            // l'arbre derrière d (sans repasser par c) : distance à d
+    const dist = new Map([[cle(d), 0]]), file = [d];
+    for (let q = 0; q < file.length; q++) {
+      const x = file[q];
+      for (const [ei, ej] of DIRS) {
+        const y = { i: x.i + ei, j: x.j + ej };
+        if (passage(lab, x.i, x.j, ei, ej) && cle(y) !== cle(c) && !dist.has(cle(y))) { dist.set(cle(y), dist.get(cle(x)) + 1); file.push(y); }
+      }
+    }
+    return dist;
+  };
+  const surArete = k => ({ a: segment[k], b: segment[k + 1] });
+  const paires = [];
+  for (let k1 = Math.ceil(e - 1); k1 <= fin - 2 * e; k1++) {
+    if (k1 < 0 || grilleEnVue(lab, surArete(k1), entreeZone)) continue;
+    for (let k2 = Math.ceil(k1 + e); k2 <= Math.floor(fin - e); k2++) {
+      const g2 = surArete(k2);
+      if (!grilleEnVue(lab, g2, [segment[k1], segment[k1 + 1]]) && !grilleEnVue(lab, passageZone, [g2.a, g2.b])) paires.push([k1, k2]);
+    }
+  }
+  if (!paires.length) return echecJardin('grilles mal espacées ou en vue');
+  const ecartAuTiers = ([k1, k2]) => Math.abs(k1 + 1 - L / 3) + Math.abs(k2 + 1 - 2 * L / 3);
+  paires.sort((p, q) => ecartAuTiers(p) - ecartAuTiers(q));
+  const [k1, k2] = paires[Math.floor(alea() * Math.min(4, paires.length))];
+  const grilles = [{ zone: z, rang: 0, ...surArete(k1), k: k1 }, { zone: z, rang: 1, ...surArete(k2), k: k2 },
+    { zone: z, rang: 2, ...passageZone, k: fin, verrou: true }];
+
+  // La clé : au fond d'un cul-de-sac qui part du chemin loin de l'entrée et de la sortie de la zone ;
+  // trajet d'au moins 8 cellules, avec au moins 3 virages et deux autres impasses, invisible du chemin
+  const candidats = [];
+  for (let k = 0; k <= fin; k++) {
+    if (k + 0.5 < 0.2 * L || fin + 0.5 - k < 0.2 * L) continue;
+    const c = segment[k];
+    for (const [di, dj] of DIRS) {
+      const d = { i: c.i + di, j: c.j + dj };
+      if (!passage(lab, c.i, c.j, di, dj) || surChemin.has(cle(d)) || zoneJardin(d.i, d.j) !== z) continue;
+      const dist = brancheDerriere(c, d);
+      const feuilles = [...dist.keys()].map(x => { const [i, j] = x.split(',').map(Number); return { i, j }; }).filter(x => ouverturesDe(x) === 1);
+      if (feuilles.length < 3) continue;
+      for (const f of feuilles) {
+        if (dist.get(cle(f)) + 1 < 8 || vueDuChemin.has(cle(f))) continue;
+        const trajet = [f];
+        while (dist.get(cle(trajet[0])) > 0) {
+          const x = trajet[0], [ei, ej] = DIRS.find(([ei, ej]) => passage(lab, x.i, x.j, ei, ej) && dist.get((x.i + ei) + ',' + (x.j + ej)) === dist.get(cle(x)) - 1);
+          trajet.unshift({ i: x.i + ei, j: x.j + ej });
+        }
+        trajet.unshift(c);
+        let virages = 0;
+        for (let q = 2; q < trajet.length; q++) {
+          const a = trajet[q - 2], b = trajet[q - 1], x = trajet[q];
+          if (b.i - a.i !== x.i - b.i || b.j - a.j !== x.j - b.j) virages++;
+        }
+        if (virages >= 3) candidats.push({ zone: z, k, entree: { a: c, b: d }, cellule: f, trajet, branche: new Set(dist.keys()) });
+      }
+    }
+  }
+  if (!candidats.length) return echecJardin('aucun cul-de-sac pour la clé');
+  candidats.sort((p, q) => q.trajet.length - p.trajet.length);
+  const cleZone = candidats[Math.floor(alea() * Math.min(5, candidats.length))];
+
+  // La fausse grille : à l'entrée d'un autre embranchement sans issue d'au moins 4 cellules
+  const fausses = [];
+  for (let k = 2; k <= fin - 2; k++) {
+    if ([k1, k2, fin].some(kg => Math.abs(k - kg) < 3)) continue;
+    const c = segment[k];
+    for (const [di, dj] of DIRS) {
+      const d = { i: c.i + di, j: c.j + dj };
+      if (!passage(lab, c.i, c.j, di, dj) || surChemin.has(cle(d)) || zoneJardin(d.i, d.j) !== z || cleZone.branche.has(cle(d))) continue;
+      const taille = brancheDerriere(c, d).size;
+      if (taille >= 4) fausses.push({ zone: z, rang: k < k1 ? 0 : 1, a: c, b: d, k, fausse: true, taille });
+    }
+  }
+  if (!fausses.length) return echecJardin('aucune place pour la fausse grille');
+  fausses.sort((p, q) => q.taille - p.taille);
+  grilles.push(fausses[Math.floor(alea() * Math.min(5, fausses.length))]);
+  return { grilles, cle: cleZone };
+}
+
+// Contrôle complet d'un jardin (sert à la génération et à LABY.verifierJardin) :
+//   grilles : 3 vraies par zone, obligatoires, écartées d'au moins 30 % du chemin de la zone, hors de vue de la
+//   précédente (ou de l'entrée) ; 1 fausse par zone, seule entrée de son cul-de-sac ;
+//   clés : une par zone, atteignable depuis l'entrée sans passer par une fausse grille, au fond d'un cul-de-sac
+//   d'au moins 8 cellules sans aucune grille, invisible du chemin principal et des grilles
+function controlerGrillesJardin(lab) {
+  const n = lab.n, chemin = lab.chemin, cle = c => c.i + ',' + c.j;
+  const r = { ok: true, ecartMin: Infinity, enVue: 0, obligatoires: true, scellees: true, horsChemin: 0, quatreParZone: true,
+    clesAtteignables: 0, clesEnCulDeSac: 0, clesSansGrille: 0, clesInvisibles: 0, trajetCleMin: Infinity };
+  const position = g => g.b.i >= n ? chemin.length - 0.5 : chemin.findIndex((c, q) => q + 1 < chemin.length && c.i === g.a.i && c.j === g.a.j && chemin[q + 1].i === g.b.i && chemin[q + 1].j === g.b.j) + 0.5;
+  for (let z = 0; z < 4; z++) {
+    const ks = chemin.map((c, k) => k).filter(k => zoneJardin(chemin[k].i, chemin[k].j) === z);
+    const debut = ks[0], fin = ks[ks.length - 1], L = fin - debut + 1;
+    const vraies = lab.grilles.filter(g => g.zone === z && !g.fausse).sort((p, q) => position(p) - position(q));
+    if (vraies.length !== 3 || lab.grilles.filter(g => g.zone === z && g.fausse).length !== 1) r.quatreParZone = false;
+    if (vraies.length !== 3 || vraies.some(g => position(g) < 0)) { r.horsChemin++; r.ok = false; continue; }
+    const reperes = [debut - 0.5, ...vraies.map(position)];
+    for (let q = 1; q < reperes.length; q++) r.ecartMin = Math.min(r.ecartMin, (reperes[q] - reperes[q - 1]) / L);
+    const entreeZone = z === 0 ? [chemin[0]] : [chemin[debut - 1], chemin[debut]];
+    if (grilleEnVue(lab, vraies[0], entreeZone)) r.enVue++;
+    for (let q = 1; q < 3; q++) if (grilleEnVue(lab, vraies[q], [vraies[q - 1].a, vraies[q - 1].b])) r.enVue++;
+  }
+  r.obligatoires = lab.grilles.filter(g => !g.fausse).every(g => grilleObligatoire(lab, g));
+  r.scellees = lab.grilles.filter(g => g.fausse).every(g => grilleScellee(lab, g));
+  // Clés
+  const fausses = lab.grilles.filter(g => g.fausse), vues = vuesDepuis(lab, [...chemin, ...lab.grilles.flatMap(g => [g.a, g.b])]);
+  fausses.forEach(f => fixerMurJardin(lab, f.a, f.b, true));
+  const sansFausses = distancesDepuis(lab, lab.depart);
+  fausses.forEach(f => fixerMurJardin(lab, f.a, f.b, false));
+  for (const c of lab.cles || []) {
+    if (zoneJardin(c.cellule.i, c.cellule.j) === c.zone && sansFausses[c.cellule.j][c.cellule.i] < Infinity) r.clesAtteignables++;
+    fixerMurJardin(lab, c.entree.a, c.entree.b, true);
+    const isolee = distancesDepuis(lab, lab.depart)[c.cellule.j][c.cellule.i] === Infinity;
+    const branche = distancesDepuis(lab, c.entree.b);                   // la branche seule, entrée fermée
+    fixerMurJardin(lab, c.entree.a, c.entree.b, false);
+    if (isolee) r.clesEnCulDeSac++;
+    if (!lab.grilles.some(g => [g.a, g.b].some(x => x.i < n && branche[x.j][x.i] < Infinity))) r.clesSansGrille++;
+    if (!vues.has(cle(c.cellule))) r.clesInvisibles++;
+    r.trajetCleMin = Math.min(r.trajetCleMin, distancesDepuis(lab, c.entree.a)[c.cellule.j][c.cellule.i]);
+  }
+  // Zone par zone : depuis l'entrée de la zone, avec les fausses grilles et toutes les grilles de sortie
+  // fermées, la clé de la zone et la case devant sa grille de sortie doivent être atteignables
+  r.clesDepuisZone = 0; r.sortiesDepuisZone = 0;
+  const bloquees = lab.grilles.filter(g => g.fausse || g.verrou);
+  bloquees.forEach(g => { if (g.b.i < n) fixerMurJardin(lab, g.a, g.b, true); });
+  for (let z = 0; z < 4; z++) {
+    const depuis = z === 0 ? lab.depart : (lab.passages || [])[z - 1], sortieZone = lab.grilles.find(g => g.zone === z && g.verrou);
+    if (!depuis || !sortieZone) continue;
+    const d = distancesDepuis(lab, z === 0 ? depuis : depuis.b), c = (lab.cles || [])[z];
+    if (c && d[c.cellule.j][c.cellule.i] < Infinity) r.clesDepuisZone++;
+    if (d[sortieZone.a.j][sortieZone.a.i] < Infinity) r.sortiesDepuisZone++;
+  }
+  bloquees.forEach(g => { if (g.b.i < n) fixerMurJardin(lab, g.a, g.b, false); });
+  const nbCles = (lab.cles || []).length;
+  r.ok = r.ok && r.quatreParZone && r.ecartMin >= JARDIN.ecart - 1e-9 && r.enVue === 0 && r.obligatoires && r.scellees && nbCles === 4
+    && r.clesAtteignables === 4 && r.clesEnCulDeSac === 4 && r.clesSansGrille === 4 && r.clesInvisibles === 4 && r.trajetCleMin >= 8
+    && r.clesDepuisZone === 4 && r.sortiesDepuisZone === 4;
+  return r;
+}
+
+// --- Décors des quatre zones : haie de cèdres, haie fleurie, murets de pierres sèches, érables d'automne ---
+
+// Haie fleurie : feuillage de cèdre parsemé de petites fleurs à cinq pétales
+function texturesHaieFleurie(graine) {
+  const t = texturesFeuillage(graine, PALETTE_CEDRE), alea = mulberry32(graine + 1), T = t.couleur.image.width;
+  const c = t.couleur.image.getContext('2d'), r = t.relief.image.getContext('2d');
+  const teintes = ['#ffd1e3', '#ff8fb8', '#ffffff', '#f6e27a', '#d9a6ff', '#ff6f91'];
+  for (let k = 0; k < 650; k++) {
+    const x = alea() * T, y = alea() * T, rr = 2.5 + alea() * 3.5, col = teintes[Math.floor(alea() * teintes.length)], a0 = alea() * 6.3;
+    for (const [px, py] of copiesBouclees(x, y, 10, T)) {
+      for (let p = 0; p < 5; p++) {
+        const a = a0 + p * Math.PI * 2 / 5;
+        ellipse(c, px + Math.cos(a) * rr * 0.7, py + Math.sin(a) * rr * 0.7, rr * 0.62, rr * 0.45, a, col);
+        ellipse(r, px + Math.cos(a) * rr * 0.7, py + Math.sin(a) * rr * 0.7, rr * 0.62, rr * 0.45, a, '#e8e8e8');
+      }
+      ellipse(c, px, py, rr * 0.35, rr * 0.35, 0, '#f2b33d');
+    }
+  }
+  t.couleur.needsUpdate = t.relief.needsUpdate = true;
+  return t;
+}
+// Petite plaque de laiton au nom de la règle, sur le pilier de chaque grille (f′(x) ou dy/dx, en alternance)
+function texturePlaqueRegle(texte, leibniz = false) {
+  const cv = creerCanvas(256, 128), c = cv.getContext('2d');
+  const g = c.createLinearGradient(0, 0, 0, 128);
+  g.addColorStop(0, '#d9b45c'); g.addColorStop(1, '#9c7a32');
+  c.fillStyle = g; c.fillRect(0, 0, 256, 128);
+  c.strokeStyle = '#5a4316'; c.lineWidth = 6; c.strokeRect(8, 8, 240, 112);
+  c.fillStyle = '#2d220c'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.font = 'italic 600 34px Georgia, serif'; c.fillText(leibniz ? 'dy/dx = ?' : 'f′(x) = ?', 128, 46);
+  c.font = '600 26px Georgia, serif'; c.fillText(texte, 128, 88);
+  return versTexture(cv, { repeter: false });
+}
+// Petite clé d'or (une trentaine de centimètres) : anneau, tige et deux dents, centrée, à plat dans le plan xy
+function geoCle() {
+  return enCache('cle', () => fusionnerGeometries([
+    new THREE.TorusGeometry(0.06, 0.016, 8, 20), boiteM(0.18, 0.024, 0.024, 0.15, -0.012, 0),
+    boiteM(0.022, 0.05, 0.024, 0.2, -0.062, 0), boiteM(0.022, 0.035, 0.024, 0.235, -0.047, 0),
+  ]).translate(-0.09, 0, 0));
+}
+// Battant de grille en fer forgé (charnière en x = 0, il s'étend vers +x) : barreaux à pointes, traverses, volute
+function geoBattantGrille(l = 1.08) {
+  return enCache('battantGrille', () => {
+    const p = [];
+    for (let k = 0; k < 8; k++) {
+      const x = 0.06 + k * (l - 0.12) / 7;
+      p.push(new THREE.CylinderGeometry(0.016, 0.016, 2.1, 6).translate(x, 1.12, 0), new THREE.ConeGeometry(0.035, 0.12, 6).translate(x, 2.23, 0));
+    }
+    for (const y of [0.15, 1.0, 1.95]) p.push(boiteM(l, 0.05, 0.04, l / 2, y, 0));
+    p.push(boiteM(0.05, 2.1, 0.05, 0.025, 0.05, 0), boiteM(0.05, 2.1, 0.05, l - 0.025, 0.05, 0), new THREE.TorusGeometry(0.17, 0.014, 6, 18).translate(l / 2, 1.47, 0));
+    return fusionnerGeometries(p);
+  });
+}
+
+function ressourcesJardin() {
+  const cedres = ressources('cedres'), fleurie = texturesHaieFleurie(311), erable = texturesFeuillage(317, PALETTE_ERABLE), pierre = texturesMoellons(331);
+  const feuillage = t => new THREE.MeshStandardMaterial({ map: t.couleur, bumpMap: t.relief, bumpScale: 3, vertexColors: true, roughness: 0.92 });
+  const optionsPierre = { grosses: 0.05, fines: 0.025, frequence: 1.6, sommet: 0.12, piedNet: false, tailleTexture: 2 };
+  return {
+    sol: cedres.sol,
+    zones: [
+      { murs: GEO.haies, mats: MAT.haies, teinte: cedres.teinte },
+      { murs: GEO.haies, mats: [feuillage(fleurie)], teinte: alea => new THREE.Color().setHSL(0.27 + alea() * 0.06, 0.2, 0.72 + alea() * 0.2) },
+      { murs: [creerGeometrieHaie(13, 0, optionsPierre), creerGeometrieHaie(37, 0.5, optionsPierre), creerGeometrieHaie(53, 0.25, optionsPierre)],
+        mats: [new THREE.MeshStandardMaterial({ map: pierre.couleur, bumpMap: pierre.relief, bumpScale: 3, vertexColors: true, roughness: 0.95 })],
+        teinte: alea => new THREE.Color().setHSL(0.09, 0.06 + alea() * 0.06, 0.74 + alea() * 0.18) },
+      { murs: GEO.haies, mats: [feuillage(erable)], teinte: alea => new THREE.Color().setHSL(0.05 + alea() * 0.05, 0.25, 0.72 + alea() * 0.2) },
+    ],
+    caillou: { geo: new THREE.IcosahedronGeometry(1, 0), mat: new THREE.MeshStandardMaterial({ color: 0xbdb6aa, roughness: 0.9, flatShading: true }) },
+    feuilles: new THREE.MeshStandardMaterial({ map: textureFeuillesMortes(337), alphaTest: 0.5, roughness: 1, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }),
+    fer: new THREE.MeshStandardMaterial({ color: 0x23272b, metalness: 0.6, roughness: 0.45 }),
+    pilier: new THREE.MeshStandardMaterial({ map: pierre.couleur, bumpMap: pierre.relief, bumpScale: 2, color: 0xd8d0c4, roughness: 0.9 }),
+    plaques: Object.fromEntries(ORDRE_REGLES.map(r => [r, [false, true].map(leibniz =>
+      new THREE.MeshStandardMaterial({ map: texturePlaqueRegle(REGLES[r].nom, leibniz), metalness: 0.4, roughness: 0.45 }))])),
+    // La clé : or poli qui luit doucement (l'éclat varie, voir majJardin), et ses étincelles
+    or: new THREE.MeshStandardMaterial({ color: 0xffcf4a, metalness: 0.85, roughness: 0.22, emissive: 0x9a6400, emissiveIntensity: 1.0 }),
+    etincelles: new THREE.PointsMaterial({ color: 0xffe9a0, size: 0.05, transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending }),
+  };
+}
+
+function construireJardin(lab) {
+  if (monde) { scene.remove(monde.groupe); monde.jetables.forEach(o => o.dispose()); }
+  appliquerTheme('jardin');
+  $('penalite').hidden = true; $('penalite').classList.remove('flash');
+  const R = ressources('jardin'), groupe = new THREE.Group(), jetables = [], alea = mulberry32(lab.graine * 7 + 3);
+  const ajouter = (...objets) => objets.forEach(o => { groupe.add(o); jetables.push(o.isInstancedMesh ? o : o.geometry); });
+  const n = lab.n, cote = lab.cote, C = CELLULE;
+
+  // Haies et murets, comme dans les autres labyrinthes, plus l'enclos de la clairière
+  const segments = [];
+  for (let j = 0; j <= n; j++) for (let i = 0; i < n; i++) if (lab.murH[j][i]) segments.push({ x: (i + 0.5) * C, z: j * C, axe: 'x', zone: zoneJardin(i, Math.min(j, n - 1)) });
+  for (let j = 0; j < n; j++) for (let i = 0; i <= n; i++) if (lab.murV[j][i]) segments.push({ x: i * C, z: (j + 0.5) * C, axe: 'z', zone: zoneJardin(Math.min(i, n - 1), j) });
+  const r = lab.sortie.j, clairiere = { X0: cote, X1: cote + 2 * C, Z0: (r - 1) * C, Z1: (r + 2) * C, Zc: (r + 0.5) * C };
+  for (const zz of [clairiere.Z0, clairiere.Z1]) for (let k = 0; k < 2; k++) segments.push({ x: cote + (k + 0.5) * C, z: zz, axe: 'x', zone: 3 });
+  for (let k = 0; k < 3; k++) segments.push({ x: clairiere.X1, z: clairiere.Z0 + (k + 0.5) * C, axe: 'z', zone: 3 });
+  for (const jj of [r - 1, r + 1]) if (jj < 0 || jj >= n) segments.push({ x: cote, z: (jj + 0.5) * C, axe: 'z', zone: 3 });
+  const BLOC = 6 * C, lots = new Map();
+  for (const s of segments) {
+    const Z = R.zones[s.zone], v = Math.floor(alea() * Z.murs.length);
+    const cle = `${s.zone}:${v}:${Math.floor(s.x / BLOC)}:${Math.floor(s.z / BLOC)}`;
+    if (!lots.has(cle)) lots.set(cle, { geo: Z.murs[v], mat: Z.mats[v % Z.mats.length], matrices: [], teintes: [] });
+    const lot = lots.get(cle);
+    lot.matrices.push(matrice(s.x, 0, s.z, (s.axe === 'z' ? Math.PI / 2 : 0) + (alea() < 0.5 ? 0 : Math.PI)));
+    lot.teintes.push(Z.teinte(alea));
+  }
+  for (const lot of lots.values()) ajouter(instancier(lot.geo, lot.mat, lot.matrices, lot.teintes, true));
+  const demiL = LONGUEUR_SEGMENT / 2, demiE = EPAISSEUR / 2 + MARGE_FEUILLAGE;
+  const boites = segments.map(s => s.axe === 'x' ? { x0: s.x - demiL, x1: s.x + demiL, z0: s.z - demiE, z1: s.z + demiE } : { x0: s.x - demiE, x1: s.x + demiE, z0: s.z - demiL, z1: s.z + demiL });
+
+  // Décor au pied des murs : herbe (cèdres), fleurs (haie fleurie), cailloux (pierres), feuilles mortes (automne)
+  const dansLesAllees = (x, z) => (x > 0 && x < cote && z > 0 && z < cote) || (x > clairiere.X0 && x < clairiere.X1 && z > clairiere.Z0 && z < clairiere.Z1);
+  decorerCedres(segments.filter(s => s.zone <= 1), dansLesAllees, alea, ajouter);
+  const fleurs = [], cailloux = [], feuilles = [];
+  for (const s of segments) {
+    if (s.zone === 0) continue;
+    for (const sens of [1, -1]) {
+      for (let k = 0; k < (s.zone === 1 ? 4 : 3); k++) {
+        const le = (alea() - 0.5) * C * 0.95, ecart = EPAISSEUR / 2 + 0.05 + alea() * 0.25;
+        const x = s.axe === 'x' ? s.x + le : s.x + sens * ecart, z = s.axe === 'x' ? s.z + sens * ecart : s.z + le;
+        if (!dansLesAllees(x, z)) continue;
+        if (s.zone === 1) fleurs.push(matrice(x, 0, z, alea() * Math.PI, 0.7 + alea() * 0.6));
+        else if (s.zone === 2) { const t = 0.08 + alea() * 0.22; cailloux.push(composer(x, t * 0.3, z, new THREE.Euler(alea(), alea() * 6, alea()), new THREE.Vector3(t * 1.3, t, t))); }
+        else feuilles.push(composer(x, 0.02, z, alea() * 6.3, new THREE.Vector3(0.9, 1, 0.9)));
+      }
+    }
+  }
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) if (zoneJardin(i, j) === 3 && alea() < 0.7) feuilles.push(composer((i + 0.2 + alea() * 0.6) * C, 0.02, (j + 0.2 + alea() * 0.6) * C, alea() * 6.3, UN3));
+  ajouter(instancier(GEO.fleur, MAT.fleur, fleurs, null, false), instancier(R.caillou.geo, R.caillou.mat, cailloux, null, true),
+    instancier(enCache('feuillesSolJardin', () => new THREE.PlaneGeometry(1.6, 1.6).rotateX(-Math.PI / 2)), R.feuilles, feuilles, null, false));
+  sortieClairiere(clairiere, alea, ajouter, groupe, jetables);
+
+  // Grilles : deux battants de fer forgé entre deux piliers de pierre, une plaque au nom de la règle
+  const grilles = [], piliers = [], ouverture = C - EPAISSEUR;
+  for (const [indice, g] of lab.grilles.entries()) {
+    const vertical = g.a.i !== g.b.i;                                   // mur sur une ligne x = constante
+    const X = vertical ? Math.max(g.a.i, g.b.i) * C : (g.a.i + 0.5) * C, Zg = vertical ? (g.a.j + 0.5) * C : Math.max(g.a.j, g.b.j) * C;
+    const u = vertical ? [0, 1] : [1, 0], nrm = vertical ? [Math.sign(g.b.i - g.a.i), 0] : [0, Math.sign(g.b.j - g.a.j)];   // le long de l'ouverture, vers b
+    const battants = [], angle = ([dx, dz]) => Math.atan2(-dz, dx);
+    for (const s of [-1, 1]) {
+      const hx = X - s * u[0] * ouverture / 2, hz = Zg - s * u[1] * ouverture / 2;           // charnière au bord de l'ouverture
+      const ferme = angle([s * u[0], s * u[1]]), ouvert = angle(nrm);
+      let delta = ((ouvert - ferme + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+      const m = new THREE.Mesh(geoBattantGrille(ouverture / 2 - 0.02), R.fer);
+      m.position.set(hx, 0, hz); m.rotation.y = ferme; m.castShadow = true;
+      groupe.add(m);
+      battants.push({ m, ferme, ouvert: ferme + delta * 1.12 });
+      const [px, pz] = [hx - s * u[0] * 0.22, hz - s * u[1] * 0.22];
+      piliers.push(composer(px, 0, pz, vertical ? Math.PI / 2 : 0, new THREE.Vector3(0.48, 3.25, 0.98)), composer(px, 3.25, pz, vertical ? Math.PI / 2 : 0, new THREE.Vector3(0.62, 0.14, 1.1)));
+    }
+    // Plaque sur le pilier, du côté d'où l'on arrive
+    const [qx, qz] = [X - u[0] * (ouverture / 2 + 0.22) - nrm[0] * 0.5, Zg - u[1] * (ouverture / 2 + 0.22) - nrm[1] * 0.5];
+    const plaque = new THREE.Mesh(enCache('plaqueRegle', () => new THREE.PlaneGeometry(0.42, 0.21)), R.plaques[g.regle][indice % 2]);
+    plaque.position.set(qx - nrm[0] * 0.005, 1.75, qz - nrm[1] * 0.005);
+    plaque.rotation.y = Math.atan2(-nrm[0], -nrm[1]);
+    groupe.add(plaque);
+    const boite = vertical ? { x0: X - 0.12, x1: X + 0.12, z0: Zg - C / 2, z1: Zg + C / 2 } : { x0: X - C / 2, x1: X + C / 2, z0: Zg - 0.12, z1: Zg + 0.12 };
+    boites.push(boite);
+    grilles.push({ ...g, x: X, z: Zg, battants, boite, ouverte: false, t: 0, question: null, essais: 0 });
+  }
+  ajouter(instancier(geoBoiteUnite(), R.pilier, piliers, null, true));
+
+  // Les clés, une par zone, au fond de leur cul-de-sac : petites, dorées, qui tournent et scintillent
+  const cles = lab.cles.map(c => {
+    const groupeCle = new THREE.Group(), x = (c.cellule.i + 0.5) * C, z = (c.cellule.j + 0.5) * C;
+    const m = new THREE.Mesh(geoCle(), R.or);
+    m.castShadow = true;
+    const points = new Float32Array(8 * 3);
+    for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; points.set([Math.cos(a) * 0.2, ((k % 3) - 1) * 0.08, Math.sin(a) * 0.2], k * 3); }
+    const geoPoints = new THREE.BufferGeometry();
+    geoPoints.setAttribute('position', new THREE.BufferAttribute(points, 3));
+    const etincelles = new THREE.Points(geoPoints, R.etincelles);
+    jetables.push(geoPoints);
+    groupeCle.add(m, etincelles);
+    groupeCle.position.set(x, 0.95, z);
+    groupe.add(groupeCle);
+    return { ...c, x, z, groupe: groupeCle, cle: m, etincelles, etat: 'posee', t: 0 };
+  });
+
+  scene.add(groupe);
+  monde = { groupe, jetables, boites, clairiere,
+    jardin: { lab, grilles, cles, etatsCles: ['absente', 'absente', 'absente', 'absente'], zone: 0, stats: { premierCoup: 0, penalites: 0, parRegle: Object.fromEntries(ORDRE_REGLES.map(r => [r, { bonnes: 0, tentatives: 0 }])) } } };
+  cadrerSoleil(lab);
+  renderer.shadowMap.needsUpdate = true;
+}
+
+// --- Jeu dans le jardin : s'approcher d'une grille, répondre, l'ouvrir ---
+
+const PENALITE = 30;            // secondes ajoutées au chronomètre par mauvaise réponse
+let jetonQuestion = 0;          // annule la fermeture différée d'un panneau devenu obsolète
+
+// Formules : KaTeX (cdnjs) en MathML, que le navigateur affiche lui-même ; repli en texte si KaTeX manque
+function rendreMaths(el, tex) {
+  if (window.katex) {
+    try { window.katex.render(tex, el, { output: 'mathml', throwOnError: false }); return; } catch (e) { /* repli ci-dessous */ }
+  }
+  el.textContent = tex.replace(/\\left|\\right|\\[,;]|\\big/g, '').replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, '($1)/($2)')
+    .replace(/\\sqrt\[3\]/g, '∛').replace(/\\sqrt/g, '√').replace(/\\cdot/g, '·').replace(/\\(sin|cos|ln)/g, '$1 ').replace(/[{}\\]/g, '');
+}
+// Texte mêlé de formules : ['texte', { m: 'latex' }, …]
+function rendreExplication(el, morceaux) {
+  el.replaceChildren(...morceaux.map(p => {
+    if (typeof p === 'string') return document.createTextNode(p);
+    const s = document.createElement('span'); rendreMaths(s, `\\displaystyle ${p.m}`); return s;
+  }));
+}
+
+function majHudJardin() {
+  const J = monde.jardin;
+  ui.hudNiveau.textContent = `Zone ${J.zone + 1}/4 · ${REGLES[ORDRE_REGLES[J.zone]].nom}`;
+  majCompteurJardin();
+}
+
+// « Portes : 5/16 » (vraies et fausses grilles comptent pareil) et la clé de la zone, grise ou dorée
+function majCompteurJardin(eclat = false) {
+  const J = monde.jardin, icone = $('cle-hud'), tenue = J.etatsCles[J.zone] === 'tenue';
+  $('portes').textContent = `Portes : ${J.grilles.filter(g => g.ouverte).length}/${J.grilles.length}`;
+  icone.classList.toggle('tenue', tenue);
+  icone.setAttribute('aria-label', tenue ? 'Clé de la zone : en main' : 'Clé de la zone : pas encore trouvée');
+  if (eclat) { icone.classList.remove('eclat'); void icone.offsetWidth; icone.classList.add('eclat'); }
+}
+
+// Invitation près d'une grille, ou avis de verrou devant la grille de sortie sans la clé de la zone
+function majInviteGrille(proche, verrouillee) {
+  const invite = $('invite-grille'), etatInvite = !proche || modeTest ? 'cache' : verrouillee ? 'verrou' : 'ouvrir';
+  invite.hidden = etatInvite === 'cache';             // d'autres écrans peuvent l'avoir caché entre-temps
+  if (invite.dataset.etat === etatInvite) return;
+  invite.dataset.etat = etatInvite;
+  invite.classList.toggle('verrou', etatInvite === 'verrou');
+  if (etatInvite === 'verrou') invite.textContent = 'Cette grille est verrouillée. Il te faut la clé de cette zone.';
+  else if (etatInvite === 'ouvrir') invite.innerHTML = '<kbd>E</kbd> ouvrir la grille';
+}
+function signalerVerrou() {
+  const invite = $('invite-grille');
+  invite.classList.remove('secousse'); void invite.offsetWidth; invite.classList.add('secousse');
+  Sons.verrouille();
+}
+
+function etapeJardin(dt) {
+  const J = monde.jardin;
+  deplacerJoueur(dt);
+  tempsJeu += dt;
+  let proche = null, d2 = 1.7 ** 2;
+  for (const g of J.grilles) {
+    if (g.ouverte) continue;
+    const d = (g.x - joueur.x) ** 2 + (g.z - joueur.z) ** 2;
+    if (d < d2) { d2 = d; proche = g; }
+  }
+  J.proche = proche;
+  // La clé se ramasse en marchant dessus
+  for (const c of J.cles) if (c.etat === 'posee' && Math.hypot(c.x - joueur.x, c.z - joueur.z) < 0.75) ramasserCle(c);
+  majInviteGrille(proche, proche && proche.verrou && J.etatsCles[proche.zone] !== 'tenue');
+  const cel = v => THREE.MathUtils.clamp(Math.floor(v / CELLULE), 0, JARDIN.n - 1);
+  const zone = zoneJardin(cel(joueur.x), cel(joueur.z));
+  if (zone !== J.zone) { J.zone = zone; majHudJardin(); }
+  if (joueur.x > monde.clairiere.X0 + 0.9) gagner();     // entré dans la clairière : c'est gagné
+}
+
+function ramasserCle(c) {
+  const J = monde.jardin;
+  c.etat = 'ramassee'; c.t = 0;
+  J.etatsCles[c.zone] = 'tenue';
+  Sons.cleRamassee();
+  majCompteurJardin(true);
+}
+
+// Battants qui pivotent (0,9 s) quand la grille s'ouvre ; clés qui tournent, luisent et scintillent, puis
+// s'envolent en tournoyant quand on les ramasse
+function majJardin(dt) {
+  if (!monde || !monde.jardin) return;
+  for (const g of monde.jardin.grilles) {
+    if (!g.ouverte || g.t >= 1) continue;
+    g.t = Math.min(1, g.t + dt / 0.9);
+    const e = 1 - (1 - g.t) ** 3;
+    for (const b of g.battants) b.m.rotation.y = b.ferme + (b.ouvert - b.ferme) * e;
+  }
+  const R = ressources('jardin'), t = tempsTotal;
+  R.or.emissiveIntensity = 0.7 + 0.7 * (0.5 + 0.5 * Math.sin(t * 3.1));
+  R.etincelles.opacity = 0.3 + 0.6 * Math.abs(Math.sin(t * 4.3));
+  for (const c of monde.jardin.cles) {
+    if (c.etat === 'posee') {
+      c.cle.rotation.y += dt * 1.6;
+      c.groupe.position.y = 0.95 + Math.sin(t * 2 + c.zone) * 0.05;
+      c.etincelles.rotation.y -= dt * 0.9;
+    } else if (c.etat === 'ramassee' && c.groupe.visible) {
+      c.t = Math.min(1, c.t + dt / 0.7);
+      c.groupe.position.y = 0.95 + c.t * 0.8;
+      c.cle.rotation.y += dt * 14;
+      c.groupe.scale.setScalar(Math.max(0.001, 1 + Math.sin(c.t * Math.PI) * 0.6 - c.t));
+      if (c.t >= 1) c.groupe.visible = false;
+    }
+  }
+}
+
+function ouvrirGrille(g) {
+  g.ouverte = true; g.t = 0;
+  const k = monde.boites.indexOf(g.boite);
+  if (k >= 0) monde.boites.splice(k, 1);
+  if (g.verrou) monde.jardin.etatsCles[g.zone] = 'utilisee';       // la clé sert en ouvrant la grille
+  majCompteurJardin();
+}
+
+function ouvrirQuestion(g) {
+  const J = monde.jardin;
+  if (g.verrou && J.etatsCles[g.zone] !== 'tenue') { signalerVerrou(); return; }   // pas de question sans la clé
+  if (!g.question) g.question = questionPour(g);
+  J.active = g; J.repondu = false;
+  etat = 'question';
+  for (const k in entree) entree[k] = false;
+  $('invite-grille').hidden = true;
+  afficherQuestion(g);
+  $('ecran-question').hidden = false;
+  if (document.pointerLockElement) document.exitPointerLock();
+  $('choix-question').firstElementChild.focus({ preventScroll: true });
+}
+
+// Les questions alternent les deux notations : « Trouve f'(x) si f(x) = … », puis « Trouve dy/dx si
+// y = … », et ainsi de suite ; les six choix suivent la notation de leur question.
+let compteurNotation = 0;
+function questionPour(g) {
+  const q = genererQuestion(g.regle, g.rang);
+  q.leibniz = compteurNotation++ % 2 === 1;
+  return q;
+}
+
+function afficherQuestion(g) {
+  const q = g.question;
+  $('etiquette-question').textContent = `Zone ${g.zone + 1} · ${REGLES[g.regle].titre}`;   // rien qui trahisse une fausse grille
+  // \displaystyle : fractions en pleine taille, comme dans un corrigé
+  const derivee = q.leibniz ? '\\frac{dy}{dx}' : "f'(x)", fonction = q.leibniz ? 'y' : 'f(x)';
+  rendreExplication($('enonce-question'), ['Trouve ', { m: derivee }, ' si ', { m: `${fonction} = ${q.f.tex}` }]);
+  $('choix-question').replaceChildren(...q.choix.map((c, k) => {
+    const b = document.createElement('button'), touche = document.createElement('span'), maths = document.createElement('span');
+    b.type = 'button'; b.className = 'choix';
+    touche.className = 'touche'; touche.textContent = String(k + 1);
+    rendreMaths(maths, `\\displaystyle ${derivee} = ${c.tex}`);
+    b.append(touche, maths);
+    b.addEventListener('click', () => repondre(k));
+    return b;
+  }));
+  $('retour-question').hidden = true;
+  $('btn-nouvelle-question').hidden = true;
+}
+
+function repondre(k) {
+  const J = monde.jardin, g = J.active;
+  if (!g || J.repondu || etat !== 'question') return;
+  const q = g.question, stat = J.stats.parRegle[g.regle], boutons = [...$('choix-question').children];
+  J.repondu = true; g.essais++; stat.tentatives++;
+  boutons.forEach((b, i) => { b.disabled = true; if (q.choix[i].bonne) b.classList.add('juste'); });
+  const verdict = $('verdict-question');
+  if (q.choix[k].bonne) {
+    stat.bonnes++;
+    if (g.essais === 1) J.stats.premierCoup++;
+    verdict.textContent = 'Bonne réponse ! La grille s’ouvre.';
+    verdict.className = 'verdict juste';
+    $('explication-question').hidden = true;
+    $('retour-question').hidden = false;
+    Sons.grilleOuverte();
+    ouvrirGrille(g);
+    const jeton = ++jetonQuestion;
+    setTimeout(() => { if (jeton === jetonQuestion && etat === 'question') fermerQuestion(); }, 1100);
+  } else {
+    boutons[k].classList.add('faux');
+    J.stats.penalites++;
+    tempsJeu += PENALITE;
+    majChrono();
+    const p = $('penalite');
+    p.hidden = false; p.classList.remove('flash'); void p.offsetWidth; p.classList.add('flash');
+    verdict.textContent = `Mauvaise réponse : ${PENALITE} secondes de pénalité. La bonne réponse est en vert.`;
+    verdict.className = 'verdict faux';
+    rendreExplication($('explication-question'), q.explication);
+    $('explication-question').hidden = false;
+    $('retour-question').hidden = false;
+    $('btn-nouvelle-question').hidden = false;
+    $('btn-nouvelle-question').focus({ preventScroll: true });
+    Sons.mauvaiseReponse();
+    g.question = questionPour(g);                      // une nouvelle fonction pour la même grille : impossible d'essayer tous les choix
+  }
+}
+
+function nouvelleQuestion() {
+  const J = monde.jardin;
+  if (!J || !J.active || etat !== 'question') return;
+  J.repondu = false;
+  afficherQuestion(J.active);
+  $('choix-question').firstElementChild.focus({ preventScroll: true });
+}
+
+function fermerQuestion() {
+  jetonQuestion++;
+  $('ecran-question').hidden = true;
+  if (monde && monde.jardin) monde.jardin.active = null;
+  if (etat !== 'question') return;
+  etat = 'jeu';
+  for (const k in entree) entree[k] = false;
+  horloge.getDelta();
+  if (!modeTest) capturerSouris();
+}
+
+// Lignes de l'écran de victoire : réussites du premier coup, pénalités, taux par règle
+function bilanJardin() {
+  const s = monde.jardin.stats, ouvertes = monde.jardin.grilles.filter(g => g.ouverte), fausses = ouvertes.filter(g => g.fausse).length;
+  return [
+    ['Bonnes réponses du premier coup', `${s.premierCoup} / ${ouvertes.length}`],
+    ['Portes ouvertes', `${ouvertes.length}/${monde.jardin.grilles.length}`],
+    ['Fausses grilles ouvertes', fausses ? String(fausses) : 'aucune'],
+    ['Pénalités', s.penalites ? `${s.penalites} (+${formaterTemps(s.penalites * PENALITE)})` : 'aucune'],
+    ...ORDRE_REGLES.map(r => [`${REGLES[r].nom}`, `${s.parRegle[r].bonnes}/${s.parRegle[r].tentatives}`]),
+  ];
+}
+
+// Sons du jardin, sur le canal des effets : grille qui s'ouvre, mauvaise réponse
+Object.assign(Sons, {
+  grilleOuverte() {
+    if (!this.ctx || this.muet) return;
+    const ctx = this.ctx, t0 = ctx.currentTime + 0.02;
+    [523.25, 659.25, 783.99, 1046.5].forEach((f, k) => {                  // arpège montant
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = t0 + k * 0.08;
+      o.type = 'triangle'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.13, t + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.7);
+      o.connect(g); g.connect(this.effets.volume);
+      o.start(t); o.stop(t + 0.75);
+    });
+    const o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();   // gonds qui grincent
+    o.type = 'sawtooth';
+    o.frequency.setValueAtTime(190, t0 + 0.15);
+    o.frequency.linearRampToValueAtTime(270, t0 + 0.75);
+    f.type = 'bandpass'; f.frequency.value = 1300; f.Q.value = 7;
+    g.gain.setValueAtTime(0.0001, t0 + 0.15);
+    g.gain.exponentialRampToValueAtTime(0.025, t0 + 0.3);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.8);
+    o.connect(f); f.connect(g); g.connect(this.effets.entree);
+    o.start(t0 + 0.15); o.stop(t0 + 0.85);
+    const choc = ctx.createBufferSource(), cf = ctx.createBiquadFilter(), cg = ctx.createGain();   // loquet
+    choc.buffer = this.bruitBlanc; cf.type = 'highpass'; cf.frequency.value = 2200;
+    cg.gain.setValueAtTime(0.0001, t0); cg.gain.exponentialRampToValueAtTime(0.12, t0 + 0.005); cg.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.06);
+    choc.connect(cf); cf.connect(cg); cg.connect(this.effets.entree);
+    choc.start(t0, Math.random(), 0.08);
+  },
+
+  // Clé ramassée : quatre notes claires qui montent, et un petit scintillement
+  cleRamassee() {
+    if (!this.ctx || this.muet) return;
+    const ctx = this.ctx, t0 = ctx.currentTime + 0.02;
+    [1318.5, 1568, 2093, 2637].forEach((f, k) => {
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = t0 + k * 0.06;
+      o.type = 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.09, t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+      o.connect(g); g.connect(this.effets.volume);
+      o.start(t); o.stop(t + 0.55);
+    });
+    const src = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    src.buffer = this.bruitBlanc; f.type = 'highpass'; f.frequency.value = 6000;
+    g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.05, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.45);
+    src.connect(f); f.connect(g); g.connect(this.effets.volume);
+    src.start(t0, Math.random(), 0.5);
+  },
+
+  // Grille verrouillée : le loquet résiste (deux claquements métalliques)
+  verrouille() {
+    if (!this.ctx || this.muet) return;
+    const ctx = this.ctx;
+    for (const d of [0, 0.12]) {
+      const t = ctx.currentTime + 0.02 + d, src = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      src.buffer = this.bruitBlanc; f.type = 'bandpass'; f.frequency.value = 2400; f.Q.value = 3;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+      src.connect(f); f.connect(g); g.connect(this.effets.entree);
+      src.start(t, Math.random(), 0.09);
+    }
+  },
+
+  mauvaiseReponse() {
+    if (!this.ctx || this.muet) return;
+    const ctx = this.ctx, t0 = ctx.currentTime + 0.02, f = ctx.createBiquadFilter();
+    f.type = 'lowpass'; f.frequency.value = 900;
+    f.connect(this.effets.volume);
+    [[233.08, 0], [174.61, 0.22]].forEach(([freq, d]) => {                 // deux notes graves qui descendent
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = t0 + d;
+      o.type = 'square'; o.frequency.setValueAtTime(freq, t); o.frequency.linearRampToValueAtTime(freq * 0.94, t + 0.3);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.07, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.34);
+      o.connect(g); g.connect(f);
+      o.start(t); o.stop(t + 0.36);
+    });
+  },
+});
+
+// Panneau de question
+$('btn-nouvelle-question').addEventListener('click', nouvelleQuestion);
+$('btn-fermer-question').addEventListener('click', fermerQuestion);
+
+// Outils de vérification du jardin (console, sur localhost seulement : LABY.verifierQuestions(),
+// LABY.verifierJardin(), LABY.simulerJardin(), LABY.simulerJardins())
+Object.assign(LABY, {
+  genererQuestion, echecsJardin: ECHECS_JARDIN,
+
+  // Génère beaucoup de questions par règle et par rang ; contrôle indépendant : exactement un des six
+  // choix coïncide avec la dérivée numérique de f, et c'est celui marqué comme bon
+  verifierQuestions(nombre = 200) {
+    const r = {};
+    const coincide = (q, c) => POINTS_TEST.every(x => {
+      const h = 1e-5, p = (q.f.val(x + h) - q.f.val(x - h)) / (2 * h), v = c.val(x);
+      return !Number.isFinite(p) || !Number.isFinite(v) || Math.abs(p - v) <= 1e-4 * (1 + Math.abs(p));
+    });
+    for (const regle of ORDRE_REGLES) for (const rang of [0, 1, 2]) {
+      const stat = r[`${regle} ${rang}`] = { echecs: 0, mauvaisControle: 0, essaisMoyens: 0, types: {}, exemple: null };
+      for (let k = 0; k < nombre; k++) {
+        try {
+          const q = genererQuestion(regle, rang);
+          stat.essaisMoyens += q.essais / nombre;
+          const justes = q.choix.filter(c => coincide(q, c));
+          if (justes.length !== 1 || !justes[0].bonne) stat.mauvaisControle++;
+          for (const c of q.choix) if (!c.bonne) stat.types[c.type] = (stat.types[c.type] || 0) + 1;
+          if (!stat.exemple) stat.exemple = { f: q.f.tex, choix: q.choix.map(c => (c.bonne ? '✓ ' : '') + c.tex) };
+        } catch (e) { stat.echecs++; stat.erreur = String(e); }
+      }
+      stat.essaisMoyens = +stat.essaisMoyens.toFixed(2);
+    }
+    return r;
+  },
+
+  // Beaucoup de jardins : sortie atteignable, 3 vraies grilles et 1 fausse par zone (contrôles complets de
+  // controlerGrillesJardin), une clé par zone atteignable au fond de son cul-de-sac, boucles, culs-de-sac
+  verifierJardin(nombre = 200) {
+    const r = { nombre, sortieAtteignable: 0, controlesOk: 0, vraiesObligatoires: 0, faussesScellees: 0, aucuneEnVue: 0, ecartMin: Infinity,
+      seizeGrilles: 0, quatreParZone: 0, clesAtteignables: 0, clesEnCulDeSac: 0, clesSansGrille: 0, clesInvisibles: 0, trajetCleMin: Infinity,
+      clesDepuisZone: 0, sortiesDepuisZone: 0, bonneZone: 0, cheminMoyen: 0, cheminMin: Infinity, cheminMax: 0, partBoucles: 0, culsDeSacMoyens: 0, essaisMoyens: 0, ms: 0 };
+    const t0 = performance.now();
+    for (let k = 0; k < nombre; k++) {
+      const lab = genererJardin(4000 + k * 7919), n = lab.n, c = controlerGrillesJardin(lab);
+      if (distancesDepuis(lab, lab.depart)[lab.sortie.j][lab.sortie.i] < Infinity && !lab.murV[lab.sortie.j][n]) r.sortieAtteignable++;
+      if (c.ok) r.controlesOk++;
+      if (c.obligatoires) r.vraiesObligatoires++;
+      if (c.scellees) r.faussesScellees++;
+      if (c.enVue === 0) r.aucuneEnVue++;
+      r.ecartMin = Math.min(r.ecartMin, c.ecartMin);
+      if (lab.grilles.length === 16) r.seizeGrilles++;
+      if (c.quatreParZone) r.quatreParZone++;
+      for (const cle of ['clesAtteignables', 'clesEnCulDeSac', 'clesSansGrille', 'clesInvisibles', 'clesDepuisZone', 'sortiesDepuisZone']) if (c[cle] === 4) r[cle]++;
+      r.trajetCleMin = Math.min(r.trajetCleMin, c.trajetCleMin);
+      if (lab.grilles.every(g => g.zone === zoneJardin(g.a.i, g.a.j) && g.regle === ORDRE_REGLES[g.zone])) r.bonneZone++;
+      r.cheminMoyen += lab.chemin.length / nombre;
+      r.cheminMin = Math.min(r.cheminMin, lab.chemin.length); r.cheminMax = Math.max(r.cheminMax, lab.chemin.length);
+      r.partBoucles += lab.mursRetires / lab.mursInternes / nombre; r.culsDeSacMoyens += compterCulsDeSac(lab) / nombre; r.essaisMoyens += lab.essais / nombre;
+    }
+    for (const cle of ['cheminMoyen', 'culsDeSacMoyens', 'essaisMoyens']) r[cle] = +r[cle].toFixed(1);
+    r.partBoucles = Math.round(r.partBoucles * 100) + ' %'; r.ecartMin = Math.round(r.ecartMin * 100) + ' %';
+    r.ms = Math.round(performance.now() - t0);
+    return r;
+  },
+
+  // Joueur simulé : suit le chemin de la solution avec les vraies collisions, avec un détour par le cul-de-sac
+  // de chaque clé ; devant chaque vraie grille, il ouvre la question et répond (parfois mal d'abord, pour
+  // éprouver les pénalités et la nouvelle question). Sans la clé, la grille de sortie d'une zone le bloque.
+  // toujoursRapide : Maj enfoncée tout le long (temps minimal possible, réponses instantanées)
+  simulerJardin(graine = 1, tauxErreur = 0.25, toujoursRapide = false) {
+    modeTest = true;
+    nouveauJardin(graine);
+    // Itinéraire : départ → clé de la zone 1 → passage vers la zone 2 → clé de la zone 2 → … → sortie
+    const lab = monde.jardin.lab, C = CELLULE, etapes = [lab.depart], route = [lab.depart];
+    lab.cles.forEach((k, z) => etapes.push(k.cellule, z < 3 ? lab.passages[z].b : lab.sortie));
+    for (let q = 1; q < etapes.length; q++) route.push(...cheminLePlusCourt(lab, etapes[q - 1], etapes[q]).slice(1));
+    const pts = route.map(c => ({ x: (c.i + 0.5) * C, z: (c.j + 0.5) * C }));
+    pts.push({ x: lab.cote + C, z: monde.clairiere.Zc });
+    for (const k in entree) entree[k] = false;
+    etat = 'jeu';
+    let cible = 0, images = 0, meilleure = Infinity, bloque = 0, questions = 0, mauvaises = 0;
+    while (etat === 'jeu' && images < 60 * 900) {
+      // Le joueur simulé n'ouvre que les vraies grilles qu'il atteint (il connaît le chemin)
+      // (une grille verrouillée sans sa clé est ignorée : si elle barre vraiment la route, le joueur reste bloqué)
+      const g = monde.jardin.grilles.find(x => !x.fausse && !x.ouverte && Math.hypot(x.x - joueur.x, x.z - joueur.z) < 1.7
+        && !(x.verrou && monde.jardin.etatsCles[x.zone] !== 'tenue'));
+      if (g) {
+        ouvrirQuestion(g);
+        if (etat !== 'question') break;
+        questions++;
+        if (Math.random() < tauxErreur) { repondre(g.question.choix.findIndex(c => !c.bonne)); mauvaises++; nouvelleQuestion(); }
+        repondre(g.question.choix.findIndex(c => c.bonne));
+        fermerQuestion();
+        monde.jardin.proche = null;
+        if (!g.ouverte) break;
+        continue;
+      }
+      const c = pts[cible], dx = c.x - joueur.x, dz = c.z - joueur.z, d = Math.hypot(dx, dz);
+      if (d < 0.35 && cible < pts.length - 1) { cible++; meilleure = Infinity; bloque = 0; continue; }
+      if (d < meilleure - 0.01) { meilleure = d; bloque = 0; } else if (++bloque > 300) break;
+      joueur.lacet = Math.atan2(-dx, -dz);
+      entree.avant = true;
+      entree.rapide = toujoursRapide || images % 600 < 300;
+      etapeJeu(1 / 60);
+      images++;
+    }
+    const J = monde.jardin;
+    const res = { graine, victoire: etat === 'victoire', cellules: lab.chemin.length, secondesDeMarche: +(images / 60).toFixed(1), tempsAvecPenalites: +tempsJeu.toFixed(1),
+      vraiesOuvertes: J.grilles.filter(x => x.ouverte && !x.fausse).length, vraies: J.grilles.filter(x => !x.fausse).length,
+      fausses: J.grilles.filter(x => x.fausse).length, clesUtilisees: J.etatsCles.filter(e => e === 'utilisee').length, cellulesParcourues: route.length,
+      questions, mauvaises, notations: J.grilles.filter(x => x.question).map(x => x.question.leibniz ? 'dy/dx' : "f'(x)"),
+      bilan: bilanJardin().map(l => l.join(' : ')),
+      bloqueA: etat === 'victoire' ? null : { x: +joueur.x.toFixed(2), z: +joueur.z.toFixed(2), cible, sur: pts.length } };
+    for (const k in entree) entree[k] = false;
+    modeTest = false;
+    etat = 'titre';
+    return res;
+  },
+
+  simulerJardins(nombre = 10, tauxErreur = 0.25, toujoursRapide = false) {
+    const res = [];
+    for (let k = 0; k < nombre; k++) res.push(this.simulerJardin(6000 + k * 104729, tauxErreur, toujoursRapide));
+    nouveauJardin();
+    afficher(etat);
+    return { nombre, victoires: res.filter(r => r.victoire).length, toutesLesVraiesOuvertes: res.filter(r => r.vraiesOuvertes === r.vraies).length,
+      fausses: res.map(r => r.fausses), secondes: res.map(r => r.secondesDeMarche), tempsAvecPenalites: res.map(r => r.tempsAvecPenalites),
+      echecs: res.filter(r => !r.victoire) };
+  },
+});
+
+/* ===================== DÉMARRAGE ===================== */
+// Sans souris (téléphone, tablette), le jeu ne se joue pas. La page du site ne le charge d'ailleurs pas
+// dans ce cas : ceci n'est qu'un filet, si la page du jeu est ouverte autrement.
+if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  nouveauJardin();
+  afficher('titre');
+} else {
+  ui.titre.hidden = true;
+  $('ecran-ordinateur').hidden = false;
+}
+Classement.demarrer();
+</script>
+</body>
+</html>
