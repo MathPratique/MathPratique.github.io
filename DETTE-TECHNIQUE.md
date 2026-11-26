@@ -383,32 +383,6 @@ publication, avec `npm test` avant de pousser.
 
 ---
 
-## 2026-11-10 — les notes du chapitre 3 de prob-stat lisent une table Φ que le cours ne donne pas
-
-**Contexte.** Constaté en préparant l'examen 2 de Probabilités et statistique.
-La table du cours (`notes-201-SN1-RE/table-normale.tex`, annexe du ch. 2) donne
-$A(z) = P(0 \le Z \le z)$, de 0,0000 à 0,5000, et le ch. 2 enseigne
-$P(Z > z) = 0{,}5 - A(z)$. Cinq passages de `contenu-ch3.tex` calculent
-plutôt avec $\Phi(z) = P(Z \le z)$ :
-
-- ligne 175 : $1 - \Phi(1{,}5) \approx 0{,}0668$ ;
-- ligne 689 : valeur $p = 2(1 - \Phi(|z|))$ ;
-- ligne 725 : $2(1 - 0{,}9977)$ ;
-- ligne 755 : $1 - 0{,}9938$ ;
-- ligne 859 : $1 - 0{,}9838$.
-
-**Effet.** Un étudiant qui cherche 0,9977, 0,9938 ou 0,9838 dans sa table ne
-les trouve pas : aucune valeur n'y dépasse 0,5. Les résultats sont justes ;
-seule la lecture diffère. Les banques et le méli-mélo du ch. 3 écrivent déjà
-$0{,}5 - A(z)$.
-
-**Correctif.** Réécrire ces cinq passages avec $A(z)$, comme au ch. 2
-(par exemple $P(Z > 2{,}828) = 0{,}5 - A(2{,}83) = 0{,}5 - 0{,}4977$),
-recompiler les deux versions du ch. 3, puis republier les notes. Hors du
-chantier de l'examen 2, qui suit déjà la convention $A(z)$.
-
----
-
 ## 2026-11-19 — la banque du chapitre 4 de prob-stat arrondit le khi-carré à deux décimales
 
 **Contexte.** Constaté en préparant la série de préparation à l'examen final

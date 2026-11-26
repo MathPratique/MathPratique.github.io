@@ -499,8 +499,9 @@ export const DOCUMENTS: Document[] = [
   //     viendra quand ce main existera.
   //   - Pas d'examens : rien n'est encore écrit.
   //
-  // La catégorie « révision » a une seule série, le méli-mélo du chapitre 3,
-  // déclaré plus bas. Les examens s'ajouteront ici sans rien changer à ce
+  // La catégorie « révision » a deux séries, déclarées plus bas : le méli-mélo
+  // du chapitre 3, puis la série de préparation à l'examen final (depuis le
+  // 2026-11-26). Les examens s'ajouteront ici sans rien changer à ce
   // qui précède : un document absent du catalogue est simplement un document
   // que personne ne peut demander.
   ...CHAPITRES_PROBSTAT.flatMap((c) => notesDeChapitre(PROBABILITES_STATISTIQUE, c)),
@@ -536,6 +537,31 @@ export const DOCUMENTS: Document[] = [
     "revision-melimelo-ch03-solutions",
     "Série méli-mélo — chapitre 3 : solutions",
     "revision/melimelo-ch03-solutions.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+
+  // --- Série de préparation à l'examen final -------------------------------
+  //
+  // Quarante exercices écrits pour la série (series/revision-examen-final.json
+  // du projet de la banque), absents des banques de chapitre : probabilités,
+  // intervalle de confiance et taille d'échantillon, tests sur une moyenne,
+  // khi-carré, corrélation et régression. Deux documents, comme le méli-mélo :
+  // les énoncés (table du khi-carré en annexe), puis les solutions. Accès aux
+  // trois niveaux, par décision de l'enseignant (2026-11-26).
+  doc(
+    PROBABILITES_STATISTIQUE,
+    "revision-examen-final",
+    "Série de préparation à l'examen final",
+    "revision/revision-examen-final.pdf",
+    "revision",
+    NIVEAUX_EXERCICES_REVISION,
+  ),
+  doc(
+    PROBABILITES_STATISTIQUE,
+    "revision-examen-final-solutions",
+    "Série de préparation à l'examen final — solutions",
+    "revision/revision-examen-final-solutions.pdf",
     "revision",
     NIVEAUX_EXERCICES_REVISION,
   ),

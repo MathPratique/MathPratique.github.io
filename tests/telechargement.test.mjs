@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { deciderTelechargement, VALIDITE_LIEN_MINUTES } from "../.tmp-test/acces/telechargement.js";
-import { DOCUMENTS, trouverDocument } from "../.tmp-test/acces/documents.js";
+import { DOCUMENTS, trouverDocument, documentsVisibles } from "../.tmp-test/acces/documents.js";
 import { creerAcces } from "../.tmp-test/acces/regles.js";
 
 const DEBUT = new Date("2026-09-01T12:00:00Z").getTime();
@@ -23,7 +23,7 @@ const doc = trouverDocument("exercices-ch04");
 //  Le catalogue
 // ---------------------------------------------------------------------------
 
-test("le catalogue couvre les 100 documents", () => {
+test("le catalogue couvre les 102 documents", () => {
   // Calcul différentiel — 54 :
   //   16 notes (7 chapitres × 2 versions + 2 recueils complets)
   //   14 exercices (7 chapitres × 2 : énoncés + corrigé. Les 7 cahiers
@@ -37,13 +37,16 @@ test("le catalogue couvre les 100 documents", () => {
   //      méli-mélos A–E ont été retirés du catalogue le 2026-09-24 ; leurs
   //      PDF restent dans le seau, plus déclarés)
   //   18 examens (6 × énoncé, corrigé, grille)
-  // Probabilités et statistique — 18 :
+  // Probabilités et statistique — 20 :
   //    8 notes (4 chapitres × 2 versions ; pas de recueil complet)
   //    8 exercices (les 4 chapitres : énoncés + corrigé chacun, sans
   //      indices ; ceux du chapitre 1 depuis le 2026-11-03, du chapitre 4
   //      depuis le 2026-11-09)
-  //    2 révision (la série méli-mélo du chapitre 3 et ses solutions — ses 70
-  //      questions n'existent que là : ni cahier, ni catalogue, ni blob)
+  //    4 révision (la série méli-mélo du chapitre 3 et ses solutions — ses 70
+  //      questions n'existent que là : ni cahier, ni catalogue, ni blob —,
+  //      puis la série de préparation à l'examen final et ses solutions,
+  //      depuis le 2026-11-26 : 40 exercices écrits pour elle, hors de la
+  //      banque, aux trois niveaux d'accès)
   // Calcul intégral — 28, le cours complet depuis le 2026-10-13 :
   //   18 notes (les 9 chapitres × 2 versions ; pas de recueil complet)
   //    9 exercices (les 9 chapitres, recueil complet seulement : les PDF
@@ -54,12 +57,12 @@ test("le catalogue couvre les 100 documents", () => {
   //      complet unique, énoncés, réponses et solutions, comme les chapitres
   //      de ce cours — ses 40 exercices n'existent que là)
   //      Pas d'examens : ils n'existent pas encore pour ce cours.
-  assert.equal(DOCUMENTS.length, 100);
+  assert.equal(DOCUMENTS.length, 102);
   const parCategorie = DOCUMENTS.reduce((acc, d) => {
     acc[d.categorie] = (acc[d.categorie] ?? 0) + 1;
     return acc;
   }, {});
-  assert.deepEqual(parCategorie, { notes: 42, exercices: 31, revision: 9, examens: 18 });
+  assert.deepEqual(parCategorie, { notes: 42, exercices: 31, revision: 11, examens: 18 });
 
   const parCours = DOCUMENTS.reduce((acc, d) => {
     acc[d.coursId] = (acc[d.coursId] ?? 0) + 1;
@@ -67,9 +70,27 @@ test("le catalogue couvre les 100 documents", () => {
   }, {});
   assert.deepEqual(parCours, {
     "calcul-differentiel": 54,
-    "probabilites-statistique": 18,
+    "probabilites-statistique": 20,
     "calcul-integral": 28,
   });
+});
+
+test("la série de préparation à l'examen final de prob-stat est visible aux trois niveaux", () => {
+  // Décision de l'enseignant (2026-11-26) : restreint, acheteur ET enseignant.
+  // Un compte sans accès au cours reste refusé par la garde du serveur.
+  const ids = ["ps-revision-examen-final", "ps-revision-examen-final-solutions"];
+  for (const id of ids) {
+    const d = trouverDocument(id);
+    assert.ok(d, `${id} absent du catalogue`);
+    assert.equal(d.coursId, "probabilites-statistique");
+    assert.equal(d.categorie, "revision");
+  }
+  assert.equal(trouverDocument(ids[0]).chemin, "probabilites-statistique/revision/revision-examen-final.pdf");
+  assert.equal(trouverDocument(ids[1]).chemin, "probabilites-statistique/revision/revision-examen-final-solutions.pdf");
+  for (const niveau of ["restreint", "acheteur", "enseignant"]) {
+    const visibles = new Set(documentsVisibles(niveau).map((d) => d.id));
+    for (const id of ids) assert.ok(visibles.has(id), `${id} invisible au niveau « ${niveau} »`);
+  }
 });
 
 test("aucune entrée ne pointe vers un cahier d'indices inexistant", () => {

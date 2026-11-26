@@ -159,7 +159,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Une population a $\\mu = 500$ et $\\sigma = 60$. On prélève un échantillon de $n = 36$. Quelle est la probabilité que $\\overline{X}$ soit supérieure à 520 ? ($\\Phi(2) = 0{,}9772$.)"
+          "texte": "Une population a $\\mu = 500$ et $\\sigma = 60$. On prélève un échantillon de $n = 36$. Quelle est la probabilité que $\\overline{X}$ soit supérieure à 520 ?"
         },
         {
           "etape": "reponse",
@@ -173,7 +173,7 @@
             "Par le TCL : $\\overline{X} \\sim \\mathcal{N}(\\mu, \\sigma/\\sqrt{n})$.",
             "$\\sigma_{\\overline{X}} = 60/\\sqrt{36} = 10$.",
             "Standardiser : $z = (520 - 500)/10 = 2$.",
-            "$P(\\overline{X} > 520) = 1 - \\Phi(2) = 1 - 0{,}9772 = 0{,}0228$."
+            "$P(\\overline{X} > 520) = P(Z > 2) = 0{,}5 - A(2{,}00) = 0{,}5 - 0{,}4772 = 0{,}0228$."
           ]
         }
       ]
@@ -586,7 +586,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Une population a $\\mu = 100$ et $\\sigma = 20$. On prélève $n = 64$. Quelle est $P(\\overline{X} < 95)$ ? ($\\Phi(2) = 0{,}9772$.)",
+          "texte": "Une population a $\\mu = 100$ et $\\sigma = 20$. On prélève $n = 64$. Quelle est $P(\\overline{X} < 95)$ ?",
           "choix": [
             {
               "cle": "a",
@@ -617,7 +617,7 @@
           "lignes": [
             "$\\sigma_{\\overline{X}} = 20/\\sqrt{64} = 2{,}5$.",
             "$z = (95-100)/2{,}5 = -2$.",
-            "$P(\\overline{X} < 95) = P(Z < -2) = 1 - \\Phi(2) = 0{,}0228$."
+            "$P(\\overline{X} < 95) = P(Z < -2) = 0{,}5 - A(2{,}00) = 0{,}5 - 0{,}4772 = 0{,}0228$ (par symétrie)."
           ],
           "analyseChoix": [
             {

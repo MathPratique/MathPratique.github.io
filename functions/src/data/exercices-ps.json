@@ -1,6 +1,6 @@
 {
   "cours": "probabilites-statistique",
-  "contentHash": "8fe698ea86d9d48b",
+  "contentHash": "74bbaf5d65593790",
   "exercices": [
     {
       "id": "ch01-fac-001",
@@ -14654,7 +14654,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Une population a $\\mu = 500$ et $\\sigma = 60$. On prélève un échantillon de $n = 36$. Quelle est la probabilité que $\\overline{X}$ soit supérieure à 520 ? ($\\Phi(2) = 0{,}9772$.)"
+          "texte": "Une population a $\\mu = 500$ et $\\sigma = 60$. On prélève un échantillon de $n = 36$. Quelle est la probabilité que $\\overline{X}$ soit supérieure à 520 ?"
         },
         {
           "etape": "reponse",
@@ -14668,7 +14668,7 @@
             "Par le TCL : $\\overline{X} \\sim \\mathcal{N}(\\mu, \\sigma/\\sqrt{n})$.",
             "$\\sigma_{\\overline{X}} = 60/\\sqrt{36} = 10$.",
             "Standardiser : $z = (520 - 500)/10 = 2$.",
-            "$P(\\overline{X} > 520) = 1 - \\Phi(2) = 1 - 0{,}9772 = 0{,}0228$."
+            "$P(\\overline{X} > 520) = P(Z > 2) = 0{,}5 - A(2{,}00) = 0{,}5 - 0{,}4772 = 0{,}0228$."
           ]
         }
       ]
@@ -14691,7 +14691,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Le taux de sucre à jeun d'une population adulte a $\\mu = 5{,}0$ mmol/L et $\\sigma = 0{,}6$ mmol/L. Sur un échantillon de 36 patients, quelle est la probabilité que $\\overline{X}$ soit inférieure à 4,85 ? ($\\Phi(1{,}5) = 0{,}9332$.)"
+          "texte": "Le taux de sucre à jeun d'une population adulte a $\\mu = 5{,}0$ mmol/L et $\\sigma = 0{,}6$ mmol/L. Sur un échantillon de 36 patients, quelle est la probabilité que $\\overline{X}$ soit inférieure à 4,85 ?"
         },
         {
           "etape": "reponse",
@@ -14704,7 +14704,7 @@
           "lignes": [
             "$\\sigma_{\\overline{X}} = 0{,}6/\\sqrt{36} = 0{,}1$.",
             "Standardiser : $z = (4{,}85 - 5{,}0)/0{,}1 = -1{,}5$.",
-            "$P(\\overline{X} < 4{,}85) = P(Z < -1{,}5) = 1 - \\Phi(1{,}5) = 0{,}0668$."
+            "$P(\\overline{X} < 4{,}85) = P(Z < -1{,}5) = 0{,}5 - A(1{,}50) = 0{,}5 - 0{,}4332 = 0{,}0668$ (par symétrie)."
           ]
         }
       ]
@@ -15200,7 +15200,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Reprends l'exercice précédent ($z = 2{,}5$, test unilatéral droite). Calcule la valeur $p$ et confirme la décision. ($\\Phi(2{,}5) = 0{,}9938$.)"
+          "texte": "Reprends l'exercice précédent ($z = 2{,}5$, test unilatéral droite). Calcule la valeur $p$ et confirme la décision."
         },
         {
           "etape": "reponse",
@@ -15211,7 +15211,7 @@
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
-            "Test unilatéral droite → valeur $p = P(Z > 2{,}5) = 1 - \\Phi(2{,}5) = 0{,}0062$.",
+            "Test unilatéral droite → valeur $p = P(Z > 2{,}5) = 0{,}5 - A(2{,}50) = 0{,}5 - 0{,}4938 = 0{,}0062$.",
             "$0{,}0062 < 0{,}05$ → on rejette $H_0$.",
             "Résultat très significatif : moins de 1 % de chance d'observer un tel écart si $H_0$ était vraie."
           ]
@@ -15491,7 +15491,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "On mesure le nombre d'accidents par jour à un carrefour. La distribution est très asymétrique à droite avec $\\mu = 2{,}5$ et $\\sigma = 3{,}0$. Sur 90 jours, quelle est la probabilité que la moyenne quotidienne $\\overline{X}$ soit supérieure à 3 ? ($\\Phi(1{,}58) \\approx 0{,}9429$.)"
+          "texte": "On mesure le nombre d'accidents par jour à un carrefour. La distribution est très asymétrique à droite avec $\\mu = 2{,}5$ et $\\sigma = 3{,}0$. Sur 90 jours, quelle est la probabilité que la moyenne quotidienne $\\overline{X}$ soit supérieure à 3 ?"
         },
         {
           "etape": "reponse",
@@ -15505,7 +15505,7 @@
             "Malgré l'asymétrie, $n = 90 \\geq 30$ → TCL applicable, $\\overline{X}$ approx. normale.",
             "$\\sigma_{\\overline{X}} = 3/\\sqrt{90} \\approx 0{,}316$.",
             "$z = (3 - 2{,}5)/0{,}316 \\approx 1{,}58$.",
-            "$P(\\overline{X} > 3) = 1 - \\Phi(1{,}58) \\approx 0{,}0571$."
+            "$P(\\overline{X} > 3) \\approx P(Z > 1{,}58) = 0{,}5 - A(1{,}58) = 0{,}5 - 0{,}4429 = 0{,}0571$."
           ]
         }
       ]
@@ -15637,7 +15637,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Un thermomètre est censé afficher 100 °C dans de l'eau bouillante. Sur $n = 40$ mesures : $\\bar{x} = 100{,}8$ °C, $s = 2{,}5$ °C. Teste au seuil 5 % (bilatéral) si le thermomètre est biaisé. Calcule aussi la valeur $p$ bilatérale. ($\\Phi(2{,}02) \\approx 0{,}9783$.)"
+          "texte": "Un thermomètre est censé afficher 100 °C dans de l'eau bouillante. Sur $n = 40$ mesures : $\\bar{x} = 100{,}8$ °C, $s = 2{,}5$ °C. Teste au seuil 5 % (bilatéral) si le thermomètre est biaisé. Calcule aussi la valeur $p$ bilatérale."
         },
         {
           "etape": "reponse",
@@ -15651,7 +15651,7 @@
             "$H_0 : \\mu = 100$ ; $H_1 : \\mu \\neq 100$.",
             "$z = (100{,}8 - 100)/(2{,}5/\\sqrt{40}) = 0{,}8/0{,}3953 \\approx 2{,}02$.",
             "$|z| > 1{,}96$ → rejeter $H_0$.",
-            "Valeur $p$ bilatérale : $2 \\cdot P(Z > 2{,}02) = 2 \\times 0{,}0217 = 0{,}0434 < 0{,}05$ → confirme le rejet."
+            "Valeur $p$ bilatérale : $2 \\cdot P(Z > 2{,}02) = 2\\,(0{,}5 - A(2{,}02)) = 2\\,(0{,}5 - 0{,}4783) = 2 \\times 0{,}0217 = 0{,}0434 < 0{,}05$ → confirme le rejet."
           ]
         }
       ]
@@ -15784,21 +15784,21 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Un test compare $H_0 : \\mu = 100$ à $H_1 : \\mu > 100$ au seuil $\\alpha = 0{,}05$, avec $n = 25$ et $\\sigma = 10$ (connu). Si la vraie moyenne est $\\mu = 105$, quelle est la puissance du test ? ($\\Phi(0{,}855) \\approx 0{,}80$.)"
+          "texte": "Un test compare $H_0 : \\mu = 100$ à $H_1 : \\mu > 100$ au seuil $\\alpha = 0{,}05$, avec $n = 25$ et $\\sigma = 10$ (connu). Si la vraie moyenne est $\\mu = 104{,}99$, quelle est la puissance du test ?"
         },
         {
           "etape": "reponse",
           "titre": "Réponse finale",
-          "texte": "Puissance $\\approx 80\\,\\%$ ($\\beta \\approx 20\\,\\%$)."
+          "texte": "Puissance $= 0{,}8023$, soit environ $80\\,\\%$ ($\\beta = 0{,}1977$, environ $20\\,\\%$)."
         },
         {
           "etape": "demarche",
           "titre": "Démarche détaillée",
           "lignes": [
             "Zone de rejet en $\\overline{X}$ : $\\overline{X} > 100 + 1{,}645 \\times 10/5 = 103{,}29$.",
-            "Si $\\mu = 105$, $\\overline{X} \\sim \\mathcal{N}(105, 2)$.",
-            "Puissance $= P(\\overline{X} > 103{,}29 \\mid \\mu = 105) = P(Z > -0{,}855) = \\Phi(0{,}855) \\approx 0{,}80$.",
-            "$\\beta = 1 - 0{,}80 = 0{,}20$."
+            "Si $\\mu = 104{,}99$, $\\overline{X} \\sim \\mathcal{N}(104{,}99\\,;\\,2)$.",
+            "Puissance $= P(\\overline{X} > 103{,}29 \\mid \\mu = 104{,}99) = P\\big(Z > \\frac{103{,}29 - 104{,}99}{2}\\big) = P(Z > -0{,}85) = 0{,}5 + A(0{,}85) = 0{,}5 + 0{,}3023 = 0{,}8023$.",
+            "$\\beta = 1 - 0{,}8023 = 0{,}1977$."
           ]
         }
       ]
@@ -16007,7 +16007,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "On veut savoir si un groupe de 40 étudiants a une moyenne significativement supérieure à la moyenne provinciale de 70 %. On observe $\\bar{x} = 74$, $s = 12$. (a) Test $z$ applicable ? (b) Test unilatéral au seuil 5 % + valeur $p$. (c) IC à 95 %. ($\\Phi(2{,}11) \\approx 0{,}9826$.)"
+          "texte": "On veut savoir si un groupe de 40 étudiants a une moyenne significativement supérieure à la moyenne provinciale de 70 %. On observe $\\bar{x} = 74$, $s = 12$. (a) Test $z$ applicable ? (b) Test unilatéral au seuil 5 % + valeur $p$. (c) IC à 95 %."
         },
         {
           "etape": "reponse",
@@ -16021,7 +16021,7 @@
             "(a) $n = 40 \\geq 30$ → TCL, test $z$ applicable. (b) $H_0 : \\mu = 70$ ; $H_1 : \\mu > 70$.",
             "$z = (74-70)/(12/\\sqrt{40}) = 4/1{,}897 \\approx 2{,}11$.",
             "$z > 1{,}645$ → rejeter.",
-            "Valeur $p = 1 - \\Phi(2{,}11) \\approx 0{,}0174$.",
+            "Valeur $p = P(Z > 2{,}11) = 0{,}5 - A(2{,}11) = 0{,}5 - 0{,}4826 = 0{,}0174$.",
             "Très significatif. (c) $E = 1{,}96 \\times 1{,}897 \\approx 3{,}72$.",
             "IC = $[70{,}28\\,; 77{,}72]$.",
             "La moyenne 70 est juste sous l'IC → confirme le rejet."
@@ -16465,7 +16465,7 @@
         {
           "etape": "enonce",
           "titre": "Énoncé",
-          "texte": "Une population a $\\mu = 100$ et $\\sigma = 20$. On prélève $n = 64$. Quelle est $P(\\overline{X} < 95)$ ? ($\\Phi(2) = 0{,}9772$.)",
+          "texte": "Une population a $\\mu = 100$ et $\\sigma = 20$. On prélève $n = 64$. Quelle est $P(\\overline{X} < 95)$ ?",
           "choix": [
             {
               "cle": "a",
@@ -16496,7 +16496,7 @@
           "lignes": [
             "$\\sigma_{\\overline{X}} = 20/\\sqrt{64} = 2{,}5$.",
             "$z = (95-100)/2{,}5 = -2$.",
-            "$P(\\overline{X} < 95) = P(Z < -2) = 1 - \\Phi(2) = 0{,}0228$."
+            "$P(\\overline{X} < 95) = P(Z < -2) = 0{,}5 - A(2{,}00) = 0{,}5 - 0{,}4772 = 0{,}0228$ (par symétrie)."
           ],
           "analyseChoix": [
             {
